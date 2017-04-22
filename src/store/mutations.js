@@ -11,11 +11,11 @@ export default {
     return state.AdminList
   },
   [types.EditAdmin](state, item) {
-    console.log('mutations', item)
     state.AdminList.forEach(admin => {
       if (admin.id === item) {
-        console.log(admin)
-        return admin
+        state.Admin = admin
+        console.log(state.Admin)
+        return state.Admin
       }
     })
   },

@@ -10,11 +10,11 @@
           <li class="active">Here</li>
         </ol>
       </section>
-      <div class="myModel" v-show="isAdd" >
+      <div class="myModal" v-show="isAdd">
         <div style="width:350px;height:350px;position:fixed;left:40%;z-index:777;">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-users"></i> 所屬群組</span>
-            <select class="form-control"  name="selAdminGroup" id="selAdminGroup">
+            <select class="form-control" name="selAdminGroup" id="selAdminGroup">
               <option value="1">admin</option>
               <option value="1">team1</option>
               <option value="1">team2</option>
@@ -22,17 +22,17 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 登入名稱</span>
-            <input type="text" class="form-control" id="memberName" placeholder="請輸入登入名稱">
+            <input type="text" class="form-control" id="name" v-model="GetAdmin.name" placeholder="請輸入登入名稱">
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> 登入帳號</span>
-            <input type="text" class="form-control" id="memberName" placeholder="請輸入登入帳號">
+            <input type="text" class="form-control" v-model="GetAdmin.account" placeholder="請輸入登入帳號">
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i> 登入密碼</span>
-            <input type="text" class="form-control" id="memberName" placeholder="請輸入登入密碼">
+            <input type="text" class="form-control" v-model="GetAdmin.password" placeholder="請輸入登入密碼">
           </div>
-          <div class="btn-group" role="group" >
+          <div class="btn-group" role="group">
             <button @click="" class="btn bg-orange btn-flat " type="button">確定</button>
             <button @click="isAdd = false" class="btn bg-maroon btn-flat " type="button">取消</button>
           </div>
@@ -71,7 +71,7 @@
                           <td>{{admin.createDate}}</td>
                           <td>{{admin.updateDate}}</td>
                           <td>
-                            <div class="btn-group" role="group" >
+                            <div class="btn-group" role="group">
                               <button class="btn bg-maroon">刪除</button>
                               <button @click="doEdit(admin.id)" class="btn bg-navy ">修改</button>
                             </div>
@@ -97,22 +97,24 @@
     mapActions,
     mapGetters
   } from 'vuex'
+  import Noty from 'noty'
   export default {
-    data () {
+    data() {
       return {
         show: true,
         isAdd: false,
         admin: {}
       }
     },
-    created () {
+    created() {
       setTimeout(() => {
         this.show = false
-      }, 2000)
+      }, 1000)
     },
     computed: {
       ...mapGetters([
-        'GetAdminList'
+        'GetAdminList',
+        'GetAdmin'
       ])
     },
     methods: {
@@ -121,9 +123,29 @@
         'EditAdmin'
       ]),
       doEdit(id) {
-        console.log('doEdit', id)
-        this.adminModel = this.EditAdmin(id)
-        this.isAdd = true
+        var self = this
+        var n = new Noty({
+          layout: 'topCenter',
+          theme: 'metroui',
+          closeWith: ['butto'],
+          text: `
+            <div style="width:200px;height:40px;top:50px;background-color:#01e5944">
+              <div style="margin:50px;width:200px;"><strong>是否確定要刪除?</strong></div>
+            </div>
+          `,
+          buttons: [
+            Noty.button('YES', 'btn btn-success', function () {
+              console.log('button 1 clicked')
+              self.EditAdmin(id)
+              self.isAdd = true
+              n.close()
+            }),
+            Noty.button('NO', 'btn btn-danger', function () {
+              console.log('button 2 clicked')
+              n.close()
+            })
+          ]
+        }).show()
       }
     }
   }
@@ -136,18 +158,28 @@
     margin: 0px auto;
     font-size: 16px;
   }
-  .myModel {
-    position: fixed; /* Stay in place */
-    z-index: 778; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+
+  .myModal {
+    position: fixed;
+    /* Stay in place */
+    z-index: 778;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
   }
+
   .box-margin-left {
     margin-left: 10px;
   }
@@ -159,4 +191,5 @@
   .box-body {
     --overflow: auto;
   }
+
 </style>

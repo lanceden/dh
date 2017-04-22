@@ -6,6 +6,7 @@ export default {
   GetMemberList: 'GetMemberList',
   GetMember: 'GetMember',
   GetAdminList: 'GetAdminList',
+  GetAdmin: 'GetAdmin',
   GetVipList: 'GetVipList',
   AddVipList: 'AddVipList',
   AuthLogin: 'AuthLogin',
