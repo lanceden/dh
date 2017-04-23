@@ -1,11 +1,13 @@
 import types from './types'
 
 export default {
-  [types.showLoading](state) {
-    state.showLoading = true
+  [types.ShowLoading](state) {
+    state.ShowLoading = true
   },
-  [types.hideLoading](state) {
-    state.hideLoading = false
+  [types.HideLoading](state) {
+    setTimeout(() => {
+      state.ShowLoading = false
+    }, 1000)
   },
   [types.MetuItem] (state) {
     return state.MenuItemList
@@ -13,7 +15,8 @@ export default {
   [types.MemberList] (state) {
     return state.MemberList
   },
-  [types.AdminList](state) {
+  [types.AdminList](state, adminList) {
+    state.AdminList = adminList
     return state.AdminList
   },
   [types.EditAdmin](state, item) {

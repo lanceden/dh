@@ -1,8 +1,8 @@
 <template>
   <div class="zoomIn animated">
-    <loading v-show="show" />
+    <loading v-show="GetShowLoading" />
     <!-- Page content start-->
-    <div class="content-wrapper" v-show="!show">
+    <div class="content-wrapper" v-show="!GetShowLoading">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>後臺管理者列表</h1>
@@ -54,9 +54,7 @@
                       <thead>
                         <tr role="row">
                           <th class="sorting" tabindex="0">所屬群組</th>
-                          <th class="sorting" tabindex="0">登入名稱</th>
                           <th class="sorting" tabindex="0">登入帳號</th>
-                          <th class="sorting" tabindex="0">登入密碼</th>
                           <th class="sorting" tabindex="0">帳號創建時間</th>
                           <th class="sorting" tabindex="0">帳號更新時間</th>
                           <th class="sorting" tabindex="0">操作</th>
@@ -64,16 +62,14 @@
                       </thead>
                       <tbody>
                         <tr role="row" v-for="(admin,index) in GetAdminList">
-                          <td>{{admin.name}}</td>
-                          <td>{{admin.group}}</td>
-                          <td>{{admin.account}}</td>
-                          <td>{{admin.password}}</td>
-                          <td>{{admin.createDate}}</td>
-                          <td>{{admin.updateDate}}</td>
+                          <td>{{admin.AccountGroupName}}</td>
+                          <td>{{admin.AccountName}}</td>
+                          <td>{{admin.AccountCreateDate}}</td>
+                          <td>{{admin.AccountUpdateDate | isEmpty}}</td>
                           <td>
                             <div class="btn-group" role="group">
                               <button class="btn bg-maroon">刪除</button>
-                              <button @click="doEdit(admin.id)" class="btn bg-navy ">修改</button>
+                              <button @click="adminEdit(admin.AccountId)" class="btn bg-navy">修改</button>
                             </div>
                           </td>
                         </tr>
@@ -101,21 +97,18 @@
   export default {
     data() {
       return {
-        show: true,
         isAdd: false,
         admin: {}
       }
     },
     created() {
       this.AdminList(this.$http)
-      setTimeout(() => {
-        this.show = false
-      }, 1000)
     },
     computed: {
       ...mapGetters([
         'GetAdminList',
-        'GetAdmin'
+        'GetAdmin',
+        'GetShowLoading'
       ])
     },
     methods: {
@@ -123,26 +116,27 @@
         'AdminList',
         'EditAdmin'
       ]),
-      doEdit(id) {
-        var self = this
-        var n = new Noty({
+      adminEdit(id) {
+        let self = this
+        let n = new Noty({
           layout: 'topCenter',
           theme: 'metroui',
           closeWith: ['butto'],
           text: `
-            <div style="width:200px;height:40px;top:50px;background-color:#01e5944">
-              <div style="margin:50px;width:200px;"><strong>是否確定要刪除?</strong></div>
+            <div style="width:200px;">
+              <div style="margin:20px;width:200px;"><h3>是否確定要修改?</h3></div>
             </div>
           `,
           buttons: [
             Noty.button('YES', 'btn btn-success', function () {
-              console.log('button 1 clicked')
-              self.EditAdmin(id)
+              self.EditAdmin({
+                id: id,
+                http: self.$http
+              })
               self.isAdd = true
               n.close()
             }),
             Noty.button('NO', 'btn btn-danger', function () {
-              console.log('button 2 clicked')
               n.close()
             })
           ]

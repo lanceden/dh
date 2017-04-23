@@ -10,5 +10,8 @@ export default {
   GetVipList: 'GetVipList',
   AddVipList: 'AddVipList',
   AuthLogin: 'AuthLogin',
-  EditAdmin: 'EditAdmin'
+  EditAdmin: 'EditAdmin',
+  GetShowLoading: 'GetShowLoading',
+  ShowLoading: 'ShowLoading',
+  HideLoading: 'HideLoading'
 }

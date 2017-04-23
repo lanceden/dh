@@ -14,14 +14,14 @@ Vue.use(Loading)
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 
 axios.interceptors.request.use(function (config) {
-  store.dispatch('showLoading')
+  store.dispatch('ShowLoading')
   return config
 }, function (error) {
   return Promise.reject(error)
 })
 
 axios.interceptors.response.use(function (response) {
-  store.dispatch('hideLoading')
+  store.dispatch('HideLoading')
   return response
 }, function (error) {
   return Promise.reject(error)

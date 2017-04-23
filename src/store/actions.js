@@ -1,24 +1,42 @@
 import types from './types'
 
 export default {
-  [types.MetuItem]({ commit }) {
+  [types.ShowLoading]({commit}) {
+    commit(types.ShowLoading)
+  },
+  [types.HideLoading]({commit}) {
+    commit(types.HideLoading)
+  },
+  [types.MetuItem]({commit}) {
     commit(types.MetuItem)
   },
-  [types.MemberList]({ commit }) {
+  [types.MemberList]({commit}) {
     commit(types.MemberList)
   },
-  [types.AdminList]({ commit }) {
-    commit(types.AdminList)
+  [types.AdminList]({
+    commit
+  }, http) {
+    http
+      .post('http://localhost:53912/Account/GetAdminList')
+      .then(adminList => {
+        commit(types.AdminList, adminList.data.data)
+      })
   },
-  [types.EditAdmin]({ commit }, item) {
-    commit(types.EditAdmin, item)
+  [types.EditAdmin]({
+    commit
+  }, {id, http}) {
+    http
+      .get(`http://localhost:53912/Account/GetAdmin/${id}`)
+      .then(val => {
+        commit(types.EditAdmin, val)
+      })
   },
   [types.GetMember]({
     commit
   }, mem) {
     commit(types.GetMember, mem)
   },
-  [types.GetVipList]({ commit }) {
+  [types.GetVipList]({commit}) {
     commit(types.GetVipList)
   },
   [types.AuthLogin]({
@@ -31,7 +49,9 @@ export default {
       return
     }
   },
-  [types.AddVipList]({ commit }, vipModel) {
+  [types.AddVipList]({
+    commit
+  }, vipModel) {
     commit(types.AddVipList, vipModel)
   }
 }

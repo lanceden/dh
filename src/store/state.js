@@ -3,7 +3,7 @@ export default {
    * 是否登入
    */
   auth: false,
-  showLoading: false,
+  ShowLoading: true,
   /**
    * 功能列表
    */
@@ -161,25 +161,6 @@ export default {
   /**
    * 後臺管理員帳號列表
    */
-  AdminList: [
-    {
-      id: 1,
-      name: '系統管理員',
-      group: 'admin',
-      account: 'administrator',
-      password: '1234',
-      createDate: new Date(Date.now),
-      updateDate: ''
-    },
-    {
-      id: 2,
-      name: '系統維護人員',
-      group: 'User',
-      account: 'user1',
-      password: 'user1',
-      createDate: new Date(Date.now),
-      updateDate: ''
-    }
-  ],
+  AdminList: [],
   Admin: {}
 }
