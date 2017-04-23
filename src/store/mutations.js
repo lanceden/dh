@@ -1,6 +1,12 @@
 import types from './types'
 
 export default {
+  [types.showLoading](state) {
+    state.showLoading = true
+  },
+  [types.hideLoading](state) {
+    state.hideLoading = false
+  },
   [types.MetuItem] (state) {
     return state.MenuItemList
   },

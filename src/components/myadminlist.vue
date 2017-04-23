@@ -107,6 +107,7 @@
       }
     },
     created() {
+      this.AdminList(this.$http)
       setTimeout(() => {
         this.show = false
       }, 1000)

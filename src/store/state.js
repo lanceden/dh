@@ -3,6 +3,7 @@ export default {
    * 是否登入
    */
   auth: false,
+  showLoading: false,
   /**
    * 功能列表
    */

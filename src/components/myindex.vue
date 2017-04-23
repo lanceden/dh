@@ -10,12 +10,8 @@
 </script>
 <style scoped>
   .slide-enter,
-  .slide-leave-to
-  /* .slide-fade-leave-active for <2.1.8 */
-
-  {
+  .slide-leave-to {
     display: none;
     opacity: .3;
   }
-
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="zoomIn animated">
-    <loading v-show="show" />
+    <loading v-show="showLoading" />
     <!-- Page content start-->
-    <div class="content-wrapper" v-show="!show">
+    <div class="content-wrapper" v-show="!showLoading">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>會員查詢<small>(三擇一)</small></h1>
@@ -110,7 +110,8 @@
 <script>
   import {
     mapActions,
-    mapGetters
+    mapGetters,
+    mapState
   } from 'vuex'
   export default {
     data () {
@@ -124,12 +125,10 @@
         }
       }
     },
-    created () {
-      setTimeout(() => {
-        this.show = false
-      }, 2000)
-    },
     computed: {
+      ...mapState([
+        'showLoading'
+      ]),
       ...mapGetters([
         'GetMemberList'
       ])
