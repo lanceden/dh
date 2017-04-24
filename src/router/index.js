@@ -20,28 +20,33 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }, {
+    },
+    {
       path: '/Login',
       component: Login
-    }, {
+    },
+    {
       path: '/Member',
       component: Member,
       meta: {
         requiresAuth: true
       }
-    }, {
+    },
+    {
       path: '/MemberLevel',
       component: MemberLevel,
       meta: {
         requiresAuth: true
       }
-    }, {
+    },
+    {
       path: '/AdminList',
       component: AdminList,
       meta: {
         requiresAuth: true
       }
-    }, {
+    },
+    {
       path: '*',
       component: MyError,
       meta: {
@@ -50,12 +55,13 @@ const router = new Router({
     }
   ]
 })
-
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!state.auth) {
+    if (!state.login.auth) {
       alert('請先登入')
-      next({path: '/Login'})
+      next({
+        path: '/Login'
+      })
     } else {
       next()
     }

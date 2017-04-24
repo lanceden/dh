@@ -26,7 +26,7 @@
           </div>
         </div>
       </form>
-      <a href="#" @click="AuthLogin(loginModel)" class="btn btn-danger btn-lg">Login</a>
+      <a href="#" @click="test(loginModel)" class="btn btn-danger btn-lg">Login</a>
       <div class="imgFixed">
         <img class="" src="../../static/img/icon_login.png" alt="Login">
       </div>
@@ -53,14 +53,17 @@
       }
     },
     computed: {
-      ...mapState([
-        'auth'
-      ])
+      ...mapState({
+        auth: state => state.login.auth
+      })
     },
     methods: {
       ...mapActions([
         'AuthLogin'
-      ])
+      ]),
+      test(loginModel) {
+        this.AuthLogin(loginModel)
+      }
     }
   }
 

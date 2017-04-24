@@ -1,8 +1,8 @@
 <template>
   <div class="zoomIn animated">
-    <loading v-show="GetShowLoading" />
+    <loading v-show="ShowLoading" />
     <!-- Page content start-->
-    <div class="content-wrapper" v-show="!GetShowLoading">
+    <div class="content-wrapper" v-show="!ShowLoading">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>後臺管理者列表</h1>
@@ -22,18 +22,19 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 登入名稱</span>
-            <input type="text" class="form-control" id="name" v-model="GetAdmin.name" placeholder="請輸入登入名稱">
+            <input type="text" class="form-control" id="name" v-model="GetAdmin.AccountName" placeholder="請輸入登入名稱">
           </div>
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> 登入帳號</span>
-            <input type="text" class="form-control" v-model="GetAdmin.account" placeholder="請輸入登入帳號">
+            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> 登入密碼修改</span>
+            <input type="text" class="form-control" v-model="GetAdmin.AccountPassword" placeholder="請輸入登入密碼">
           </div>
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i> 登入密碼</span>
-            <input type="text" class="form-control" v-model="GetAdmin.password" placeholder="請輸入登入密碼">
+            <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i> 上次修改時間</span>
+            <input type="text" class="form-control" readonly v-model="GetAdmin.AccountUpdateDate" >
           </div>
+          <input type="hidden" v-model="GetAdmin.AccountId" />
           <div class="btn-group" role="group">
-            <button @click="" class="btn bg-orange btn-flat " type="button">確定</button>
+            <button @click="edit(GetAdmin)" class="btn bg-orange btn-flat" type="button">確定</button>
             <button @click="isAdd = false" class="btn bg-maroon btn-flat " type="button">取消</button>
           </div>
         </div>
@@ -69,7 +70,7 @@
                           <td>
                             <div class="btn-group" role="group">
                               <button class="btn bg-maroon">刪除</button>
-                              <button @click="adminEdit(admin.AccountId)" class="btn bg-navy">修改</button>
+                              <button @click="get(admin.AccountId)" class="btn bg-navy">修改</button>
                             </div>
                           </td>
                         </tr>
@@ -91,7 +92,8 @@
 <script>
   import {
     mapActions,
-    mapGetters
+    mapGetters,
+    mapState
   } from 'vuex'
   import Noty from 'noty'
   export default {
@@ -105,18 +107,21 @@
       this.AdminList(this.$http)
     },
     computed: {
+      ...mapState([
+        'ShowLoading'
+      ]),
       ...mapGetters([
         'GetAdminList',
-        'GetAdmin',
-        'GetShowLoading'
+        'GetAdmin'
       ])
     },
     methods: {
       ...mapActions([
         'AdminList',
-        'EditAdmin'
+        'AdminGet',
+        'AdminEdit'
       ]),
-      adminEdit(id) {
+      get(id) {
         let self = this
         let n = new Noty({
           layout: 'topCenter',
@@ -129,7 +134,7 @@
           `,
           buttons: [
             Noty.button('YES', 'btn btn-success', function () {
-              self.EditAdmin({
+              self.AdminGet({
                 id: id,
                 http: self.$http
               })
@@ -141,6 +146,12 @@
             })
           ]
         }).show()
+      },
+      edit(model) {
+        this.AdminEdit({
+          a: this.$http,
+          b: model
+        })
       }
     }
   }

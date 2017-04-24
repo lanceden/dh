@@ -34,9 +34,9 @@
       MyAside
     },
     computed: {
-      ...mapState([
-        'auth'
-      ])
+      ...mapState({
+        auth: state => state.login.auth
+      })
     }
   }
 </script>
