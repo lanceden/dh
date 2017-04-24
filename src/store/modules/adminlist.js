@@ -29,9 +29,11 @@ const actions = {
       })
   },
   [types.AdminEdit]({ commit }, { http, model }) {
-    http
-      .put(`http://localhost:53912/Account/GetAdmin/${model.AccountId}`, model)
-      .then(val => console.log(val))
+    http({
+      method: 'put',
+      url: `http://localhost:53912/Account/${model.AccountId}`,
+      data: model
+    }).then(val => console.log(val))
   }
 }
 

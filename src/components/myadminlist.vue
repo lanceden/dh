@@ -14,10 +14,10 @@
         <div style="width:350px;height:350px;position:fixed;left:40%;z-index:777;">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-users"></i> 所屬群組</span>
-            <select class="form-control" name="selAdminGroup" id="selAdminGroup">
-              <option value="1">admin</option>
-              <option value="1">team1</option>
-              <option value="1">team2</option>
+            <select class="form-control" v-model="GetAdmin.AccountGroupName" name="selAdminGroup" id="selAdminGroup">
+              <option>系統管理員</option>
+              <option>team1</option>
+              <option>team2</option>
             </select>
           </div>
           <div class="input-group">
@@ -149,8 +149,8 @@
       },
       edit(model) {
         this.AdminEdit({
-          a: this.$http,
-          b: model
+          http: this.$http,
+          model: model
         })
       }
     }

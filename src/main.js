@@ -27,6 +27,14 @@ axios.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
+axios({
+  method: 'put',
+  url: 'http://localhost:50704/api/values/5',
+  data: {
+    value: '213'
+  }
+}).then(val => console.log(val))
+
 Vue.prototype.$http = axios
 /* eslint-disable no-new */
 new Vue({
