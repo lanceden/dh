@@ -14,9 +14,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    login,
-    menuitem,
-    adminlist,
+    login: login,
+    menuitem: menuitem,
+    adminlist: adminlist,
     member,
     memberlevel
   },

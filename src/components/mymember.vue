@@ -52,10 +52,10 @@
                     <table id="tbMember" class="table" role="grid">
                       <thead>
                         <tr role="row">
-                          <th class="sorting" tabindex="0">會員資料</th>
-                          <th class="sorting" tabindex="0">會員收件人(一)</th>
-                          <th class="sorting" tabindex="0">會員收件人(二)</th>
-                          <th class="sorting" tabindex="0">會員收件人(三)</th>
+                          <th class="sorting" tabindex="0"><span class="badge bg-light-blue">會員資料</span></th>
+                          <th class="sorting" tabindex="0"><span class="badge bg-light-blue">會員收件人(一)</span></th>
+                          <th class="sorting" tabindex="0"><span class="badge bg-light-blue">會員收件人(二)</span></th>
+                          <th class="sorting" tabindex="0"><span class="badge bg-light-blue">會員收件人(三)</span></th>
                         </tr>
                       </thead>
                       <tbody>

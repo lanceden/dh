@@ -14,26 +14,48 @@ const getters = {
 }
 
 const actions = {
-  [types.AdminList]({ commit }, http) {
-    http
-      .post('http://localhost:53912/Account/GetAdminList')
+  [types.AdminList]({ commit }, { $http, $router }) {
+    $http
+      .post('/api/Account/GetAdminList')
       .then(adminList => {
         commit(types.AdminList, adminList.data.data)
       })
   },
-  [types.AdminGet]({ commit }, { id, http }) {
+  [types.AdminAddGet]({ commit }) {
+    commit(types.AdminAddGet)
+  },
+  [types.AdminAddPost]({ commit, rootState }, { http, model }) {
+    http({
+      method: 'post',
+      url: `/api/Account/post`,
+      data: model
+    }).then(model => {
+      commit(types.AdminAddPost, { model: model.data, rootState })
+    })
+  },
+  [types.AdminEditGet]({ commit }, { id, http }) {
     http
-      .get(`http://localhost:53912/Account/GetAdmin/${id}`)
+      .get(`/api/Account/GetAdmin/${id}`)
       .then(val => {
-        commit(types.AdminGet, val.data.data)
+        commit(types.AdminEditGet, val.data.data)
       })
   },
-  [types.AdminEdit]({ commit }, { http, model }) {
+  [types.AdminEditPut]({ commit, rootState }, { http, model }) {
     http({
       method: 'put',
-      url: `http://localhost:53912/Account/${model.AccountId}`,
+      url: `/api/Account/put/${model.AccountId}`,
       data: model
-    }).then(val => console.log(val))
+    }).then(model => {
+      commit(types.AdminEditPut, { model: model.data, rootState })
+    })
+  },
+  [types.AdminDel]({ commit }, { id, http }) {
+    http({
+      method: 'delete',
+      url: `/api/Account/delete/${id}`
+    }).then(model => {
+      commit(types.AdminDel, { model: model.data })
+    })
   }
 }
 
@@ -42,10 +64,45 @@ const mutations = {
     state.AdminList = item
     return state.AdminList
   },
-  [types.AdminGet](state, admin) {
+  [types.AdminAddGet](state) {
+    state.Admin = {}
+  },
+  [types.AdminAddPost](state, { model, rootState }) {
+    switch (model.statu) {
+      case 'ok':
+        rootState.isAdd = false
+        state.AdminList = model.data
+        break
+      case 'err':
+        alert(model.msg)
+        break
+    }
+  },
+  [types.AdminEditGet](state, admin) {
     state.Admin = admin
-    console.log(state.Admin)
     return state.Admin
+  },
+  [types.AdminEditPut](state, { model, rootState }) {
+    switch (model.statu) {
+      case 'ok':
+        rootState.isAdd = false
+        state.AdminList = model.data
+        break
+      case 'err':
+        alert(model.msg)
+        break
+    }
+  },
+  [types.AdminDel](state, { model }) {
+    switch (model.statu) {
+      case 'ok':
+        state.AdminList = model.data
+        alert('刪除成功')
+        break
+      case 'err':
+        alert(model.msg)
+        break
+    }
   }
 }
 

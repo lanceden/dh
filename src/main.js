@@ -26,14 +26,15 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
   return Promise.reject(error)
 })
-
-axios({
-  method: 'put',
-  url: 'http://localhost:50704/api/values/5',
-  data: {
-    value: '213'
-  }
-}).then(val => console.log(val))
+console.log(store)
+// axios({
+//   method: 'put',
+//   url: `/api/Account/put/1`,
+//   data: {
+//     AccountGroupId: 1,
+//     AccountName: 'administrator'
+//   }
+// }).then(val => console.log(val))
 
 Vue.prototype.$http = axios
 /* eslint-disable no-new */

@@ -8,5 +8,11 @@ export default {
     setTimeout(() => {
       state.ShowLoading = false
     }, 1000)
+  },
+  [types.ShowDiv](state) {
+    state.isAdd = true
+  },
+  [types.HideDiv](state) {
+    state.isAdd = false
   }
 }

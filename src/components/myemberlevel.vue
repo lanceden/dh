@@ -85,7 +85,7 @@
                       </tbody>
                     </table>
                     <div class="box-footer">
-                      <button @click="alert('123')" class="btn btn-success btn-lg btn-block"><i class="fa fa-refresh" aria-hidden="true"></i> 更新會員等級</button>
+                      <button @click="alert('123')" class="btn bg-orange btn-lg btn-block"><i class="fa fa-refresh" aria-hidden="true"></i> 更新會員等級</button>
                     </div>
                   </div>
                 </div>

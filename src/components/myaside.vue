@@ -5,12 +5,12 @@
       <!-- sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <!--<div class="user-panel">
+        <div class="user-panel">
           <div class="pull-left ">
           </div>
           <div class="pull-left info">
           </div>
-        </div>-->
+        </div>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
           <li class="treeview" v-for='item in GetMetuItem'>
@@ -23,9 +23,9 @@
                 </span>
               </template>
             </router-link>
-            <ul class="treeview-menu" v-for="child in item.childItem">
-              <li>
-                <router-link :to='child.childUrl'>{{child.childName}}</router-link>
+            <ul class="treeview-menu" >
+              <li v-for="child in item.childItem">
+                <router-link :to='child.childUrl'> <i class="fa fa-circle-o text-aqua"></i>{{child.childName}}</router-link>
               </li>
             </ul>
           </li>

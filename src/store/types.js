@@ -10,10 +10,15 @@ export default {
   GetVipList: 'GetVipList',
   AddVipList: 'AddVipList',
   AuthLogin: 'AuthLogin',
-  AdminGet: 'AdminGet',
-  AdminEdit: 'AdminEdit',
+  AdminAddGet: 'AdminAddGet',
+  AdminAddPost: 'AdminAddPost',
+  AdminEditGet: 'AdminEditGet',
+  AdminEditPut: 'AdminEditPut',
+  AdminDel: 'AdminDel',
   GetShowLoading: 'GetShowLoading',
   ShowLoading: 'ShowLoading',
   HideLoading: 'HideLoading',
+  ShowDiv: 'ShowDiv',
+  HideDiv: 'HideDiv',
   GetAuth: 'GetAuth'
 }

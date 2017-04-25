@@ -1,3 +1,4 @@
 export default {
-  ShowLoading: true
+  ShowLoading: true,
+  isAdd: false
 }

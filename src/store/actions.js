@@ -6,5 +6,11 @@ export default {
   },
   [types.HideLoading]({commit}) {
     commit(types.HideLoading)
+  },
+  [types.ShowDiv]({ commit }) {
+    commit('ShowDiv')
+  },
+  [types.HideDiv]({ commit }) {
+    commit('HideDiv')
   }
 }

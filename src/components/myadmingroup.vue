@@ -5,7 +5,7 @@
     <div class="content-wrapper" v-show="!ShowLoading">
       <!-- Content Header (Page header) -->
       <section class="content-header">
-        <h1>後臺管理者列表</h1>
+        <h1>後臺群組列表</h1>
         <ol class="breadcrumb">
           <li class="active">Here</li>
         </ol>
@@ -54,8 +54,8 @@
                     <table id="tbMember" class="table" role="grid">
                       <thead>
                         <tr role="row">
-                          <th class="sorting" tabindex="0">所屬群組</th>
-                          <th class="sorting" tabindex="0">登入帳號</th>
+                          <th class="sorting" tabindex="0">群組名稱</th>
+                          <th class="sorting" tabindex="0">群組新增時間</th>
                           <th class="sorting" tabindex="0">帳號創建時間</th>
                           <th class="sorting" tabindex="0">帳號更新時間</th>
                           <th class="sorting" tabindex="0">
