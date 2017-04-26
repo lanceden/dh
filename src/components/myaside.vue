@@ -12,24 +12,29 @@
           </div>
         </div>
         <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-          <li class="treeview" v-for='item in GetMetuItem'>
-            <router-link :to="item.baseUrl">
-              <i :class="item.itemClass"></i>
-              <span>{{item.name}}</span>
-              <template v-if="item.showItemClass">
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+        <template v-for="(n,i) in GetMetuItem.length">
+          <ul class="sidebar-menu">
+            <li class="treeview" v-for='(item,itemIndex) in GetMetuItem[i]'>
+              <template v-if="itemIndex == 0">
+                <router-link :to="item.MenuBaseUrl">
+                  <i :class="item.MenuItemClass"></i>
+                  <span>{{item.MenuName}}</span>
+                  <template v-if="item.MenuShowItemClass">
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </template>
+                </router-link>
+                <ul class="treeview-menu" 
+                v-if="item.MenuItemChildUrl != null" >
+                  <li v-for='item in GetMetuItem[i]'>
+                    <router-link :to='item.MenuItemChildUrl'> <i class="fa fa-circle-o text-aqua"></i>{{item.MenuItemChildName}}</router-link>
+                  </li>
+                </ul>
               </template>
-            </router-link>
-            <ul class="treeview-menu" >
-              <li v-for="child in item.childItem">
-                <router-link :to='child.childUrl'> <i class="fa fa-circle-o text-aqua"></i>{{child.childName}}</router-link>
-              </li>
-            </ul>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </template>
         <!-- /.sidebar-menu -->
       </section>
       <!-- /.sidebar -->
@@ -47,6 +52,11 @@
       ...mapGetters([
         'GetMetuItem'
       ])
+    },
+    created() {
+      this.MetuItem({
+        http: this.$http
+      })
     },
     methods: {
       ...mapActions([

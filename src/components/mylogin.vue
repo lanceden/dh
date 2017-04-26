@@ -3,6 +3,7 @@
     <div class="login-logo">
       <a href="/login"><b>dh</b>Shop</a>
     </div>
+    <div v-for="(n,i) in 7">{{i}}</div>
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">
