@@ -14,7 +14,7 @@
         <div style="width:350px;height:350px;position:fixed;left:40%;z-index:777;">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-users"></i> 所屬群組</span>
-            <select class="form-control" v-model="GetAdmin.AccountGroupName" name="selAdminGroup" id="selAdminGroup">
+            <select class="form-control" v-model="GetAdminGroup.AccountGroupName" name="selAdminGroup" id="selAdminGroup">
               <option >系統管理員</option>
               <option >team1</option>
               <option >team2</option>
@@ -22,19 +22,19 @@
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 登入名稱</span>
-            <input type="text" class="form-control" id="name" v-model="GetAdmin.AccountName" placeholder="請輸入登入名稱">
+            <input type="text" class="form-control" id="name" placeholder="請輸入登入名稱">
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> 登入密碼修改</span>
-            <input type="text" class="form-control" v-model="GetAdmin.AccountPasswordStr" placeholder="請輸入登入密碼">
+            <input type="text" class="form-control"  placeholder="請輸入登入密碼">
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i> 上次修改時間</span>
-            <input type="text" class="form-control" readonly v-model="GetAdmin.AccountUpdateDate" >
+            <input type="text" class="form-control" readonly  >
           </div>
-          <input type="hidden" v-model="GetAdmin.AccountId" />
+          <input type="hidden" v-model="GetAdminGroup.AccountGroupId" />
           <div class="btn-group" role="group">
-            <button @click="doMethods(GetAdmin)" class="btn bg-orange btn-flat" type="button">確定</button>
+            <button @click="doMethods(GetAdminGroup)" class="btn bg-orange btn-flat" type="button">確定</button>
             <button @click="HideDiv" class="btn bg-maroon btn-flat " type="button">取消</button>
           </div>
         </div>
@@ -54,10 +54,9 @@
                     <table id="tbMember" class="table" role="grid">
                       <thead>
                         <tr role="row">
+                          <th class="sorting" tabindex="0">群組編號</th>
                           <th class="sorting" tabindex="0">群組名稱</th>
-                          <th class="sorting" tabindex="0">群組新增時間</th>
                           <th class="sorting" tabindex="0">帳號創建時間</th>
-                          <th class="sorting" tabindex="0">帳號更新時間</th>
                           <th class="sorting" tabindex="0">
                             操作
                             <button @click="add(admin.AccountId)" class="btn bg-navy pull-right">新增</button>
@@ -65,11 +64,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr role="row" v-for="(admin,index) in GetAdminList">
-                          <td>{{admin.AccountGroupName}}</td>
-                          <td>{{admin.AccountName}}</td>
-                          <td>{{admin.AccountCreateDate}}</td>
-                          <td>{{admin.AccountUpdateDate | isEmpty}}</td>
+                        <tr role="row" v-for="group in GetAdminGroupList">
+                          <td>{{group.AccountGroupId}}</td>
+                          <td>{{group.AccountGroupName}}</td>
+                          <td>{{group.AccountCreateDate}}</td>
                           <td>
                               <a class="btn btn-app" @click="get(admin.AccountId)" >
                                 <i class="fa fa-edit"></i> 修改
@@ -104,13 +102,13 @@
   export default {
     data() {
       return {
-        admin: {}
+        group: {}
       }
     },
     created() {
-      this.AdminList({
-        $http: this.$http,
-        $router: this.$router
+      this.AdminGroupList({
+        http: this.$http,
+        router: this.$router
       })
     },
     computed: {
@@ -119,13 +117,13 @@
         'isAdd'
       ]),
       ...mapGetters([
-        'GetAdminList',
-        'GetAdmin'
+        'GetAdminGroupList',
+        'GetAdminGroup'
       ])
     },
     methods: {
       ...mapActions([
-        'AdminList',
+        'AdminGroupList',
         'AdminAddGet',
         'AdminAddPost',
         'AdminEditGet',

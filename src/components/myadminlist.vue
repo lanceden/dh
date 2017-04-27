@@ -60,7 +60,7 @@
                           <th class="sorting" tabindex="0">帳號更新時間</th>
                           <th class="sorting" tabindex="0">
                             操作
-                            <button @click="add(admin.AccountId)" class="btn bg-navy pull-right">新增</button>
+                            <button @click="add()" class="btn bg-navy pull-right">新增</button>
                           </th>
                         </tr>
                       </thead>

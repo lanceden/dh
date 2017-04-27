@@ -9,17 +9,18 @@ const state = {
 }
 
 const getters = {
-  [types.GetAdminGroupList]: (state) => state.AdminList,
-  [types.GetAdminGroup]: (state) => state.Admin
+  [types.GetAdminGroupList]: (state) => state.AdminGroupList,
+  [types.GetAdminGroup]: (state) => state.AdminGroup
 }
 
 const actions = {
-  [types.AdminGroupList]({ commit }, { $http, $router }) {
-    $http
-      .get('/api/Account/GetAdminList')
-      .then(adminList => {
-        commit(types.AdminGroupList, adminList.data.data)
-      })
+  [types.AdminGroupList]({ commit }, { http, router }) {
+    http({
+      method: 'get',
+      url: '/api/AccountGroup/Get'
+    }).then(adminList => {
+      commit(types.AdminGroupList, adminList.data.data)
+    })
   },
   [types.AdminAddGet]({ commit }) {
     commit(types.AdminAddGet)
@@ -49,12 +50,12 @@ const actions = {
       commit(types.AdminEditPut, { model: model.data, rootState })
     })
   },
-  [types.AdminDel]({ commit }, { id, http }) {
+  [types.AdminGroupDel]({ commit }, { id, http }) {
     http({
       method: 'delete',
-      url: `/api/Account/delete/${id}`
+      url: `/api/AccountGroup/delete/${id}`
     }).then(model => {
-      commit(types.AdminDel, { model: model.data })
+      commit(types.AdminGroupDel, { model: model.data })
     })
   }
 }
@@ -93,7 +94,7 @@ const mutations = {
         break
     }
   },
-  [types.AdminDel](state, { model }) {
+  [types.AdminGroupDel](state, { model }) {
     switch (model.statu) {
       case 'ok':
         state.AdminList = model.data

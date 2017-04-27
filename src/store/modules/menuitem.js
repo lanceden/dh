@@ -32,7 +32,6 @@ const mutations = {
     switch (model.statu) {
       case 'ok':
         state.MenuItemList = model.data
-        console.log(state.MenuItemList.length)
         break
       case 'err':
         alert(model.msg)

@@ -9,16 +9,18 @@ import login from './modules/login'
 import member from './modules/member'
 import memberlevel from './modules/memberlevel'
 import menuitem from './modules/menuitem'
+import admingroup from './modules/admingroup'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    login: login,
-    menuitem: menuitem,
-    adminlist: adminlist,
+    login,
+    menuitem,
+    adminlist,
     member,
-    memberlevel
+    memberlevel,
+    admingroup
   },
   mutations,
   actions,

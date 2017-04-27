@@ -14,8 +14,8 @@
         <!-- Sidebar Menu -->
         <template v-for="(n,i) in GetMetuItem.length">
           <ul class="sidebar-menu">
-            <li class="treeview" v-for='(item,itemIndex) in GetMetuItem[i]'>
-              <template v-if="itemIndex == 0">
+            <li class="treeview" v-for='item in GetMetuItem[i]'>
+              <template v-if="item.MenuTopLevel == 0">
                 <router-link :to="item.MenuBaseUrl">
                   <i :class="item.MenuItemClass"></i>
                   <span>{{item.MenuName}}</span>
@@ -25,12 +25,17 @@
                     </span>
                   </template>
                 </router-link>
-                <ul class="treeview-menu" 
-                v-if="item.MenuItemChildUrl != null" >
-                  <li v-for='item in GetMetuItem[i]'>
-                    <router-link :to='item.MenuItemChildUrl'> <i class="fa fa-circle-o text-aqua"></i>{{item.MenuItemChildName}}</router-link>
-                  </li>
-                </ul>
+                <ul class="treeview-menu">
+                  <template v-for="(n,i) in GetMetuItem.length">
+                    <template v-for='childItem in GetMetuItem[i]'
+                        v-if="childItem.MenuTopLevel == item.MenuId">
+                        <li>
+                          <router-link :to='childItem.MenuBaseUrl'> <i class="fa fa-circle-o text-aqua"></i>
+                          {{childItem.MenuName}}</router-link>
+                        </li>
+                    </template>
+                  </template>
+                </ul>	
               </template>
             </li>
           </ul>

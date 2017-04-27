@@ -16,6 +16,8 @@ export default {
   AdminEditPut: 'AdminEditPut',
   AdminDel: 'AdminDel',
   AdminGroupList: 'AdminGroupList',
+  AdminGroupDel: 'AdminGroupDel',
+  AdminGroup: 'AdminGroup',
   GetAdminGroupList: 'GetAdminGroupList',
   GetAdminGroup: 'GetAdminGroup',
   GetShowLoading: 'GetShowLoading',
