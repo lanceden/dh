@@ -10,22 +10,31 @@ const getters = {
   }
 }
 const actions = {
-  [types.AuthLogin]({ commit }, loginModel) {
-    if (loginModel.account === 'admin' && loginModel.password === '1234') {
-      commit(types.AuthLogin, loginModel)
-    } else {
-      alert('帳號密碼不正確!')
-      return
-    }
+  [types.AuthLogin]({ commit, rootState }, { http, model }) {
+    http({
+      method: 'post',
+      url: `/api/Account/login`,
+      data: model
+    }).then(model => {
+      commit(types.AuthLogin, { model: model.data, rootState })
+    })
   }
 }
 const mutations = {
   /**
    * 驗證當前User是否登入
-   * state.auto:是否登入
+   * state.auth:是否登入
    */
-  [types.AuthLogin](state) {
-    state.auth = true
+  [types.AuthLogin](state, { model, rootState }) {
+    switch (model.statu) {
+      case 'ok':
+        rootState.antiKey = model.data
+        state.auth = true
+        break
+      case 'err':
+        alert(model.msg)
+        break
+    }
   }
 }
 

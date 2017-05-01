@@ -10,10 +10,10 @@
       </p>
       <form action="../../index2.html" method="post">
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" v-model="loginModel.account" placeholder="Account">
+          <input type="email" class="form-control" v-model="loginModel.AccountName" placeholder="Account">
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" v-model="loginModel.password" 
+          <input type="password" class="form-control" v-model="loginModel.AccountPasswordStr" 
           @keydown.enter="AuthLogin(loginModel)" placeholder="Password">
         </div>
         <div class="row">
@@ -46,9 +46,9 @@
     },
     data() {
       return {
-        loginModel: {
-          account: 'admin',
-          password: '1234'
+        loginModel: {// 測試用假資料
+          AccountName: 'administrator',
+          AccountPasswordStr: '1234'
         }
       }
     },
@@ -61,8 +61,11 @@
       ...mapActions([
         'AuthLogin'
       ]),
-      test(loginModel) {
-        this.AuthLogin(loginModel)
+      test(model) {
+        this.AuthLogin({
+          http: this.$http,
+          model: model
+        })
       }
     }
   }

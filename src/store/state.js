@@ -1,4 +1,5 @@
 export default {
   ShowLoading: true,
-  isAdd: false
+  isAdd: false,
+  antiKey: ''
 }

@@ -11,30 +11,33 @@
         </ol>
       </section>
       <div class="myModal" v-show="isAdd">
-        <div style="width:350px;height:350px;position:fixed;left:40%;z-index:777;">
+        <div style="width:650px;height:350px;position:fixed;left:30%;z-index:777;">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-users"></i> 所屬群組</span>
-            <select class="form-control" v-model="GetAdmin.AccountGroupName" name="selAdminGroup" id="selAdminGroup">
+            <select class="form-control" v-model="GetAdminAccount.AccountGroupName" name="selAdminGroup" id="selAdminGroup">
               <option >系統管理員</option>
               <option >team1</option>
               <option >team2</option>
             </select>
           </div>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 登入名稱</span>
-            <input type="text" class="form-control" id="name" v-model="GetAdmin.AccountName" placeholder="請輸入登入名稱">
+          <div class="input-group" :class="{'has-error': errors.has('AccountName') }">
+              <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 登入名稱</span>
+              <input v-validate="'required|alpha_num|min:6'" data-vv-delay="500" 
+              class="form-control" :class="{'input': true, 'is-danger': errors.has('AccountName') }"
+              name="AccountName" v-model="GetAdminAccount.AccountName" type="text"  placeholder="請輸入登入名稱">
+              <span v-show="errors.has('AccountName')" class="help is-danger">{{ errors.first('AccountName') }}</span>
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> 登入密碼修改</span>
-            <input type="text" class="form-control" v-model="GetAdmin.AccountPasswordStr" placeholder="請輸入登入密碼">
+            <input type="text" class="form-control" v-model="GetAdminAccount.AccountPasswordStr" placeholder="請輸入登入密碼">
           </div>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i> 上次修改時間</span>
-            <input type="text" class="form-control" readonly v-model="GetAdmin.AccountUpdateDate" >
+            <input type="text" class="form-control" readonly v-model="GetAdminAccount.AccountUpdateDate" >
           </div>
-          <input type="hidden" v-model="GetAdmin.AccountId" />
+          <input type="hidden" v-model="GetAdminAccount.AccountId" />
           <div class="btn-group" role="group">
-            <button @click="doMethods(GetAdmin)" class="btn bg-orange btn-flat" type="button">確定</button>
+            <button @click="doMethods(GetAdminAccount)" class="btn bg-orange btn-flat" type="button">確定</button>
             <button @click="HideDiv" class="btn bg-maroon btn-flat " type="button">取消</button>
           </div>
         </div>
@@ -65,7 +68,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr role="row" v-for="(admin,index) in GetAdminList">
+                        <tr role="row" v-for="(admin,index) in GetAdminAccountList">
                           <td>{{admin.AccountGroupName}}</td>
                           <td>{{admin.AccountName}}</td>
                           <td>{{admin.AccountCreateDate}}</td>
@@ -108,7 +111,7 @@
       }
     },
     created() {
-      this.AdminList({
+      this.AdminAccountList({
         $http: this.$http,
         $router: this.$router
       })
@@ -119,18 +122,18 @@
         'isAdd'
       ]),
       ...mapGetters([
-        'GetAdminList',
-        'GetAdmin'
+        'GetAdminAccountList',
+        'GetAdminAccount'
       ])
     },
     methods: {
       ...mapActions([
-        'AdminList',
-        'AdminAddGet',
-        'AdminAddPost',
-        'AdminEditGet',
-        'AdminEditPut',
-        'AdminDel',
+        'AdminAccountList',
+        'AdminAccountAddGet',
+        'AdminAccountAddPost',
+        'AdminAccountEditGet',
+        'AdminAccountEditPut',
+        'AdminAccountDelete',
         'ShowDiv',
         'HideDiv'
       ]),
@@ -147,7 +150,7 @@
           `,
           buttons: [
             Noty.button('YES', 'btn btn-success', function () {
-              self.AdminEditGet({
+              self.AdminAccountEditGet({
                 http: self.$http,
                 id
               })
@@ -173,7 +176,7 @@
           `,
           buttons: [
             Noty.button('YES', 'btn btn-success', function () {
-              self.AdminDel({
+              self.AdminAccountDelete({
                 http: self.$http,
                 id: id
               })
@@ -186,20 +189,22 @@
         }).show()
       },
       add() {
-        this.AdminAddGet()
+        this.AdminAccountAddGet()
         this.ShowDiv()
       },
       doMethods(model) {
-        if(model.AccountId > 0) {
-          this.AdminEditPut({
-            http: this.$http,
-            model: model
-          })
-        } else {
-          this.AdminAddPost({
-            http: this.$http,
-            model: model
-          })
+        if (!this.errors.any()) {
+          if(model.AccountId > 0) {
+            this.AdminAccountEditPut({
+              http: this.$http,
+              model: model
+            })
+          } else {
+            this.AdminAccountAddPost({
+              http: this.$http,
+              model: model
+            })
+          }
         }
       }
     }
@@ -247,4 +252,26 @@
     --overflow: auto;
   }
 
+.help {
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.help.is-danger {
+  background-color: #ff3860;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34495e;
+  font-family: '微軟正黑體';
+}
+
+.input.is-danger,
+.textarea.is-danger {
+  border: 1px solid #ff3860;
+}
+
+.active {
+  border: 1px solid red;
+}
 </style>

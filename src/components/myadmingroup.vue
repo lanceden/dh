@@ -11,26 +11,32 @@
         </ol>
       </section>
       <div class="myModal" v-show="isAdd">
-        <div style="width:350px;height:350px;position:fixed;left:40%;z-index:777;">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-users"></i> 所屬群組</span>
-            <select class="form-control" v-model="GetAdminGroup.AccountGroupName" name="selAdminGroup" id="selAdminGroup">
-              <option >系統管理員</option>
-              <option >team1</option>
-              <option >team2</option>
-            </select>
+        <div style="width:650px;height:350px;position:fixed;left:30%;top:70px;z-index:777;">
+          <div class="input-group" :class="{'has-error': errors.has('AccountGroupName') }">
+              <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 群組名稱</span>
+              <input v-validate="'required'" data-vv-delay="500" 
+              class="form-control" :class="{'input': true, 'is-danger': errors.has('AccountGroupName') }"
+              name="AccountGroupName" v-model="GetAdminGroup.AccountGroupName" type="text"  placeholder="請輸入群組名稱">
+              <span v-show="errors.has('AccountGroupName')" class="help is-danger">{{ errors.first('AccountGroupName') }}</span>
           </div>
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 登入名稱</span>
-            <input type="text" class="form-control" id="name" placeholder="請輸入登入名稱">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> 登入密碼修改</span>
-            <input type="text" class="form-control"  placeholder="請輸入登入密碼">
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-paw" aria-hidden="true"></i> 上次修改時間</span>
-            <input type="text" class="form-control" readonly  >
+            <span class="input-group-addon"><i class="fa fa-child" aria-hidden="true"></i> 群組權限</span>
+            <template v-for="(item,index) in GetAdminGroup.menuGroup" >
+              <div class="form-control" style="height:60px" v-if="item.MenuTopLevel == 0">
+                  <div class="col-md-4">
+                    <input type="checkbox" @change="tt(item.MenuId)" :id="item.MenuName" v-model="item.IsCheck" >
+                    <label :for="item.MenuName">{{item.MenuName}} </label>
+                  </div>
+                  <div class="col-md-8">
+                    <template v-for="(childItem,childIndex) in GetAdminGroup.menuGroup" >
+                      <template v-if="childItem.MenuTopLevel != 0 && item.MenuId == childItem.MenuTopLevel">
+                        <input type="checkbox" :id="childItem.MenuName" v-model="childItem.IsCheck">
+                        <label class="label label-default" :for="childItem.MenuName">{{childItem.MenuName}} </label>
+                      </template>
+                    </template>
+                  </div>
+              </div>
+            </template>
           </div>
           <input type="hidden" v-model="GetAdminGroup.AccountGroupId" />
           <div class="btn-group" role="group">
@@ -56,10 +62,10 @@
                         <tr role="row">
                           <th class="sorting" tabindex="0">群組編號</th>
                           <th class="sorting" tabindex="0">群組名稱</th>
-                          <th class="sorting" tabindex="0">帳號創建時間</th>
+                          <th class="sorting" tabindex="0">創建時間</th>
                           <th class="sorting" tabindex="0">
                             操作
-                            <button @click="add(admin.AccountId)" class="btn bg-navy pull-right">新增</button>
+                            <button @click="add()" class="btn bg-navy pull-right">新增</button>
                           </th>
                         </tr>
                       </thead>
@@ -67,12 +73,12 @@
                         <tr role="row" v-for="group in GetAdminGroupList">
                           <td>{{group.AccountGroupId}}</td>
                           <td>{{group.AccountGroupName}}</td>
-                          <td>{{group.AccountCreateDate}}</td>
+                          <td>{{group.AccountGroupCreateDate}}</td>
                           <td>
-                              <a class="btn btn-app" @click="get(admin.AccountId)" >
+                              <a class="btn btn-app" @click="get(group.AccountGroupId)" >
                                 <i class="fa fa-edit"></i> 修改
                               </a>
-                              <a class="btn btn-app" @click="del(admin.AccountId)">
+                              <a class="btn btn-app" @click="del(group.AccountGroupId)">
                                 <i class="fa fa-times"></i> 刪除
                               </a>
                           </td>
@@ -124,14 +130,19 @@
     methods: {
       ...mapActions([
         'AdminGroupList',
-        'AdminAddGet',
-        'AdminAddPost',
-        'AdminEditGet',
-        'AdminEditPut',
-        'AdminDel',
+        'AdminGroupAddGet',
+        'AdminGroupAddPost',
+        'AdminGroupEditGet',
+        'AdminGroupEditPut',
+        'AdminGroupDelete',
         'ShowDiv',
         'HideDiv'
       ]),
+      tt(id) {
+        this.GetAdminGroup.menuGroup.forEach((element) => {
+          if(element.MenuTopLevel === id && element.MenuTopLevel) element.IsCheck = false
+        }, this)
+      },
       get(id) {
         let self = this
         let n = new Noty({
@@ -145,7 +156,7 @@
           `,
           buttons: [
             Noty.button('YES', 'btn btn-success', function () {
-              self.AdminEditGet({
+              self.AdminGroupEditGet({
                 http: self.$http,
                 id
               })
@@ -171,7 +182,7 @@
           `,
           buttons: [
             Noty.button('YES', 'btn btn-success', function () {
-              self.AdminDel({
+              self.AdminGroupDelete({
                 http: self.$http,
                 id: id
               })
@@ -184,20 +195,22 @@
         }).show()
       },
       add() {
-        this.AdminAddGet()
+        this.AdminGroupAddGet(this.$http)
         this.ShowDiv()
       },
       doMethods(model) {
-        if(model.AccountId > 0) {
-          this.AdminEditPut({
-            http: this.$http,
-            model: model
-          })
-        } else {
-          this.AdminAddPost({
-            http: this.$http,
-            model: model
-          })
+        if (!this.errors.any()) {
+          if(model.AccountGroupId > 0) {
+            this.AdminGroupEditPut({
+              http: this.$http,
+              model: model
+            })
+          } else {
+            this.AdminGroupAddPost({
+              http: this.$http,
+              model: model
+            })
+          }
         }
       }
     }
@@ -236,7 +249,24 @@
   .box-margin-left {
     margin-left: 10px;
   }
+.help {
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+}
 
+.help.is-danger {
+  background-color: #ff3860;
+  font-size: 18px;
+  font-weight: bold;
+  color: #34495e;
+  font-family: '微軟正黑體';
+}
+
+.input.is-danger,
+.textarea.is-danger {
+  border: 1px solid #ff3860;
+}
   .even {
     --background-color: #95da8b;
   }
