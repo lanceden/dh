@@ -1,34 +1,27 @@
-import types from '../types'
+import types from './menuTypes'
 
 const state = {
-  /**
-   * 功能列表
-   */
   MenuItemList: []
 }
-
-// getters
 const getters = {
-  [types.GetMetuItem]: (state) => {
+  [types.GetMenuItem]: (state) => {
     return state.MenuItemList
   }
 }
-
-// actions
 const actions = {
-  [types.MetuItem]({ commit }, { http }) {
+  [types.MenuItem]({ commit }, { http }) {
+    console.log(window.Lockr.get('antiKey'))
     http({
       method: 'get',
-      url: `/api/Menu/Get`
+      url: `/api/Menu/Get`,
+      headers: { 'X-XSRF-Token': window.Lockr.get('antiKey') }
     }).then(model => {
-      commit(types.MetuItem, { model: model.data })
+      commit(types.MenuItem, { model: model.data })
     })
   }
 }
-
-// mutations
 const mutations = {
-  [types.MetuItem](state, { model }) {
+  [types.MenuItem](state, { model }) {
     switch (model.statu) {
       case 'ok':
         state.MenuItemList = model.data

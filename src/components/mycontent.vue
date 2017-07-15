@@ -1,7 +1,6 @@
 <template>
-  <div class="zoomIn animated">
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="zoomIn animated content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
@@ -108,7 +107,6 @@
         </div>
       </section>
     </div>
-  </div>
 </template>
 <script>
 

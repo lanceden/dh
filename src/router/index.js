@@ -7,7 +7,7 @@ import Login from '../components/mylogin.vue'
 import MemberLevel from '../components/myemberlevel.vue'
 import AdminList from '../components/myadminlist.vue'
 import AdminGroup from '../components/myadmingroup.vue'
-import state from '../store/state'
+import Order from '../components/myorder.vue'
 
 Vue.use(Router)
 
@@ -29,6 +29,13 @@ const router = new Router({
     {
       path: '/Member',
       component: Member,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/Order',
+      component: Order,
       meta: {
         requiresAuth: true
       }
@@ -65,7 +72,7 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!state.login.auth) {
+    if (!window.Lockr.get('auth')) {
       alert('請先登入')
       next({
         path: '/Login'

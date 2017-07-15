@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import Loading from './components/Loading'
+import extension from './components/extension'
 import store from './store'
+import Lockr from 'lockr'
 import filters from './filters'
 import axios from 'axios'
 import tw from 'vee-validate/dist/locale/zh_TW'
@@ -22,32 +23,44 @@ Vue.use(VeeValidate, {
 })
 
 Vue.config.productionTip = false
-Vue.use(Loading)
+Vue.use(extension)
 
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
 
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(function(config) {
+  axios.defaults.headers['X-XSRF-Token'] = Lockr.get('antiKey')
   store.dispatch('ShowLoading')
   return config
-}, function (error) {
+}, function(error) {
   return Promise.reject(error)
 })
 
-axios.interceptors.response.use(function (response) {
+axios.interceptors.response.use(function(response) {
   store.dispatch('HideLoading')
   return response
 }, function (error) {
+  console.log('main.js')
   alert('請先登入!')
   store.state.login.auth = false
   router.push('/Login')
   return Promise.reject(error)
 })
-
+window.Lockr = Lockr
 Vue.prototype.$http = axios
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  created() {
+    if (Lockr.get('auth')) {
+      /* 判斷重新整理 */
+      this.$store.state.login.auth = true
+      axios.defaults.headers['X-XSRF-Token'] = Lockr.get('antiKey')
+    } else {
+      Lockr.rm('antiKey')
+      Lockr.rm('auth')
+    }
+  },
   router,
   store,
   template: '<App/>',

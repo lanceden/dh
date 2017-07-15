@@ -1,53 +1,54 @@
 <template>
   <div id="app">
     <template v-if="auth">
-      <MyHeader />
-      <MyAside />
-      <MyIndex />
-      <MyFooter/>
+      <MyHeader></MyHeader>
+      <div id="divContent">
+        <MyAside></MyAside>
+        <router-view></router-view>
+      </div>
+      <MyFooter></MyFooter>
     </template>
     <template v-else>
       <router-view></router-view>
     </template>
   </div>
 </template>
-
 <script>
-  import MyHeader from './components/myheader'
-  import MyFooter from './components/myfooter'
-  import MyIndex from './components/myindex'
-  import MyAside from './components/myaside'
-  import {
-    mapState
-  } from 'vuex'
-  export default {
-    // watch: {
-    //   $route(to) {
-    //     console.log('to', to.path)
-    //     // this.$route.push('index')
-    //   }
-    // },
-    components: {
-      MyHeader,
-      MyFooter,
-      MyIndex,
-      MyAside
-    },
-    computed: {
-      ...mapState({
-        auth: state => state.login.auth
-      })
-    }
+import MyHeader from './components/myheader'
+import MyFooter from './components/myfooter'
+import MyAside from './components/myaside'
+import {
+  mapState
+} from 'vuex'
+export default {
+  components: {
+    MyHeader,
+    MyFooter,
+    MyAside
+  },
+  computed: {
+    ...mapState({
+      auth: state => state.login.auth
+    })
   }
-</script>
+}
 
+</script>
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#divContent {
+  position: relative;
+}
+
+#divContent>.main-sidebar {
+  color: #ffffff;
+}
 
 </style>

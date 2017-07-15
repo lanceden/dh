@@ -1,17 +1,12 @@
 <template>
-  <div >
-    <transition name="slide">
-      <router-view></router-view>
-    </transition>
-  </div>
 </template>
 <script>
-  export default {}
+export default {}
 </script>
 <style scoped>
-  .slide-enter,
-  .slide-leave-to {
-    display: none;
-    opacity: .3;
-  }
+.slide-enter,
+.slide-leave-to {
+  display: none;
+  opacity: .3;
+}
 </style>

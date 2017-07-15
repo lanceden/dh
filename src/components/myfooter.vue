@@ -10,9 +10,10 @@
     </footer>
   </div>
 </template>
+
 <script>
   export default {
-    data () {
+    data() {
       return {
         dateYear: new Date().getFullYear()
       }

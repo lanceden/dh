@@ -8,8 +8,9 @@ import adminlist from './modules/adminlist'
 import login from './modules/login'
 import member from './modules/member'
 import memberlevel from './modules/memberlevel'
-import menuitem from './modules/menuitem'
+import menuitem from './modules/menu'
 import admingroup from './modules/admingroup'
+import order from './modules/order'
 
 Vue.use(Vuex)
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     login,
     menuitem,
     adminlist,
+    order,
     member,
     memberlevel,
     admingroup
