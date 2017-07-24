@@ -97,6 +97,43 @@ const actions = {
     }).then(model => {
       commit(types.OrderdtDelete, model.data)
     })
+  },
+  [types.OrderEditPayStatus]({ commit }, { http, orderNum, payStatus }) {
+    http({
+      method: 'post',
+      url: `/api/Order/PostOrderEditPayStatus`,
+      data: {
+        orderNum: orderNum,
+        payStatus: payStatus
+      }
+    }).then(model => {
+      commit(types.OrderEditPayStatus, model)
+    })
+  },
+  [types.OrderDtEditDeliveryStatus]({ commit }, { http, orderNum, no, deliveryStatus }) {
+    http({
+      method: 'post',
+      url: `/api/Order/PostOrderDtEditDeliveryStatus`,
+      data: {
+        orderNum: orderNum,
+        no: no,
+        deliveryStatus: deliveryStatus
+      }
+    }).then(model => {
+      commit(types.OrderDtEditDeliveryStatus, model)
+    })
+  },
+  [types.OrderDtEditRowType]({ commit }, { http, no, OrderNum }) {
+    http({
+      method: 'delete',
+      url: `/api/Order/DeleteDt/${no}`,
+      data: {
+        No: no,
+        OrderNum: OrderNum
+      }
+    }).then(model => {
+      commit(types.OrderDtEditRowType, model)
+    })
   }
 }
 
@@ -190,6 +227,32 @@ const mutations = {
         alert(model.msg)
         break
     }
+  },
+  [types.OrderEditPayStatus](state, model) {
+    switch (model.data.statu) {
+      case 'ok':
+        noty.TopRightShow(model.data.msg)
+        state.OrderList = model.data.data.list
+        break
+      case 'err':
+        alert(model.msg)
+        break
+    }
+  },
+  [types.OrderDtEditDeliveryStatus](state, model) {
+    switch (model.data.statu) {
+      case 'ok':
+        noty.TopRightShow(model.data.msg)
+        state.OrderDtList = model.data.data
+        break
+      case 'err':
+        alert(model.msg)
+        break
+    }
+  },
+  [types.OrderDtEditRowType](state, model) {
+    noty.TopRightShow(model.data.msg)
+    state.OrderDtList = model.data.data
   }
 }
 

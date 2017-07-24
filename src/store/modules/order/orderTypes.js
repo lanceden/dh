@@ -14,5 +14,8 @@ export default {
   OrderdtAddGet: 'OrderdtAddGet',
   OrderdtAddPost: 'OrderdtAddPost',
   OrderdtEditGet: 'OrderdtEditGet',
-  OrderdtDelete: 'OrderdtDelete'
+  OrderdtDelete: 'OrderdtDelete',
+  OrderEditPayStatus: 'OrderEditPayStatus',
+  OrderDtEditDeliveryStatus: 'OrderDtEditDeliveryStatus',
+  OrderDtEditRowType: 'OrderDtEditRowType'
 }

@@ -33,52 +33,87 @@
                           <td>
                             <div class="small-box bg-aqua col-md-12">
                               <div class="inner">
-                                <h3>未處理</h3>
-                                <p>共一筆</p>
-                                <button @click="get(order.OrderNum)" class="btn bg-orange btn-flat" type="button">編輯</button>
-                                <button @click="del(order.OrderNum)" class="btn bg-maroon btn-flat " type="button">刪除</button>
+                                <h3>{{order.PayStatus|payStatus}}</h3>
                               </div>
                               <div class="icon">
                                 <i class="fa fa-shopping-cart"></i>
                               </div>
+                              <div class="small-box bg-aqua col-md-12">
+                                <button v-show="order.PayStatus == 2" @click="get(order.OrderNum)" class="btn btn-xs bg-orange btn-flat" type="button">編輯</button>
+                                <button v-show="false" @click="del(order.OrderNum)" class="btn btn-xs bg-maroon btn-flat " type="button">刪除</button>
+                                <select class="form-control" v-model="payStatusSelect">
+                                  <option value="1">未付款</option>
+                                  <option value="2">已付款</option>
+                                  <option value="3">退款中</option>
+                                  <option value="4">已退款</option>
+                                </select>
+                                <button class="btn bg-olive btn-flat margin" @click="updateOrderPayStatus(order.OrderNum,payStatusSelect)">確定</button>
+                              </div>
                             </div>
                           </td>
-                          <td>
-                            <div class="col-md-6">
-                              <ul class="list-group ulLeft">
-                                <li class="list-group-item">訂單編號: {{order.OrderNum }}</li>
-                                <li class="list-group-item">訂購日期: {{order.OrderDate }}</li>
-                                <li class="list-group-item">購買人: {{order.Purchaser }}</li>
-                                <li class="list-group-item">購買人電話: {{order.P_Phone }}</li>
-                                <li class="list-group-item">購買人地址: {{order.P_Address }}</li>
-                                <li class="list-group-item">購買人mail: {{order.P_Mail }}</li>
-                                <li class="list-group-item">購買人註記: {{order.P_Note }}</li>
-                                <li class="list-group-item">收件人: {{order.Recipient }}</li>
-                                <li class="list-group-item">收件人電話: {{order.R_Phone }}</li>
-                                <li class="list-group-item">收件人地址: {{order.R_Address }}</li>
-                                <li class="list-group-item">收件人mail: {{order.R_Mail }}</li>
-                                <li class="list-group-item">統一編號: {{order.taxIDNum }}</li>
-                                <li class="list-group-item">公司抬頭: {{order.Corporation }}</li>
-                              </ul>
-                            </div>
-                            <div class="col-md-6">
-                              <ul class="list-group ulLeft">
-                                <li class="list-group-item">捐贈愛心碼: {{order.InoviceType }}</li>
-                                <li class="list-group-item">發票號碼: {{order.InoviceNum}}</li>
-                                <li class="list-group-item">發票狀態: {{order.InoviceStatus|inoviceStatus}}</li>
-                                <li class="list-group-item">發票類型: {{order.InoviceType|inoviceType}}</li>
-                                <li class="list-group-item">運送方式: {{order.DeliveryType|deliveryType }}</li>
-                                <li class="list-group-item">付款方式: {{order.PayType|payType }}</li>
-                                <li class="list-group-item">付款狀態: {{order.PayStatus|payStatus }}</li>
-                                <li class="list-group-item">付款日期: {{order.PayDate}}</li>
-                                <li class="list-group-item">處理狀態: {{order.OperateStatus|operateStatus }}</li>
-                                <li class="list-group-item">結案日期: {{order.CloseDate }}</li>
-                                <li class="list-group-item">活動名稱: {{order.ActivityName }}</li>
-                                <li class="list-group-item">綠界 訂單編號: {{order.MerchantTradeNo }}</li>
-                                <li class="list-group-item">總金額: {{order.AllTotalAmt }}</li>
-                              </ul>
-                            </div>
-                          </td>
+                          <div class="box-header with-border" style="min-width:3500px">
+                            <h4 class="pull-left">詳細資料
+                              <i class="fa fa-arrow-circle-down"></i>
+                            </h4>
+                            <table class="table table-striped table-hover" data-parent="#accordion" :href="index|anchorHash">
+                              <tbody>
+                                <tr>
+                                  <th>訂購日期</th>
+                                  <th>購買人</th>
+                                  <th>購買人電話</th>
+                                  <th>購買人地址</th>
+                                  <th>購買人mail</th>
+                                  <th>購買人註記</th>
+                                  <th>收件人</th>
+                                  <th>收件人電話</th>
+                                  <th>收件人地址</th>
+                                  <th>收件人mail</th>
+                                  <th>統一編號</th>
+                                  <th>公司抬頭</th>
+                                  <th>捐贈愛心碼</th>
+                                  <th>發票號碼</th>
+                                  <th>發票狀態</th>
+                                  <th>發票類型</th>
+                                  <th>運送方式</th>
+                                  <th>付款方式</th>
+                                  <th>付款狀態</th>
+                                  <th>付款日期</th>
+                                  <th>處理狀態</th>
+                                  <th>結案日期</th>
+                                  <th>活動名稱</th>
+                                  <th>綠界 訂單編號</th>
+                                  <th>總金額</th>
+                                </tr>
+                                <tr>
+                                  <td>{{order.OrderDate|isEmpty}} </td>
+                                  <td>{{order.Purchaser|isEmpty}} </td>
+                                  <td>{{order.P_Phone|isEmpty}} </td>
+                                  <td>{{order.P_Address|isEmpty}} </td>
+                                  <td>{{order.P_Mail|isEmpty}} </td>
+                                  <td>{{order.P_Note|isEmpty}} </td>
+                                  <td>{{order.Recipient|isEmpty}} </td>
+                                  <td>{{order.R_Phone|isEmpty}} </td>
+                                  <td>{{order.R_Address|isEmpty}}</td>
+                                  <td>{{order.R_Mail|isEmpty}} </td>
+                                  <td>{{order.taxIDNum|isEmpty}}</td>
+                                  <td>{{order.Corporation|isEmpty}}</td>
+                                  <td>{{order.InoviceType|isEmpty}}</td>
+                                  <td>{{order.InoviceNum|isEmpty}} </td>
+                                  <td>{{order.InoviceStatus|inoviceStatus|isEmpty}} </td>
+                                  <td>{{order.InoviceType|inoviceType|isEmpty}} </td>
+                                  <td>{{order.DeliveryType|deliveryType|isEmpty }} </td>
+                                  <td>{{order.PayType|payType|isEmpty }} </td>
+                                  <td>{{order.PayStatus|isEmpty|payStatus }} </td>
+                                  <td>{{order.PayDate|isEmpty}} </td>
+                                  <td>{{order.OperateStatus|isEmpty|operateStatus }} </td>
+                                  <td>{{order.CloseDate|isEmpty}} </td>
+                                  <td>{{order.ActivityName|isEmpty}} </td>
+                                  <td>{{order.MerchantTradeNo|isEmpty}} </td>
+                                  <td>{{order.AllTotalAmt|decimalComma|isEmpty }} </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
                         </tr>
                       </tbody>
                     </table>
@@ -112,24 +147,43 @@
                             </tr>
                             <tr v-for="(dt,tindex) in GetOrderDtList" key="dt.No">
                               <td>
-                                <i class="fa fa-info-circle"></i>
+                                <!-- 未付款  -->
+                                <div v-if="order.PayStatus == 1">
+                                  <!-- <button @click="updateOrderDtRowType(dt.No,dt.OrderNum)">取消</button> -->
+                                </div>
+                                <!-- 已付款  -->
+                                <div v-else-if="order.PayStatus == 2">
+                                  <button class="btn btn-warning" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">出貨</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">退貨</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3)">送達</button>
+                                </div>
+                                <!-- 退款中  -->
+                                <div v-else-if="order.PayStatus == 3">
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">出貨</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3)">送達</button>
+                                </div>
+                                <!-- 已退款  -->
+                                <div v-else-if="order.PayStatus == 4">
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">出貨</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3)">送達</button>
+                                </div>
                               </td>
-                              <td>{{dt.No}}</td>
-                              <td>{{dt.OrderNum}}</td>
-                              <td>{{dt.ProdID}}</td>
-                              <td>{{dt.DeliveryStatus|deliveryStatus}}</td>
-                              <td>{{dt.DeliveryDate}}</td>
-                              <td>{{dt.DeliveryNumber}}</td>
-                              <td>{{dt.DeliveryCompany}}</td>
-                              <td>{{dt.I_Note}}</td>
-                              <td>{{dt.Quantity}}</td>
-                              <td>{{dt.TotalAmount}}</td>
-                              <td>{{dt.DeliveryFee}}</td>
-                              <td>{{dt.ProdName}}</td>
-                              <td>{{dt.ProdStyle}}</td>
-                              <td>{{dt.OrderPrice}}</td>
-                              <td>{{dt.ActivityName}}</td>
-                              <td>{{dt.DiscountPrice}}</td>
+                              <td>{{dt.No|isEmpty}}</td>
+                              <td>{{dt.OrderNum|isEmpty}}</td>
+                              <td>{{dt.ProdID|isEmpty}}</td>
+                              <td>{{dt.DeliveryStatus|deliveryStatus|isEmpty}}</td>
+                              <td>{{dt.DeliveryDate|isEmpty}}</td>
+                              <td>{{dt.DeliveryNumber|isEmpty}}</td>
+                              <td>{{dt.DeliveryCompany|isEmpty}}</td>
+                              <td>{{dt.I_Note|isEmpty}}</td>
+                              <td>{{dt.Quantity|decimalComma|isEmpty}}</td>
+                              <td>{{dt.TotalAmount|decimalComma|isEmpty}}</td>
+                              <td>{{dt.DeliveryFee|decimalComma|isEmpty}}</td>
+                              <td>{{dt.ProdName|isEmpty}}</td>
+                              <td>{{dt.ProdStyle|isEmpty}}</td>
+                              <td>{{dt.SalePrice|decimalComma|isEmpty}}</td>
+                              <td>{{dt.ActivityName|isEmpty}}</td>
+                              <td>{{dt.DiscountPrice|isEmpty}}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -164,7 +218,8 @@ export default {
     return {
       tcur: 1,
       tall: 0,
-      orderAdd: false
+      orderAdd: false,
+      payStatusSelect: 1
     }
   },
   components: {
@@ -198,6 +253,9 @@ export default {
       'OrderEditGet',
       'OrderEditPut',
       'OrderDelete',
+      'OrderEditPayStatus',
+      'OrderDtEditDeliveryStatus',
+      'OrderDtEditRowType',
       'ShowDiv',
       'HideDiv'
     ]),
@@ -253,6 +311,28 @@ export default {
           model: model
         })
       }
+    },
+    updateOrderPayStatus(orderNum, payStatus) {
+      this.OrderEditPayStatus({
+        http: this.$http,
+        orderNum: orderNum,
+        payStatus: payStatus
+      })
+    },
+    updateOrderDtDeliveryStatus(orderNum, no, deliveryStatus) {
+      this.OrderDtEditDeliveryStatus({
+        http: this.$http,
+        orderNum: orderNum,
+        no: no,
+        deliveryStatus: deliveryStatus
+      })
+    },
+    updateOrderDtRowType(no, OrderNum) {
+      this.OrderDtEditRowType({
+        http: this.$http,
+        no: no,
+        OrderNum: OrderNum
+      })
     }
   }
 }
@@ -262,6 +342,10 @@ export default {
 .modalTop {
   position: relative;
   z-index: 999
+}
+
+.noPadding {
+  padding: 0px;
 }
 
 .ulLeft {
