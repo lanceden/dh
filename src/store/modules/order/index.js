@@ -110,14 +110,15 @@ const actions = {
       commit(types.OrderEditPayStatus, model)
     })
   },
-  [types.OrderDtEditDeliveryStatus]({ commit }, { http, orderNum, no, deliveryStatus }) {
+  [types.OrderDtEditDeliveryStatus]({ commit }, { http, orderNum, no, deliveryStatus, operateStatus }) {
     http({
       method: 'post',
       url: `/api/Order/PostOrderDtEditDeliveryStatus`,
       data: {
         orderNum: orderNum,
         no: no,
-        deliveryStatus: deliveryStatus
+        deliveryStatus: deliveryStatus,
+        operateStatus: operateStatus
       }
     }).then(model => {
       commit(types.OrderDtEditDeliveryStatus, model)
@@ -243,7 +244,8 @@ const mutations = {
     switch (model.data.statu) {
       case 'ok':
         noty.TopRightShow(model.data.msg)
-        state.OrderDtList = model.data.data
+        state.OrderList = model.data.data.ds.list
+        state.OrderDtList = model.data.data.dt
         break
       case 'err':
         alert(model.msg)

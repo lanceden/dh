@@ -34,6 +34,9 @@
                             <div class="small-box bg-aqua col-md-12">
                               <div class="inner">
                                 <h3>{{order.PayStatus|payStatus}}</h3>
+                                <h5>{{order.OperateStatus|operateStatus}}</h5>
+                                <h3>PayStatus: {{order.PayStatus}}</h3>
+                                <h5>OperateStatus: {{order.OperateStatus}}</h5>
                               </div>
                               <div class="icon">
                                 <i class="fa fa-shopping-cart"></i>
@@ -147,15 +150,33 @@
                             </tr>
                             <tr v-for="(dt,tindex) in GetOrderDtList" key="dt.No">
                               <td>
-                                <!-- 未付款  -->
                                 <div v-if="order.PayStatus == 1">
-                                  <!-- <button @click="updateOrderDtRowType(dt.No,dt.OrderNum)">取消</button> -->
+                                  <!-- 未付款  -->
+                                  <template v-if="order.PayStatus == 1">
+                                    <button @click="updateOrderDtRowType(dt.No,dt.OrderNum)">取消</button>
+                                  </template>
+                                  <!-- DeliveryStatus ('(''1:未出貨、2:已出貨、3:已送達、4:退貨中''、5:退貨完成)') -->
                                 </div>
-                                <!-- 已付款  -->
                                 <div v-else-if="order.PayStatus == 2">
-                                  <button class="btn btn-warning" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">出貨</button>
-                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">退貨</button>
-                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3)">送達</button>
+                                  <!-- 已付款  -->
+                                  <!-- (orderNum, no, deliveryStatus, operateStatus)  -->
+                                  <template v-if="order.PayStatus == 2">
+                                    <div class="btn-group" v-show="dt.DeliveryStatus == 1">
+                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2,2)">出貨</button>
+                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,8)">部退</button>
+                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,9)">全退</button>
+                                    </div>
+                                    <div class="btn-group" v-show="dt.DeliveryStatus == 2">
+                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3,2)">送達</button>
+                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,8)">部退</button>
+                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,9)">全退</button>
+                                    </div>
+                                    <div class="btn-group" v-show="dt.DeliveryStatus == 3">
+                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3,2)">(已付款) 貨到付款  </button>
+                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,8)">部退</button>
+                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,9)">全退</button>
+                                    </div>
+                                  </template>
                                 </div>
                                 <!-- 退款中  -->
                                 <div v-else-if="order.PayStatus == 3">
@@ -319,12 +340,13 @@ export default {
         payStatus: payStatus
       })
     },
-    updateOrderDtDeliveryStatus(orderNum, no, deliveryStatus) {
+    updateOrderDtDeliveryStatus(orderNum, no, deliveryStatus, operateStatus) {
       this.OrderDtEditDeliveryStatus({
         http: this.$http,
         orderNum: orderNum,
         no: no,
-        deliveryStatus: deliveryStatus
+        deliveryStatus: deliveryStatus,
+        operateStatus: operateStatus
       })
     },
     updateOrderDtRowType(no, OrderNum) {
