@@ -25,7 +25,7 @@
                       <tbody>
                         <tr>
                           <th>
-                            <a :href="index|anchorHash" data-toggle="collapse" data-parent="#accordion" @click="getdt(order.OrderNum)">詳細資料</a>
+                            <a :href="index|anchorHash" data-toggle="collapse" data-parent="#accordion" @click="getdt(order.MerchantTradeNo)">詳細資料</a>
                           </th>
                           <th>訂單</th>
                         </tr>
@@ -42,15 +42,16 @@
                                 <i class="fa fa-shopping-cart"></i>
                               </div>
                               <div class="small-box bg-aqua col-md-12">
-                                <button v-show="order.PayStatus == 2" @click="get(order.OrderNum)" class="btn btn-xs bg-orange btn-flat" type="button">編輯</button>
-                                <button v-show="false" @click="del(order.OrderNum)" class="btn btn-xs bg-maroon btn-flat " type="button">刪除</button>
+                                <button v-show="order.PayStatus == 2" @click="get(order.MerchantTradeNo)" class="btn btn-xs bg-orange btn-flat" type="button">編輯</button>
+                                <button v-show="false" @click="del(order.MerchantTradeNo)" class="btn btn-xs bg-maroon btn-flat " type="button">刪除</button>
                                 <select class="form-control" v-model="payStatusSelect">
                                   <option value="1">未付款</option>
                                   <option value="2">已付款</option>
                                   <option value="3">退款中</option>
                                   <option value="4">已退款</option>
+                                  <option value="">{{order.MerchantTradeNo}}</option>
                                 </select>
-                                <button class="btn bg-olive btn-flat margin" @click="updateOrderPayStatus(order.OrderNum,payStatusSelect)">確定</button>
+                                <button class="btn bg-olive btn-flat margin" @click="updateOrderPayStatus(order.MerchantTradeNo,payStatusSelect)">確定</button>
                               </div>
                             </div>
                           </td>
@@ -153,40 +154,40 @@
                                 <div v-if="order.PayStatus == 1">
                                   <!-- 未付款  -->
                                   <template v-if="order.PayStatus == 1">
-                                    <button @click="updateOrderDtRowType(dt.No,dt.OrderNum)">取消</button>
+                                    <button @click="updateOrderDtRowType(dt.No,dt.MerchantTradeNo)">取消</button>
                                   </template>
                                   <!-- DeliveryStatus ('(''1:未出貨、2:已出貨、3:已送達、4:退貨中''、5:退貨完成)') -->
                                 </div>
                                 <div v-else-if="order.PayStatus == 2">
                                   <!-- 已付款  -->
-                                  <!-- (orderNum, no, deliveryStatus, operateStatus)  -->
+                                  <!-- (MerchantTradeNo, no, deliveryStatus, operateStatus)  -->
                                   <template v-if="order.PayStatus == 2">
                                     <div class="btn-group" v-show="dt.DeliveryStatus == 1">
-                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2,2)">出貨</button>
-                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,8)">部退</button>
-                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,9)">全退</button>
+                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,2,2)">出貨</button>
+                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,8)">部退</button>
+                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,9)">全退</button>
                                     </div>
                                     <div class="btn-group" v-show="dt.DeliveryStatus == 2">
-                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3,2)">送達</button>
-                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,8)">部退</button>
-                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,9)">全退</button>
+                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,3,2)">送達</button>
+                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,8)">部退</button>
+                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,9)">全退</button>
                                     </div>
                                     <div class="btn-group" v-show="dt.DeliveryStatus == 3">
-                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3,2)">(已付款) 貨到付款  </button>
-                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,8)">部退</button>
-                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,4,9)">全退</button>
+                                      <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,3,2)">(已付款) 貨到付款  </button>
+                                      <button class="btn btn-info" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,8)">部退</button>
+                                      <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,9)">全退</button>
                                     </div>
                                   </template>
                                 </div>
                                 <!-- 退款中  -->
                                 <div v-else-if="order.PayStatus == 3">
-                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">出貨</button>
-                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3)">送達</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,2)">出貨</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,3)">送達</button>
                                 </div>
                                 <!-- 已退款  -->
                                 <div v-else-if="order.PayStatus == 4">
-                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,2)">出貨</button>
-                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.OrderNum,dt.No,3)">送達</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 1" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,2)">出貨</button>
+                                  <button class="btn btn-danger" v-show="dt.DeliveryStatus == 2" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,3)">送達</button>
                                 </div>
                               </td>
                               <td>{{dt.No|isEmpty}}</td>
@@ -333,27 +334,28 @@ export default {
         })
       }
     },
-    updateOrderPayStatus(orderNum, payStatus) {
+    updateOrderPayStatus(merchantTradeNo, payStatus) {
+      console.log(merchantTradeNo)
       this.OrderEditPayStatus({
         http: this.$http,
-        orderNum: orderNum,
+        merchantTradeNo: merchantTradeNo,
         payStatus: payStatus
       })
     },
-    updateOrderDtDeliveryStatus(orderNum, no, deliveryStatus, operateStatus) {
+    updateOrderDtDeliveryStatus(merchantTradeNo, no, deliveryStatus, operateStatus) {
       this.OrderDtEditDeliveryStatus({
         http: this.$http,
-        orderNum: orderNum,
+        merchantTradeNo: merchantTradeNo,
         no: no,
         deliveryStatus: deliveryStatus,
         operateStatus: operateStatus
       })
     },
-    updateOrderDtRowType(no, OrderNum) {
+    updateOrderDtRowType(no, merchantTradeNo) {
       this.OrderDtEditRowType({
         http: this.$http,
         no: no,
-        OrderNum: OrderNum
+        merchantTradeNo: merchantTradeNo
       })
     }
   }

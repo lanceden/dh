@@ -46,7 +46,7 @@ const actions = {
   [types.OrderEditPut]({ commit, rootState }, { http, model, dtModel }) {
     http({
       method: 'put',
-      url: `/api/Order/Put/${model.OrderNum}`,
+      url: `/api/Order/Put/${model.merchantTradeNo}`,
       data: {
         Order: model,
         Orderdts: dtModel
@@ -86,36 +86,36 @@ const actions = {
     state.Orderdt = state.OrderDtList[index]
     commit(types.OrderdtEditGet)
   },
-  [types.OrderdtDelete]({ commit }, { http, no, orderNum }) {
+  [types.OrderdtDelete]({ commit }, { http, no, merchantTradeNo }) {
     http({
       method: 'delete',
       url: `/api/Order/DeleteDt/${no}`,
       data: {
         No: no,
-        OrderNum: orderNum
+        merchantTradeNo: merchantTradeNo
       }
     }).then(model => {
       commit(types.OrderdtDelete, model.data)
     })
   },
-  [types.OrderEditPayStatus]({ commit }, { http, orderNum, payStatus }) {
+  [types.OrderEditPayStatus]({ commit }, { http, merchantTradeNo, payStatus }) {
     http({
       method: 'post',
       url: `/api/Order/PostOrderEditPayStatus`,
       data: {
-        orderNum: orderNum,
+        merchantTradeNo: merchantTradeNo,
         payStatus: payStatus
       }
     }).then(model => {
       commit(types.OrderEditPayStatus, model)
     })
   },
-  [types.OrderDtEditDeliveryStatus]({ commit }, { http, orderNum, no, deliveryStatus, operateStatus }) {
+  [types.OrderDtEditDeliveryStatus]({ commit }, { http, merchantTradeNo, no, deliveryStatus, operateStatus }) {
     http({
       method: 'post',
       url: `/api/Order/PostOrderDtEditDeliveryStatus`,
       data: {
-        orderNum: orderNum,
+        merchantTradeNo: merchantTradeNo,
         no: no,
         deliveryStatus: deliveryStatus,
         operateStatus: operateStatus
@@ -124,13 +124,13 @@ const actions = {
       commit(types.OrderDtEditDeliveryStatus, model)
     })
   },
-  [types.OrderDtEditRowType]({ commit }, { http, no, OrderNum }) {
+  [types.OrderDtEditRowType]({ commit }, { http, no, merchantTradeNo }) {
     http({
       method: 'delete',
       url: `/api/Order/DeleteDt/${no}`,
       data: {
         No: no,
-        OrderNum: OrderNum
+        merchantTradeNo: merchantTradeNo
       }
     }).then(model => {
       commit(types.OrderDtEditRowType, model)
