@@ -13,6 +13,7 @@ export const deliveryStatus = (val) => {
     case 2: return '已出貨'
     case 3: return '已送達'
     case 4: return '退貨中'
-    case 5: return '已退貨'
+    case 5: return '退貨完成'
+    case 6: return '退款完成'
   }
 }
