@@ -74,7 +74,10 @@ const actions = {
   [types.OrderDelete]({ commit }, { id, http }) {
     http({
       method: 'delete',
-      url: `/api/Order/delete/${id}`
+      url: `/api/Order/delete/${id}`,
+      data: {
+        currentPage: window.Lockr.get('currentPage')
+      }
     }).then(model => {
       commit(types.OrderDelete, model.data)
     })
@@ -104,7 +107,8 @@ const actions = {
       url: `/api/Order/PostOrderEditPayStatus`,
       data: {
         merchantTradeNo: merchantTradeNo,
-        payStatus: payStatus
+        payStatus: payStatus,
+        currentPage: window.Lockr.get('currentPage')
       }
     }).then(model => {
       commit(types.OrderEditPayStatus, model)
@@ -118,7 +122,8 @@ const actions = {
         merchantTradeNo: merchantTradeNo,
         no: no,
         deliveryStatus: deliveryStatus,
-        operateStatus: operateStatus
+        operateStatus: operateStatus,
+        currentPage: window.Lockr.get('currentPage')
       }
     }).then(model => {
       commit(types.OrderDtEditDeliveryStatus, model)
@@ -130,7 +135,8 @@ const actions = {
       url: `/api/Order/DeleteDt/${no}`,
       data: {
         No: no,
-        merchantTradeNo: merchantTradeNo
+        merchantTradeNo: merchantTradeNo,
+        currentPage: window.Lockr.get('currentPage')
       }
     }).then(model => {
       commit(types.OrderDtEditRowType, model)

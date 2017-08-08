@@ -35,8 +35,8 @@
                               <div class="inner">
                                 <h3>{{order.PayStatus|payStatus}}</h3>
                                 <h5>{{order.OperateStatus|operateStatus}}</h5>
-                                <h3>PayStatus: {{order.PayStatus}}</h3>
-                                <h5>OperateStatus: {{order.OperateStatus}}</h5>
+                                <h5>{{order.PayType|payType|isEmpty }} </h5>
+                                <h5>PayStatus: {{order.PayStatus}} / OperateStatus: {{order.OperateStatus}}</h5>
                               </div>
                               <div class="icon">
                                 <i class="fa fa-shopping-cart"></i>
@@ -63,6 +63,8 @@
                               <tbody>
                                 <tr>
                                   <th>訂購日期</th>
+                                  <th>綠界 訂單編號</th>
+                                  <th>付款方式</th>
                                   <th>購買人</th>
                                   <th>購買人電話</th>
                                   <th>購買人地址</th>
@@ -79,17 +81,17 @@
                                   <th>發票狀態</th>
                                   <th>發票類型</th>
                                   <th>運送方式</th>
-                                  <th>付款方式</th>
                                   <th>付款狀態</th>
                                   <th>付款日期</th>
                                   <th>處理狀態</th>
                                   <th>結案日期</th>
                                   <th>活動名稱</th>
-                                  <th>綠界 訂單編號</th>
                                   <th>總金額</th>
                                 </tr>
                                 <tr>
                                   <td>{{order.OrderDate|isEmpty}} </td>
+                                  <td>{{order.MerchantTradeNo|isEmpty}} </td>
+                                  <td>{{order.PayType|payType|isEmpty }} </td>
                                   <td>{{order.Purchaser|isEmpty}} </td>
                                   <td>{{order.P_Phone|isEmpty}} </td>
                                   <td>{{order.P_Address|isEmpty}} </td>
@@ -106,13 +108,11 @@
                                   <td>{{order.InoviceStatus|inoviceStatus|isEmpty}} </td>
                                   <td>{{order.InoviceType|inoviceType|isEmpty}} </td>
                                   <td>{{order.DeliveryType|deliveryType|isEmpty }} </td>
-                                  <td>{{order.PayType|payType|isEmpty }} </td>
                                   <td>{{order.PayStatus|isEmpty|payStatus }} </td>
                                   <td>{{order.PayDate|isEmpty}} </td>
                                   <td>{{order.OperateStatus|isEmpty|operateStatus }} </td>
                                   <td>{{order.CloseDate|isEmpty}} </td>
                                   <td>{{order.ActivityName|isEmpty}} </td>
-                                  <td>{{order.MerchantTradeNo|isEmpty}} </td>
                                   <td>{{order.AllTotalAmt|decimalComma|isEmpty }} </td>
                                 </tr>
                               </tbody>
@@ -184,7 +184,7 @@
                                     <button class="btn bg-orange" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,3,10)">(已付款) 貨到付款 </button>
                                   </div>
                                   <div class="btn-group" v-show="dt.DeliveryStatus == 4">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,5,8)">已退貨</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,5,8)">已退貨</button>
                                   </div>
                                 </div>
                                 <!-- 部退   -->
@@ -196,8 +196,8 @@
                                     <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,9)">全退</button>
                                   </template>
                                   <!-- 已付款  -->
-                                  <template v-if="order.PayStatus == 2 && dt.DeliveryStatus != 1 && dt.DeliveryStatus != 2 && dt.DeliveryStatus != 4">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,5,8)">已退貨</button>
+                                  <template v-if="order.PayStatus == 2 && dt.DeliveryStatus != 1 && dt.DeliveryStatus != 2 && dt.DeliveryStatus != 3 && dt.DeliveryStatus != 4 && dt.DeliveryStatus != 5">
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,5,8)">已退貨</button>
                                   </template>
                                   <!-- 部退未出貨  -->
                                   <template v-if="dt.DeliveryStatus == 2">
@@ -206,25 +206,25 @@
                                     <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,9)">全退</button>
                                   </template>
                                   <template v-if="dt.DeliveryStatus == 4">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,6,8)">已退款</button></button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,6,8)">已退款</button></button>
                                   </template>
                                   <!-- 退款中  -->
                                   <template v-if="order.PayStatus == 3 && dt.DeliveryStatus != 2">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,6,8)">已退款</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,6,8)">已退款</button>
                                   </template>
                                 </div>
                                 <!-- 全退  -->
                                 <div v-else-if="order.OperateStatus == 9">
                                   <!-- 已付款  -->
                                   <template v-if="order.PayStatus == 2 && dt.DeliveryStatus != 5 && dt.DeliveryStatus != 6">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,5,9)">已退貨</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,5,9)">已退貨</button>
                                   </template>
                                   <template v-if="dt.DeliveryStatus == 5">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,6,9)">已退款</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,6,9)">已退款</button>
                                   </template>
                                   <!-- 退款中  -->
                                   <template v-if="order.PayStatus == 3 ">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,6,9)">已退款</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,6,9)">已退款</button>
                                   </template>
                                 </div>
                                 <!-- 結案(部退)   -->
@@ -232,19 +232,19 @@
                                   <!-- 已開發票  -->
                                   <template v-if="order.PayStatus == 4">
                                     <!-- updateOrderDtDeliveryStatus(merchantTradeNo, no, deliveryStatus, operateStatus) {  -->
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,5,6)">已開發票</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,5,6)">已開發票</button>
                                   </template>
                                 </div>
                                 <!-- 結案（全退）  -->
                                 <div v-else-if="order.OperateStatus == 6">
                                   <!-- 已開發票  -->
                                   <template v-if="order.PayStatus == 4 && dt.DeliveryStatus != 5">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.No,dt.MerchantTradeNo,5,5)">已開發票</button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,5,5)">已開發票</button>
                                   </template>
                                 </div>
                               </td>
                               <td>{{dt.No|isEmpty}}</td>
-                              <td>{{dt.OrderNum|isEmpty}}</td>
+                              <td>{{dt.MerchantTradeNo|isEmpty}}</td>
                               <td>{{dt.ProdID|isEmpty}}</td>
                               <td>{{dt.DeliveryStatus|deliveryStatus|isEmpty}}</td>
                               <td>{{dt.DeliveryDate|isEmpty}}</td>
@@ -274,8 +274,7 @@
         <pagination v-show="!ShowLoading" :cur="tcur" :all="tall" :callback="getPageData"></pagination>
       </div>
       <!-- Main content end-->
-    </div>
-    <!-- Page content end-->
+    </div>  <!-- Page content end-->
   </div>
 </template>
 <script>
