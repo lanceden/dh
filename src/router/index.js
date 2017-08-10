@@ -8,6 +8,7 @@ import MemberLevel from '../components/myemberlevel.vue'
 import AdminList from '../components/myadminlist.vue'
 import AdminGroup from '../components/myadmingroup.vue'
 import Order from '../components/myorder.vue'
+import Product from '../components/myproduct.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,13 @@ const router = new Router({
     {
       path: '/Order',
       component: Order,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/Product',
+      component: Product,
       meta: {
         requiresAuth: true
       }

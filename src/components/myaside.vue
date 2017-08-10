@@ -87,13 +87,15 @@ html .skin-red .sidebar-menu>li:hover>a,
 
 html .main-sidebar,
 .left-side {
-  max-width: 260px;
+  max-width: 150px;
 }
 
 .imgset {
   position: fixed;
   bottom: 30px;
   left: 0;
+  width: 150px;
+  height: 150px;
 }
 
 </style>
