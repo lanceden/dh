@@ -6,7 +6,8 @@ const state = {
   OrderDtList: [],
   Order: {},
   Orderdt: {},
-  OrderPageCount: 0
+  OrderPageCount: 0,
+  PageCount: 20
 }
 
 const getters = {
@@ -14,7 +15,8 @@ const getters = {
   [types.GetOrderDtList]: (state) => state.OrderDtList,
   [types.GetOrder]: (state) => state.Order,
   [types.GetOrderdt]: (state) => state.Orderdt,
-  [types.GetOrderPageCount]: (state) => state.OrderPageCount
+  [types.GetOrderPageCount]: (state) => state.OrderPageCount,
+  [types.GetPageCount]: (state) => state.PageCount
 }
 
 const actions = {
@@ -141,6 +143,15 @@ const actions = {
     }).then(model => {
       commit(types.OrderDtEditRowType, model)
     })
+  },
+  [types.GetSearchList]({ commit }, { http, model }) {
+    http({
+      method: 'post',
+      url: `/api/Order/PostGetSearchList`,
+      data: model
+    }).then(model => {
+      commit(types.GetSearchList, model.data)
+    })
   }
 }
 
@@ -261,6 +272,17 @@ const mutations = {
   [types.OrderDtEditRowType](state, model) {
     noty.TopRightShow(model.data.msg)
     state.OrderDtList = model.data.data
+  },
+  [types.GetSearchList](state, model) {
+    switch (model.statu) {
+      case 'ok':
+        state.OrderList = model.data.list
+        state.OrderPageCount = model.data.PageCount
+        break
+      case 'err':
+        noty.TopRightShow(`${model.msg} , 沒有資料!`)
+        break
+    }
   }
 }
 

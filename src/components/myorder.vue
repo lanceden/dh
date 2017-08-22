@@ -13,9 +13,8 @@
         <div>
           <div class="box box-primary box-margin-left">
             <div class="box-header">
-              <h3>訂單管理
-                <!--<button @click="add()" class="btn btn-info pull-right">新增</button>-->
-              </h3>
+              <h3>訂單管理</h3>
+              <OrderSearch v-on:doPageCountChange="doPageCountChangeBase" />
             </div>
             <div class="box-body">
               <div class="box-group" id="accordion">
@@ -56,9 +55,7 @@
                             </div>
                           </td>
                           <div class="box-header with-border" style="min-width:3500px">
-                            <h4 class="pull-left">詳細資料
-                              <i class="fa fa-arrow-circle-down"></i>
-                            </h4>
+
                             <table class="table table-striped table-hover" data-parent="#accordion" :href="index|anchorHash">
                               <tbody>
                                 <tr>
@@ -206,7 +203,8 @@
                                     <button class="btn bg-maroon" @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,4,9)">全退</button>
                                   </template>
                                   <template v-if="dt.DeliveryStatus == 4">
-                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,6,8)">已退款</button></button>
+                                    <button @click="updateOrderDtDeliveryStatus(dt.MerchantTradeNo,dt.No,6,8)">已退款</button>
+                                    </button>
                                   </template>
                                   <!-- 退款中  -->
                                   <template v-if="order.PayStatus == 3 && dt.DeliveryStatus != 2">
@@ -273,8 +271,7 @@
         <!--table end-->
         <pagination v-show="!ShowLoading" :cur="tcur" :all="tall" :callback="getPageData"></pagination>
       </div>
-      <!-- Main content end-->
-    </div>  <!-- Page content end-->
+    </div>
   </div>
 </template>
 <script>
@@ -287,6 +284,7 @@ import {
   noty
 } from '../assets/commons.js'
 import OrderForm from './form/orderForm'
+import OrderSearch from './form/orderSearch'
 export default {
   data() {
     return {
@@ -297,7 +295,7 @@ export default {
     }
   },
   components: {
-    OrderForm
+    OrderForm, OrderSearch
   },
   created() {
     this.getPageData(1)
@@ -312,10 +310,10 @@ export default {
       'GetOrderList',
       'GetOrderDtList',
       'GetOrder',
-      'GetOrderPageCount',
       'GetOrderModel',
       'GetOrderModelList',
-      'GetOrderPageCount'
+      'GetOrderPageCount',
+      'GetPageCount'
     ])
   },
   methods: {
@@ -338,7 +336,7 @@ export default {
         http: this.$http,
         model: {
           PageIndex: page,
-          PageSize: 5
+          PageSize: this.GetPageCount
         }
       })
       setTimeout(() => {
@@ -409,6 +407,9 @@ export default {
         no: no,
         merchantTradeNo: merchantTradeNo
       })
+    },
+    doPageCountChangeBase() {
+      this.tall = this.GetOrderPageCount
     }
   }
 }
@@ -486,5 +487,4 @@ export default {
 .box-body {
   --overflow: auto;
 }
-
 </style>

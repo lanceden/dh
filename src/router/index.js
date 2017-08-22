@@ -23,6 +23,10 @@ const router = new Router({
       }
     },
     {
+      path: '/',
+      component: Login
+    },
+    {
       path: '/Login',
       component: Login
     },
@@ -72,7 +76,7 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!window.Lockr.get('auth')) {
+    if (!window.Lockr.get('auth') && from.fullPath !== '/') {
       alert('請先登入')
       next({
         path: '/Login'
