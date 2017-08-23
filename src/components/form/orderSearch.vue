@@ -34,6 +34,7 @@
           <div class="col-md-6">
             <label for="">付款狀態</label>
             <select class="form-control" v-model="payStatus">
+              <option value="0">請選擇</option>
               <option value="1">未付款</option>
               <option value="2">已付款</option>
               <option value="3">退款中</option>
@@ -42,6 +43,22 @@
           </div>
         </div>
         <div class="">
+          <div class="col-md-12">
+            <label for="">處理狀態</label>
+            <select class="form-control" v-model="operateStatus">
+              <option value="0">請選擇</option>
+              <option value="1">未處理</option>
+              <option value="2">處理中</option>
+              <option value="3">結案(未寄出)</option>
+              <option value="4">結案(已寄出)</option>
+              <option value="5">結案（全退）</option>
+              <option value="6">結案（部退）</option>
+              <option value="7">取消</option>
+              <option value="8">處理中(部退)</option>
+              <option value="9">處理中(全退)</option>
+              <option value="10">貨到付款</option>
+            </select>
+          </div>
           <div class="col-md-12">
             <label for="">查詢條件</label>
             <input type="text" class="form-control" v-model="search">
@@ -72,8 +89,9 @@ export default {
       sDate: '',
       eDate: '',
       search: '',
-      payStatus: 1,
-      deliveryStatus: 1
+      payStatus: 0,
+      deliveryStatus: 1,
+      operateStatus: 0
     }
   },
   computed: {
@@ -95,7 +113,8 @@ export default {
           eDate: this.eDate,
           pageSize: this.GetPageCount,
           payStatus: this.payStatus,
-          deliveryStatus: this.deliveryStatus
+          deliveryStatus: this.deliveryStatus,
+          operateStatus: this.operateStatus
         }
       })
       setTimeout(() => {
@@ -118,4 +137,5 @@ export default {
 .fa-minus::before {
   content: '' !important
 }
+
 </style>
