@@ -17,5 +17,7 @@ export default {
   OrderdtDelete: 'OrderdtDelete',
   OrderEditPayStatus: 'OrderEditPayStatus',
   OrderDtEditDeliveryStatus: 'OrderDtEditDeliveryStatus',
-  OrderDtEditRowType: 'OrderDtEditRowType'
+  OrderDtEditRowType: 'OrderDtEditRowType',
+  GetSearchList: 'GetSearchList',
+  GetPageCount: 'GetPageCount'
 }

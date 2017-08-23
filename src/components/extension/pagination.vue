@@ -30,11 +30,11 @@ export default {
   },
   props: {
     cur: {
-      type: [String, Number],
+      type: [Number],
       required: true
     },
     all: {
-      type: [String, Number],
+      type: [Number],
       required: true
     },
     callback: {
@@ -88,6 +88,7 @@ export default {
           this.callback(this.currentPage)
           return
         default:
+          console.log(typeof (page))
           if (page > this.all) page = this.all
           else if (page <= 1) page = 1
           this.searchPage = ''
