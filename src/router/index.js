@@ -9,6 +9,7 @@ import AdminList from '../components/myadminlist.vue'
 import AdminGroup from '../components/myadmingroup.vue'
 import Order from '../components/myorder.vue'
 import Product from '../components/myproduct.vue'
+import ImageUpload from '../components/extension/ImageUpload.vue'
 
 Vue.use(Router)
 
@@ -72,6 +73,13 @@ const router = new Router({
     {
       path: '*',
       component: MyError,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/ImageUpload',
+      component: ImageUpload,
       meta: {
         requiresAuth: true
       }

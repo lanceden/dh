@@ -51,4 +51,7 @@ export default {
   color: #ffffff;
 }
 
+.content-wrapper, .right-side, .main-footer{
+  margin-left: 150px;
+}
 </style>
