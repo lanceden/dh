@@ -49,13 +49,13 @@
                     <template v-for="(item,Index) in ProdList">
                       <tr role="row" class="odd">
                         <td>
-                          <button type="button" class="btn bg-purple btn-flat" data-toggle="modal" data-target="#ProdBasic" @click="editProd(item.ProdID)">基本修改</button>
-                          <button type="button" class="btn  bg-olive btn-flat" @click="editStyle(item.ProdID)">樣式修改</button>
-                          <router-link to="/ImageUpload" >
-                            <button type="button" class="btn  bg-orange btn-flat" @click="editImg(item.ProdName,item.DetailImgID,'1')">圖片修改</button>
+                          <button type="button" class="btn bg-purple btn-flat" data-toggle="modal" data-target="#ProdBasic" @click="editProd(item.ProdID)">商品資料修改</button>
+                          <button type="button" class="btn  bg-olive btn-flat" @click="editStyle(item.ProdID)">單項產品修改</button>
+                          <router-link to="/ImageUpload" size="width:500px;">
+                            <button type="button" class="btn  bg-orange btn-flat" @click="editImg(item.ProdName,item.DetailImgID,'1')">商品圖片修改</button>
                           </router-link>
                           </button>
-                          <button type="button" class="btn bg-maroon btn-flat" @click="editProdContent(item.ProdID,item.DetailContent)">內容修改
+                          <button type="button" class="btn bg-maroon btn-flat" @click="editProdContent(item.ProdID,item.DetailContent,item.DetailContentDown,item.ProdName,item.DetailImgID)">內容修改
                           </button>
                         </td>
                         <td>{{Index}}</td>
@@ -208,7 +208,7 @@
                           <tr role="row" class="odd" style="background:#ffffff">
                             <td>
                               <button type="button" class="btn bg-purple btn-flat" @click="editDetailStytle(item.ItemNo)">基本修改</button>
-                              <router-link to="/ImageUpload" >
+                              <router-link to="/ImageUpload">
                                 <button type="button" class="btn bg-orange btn-flat" @click="editImg(item.ItemName,item.ItemImgID,'2')">圖片修改
                                 </button>
                               </router-link>
@@ -351,37 +351,75 @@
               </div>
             </div>
           </template>
+          <!-- 圖片上傳 -->
+          <template>
+          </template>
           <!-- 商品內容顯示頁編輯 -->
           <template v-if="openProdContent">
             <div :class="{myModal:openProdContent}">
-              <div class="box box-info">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><b>商品頁編輯</b></h3>
+              <div class="row">
+                <!-- 圖片引入 -->
+                <div class="col-sm-5 scrollPic">
+                  <ImageUpload :globalbox='false'></ImageUpload>
                 </div>
-                <div class="box-body">
-                  <!-- 切換html內容 -->
-                  <div class="col-md-2">
-                    <button type="button" class="btn btn-info" @click="showHtml = !showHtml">切換 HTML</button>
+                <div class="col-sm-7">
+                  <div class="box-header with-border">
+                    <h3 class="box-title"><b>商品頁編輯</b></h3>
                   </div>
-                  <div class="col-md-12 overView" v-if="showHtml">
-                    <textarea class="txtArea" v-model="content"></textarea>
-                  </div>
-                  <!-- 編輯器 -->
-                  <div class="col-md-12" v-else>
+                  <div class="box-body">
+                    <div class="col-md-2">
+                      <button type="button" class="btn btn-lg bg-purple btn-flat" @click="showContent2 = !showContent2">
+                        {{showContent2?'到編輯頁(上半)':'到編輯頁(下半)'}}
+                        </button>
+                    </div>
+                    <template v-if="!showContent2">
+                      <!-- 切換html內容 -->
+                      <div class="col-md-2 col-md-offset-6">
+                        <button type="button" class="btn btn-lg btn-info" @click="showPreview = !showPreview">
+                          {{showPreview?'編輯HTML(上半)': '預覽畫面(上半)'}}
+                          </button>
+                      </div>
+                      <!-- 預覽畫面_上 -->
+                      <div class="col-md-12" v-if="showPreview">
+                        <h3><b>預覽畫面(上半)</b></h3>
+                        <div v-html="content"></div>
+                      </div>
+                      <!-- HTML 編輯 -->
+                      <div class="col-md-12 overView" v-else>
+                        <h3><b>編輯HTML(上半)</b></h3>
+                        <textarea class="txtArea" v-model="content"></textarea>
+                      </div>
+                    </template>
+                    <template v-else>
+                      <div class="col-md-2 col-md-offset-6">
+                        <button type="button" class="btn btn-lg btn-info" @click="showPreviewDown = !showPreviewDown">
+                          {{showPreviewDown?'編輯HTML(下半)':'預覽畫面(下半)'}}
+                          </button>
+                      </div>
+                      <!-- 預覽畫面_下 -->
+                      <div class="col-md-12" v-if="showPreviewDown">
+                        <h3><b>預覽畫面(下)</b></h3>
+                        <div v-html="contentDown"></div>
+                      </div>
+                      <!-- HTML 編輯 -->
+                      <div class="col-md-12 overView" v-else>
+                        <h3><b>編輯HTML(下半)</b></h3>
+                        <textarea class="txtArea" v-model="contentDown"></textarea>
+                      </div>
+                    </template>
+                    <!-- quill編輯器 -->
+                    <!-- <div class="col-md-12" >
                     <quill-editor v-model="content" ref="myQuillEditor" :options="editorOption">
                     </quill-editor>
-                  </div>
-                  <!-- <div>
-                    <h3><b>預覽畫面</b></h3>
-                    <div class="html ql-editor overView" v-html="content"></div>
                   </div> -->
-                </div>
-                <div class="box-footer">
-                  <div class="col-md-4 col-md-offset-2">
-                    <button type="button" class="btn btn-warning btn-lg btn-block" @click="closeModal('ProdContent')">取消</button>
                   </div>
-                  <div class="col-md-4">
-                    <button type="button" class="btn btn-success btn-lg btn-block" @click="submit_editContent">送出</button>
+                  <div class="box-footer">
+                    <div class="col-md-4 col-md-offset-2">
+                      <button type="button" class="btn btn-warning btn-lg btn-block" @click="closeModal('ProdContent')">取消</button>
+                    </div>
+                    <div class="col-md-4">
+                      <button type="button" class="btn btn-success btn-lg btn-block" @click="submit_editContent">送出</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -429,62 +467,67 @@ let _styleDetail = {
 import {
   noty
 } from '../assets/commons'
-import {
-  quillEditor
-} from 'vue-quill-editor'
-import {
-  ImageResize
-} from '../components/extension/ImageResize'
-import Quill from 'quill'
-Quill.register('modules/imageResize', ImageResize)
+import ImageUpload from './extension/ImageUpload'
+// import {
+//   quillEditor
+// } from 'vue-quill-editor'
+// import {
+//   ImageResize
+// } from '../components/extension/ImageResize'
+// import Quill from 'quill'
+// Quill.register('modules/imageResize', ImageResize)
 export default {
-  components: {
-    quillEditor
-  },
+  // components: {
+  //   quillEditor
+  // },
   data() {
     return {
       // 編輯器內容
       content: '',
+      contentDown: '',
       // 編輯器選項
-      editorOption: {
-        modules: {
-          toolbar: {
-            container: [
-              ['bold', 'italic', 'underline', 'direction'],
-              ['blockquote', 'formula'],
-              [{
-                'list': 'ordered'
-              }, {
-                'list': 'bullet'
-              }],
-              [{
-                'color': []
-              }, {
-                'background': []
-              }],
-              [{
-                'header': []
-              }, {
-                'size': []
-              }],
-              [{
-                'font': []
-              }, {
-                'align': []
-              }],
-              ['link', 'image', 'video']
-            ],
-            handlers: {
-              'image': this.imageHandler
-            }
-          },
-          imageResize: {
-            displaySize: true
-          }
-        }
-      },
+      // editorOption: {
+      //   modules: {
+      //     toolbar: {
+      //       container: [
+      //         ['bold', 'italic', 'underline', 'direction'],
+      //         ['blockquote', 'formula'],
+      //         [{
+      //           'list': 'ordered'
+      //         }, {
+      //           'list': 'bullet'
+      //         }],
+      //         [{
+      //           'color': []
+      //         }, {
+      //           'background': []
+      //         }],
+      //         [{
+      //           'header': []
+      //         }, {
+      //           'size': []
+      //         }],
+      //         [{
+      //           'font': []
+      //         }, {
+      //           'align': []
+      //         }],
+      //         ['link', 'image', 'video']
+      //       ],
+      //       handlers: {
+      //         'image': this.imageHandler
+      //       }
+      //     },
+      //     imageResize: {
+      //       displaySize: true
+      //     }
+      //   }
+      // },
       currentID: '',
-      showHtml: false,
+      //  顯示預覽
+      showContent2: false,
+      showPreview: false,
+      showPreviewDown: false,
       // 商品List,
       ProdList: [],
       // 樣式List
@@ -508,15 +551,18 @@ export default {
       openProdContent: false
     }
   },
+  components: {
+    ImageUpload
+  },
   created() {
     this.GetProdList()
   },
   methods: {
-    imageHandler() {
-      var range = this.$refs.myQuillEditor.quill.getSelection()
-      var value = prompt('請輸入圖片網址')
-      this.$refs.myQuillEditor.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER)
-    },
+    // imageHandler() {
+    //   var range = this.$refs.myQuillEditor.quill.getSelection()
+    //   var value = prompt('請輸入圖片網址')
+    //   this.$refs.myQuillEditor.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER)
+    // },
     // 關閉 Modal
     closeModal(id) {
       this.openModalBack = false
@@ -532,6 +578,7 @@ export default {
           break
         case 'StyleEdit':
           this.openStyleEdit = false
+          this.ProdStyle = _styleDetail
           break
         case 'StyleEdit_Detail':
           this.openStyleEdit_Detail = false
@@ -554,13 +601,18 @@ export default {
       this.openProdEdit = true
       window.scrollTo(0, 0)
     },
-    editProdContent(prodID, prodContent) {
+    // 修改商品內容
+    editProdContent(prodID, prodContent, prodContentDown, itemName, imgid) {
       this.currentID = prodID
       this.content = prodContent
+      this.contentDown = prodContentDown
       // open Modal
       this.openModalBack = true
       this.openProdContent = true
+      // GetImage
+      this.editImg(itemName, imgid, '1')
     },
+    // 修改圖片
     editImg(itemName, imgid, type) {
       this.imgDetail.itemname = itemName
       this.imgDetail.imgid = imgid
@@ -613,7 +665,8 @@ export default {
         url: `/api/Product/PostProdContent`,
         data: {
           ProdID: this.currentID,
-          DetailContent: this.content
+          DetailContent: this.content,
+          DetailContentDown: this.contentDown
         }
       }).then((res) => {
         // 新增商品
@@ -711,7 +764,13 @@ export default {
 
 .txtArea {
   width: 100%;
-  height: 200px;
+  height: 1000px;
+}
+
+.scrollPic {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 1100px;
 }
 
 </style>

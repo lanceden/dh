@@ -92,7 +92,8 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if ((!window.Lockr.get('auth') || window.Lockr.get('auth') === undefined) || from.fullPath !== '/') {
+    if (!window.Lockr.get('auth') || window.Lockr.get('auth') === undefined) {
+      console.log('noooo')
       alert('請先登入')
       next({
         path: '/Login'
@@ -104,5 +105,21 @@ router.beforeEach((to, from, next) => {
     next()
   }
 })
+
+// old
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     if (!window.Lockr.get('auth') && from.fullPath !== '/') {
+//       alert('請先登入')
+//       next({
+//         path: '/Login'
+//       })
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next()
+//   }
+// })
 
 export default router

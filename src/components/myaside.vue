@@ -73,13 +73,13 @@ export default {
 
 </script>
 <style scoped>
-html .skin-red .sidebar-menu>li.header {
+html .skin-yellow .sidebar-menu>li.header {
   color: black;
   background: #d73925;
 }
 
-html .skin-red .sidebar-menu>li:hover>a,
-.skin-red .sidebar-menu>li.active>a {
+html .skin-yellow .sidebar-menu>li:hover>a,
+.skin-yellow .sidebar-menu>li.active>a {
   color: black;
   background: #dd4b39;
   border-left-color: #dd4b39;

@@ -5,10 +5,8 @@
 
       <!-- Logo -->
       <a href="#" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>d</b>h</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>dh</b>Shop</span>
+        <span class="logo-lg">dHSHOP</span>
       </a>
 
       <!-- Header Navbar -->
@@ -179,6 +177,8 @@
 <style scopde>
   html .main-header .logo {
     width: 280px;
+    font-size:26px;
+    background-color: #f39c12;
   }
   html .main-header .navbar{
     margin-left: 260px;

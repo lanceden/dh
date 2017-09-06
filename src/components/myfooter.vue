@@ -6,7 +6,7 @@
       <div class="pull-right hidden-xs">
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; {{dateYear}} <a target="blank" href="http://dhshop.tw/">dhShop</a>.</strong>
+      <strong>Copyright &copy; {{dateYear}} <a target="blank" href="">dHShop</a>.</strong>
     </footer>
   </div>
 </template>

@@ -41,6 +41,7 @@
                                 <i class="fa fa-shopping-cart"></i>
                               </div>
                               <div class="small-box bg-aqua col-md-12">
+                                <!-- 付款下拉 -->
                                 <button v-show="order.PayStatus == 2" @click="get(order.MerchantTradeNo)" class="btn btn-xs bg-orange btn-flat" type="button">編輯</button>
                                 <button v-show="false" @click="del(order.MerchantTradeNo)" class="btn btn-xs bg-maroon btn-flat " type="button">刪除</button>
                                 <select class="form-control" v-model="payStatusSelect">
@@ -55,7 +56,6 @@
                             </div>
                           </td>
                           <div class="box-header with-border" style="min-width:3500px">
-
                             <table class="table table-striped table-hover" data-parent="#accordion" :href="index|anchorHash">
                               <tbody>
                                 <tr>
@@ -100,7 +100,7 @@
                                   <td>{{order.R_Mail|isEmpty}} </td>
                                   <td>{{order.taxIDNum|isEmpty}}</td>
                                   <td>{{order.Corporation|isEmpty}}</td>
-                                  <td>{{order.InoviceType|isEmpty}}</td>
+                                  <td>{{order.InoviceLoveCode|isEmpty}}</td>
                                   <td>{{order.InoviceNum|isEmpty}} </td>
                                   <td>{{order.InoviceStatus|inoviceStatus|isEmpty}} </td>
                                   <td>{{order.InoviceType|inoviceType|isEmpty}} </td>
@@ -299,6 +299,7 @@ export default {
   },
   created() {
     this.getPageData(1)
+    window.Lockr.set('currentPage', 1)
   },
   computed: {
     ...mapState([
