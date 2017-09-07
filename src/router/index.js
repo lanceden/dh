@@ -15,7 +15,13 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
-  scrollBehavior: () => ({y: 0}),
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else if (savedPosition === null) {
+      return { x: 0, y: 0 }
+    }
+  },
   routes: [
     {
       path: '/index',

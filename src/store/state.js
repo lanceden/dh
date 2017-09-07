@@ -1,5 +1,5 @@
 export default {
-  ShowLoading: true,
+  ShowLoading: false,
   isAdd: false,
   antiKey: ''
 }
