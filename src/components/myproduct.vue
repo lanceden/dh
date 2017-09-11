@@ -49,13 +49,19 @@
                     <template v-for="(item,Index) in ProdList">
                       <tr role="row" class="odd">
                         <td>
-                          <button type="button" class="btn bg-purple btn-flat" data-toggle="modal" data-target="#ProdBasic" @click="editProd(item.ProdID)">商品資料修改</button>
-                          <button type="button" class="btn  bg-olive btn-flat" @click="editStyle(item.ProdID)">單項產品修改</button>
-                          <router-link to="/ImageUpload" size="width:500px;">
-                            <button type="button" class="btn  bg-orange btn-flat" @click="editImg(item.ProdName,item.DetailImgID,'1')">商品圖片修改</button>
-                          </router-link>
+                          <button type="button" class="btn bg-purple btn-flat" data-toggle="modal" data-target="#ProdBasic" @click="editProd(item.ProdID)">商品基本資料</button>
+                          <button type="button" class="btn  bg-olive btn-flat" @click="editStyle(item.ProdID)">
+                            單項產品資料
                           </button>
-                          <button type="button" class="btn bg-maroon btn-flat" @click="editProdContent(item.ProdID,item.DetailContent,item.DetailContentDown,item.ProdName,item.DetailImgID)">內容修改
+                          <router-link to="/ImageUpload">
+                            <button type="button" class="btn  bg-orange btn-flat" @click="editImg(item.ProdID,item.ProdName,item.DetailImgID,'1')">商品圖片上傳</button>
+                          </router-link>
+                          <router-link to="/ImageUpload">
+                            <button type="button" class="btn bg-primary btn-flat" @click="editImg(item.ProdID,item.ProdName,item.DetailImgID,'4')">商品頁輪播圖
+                            </button>
+                          </router-link>
+                          <button type="button" class="btn bg-maroon btn-flat" @click="editProdContent(item.ProdID,item.DetailContent,item.DetailContentDown,item.ProdName,item.DetailImgID)">
+                            商品頁內容
                           </button>
                         </td>
                         <td>{{Index}}</td>
@@ -209,7 +215,7 @@
                             <td>
                               <button type="button" class="btn bg-purple btn-flat" @click="editDetailStytle(item.ItemNo)">基本修改</button>
                               <router-link to="/ImageUpload">
-                                <button type="button" class="btn bg-orange btn-flat" @click="editImg(item.ItemName,item.ItemImgID,'2')">圖片修改
+                                <button type="button" class="btn bg-orange btn-flat" @click="editImg(item.ProdID,item.ItemName,item.ItemImgID,'2')">圖片修改
                                 </button>
                               </router-link>
                             </td>
@@ -351,9 +357,6 @@
               </div>
             </div>
           </template>
-          <!-- 圖片上傳 -->
-          <template>
-          </template>
           <!-- 商品內容顯示頁編輯 -->
           <template v-if="openProdContent">
             <div :class="{myModal:openProdContent}">
@@ -370,14 +373,14 @@
                     <div class="col-md-2">
                       <button type="button" class="btn btn-lg bg-purple btn-flat" @click="showContent2 = !showContent2">
                         {{showContent2?'到編輯頁(上半)':'到編輯頁(下半)'}}
-                        </button>
+                      </button>
                     </div>
                     <template v-if="!showContent2">
                       <!-- 切換html內容 -->
                       <div class="col-md-2 col-md-offset-6">
                         <button type="button" class="btn btn-lg btn-info" @click="showPreview = !showPreview">
                           {{showPreview?'編輯HTML(上半)': '預覽畫面(上半)'}}
-                          </button>
+                        </button>
                       </div>
                       <!-- 預覽畫面_上 -->
                       <div class="col-md-12" v-if="showPreview">
@@ -394,7 +397,7 @@
                       <div class="col-md-2 col-md-offset-6">
                         <button type="button" class="btn btn-lg btn-info" @click="showPreviewDown = !showPreviewDown">
                           {{showPreviewDown?'編輯HTML(下半)':'預覽畫面(下半)'}}
-                          </button>
+                        </button>
                       </div>
                       <!-- 預覽畫面_下 -->
                       <div class="col-md-12" v-if="showPreviewDown">
@@ -537,6 +540,7 @@ export default {
       // 商品樣式資料
       ProdStyle: _styleDetail,
       imgDetail: {
+        dropdownData: [],
         // 當前項目名稱
         itemname: '',
         // 當前修改imgid
@@ -610,10 +614,16 @@ export default {
       this.openModalBack = true
       this.openProdContent = true
       // GetImage
-      this.editImg(itemName, imgid, '1')
+      this.editImg(prodID, itemName, imgid, '1')
     },
     // 修改圖片
-    editImg(itemName, imgid, type) {
+    editImg(prodID, itemName, imgid, type) {
+      // 輪播圖_上半，依樣式顯示，要先抓樣式呈現下拉選單
+      if (type === '4') {
+        console.log(type)
+        this.GetStyleList(prodID)
+        this.imgDetail.prodID = prodID
+      }
       this.imgDetail.itemname = itemName
       this.imgDetail.imgid = imgid
       this.imgDetail.type = type

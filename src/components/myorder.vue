@@ -5,6 +5,7 @@
     <div class="content-wrapper" v-show="!ShowLoading">
       <!-- Content Header (Page header) -->
       <div class="myModal" v-show="isAdd">
+        // 編輯資料
         <OrderForm :isAdd='isAdd' :HideDiv="HideDiv"></OrderForm>
       </div>
       <!-- Main content start-->

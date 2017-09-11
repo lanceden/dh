@@ -8,7 +8,18 @@
       <div class="box-body">
         <!-- 圖片列表 -->
         <div :class="[{'col-md-8': globalbox},{'scrollPic':globalbox}]">
-          <template v-if="ImageList.length>0">
+          <template v-if="ShowImageList.length>0">
+            <!-- 分類篩選 -->
+            <div v-show="this.imgDetail.type==='4'">
+              <label>單項商品種類篩選:</label>
+              <select class="form-control option" v-model="DistrStyle">
+                <option value=''>全部</option>
+                <template v-for="item in StyleList">
+                  <option :value='item.ItemNo' @change="DistrSelected(item.ItemNo)">{{item.ItemName}}</option>
+                </template>
+              </select>
+            </div>
+            <br>
             <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
               <thead>
                 <tr role="row" class="info">
@@ -20,7 +31,7 @@
                 </tr>
               </thead>
               <tbody>
-                <template v-for="item in ImageList">
+                <template v-for="item in ShowImageList">
                   <tr role="row" class="odd" style="background:#ffffff">
                     <td col>
                       <table class="table table-bordered">
@@ -37,10 +48,16 @@
                           <td class="innertd">{{item.ImgName}}</td>
                         </tr>
                         <tr class="innerth">
-                          <th>種類:</th>
+                          <th>圖片種類:</th>
                         </tr>
                         <tr>
                           <td class="innertd">{{item.ImgType |ImageType}}</td>
+                        </tr>
+                        <tr class="innerth">
+                          <th>單項商品種類:</th>
+                        </tr>
+                        <tr>
+                          <td class="innertd">{{getSubGroupName(item.ItemSubGroup)}}</td>
                         </tr>
                       </table>
                       <div>
@@ -76,6 +93,27 @@
           <div class="">
             <h3 class="box-title"><b>{{imgDetail.itemname}}-圖片上傳</b></h3>
           </div>
+          <!-- 選擇圖片類型 -->
+          <div>
+            <label>選擇上傳圖片類型:</label>
+            <select class="form-control option" v-model="imgDetail.type">
+              <template v-for="item in imageType">
+                <option :value='item.value'>{{item.type}}</option>
+              </template>
+            </select>
+          </div>
+          <br>
+          <!-- 輪播圖單項商品種類 -->
+          <div v-show="this.imgDetail.type==='4'">
+            <label>輪播圖上半部需選擇單項商品種類，
+              <br>不同種類圖片請分開上傳:</label>
+            <select class="form-control option" v-model="SelectedStyle">
+              <option value=''>請選擇上傳單項商品種類</option>
+              <template v-for="item in StyleList">
+                <option :value='item.ItemNo'>{{item.ItemName}}</option>
+              </template>
+            </select>
+          </div>
           <div class="">
             <div class="box-body">
               <label圖片上傳</label>
@@ -93,14 +131,6 @@
                     <!-- url="/api/Product/PostProdMain" -->
                   </vue-core-image-upload>
                   <br>
-                  <!-- 選擇圖片類型 -->
-                  <div>
-                    <select class="form-control option" v-model="imgDetail.type">
-                      <template v-for="item in imageType">
-                        <option :value='item.value'>{{item.type}}</option>
-                      </template>
-                    </select>
-                  </div>
                   <br>
                   <li>一次上傳勿超過5張</li>
                   <li>檔案大小不超過2MB</li>
@@ -128,9 +158,15 @@ export default {
   data() {
     return {
       ImageList: [],
+      ShowImageList: [],
       // 上傳圖片
       Imgfile: [],
+      // 上傳的基本資料
       imgDetail: {},
+      // 選擇上傳的樣式(輪播上半部)
+      StyleList: [],
+      SelectedStyle: '',
+      DistrStyle: '',
       imageType: [
         {
           'value': '',
@@ -169,9 +205,13 @@ export default {
   },
   created() {
     this.imgDetail = window.Lockr.get('imgDetail')
-    this.imgDetail.type
     console.log(this.imgDetail)
     this.GetImageList(this.imgDetail.imgid)
+    // 輪播圖上半_需取出樣式
+    if (this.imgDetail.type === '4') {
+      this.GetStyleList(this.imgDetail.prodID)
+    }
+    this.ShowImageList = JSON.parse(JSON.stringify(this.ImageList))
   },
   methods: {
     imgWithLoacl(url) {
@@ -181,8 +221,19 @@ export default {
       console.log(res)
       this.Imgfile = res
     },
+    // 單項商品種類篩選
+    DistrSelected(itemNo) {
+      this.ShowImageList.find(x => x.ItemNo === itemNo)
+      console.log(this.ShowImageList)
+    },
     // type:1:商品主圖 2:商品樣式(正常) 3:文章 4:商品輪播_上 5:商品輪播_下
     postImage() {
+      if (this.imgDetail.type === '4' && this.SelectedStyle === '') {
+        noty.TopRightShow('您尚未選擇上傳單項商品種類，請先選擇')
+        return false
+      } else if (this.imgDetail.type !== '4') {
+        this.SelectedStyle === ''
+      }
       if (this.imgDetail.type === '') {
         noty.TopRightShow('您尚未選擇上傳圖片類型，請先選擇')
         return false
@@ -193,6 +244,8 @@ export default {
       }
       // 檔案上傳
       let formdata = new FormData()
+      // 輪播圖上半需要傳入種類
+      formdata.append('ItemSubGroup', this.SelectedStyle)
       formdata.append('ItemName', this.imgDetail.itemname)
       formdata.append('imageId', this.imgDetail.imgid)
       formdata.append('type', this.imgDetail.type)
@@ -218,6 +271,7 @@ export default {
         noty.TopRightShow(res.data.msg)
       })
     },
+    // 刪除檔案
     deleteImage(imgNo, imgUrl) {
       // 檔案post
       this.$http({
@@ -253,6 +307,28 @@ export default {
       }).catch((res) => {
         console.log(res)
       })
+    },
+    // 取得樣式列表
+    GetStyleList(prodID) {
+      this.$http({
+        method: 'get',
+        url: `/api/Product/GetStylList?ProdID=${prodID}`
+      }).then((res) => {
+        if (res.data.statu === 'err') {
+          noty.TopRightShow(res.data.msg)
+        }
+        this.StyleList = res.data.data
+      }).catch((res) => {
+        console.log(res)
+      })
+    },
+    getSubGroupName(groupID) {
+      if (groupID !== '' && Object.keys(this.StyleList).length > 0) {
+        var val = this.StyleList.find(x => x.ItemNo === groupID)
+        return typeof (val) === undefined ? '無' : val.ItemName
+      } else {
+        return '無'
+      }
     }
   }
 }
@@ -297,6 +373,7 @@ export default {
   font-size: 18px;
   font-weight: bold;
   color: red;
+  height: 50px;
 }
 
 </style>

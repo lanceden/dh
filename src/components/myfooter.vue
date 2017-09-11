@@ -6,7 +6,7 @@
       <div class="pull-right hidden-xs">
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; {{dateYear}} <a target="blank" href="">dHShop</a>.</strong>
+      <strong>Copyright &copy; {{dateYear}} <a target="blank" href="">dHSHOP</a>.</strong>
     </footer>
   </div>
 </template>
@@ -23,7 +23,7 @@
 </script>
 <style scoped>
   html .main-footer {
-    position: fixed;
+    /* position: fixed; */
     padding: 5px;
     width: 100%;
     bottom: 0px;
