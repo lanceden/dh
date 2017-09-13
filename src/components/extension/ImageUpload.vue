@@ -8,7 +8,7 @@
       <div class="box-body">
         <!-- 圖片列表 -->
         <div :class="[{'col-md-8': globalbox},{'scrollPic':globalbox}]">
-          <template v-if="ShowImageList.length>0">
+          <template v-if="Object.keys(ShowImageList).length>0">
             <!-- 分類篩選 -->
             <div v-show="this.imgDetail.type==='4'">
               <label>單項商品種類篩選:</label>
@@ -211,11 +211,11 @@ export default {
     if (this.imgDetail.type === '4') {
       this.GetStyleList(this.imgDetail.prodID)
     }
-    this.ShowImageList = JSON.parse(JSON.stringify(this.ImageList))
   },
   methods: {
     imgWithLoacl(url) {
-      return 'http://223.27.48.157/' + url
+      // return 'http://223.27.48.157/' + url
+      return 'http://localhost:53912/' + url
     },
     imagechanged(res) {
       console.log(res)
@@ -303,6 +303,8 @@ export default {
           noty.TopRightShow(res.data.msg)
         } else {
           this.ImageList = res.data.data
+          this.ShowImageList = JSON.parse(JSON.stringify(this.ImageList))
+          console.log(Object.keys(this.ShowImageList).length)
         }
       }).catch((res) => {
         console.log(res)
@@ -325,6 +327,7 @@ export default {
     getSubGroupName(groupID) {
       if (groupID !== '' && Object.keys(this.StyleList).length > 0) {
         var val = this.StyleList.find(x => x.ItemNo === groupID)
+        console.log(typeof (val))
         return typeof (val) === undefined ? '無' : val.ItemName
       } else {
         return '無'
