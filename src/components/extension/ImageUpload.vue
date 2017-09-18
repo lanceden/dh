@@ -1,4 +1,4 @@
-<!-- 圖片修改0914 -->
+<!-- 圖片修改0918test -->
 <template>
   <div :class="[{'content-wrapper': globalbox},{'imageUpload': !globalbox}]">
     <div class="box">
