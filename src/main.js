@@ -8,27 +8,17 @@ import store from './store'
 import Lockr from 'lockr'
 import filters from './filters'
 import axios from 'axios'
-import tw from 'vee-validate/dist/locale/zh_TW'
-import VeeValidate, { Validator } from 'vee-validate'
-
-Validator.addLocale(tw)
-Validator.updateDictionary({
-  zh_TW: { tw }
-})
-Vue.use(VeeValidate, {
-  errorBagName: 'errors', // change if property conflicts.
-  delay: 0,
-  locale: 'zh_TW',
-  strict: true
-})
 
 Vue.config.productionTip = false
 Vue.use(extension)
 
-Object.keys(filters).forEach(key => Vue.filter(key, filters[key]))
+Object.keys(filters)
+  .forEach(key => Vue.filter(key, filters[key]))
 
-axios.interceptors.request.use(function(config) {
-  axios.defaults.headers['X-XSRF-Token'] = Lockr.get('antiKey')
+axios.interceptors.request.use(function (config) {
+  // { headers: {"Authorization" : `Bearer ${JWTToken}`}
+  axios.defaults.headers['Authorization'] = `Bearer ${config}`
+  axios.defaults.headers.common['Authorization'] = JSON.stringify(store.getters.token)
   store.dispatch('ShowLoading')
   return config
 }, function(error) {

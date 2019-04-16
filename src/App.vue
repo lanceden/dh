@@ -1,30 +1,24 @@
 <template>
-  <div id="app">
-    <template v-if="auth">
-      <MyHeader></MyHeader>
-      <div id="divContent">
-        <MyAside></MyAside>
-        <router-view></router-view>
-      </div>
-      <MyFooter></MyFooter>
-    </template>
-    <template v-else>
+  <div id="app" class="container">
+    <template>
+      <Header></Header>
       <router-view></router-view>
     </template>
   </div>
 </template>
 <script>
-import MyHeader from './components/myheader'
-import MyFooter from './components/myfooter'
-import MyAside from './components/myaside'
+import Header from './components/header'
 import {
   mapState
 } from 'vuex'
 export default {
   components: {
-    MyHeader,
-    MyFooter,
-    MyAside
+    Header
+  },
+  methods: {
+    test() {
+      this.$router.push('/login')
+    }
   },
   computed: {
     ...mapState({
@@ -41,14 +35,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#divContent {
-  position: relative;
-}
-
-#divContent>.main-sidebar {
-  color: #ffffff;
 }
 
 </style>

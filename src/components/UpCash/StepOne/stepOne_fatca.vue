@@ -1,0 +1,62 @@
+<template>
+  <div class="bg-radius">
+    <div class="top">
+      <div class="top-title">
+        <div class="insure-notice-box">
+          <div class="insure-check">
+            <img src="images/chat.png" alt>
+          </div>
+            <div class="insure-check-title">FATCA及CRS個人客戶自我聲明書- 基本資料</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-bottom-line"></div>
+      <form class="form-bottom">
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input-block" id placeholder value="廖士儼">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input-block" id placeholder value="民國66年7月23日">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input-block" id placeholder value="A123456789">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label">戶籍地址</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input-block" id placeholder value="同本次申請文件之地址">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
+          <div class="col-sm-12 insure-select-align">
+            <select id class="form-control data-input insure-select insure-input-block-edit">
+              <option selected>台灣</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label">選擇城市</label>
+          <div class="col-sm-12 insure-select-align">
+            <select id class="form-control data-input insure-select insure-input-block-edit">
+              <option selected>台北市</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+</template>
+
+<script>
+export default {}
+
+</script>

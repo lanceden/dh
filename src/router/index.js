@@ -1,13 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MyContent from '../components/mycontent.vue'
-import Member from '../components/mymember.vue'
+import UpcashStepOne from '../components/UpCash/StepOne/stepOne_build.vue'
 import MyError from '../components/error.vue'
-import Login from '../components/mylogin.vue'
-import MemberLevel from '../components/myemberlevel.vue'
-import AdminList from '../components/myadminlist.vue'
-import AdminGroup from '../components/myadmingroup.vue'
-import Order from '../components/myorder.vue'
+import Login from '../components/form/orderForm.vue'
 
 Vue.use(Router)
 
@@ -16,54 +11,15 @@ const router = new Router({
   scrollBehavior: () => ({y: 0}),
   routes: [
     {
-      path: '/index',
-      component: MyContent,
+      path: '/upcash',
+      component: UpcashStepOne,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
-    },
-    {
-      path: '/',
-      component: Login
     },
     {
       path: '/Login',
       component: Login
-    },
-    {
-      path: '/Member',
-      component: Member,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/Order',
-      component: Order,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/MemberLevel',
-      component: MemberLevel,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/AdminList',
-      component: AdminList,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/admingroup',
-      component: AdminGroup,
-      meta: {
-        requiresAuth: true
-      }
     },
     {
       path: '*',
@@ -76,14 +32,17 @@ const router = new Router({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!window.Lockr.get('auth') && from.fullPath !== '/') {
-      alert('請先登入')
-      next({
-        path: '/Login'
-      })
-    } else {
-      next()
-    }
+    next()
+  //   if (!window.Lockr.get('auth') && from.fullPath !== '/') {
+  //     alert('請先登入')
+  //     next({
+  //       path: '/Login'
+  //     })
+  //   } else {
+  //     next()
+  //   }
+  // } else {
+  //   next()
   } else {
     next()
   }
