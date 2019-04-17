@@ -7,6 +7,7 @@
             <img src="images/chat.png" alt>
           </div>
             <div class="insure-check-title">請確認要保人及被保人資料</div>
+            <button @click="getJob()">getJob</button>
           </div>
         </div>
       </div>
@@ -16,25 +17,25 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="廖士儼">
+            <input type="text" class="form-control insure-input-block" v-model="customerData.client_names" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="民國66年7月23日">
+            <input type="text" class="form-control insure-input-block" v-model="customerData.client_birth" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="A123456789">
+            <input type="text" class="form-control insure-input-block" v-model="customerData.client_id" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人性別</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="男">
+            <input type="text" class="form-control insure-input-block" v-model="customerData.client_id.substr(1, 1) % 2 === 0 ? '女' : '男'" disabled="disabled" />
           </div>
         </div>
         <div class="row col-width">
@@ -47,4 +48,35 @@
 </template>
 
 <script>
+import Service from '../../../utils/service.js'
+import PlanCode from '../../../utils/constPlancode.js'
+export default {
+  data() {
+    return {
+      customerData: {
+        client_id: 'A222277777',
+        client_birth: '1990/01/01',
+        client_names: '測試人'
+      },
+      service: new Service(this.$http),
+      jobData: []
+    }
+  },
+  methods: {
+    // 投保流程初始化
+    init() {
+      this.service.apply('')
+    },
+    getJob() {
+      this.service.GetJob()
+    },
+    getOccupation() {
+      this.service.GetOccupation(PlanCode.UpCash)
+    },
+    getNationality() {
+      this.service.GetNationality('')
+    }
+  }
+}
+
 </script>

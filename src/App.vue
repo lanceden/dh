@@ -8,12 +8,18 @@
 </template>
 <script>
 import Header from './components/header'
+import Plancode from './utils/constPlancode'
+import Url from './utils/constUrl'
 import {
   mapState
 } from 'vuex'
 export default {
   components: {
     Header
+  },
+  created() {
+    console.log('App.vue_Plancode.UpCash:', Plancode.UpCash)
+    console.log('App.vue_Url:', Url.UpCashEstimate)
   },
   methods: {
     test() {
