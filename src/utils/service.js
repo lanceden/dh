@@ -17,6 +17,7 @@ class Service {
    * @param {string} occupationCode 職業類別代碼
    */
   async GetOccupation(planCode, occupationCode) {
+    console.log(this.http)
     return await this.http.SendPost(`${Url.Occupation}`, 'GetOccupation', {
       PlanCode: planCode,
       OccupationCode: occupationCode

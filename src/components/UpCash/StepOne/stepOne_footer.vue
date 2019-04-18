@@ -2,7 +2,8 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-12 footer-title footer-right">下一步</div>
+        <div class="col-sm-12 footer-title footer-right"
+        @click="GotoNext()">下一步</div>
       </nav>
     </div>
   </div>
@@ -10,9 +11,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      payStatusSelect: 1
+  methods: {
+    GotoNext() {
+      console.log('GotoNext')
     }
   }
 }

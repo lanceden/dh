@@ -17,8 +17,8 @@
           <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-block-edit" v-model="job"
-            @change="getOccupation(job)">
-                <option v-for="item in jobData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+            @change="FuncGetOccupation(job)">
+                <option v-for="item in GetJobData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -26,7 +26,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">職業名稱</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="occupation" >
-                <option v-for="item in occupationData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+                <option v-for="item in GetOccupationData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -45,7 +45,12 @@
 
 <script>
 import Service from '../../../utils/service.js'
-import PlanCode from '../../../utils/constPlancode.js'
+import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import {
+  mapActions,
+  mapGetters
+} from 'vuex'
 export default {
   data() {
     return {
@@ -56,18 +61,25 @@ export default {
       service: new Service(this.$http)
     }
   },
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetJobData,
+      GetterTypes.GetOccupationData
+    ])
+  },
   created() {
-    this.getJob()
+    console.log(this.GetOccupationData)
+    // this.getJob()
   },
   methods: {
+    ...mapActions([
+      FunctionTypes.FuncGetJob,
+      FunctionTypes.FuncGetNationality,
+      FunctionTypes.FuncGetOccupation
+    ]),
     async getJob() {
       let data = await this.service.GetJob()
       this.jobData = data.Result
-    },
-    async getOccupation(occupationCode) {
-      let data = await this.service.GetOccupation(PlanCode.UpCash, occupationCode)
-      this.occupationData = data.Result
-      this.occupation = this.occupationData[0].OCCUPATION_CODE
     }
   }
 }

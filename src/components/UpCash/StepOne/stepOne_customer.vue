@@ -64,9 +64,6 @@ export default {
     // 投保流程初始化
     init() {
       this.service.apply('')
-    },
-    getNationality() {
-      this.service.GetNationality('')
     }
   }
 }

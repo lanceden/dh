@@ -1,16 +1,8 @@
-import types from './types'
-
 export default {
-  [types.ShowLoading]({commit}) {
-    commit(types.ShowLoading)
+  SetHttp({ commit }, { http }) {
+    commit('SetHttp', { http })
   },
-  [types.HideLoading]({commit}) {
-    commit(types.HideLoading)
-  },
-  [types.ShowDiv]({ commit }) {
-    commit('ShowDiv')
-  },
-  [types.HideDiv]({ commit }) {
-    commit('HideDiv')
+  SetApiToken({ commit }, { token }) {
+    commit('SetApiToken', { token })
   }
 }

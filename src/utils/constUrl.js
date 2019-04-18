@@ -1,7 +1,7 @@
 /**
  * 根目錄網址
  */
-const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi/'
+const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi'
 /**
  * 職業類別
  */

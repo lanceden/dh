@@ -8,28 +8,17 @@
 </template>
 <script>
 import Header from './components/header'
-import Plancode from './utils/constPlancode'
-import Url from './utils/constUrl'
 import {
-  mapState
+  mapActions
 } from 'vuex'
 export default {
-  components: {
-    Header
-  },
+  components: { Header },
   created() {
-    console.log('App.vue_Plancode.UpCash:', Plancode.UpCash)
-    console.log('App.vue_Url:', Url.UpCashEstimate)
+    this.SetHttp({ http: this.$http })
+    this.SetApiToken({ token: 'HelloWorld' })
   },
   methods: {
-    test() {
-      this.$router.push('/login')
-    }
-  },
-  computed: {
-    ...mapState({
-      auth: state => state.login.auth
-    })
+    ...mapActions([ 'SetHttp', 'SetApiToken' ])
   }
 }
 

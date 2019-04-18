@@ -1,18 +1,8 @@
-import types from './types'
-
 export default {
-  [types.ShowLoading](state) {
-    state.ShowLoading = true
+  SetHttp(state, { http }) {
+    state.Http = http
   },
-  [types.HideLoading](state) {
-    setTimeout(() => {
-      state.ShowLoading = false
-    }, 1000)
-  },
-  [types.ShowDiv](state) {
-    state.isAdd = true
-  },
-  [types.HideDiv](state) {
-    state.isAdd = false
+  SetApiToken(state, { token }) {
+    state.ApiToken = token
   }
 }
