@@ -7,7 +7,6 @@
             <img src="images/chat.png" alt>
           </div>
             <div class="insure-check-title">請確認要保人及被保人資料</div>
-            <button @click="getJob()">getJob</button>
           </div>
         </div>
       </div>
@@ -49,29 +48,22 @@
 
 <script>
 import Service from '../../../utils/service.js'
-import PlanCode from '../../../utils/constPlancode.js'
 export default {
   data() {
     return {
       customerData: {
         client_id: 'A222277777',
         client_birth: '1990/01/01',
-        client_names: '測試人'
+        client_names: '測試人',
+        client_rate_sex: '1' // 1：男 2：女
       },
-      service: new Service(this.$http),
-      jobData: []
+      service: new Service(this.$http)
     }
   },
   methods: {
     // 投保流程初始化
     init() {
       this.service.apply('')
-    },
-    getJob() {
-      this.service.GetJob()
-    },
-    getOccupation() {
-      this.service.GetOccupation(PlanCode.UpCash)
     },
     getNationality() {
       this.service.GetNationality('')

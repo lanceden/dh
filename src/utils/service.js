@@ -1,49 +1,33 @@
 import Url from './constUrl'
+import HttpHelper from './http'
 
 class Service {
   constructor(http) {
-    this.http = http
+    this.http = new HttpHelper(http)
   }
   /**
    * 取回職業類別
    */
-  GetJob() {
-    console.log(this.http)
-    this.http.post('https://test-impcust.skl.com.tw/sub/api/Main/GetVipLevel', {
-      payMode: 1,
-      amount: 10,
-      year: 6
-    }).then(response => { // `${Url.Job}`
-      console.log('GetJob: ', response)
-    }).catch(error => {
-      console.log('GetJob: ', error)
-    })
+  async GetJob() {
+    return await this.http.SendPost(`${Url.Job}`, 'GetJob', null)
   }
   /**
    * 取回職業名稱
    * @param {string} planCode 險種代碼
    * @param {string} occupationCode 職業類別代碼
    */
-  static GetOccupation(planCode, occupationCode) {
-    this.http.post(`${Url.Occupation}`, {
+  async GetOccupation(planCode, occupationCode) {
+    return await this.http.SendPost(`${Url.Occupation}`, 'GetOccupation', {
       PlanCode: planCode,
       OccupationCode: occupationCode
-    }).then(response => {
-      console.log('GetOccupation: ', response)
-    }).catch(error => {
-      console.log('GetOccupation: ', error)
     })
   }
   /**
    * 取回國籍清單
    * @param {string} nationalityCode 國籍代號
    */
-  static GetNationality(nationalityCode) {
-    this.http.post(`${Url.Nationality}?code=${nationalityCode}`).then(response => {
-      console.log('GetNationality: ', response)
-    }).catch(error => {
-      console.log('GetNationality: ', error)
-    })
+  async GetNationality(nationalityCode) {
+    return await this.http.SendPost(`${Url.Nationality}?code=${nationalityCode}`, 'GetNationality')
   }
   /**
    * 取回同意書
@@ -59,12 +43,8 @@ class Service {
   /**
    * 取回縣市
    */
-  static GetCity() {
-    this.http.post(`${Url.City}`).then(response => {
-      console.log('GetCity: ', response)
-    }).catch(error => {
-      console.log('GetCity: ', error)
-    })
+  async GetCity() {
+    return await this.http.SendPost(`${Url.City}`, 'GetCity')
   }
   /**
    * 取回鄉鎮市區
@@ -98,11 +78,25 @@ class Service {
       console.log('GetBankBranches: ', error)
     })
   }
+  /**
+   * 驗證輸入之銀行帳號是否正確
+   * @param {ValidateModel} para 驗證帳號
+   */
   static ValidateAccount(para) {
     this.http.post(`${Url.ValidateAccount}`, para).then(response => {
       console.log('UpCash SubmitOrder: ', response)
     }).catch(error => {
       console.log('UpCash SubmitOrder: ', error)
+    })
+  }
+  /**
+   * 取回上一張保單受益人
+   */
+  static GetBeneficiary() {
+    this.http.post(`${Url.Beneficiary}`).then(response => {
+      console.log('GetBeneficiary: ', response)
+    }).catch(error => {
+      console.log('GetBeneficiary: ', error)
     })
   }
 }

@@ -39,16 +39,16 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
           <div class="col-sm-12 insure-select-align">
-            <select id class="form-control data-input insure-select insure-input-block-edit">
-              <option selected>台灣</option>
+            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation">
+                <option v-for="item in nationData" :value="item.Code">{{item.Name}}</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">選擇城市</label>
           <div class="col-sm-12 insure-select-align">
-            <select id class="form-control data-input insure-select insure-input-block-edit">
-              <option selected>台北市</option>
+            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="city">
+                <option v-for="item in cityData" :value="item.City">{{item.City}}</option>
             </select>
           </div>
         </div>
@@ -57,6 +57,33 @@
 </template>
 
 <script>
-export default {}
+import Service from '../../../utils/service.js'
+export default {
+  data() {
+    return {
+      nation: '',
+      nationData: ['請選擇'],
+      city: '',
+      cityData: [],
+      service: new Service(this.$http)
+    }
+  },
+  created() {
+    this.getNationality()
+    this.getCity()
+  },
+  methods: {
+    async getNationality() {
+      let data = await this.service.GetNationality('')
+      this.nationData = data.Result
+      this.nation = this.nationData[0].Code
+    },
+    async getCity() {
+      let data = await this.service.GetCity()
+      this.cityData = data.Result
+      this.city = this.cityData[0].City
+    }
+  }
+}
 
 </script>

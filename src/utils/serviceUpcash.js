@@ -4,7 +4,7 @@ const APICODE = 'InsuranceWeb'
 
 class ServiceUpcash {
   /**
-   * UpCah投保流程初始化
+   * UpCah投保流程初始化-無參數
    */
   static Init() {
     this.$http.post(`${Url.UpCashInit}`, {
