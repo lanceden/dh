@@ -17,7 +17,8 @@ const state = {
   [stateTypes.NATIONDATA]: [],
   [stateTypes.OCCUPATION]: '',
   [stateTypes.OCCUPATIONDATA]: [],
-  [stateTypes.POSTDATA]: []
+  [stateTypes.POSTDATA]: [],
+  [stateTypes.CITYDATA]: []
 }
 const getters = {
   [getterTypes.GetJob]: state => state.JOB,
@@ -26,7 +27,8 @@ const getters = {
   [getterTypes.GetNationData]: state => state.NATIONDATA,
   [getterTypes.GetOccupation]: state => state.OCCUPATION,
   [getterTypes.GetOccupationData]: state => state.OCCUPATIONDATA,
-  [getterTypes.GetPostData]: state => state.POSTDATA
+  [getterTypes.GetPostData]: state => state.POSTDATA,
+  [getterTypes.GetCityData]: state => state.CITYDATA
 }
 const actions = {
   /**
@@ -58,6 +60,11 @@ const actions = {
     }).then(response => {
       commit(functionTypes.FuncGetOccupation, { result: response.data, occupationCode })
     })
+  },
+  [functionTypes.FuncGetCityData]({ commit }) {
+    rootState.Http.axios.post(`${Url.City}`).then(response => {
+      commit(functionTypes.FuncGetCityData, { result: response.data })
+    })
   }
 }
 
@@ -78,6 +85,9 @@ const mutations = {
     state.OCCUPATION = result.Data.Result[0].OCCUPATION_CODE
     state.JOB = occupationCode
     console.log(result.Data.Result)
+  },
+  [functionTypes.FuncGetCityData](state, { result }) {
+    state.CITYDATA = result.Data.Result
   }
 }
 

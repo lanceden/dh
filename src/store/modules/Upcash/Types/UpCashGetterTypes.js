@@ -5,5 +5,7 @@ export default {
   GetNationData: 'GetNationData',
   GetOccupation: 'GetOccupation',
   GetOccupationData: 'GetOccupationData',
-  GetPostData: 'GetPostData'
+  GetPostData: 'GetPostData',
+  GetCity: 'GetCity',
+  GetCityData: 'GetCityData'
 }

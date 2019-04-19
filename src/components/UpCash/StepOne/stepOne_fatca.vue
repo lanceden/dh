@@ -40,7 +40,7 @@
           <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
           <div class="col-sm-12 insure-select-align">
             <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation">
-              <option v-for="item in nationData" :value="item.Code">{{item.Name}}</option>
+              <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
             </select>
           </div>
         </div>
@@ -57,8 +57,10 @@
 </template>
 
 <script>
-import Service from '../../../utils/service.js'
+import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import {
+  mapState,
   mapActions
 } from 'vuex'
 export default {
@@ -67,28 +69,23 @@ export default {
       nation: '',
       nationData: ['請選擇'],
       city: '',
-      cityData: [],
-      service: new Service(this.$http)
+      cityData: []
     }
   },
   created() {
-    this.getNationality()
-    this.getCity()
+    this.FuncGetNationality()
+    this.FuncGetCityData()
+  },
+  computed: {
+    ...mapState([
+      GetterTypes.GetNationData
+    ])
   },
   methods: {
     ...mapActions([
-      '123'
-    ]),
-    async getNationality() {
-      let data = await this.service.GetNationality('')
-      this.nationData = data.Result
-      this.nation = this.nationData[0].Code
-    },
-    async getCity() {
-      let data = await this.service.GetCity()
-      this.cityData = data.Result
-      this.city = this.cityData[0].City
-    }
+      FunctionTypes.FuncGetNationality,
+      FunctionTypes.FuncGetCityData
+    ])
   }
 }
 
