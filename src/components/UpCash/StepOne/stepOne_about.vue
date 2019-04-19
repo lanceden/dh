@@ -16,8 +16,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
           <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-block-edit" v-model="job"
-            @change="FuncGetOccupation(job)">
+            <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobCode"
+            @change="OnJobChange(jobCode)">
                 <option v-for="item in GetJobData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
@@ -25,7 +25,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">職業名稱</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="occupation" >
+            <select id="" class="form-control data-input insure-select insure-input-block-edit" v-bind="occupation" 
+            @change="OnOccupationChange()">
                 <option v-for="item in GetOccupationData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
@@ -44,7 +45,6 @@
 </template>
 
 <script>
-import Service from '../../../utils/service.js'
 import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import {
@@ -54,22 +54,21 @@ import {
 export default {
   data() {
     return {
-      job: '00',
-      occupation: '',
-      jobData: ['請選擇'],
-      occupationData: ['請選擇'],
-      service: new Service(this.$http)
+      jobCode: '00',
+      occupation: ''
     }
   },
   computed: {
     ...mapGetters([
+      GetterTypes.GetJob,
       GetterTypes.GetJobData,
+      GetterTypes.GetOccupation,
       GetterTypes.GetOccupationData
     ])
   },
   created() {
-    console.log(this.GetOccupationData)
-    // this.getJob()
+    this.FuncGetJob()
+    this.FuncGetOccupation('00')
   },
   methods: {
     ...mapActions([
@@ -77,9 +76,12 @@ export default {
       FunctionTypes.FuncGetNationality,
       FunctionTypes.FuncGetOccupation
     ]),
-    async getJob() {
-      let data = await this.service.GetJob()
-      this.jobData = data.Result
+    OnJobChange(jobCode) {
+      this.FuncGetOccupation(jobCode)
+    },
+    OnOccupationChange() {
+      // this.$store.state.UpCash.JOB = 'Hello World'
+      console.log(this.$store.state.UpCash.JOB)
     }
   }
 }

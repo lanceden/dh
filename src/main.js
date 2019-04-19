@@ -16,10 +16,9 @@ Object.keys(filters)
   .forEach(key => Vue.filter(key, filters[key]))
 
 Vue.prototype.$http = { axios }
-Vue.prototype.$RequestToken = 'dS1lLmt/KbPdjpS/ytAQilnbD3oS+oIVEV5MYQPsFJwVbLFPuEkEOcqOFfjBVLJ8PIFkPiZNU9I2ni+6ceuI8TcKGkXt101mW/IFc3wKIziNQz+zFGpvqCPTRBlxa9JIng6KZwnscSpnM8bD27UIYklhE/7rVj9MovYRnx+r+mKTMt/gKYwcOVdfFYd0R1ullruGeXhGGX1xmlMCblyeWdg0+8k5ChoWef6eNLLcjn4KUYai23ORfXdZ67LXW+lAdk09pEP7YL2ep5ggbzdBTLGjz1+HYV7pU43YFQOfxDA='
+Vue.prototype.$RequestToken = '6B6Tjp1k5NFniEuiz+m9jTn4WP7Mk6iKWhDh+xOI672FoZea9CPjcaJGPhDGP0IxPIFkPiZNU9I2ni+6ceuI8TcKGkXt101mW/IFc3wKIziNQz+zFGpvqCPTRBlxa9JIbDNdXKr6hr/Z0WDTuzU/60lhE/7rVj9MovYRnx+r+mKTMt/gKYwcOVdfFYd0R1ulQpFmRqQTZCGxLXc8lm2tD/TOlJ4QealY8dHsI62y1BLq2KXQFwdZACMFPovqvQNsa+mfODvzKCs0HYl1h+2hrV6vtVe2GlhMUpoAb1/HM1E='
 
 axios.interceptors.response.use(function(response) {
-  store.dispatch('HideLoading')
   return response
 }, function(error) {
   console.log(error)

@@ -2,5 +2,6 @@ export default {
   FuncGetJob: 'FuncGetJob',
   FuncGetNationality: 'FuncGetNationality',
   FuncGetCity: 'FuncGetCity',
-  FuncGetOccupation: 'FuncGetOccupation'
+  FuncGetOccupation: 'FuncGetOccupation',
+  FuncUpCashInit: 'FuncUpCashInit'
 }

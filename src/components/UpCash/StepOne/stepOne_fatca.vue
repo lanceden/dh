@@ -40,7 +40,7 @@
           <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
           <div class="col-sm-12 insure-select-align">
             <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation">
-              <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
+              <option v-for="item in nationData" :value="item.Code">{{item.Name}}</option>
             </select>
           </div>
         </div>
@@ -58,11 +58,8 @@
 
 <script>
 import Service from '../../../utils/service.js'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import {
-  mapActions,
-  mapGetters
+  mapActions
 } from 'vuex'
 export default {
   data() {
@@ -74,22 +71,13 @@ export default {
       service: new Service(this.$http)
     }
   },
-  computed: {
-    ...mapGetters([
-      GetterTypes.Getnation,
-      GetterTypes.GetNationData
-    ])
-  },
   created() {
-    console.log(this.GetNationData)
-    // this.FuncGetJob()
-    // this.getNationality()
-    // this.getCity()
+    this.getNationality()
+    this.getCity()
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncGetJob,
-      FunctionTypes.FuncGetNationality
+      '123'
     ]),
     async getNationality() {
       let data = await this.service.GetNationality('')

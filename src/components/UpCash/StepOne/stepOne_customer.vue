@@ -16,25 +16,25 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="customerData.client_names" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_names" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="customerData.client_birth" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_birth" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="customerData.client_id" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_id" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人性別</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="customerData.client_id.substr(1, 1) % 2 === 0 ? '女' : '男'" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_id.substr(1, 1) % 2 === 0 ? '女' : '男'" disabled="disabled" />
           </div>
         </div>
         <div class="row col-width">
@@ -47,24 +47,13 @@
 </template>
 
 <script>
-import Service from '../../../utils/service.js'
+import { mapGetters } from 'vuex'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
-  data() {
-    return {
-      customerData: {
-        client_id: 'A222277777',
-        client_birth: '1990/01/01',
-        client_names: '測試人',
-        client_rate_sex: '1' // 1：男 2：女
-      },
-      service: new Service(this.$http)
-    }
-  },
-  methods: {
-    // 投保流程初始化
-    init() {
-      this.service.apply('')
-    }
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetPostData
+    ])
   }
 }
 

@@ -18,7 +18,7 @@ export default {
     this.SetApiToken({ token: 'HelloWorld' })
   },
   methods: {
-    ...mapActions([ 'SetHttp', 'SetApiToken' ])
+    ...mapActions(['SetHttp', 'SetApiToken'])
   }
 }
 

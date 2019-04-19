@@ -1,9 +1,8 @@
 import Url from './constUrl'
-import HttpHelper from './http'
 
 class Service {
-  constructor(http) {
-    this.http = new HttpHelper(http)
+  constructor() {
+    this.http = {}
   }
   /**
    * 取回職業類別
