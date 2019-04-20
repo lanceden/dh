@@ -14,7 +14,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">給付開始日：保險年齡</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit">
-              <option selected>{{GetPostData.Age}}</option>
+              <option selected>{{parseInt(GetPostData.Age) + 6}}</option>
             </select>
           </div>
         </div>
@@ -29,13 +29,14 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <select id="" class="form-control data-input">
-              <option selected>一次給付</option>
-              <option>分期給付</option>
+            <select id="" class="form-control data-input" v-model="isOneTimePayment"
+            @change="OnisOneTimePayment()">
+              <option selected="selected" value="Y">一次給付</option>
+              <option value="N">分期給付</option>
             </select>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" v-show="isShowperiod">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">分期給付方式</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit">
@@ -45,7 +46,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" v-show="isShowperiod">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">保證期間</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit">
@@ -65,10 +66,24 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  data() {
+    return {
+      isShowperiod: false,
+      isOneTimePayment: 'Y'
+    }
+  },
+  created() {
+    console.log(this.GetPostData.Age)
+  },
   computed: {
     ...mapGetters([
       GetterTypes.GetPostData
     ])
+  },
+  methods: {
+    OnisOneTimePayment() {
+      this.isShowperiod = this.isOneTimePayment === 'N'
+    }
   }
 }
 

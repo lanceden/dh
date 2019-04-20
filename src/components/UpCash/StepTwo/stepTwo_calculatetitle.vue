@@ -34,21 +34,21 @@ export default {
       FunctionTypes.Estimate
     ]),
     Estimate() {
-      console.log(this.GetPostData.QusAns)
-      console.log(this.GetPostData.CRSData.birth_national)
-      console.log(this.GetPostData.CRSData.birth_city)
-      console.log(this.GetPostData.IsTaiwanTaxDuty)
-      console.log(this.GetPostData.client_occupation_class)
-      console.log(this.GetPostData.client_occupation_class_code)
-      console.log(this.GetPostData.client_occupation_class_code_name)
-      console.log(this.GetPostData.po_issue_date)
-      console.log(this.GetPostData.IsOneTimePayment)
-      console.log(this.GetPostData.face_amt)
-      console.log(this.GetPostData.init_method)
-      console.log(this.GetPostData.fst_anny_pay_age)
-      console.log(this.GetPostData.anny_frequence)
-      console.log(this.GetPostData.value_ind)
-      console.log(this.GetPostData.email)
+      console.log('QusAns', this.GetPostData.QusAns)
+      console.log('CRSData.birth_national:', this.GetPostData.CRSData.birth_national)
+      console.log('CRSData.birth_city:', this.GetPostData.CRSData.birth_city)
+      console.log('IsTaiwanTaxDuty', this.GetPostData.IsTaiwanTaxDuty)
+      console.log('client_occupation_class', this.GetPostData.client_occupation_class)
+      console.log('client_occupation_class_code', this.GetPostData.client_occupation_class_code)
+      console.log('client_occupation_class_code_name', this.GetPostData.client_occupation_class_code_name)
+      console.log('po_issue_date', this.GetPostData.po_issue_date)
+      console.log('IsOneTimePayment', this.GetPostData.IsOneTimePayment)
+      console.log('face_amt', this.GetPostData.face_amt)
+      console.log('init_method', this.GetPostData.init_method)
+      console.log('fst_anny_pay_age', this.GetPostData.fst_anny_pay_age)
+      console.log('anny_frequence', this.GetPostData.anny_frequence)
+      console.log('value_ind', this.GetPostData.value_ind)
+      console.log('email', this.GetPostData.email)
     }
   }
 }

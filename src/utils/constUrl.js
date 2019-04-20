@@ -1,7 +1,8 @@
 /**
  * 根目錄網址
  */
-const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi'
+// const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi'
+const Domain = 'https://55c3fa9c-5228-4494-8f15-32654a9e8f7c.mock.pstmn.io'
 /**
  * 職業類別
  */

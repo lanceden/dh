@@ -11,6 +11,7 @@ const planCode = 'UC099'
 const APICODE = 'InsuranceWeb'
 
 const state = {
+  [stateTypes.ISINIT]: false,
   [stateTypes.JOB]: '',
   [stateTypes.JOBDATA]: [],
   [stateTypes.NATION]: '',
@@ -19,9 +20,12 @@ const state = {
   [stateTypes.OCCUPATIONDATA]: [],
   [stateTypes.POSTDATA]: [],
   [stateTypes.CITY]: '',
-  [stateTypes.CITYDATA]: []
+  [stateTypes.CITYDATA]: [],
+  [stateTypes.BANK]: '',
+  [stateTypes.BANKDATA]: []
 }
 const getters = {
+  [getterTypes.GetIsInit]: state => state.ISINIT,
   [getterTypes.GetJob]: state => state.JOB,
   [getterTypes.GetJobData]: state => state.JOBDATA,
   [getterTypes.GetNation]: state => state.NATION,
@@ -30,9 +34,14 @@ const getters = {
   [getterTypes.GetOccupationData]: state => state.OCCUPATIONDATA,
   [getterTypes.GetPostData]: state => state.POSTDATA,
   [getterTypes.GetCity]: state => state.CITY,
-  [getterTypes.GetCityData]: state => state.CITYDATA
+  [getterTypes.GetCityData]: state => state.CITYDATA,
+  [getterTypes.GetBank]: state => state.BANK,
+  [getterTypes.GetBankData]: state => state.BANKDATA
 }
 const actions = {
+  [functionTypes.FuncIsInit]({ commit }, isInit) {
+    commit(functionTypes.FuncIsInit, { result: isInit })
+  },
   /**
    * UpCash 投保流程初始化
    * @param {commit} param0 提交狀態
@@ -67,10 +76,19 @@ const actions = {
     rootState.Http.axios.post(`${Url.City}`).then(response => {
       commit(functionTypes.FuncGetCityData, { result: response.data })
     })
+  },
+  [functionTypes.FuncGetBank]({ commit }) {
+    rootState.Http.axios.post(`${Url.Banks}`).then(response => {
+      commit(functionTypes.FuncGetBank, { result: response.data })
+    })
   }
 }
 
 const mutations = {
+  [functionTypes.FuncIsInit](state, { result }) {
+    state.ISINIT = result
+    console.log('this.GetIsInit', state.ISINIT)
+  },
   [functionTypes.FuncUpCashInit](state, { result }) {
     state.POSTDATA = result.Data.Result
   },
@@ -91,6 +109,10 @@ const mutations = {
   [functionTypes.FuncGetCityData](state, { result }) {
     state.CITYDATA = result.Data.Result
     state.CITY = result.Data.Result[0].City
+  },
+  [functionTypes.FuncGetBank](state, { result }) {
+    state.BANKDATA = result.Data.Result
+    state.BANK = result.Data.Result[0].bank_code
   }
 }
 

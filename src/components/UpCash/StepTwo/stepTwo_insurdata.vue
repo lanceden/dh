@@ -21,15 +21,16 @@
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input" id placeholder value="自民國108年3月19日起">
+          <div class="insure-input-block">{{GetPostData.po_issue_date}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">是否躉繳(一次繳清)</label>
         <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit">
-            <option selected>是</option>
-            <option>否</option>
+          <select id class="form-control data-input insure-select insure-input-edit" v-model="modx_99_ind"
+          @change="OnModxChange()">
+            <option selected="selected" value="Y">是</option>
+            <option value="N">否</option>
           </select>
         </div>
       </div>
@@ -37,8 +38,9 @@
         <label for class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
         <div class="col-sm-12">
           <select id class="form-control data-input">
-            <option selected>活期性帳戶(電子化授權/全國繳費網)</option>
-            <option>信用卡</option>
+            <option selected="selected" value="0">未選擇</option>
+            <option value="ebill">活期性帳戶(電子化授權/全國繳費網)</option>
+            <option value="credit">信用卡</option>
           </select>
         </div>
       </div>
@@ -53,7 +55,7 @@
           <input
             type="number"
             class="form-control insure-input insure-input-edit"
-            id
+            v-model="qpoop_25_prem"
             placeholder="請輸入" />
         </div>
       </div>
@@ -61,21 +63,24 @@
         <div class="insure-tips">限輸入10,000~750,000元</div>
         <div class="insure-tips-text">備註：單筆保費限75萬，單一公司累積限750萬。</div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="isOneTimePayment">
         <label for class="col-sm-12 col-form-label insure-label insure-label">約定續期繳法別</label>
         <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit">
-            <option selected>不定期繳</option>
-            <option>分期繳付</option>
+          <select id class="form-control data-input insure-select insure-input-edit" v-model="untimed"
+          @change="OnUntimed()">
+            <option value="0" selected="selected">不定期繳</option>
+            <option value="1">分期繳付</option>
           </select>
         </div>
       </div>
 
       <!--Start 不定期繳-全國新光人壽行政中心繳費 -->
-      <div class="form-group row">
+      <div class="form-group row" v-show="isOneTimePayment">
         <label for class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">全國新光人壽行政中心繳費</div>
+          <select id class="form-control data-input">
+            <option v-for="(item, index) in payType" :value="index">{{item}}</option>
+          </select>
         </div>
         <div class="row">
           <div class="col-sm-6">
@@ -100,16 +105,7 @@
       <!-- End 不定期繳-全國新光人壽行政中心繳費-->
 
       <!--Start 分期繳付 -->
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">約定續期繳法別</label>
-        <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit">
-            <option>不定期繳</option>
-            <option selected>分期繳付</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="isShowUntimed">
         <label for class="col-sm-12 col-form-label insure-label insure-label">續期保費每期</label>
         <div class="col-sm-12">
           <input
@@ -121,27 +117,19 @@
           >
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="isShowUntimed">
         <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
         <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit">
-            <option>月</option>
-            <option>季</option>
-            <option selected>年</option>
+          <select id class="form-control data-input insure-select insure-input-edit" v-model="qpoop_25_modx">
+            <option selected="selected" value="0">未選擇</option>
+            <option value="12">年</option>
+            <option value="6">半年</option>
+            <option value="3">季</option>
+            <option value="1">月</option>
           </select>
         </div>
       </div>
       <!-- End 分期繳付-->
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
-        <div class="col-sm-12">
-          <select id class="form-control data-input">
-            <option selected>活期性帳戶(電子化授權/全國繳費網)</option>
-            <option>信用卡</option>
-            <option>銀行或郵局轉帳</option>
-          </select>
-        </div>
-      </div>
       <div class="col-sm-12">
         <div class="insure-tips">續期繳費管道同時約定為信用卡，會同首期信用卡卡號做繳費。</div>
       </div>
@@ -153,10 +141,41 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  data() {
+    return {
+      untimed: '0',
+      qpoop_25_modx: 0,
+      qpoop_25_prem: '',
+      isOneTimePayment: true,
+      isShowUntimed: false,
+      modx_99_ind: 'N',
+      payType: [
+        '活期性帳戶(電子化授權/全國繳費網)',
+        '信用卡',
+        '銀行或郵局轉帳'
+      ]
+    }
+  },
   computed: {
     ...mapGetters([
       GetterTypes.GetPostData
     ])
+  },
+  methods: {
+    /**
+     * 是否躉繳(一次繳清)下拉框change event
+     */
+    OnModxChange() {
+      if(this.modx_99_ind === 'Y') {
+        this.isOneTimePayment = false
+      } else this.isOneTimePayment = true
+    },
+    OnUntimed() {
+      if(this.untimed === '0') {
+        this.payType = [ '活期性帳戶(電子化授權/全國繳費網)' ]
+      }
+      this.isShowUntimed = this.untimed === '1'
+    }
   }
 }
 </script>

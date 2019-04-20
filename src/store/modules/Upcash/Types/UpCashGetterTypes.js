@@ -1,4 +1,5 @@
 export default {
+  GetIsInit: 'GetIsInit',
   GetJob: 'GetJob',
   GetJobData: 'GetJobData',
   GetNation: 'GetNation',
@@ -7,5 +8,7 @@ export default {
   GetOccupationData: 'GetOccupationData',
   GetPostData: 'GetPostData',
   GetCity: 'GetCity',
-  GetCityData: 'GetCityData'
+  GetCityData: 'GetCityData',
+  GetBank: 'GetBank',
+  GetBankData: 'GetBankData'
 }

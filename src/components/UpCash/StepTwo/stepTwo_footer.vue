@@ -18,7 +18,7 @@ export default {
     ]),
     GoPrev() {
       this.SetHeaderIsActive(false)
-      this.$router.go(-1)
+      this.$router.push('upcash-1')
     }
   }
 }

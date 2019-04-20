@@ -15,7 +15,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit">
-              <option selected>822</option>
+              <option v-for="item in GetBankData" :value="item.bank_code">{{item.bank_name}}</option>
             </select>
           </div>
         </div>
@@ -33,7 +33,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="" value="123456789012">
+              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入" >
             </div>
           </div>
           <div class="col-sm-12">
@@ -51,8 +51,24 @@
     </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
-
+  created() {
+    this.FuncGetBank()
+  },
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetBank,
+      GetterTypes.GetBankData
+    ])
+  },
+  methods: {
+    ...mapActions([
+      FunctionTypes.FuncGetBank
+    ])
+  }
 }
 
 </script>
