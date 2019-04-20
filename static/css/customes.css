@@ -505,7 +505,7 @@ input[type="checkbox"] {
 .checkbox{
 	-webkit-appearance: none;
 	display:inline-block;
-	background: url(../images/checked-un.png) no-repeat;
+	background: url(../img/checked-un.png) no-repeat;
 	width: 44px;
 	height: 43px;
 	cursor: pointer;
@@ -513,7 +513,7 @@ input[type="checkbox"] {
     right: 40px;
 }
 .checkbox.checked {
-	background: url(../images/checked.png) no-repeat;
+	background: url(../img/checked.png) no-repeat;
 }
 
 .bg-time{

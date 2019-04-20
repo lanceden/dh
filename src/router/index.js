@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import UpcashStepOne from '../components/UpCash/StepOne/stepOne_build.vue'
+import UpcashStepTwo from '../components/UpCash/StepTwo/stepTwo_build.vue'
 import MyError from '../components/error.vue'
-import Login from '../components/form/orderForm.vue'
 
 Vue.use(Router)
 
@@ -11,15 +11,15 @@ const router = new Router({
   scrollBehavior: () => ({y: 0}),
   routes: [
     {
-      path: '/upcash',
+      path: '/upcash-1',
       component: UpcashStepOne,
       meta: {
         requiresAuth: false
       }
     },
     {
-      path: '/Login',
-      component: Login
+      path: '/upcash-2',
+      component: UpcashStepTwo
     },
     {
       path: '*',

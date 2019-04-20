@@ -4,5 +4,8 @@ export default {
   },
   SetApiToken({ commit }, { token }) {
     commit('SetApiToken', { token })
+  },
+  SetHeaderIsActive({ commit }, isActive) {
+    commit('SetHeaderIsActive', isActive)
   }
 }

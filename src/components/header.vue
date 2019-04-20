@@ -1,10 +1,10 @@
 <template>
   <div class="step">
     <ul class="ul-step">
-      <li class="ul-step-active">
+      <li :class="{ 'ul-step-active': !HeaderIsActive }">
         <div class="ul-number">step1</div>輸入資料
       </li>
-      <li class="">
+      <li :class="{ 'ul-step-active': HeaderIsActive }">
         <div class="ul-number">step2</div>投保資料
       </li>
       <li class="">
@@ -17,14 +17,12 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+export default {
+  computed: {
+    ...mapGetters([
+      'HeaderIsActive'
+    ])
+  }
+}
 </script>
-<style scopde>
-html .main-header .logo {
-  width: 280px;
-}
-
-html .main-header .navbar {
-  margin-left: 260px;
-}
-
-</style>

@@ -15,31 +15,31 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="廖士儼">
+            <input type="text" class="form-control insure-input-block" id placeholder v-model="GetPostData.client_names" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="民國66年7月23日">
+            <input type="text" class="form-control insure-input-block" id placeholder v-model="GetPostData.client_birth" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="A123456789">
+            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_id" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">戶籍地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder value="同本次申請文件之地址">
+            <input type="text" class="form-control insure-input-block" v-model="GetPostData.InsAddress" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
           <div class="col-sm-12 insure-select-align">
-            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation">
+            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="GetNation">
               <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
             </select>
           </div>
@@ -47,8 +47,8 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">選擇城市</label>
           <div class="col-sm-12 insure-select-align">
-            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="city">
-              <option v-for="item in cityData" :value="item.City">{{item.City}}</option>
+            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="GetCity">
+              <option v-for="item in GetCityData" :value="item.City">{{item.City}}</option>
             </select>
           </div>
         </div>
@@ -60,7 +60,7 @@
 import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import {
-  mapState,
+  mapGetters,
   mapActions
 } from 'vuex'
 export default {
@@ -73,12 +73,16 @@ export default {
     }
   },
   created() {
-    this.FuncGetNationality()
+    this.FuncGetNationality('')
     this.FuncGetCityData()
   },
   computed: {
-    ...mapState([
-      GetterTypes.GetNationData
+    ...mapGetters([
+      GetterTypes.GetNation,
+      GetterTypes.GetNationData,
+      GetterTypes.GetCity,
+      GetterTypes.GetCityData,
+      GetterTypes.GetPostData
     ])
   },
   methods: {

@@ -10,10 +10,24 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetPostData,
+      'HeaderIsActive'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'SetHeaderIsActive'
+    ]),
     GotoNext() {
-      console.log('GotoNext')
+      this.SetHeaderIsActive(true)
+      console.log(this.GetPostData.client_names)
+      console.log(this.HeaderIsActive)
+      this.$router.push('/upcash-2')
     }
   }
 }

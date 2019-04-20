@@ -18,6 +18,7 @@ const state = {
   [stateTypes.OCCUPATION]: '',
   [stateTypes.OCCUPATIONDATA]: [],
   [stateTypes.POSTDATA]: [],
+  [stateTypes.CITY]: '',
   [stateTypes.CITYDATA]: []
 }
 const getters = {
@@ -28,6 +29,7 @@ const getters = {
   [getterTypes.GetOccupation]: state => state.OCCUPATION,
   [getterTypes.GetOccupationData]: state => state.OCCUPATIONDATA,
   [getterTypes.GetPostData]: state => state.POSTDATA,
+  [getterTypes.GetCity]: state => state.CITY,
   [getterTypes.GetCityData]: state => state.CITYDATA
 }
 const actions = {
@@ -78,7 +80,7 @@ const mutations = {
   },
   [functionTypes.FuncGetNationality](state, { result }) {
     state.NATIONDATA = result.Data.Result
-    state.NATION = result.Data.Result[0]
+    state.NATION = result.Data.Result[0].Code
   },
   [functionTypes.FuncGetOccupation](state, { result, occupationCode }) {
     state.OCCUPATIONDATA = result.Data.Result
@@ -88,6 +90,7 @@ const mutations = {
   },
   [functionTypes.FuncGetCityData](state, { result }) {
     state.CITYDATA = result.Data.Result
+    state.CITY = result.Data.Result[0].City
   }
 }
 
