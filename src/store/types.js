@@ -1,3 +1,4 @@
 export default {
-  HeaderIsActive: 'HeaderIsActive'
+  HeaderIsActive: 'HeaderIsActive',
+  BenfinheritDisable: 'BenfinheritDisable'
 }

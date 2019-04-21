@@ -1,0 +1,82 @@
+<template>
+
+  <div class="bg-radius">
+    <div class="top">
+      <div class="top-title">
+        <div class="insure-notice-box">
+          <div class="insure-check"><img src="images/chat.png" alt=""></div>
+            <div class="insure-check-title">請填寫聯絡資料</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-bottom-line"></div>
+      <form class="form-bottom">
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label insure-label">手機</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input" :value="GetPostData.phone_mobile">
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="insure-tips">
+            ※如需修改請至「我的資料管理」修改並通過驗證
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input" :value="GetPostData.phone_area">
+            <input type="text" class="form-control insure-input" :value="GetPostData.phone_main">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">同通訊地址</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input" :value="GetPostData.address1">
+          </div>
+          <div class="checkbox checked"></div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">輸入戶籍地址</label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control insure-input-block" id="" placeholder="為保障您的權益，此欄位不可為空白" value="">
+          </div>
+          <div class="checkbox"></div>
+        </div>
+        <div class="col-sm-12">
+          <div class="insure-tips">
+            ※將同步更新客戶基本資料
+          </div>
+        </div>
+      </form>
+    </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+export default {
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetPostData
+    ]),
+    phone: {
+      get() {
+        this.GetPostData.phone
+      },
+      set(value) {
+        console.log(value)
+      }
+    },
+    address: {
+      get() {
+        return this.GetPostData.address1
+      },
+      set(value) {
+        console.log(value)
+      }
+    }
+  }
+}
+
+</script>

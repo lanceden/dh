@@ -7,5 +7,8 @@ export default {
   },
   SetHeaderIsActive({ commit }, isActive) {
     commit('SetHeaderIsActive', isActive)
+  },
+  SetBenfinheritDisable({ commit }, isDisable) {
+    commit('SetBenfinheritDisable', isDisable)
   }
 }

@@ -5,5 +5,9 @@ export default {
   FuncGetOccupation: 'FuncGetOccupation',
   FuncUpCashInit: 'FuncUpCashInit',
   FuncGetCityData: 'FuncGetCityData',
-  FuncGetBank: 'FuncGetBank'
+  FuncGetBank: 'FuncGetBank',
+  FuncEstimate: 'FuncEstimate',
+  FuncGetBankBranches: 'FuncGetBankBranches',
+  FuncGetBeneficiary: 'FuncGetBeneficiary',
+  FuncGetDistrictData: 'FuncGetDistrictData'
 }

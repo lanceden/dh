@@ -9,6 +9,10 @@ export default {
   GetPostData: 'GetPostData',
   GetCity: 'GetCity',
   GetCityData: 'GetCityData',
+  GetDistrict: 'District',
+  GetDistrictData: 'GetDistrictData',
   GetBank: 'GetBank',
-  GetBankData: 'GetBankData'
+  GetBankData: 'GetBankData',
+  GetBankBranches: 'GetBankBranches',
+  GetBeneficiary: 'GetBeneficiary'
 }

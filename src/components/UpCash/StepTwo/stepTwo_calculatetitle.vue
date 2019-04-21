@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      FunctionTypes.Estimate
+      FunctionTypes.FuncEstimate
     ]),
     Estimate() {
       console.log('QusAns', this.GetPostData.QusAns)
@@ -48,7 +48,9 @@ export default {
       console.log('fst_anny_pay_age', this.GetPostData.fst_anny_pay_age)
       console.log('anny_frequence', this.GetPostData.anny_frequence)
       console.log('value_ind', this.GetPostData.value_ind)
+      console.log('modx_99_ind', this.GetPostData.modx_99_ind)
       console.log('email', this.GetPostData.email)
+      this.FuncEstimate({ para: this.GetPostData })
     }
   }
 }

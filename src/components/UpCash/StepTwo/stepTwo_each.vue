@@ -13,8 +13,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">給付開始日：保險年齡</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit">
-              <option selected>{{parseInt(GetPostData.Age) + 6}}</option>
+            <select class="form-control data-input insure-select insure-input-edit" v-model="fst_anny_pay_age">
+              <option selected="selected" v-for="n in 10">{{fst_anny_pay_age + n - 1}}</option>
             </select>
           </div>
         </div>
@@ -29,9 +29,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <select id="" class="form-control data-input" v-model="isOneTimePayment"
-            @change="OnisOneTimePayment()">
-              <option selected="selected" value="Y">一次給付</option>
+            <select id="" class="form-control data-input" v-model="anny_frequence">
+              <option selected="selected" value="0">一次給付</option>
               <option value="N">分期給付</option>
             </select>
           </div>
@@ -78,12 +77,27 @@ export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetPostData
-    ])
+    ]),
+    anny_frequence: {
+      get() {
+        return this.$store.state.UpCash.POSTDATA.anny_frequence
+      },
+      set(value) {
+        this.isShowperiod = this.isOneTimePayment === 'N'
+        this.$store.state.UpCash.POSTDATA.anny_frequence = value
+      }
+    },
+    fst_anny_pay_age: {
+      get() {
+        return parseInt(this.GetPostData.Age) + 6
+      },
+      set(value) {
+        this.$store.state.UpCash.POSTDATA.fst_anny_pay_age = value
+      }
+    }
   },
   methods: {
-    OnisOneTimePayment() {
-      this.isShowperiod = this.isOneTimePayment === 'N'
-    }
+    OnisOneTimePayment() {}
   }
 }
 

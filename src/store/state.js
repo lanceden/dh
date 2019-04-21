@@ -1,5 +1,6 @@
 export default {
   ApiToken: '',
   Http: {},
-  HeaderIsActive: false
+  HeaderIsActive: false,
+  BenfinheritDisable: false
 }

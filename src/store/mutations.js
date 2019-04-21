@@ -7,5 +7,8 @@ export default {
   },
   SetHeaderIsActive(state, isAcvie) {
     state.HeaderIsActive = isAcvie
+  },
+  SetBenfinheritDisable(state, isDisable) {
+    state.BenfinheritDisable = isDisable
   }
 }
