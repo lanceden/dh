@@ -2,7 +2,7 @@
   <div>
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoNoteACH></StepTwoNoteACH>
-    <StepTwoEach></StepTwoEach>
+    <StepTwoAnnuity></StepTwoAnnuity>
     <StepTwoNotify></StepTwoNotify>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
     <StepTwoCalculateResult></StepTwoCalculateResult>
@@ -15,7 +15,7 @@ import { mapGetters } from 'vuex'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import StepTwoInsuranceData from './stepTwo_insurdata'
 import StepTwoNoteACH from './stepTwo_noteach'
-import StepTwoEach from './stepTwo_each'
+import StepTwoAnnuity from './stepTwo_annuity'
 import StepTwoNotify from './stepTwo_notify'
 import StepTwoCalculateTitle from './stepTwo_calculatetitle'
 import StepTwoCalculateResult from './stepTwo_calculateresult'
@@ -32,7 +32,7 @@ export default {
   components: {
     StepTwoInsuranceData,
     StepTwoNoteACH,
-    StepTwoEach,
+    StepTwoAnnuity,
     StepTwoNotify,
     StepTwoCalculateTitle,
     StepTwoCalculateResult,

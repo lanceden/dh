@@ -41,7 +41,7 @@
           <div class="col-sm-12 insure-select-align">
             <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation" ref="nation">
               <option value="0">請選擇</option>
-              <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
+              <option v-for="item in GetNationData" :value="item.Name">{{item.Name}}</option>
             </select>
           </div>
         </div>

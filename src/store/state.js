@@ -15,5 +15,6 @@ export default {
   NATION: '',
   NATIONDATA: [],
   OCCUPATION: '',
-  OCCUPATIONDATA: []
+  OCCUPATIONDATA: [],
+  ANNUITYPAYTYPE: '1'
 }

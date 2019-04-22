@@ -14,5 +14,6 @@ export default {
   GetNationData: state => state.NATIONDATA,
   GetOccupation: state => state.OCCUPATION,
   GetOccupationData: state => state.OCCUPATIONDATA,
-  GetDistrictData: state => state.DISTRICTDATA
+  GetDistrictData: state => state.DISTRICTDATA,
+  GetAnnuityPayType: state => state.ANNUITYPAYTYPE
 }

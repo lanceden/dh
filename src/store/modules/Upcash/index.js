@@ -51,9 +51,19 @@ const actions = {
 }
 
 const mutations = {
+  /**
+   * 設置投保流程是否已初始化
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
   [functionTypes.FuncIsInit](state, { result }) {
     state.ISINIT = result
   },
+  /**
+   * UpCash 投保流程初始化
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
   [functionTypes.FuncUpCashInit](state, { result }) {
     state.POSTDATA = result.Data.Result
   },

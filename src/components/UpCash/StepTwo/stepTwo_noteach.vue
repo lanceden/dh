@@ -1,6 +1,6 @@
 <template>
   <!--Start 銀行或郵局轉帳 -->
-  <div class="bg-radius">
+  <div class="bg-radius" v-show="!this.GetPostData.IsOneTimePayment">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
@@ -52,12 +52,14 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   created() {
     this.FuncGetBank('103')
   },
   computed: {
     ...mapGetters([
+      GetterTypes.GetPostData,
       'GetBank',
       'GetBankData'
     ])
