@@ -31,7 +31,8 @@ export default {
       this.SetHeaderIsActive(true)
       this.FuncIsInit(true)
       let year = parseInt(moment().format('YYYY')) - 1911
-      this.$store.state.UpCash.POSTDATA.po_issue_date = moment().format(`自民國${year}年MM月DD日起`)
+      this.$store.state.UpCash.POSTDATA.po_issue_date = moment().format('YYYY-MM-DD')
+      this.$store.state.UpCash.POSTDATA.po_issue_date_Name = moment().format(`自民國${year}年MM月DD日起`)
       this.$router.push('/upcash-2')
     },
     ValidateData() {

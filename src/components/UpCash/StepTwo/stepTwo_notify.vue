@@ -56,10 +56,10 @@ export default {
     value_ind: {
       get() {
         this.$store.state.UpCash.POSTDATA.value_ind = '4'
-        return this.$store.state.UpCash.POSTDATA.value_ind
+        return this.$store.state.UpCash.POSTDATA.email
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.value_ind = value
+        this.$store.state.UpCash.POSTDATA.value_ind = '4'
       }
     }
   }

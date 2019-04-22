@@ -30,8 +30,8 @@
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
             <select id="" class="form-control data-input" v-model="anny_frequence">
-              <option selected="selected" value="0">一次給付</option>
-              <option value="N">分期給付</option>
+              <option selected="selected" value="1">一次給付</option>
+              <option value="2">分期給付</option>
             </select>
           </div>
         </div>
@@ -89,6 +89,7 @@ export default {
     },
     fst_anny_pay_age: {
       get() {
+        this.$store.state.UpCash.POSTDATA.fst_anny_pay_age = parseInt(this.GetPostData.Age) + 6
         return parseInt(this.GetPostData.Age) + 6
       },
       set(value) {

@@ -56,20 +56,18 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   created() {
     this.FuncGetBankBranches('103')
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetBankBranches
+      'GetBankBranches'
     ])
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncGetBankBranches
+      'FuncGetBankBranches'
     ])
   }
 }

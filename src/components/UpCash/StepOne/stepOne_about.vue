@@ -16,7 +16,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
           <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode" @change="OnJobChange(jobCode)">
+            <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
               <option v-for="item in GetJobData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">本人僅為台灣之稅務居民</label>
+          <label class="col-sm-12 col-form-label insure-label">本人僅為台灣之稅務居民</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-block-edit" v-model="QusAns">
               <option value="0">請選擇</option>
@@ -45,17 +45,16 @@
 </template>
 
 <script>
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetIsInit,
-      GetterTypes.GetJob,
-      GetterTypes.GetJobData,
-      GetterTypes.GetOccupation,
-      GetterTypes.GetOccupationData
+      'GetJob',
+      'GetJobData',
+      'GetOccupation',
+      'GetOccupationData'
     ]),
     QusAns: {
       get() {
@@ -82,6 +81,7 @@ export default {
         return this.GetJob
       },
       set(value) {
+        this.FuncGetOccupation(value)
         this.$store.state.UpCash.JOB = value
       }
     },
@@ -90,7 +90,7 @@ export default {
         return this.GetOccupation
       },
       set(value) {
-        this.$store.state.UpCash.OCCUPATION = value
+        this.$store.state.OCCUPATION = value
         if (value === '0') {
           alert('請選擇職業名稱')
           this.$store.state.UpCash.POSTDATA.client_occupation_class = ''
@@ -116,13 +116,9 @@ export default {
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncGetJob,
-      FunctionTypes.FuncGetNationality,
-      FunctionTypes.FuncGetOccupation
-    ]),
-    OnJobChange(jobCode) {
-      this.FuncGetOccupation(jobCode)
-    }
+      'FuncGetJob',
+      'FuncGetOccupation'
+    ])
   }
 }
 

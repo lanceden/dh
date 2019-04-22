@@ -39,7 +39,7 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
           <div class="col-sm-12 insure-select-align">
-            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation" ref="nation" >
+            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation" ref="nation">
               <option value="0">請選擇</option>
               <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
             </select>
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import {
   mapGetters,
@@ -77,11 +76,11 @@ export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetIsInit,
-      GetterTypes.GetNation,
-      GetterTypes.GetNationData,
-      GetterTypes.GetCity,
-      GetterTypes.GetCityData,
-      GetterTypes.GetPostData
+      GetterTypes.GetPostData,
+      'GetNation',
+      'GetNationData',
+      'GetCity',
+      'GetCityData'
     ]),
     nation: {
       get() {
@@ -104,7 +103,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncGetNationality
+      'FuncGetNationality'
     ])
   }
 }

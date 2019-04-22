@@ -28,19 +28,17 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetBeneficiary
+      'GetBeneficiary'
     ]),
     benf_num: {
       get() {
         let oriCount = this.GetBeneficiary.length
-        if (oriCount > 0) {
-          this.$store.state.UpCash.POSTDATA.benf_num = oriCount
-          return oriCount
-        } else oriCount
+        if (oriCount === 0) return '1'
+        this.$store.state.UpCash.POSTDATA.benf_num = oriCount
+        return oriCount
       },
       set(value) {
         this.$store.state.UpCash.POSTDATA.benf_num = value

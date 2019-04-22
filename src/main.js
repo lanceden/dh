@@ -16,7 +16,7 @@ Object.keys(filters)
   .forEach(key => Vue.filter(key, filters[key]))
 
 Vue.prototype.$http = { axios }
-Vue.prototype.$RequestToken = '6B6Tjp1k5NFniEuiz+m9jTn4WP7Mk6iKWhDh+xOI672FoZea9CPjcaJGPhDGP0IxPIFkPiZNU9I2ni+6ceuI8TcKGkXt101mW/IFc3wKIziNQz+zFGpvqCPTRBlxa9JIbDNdXKr6hr/Z0WDTuzU/60lhE/7rVj9MovYRnx+r+mKTMt/gKYwcOVdfFYd0R1ulQpFmRqQTZCGxLXc8lm2tD/TOlJ4QealY8dHsI62y1BLq2KXQFwdZACMFPovqvQNsa+mfODvzKCs0HYl1h+2hrV6vtVe2GlhMUpoAb1/HM1E='
+Vue.prototype.$RequestToken = 'HYmXVtPXTuZuoqGWZkKkNyyUsa7iERiPQgfdAqiF3bQU3SFevDkcDoCrefLHtcNzPIFkPiZNU9I2ni+6ceuI8TcKGkXt101mW/IFc3wKIziNQz+zFGpvqCPTRBlxa9JIng6KZwnscSpnM8bD27UIYklhE/7rVj9MovYRnx+r+mKTMt/gKYwcOVdfFYd0R1ullruGeXhGGX1xmlMCblyeWdg0+8k5ChoWef6eNLLcjn4KUYai23ORfXdZ67LXW+lAmYke01n2A3Lau/s87Y9o39ggtpbr/Lms+k0baBFxqbE='
 
 axios.interceptors.response.use(function(response) {
   return response

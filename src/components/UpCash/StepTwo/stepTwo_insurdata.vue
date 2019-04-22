@@ -21,7 +21,7 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetPostData.po_issue_date}}</div>
+            <div class="insure-input-block">{{GetPostData.po_issue_date_Name}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -149,7 +149,8 @@ export default {
     init_method: {
       get() {
         if (this.$store.state.UpCash.POSTDATA.init_method === undefined ||
-          this.$store.state.UpCash.POSTDATA.init_method === null) {
+          this.$store.state.UpCash.POSTDATA.init_method === null ||
+          this.$store.state.UpCash.POSTDATA.init_method === '') {
           return 0
         }
         return this.$store.state.UpCash.POSTDATA.init_method
@@ -161,7 +162,8 @@ export default {
     modx_99_ind: {
       get() {
         if (this.$store.state.UpCash.POSTDATA.modx_99_ind === undefined ||
-          this.$store.state.UpCash.POSTDATA.modx_99_ind === null) {
+          this.$store.state.UpCash.POSTDATA.modx_99_ind === null ||
+          this.$store.state.UpCash.POSTDATA.modx_99_ind === '') {
           return 'N'
         }
         return this.$store.state.UpCash.POSTDATA.modx_99_ind

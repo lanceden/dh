@@ -16,7 +16,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death">
+            <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death">
               <option selected="selected" value="0">請選擇</option>
               <option value="2">配偶</option>
               <option value="3">父母子女</option>
@@ -28,7 +28,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">受益人國籍</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritDisable">
+            <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritDisable">
               <option selected="selected" value="0">請選擇</option>
               <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
             </select>
@@ -90,9 +90,7 @@
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritDisable">
             </select>
-            <select v-else class="form-control data-input insure-select insure-input-edit" 
-            v-model="BenfAdd_City"
-            v-bind:disabled="BenfinheritDisable">
+            <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City" v-bind:disabled="BenfinheritDisable">
               <option selected="selected">請選擇</option>
               <option v-for="item in GetCityData" :value="item.City">{{item.City}}</option>
             </select>
@@ -126,45 +124,56 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
 export default {
   created() {
     this.FuncGetCityData()
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncGetCityData,
-      FunctionTypes.FuncGetDistrictData,
+      'FuncGetCityData',
+      'FuncGetDistrictData',
       'SetBenfinheritDisable'
     ])
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetBeneficiary,
-      GetterTypes.GetNationData,
-      GetterTypes.GetCityData,
-      GetterTypes.GetDistrictData,
+      'GetBeneficiary',
+      'GetNationData',
+      'GetCityData',
+      'GetDistrictData',
       'BenfinheritDisable'
     ]),
+    /**
+     * 受益人姓名
+     */
     benf_name: {
       get() {
-        return this.GetBeneficiary[0].Name
+        return this.GetBeneficiary.length === 0 ? '' : this.GetBeneficiary[0].Name
       },
       set(value) {
         this.$store.state.UpCash.POSTDATA.benf_name = value
       }
     },
+    /**
+     * 給付方式
+     */
     benf_num: {
       get() {
+        console.log(this.$store.state.UpCash.POSTDATA.benf_num)
         return this.$store.state.UpCash.POSTDATA.benf_num
       },
       set(value) {
         this.$store.state.UpCash.POSTDATA.benf_num = value
       }
     },
+    /**
+     * 受益人關係
+     */
     relation_ben_death: {
       get() {
+        if (this.$store.state.UpCash.POSTDATA.relation_ben_death === undefined || this.$store.state.UpCash.POSTDATA.relation_ben_death === null) {
+          return '0'
+        }
         return this.$store.state.UpCash.POSTDATA.relation_ben_death
       },
       set(value) {
@@ -172,6 +181,9 @@ export default {
         this.$store.state.UpCash.POSTDATA.relation_ben_death = value
       }
     },
+    /**
+     * 給付方式之比例
+     */
     relation_ben_death_seq_percent: {
       get() {
         return this.$store.state.UpCash.POSTDATA.relation_ben_death_seq_percent
@@ -180,6 +192,9 @@ export default {
         this.$store.state.UpCash.POSTDATA.relation_ben_death_seq_percent = value
       }
     },
+    /**
+     * 受益人國籍
+     */
     BenfNationality: {
       get() {
         return '0'
@@ -188,10 +203,13 @@ export default {
         this.$store.state.UpCash.POSTDATA.BenfNationality = value
       }
     },
+    /**
+     * 受益人城市
+     */
     BenfAdd_City: {
       get() {
-        if(this.$store.state.UpCash.POSTDATA.BenfAdd_City === undefined ||
-        this.$store.state.UpCash.POSTDATA.BenfAdd_City === null) {
+        if (this.$store.state.UpCash.POSTDATA.BenfAdd_City === undefined ||
+          this.$store.state.UpCash.POSTDATA.BenfAdd_City === null) {
           return '0'
         }
         return this.$store.state.UpCash.POSTDATA.BenfAdd_City

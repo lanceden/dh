@@ -52,21 +52,19 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   created() {
     this.FuncGetBank('103')
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetBank,
-      GetterTypes.GetBankData
+      'GetBank',
+      'GetBankData'
     ])
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncGetBank
+      'FuncGetBank'
     ])
   }
 }
