@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-radius">
+  <div class="bg-radius" v-show="GetPostData.mode_prem > 0">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">

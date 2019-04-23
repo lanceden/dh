@@ -16,29 +16,28 @@
             <div class="insure-input-block"></div>
             <input type="text" class="form-control insure-input insure-input-edit" readonly="readonly" v-model="value_ind">
           </div>
-          <div class="checkbox checked"></div>
+          <div :class="[{ checked: test }, { checkbox: true }]" @click="OnCheck(0)"></div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">寄送至客戶住所(通訊地址)</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{GetPostData.InsAddress}}</div>
           </div>
-          <div class="checkbox"></div>
+          <div :class="[{ checked: test }, { checkbox: true }]" @click="OnCheck(1)"></div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">輸入新的電子信箱</label>
           <div class="col-sm-12">
             <input type="text" class="form-control insure-input-block" id="" placeholder="為保障您的權益，此欄位不可為空白" value="">
           </div>
-          <div class="checkbox"></div>
+          <div :class="[{ checked: test }, { checkbox: true }]" @click="OnCheck(2)"></div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">輸入新的寄送地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" 
-              placeholder="為保障您的權益，此欄位不可為空白" value="">
+            <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" value="">
           </div>
-          <div class="checkbox"></div>
+          <div :class="[{ checked: test }, { checkbox: true }]" @click="OnCheck(4)"></div>
         </div>
       </form>
     </div>
@@ -49,9 +48,15 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  data() {
+    return {
+      test: true
+    }
+  },
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData
+      GetterTypes.GetPostData,
+      'GetNotifyCheckBox'
     ]),
     value_ind: {
       get() {
@@ -61,6 +66,11 @@ export default {
       set(value) {
         this.$store.state.UpCash.POSTDATA.value_ind = '4'
       }
+    }
+  },
+  methods: {
+    OnCheck() {
+      this.test = !this.test
     }
   }
 }

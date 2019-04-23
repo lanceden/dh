@@ -16,5 +16,12 @@ export default {
   NATIONDATA: [],
   OCCUPATION: '',
   OCCUPATIONDATA: [],
-  ANNUITYPAYTYPE: '1'
+  ANNUITYPAYTYPE: '1',
+  CONTACTCHECKBOX: true,
+  NOTIFYCHECKBOX: [
+    true,
+    false,
+    false,
+    false
+  ]
 }

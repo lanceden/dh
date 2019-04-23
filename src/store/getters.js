@@ -15,5 +15,7 @@ export default {
   GetOccupation: state => state.OCCUPATION,
   GetOccupationData: state => state.OCCUPATIONDATA,
   GetDistrictData: state => state.DISTRICTDATA,
-  GetAnnuityPayType: state => state.ANNUITYPAYTYPE
+  GetAnnuityPayType: state => state.ANNUITYPAYTYPE,
+  GetContactCheckBox: state => state.CONTACTCHECKBOX,
+  GetNotifyCheckBox: state => state.NOTIFYCHECKBOX
 }

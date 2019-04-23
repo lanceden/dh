@@ -156,6 +156,7 @@ export default {
         return this.GetPostData.init_method
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.init_method = value
       }
     },
@@ -167,6 +168,7 @@ export default {
         return this.GetPostData.IsOneTimePayment
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.IsOneTimePayment = value === 'true'
       }
     },
@@ -183,6 +185,7 @@ export default {
           alert('請填寫第一期保險費。')
           return
         }
+        this.GetPostData.mode_prem = 0
         this.GetPostData.face_amt = value
       }
     },
@@ -196,6 +199,7 @@ export default {
       set(value) {
         // 分期繳付:N 不定期繳:Y
         this.OnUntimed(value)
+        this.GetPostData.mode_prem = 0
         this.GetPostData.modx_99_ind = value
       }
     },
@@ -206,6 +210,7 @@ export default {
         return result === 0 ? '' : result
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.qpoop_25_prem = value
       }
     },
@@ -216,6 +221,7 @@ export default {
         return result === '' ? '0' : result
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.qpoop_25_modx = value
       }
     }
