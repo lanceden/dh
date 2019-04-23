@@ -3,6 +3,12 @@ import rootState from './state'
 
 const planCode = 'UC099'
 export default {
+  SetShowLoading({ commit }) {
+    commit('SetShowLoading')
+  },
+  SethideLoading({ commit }) {
+    commit('SethideLoading')
+  },
   SetHttp({ commit }, { http }) {
     commit('SetHttp', { http })
   },

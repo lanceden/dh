@@ -1,4 +1,10 @@
 export default {
+  SetShowLoading(state) {
+    state.ShowLoading = true
+  },
+  SethideLoading(state) {
+    state.ShowLoading = false
+  },
   SetHttp(state, { http }) {
     state.Http = http
   },

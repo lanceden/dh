@@ -71,9 +71,6 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
-  created() {
-    console.log(this.GetPostData.Age)
-  },
   computed: {
     ...mapGetters([
       'GetAnnuityPayType',

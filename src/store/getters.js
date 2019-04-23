@@ -1,5 +1,6 @@
 import types from './types'
 export default {
+  GetLoading: state => state.ShowLoading,
   [types.HeaderIsActive]: state => state.HeaderIsActive,
   [types.BenfinheritDisable]: state => state.BenfinheritDisable,
   GetJob: state => state.JOB,
