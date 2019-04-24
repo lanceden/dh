@@ -8,6 +8,7 @@
     <BenfTwoAccount></BenfTwoAccount>
     <BenfThree></BenfThree>
     <BenfThreeAccount></BenfThreeAccount>
+    <BenfFooter></BenfFooter>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import BenfTwo from './benftwo'
 import BenfTwoAccount from './benftwoAccount'
 import BenfThree from './benfthree'
 import BenfThreeAccount from './benfthreeAccount'
+import BenfFooter from './benffooter'
 export default {
   computed: {
     ...mapGetters([
@@ -33,7 +35,8 @@ export default {
     BenfTwo,
     BenfTwoAccount,
     BenfThree,
-    BenfThreeAccount
+    BenfThreeAccount,
+    BenfFooter
   }
 }
 

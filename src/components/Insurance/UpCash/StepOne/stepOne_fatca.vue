@@ -4,7 +4,7 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check">
-            <img src="images/chat.png" alt>
+            <img src="../../../../static/img/chat.png" alt>
           </div>
             <div class="insure-check-title">FATCA及CRS個人客戶自我聲明書- 基本資料</div>
           </div>

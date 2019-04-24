@@ -15,7 +15,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身故受益人個數</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit" v-model="benf_num">
+            <select class="form-control data-input insure-select insure-input-edit" v-model="benf_num">
               <option selected="selected" value="1">一位</option>
               <option value="2">二位</option>
               <option value="3">三位</option>
@@ -36,7 +36,7 @@ export default {
     ]),
     benf_num: {
       get() {
-        return this.GetUpCashPostData.benf_num
+        return this.GetUpCashPostData.benf_num || 1
       },
       set(value) {
         this.GetUpCashPostData.benf_num = value

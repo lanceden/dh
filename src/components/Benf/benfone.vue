@@ -101,7 +101,7 @@
             <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
             </select>
             <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County" v-bind:disabled="BenfinheritOneDisable">
-              <option selected="selected">請選擇</option>
+              <option selected="selected" value="0">請選擇</option>
               <option v-for="item in GetDistrictData" :value="item.Zip + item.Area">{{item.Area}}</option>
             </select>
           </div>
@@ -229,7 +229,7 @@ export default {
      */
     BenfNationality: {
       get() {
-        return this.GetUpCashPostData.BenfNationality === null ? 0 : this.GetUpCashPostData.BenfNationality
+        return (this.GetUpCashPostData.BenfNationality === undefined || this.GetUpCashPostData.BenfNationality === null) ? 0 : this.GetUpCashPostData.BenfNationality
       },
       set(value) {
         this.GetUpCashPostData.BenfNationality = value
@@ -240,11 +240,8 @@ export default {
      */
     BenfAdd_City: {
       get() {
-        if (this.GetUpCashPostData.BenfAdd_City === undefined ||
-          this.GetUpCashPostData.BenfAdd_City === null) {
-          return 0
-        }
-        return this.GetUpCashPostData.BenfAdd_City
+        return (this.GetUpCashPostData.BenfAdd_City === undefined ||
+          this.GetUpCashPostData.BenfAdd_City === null) ? 0 : this.GetUpCashPostData.BenfAdd_City
       },
       set(value) {
         this.FuncGetDistrictData(value)
@@ -256,7 +253,8 @@ export default {
      */
     BenfAdd_County: {
       get() {
-        return this.GetUpCashPostData.BenfAdd_County
+        return (this.GetUpCashPostData.BenfAdd_County === undefined ||
+          this.GetUpCashPostData.BenfAdd_County === null) ? 0 : this.GetUpCashPostData.BenfAdd_County
       },
       set(value) {
         this.GetUpCashPostData.BenfAddZip = value.substring(0, 3)

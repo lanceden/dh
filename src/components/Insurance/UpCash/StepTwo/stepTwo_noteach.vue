@@ -33,7 +33,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入" >
+              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入">
             </div>
           </div>
           <div class="col-sm-12">
@@ -48,6 +48,24 @@
             </div>
           </div>
       </form>
+      <!-- Modal -->
+      <div class="modal fade" id="service-center" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-toped" role="document">
+          <div class="modal-content">
+            <!-- <div class="modal-header"></div> -->
+            <div class="modal-body">
+              <div class="modal-title">全國新光人壽行政中心繳費</div>
+              <div class="modal-title-line"></div>
+              <div class="modal-text">繳費金額限制，請見本商品受理規定。多元繳費方式，請見<a class="modal-link" href="http://www.skl.com.tw">新光人壽官網</a>保戶服務>保單服務>繳費服務>繳費管道>自行繳交續期保費。</div>
+            </div>
+            <div class="modal-footer">
+              <!-- <button class="btn-modal-left" type="">關閉</button>
+      	      <button class="btn-modal-right" type="">下一步</button> -->
+              <button class="btn-modal-block" type="" onclick="$('#service-center').modal('hide')">確定</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 <script>

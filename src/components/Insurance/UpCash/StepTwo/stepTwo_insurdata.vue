@@ -63,8 +63,9 @@
             <label for class="col-sm-12 col-form-label insure-label insure-label">約定續期繳法別</label>
             <div class="col-sm-12 insure-select-align">
               <select id class="form-control data-input insure-select insure-input-edit" v-model="modx_99_ind">
-                <option value="Y" selected="selected">不定期繳</option>
-                <option value="N">分期繳付</option>
+                <option value="0" selected="selected">請選擇</option>
+                <option value="'Y'" >不定期繳</option>
+                <option value="'N'">分期繳付</option>
               </select>
             </div>
           </div>
@@ -79,7 +80,7 @@
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <div class="insure-tips-text" data-toggle="modal" data-target="#service-center">
+                <div class="insure-tips-text" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#service-center">
                   <img src="../../../../static/img/insure-link.png">
               查詢各服務中心資訊
             </div>
@@ -192,9 +193,9 @@ export default {
     // 約定續期繳法別
     modx_99_ind: {
       get() {
-        let result = this.GetUpCashPostData.modx_99_ind
-        this.OnUntimed(result)
-        return result === '' ? 'Y' : result
+        let result = this.GetUpCashPostData.modx_99_ind || 0
+        if(result !== 0) this.OnUntimed(result)
+        return result === 'Y' ? 'Y' : result
       },
       set(value) {
         // 分期繳付:N 不定期繳:Y
