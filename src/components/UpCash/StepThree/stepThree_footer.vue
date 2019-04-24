@@ -16,7 +16,7 @@ export default {
       this.$router.push('upcash-2')
     },
     GoNext() {
-      this.$router.push('upcash-4')
+      this.$router.push('benf')
     }
   }
 }

@@ -33,7 +33,7 @@ var vm = new Vue({
   el: '#app',
   created() {
     axios.interceptors.request.use(function(config) {
-      store.dispatch('SetShowLoading')
+      // store.dispatch('SetShowLoading')
       config.headers['Authorization'] = 'Bearer ' + vm.$RequestToken
       return config
     }, function(error) {
