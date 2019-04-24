@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <StepOneCustomer></StepOneCustomer>
     <StepOneAbout></StepOneAbout>
     <StepOneFatca></StepOneFatca>
@@ -23,6 +24,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetLoading',
       GetterTypes.GetIsInit
     ])
   },

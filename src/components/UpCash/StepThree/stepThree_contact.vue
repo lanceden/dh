@@ -32,16 +32,16 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">同通訊地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" :value="GetPostData.address1">
+            <input type="text" class="form-control insure-input" :value="GetPostData.address1" :disabled="!GetContactCheckBox">
           </div>
-          <div class="checkbox checked"></div>
+          <div :class="{checkbox: true, checked: GetContactCheckBox}" @click="OnRegisterAddr()"></div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">輸入戶籍地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id="" placeholder="為保障您的權益，此欄位不可為空白" value="">
+            <input type="text" class="form-control insure-input-block" :disabled="GetContactCheckBox" placeholder="為保障您的權益，此欄位不可為空白" value="">
           </div>
-          <div class="checkbox"></div>
+          <div :class="{checkbox: true, checked: !GetContactCheckBox}" @click="OnRegisterAddr()"></div>
         </div>
         <div class="col-sm-12">
           <div class="insure-tips">
@@ -58,7 +58,8 @@ import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.j
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData
+      GetterTypes.GetPostData,
+      'GetContactCheckBox'
     ]),
     phone: {
       get() {
@@ -75,6 +76,24 @@ export default {
       set(value) {
         console.log(value)
       }
+    }
+  },
+  methods: {
+    OnRegisterAddr() {
+      let result = !this.$store.state.CONTACTCHECKBOX
+      // 設定輸入戶籍地址
+      if (!result) {
+        // 先留著看日後會不會調整為下拉框方式
+        /**
+            // 戶籍地址
+            var city2 = $("#UpCashRegisteredCity").val();
+            var district = $("#UpCashRegisteredCounty").val();
+            var zip2 = district.length > 0 ? district.substring(0, 3) : "";
+            var district2 = district.length > 3 ? district.substring(3) : "";
+            var road2 = $("#UpCashRegisteredRoad").val();
+             */
+      }
+      this.$store.state.CONTACTCHECKBOX = result
     }
   }
 }

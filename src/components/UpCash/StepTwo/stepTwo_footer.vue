@@ -33,7 +33,7 @@ export default {
      */
     GoNext() {
       // 判斷是否有試算,沒有則跳錯誤
-      let modePrem = this.GetPostData.GetPostData
+      let modePrem = this.GetPostData.mode_prem
       if(!parseInt(modePrem) > 0) {
         alert('請先試算保費')
         return

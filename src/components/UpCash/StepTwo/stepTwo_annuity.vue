@@ -14,7 +14,8 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">給付開始日：保險年齡</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="fst_anny_pay_age">
-              <option selected="selected" v-for="n in 10">{{fst_anny_pay_age + n - 1}}</option>
+              <option selected="selected" :value="fst_anny_pay_age">{{fst_anny_pay_age}}</option>
+              <option v-for="n in 86 - fst_anny_pay_age" :value="fst_anny_pay_age + n">{{fst_anny_pay_age + n}}</option>
             </select>
           </div>
         </div>
@@ -70,9 +71,6 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
-  created() {
-    console.log(this.GetPostData.Age)
-  },
   computed: {
     ...mapGetters([
       'GetAnnuityPayType',
@@ -83,40 +81,41 @@ export default {
         return this.GetAnnuityPayType
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.$store.state.ANNUITYPAYTYPE = value
       }
     },
+    // 分期給付方式
     anny_frequence: {
       get() {
-        return this.GetPostData.anny_frequence
+        return this.GetPostData.anny_frequence === '' ? 0 : this.GetPostData.anny_frequence
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.anny_frequence = value
-        console.log(this.GetPostData.anny_frequence)
       }
     },
+    // 給付開始日：保險年齡
     fst_anny_pay_age: {
       get() {
         this.GetPostData.fst_anny_pay_age = parseInt(this.GetPostData.Age) + 6
         return parseInt(this.GetPostData.Age) + 6
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.fst_anny_pay_age = value
+        console.log(this.GetPostData.fst_anny_pay_age)
       }
     },
     // 保證期間
     qpoop_19_year: {
       get() {
-        return this.GetPostData.qpoop_19_year
+        return this.GetPostData.qpoop_19_year === '' ? 0 : this.GetPostData.qpoop_19_year
       },
       set(value) {
+        this.GetPostData.mode_prem = 0
         this.GetPostData.qpoop_19_year = value
       }
-    }
-  },
-  methods: {
-    OnPayEach(event) {
-      console.log(event)
     }
   }
 }

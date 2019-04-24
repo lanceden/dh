@@ -1,5 +1,6 @@
 import types from './types'
 export default {
+  GetLoading: state => state.ShowLoading,
   [types.HeaderIsActive]: state => state.HeaderIsActive,
   [types.BenfinheritDisable]: state => state.BenfinheritDisable,
   GetJob: state => state.JOB,
@@ -15,5 +16,7 @@ export default {
   GetOccupation: state => state.OCCUPATION,
   GetOccupationData: state => state.OCCUPATIONDATA,
   GetDistrictData: state => state.DISTRICTDATA,
-  GetAnnuityPayType: state => state.ANNUITYPAYTYPE
+  GetAnnuityPayType: state => state.ANNUITYPAYTYPE,
+  GetContactCheckBox: state => state.CONTACTCHECKBOX,
+  GetNotifyCheckBox: state => state.NOTIFYCHECKBOX
 }
