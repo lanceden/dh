@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/chat.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
             <div class="insure-check-title">年金約定</div>
           </div>
         </div>
@@ -69,7 +69,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([

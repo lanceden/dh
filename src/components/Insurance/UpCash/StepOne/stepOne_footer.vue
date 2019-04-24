@@ -10,8 +10,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 import moment from 'moment'
 export default {
   computed: {

@@ -13,7 +13,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import StepTwoInsuranceData from './stepTwo_insurdata'
 import StepTwoNoteACH from './stepTwo_noteach'
 import StepTwoAnnuity from './stepTwo_annuity'

@@ -4,7 +4,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/account.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/account.png" alt=""></div>
             <div class="insure-check-title">要保人匯款帳戶</div>
           </div>
         </div>
@@ -22,7 +22,7 @@
         </div>
         <div class="col-sm-12">
           <div class="insure-tips-text" onclick="location.href='Insure-BankList.html'">
-            <img src="images/insure-link.png" alt="">查詢合作金融機構
+            <img src="../../../../../static/img/insure-link.png" alt="">查詢合作金融機構
 				</div>
           </div>
           <div class="form-group row">

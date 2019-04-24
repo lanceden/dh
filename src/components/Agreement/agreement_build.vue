@@ -1,7 +1,7 @@
 <template>
   <div>
     <AgreementCheck></AgreementCheck>
-    <AgreementContent v-for="n in 10"></AgreementContent>
+    <AgreementContent v-for="n in 10" :key="n"></AgreementContent>
     <AgreementFooter></AgreementFooter>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/chat.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
             <div class="insure-check-title">主要給付項目：年金</div>
           </div>
         </div>
@@ -21,9 +21,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
-import { valEstimateData, setDataOnEstimateStep } from '../../../utils/validateEstimateData'
+import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import { valEstimateData, setDataOnEstimateStep } from '../../../../utils/validateEstimateData'
 export default {
   computed: {
     ...mapGetters([

@@ -4,7 +4,7 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check">
-            <img src="../../../../static/img/chat.png" alt>
+            <img src="../../../../../static/img/chat.png" alt>
           </div>
             <div class="insure-check-title">請填寫投保資料</div>
           </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="col-sm-12">
           <div class="insure-tips-text">
-            <img src="../../../../static/img/insure-link.png" alt>刷卡攻略
+            <img src="../../../../../static/img/insure-link.png" alt>刷卡攻略
         </div>
           </div>
           <div class="form-group row">
@@ -81,19 +81,19 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="insure-tips-text" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#service-center">
-                  <img src="../../../../static/img/insure-link.png">
+                  <img src="../../../../../static/img/insure-link.png">
               查詢各服務中心資訊
             </div>
                 </div>
                 <div class="col-sm-3 insure-col">
                   <div class="insure-tips-text">
-                    <img src="../../../../static/img/insure-link.png">
+                    <img src="../../../../../static/img/insure-link.png">
               繳費金額
             </div>
                   </div>
                   <div class="col-sm-3 insure-col">
                     <div class="insure-tips-text">
-                      <img src="../../../../static/img/insure-link.png">繳費方式
+                      <img src="../../../../../static/img/insure-link.png">繳費方式
             </div>
                     </div>
                   </div>
@@ -129,7 +129,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   data() {
     return {

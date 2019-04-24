@@ -10,8 +10,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
-import FunctionTypes from '../../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
+import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
+import FunctionTypes from '../../../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
 import moment from 'moment'
 export default {
   computed: {

@@ -10,8 +10,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import FunctionTypes from '../../../store/modules/Upcash/Types/UpCashFunctionTypes'
-import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import StepOneCustomer from './stepOne_customer'
 import StepOneAbout from './stepOne_about'
 import StepOneFatca from './stepOne_fatca'
