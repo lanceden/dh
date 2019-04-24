@@ -1,5 +1,6 @@
 export default {
-  FuncIsInit: 'FuncIsInit',
+  FuncUpCashIsInit: 'FuncUpCashIsInit',
   FuncUpCashInit: 'FuncUpCashInit',
-  FuncEstimate: 'FuncEstimate'
+  FuncUpCashEstimate: 'FuncUpCashEstimate',
+  FuncUpCashSubmitQuote: 'FuncUpCashSubmitQuote'
 }

@@ -15,7 +15,7 @@
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="fst_anny_pay_age">
               <option selected="selected" :value="fst_anny_pay_age">{{fst_anny_pay_age}}</option>
-              <option v-for="n in 86 - fst_anny_pay_age" :value="fst_anny_pay_age + n">{{fst_anny_pay_age + n}}</option>
+              <option v-for="n in 86 - fst_anny_pay_age" :key="n" :value="fst_anny_pay_age + n">{{fst_anny_pay_age + n}}</option>
             </select>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default {
       },
       set(value) {
         this.GetUpCashPostData.mode_prem = 0
-        this.$store.state.ANNUITYPAYTYPE = value
+        this.GetUpCashPostData.ANNUITYPAYTYPE = value
       }
     },
     // 分期給付方式

@@ -7,21 +7,21 @@ import rootState from '../../state'
 const APICODE = 'InsuranceWeb'
 
 const state = {
-  [stateTypes.ISINIT]: false,
+  [stateTypes.MYWAYISINIT]: false,
   [stateTypes.POSTDATA]: []
 }
 const getters = {
-  [getterTypes.MyWayGetIsInit]: state => state.ISINIT,
+  [getterTypes.MyWayGetIsInit]: state => state.MYWAYISINIT,
   [getterTypes.MyWayGetPostData]: state => state.POSTDATA
 }
 const actions = {
   /**
    * 設置投保流程是否已初始化
    * @param {commit} param0 提交狀態
-   * @param {bool} isInit 是否已初始化
+   * @param {bool} MYWAYISINIT 是否已初始化
    */
-  [functionTypes.FuncIsInit]({ commit }, isInit) {
-    commit(functionTypes.FuncIsInit, { result: isInit })
+  [functionTypes.FuncMyWayIsInit]({ commit }, MYWAYISINIT) {
+    commit(functionTypes.FuncMyWayIsInit, { result: MYWAYISINIT })
   },
   /**
    * MyWay 投保流程初始化
@@ -40,12 +40,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncEstimate]({ commit }, { para }) {
+  [functionTypes.FuncMyWayEstimate]({ commit }, { para }) {
     rootState.Http.axios.post(`${Url.MyWayEstimate}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncEstimate, { result: response.data })
+      commit(functionTypes.FuncMyWayEstimate, { result: response.data })
     })
   }
 }
@@ -56,8 +56,8 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncIsInit](state, { result }) {
-    state.ISINIT = result
+  [functionTypes.FuncMyWayIsInit](state, { result }) {
+    state.MYWAYISINIT = result
   },
   /**
    * MyWay 投保流程初始化
@@ -72,7 +72,7 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncEstimate(state, { result }) {
+  FuncMyWayEstimate(state, { result }) {
     state.POSTDATA = result.Data.Result
   }
 }

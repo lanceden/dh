@@ -1,5 +1,5 @@
 export default {
-  FuncIsInit: 'FuncIsInit',
+  FuncMyWayIsInit: 'FuncMyWayIsInit',
   FuncMyWayInit: 'FuncMyWayInit',
-  FuncEstimate: 'FuncEstimate'
+  FuncMyWayEstimate: 'FuncMyWayEstimate'
 }

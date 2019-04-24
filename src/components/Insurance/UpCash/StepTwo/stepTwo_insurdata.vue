@@ -75,7 +75,7 @@
             <label for class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
             <div class="col-sm-12">
               <select id class="form-control data-input">
-                <option v-for="(item, index) in payType" :value="index">{{item}}</option>
+                <option v-for="(item, index) in payType" :key="index" :value="index">{{item}}</option>
               </select>
             </div>
             <div class="row">

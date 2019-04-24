@@ -15,7 +15,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit">
-              <option v-for="item in GetBankData" :value="item.bank_code">{{item.bank_name}}</option>
+              <option v-for="item in GetBankData" :key="n" :value="item.bank_code">{{item.bank_name}}</option>
             </select>
           </div>
         </div>

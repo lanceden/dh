@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
         </div>
@@ -17,7 +17,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
-              <option v-for="item in GetJobData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+              <option v-for="item in GetJobData" :key="n" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -26,7 +26,7 @@
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
               <option value="0" selected="selected">請選擇</option>
-              <option v-for="item in GetOccupationData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+              <option v-for="item in GetOccupationData" :key="n" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -51,6 +51,7 @@ export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetUpCashIsInit,
+      GetterTypes.GetUpCashPostData,
       'GetJob',
       'GetJobData',
       'GetOccupation',
@@ -58,10 +59,10 @@ export default {
     ]),
     QusAns: {
       get() {
-        if (this.$store.state.UpCash.POSTDATA.QusAns === undefined ||
-          this.$store.state.UpCash.POSTDATA.QusAns === null) {
+        if (this.GetUpCashPostData.QusAns === undefined ||
+          this.GetUpCashPostData.QusAns === null) {
           return '0'
-        } else return this.$store.state.UpCash.POSTDATA.QusAns[0].Answar
+        } else return this.GetUpCashPostData.QusAns[0].Answar
       },
       set(value) {
         if (value === '0') {
@@ -72,8 +73,8 @@ export default {
         if (!result) {
           alert('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
         }
-        this.$store.state.UpCash.POSTDATA.QusAns = [{ Answar: result }]
-        this.$store.state.UpCash.POSTDATA.IsTaiwanTaxDuty = result
+        this.GetUpCashPostData.QusAns = [{ Answar: result }]
+        this.GetUpCashPostData.IsTaiwanTaxDuty = result
       }
     },
     jobCode: {
@@ -93,16 +94,16 @@ export default {
         this.$store.state.OCCUPATION = value
         if (value === '0') {
           alert('請選擇職業名稱')
-          this.$store.state.UpCash.POSTDATA.client_occupation_class = ''
-          this.$store.state.UpCash.POSTDATA.client_occupation_class_code = ''
-          this.$store.state.UpCash.POSTDATA.client_occupation_class_code_name = ''
+          this.GetUpCashPostData.client_occupation_class = ''
+          this.GetUpCashPostData.client_occupation_class_code = ''
+          this.GetUpCashPostData.client_occupation_class_code_name = ''
           return
         }
         this.GetOccupationData.forEach(data => {
           if (data.OCCUPATION_CODE === value) {
-            this.$store.state.UpCash.POSTDATA.client_occupation_class = data.OCCUPATION_CLASS
-            this.$store.state.UpCash.POSTDATA.client_occupation_class_code = data.OCCUPATION_CODE
-            this.$store.state.UpCash.POSTDATA.client_occupation_class_code_name = data.OCCUPATION_DESC
+            this.GetUpCashPostData.client_occupation_class = data.OCCUPATION_CLASS
+            this.GetUpCashPostData.client_occupation_class_code = data.OCCUPATION_CODE
+            this.GetUpCashPostData.client_occupation_class_code_name = data.OCCUPATION_DESC
           }
         })
       }

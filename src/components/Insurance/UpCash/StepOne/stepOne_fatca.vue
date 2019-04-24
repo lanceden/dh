@@ -41,7 +41,7 @@
           <div class="col-sm-12 insure-select-align">
             <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation" ref="nation">
               <option value="0">請選擇</option>
-              <option v-for="item in GetNationData" :value="item.Name">{{item.Name}}</option>
+              <option v-for="item in GetNationData" :key="n" :value="item.Name">{{item.Name}}</option>
             </select>
           </div>
         </div>
@@ -87,8 +87,8 @@ export default {
         return this.GetNation
       },
       set(value) {
-        this.$store.state.UpCash.NATION = value
-        this.$store.state.UpCash.POSTDATA.CRSData.birth_national = value
+        this.GetUpCashPostData.NATION = value
+        this.GetUpCashPostData.POSTDATA.CRSData.birth_national = value
       }
     },
     city: {
@@ -96,8 +96,8 @@ export default {
         return this.GetCity
       },
       set(value) {
-        this.$store.state.UpCash.CITY = value
-        this.$store.state.UpCash.POSTDATA.CRSData.birth_city = value
+        this.GetUpCashPostData.CITY = value
+        this.GetUpCashPostData.POSTDATA.CRSData.birth_city = value
       }
     }
   },

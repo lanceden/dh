@@ -30,7 +30,7 @@
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" value="0">請選擇</option>
-              <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
+              <option v-for="item in GetNationData" :key="n" :value="item.Code">{{item.Name}}</option>
             </select>
           </div>
         </div>
@@ -91,7 +91,7 @@
             </select>
             <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" :value="0">請選擇</option>
-              <option v-for="item in GetCityData" :value="item.City">{{item.City}}</option>
+              <option v-for="item in GetCityData" :key="n" :value="item.City">{{item.City}}</option>
             </select>
           </div>
         </div>
@@ -102,7 +102,7 @@
             </select>
             <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" value="0">請選擇</option>
-              <option v-for="item in GetDistrictData" :value="item.Zip + item.Area">{{item.Area}}</option>
+              <option v-for="item in GetDistrictData" :key="n" :value="item.Zip + item.Area">{{item.Area}}</option>
             </select>
           </div>
         </div>

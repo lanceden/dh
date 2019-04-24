@@ -86,5 +86,23 @@ export default {
     await rootState.Http.axios.post(`${Url.Beneficiary}`).then(response => {
       commit('FuncGetBeneficiary', { result: response.data })
     })
+  },
+  /**
+   * 發送OTP
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
+  FuncSendOTP({ commit }) {
+    rootState.Http.axios.post(`${Url.SendOTP}`).then(response => {
+      commit('FuncGetBeneficiary', { result: response.data })
+    })
+  },
+  /**
+   * 驗證OTP
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
+  FuncCheckOTP({ commit }) {
+    rootState.Http.axios.post(`${Url.SendOTP}`).then(response => {
+      commit('FuncGetBeneficiary', { result: response.data })
+    })
   }
 }

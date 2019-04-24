@@ -1,4 +1,4 @@
 export default {
   POSTDATA: 'POSTDATA',
-  ISINIT: 'ISINIT'
+  MYWAYISINIT: 'MYWAYISINIT'
 }

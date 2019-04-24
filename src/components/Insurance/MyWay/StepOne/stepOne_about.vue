@@ -121,7 +121,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
-              <option v-for="item in GetJobData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+              <option v-for="item in GetJobData" :key="n" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -130,7 +130,7 @@
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
               <option value="0" selected="selected">請選擇</option>
-              <option v-for="item in GetOccupationData" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+              <option v-for="item in GetOccupationData" :key="n" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -144,7 +144,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetIsInit,
+      GetterTypes.MyWayGetIsInit,
       'GetJob',
       'GetJobData',
       'GetOccupation',
@@ -335,7 +335,7 @@ export default {
     }
   },
   created() {
-    if (!this.GetIsInit) {
+    if (!this.MyWayGetIsInit) {
       this.FuncGetJob()
       this.FuncGetOccupation('00')
     }

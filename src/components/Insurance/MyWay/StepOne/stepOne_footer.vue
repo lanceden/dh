@@ -23,13 +23,13 @@ export default {
   methods: {
     ...mapActions([
       'SetHeaderIsActive',
-      FunctionTypes.FuncIsInit
+      FunctionTypes.FuncMyWayIsInit
     ]),
     GotoNext() {
       let result = this.ValidateData()
       if (!result) return
       this.SetHeaderIsActive(true)
-      this.FuncIsInit(true)
+      this.FuncMyWayIsInit(true)
       let year = parseInt(moment().format('YYYY')) - 1911
       this.$store.state.MyWay.POSTDATA.po_issue_date = moment().format('YYYY-MM-DD')
       this.$store.state.MyWay.POSTDATA.po_issue_date_Name = moment().format(`自民國${year}年MM月DD日起`)

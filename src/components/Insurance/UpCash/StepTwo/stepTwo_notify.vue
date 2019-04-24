@@ -44,13 +44,13 @@
               <div v-show="cbNewAddr">
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
                   <option selected="selected">請選擇</option>
-                  <option v-for="item in GetCityData" :value="item.City">{{item.City}}</option>
+                  <option v-for="item in GetCityData" :key="n" :value="item.City">{{item.City}}</option>
                 </select>
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="district3">
                   <option selected="selected">請選擇</option>
-                  <option v-for="item in GetDistrictData" :value="item.Zip">{{item.Area}}</option>
+                  <option v-for="item in GetDistrictData" :key="n" :value="item.Zip">{{item.Area}}</option>
                 </select>
-                <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr">
+                <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr" />
               </div>
             </template>
           </div>
@@ -78,9 +78,9 @@ export default {
     this.cbOldAddr = this.GetNotifyCheckBox[1]
     this.cbNewMail = this.GetNotifyCheckBox[2]
     this.cbNewAddr = this.GetNotifyCheckBox[3]
-    this.city3 = this.$store.state.UpCash.POSTDATA.city3
-    this.district3 = this.$store.state.UpCash.POSTDATA.district3
-    this.road3 = this.$store.state.UpCash.POSTDATA.road3
+    this.city3 = this.GetUpCashPostData.city3
+    this.district3 = this.GetUpCashPostData.district3
+    this.road3 = this.GetUpCashPostData.road3
   },
   computed: {
     ...mapGetters([
@@ -91,7 +91,7 @@ export default {
     ]),
     email: {
       get() {
-        return this.$store.state.UpCash.POSTDATA.email
+        return this.GetUpCashPostData.email
       }
     },
     newMail: {
@@ -99,31 +99,31 @@ export default {
         return ''
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.email = value
+        this.GetUpCashPostData.email = value
       }
     },
     city3: {
       get() {
-        return this.$store.state.UpCash.POSTDATA.city3
+        return this.GetUpCashPostData.city3
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.city3 = value
+        this.GetUpCashPostData.city3 = value
       }
     },
     district3: {
       get() {
-        return this.$store.state.UpCash.POSTDATA.district3
+        return this.GetUpCashPostData.district3
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.district3 = value
+        this.GetUpCashPostData.district3 = value
       }
     },
     road3: {
       get() {
-        return this.$store.state.UpCash.POSTDATA.road3
+        return this.GetUpCashPostData.road3
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.road3 = value
+        this.GetUpCashPostData.road3 = value
       }
     }
   },
@@ -136,7 +136,7 @@ export default {
           this.cbNewMail = false
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [true, false, false, false]
-          this.$store.state.UpCash.POSTDATA.value_ind = '4'
+          this.GetUpCashPostData.value_ind = '4'
           this.road3 = ''
           this.newMail = ''
           break
@@ -146,7 +146,7 @@ export default {
           this.cbNewMail = false
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [false, true, false, false]
-          this.$store.state.UpCash.POSTDATA.value_ind = '1'
+          this.GetUpCashPostData.value_ind = '1'
           this.road3 = ''
           this.newMail = ''
           break
@@ -156,7 +156,7 @@ export default {
           this.cbNewMail = true
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [false, false, true, false]
-          this.$store.state.UpCash.POSTDATA.value_ind = '4'
+          this.GetUpCashPostData.value_ind = '4'
           this.road3 = ''
           break
         case 'cbNewAddr':
@@ -165,7 +165,7 @@ export default {
           this.cbNewMail = false
           this.cbNewAddr = true
           this.$store.state.NOTIFYCHECKBOX = [false, false, false, true]
-          this.$store.state.UpCash.POSTDATA.value_ind = '2'
+          this.GetUpCashPostData.value_ind = '2'
           this.newMail = ''
           break
       }

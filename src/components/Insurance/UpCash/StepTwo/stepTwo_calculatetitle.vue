@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncEstimate
+      FunctionTypes.FuncUpCashEstimate
     ]),
     Estimate() {
       // 寄送至客戶住所(通訊地址)
@@ -54,7 +54,7 @@ export default {
       }
       console.log(valEstimateData(this.GetUpCashPostData))
       setDataOnEstimateStep(this.GetUpCashPostData)
-      this.FuncEstimate({ para: this.GetUpCashPostData })
+      this.FuncUpCashEstimate({ para: this.GetUpCashPostData })
     }
   }
 }

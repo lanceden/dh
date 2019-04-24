@@ -91,6 +91,20 @@ export default {
    */
   FuncGetBeneficiary(state, { result }) {
     state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
-    console.log(state.BENEFICIARY)
+  },
+  /**
+   * 發送OTP
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
+  FuncSendOTP(state, { result }) {
+    state.OTPSENDCODE = result.Data.Result.SendCode
+    state.OTPSENDTIME = result.Data.Result.OtpSendTime
+  },
+  /**
+   * 驗證OTP
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
+  FuncCheckOTP(state, { result }) {
+    state.OTPVALIDSTETIME = result.Data.Result.OtpValidateTime
   }
 }
