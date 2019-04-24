@@ -16,18 +16,14 @@ Object.keys(filters)
   .forEach(key => Vue.filter(key, filters[key]))
 
 Vue.prototype.$http = { axios }
-Vue.prototype.$RequestToken = 'Os/Ca1qye6JbF7InUqw4nAy37SoKF0+k16CrN55hovdCLSop0wtXIVDpaZ6xYP+FPIFkPiZNU9I2ni+6ceuI8TcKGkXt101mW/IFc3wKIziNQz+zFGpvqCPTRBlxa9JIng6KZwnscSpnM8bD27UIYklhE/7rVj9MovYRnx+r+mKTMt/gKYwcOVdfFYd0R1ullruGeXhGGX1xmlMCblyeWdg0+8k5ChoWef6eNLLcjn4KUYai23ORfXdZ67LXW+lAb2EbEKxk8wY++TxvGiD8dV/ti2led7M6xluc5TWrOEs='
 
-axios.interceptors.request.use(function(config) {
-  store.dispatch('SetShowLoading')
-  return config
-}, function(error) {
-  return Promise.reject(error)
-})
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
   return response
 }, function(error) {
+  if (error.response !== 200) {
+    console.log('請正常操作')
+  }
   return Promise.reject(error)
 })
 window.Lockr = Lockr
@@ -37,6 +33,7 @@ var vm = new Vue({
   el: '#app',
   created() {
     axios.interceptors.request.use(function(config) {
+      store.dispatch('SetShowLoading')
       config.headers['Authorization'] = 'Bearer ' + vm.$RequestToken
       return config
     }, function(error) {

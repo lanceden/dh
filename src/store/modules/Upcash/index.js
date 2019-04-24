@@ -11,8 +11,8 @@ const state = {
   [stateTypes.POSTDATA]: []
 }
 const getters = {
-  [getterTypes.GetIsInit]: state => state.ISINIT,
-  [getterTypes.GetPostData]: state => state.POSTDATA
+  [getterTypes.GetUpCashIsInit]: state => state.ISINIT,
+  [getterTypes.GetUpCashPostData]: state => state.POSTDATA
 }
 const actions = {
   /**

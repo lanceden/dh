@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoNoteACH></StepTwoNoteACH>
     <StepTwoAnnuity></StepTwoAnnuity>
@@ -23,11 +24,12 @@ import StepTwoFooter from './stepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData
+      'GetLoading',
+      GetterTypes.GetUpCashPostData
     ])
   },
   created() {
-    console.log(this.GetPostData.ins_type_name)
+    console.log(this.GetUpCashPostData.ins_type_name)
   },
   components: {
     StepTwoInsuranceData,

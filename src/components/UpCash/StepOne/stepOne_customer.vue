@@ -16,26 +16,26 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_names" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.client_names" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_birth" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.client_birth" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_id" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.client_id" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人性別</label>
           <div class="col-sm-12">
             <input type="text" class="form-control insure-input-block" 
-            v-model="GetPostData.client_rate_sex === 1 ? '男' : '女'" disabled="disabled" />
+            v-model="GetUpCashPostData.client_rate_sex === 1 ? '男' : '女'" disabled="disabled" />
           </div>
         </div>
         <div class="row col-width">
@@ -53,7 +53,7 @@ import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.j
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData
+      GetterTypes.GetUpCashPostData
     ])
   }
 }

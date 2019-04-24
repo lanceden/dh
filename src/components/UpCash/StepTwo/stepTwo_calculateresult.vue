@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-radius" v-show="GetPostData.mode_prem > 0">
+  <div class="bg-radius" v-show="GetUpCashPostData.mode_prem > 0">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
@@ -12,14 +12,14 @@
       <div class="bg-money">
         <div class="col-sm-12">
           <div class="font-label">您所支付的第一期保險費為：</div>
-          <div class="font-money"> NT$ {{GetPostData.mode_prem}}</div>
+          <div class="font-money"> NT$ {{GetUpCashPostData.mode_prem}}</div>
           <div class="money-icon"><img src="../../../../static/img/coins.png" alt=""></div>
           </div>
         </div>
         <div class="bg-time">
           <div class="col-sm-12">
             <div class="font-label">投保始期：</div>
-            <div class="font-label">{{GetPostData.po_issue_date_Name}}</div>
+            <div class="font-label">{{GetUpCashPostData.po_issue_date_Name}}</div>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData
+      GetterTypes.GetUpCashPostData
     ])
   }
 }

@@ -3,7 +3,7 @@ export default {
   ApiToken: '',
   Http: {},
   HeaderIsActive: false,
-  BenfinheritDisable: false,
+  BenfinheritOneDisable: false,
   JOB: '',
   JOBDATA: [],
   CITY: [],

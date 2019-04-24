@@ -33,7 +33,7 @@ function valEstimateData(postData, notifyArr) {
     errors += '請選擇首期繳費管道。\n'
   }
   // 第一期保費
-  var msg = CheckFirstPayAmt()
+  var msg = CheckFirstPayAmt(postData)
   if (msg !== '') {
     errors += (msg + '\n')
   }
@@ -137,7 +137,7 @@ function CheckFirstPayAmt(postData) {
     return '第一期保險費只能輸入無小數點的數字。'
   }
 
-  var limitAmt = GetInitialPaymentRange()
+  var limitAmt = GetInitialPaymentRange(postData)
   if (amt < limitAmt.min || amt > limitAmt.max) {
     return '第一期保險費限輸入" + limitAmt.min.toLocaleString() + "~" + limitAmt.max.toLocaleString() + "元，請調整。'
   }

@@ -18,14 +18,18 @@ import StepOneFatca from './stepOne_fatca'
 import StepOneFooter from './stepOne_footer'
 export default {
   created() {
-    if (!this.GetIsInit) {
+    const urlParams = new URLSearchParams(window.location.search)
+    const token = urlParams.get('token')
+    this.SetApiToken({ token: token })
+    this.$RequestToken = token
+    if (!this.GetUpCashIsInit) {
       this.FuncUpCashInit()
     }
   },
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetIsInit
+      GetterTypes.GetUpCashIsInit
     ])
   },
   components: {
@@ -36,6 +40,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'SetApiToken',
       FunctionTypes.FuncUpCashInit
     ])
   }

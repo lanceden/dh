@@ -14,7 +14,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">手機</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" :value="GetPostData.phone_mobile">
+            <input type="text" class="form-control insure-input" :value="GetUpCashPostData.phone_mobile">
           </div>
         </div>
         <div class="col-sm-12">
@@ -25,14 +25,14 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" :value="GetPostData.phone_area">
-            <input type="text" class="form-control insure-input" :value="GetPostData.phone_main">
+            <input type="text" class="form-control insure-input" :value="GetUpCashPostData.phone_area">
+            <input type="text" class="form-control insure-input" :value="GetUpCashPostData.phone_main">
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">同通訊地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" :value="GetPostData.address1" :disabled="!GetContactCheckBox">
+            <input type="text" class="form-control insure-input" :value="GetUpCashPostData.address1" :disabled="!GetContactCheckBox">
           </div>
           <div :class="{checkbox: true, checked: GetContactCheckBox}" @click="OnRegisterAddr()"></div>
         </div>
@@ -58,12 +58,12 @@ import GetterTypes from '../../../store/modules/Upcash/Types/UpCashGetterTypes.j
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData,
+      GetterTypes.GetUpCashPostData,
       'GetContactCheckBox'
     ]),
     phone: {
       get() {
-        this.GetPostData.phone
+        this.GetUpCashPostData.phone
       },
       set(value) {
         console.log(value)
@@ -71,7 +71,7 @@ export default {
     },
     address: {
       get() {
-        return this.GetPostData.address1
+        return this.GetUpCashPostData.address1
       },
       set(value) {
         console.log(value)

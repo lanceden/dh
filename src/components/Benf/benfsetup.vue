@@ -2,7 +2,7 @@
   <div class="bg-radius">
     <div class="top">
       <div class="top-title">
-        <img src="images/chat.png" alt="">
+        <img src="../../../static/img/chat.png" alt="">
 		    		請填寫身故受益人資料
 		    	</div>
       </div>
@@ -28,20 +28,18 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([
-      'GetBeneficiary'
+      GetterTypes.GetUpCashPostData
     ]),
     benf_num: {
       get() {
-        let oriCount = this.GetBeneficiary.length
-        if (oriCount === 0) return '1'
-        this.$store.state.UpCash.POSTDATA.benf_num = oriCount
-        return oriCount
+        return this.GetUpCashPostData.benf_num
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.benf_num = value
+        this.GetUpCashPostData.benf_num = value
       }
     }
   }

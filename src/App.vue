@@ -8,17 +8,16 @@
 </template>
 <script>
 import Header from './components/header'
-import {
-  mapActions
-} from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   components: { Header },
   created() {
     this.SetHttp({ http: this.$http })
-    this.SetApiToken({ token: 'HelloWorld' })
   },
   methods: {
-    ...mapActions(['SetHttp', 'SetApiToken'])
+    ...mapActions([
+      'SetHttp'
+    ])
   }
 }
 

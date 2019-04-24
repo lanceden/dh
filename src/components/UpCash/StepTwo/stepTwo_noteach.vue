@@ -1,6 +1,6 @@
 <template>
   <!--Start 銀行或郵局轉帳 -->
-  <div class="bg-radius" v-show="!this.GetPostData.IsOneTimePayment">
+  <div class="bg-radius" v-show="!this.GetUpCashPostData.IsOneTimePayment">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData,
+      GetterTypes.GetUpCashPostData,
       'GetBank',
       'GetBankData'
     ])

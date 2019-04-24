@@ -15,13 +15,13 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetPostData.ins_type_name}}</div>
+            <div class="insure-input-block">{{GetUpCashPostData.ins_type_name}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetPostData.po_issue_date_Name}}</div>
+            <div class="insure-input-block">{{GetUpCashPostData.po_issue_date_Name}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -59,7 +59,7 @@
             <div class="insure-tips-text">備註：單筆保費限75萬，單一公司累積限750萬。</div>
           </div>
           <!-- v-show: 非躉繳才顯示續期繳法別 -->
-          <div class="form-group row" v-show="!GetPostData.IsOneTimePayment">
+          <div class="form-group row" v-show="!GetUpCashPostData.IsOneTimePayment">
             <label for class="col-sm-12 col-form-label insure-label insure-label">約定續期繳法別</label>
             <div class="col-sm-12 insure-select-align">
               <select id class="form-control data-input insure-select insure-input-edit" v-model="modx_99_ind">
@@ -70,7 +70,7 @@
           </div>
 
           <!--Start 不定期繳-全國新光人壽行政中心繳費 -->
-          <div class="form-group row" v-show="!GetPostData.IsOneTimePayment">
+          <div class="form-group row" v-show="!GetUpCashPostData.IsOneTimePayment">
             <label for class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
             <div class="col-sm-12">
               <select id class="form-control data-input">
@@ -100,13 +100,13 @@
                 <!-- End 不定期繳-全國新光人壽行政中心繳費-->
 
                 <!--Start 分期繳付 -->
-                <div class="form-group row" v-show="(GetPostData.modx_99_ind === 'N' && !GetPostData.IsOneTimePayment)">
+                <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
                   <label for class="col-sm-12 col-form-label insure-label insure-label">分期保費每期</label>
                   <div class="col-sm-12">
                     <input type="text" class="form-control insure-input insure-input-edit" v-model="qpoop_25_prem">
                   </div>
                 </div>
-                <div class="form-group row" v-show="(GetPostData.modx_99_ind === 'N' && !GetPostData.IsOneTimePayment)">
+                <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
                   <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
                   <div class="col-sm-12 insure-select-align">
                     <select id class="form-control data-input insure-select insure-input-edit" v-model="qpoop_25_modx">
@@ -141,23 +141,23 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData
+      GetterTypes.GetUpCashPostData
     ]),
     /**
      * 首期繳費管道 請選首期繳費管道。
      */
     init_method: {
       get() {
-        if (this.GetPostData.init_method === undefined ||
-          this.GetPostData.init_method === null ||
-          this.GetPostData.init_method === '') {
+        if (this.GetUpCashPostData.init_method === undefined ||
+          this.GetUpCashPostData.init_method === null ||
+          this.GetUpCashPostData.init_method === '') {
           return 0
         }
-        return this.GetPostData.init_method
+        return this.GetUpCashPostData.init_method
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.init_method = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.init_method = value
       }
     },
     /**
@@ -165,11 +165,11 @@ export default {
      */
     IsOneTimePayment: {
       get() {
-        return this.GetPostData.IsOneTimePayment
+        return this.GetUpCashPostData.IsOneTimePayment
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.IsOneTimePayment = value === 'true'
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.IsOneTimePayment = value === 'true'
       }
     },
     /**
@@ -177,52 +177,52 @@ export default {
      */
     face_amt: {
       get() {
-        this.GetPostData.face_amt = 66666
-        return this.GetPostData.face_amt
+        this.GetUpCashPostData.face_amt = 66666
+        return this.GetUpCashPostData.face_amt
       },
       set(value) {
         if (value === '' || value <= 0) {
           alert('請填寫第一期保險費。')
           return
         }
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.face_amt = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.face_amt = value
       }
     },
     // 約定續期繳法別
     modx_99_ind: {
       get() {
-        let result = this.GetPostData.modx_99_ind
+        let result = this.GetUpCashPostData.modx_99_ind
         this.OnUntimed(result)
         return result === '' ? 'Y' : result
       },
       set(value) {
         // 分期繳付:N 不定期繳:Y
         this.OnUntimed(value)
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.modx_99_ind = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.modx_99_ind = value
       }
     },
     // 分期保費每期 請輸入續期保險費。
     qpoop_25_prem: {
       get() {
-        let result = this.GetPostData.qpoop_25_prem
+        let result = this.GetUpCashPostData.qpoop_25_prem
         return result === 0 ? '' : result
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.qpoop_25_prem = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.qpoop_25_prem = value
       }
     },
     // 繳別 請選擇約定續期繳法-分期繳付之續期保費-繳別。
     qpoop_25_modx: {
       get() {
-        let result = this.GetPostData.qpoop_25_modx
+        let result = this.GetUpCashPostData.qpoop_25_modx
         return result === '' ? '0' : result
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.qpoop_25_modx = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.qpoop_25_modx = value
       }
     }
   },

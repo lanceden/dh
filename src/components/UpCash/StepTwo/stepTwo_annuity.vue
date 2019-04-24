@@ -74,47 +74,47 @@ export default {
   computed: {
     ...mapGetters([
       'GetAnnuityPayType',
-      GetterTypes.GetPostData
+      GetterTypes.GetUpCashPostData
     ]),
     payType: {
       get() {
         return this.GetAnnuityPayType
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
+        this.GetUpCashPostData.mode_prem = 0
         this.$store.state.ANNUITYPAYTYPE = value
       }
     },
     // 分期給付方式
     anny_frequence: {
       get() {
-        return this.GetPostData.anny_frequence === '' ? 0 : this.GetPostData.anny_frequence
+        return this.GetUpCashPostData.anny_frequence === '' ? 0 : this.GetUpCashPostData.anny_frequence
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.anny_frequence = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.anny_frequence = value
       }
     },
     // 給付開始日：保險年齡
     fst_anny_pay_age: {
       get() {
-        this.GetPostData.fst_anny_pay_age = parseInt(this.GetPostData.Age) + 6
-        return parseInt(this.GetPostData.Age) + 6
+        this.GetUpCashPostData.fst_anny_pay_age = parseInt(this.GetUpCashPostData.Age) + 6
+        return parseInt(this.GetUpCashPostData.Age) + 6
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.fst_anny_pay_age = value
-        console.log(this.GetPostData.fst_anny_pay_age)
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.fst_anny_pay_age = value
+        console.log(this.GetUpCashPostData.fst_anny_pay_age)
       }
     },
     // 保證期間
     qpoop_19_year: {
       get() {
-        return this.GetPostData.qpoop_19_year === '' ? 0 : this.GetPostData.qpoop_19_year
+        return this.GetUpCashPostData.qpoop_19_year === '' ? 0 : this.GetUpCashPostData.qpoop_19_year
       },
       set(value) {
-        this.GetPostData.mode_prem = 0
-        this.GetPostData.qpoop_19_year = value
+        this.GetUpCashPostData.mode_prem = 0
+        this.GetUpCashPostData.qpoop_19_year = value
       }
     }
   }

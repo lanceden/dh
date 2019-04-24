@@ -2,7 +2,7 @@ import types from './types'
 export default {
   GetLoading: state => state.ShowLoading,
   [types.HeaderIsActive]: state => state.HeaderIsActive,
-  [types.BenfinheritDisable]: state => state.BenfinheritDisable,
+  [types.BenfinheritOneDisable]: state => state.BenfinheritOneDisable,
   GetJob: state => state.JOB,
   GetJobData: state => state.JOBDATA,
   GetCity: state => state.CITY,

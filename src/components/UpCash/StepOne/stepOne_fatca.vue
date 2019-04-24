@@ -15,25 +15,25 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder v-model="GetPostData.client_names" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" id placeholder v-model="GetUpCashPostData.client_names" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id placeholder v-model="GetPostData.client_birth" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" id placeholder v-model="GetUpCashPostData.client_birth" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="GetPostData.client_id" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.client_id" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">戶籍地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="GetPostData.InsAddress" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.InsAddress" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
@@ -69,14 +69,14 @@ export default {
     }
   },
   created() {
-    if (!this.GetIsInit) {
+    if (!this.GetUpCashIsInit) {
       this.FuncGetNationality('')
     }
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetIsInit,
-      GetterTypes.GetPostData,
+      GetterTypes.GetUpCashIsInit,
+      GetterTypes.GetUpCashPostData,
       'GetNation',
       'GetNationData',
       'GetCity',

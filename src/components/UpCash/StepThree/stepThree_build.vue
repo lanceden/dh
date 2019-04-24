@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <StepThreeContact></StepThreeContact>
     <StepThreeAccount></StepThreeAccount>
     <StepThreeFooter></StepThreeFooter>
@@ -7,13 +8,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import StepThreeAccount from './stepThree_account'
 import StepThreeContact from './stepThree_contact'
 import StepThreeFooter from './stepThree_footer'
 export default {
   created() {
     this.FuncGetBeneficiary()
+  },
+  computed: {
+    ...mapGetters([
+      'GetLoading'
+    ])
   },
   components: {
     StepThreeAccount,

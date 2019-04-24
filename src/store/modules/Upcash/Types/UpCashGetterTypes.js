@@ -1,4 +1,4 @@
 export default {
-  GetIsInit: 'GetIsInit',
-  GetPostData: 'GetPostData'
+  GetUpCashIsInit: 'GetUpCashIsInit',
+  GetUpCashPostData: 'GetUpCashPostData'
 }

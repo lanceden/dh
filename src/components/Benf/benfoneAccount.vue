@@ -13,7 +13,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit" v-bind:disabled="BenfinheritDisable">
+            <select id="" class="form-control data-input insure-select insure-input-edit" v-bind:disabled="BenfinheritOneDisable">
               <option selected>822</option>
             </select>
           </div>
@@ -26,19 +26,19 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" value="中信銀行" v-bind:disabled="BenfinheritDisable">
+              <input type="text" class="form-control insure-input insure-input-edit" id="" value="中信銀行" v-bind:disabled="BenfinheritOneDisable">
             </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">金融機構分行代號</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" value="1296-中信銀東民生" v-bind:disabled="BenfinheritDisable">
+              <input type="text" class="form-control insure-input insure-input-edit" id="" value="1296-中信銀東民生" v-bind:disabled="BenfinheritOneDisable">
             </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">銀行帳號</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" value="123456789012" v-bind:disabled="BenfinheritDisable">
+              <input type="text" class="form-control insure-input insure-input-edit" id="test" value="123456789012" v-bind:disabled="BenfinheritOneDisable">
             </div>
           </div>
           <div class="col-sm-12">
@@ -49,16 +49,25 @@
             </div>
           </div>
       </form>
+      <button class="btn btn-danger btn-block" @click="test()">test</button>
     </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import { checkBenefInfoOne } from '../../utils/validateBenfData.js'
+import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([
-      'BenfinheritDisable'
+      GetterTypes.GetUpCashPostData,
+      'BenfinheritOneDisable'
     ])
+  },
+  methods: {
+    test() {
+      checkBenefInfoOne(this.GetUpCashPostData)
+    }
   }
 }
 

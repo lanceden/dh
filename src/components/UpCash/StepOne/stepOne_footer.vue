@@ -16,7 +16,7 @@ import moment from 'moment'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData,
+      GetterTypes.GetUpCashPostData,
       'HeaderIsActive'
     ])
   },

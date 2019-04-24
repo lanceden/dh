@@ -21,7 +21,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label" @click="OnCheck('cbOldAddr')">寄送至客戶住所(通訊地址)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetPostData.InsAddress}}</div>
+            <div class="insure-input-block">{{GetUpCashPostData.InsAddress}}</div>
             <input type="text" class="form-control insure-input insure-input-edit" readonly="readonly">
           </div>
           <div :class="{ checked: cbOldAddr }" class="checkbox"></div>
@@ -84,7 +84,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetPostData,
+      GetterTypes.GetUpCashPostData,
       'GetNotifyCheckBox',
       'GetCityData',
       'GetDistrictData'

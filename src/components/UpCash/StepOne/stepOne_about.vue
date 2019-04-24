@@ -50,7 +50,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetIsInit,
+      GetterTypes.GetUpCashIsInit,
       'GetJob',
       'GetJobData',
       'GetOccupation',
@@ -109,7 +109,7 @@ export default {
     }
   },
   created() {
-    if (!this.GetIsInit) {
+    if (!this.GetUpCashIsInit) {
       this.FuncGetJob()
       this.FuncGetOccupation('00')
     }

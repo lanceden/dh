@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/chat.png" alt=""></div>
+          <div class="insure-check"><img src="../../../static/img/chat.png" alt=""></div>
             <div class="insure-check-title">身故受益人(一)資料</div>
           </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">受益人國籍</label>
           <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritDisable">
+            <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" value="0">請選擇</option>
               <option v-for="item in GetNationData" :value="item.Code">{{item.Name}}</option>
             </select>
@@ -37,18 +37,17 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_name" v-bind:disabled="BenfinheritDisable">
+            <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_name" v-bind:disabled="BenfinheritOneDisable">
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" value="順位1" v-if="parseInt(benf_num) === 1" v-bind:disabled="BenfinheritDisable" />
-            <select v-if="parseInt(benf_num) >= 2" class="form-control data-input insure-select insure-input-edit">
+            <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death_seq">
               <option selected="selected">請選擇</option>
-              <option value="1" v-show="parseInt(benf_num) >= 2">順位1</option>
-              <option value="2" v-show="parseInt(benf_num) >= 2">順位2</option>
-              <option value="3" v-show="parseInt(benf_num) > 2">順位3</option>
+              <option value="1" v-show="parseInt(GetUpCashPostData.benf_num) === 1">順位1</option>
+              <option value="2" v-show="parseInt(GetUpCashPostData.benf_num) >= 2">順位2</option>
+              <option value="3" v-show="parseInt(GetUpCashPostData.benf_num) > 2">順位3</option>
             </select>
           </div>
         </div>
@@ -70,28 +69,28 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritDisable">
+            <input type="date" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="benf_dob" />
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritDisable">
+            <input type="text" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="benf_id" />
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritDisable">
+            <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone" v-bind:disabled="BenfinheritOneDisable" />
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
           <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritDisable">
+            <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
             </select>
-            <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City" v-bind:disabled="BenfinheritDisable">
-              <option selected="selected">請選擇</option>
+            <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City" v-bind:disabled="BenfinheritOneDisable">
+              <option selected="selected" :value="0">請選擇</option>
               <option v-for="item in GetCityData" :value="item.City">{{item.City}}</option>
             </select>
           </div>
@@ -99,18 +98,18 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
           <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritDisable">
+            <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
             </select>
-            <select class="form-control data-input insure-select insure-input-edit" v-else v-bind:disabled="BenfinheritDisable">
+            <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected">請選擇</option>
-              <option v-for="item in GetDistrictData" :value="item.Zip">{{item.Area}}</option>
+              <option v-for="item in GetDistrictData" :value="item.Zip + item.Area">{{item.Area}}</option>
             </select>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control data-input insure-input-edit" v-bind:disabled="BenfinheritDisable">
+            <input type="text" class="form-control data-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="BenfAddRemain" />
           </div>
         </div>
         <div class="col-sm-12">
@@ -124,6 +123,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   created() {
     this.FuncGetCityData()
@@ -132,38 +132,70 @@ export default {
     ...mapActions([
       'FuncGetCityData',
       'FuncGetDistrictData',
-      'SetBenfinheritDisable'
+      'SetBenfinheritOneDisable'
     ])
   },
   computed: {
     ...mapGetters([
-      'GetBeneficiary',
+      GetterTypes.GetUpCashPostData,
       'GetNationData',
       'GetCityData',
       'GetDistrictData',
-      'BenfinheritDisable'
+      'BenfinheritOneDisable'
     ]),
+    /**
+     * 受益人生日
+     */
+    benf_dob: {
+      get() {
+        return this.GetUpCashPostData.benf_dob
+      },
+      set(value) {
+        this.GetUpCashPostData.benf_dob = value
+      }
+    },
+    /**
+     * 受益人電話
+     */
+    benf_phone: {
+      get() {
+        return this.GetUpCashPostData.benf_phone
+      },
+      set(value) {
+        this.GetUpCashPostData.benf_phone = value
+      }
+    },
+    /**
+     * 受益人身份證
+     */
+    benf_id: {
+      get() {
+        return this.GetUpCashPostData.benf_id
+      },
+      set(value) {
+        this.GetUpCashPostData.benf_id = value
+      }
+    },
     /**
      * 受益人姓名
      */
     benf_name: {
       get() {
-        return this.GetBeneficiary.length === 0 ? '' : this.GetBeneficiary[0].Name
+        return this.GetUpCashPostData.Name
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.benf_name = value
+        this.GetUpCashPostData.benf_name = value
       }
     },
     /**
      * 給付方式
      */
-    benf_num: {
+    relation_ben_death_seq: {
       get() {
-        console.log(this.$store.state.UpCash.POSTDATA.benf_num)
-        return this.$store.state.UpCash.POSTDATA.benf_num
+        return this.GetUpCashPostData.relation_ben_death_seq
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.benf_num = value
+        this.GetUpCashPostData.relation_ben_death_seq = value
       }
     },
     /**
@@ -171,14 +203,14 @@ export default {
      */
     relation_ben_death: {
       get() {
-        if (this.$store.state.UpCash.POSTDATA.relation_ben_death === undefined || this.$store.state.UpCash.POSTDATA.relation_ben_death === null) {
+        if (this.GetUpCashPostData.relation_ben_death === undefined || this.GetUpCashPostData.relation_ben_death === null) {
           return '0'
         }
-        return this.$store.state.UpCash.POSTDATA.relation_ben_death
+        return this.GetUpCashPostData.relation_ben_death
       },
       set(value) {
-        this.SetBenfinheritDisable(value === '8')
-        this.$store.state.UpCash.POSTDATA.relation_ben_death = value
+        this.SetBenfinheritOneDisable(value === '8')
+        this.GetUpCashPostData.relation_ben_death = value
       }
     },
     /**
@@ -186,10 +218,10 @@ export default {
      */
     relation_ben_death_seq_percent: {
       get() {
-        return this.$store.state.UpCash.POSTDATA.relation_ben_death_seq_percent
+        return this.GetUpCashPostData.relation_ben_death_seq_percent
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.relation_ben_death_seq_percent = value
+        this.GetUpCashPostData.relation_ben_death_seq_percent = value
       }
     },
     /**
@@ -197,10 +229,10 @@ export default {
      */
     BenfNationality: {
       get() {
-        return '0'
+        return this.GetUpCashPostData.BenfNationality === null ? 0 : this.GetUpCashPostData.BenfNationality
       },
       set(value) {
-        this.$store.state.UpCash.POSTDATA.BenfNationality = value
+        this.GetUpCashPostData.BenfNationality = value
       }
     },
     /**
@@ -208,15 +240,38 @@ export default {
      */
     BenfAdd_City: {
       get() {
-        if (this.$store.state.UpCash.POSTDATA.BenfAdd_City === undefined ||
-          this.$store.state.UpCash.POSTDATA.BenfAdd_City === null) {
-          return '0'
+        if (this.GetUpCashPostData.BenfAdd_City === undefined ||
+          this.GetUpCashPostData.BenfAdd_City === null) {
+          return 0
         }
-        return this.$store.state.UpCash.POSTDATA.BenfAdd_City
+        return this.GetUpCashPostData.BenfAdd_City
       },
       set(value) {
         this.FuncGetDistrictData(value)
-        this.$store.state.UpCash.POSTDATA.BenfAdd_City = value
+        this.GetUpCashPostData.BenfAdd_City = value
+      }
+    },
+    /**
+     * 選擇鄉鎮地區
+     */
+    BenfAdd_County: {
+      get() {
+        return this.GetUpCashPostData.BenfAdd_County
+      },
+      set(value) {
+        this.GetUpCashPostData.BenfAddZip = value.substring(0, 3)
+        this.GetUpCashPostData.BenfAdd_County = value.substring(3)
+      }
+    },
+    /**
+     * 詳細地址
+     */
+    BenfAddRemain: {
+      get() {
+        return this.GetUpCashPostData.BenfAddRemain
+      },
+      set(value) {
+        this.GetUpCashPostData.BenfAddRemain = value
       }
     }
   }
