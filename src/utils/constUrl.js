@@ -3,7 +3,11 @@
  */
 // const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi'
 // const Domain = 'https://ea5af470-fbb3-4cf8-b060-301a1bccb034.mock.pstmn.io'
+<<<<<<< HEAD
+const Domain = 'https://localhost:44389'
+=======
 const Domain = 'http://localhost:57246'
+>>>>>>> ed639c6d2d3636b1b8433a0a83c05d32ecd1eed7
 /**
  * 職業類別
  */
@@ -79,6 +83,15 @@ const EZCashSubmitQuote = `${Domain}/EZCash/SubmitQuote`
  */
 const EZCashSubmitOrder = `${Domain}/EZCash/SubmitOrder`
 
+/**
+ * MyWay初始化
+ */
+const MyWayInit = `${Domain}/MyWay/Initialize`
+/**
+ * MyWay投保流程試算
+ */
+const MyWayEstimate = `${Domain}/MyWay/Estimate`
+
 export default {
   Domain,
   Job,
@@ -98,5 +111,7 @@ export default {
   EZCashInit,
   EZCashEstimate,
   EZCashSubmitQuote,
-  EZCashSubmitOrder
+  EZCashSubmitOrder,
+  MyWayInit,
+  MyWayEstimate
 }
