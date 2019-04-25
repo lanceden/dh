@@ -30,13 +30,13 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <select class="form-control data-input" v-model="payType">
-              <option selected="selected" value="1">一次給付</option>
-              <option value="2">分期給付</option>
+            <select class="form-control data-input" v-model="anny_frequence">
+              <option selected="selected" value="0">一次給付</option>
+              <option value="1">分期給付</option>
             </select>
           </div>
         </div>
-        <div class="form-group row" v-show="payType !== '1'">
+        <div class="form-group row" v-show="paytype !== '0'">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">分期給付方式</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit" v-model="anny_frequence">
@@ -48,7 +48,7 @@
             </select>
           </div>
         </div>
-        <div class="form-group row" v-show="payType !== '1'">
+        <div class="form-group row" v-show="paytype !== '0'">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">保證期間</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit" v-model="qpoop_19_year">
@@ -73,26 +73,22 @@ import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterType
 export default {
   computed: {
     ...mapGetters([
-      'GetAnnuityPayType',
       GetterTypes.GetUpCashPostData
     ]),
-    payType: {
+    paytype: {
       get() {
-        return this.GetAnnuityPayType
-      },
-      set(value) {
-        this.GetUpCashPostData.mode_prem = 0
-        this.GetUpCashPostData.ANNUITYPAYTYPE = value
+        return this.GetUpCashPostData.anny_frequence
       }
     },
     // 分期給付方式
     anny_frequence: {
       get() {
-        return this.GetUpCashPostData.anny_frequence === '' ? 0 : this.GetUpCashPostData.anny_frequence
+        return (this.GetUpCashPostData.anny_frequence === undefined || this.GetUpCashPostData.anny_frequence === null) ? 0 : this.GetUpCashPostData.anny_frequence
       },
       set(value) {
         this.GetUpCashPostData.mode_prem = 0
         this.GetUpCashPostData.anny_frequence = value
+        console.log(typeof this.GetUpCashPostData.anny_frequence)
       }
     },
     // 給付開始日：保險年齡

@@ -3,7 +3,9 @@ export default {
     state.ShowLoading = true
   },
   SethideLoading(state) {
-    state.ShowLoading = false
+    setTimeout(() => {
+      state.ShowLoading = false
+    }, 1000)
   },
   SetHttp(state, { http }) {
     state.Http = http
@@ -46,7 +48,6 @@ export default {
    */
   FuncGetNationality(state, { result }) {
     state.NATIONDATA = result.Data.Result
-    state.NATION = '0'
   },
   /**
    * 取回職業類別名稱

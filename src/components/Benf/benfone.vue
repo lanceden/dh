@@ -30,7 +30,7 @@
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" value="0">請選擇</option>
-              <option v-for="item in GetNationData" :key="n" :value="item.Code">{{item.Name}}</option>
+              <option v-for="(item, index) in GetNationData" :key="index" :value="item.Code">{{item.Name}}</option>
             </select>
           </div>
         </div>
@@ -54,7 +54,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式之比例</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" v-model="relation_ben_death_seq_percent">
+            <input type="number" class="form-control insure-input insure-input-edit" v-model="relation_ben_death_seq_percent">
           </div>
         </div>
         <div class="col-sm-12">
@@ -75,7 +75,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="text" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="benf_id" />
+            <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="benf_id" />
           </div>
         </div>
         <div class="form-group row">
@@ -90,8 +90,8 @@
             <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
             </select>
             <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City" v-bind:disabled="BenfinheritOneDisable">
-              <option selected="selected" :value="0">請選擇</option>
-              <option v-for="item in GetCityData" :key="n" :value="item.City">{{item.City}}</option>
+              <option selected="selected" value="0">請選擇</option>
+              <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
             </select>
           </div>
         </div>
@@ -102,7 +102,7 @@
             </select>
             <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" value="0">請選擇</option>
-              <option v-for="item in GetDistrictData" :key="n" :value="item.Zip + item.Area">{{item.Area}}</option>
+              <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + item.Area">{{item.Area}}</option>
             </select>
           </div>
         </div>
@@ -181,7 +181,7 @@ export default {
      */
     benf_name: {
       get() {
-        return this.GetUpCashPostData.Name
+        return this.GetUpCashPostData.benf_name
       },
       set(value) {
         this.GetUpCashPostData.benf_name = value
@@ -241,7 +241,7 @@ export default {
     BenfAdd_City: {
       get() {
         return (this.GetUpCashPostData.BenfAdd_City === undefined ||
-          this.GetUpCashPostData.BenfAdd_City === null) ? 0 : this.GetUpCashPostData.BenfAdd_City
+          this.GetUpCashPostData.BenfAdd_City === null || this.GetUpCashPostData.BenfAdd_City === '') ? 0 : this.GetUpCashPostData.BenfAdd_City
       },
       set(value) {
         this.FuncGetDistrictData(value)
@@ -254,11 +254,11 @@ export default {
     BenfAdd_County: {
       get() {
         return (this.GetUpCashPostData.BenfAdd_County === undefined ||
-          this.GetUpCashPostData.BenfAdd_County === null) ? 0 : this.GetUpCashPostData.BenfAdd_County
+          this.GetUpCashPostData.BenfAdd_County === null || this.GetUpCashPostData.BenfAdd_County === '') ? 0 : this.GetUpCashPostData.BenfAdd_County
       },
       set(value) {
         this.GetUpCashPostData.BenfAddZip = value.substring(0, 3)
-        this.GetUpCashPostData.BenfAdd_County = value.substring(3)
+        this.GetUpCashPostData.BenfAdd_County = value
       }
     },
     /**

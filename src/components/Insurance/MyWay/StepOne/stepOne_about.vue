@@ -121,7 +121,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
-              <option v-for="item in GetJobData" :key="n" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+              <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -130,7 +130,7 @@
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
               <option value="0" selected="selected">請選擇</option>
-              <option v-for="item in GetOccupationData" :key="n" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+              <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>

@@ -14,7 +14,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label" @click="OnCheck('cbOldMail')">電子信箱</label>
           <div class="col-sm-12">
             <div class="insure-input-block"></div>
-            <input type="text" class="form-control insure-input insure-input-edit" readonly="readonly" v-model="email">
+            <input type="text" class="form-control insure-input insure-input-edit" readonly="readonly" v-show="cbOldMail" v-model="email">
           </div>
           <div :class="{ checked: cbOldMail }" class="checkbox"></div>
         </div>
@@ -44,11 +44,11 @@
               <div v-show="cbNewAddr">
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
                   <option selected="selected">請選擇</option>
-                  <option v-for="item in GetCityData" :key="n" :value="item.City">{{item.City}}</option>
+                  <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
                 </select>
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="district3">
                   <option selected="selected">請選擇</option>
-                  <option v-for="item in GetDistrictData" :key="n" :value="item.Zip">{{item.Area}}</option>
+                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip">{{item.Area}}</option>
                 </select>
                 <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr" />
               </div>
@@ -81,6 +81,7 @@ export default {
     this.city3 = this.GetUpCashPostData.city3
     this.district3 = this.GetUpCashPostData.district3
     this.road3 = this.GetUpCashPostData.road3
+    this.GetUpCashPostData.value_ind = '4'
   },
   computed: {
     ...mapGetters([
@@ -96,7 +97,7 @@ export default {
     },
     newMail: {
       get() {
-        return ''
+        return this.GetUpCashPostData.email
       },
       set(value) {
         this.GetUpCashPostData.email = value

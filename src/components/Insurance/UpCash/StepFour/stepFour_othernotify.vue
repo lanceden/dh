@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="images/chat.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/phone.png" alt=""></div>
             <div class="insure-check-title">被保人其他告知事項</div>
           </div>
         </div>
@@ -11,24 +11,15 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
-          <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-edit">
-              <option>未婚</option>
-              <option selected>已婚</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="" value="500萬元">
+            <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入年收入" v-model="insured_income" />
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="" value="800萬元">
+            <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入家庭收入" v-model="insured_fam_income" />
           </div>
         </div>
         <div class="col-sm-12">
@@ -41,8 +32,32 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
-
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetUpCashPostData
+    ]),
+    // 年收入
+    insured_income: {
+      get() {
+        return this.GetUpCashPostData.insured_income
+      },
+      set(value) {
+        this.GetUpCashPostData.insured_income = value
+      }
+    },
+    // 家庭收入
+    insured_fam_income: {
+      get() {
+        return this.GetUpCashPostData.insured_fam_income
+      },
+      set(value) {
+        this.GetUpCashPostData.insured_fam_income = value
+      }
+    }
+  }
 }
 
 </script>

@@ -26,7 +26,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" value="中信銀行" v-bind:disabled="BenfinheritOneDisable">
+              <input type="text" class="form-control insure-input insure-input-edit" value="中信銀行" v-bind:disabled="BenfinheritOneDisable">
             </div>
           </div>
           <div class="form-group row">

@@ -14,18 +14,18 @@
       </div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">同通訊地址</label>
+          <label for="" class="col-sm-12 col-form-label insure-label" @click="OnCheck('cbOldAddr')">同通訊地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">台北市松山區敦化北路102號B1樓</div>
+            <div class="insure-input-block" v-show="cbOldAddr">{{GetUpCashPostData.InsAddress}}</div>
           </div>
-          <div class="checkbox checked"></div>
+          <div :class="{ checked: cbOldAddr }" class="checkbox" @click="OnCheck('cbOldAddr')"></div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">輸入戶籍地址</label>
+          <label for="" class="col-sm-12 col-form-label insure-label" @click="OnCheck('cbNewAddr')">輸入戶籍地址</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" id="" placeholder="為保障您的權益，此欄位不可為空白" value="">
+            <input type="text" class="form-control insure-input-block" id="" v-show="cbNewAddr" placeholder="為保障您的權益，此欄位不可為空白" value="">
           </div>
-          <div class="checkbox"></div>
+          <div :class="{ checked: cbNewAddr }" class="checkbox" @click="OnCheck('cbNewAddr')"></div>
         </div>
         <div class="col-sm-12">
           <div class="insure-tips">
@@ -38,8 +38,40 @@
 
 
 <script>
+import { mapGetters } from 'vuex'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
-
+  data() {
+    return {
+      cbOldAddr: true,
+      cbNewAddr: false,
+      tempAddr: ''
+    }
+  },
+  created() {
+    this.tempAddr = this.GetterTypes.GetUpCashPostData.InsAddress
+  },
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetUpCashPostData
+    ])
+  },
+  methods: {
+    OnCheck(type) {
+      switch (type) {
+        case 'cbOldAddr':
+          this.cbOldAddr = true
+          this.cbNewAddr = false
+          this.GetterTypes.GetUpCashPostData.InsAddress = this.tempAddr
+          break
+        case 'cbNewAddr':
+          this.cbOldAddr = false
+          this.cbNewAddr = true
+          this.GetterTypes.GetUpCashPostData.InsAddress = ''
+          break
+      }
+    }
+  }
 }
 
 </script>

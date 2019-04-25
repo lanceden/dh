@@ -19,9 +19,12 @@ import StepOneFooter from './stepOne_footer'
 export default {
   created() {
     const urlParams = new URLSearchParams(window.location.search)
-    const token = urlParams.get('token')
-    this.SetApiToken({ token: token })
-    this.$RequestToken = token
+    const tokenArr = urlParams.get('token').split(' ')
+    let token = ''
+    tokenArr.forEach(item => {
+      token += `+${item}`
+    })
+    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetUpCashIsInit) {
       this.FuncUpCashInit()
     }

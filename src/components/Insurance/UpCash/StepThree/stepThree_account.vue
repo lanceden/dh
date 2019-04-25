@@ -15,7 +15,7 @@
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-edit">
               <option selected="selected">請選擇</option>
-              <option v-for="item in GetBankBranches" :key="n" :value="item.bank_code">{{item.bank_code}} {{item.name}}</option>
+              <option v-for="(item, index) in GetBankBranches" :key="index" :value="item.bank_code">{{item.bank_code}} {{item.name}}</option>
             </select>
           </div>
         </div>

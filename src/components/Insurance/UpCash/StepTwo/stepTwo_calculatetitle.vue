@@ -27,6 +27,7 @@ import { valEstimateData, setDataOnEstimateStep } from '../../../../utils/valida
 export default {
   computed: {
     ...mapGetters([
+      'GetNotifyCheckBox',
       GetterTypes.GetUpCashPostData
     ])
   },
@@ -46,13 +47,12 @@ export default {
 
       }
       // 輸入新的寄送地址
-      if (this.$store.state.NOTIFYCHECKBOX[3]) {
-      }
+      if (this.$store.state.NOTIFYCHECKBOX[3]) {}
       if (this.GetUpCashPostData.face_amt === '' || this.GetUpCashPostData.face_amt <= 0) {
         alert('請填寫第一期保險費。')
         return
       }
-      console.log(valEstimateData(this.GetUpCashPostData))
+      console.log(valEstimateData(this.GetUpCashPostData, this.GetNotifyCheckBox))
       setDataOnEstimateStep(this.GetUpCashPostData)
       this.FuncUpCashEstimate({ para: this.GetUpCashPostData })
     }

@@ -16,7 +16,15 @@ Object.keys(filters)
   .forEach(key => Vue.filter(key, filters[key]))
 
 Vue.prototype.$http = { axios }
+Vue.prototype.$RequestToken = ''
 
+axios.interceptors.request.use(function (config) {
+  store.dispatch('SetShowLoading')
+  config.headers['Authorization'] = 'Bearer ' + vm.$store.state.ApiToken
+  return config
+}, function(error) {
+  return Promise.reject(error)
+})
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
   return response
@@ -31,15 +39,6 @@ window.Lockr = Lockr
 /* eslint-disable no-new */
 var vm = new Vue({
   el: '#app',
-  created() {
-    axios.interceptors.request.use(function(config) {
-      // store.dispatch('SetShowLoading')
-      config.headers['Authorization'] = 'Bearer ' + vm.$RequestToken
-      return config
-    }, function(error) {
-      return Promise.reject(error)
-    })
-  },
   router,
   store,
   template: '<App/>',
