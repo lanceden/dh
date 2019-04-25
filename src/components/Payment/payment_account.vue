@@ -28,7 +28,7 @@
           <div class="top">
             <div class="top-title">
               <div class="insure-notice-box">
-                <div class="insure-check"><img src="images/chat.png" alt=""></div>
+                <div class="insure-check"><img src="../../../static/img/chat.png" alt=""></div>
                   <div class="insure-check-title">首期繳費管道</div>
                 </div>
               </div>

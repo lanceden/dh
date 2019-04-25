@@ -101,14 +101,21 @@ export default {
   FuncSendOTP(state, { result }) {
     state.OTPSENDCODE = result.Data.Result.SendCode
     state.OTPSENDTIME = result.Data.Result.OtpSendTime
+    state.OTPLASTTIME = result.Data.Result.OtpLastTime
   },
   /**
    * 驗證OTP
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncCheckOTP(state, { result }) {
-    state.OTPVALIDSTETIME = result.Data.Result.OtpValidateTime
+  FuncCheckOTP(state, { result, router }) {
+    // OTP驗證成功
+    if (result.ResultCode === '0000') {
+      state.OTPVALIDSTETIME = result.Data.Result.OtpValidateTime
+      this.$router.push('/payment')
+    } else {
+      alert('OTP驗證失敗')
+    }
   },
   /**
    * 取回同意書
@@ -116,7 +123,7 @@ export default {
    * @param {請求結果} param1 請求回傳結果
    */
   FuncGetProvision(state, { provisionName, result }) {
-    state.PROVISION.push({
+    state.PROVISIONDATA.push({
       provisionName,
       Result: result.Data.Result
     })

@@ -91,8 +91,8 @@ export default {
    * 發送OTP
    * @param {當前Vuex狀態} commit VuexStoreState
    */
-  FuncSendOTP({ commit }) {
-    rootState.Http.axios.post(`${Url.SendOTP}`).then(response => {
+  FuncSendOTP({ commit }, para) {
+    rootState.Http.axios.post(`${Url.SendOTP}`, para).then(response => {
       commit('FuncGetBeneficiary', { result: response.data })
     })
   },
@@ -100,9 +100,9 @@ export default {
    * 驗證OTP
    * @param {當前Vuex狀態} commit VuexStoreState
    */
-  FuncCheckOTP({ commit }) {
-    rootState.Http.axios.post(`${Url.SendOTP}`).then(response => {
-      commit('FuncGetBeneficiary', { result: response.data })
+  FuncCheckOTP({ commit }, { verify, router }) {
+    rootState.Http.axios.post(`${Url.CheckOTP}`, verify).then(response => {
+      commit('FuncGetBeneficiary', { result: response.data, router })
     })
   },
   /**
@@ -111,8 +111,8 @@ export default {
    * @param {string} para 請求參數
    */
   FuncGetProvision({ commit }, provisionName) {
-    rootState.Http.axios.post(`${Url.Provision}?provisionName=${provisionName}`).then(response => {
+    setTimeout(rootState.Http.axios.post(`${Url.Provision}?provisionName=${provisionName}`).then(response => {
       commit('FuncGetProvision', { provisionName, result: response.data })
-    })
+    }), 1000)
   }
 }

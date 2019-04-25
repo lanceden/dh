@@ -15,7 +15,7 @@ const Occupation = `${Domain}/Query/Occupation`
 /**
  * 取回同意書
  */
-const Provision = `${Domain}}/Query/Provision`
+const Provision = `${Domain}/Query/Provision`
 /**
  * 取回金融機構
  */

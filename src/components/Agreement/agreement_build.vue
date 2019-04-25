@@ -2,7 +2,7 @@
   <div>
     <AgreementCheck></AgreementCheck>
     <AgreementContent v-for="n in provisionCount" :key="n" :provisionindex="n - 1"></AgreementContent>
-    <AgreementFooter></AgreementFooter>
+    <AgreementFooter :insname="instypename"></AgreementFooter>
   </div>
 </template>
 
@@ -14,13 +14,14 @@ import AgreementFooter from './agreement_footer'
 export default {
   data() {
     return {
+      instypename: '',
       provisionCount: 0
     }
   },
   created() {
     const urlParams = new URLSearchParams(window.location.search)
-    const instypename = urlParams.get('instypename').toLowerCase()
-    switch (instypename) {
+    this.instypename = urlParams.get('instypename').toLowerCase()
+    switch (this.instypename) {
       case 'upcash':
         this.GetProvision.push('新光人壽Up Cash利率變動型年金保險【乙型】商品說明')
         this.GetProvision.push('新光人壽Up Cash利率變動型年金保險【乙型】保險單條款')

@@ -11,12 +11,27 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetUpCashPostData
+    ])
+  },
   methods: {
+    ...mapActions([
+      'FuncSendOTP'
+    ]),
     /**
      * OTP Verify
      */
     GoNext() {
+      this.FuncSendOTP({
+        MobileNum: this.GetUpCashPostData.phone_mobile,
+        OTPMail: this.GetUpCashPostData.email,
+        UserIDN: this.GetUpCashPostData.client_id
+      })
       this.$router.push('/otpverify')
     }
   }

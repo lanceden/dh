@@ -17,5 +17,6 @@ export default {
   GetDistrictData: state => state.DISTRICTDATA,
   GetContactCheckBox: state => state.CONTACTCHECKBOX,
   GetNotifyCheckBox: state => state.NOTIFYCHECKBOX,
-  GetProvision: state => state.PROVISION
+  GetProvision: state => state.PROVISION,
+  GetProvisionData: state => state.PROVISIONDATA
 }

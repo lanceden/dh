@@ -4,9 +4,9 @@ import UpcashStepOne from '../components/Insurance/UpCash/StepOne/stepOne_build'
 import UpcashStepTwo from '../components/Insurance/UpCash/StepTwo/stepTwo_build'
 import UpcashStepThree from '../components/Insurance/UpCash/StepThree/stepThree_build'
 import UpCashStepFour from '../components/Insurance/UpCash/StepFour/stepFour_build'
+import UpcashInsuredData from '../components/Insurance/UpCash/InsuredData/insureddata_build'
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
-import InsuredData from '../components/InsuredData/insureddata_build'
 import Otp from '../components/OTP/otp_build'
 import OtpVerify from '../components/OTPVerify/otpverify_build'
 import Payment from '../components/Payment/payment_build.vue'
@@ -53,8 +53,8 @@ const router = new Router({
     component: Agreement
   },
   {
-    path: '/insuredData',
-    component: InsuredData
+    path: '/upcash-insureddata',
+    component: UpcashInsuredData
   },
   {
     path: '/otp',

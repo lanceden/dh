@@ -9,13 +9,34 @@
   </div>
 </template>
 <script>
+const insNameArr = [
+  'upcash', 'ezcash', 'myway', 'ican', 'iwell'
+]
 export default {
+  props: [
+    'insname'
+  ],
   methods: {
     /**
      * 投保資訊
      */
     GoNext() {
-      this.$router.push('/InsuredData')
+      let insname = this.insname
+      var self = this
+      insNameArr.forEach(name => {
+        console.log(name)
+        console.log(insname.toLowerCase().match(name))
+        if (insname.toLowerCase().match(name) !== null) {
+          switch (name) {
+            case 'upcash':
+              self.$router.push(`/upcash-insureddata`)
+              break
+            case 'ezcash':
+              self.$router.push(`/ezcash-insureddata`)
+              break
+          }
+        }
+      })
     }
   }
 }

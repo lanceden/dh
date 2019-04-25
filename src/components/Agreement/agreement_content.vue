@@ -11,15 +11,21 @@
       <div class="border-bottom-line"></div>
       <div class="col-sm-12">
         <ul class="insure-text-notice">
-          <li>{{provisionindex}}</li>
+          <li :class="{ height100: isScroll }" class="provision" v-html="GetProvisionData[this.provisionindex].Result.Content"></li>
         </ul>
-        <div class="text-center table-more insure-more-img">展開閱讀更多<img src="../../../static/img/table-more.png" alt=""></div>
+        <div class="text-center table-more insure-more-img" @click="OnToggle()">{{contentButtonTitle}}<img src="../../../static/img/table-more.png" alt=""></div>
         </div>
       </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
+  data() {
+    return {
+      isScroll: false,
+      contentButtonTitle: '展開閱讀更多'
+    }
+  },
   created() {
     this.FuncGetProvision(this.GetProvision[this.provisionindex])
   },
@@ -28,13 +34,19 @@ export default {
   ],
   computed: {
     ...mapGetters([
-      'GetProvision'
+      'GetProvision',
+      'GetProvisionData'
     ])
   },
   methods: {
     ...mapActions([
       'FuncGetProvision'
     ]),
+    OnToggle() {
+      this.isScroll = !this.isScroll
+      this.contentButtonTitle = this.isScroll ? '已閱讀' : '展開閱讀更多'
+      console.log(this.isScroll)
+    },
     /**
      * 上一步(回到第一頁)
      */
@@ -52,3 +64,15 @@ export default {
 }
 
 </script>
+<style>
+.provision {
+  height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.height100 {
+  height: 100%;
+}
+
+</style>

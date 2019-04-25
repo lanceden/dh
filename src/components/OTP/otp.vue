@@ -14,7 +14,6 @@
       </div>
       <div class="row col-width">
         <div class="col-sm-12">
-          <button class="button-blue btn-block otp-margin">發送簡訊驗證</button>
         </div>
       </div>
       <div class="border-bottom-line"></div>
