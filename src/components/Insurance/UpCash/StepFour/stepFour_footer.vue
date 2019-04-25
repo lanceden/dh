@@ -21,7 +21,7 @@ export default {
      * 前往填寫聯絡資料
      */
     GoNext() {
-      this.$router.push('/agreement')
+      this.$router.push('/agreement?instypename=upcash')
     }
   }
 }

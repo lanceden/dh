@@ -43,7 +43,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death_seq">
+            <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death_seq" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected">請選擇</option>
               <option value="1" v-show="parseInt(GetUpCashPostData.benf_num) === 1">順位1</option>
               <option value="2" v-show="parseInt(GetUpCashPostData.benf_num) >= 2">順位2</option>
@@ -54,7 +54,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式之比例</label>
           <div class="col-sm-12 insure-select-align">
-            <input type="number" class="form-control insure-input insure-input-edit" v-model="relation_ben_death_seq_percent">
+            <input type="number" class="form-control insure-input insure-input-edit" v-model="relation_ben_death_seq_percent" v-bind:disabled="BenfinheritOneDisable">
           </div>
         </div>
         <div class="col-sm-12">
@@ -203,8 +203,8 @@ export default {
      */
     relation_ben_death: {
       get() {
-        if (this.GetUpCashPostData.relation_ben_death === undefined || this.GetUpCashPostData.relation_ben_death === null) {
-          return '0'
+        if (this.GetUpCashPostData.relation_ben_death === undefined || this.GetUpCashPostData.relation_ben_death === null || this.GetUpCashPostData.relation_ben_death === '') {
+          return 0
         }
         return this.GetUpCashPostData.relation_ben_death
       },

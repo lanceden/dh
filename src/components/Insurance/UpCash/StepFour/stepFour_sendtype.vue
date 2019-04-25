@@ -49,7 +49,7 @@ export default {
     }
   },
   created() {
-    this.tempAddr = this.GetterTypes.GetUpCashPostData.InsAddress
+    this.tempAddr = this.GetUpCashPostData.InsAddress
   },
   computed: {
     ...mapGetters([
@@ -62,12 +62,12 @@ export default {
         case 'cbOldAddr':
           this.cbOldAddr = true
           this.cbNewAddr = false
-          this.GetterTypes.GetUpCashPostData.InsAddress = this.tempAddr
+          this.GetUpCashPostData.InsAddress = this.tempAddr
           break
         case 'cbNewAddr':
           this.cbOldAddr = false
           this.cbNewAddr = true
-          this.GetterTypes.GetUpCashPostData.InsAddress = ''
+          this.GetUpCashPostData.InsAddress = ''
           break
       }
     }

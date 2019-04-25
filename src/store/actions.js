@@ -104,5 +104,15 @@ export default {
     rootState.Http.axios.post(`${Url.SendOTP}`).then(response => {
       commit('FuncGetBeneficiary', { result: response.data })
     })
+  },
+  /**
+   * 取回同意書
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {string} para 請求參數
+   */
+  FuncGetProvision({ commit }, provisionName) {
+    rootState.Http.axios.post(`${Url.Provision}?provisionName=${provisionName}`).then(response => {
+      commit('FuncGetProvision', { provisionName, result: response.data })
+    })
   }
 }

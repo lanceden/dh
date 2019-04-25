@@ -13,6 +13,7 @@ export default {
   DISTRICTDATA: [],
   BANKBRANCHESDATA: [],
   BENEFICIARY: [],
+  PROVISION: [],
   OTPSENDCODE: '',
   OTPSENDTIME: '',
   NATION: '',

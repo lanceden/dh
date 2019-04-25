@@ -95,7 +95,8 @@ export default {
   },
   /**
    * 發送OTP
-   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
    */
   FuncSendOTP(state, { result }) {
     state.OTPSENDCODE = result.Data.Result.SendCode
@@ -103,9 +104,21 @@ export default {
   },
   /**
    * 驗證OTP
-   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
    */
   FuncCheckOTP(state, { result }) {
     state.OTPVALIDSTETIME = result.Data.Result.OtpValidateTime
+  },
+  /**
+   * 取回同意書
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetProvision(state, { provisionName, result }) {
+    state.PROVISION.push({
+      provisionName,
+      Result: result.Data.Result
+    })
   }
 }

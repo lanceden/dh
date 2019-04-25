@@ -10,7 +10,7 @@
       </div>
       <div class="border-bottom-line"></div>
       <div class="insure-text">
-        我已閱讀且同意『新光人壽Up Cash利率變動型年金保險【乙型】商品說明』、『新光人壽Up Cash利率變動型年金保險【乙型】保險單條款』、『人壽保險投保人須知_網路投保』、『要保書填寫說明』、 『蒐集、處理及利用個人資料告知事項』、『病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項』、『配合FATCA法案蒐集、處理及利用個人資料告知事項』、『保險費暨保險單借款利息自動轉帳付款委託約定條款』、『電子單據服務約定事項』、 『信用卡授權書審閱條款』。
+        我已閱讀且同意{{provisionTitle}}
       </div>
       <div class="row insure-btn-r">
         <div class="col-sm-6">
@@ -29,6 +29,26 @@
     </div>
 </template>
 <script>
-export default {}
+import { mapGetters } from 'vuex'
+export default {
+  data() {
+    return {
+      provisionTitle: ''
+    }
+  },
+  created() {
+    let count = this.GetProvision.length - 1
+    this.GetProvision.forEach((provisionName, index) => {
+      this.provisionTitle += `『${provisionName}』`
+      if(index !== count) this.provisionTitle += `、`
+      else this.provisionTitle += `。`
+    })
+  },
+  computed: {
+    ...mapGetters([
+      'GetProvision'
+    ])
+  }
+}
 
 </script>
