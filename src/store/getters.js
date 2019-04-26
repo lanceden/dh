@@ -18,5 +18,6 @@ export default {
   GetContactCheckBox: state => state.CONTACTCHECKBOX,
   GetNotifyCheckBox: state => state.NOTIFYCHECKBOX,
   GetProvision: state => state.PROVISION,
-  GetProvisionData: state => state.PROVISIONDATA
+  GetProvisionData: state => state.PROVISIONDATA,
+  GetJobSubCodeData: state => state.JOBSUbOCCUPATIONDATA
 }

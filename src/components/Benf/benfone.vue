@@ -209,7 +209,14 @@ export default {
         return this.GetUpCashPostData.relation_ben_death
       },
       set(value) {
-        this.SetBenfinheritOneDisable(value === '8')
+        if (value === '8') {
+          this.SetBenfinheritOneDisable(true)
+          this.GetUpCashPostData.benf_name = '法定繼承人'
+          if (this.GetUpCashPostData.benf_num === '1') {
+            this.GetUpCashPostData.relation_ben_death_seq = 1
+            this.GetUpCashPostData.relation_ben_death_seq_percent = '100'
+          }
+        }
         this.GetUpCashPostData.relation_ben_death = value
       }
     },

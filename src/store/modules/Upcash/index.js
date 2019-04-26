@@ -53,12 +53,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncUpCashSubmitQuote]({ commit }, { para }) {
+  [functionTypes.FuncUpCashSubmitQuote]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.UpCashSubmitQuote}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncUpCashSubmitQuote, { result: response.data })
+      commit(functionTypes.FuncUpCashSubmitQuote, { result: response.data, router })
     })
   }
 }

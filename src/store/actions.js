@@ -94,7 +94,7 @@ export default {
    */
   FuncSendOTP({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.SendOTP}`, para).then(response => {
-      commit('FuncGetBeneficiary', { result: response.data, router })
+      commit('FuncSendOTP', { result: response.data, router })
     })
   },
   /**
@@ -103,7 +103,7 @@ export default {
    */
   FuncCheckOTP({ commit }, { verify, router }) {
     rootState.Http.axios.post(`${Url.CheckOTP}`, verify).then(response => {
-      commit('FuncGetBeneficiary', { result: response.data, router })
+      commit('FuncCheckOTP', { result: response.data, router })
     })
   },
   /**

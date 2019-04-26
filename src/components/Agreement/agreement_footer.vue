@@ -25,7 +25,10 @@ export default {
     ])
   },
   created() {
-    this.FuncUpCashSubmitQuote({ para: this.GetUpCashPostData })
+    this.FuncUpCashSubmitQuote({
+      para: this.GetUpCashPostData,
+      router: this.$router
+    })
   },
   methods: {
     ...mapActions([
@@ -38,8 +41,6 @@ export default {
       let insname = this.insname
       var self = this
       insNameArr.forEach(name => {
-        console.log(name)
-        console.log(insname.toLowerCase().match(name))
         if (insname.toLowerCase().match(name) !== null) {
           switch (name) {
             case 'upcash':

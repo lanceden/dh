@@ -25,6 +25,7 @@
             </select>
             <select class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
               <option value="0" selected="selected">請選擇</option>
+              <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
           </div>
         </div>
@@ -52,6 +53,7 @@ export default {
       GetterTypes.GetUpCashPostData,
       'GetJob',
       'GetJobData',
+      'GetJobSubCodeData',
       'GetOccupation',
       'GetOccupationData'
     ]),
@@ -94,7 +96,7 @@ export default {
       },
       set(value) {
         this.FuncGetOccupation({
-          NoClass: value,
+          NoClass: this.$store.state.JOB,
           PlanCode: 'UCA99',
           Type: '8',
           subCode: value
@@ -115,7 +117,7 @@ export default {
           this.GetUpCashPostData.client_occupation_class_code_name = ''
           return
         }
-        this.GetOccupationData.forEach(data => {
+        this.GetJobSubCodeData.forEach(data => {
           if (data.OCCUPATION_CODE === value) {
             this.GetUpCashPostData.client_occupation_class = data.OCCUPATION_CLASS
             this.GetUpCashPostData.client_occupation_class_code = data.OCCUPATION_CODE

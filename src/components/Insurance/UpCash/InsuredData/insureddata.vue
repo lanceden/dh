@@ -186,42 +186,42 @@
                 </div>
               </div>
               <div class="border-bottom-line"></div>
-              
-            <form class="form-bottom">
-              <div class="form-group row">
-                <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
-                <div class="col-sm-12">
-                  <div class="insure-input-block">{{mockData.benf_name2}}</div>
+
+              <form class="form-bottom">
+                <div class="form-group row">
+                  <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
+                  <div class="col-sm-12">
+                    <div class="insure-input-block">{{mockData.benf_name2}}</div>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-                <div class="col-sm-12">
-                  <div class="insure-input-block">順位1，{{mockData.relation_ben_death_seq_percent2}}%</div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
+                  <div class="col-sm-12">
+                    <div class="insure-input-block">順位1，{{mockData.relation_ben_death_seq_percent2}}%</div>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-                <div class="col-sm-12">
-                  <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 2">配偶</div>
-                  <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 3">父母子女</div>
-                  <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 6">祖孫</div>
-                  <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 8">法定繼承人</div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
+                  <div class="col-sm-12">
+                    <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 2">配偶</div>
+                    <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 3">父母子女</div>
+                    <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 6">祖孫</div>
+                    <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 8">法定繼承人</div>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-                <div class="col-sm-12">
-                  <div class="insure-input-block">電話：{{mockData.benf_phone2}}</div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
+                  <div class="col-sm-12">
+                    <div class="insure-input-block">電話：{{mockData.benf_phone2}}</div>
+                  </div>
                 </div>
-              </div>
-              <div class="form-group row">
-                <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-                <div class="col-sm-12">
-                  <div class="insure-input-block">{{mockData.BenfAdd_City2}}{{mockData.BenfAdd_County2}}{{mockData.BenfAddRemain2}}</div>
+                <div class="form-group row">
+                  <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
+                  <div class="col-sm-12">
+                    <div class="insure-input-block">{{mockData.BenfAdd_City2}}{{mockData.BenfAdd_County2}}{{mockData.BenfAddRemain2}}</div>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
             </div>
             <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 2">
               <div class="top">
@@ -395,16 +395,15 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
-import { data } from './mockData'
+// import { data } from './mockData'
 export default {
   data() {
     return {
-      mockData: data.Data.Result
+      // mockData: data.Data.Result
     }
   },
   created() {
-    console.log(this.mockData)
-    // this.FuncUpCashSubmitQuote()
+    // console.log(this.mockData)
   },
   computed: {
     ...mapGetters([

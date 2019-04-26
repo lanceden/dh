@@ -55,11 +55,11 @@ export default {
    * @param {請求結果} param1 請求回傳結果
    */
   FuncGetOccupation(state, { result, para }) {
-    if (para.type === '4') {
+    if (para.Type === '4') {
       state.OCCUPATIONDATA = result.Data.Result
       state.OCCUPATION = result.Data.Result[0].OCCUPATION_CODE
     } else {
-
+      state.JOBSUbOCCUPATIONDATA = result.Data.Result[0]
     }
   },
   /**
@@ -105,7 +105,7 @@ export default {
     state.OTPSENDCODE = result.Data.Result.SendCode
     state.OTPSENDTIME = result.Data.Result.OtpSendTime
     state.OTPLASTTIME = result.Data.Result.OtpLastTime
-    this.$router.push('/otpverify')
+    router.push('/otpverify')
   },
   /**
    * 驗證OTP
@@ -116,7 +116,7 @@ export default {
     // OTP驗證成功
     if (result.ResultCode === '0000') {
       state.OTPVALIDSTETIME = result.Data.Result.OtpValidateTime
-      this.$router.push('/payment')
+      router.push('/payment')
     } else {
       alert('OTP驗證失敗')
     }

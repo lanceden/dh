@@ -36,7 +36,10 @@ export default {
     ]),
     benf_num: {
       get() {
-        return this.GetUpCashPostData.benf_num || 1
+        if (this.GetUpCashPostData.benf_num === '' || this.GetUpCashPostData.benf_num === undefined || this.GetUpCashPostData.benf_num === null) {
+          this.GetUpCashPostData.benf_num = 1
+        }
+        return this.GetUpCashPostData.benf_num
       },
       set(value) {
         this.GetUpCashPostData.benf_num = value
