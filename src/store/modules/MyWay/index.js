@@ -11,8 +11,8 @@ const state = {
   [stateTypes.POSTDATA]: []
 }
 const getters = {
-  [getterTypes.MyWayGetIsInit]: state => state.MYWAYISINIT,
-  [getterTypes.MyWayGetPostData]: state => state.POSTDATA
+  [getterTypes.GetMyWayIsInit]: state => state.MYWAYISINIT,
+  [getterTypes.GetMyWayPostData]: state => state.POSTDATA
 }
 const actions = {
   /**

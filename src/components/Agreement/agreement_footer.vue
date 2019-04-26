@@ -12,11 +12,25 @@
 const insNameArr = [
   'upcash', 'ezcash', 'myway', 'ican', 'iwell'
 ]
+import { mapGetters, mapActions } from 'vuex'
+import FunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   props: [
     'insname'
   ],
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetUpCashPostData
+    ])
+  },
+  created() {
+    this.FuncUpCashSubmitQuote({ para: this.GetUpCashPostData })
+  },
   methods: {
+    ...mapActions([
+      FunctionTypes.FuncUpCashSubmitQuote
+    ]),
     /**
      * 投保資訊
      */

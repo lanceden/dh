@@ -67,7 +67,7 @@ export default {
 <style>
 .provision {
   height: 300px;
-  overflow: scroll;
+  overflow: hidden;
   overflow-x: hidden;
 }
 

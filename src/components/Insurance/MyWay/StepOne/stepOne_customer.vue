@@ -16,26 +16,26 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="MyWayGetPostData.client_names" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetMyWayPostData.client_names" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="MyWayGetPostData.client_birth" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetMyWayPostData.client_birth" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" v-model="MyWayGetPostData.client_id" disabled="disabled" />
+            <input type="text" class="form-control insure-input-block" v-model="GetMyWayPostData.client_id" disabled="disabled" />
           </div>
         </div>
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">被保險人性別</label>
           <div class="col-sm-12">
             <input type="text" class="form-control insure-input-block" 
-            v-model="MyWayGetPostData.client_rate_sex === 1 ? '男' : '女'" disabled="disabled" />
+            v-model="GetMyWayPostData.client_rate_sex === 1 ? '男' : '女'" disabled="disabled" />
           </div>
         </div>
         <div class="row col-width">
@@ -53,7 +53,7 @@ import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.MyWayGetPostData
+      GetterTypes.GetMyWayPostData
     ])
   }
 }

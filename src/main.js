@@ -8,6 +8,7 @@ import store from './store'
 import Lockr from 'lockr'
 import filters from './filters'
 import axios from 'axios'
+import { GetErrorMsg } from '../src/utils/getErrorMsg'
 
 Vue.config.productionTip = false
 Vue.use(extension)
@@ -16,9 +17,8 @@ Object.keys(filters)
   .forEach(key => Vue.filter(key, filters[key]))
 
 Vue.prototype.$http = { axios }
-Vue.prototype.$RequestToken = ''
 
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(function(config) {
   store.dispatch('SetShowLoading')
   config.headers['Authorization'] = 'Bearer ' + vm.$store.state.ApiToken
   return config
@@ -27,11 +27,13 @@ axios.interceptors.request.use(function (config) {
 })
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
+  if (response.data.ResultCode !== '0000') {
+    console.log(GetErrorMsg(response.data.ErrorMessage))
+    return response
+  }
   return response
 }, function(error) {
-  if (error.response !== 200) {
-    console.log('請正常操作')
-  }
+  console.log(GetErrorMsg(error.response.data.ErrorMessage))
   return Promise.reject(error)
 })
 window.Lockr = Lockr

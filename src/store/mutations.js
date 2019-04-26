@@ -54,10 +54,13 @@ export default {
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncGetOccupation(state, { result, occupationCode }) {
-    state.OCCUPATIONDATA = result.Data.Result
-    state.OCCUPATION = result.Data.Result[0].OCCUPATION_CODE
-    state.JOB = occupationCode
+  FuncGetOccupation(state, { result, para }) {
+    if (para.type === '4') {
+      state.OCCUPATIONDATA = result.Data.Result
+      state.OCCUPATION = result.Data.Result[0].OCCUPATION_CODE
+    } else {
+
+    }
   },
   /**
    * 取回城市
@@ -98,10 +101,11 @@ export default {
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncSendOTP(state, { result }) {
+  FuncSendOTP(state, { result, router }) {
     state.OTPSENDCODE = result.Data.Result.SendCode
     state.OTPSENDTIME = result.Data.Result.OtpSendTime
     state.OTPLASTTIME = result.Data.Result.OtpLastTime
+    this.$router.push('/otpverify')
   },
   /**
    * 驗證OTP

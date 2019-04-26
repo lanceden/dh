@@ -14,19 +14,17 @@
       </div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">您的職業類別</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
               <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
             </select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">職業名稱</label>
-          <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
+            <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
               <option value="0" selected="selected">請選擇</option>
               <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+            </select>
+            <select class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
+              <option value="0" selected="selected">請選擇</option>
             </select>
           </div>
         </div>
@@ -82,8 +80,26 @@ export default {
         return this.GetJob
       },
       set(value) {
-        this.FuncGetOccupation(value)
-        this.$store.state.UpCash.JOB = value
+        this.FuncGetOccupation({
+          NoClass: value,
+          PlanCode: 'UCA99',
+          Type: '4'
+        })
+        this.$store.state.JOB = value
+      }
+    },
+    jobSubCode: {
+      get() {
+        return this.$store.state.JOBSUBCODE
+      },
+      set(value) {
+        this.FuncGetOccupation({
+          NoClass: value,
+          PlanCode: 'UCA99',
+          Type: '8',
+          subCode: value
+        })
+        this.$store.state.JOBSUBCODE = value
       }
     },
     occupation: {
@@ -112,7 +128,11 @@ export default {
   created() {
     if (!this.GetUpCashIsInit) {
       this.FuncGetJob()
-      this.FuncGetOccupation('00')
+      this.FuncGetOccupation({
+        NoClass: '00',
+        PlanCode: 'UCA99',
+        Type: '4'
+      })
     }
   },
   methods: {

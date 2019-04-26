@@ -5,6 +5,8 @@ export default {
   HeaderIsActive: false,
   BenfinheritOneDisable: false,
   JOB: '',
+  JOBSUBCODE: '',
+  JOBSUbOCCUPATIONDATA: '',
   JOBDATA: [],
   CITY: [],
   CITYDATA: [],

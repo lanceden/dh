@@ -1,4 +1,4 @@
 export default {
-  MyWayGetIsInit: 'MyWayGetIsInit',
-  MyWayGetPostData: 'MyWayGetPostData'
+  GetMyWayIsInit: 'GetMyWayIsInit',
+  GetMyWayPostData: 'GetMyWayPostData'
 }

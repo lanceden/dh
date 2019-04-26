@@ -1,7 +1,6 @@
 import Url from '../utils/constUrl'
 import rootState from './state'
 
-const planCode = 'UC099'
 export default {
   SetShowLoading({ commit }) {
     commit('SetShowLoading')
@@ -50,12 +49,14 @@ export default {
       commit('FuncGetNationality', { result: response.data })
     })
   },
-  FuncGetOccupation({ commit }, occupationCode) {
-    rootState.Http.axios.post(`${Url.Occupation}`, {
-      PlanCode: planCode,
-      OccupationCode: occupationCode
-    }).then(response => {
-      commit('FuncGetOccupation', { result: response.data, occupationCode })
+  /**
+   * 取回職業類別名稱
+   * @param {commit} param0 提交狀態
+   * @param {string} bankCode 銀行代碼
+   */
+  FuncGetOccupation({ commit }, para) {
+    rootState.Http.axios.post(`${Url.Occupation}`, para).then(response => {
+      commit('FuncGetOccupation', { result: response.data, para })
     })
   },
   FuncGetCityData({ commit }) {
@@ -91,9 +92,9 @@ export default {
    * 發送OTP
    * @param {當前Vuex狀態} commit VuexStoreState
    */
-  FuncSendOTP({ commit }, para) {
+  FuncSendOTP({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.SendOTP}`, para).then(response => {
-      commit('FuncGetBeneficiary', { result: response.data })
+      commit('FuncGetBeneficiary', { result: response.data, router })
     })
   },
   /**

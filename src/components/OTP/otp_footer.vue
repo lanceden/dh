@@ -27,12 +27,15 @@ export default {
      * OTP Verify
      */
     GoNext() {
-      this.FuncSendOTP({
-        MobileNum: this.GetUpCashPostData.phone_mobile,
-        OTPMail: this.GetUpCashPostData.email,
-        UserIDN: this.GetUpCashPostData.client_id
-      })
-      this.$router.push('/otpverify')
+      let sendData = {
+        para: {
+          MobileNum: this.GetUpCashPostData.phone_mobile,
+          OTPMail: this.GetUpCashPostData.email,
+          UserIDN: this.GetUpCashPostData.client_id
+        },
+        router: this.$router
+      }
+      this.FuncSendOTP(sendData)
     }
   }
 }

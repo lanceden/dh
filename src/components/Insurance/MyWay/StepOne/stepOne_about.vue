@@ -144,7 +144,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.MyWayGetIsInit,
+      GetterTypes.GetMyWayIsInit,
       'GetJob',
       'GetJobData',
       'GetOccupation',
@@ -335,7 +335,7 @@ export default {
     }
   },
   created() {
-    if (!this.MyWayGetIsInit) {
+    if (!this.GetMyWayIsInit) {
       this.FuncGetJob()
       this.FuncGetOccupation('00')
     }

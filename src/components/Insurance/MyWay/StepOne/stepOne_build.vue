@@ -15,13 +15,13 @@ import StepOneAbout from './stepOne_about'
 import StepOneFooter from './stepOne_footer'
 export default {
   created() {
-    if (!this.MyWayGetIsInit) {
+    if (!this.GetMyWayIsInit) {
       this.FuncMyWayInit()
     }
   },
   computed: {
     ...mapGetters([
-      GetterTypes.MyWayGetIsInit
+      GetterTypes.GetMyWayIsInit
     ])
   },
   components: {
