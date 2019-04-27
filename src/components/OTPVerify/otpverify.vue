@@ -86,7 +86,6 @@ export default {
      */
     GoNext() {
       let verifyCode = `${this.codeOne}${this.codeTwo}${this.codeThree}${this.codeFour}${this.codeFive}${this.codeSix}`
-      console.log(verifyCode)
 
       let sendData = {
         verify: {

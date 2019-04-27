@@ -51,7 +51,7 @@ const SendOTP = `${Domain}/OTP/Send`
 /**
  * 驗證OTP
  */
-const CheckOTP = `${Domain}}/OTP/Check`
+const CheckOTP = `${Domain}/OTP/Check`
 
 /**
  * UpCash初始化
