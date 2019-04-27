@@ -82,11 +82,28 @@ const EZCashEstimate = `${Domain}/EZCash/Estimate`
  * EZCash投保流程下一步
  */
 const EZCashSubmitQuote = `${Domain}/EZCash/SubmitQuote`
-
 /**
- * EZCash成立訂單
+ * UpCash成立訂單
  */
 const EZCashSubmitOrder = `${Domain}/EZCash/SubmitOrder`
+
+/**
+ * ICan初始化
+ */
+const ICanInit = `${Domain}/ICan/Initialize`
+/**
+ * ICan投保流程試算
+ */
+const ICanEstimate = `${Domain}/ICan/Estimate`
+/**
+ * ICan投保流程下一步
+ */
+const ICanSubmitQuote = `${Domain}/ICan/SubmitQuote`
+
+/**
+ * ICan成立訂單
+ */
+const ICanSubmitOrder = `${Domain}/ICan/SubmitOrder`
 
 /**
  * MyWay初始化
@@ -119,6 +136,10 @@ export default {
   EZCashEstimate,
   EZCashSubmitQuote,
   EZCashSubmitOrder,
+  ICanInit,
+  ICanEstimate,
+  ICanSubmitQuote,
+  ICanSubmitOrder,
   MyWayInit,
   MyWayEstimate
 }

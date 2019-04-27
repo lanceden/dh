@@ -33,7 +33,11 @@ axios.interceptors.response.use(function(response) {
   }
   return response
 }, function(error) {
-  console.log(GetErrorMsg(error.response.data.ErrorMessage))
+  if (error.response === undefined) {
+    console.log(`${error.config.url} , errorMessage: ${error.message}`)
+  } else {
+    console.log(GetErrorMsg(error.response.data.ErrorMessage))
+  }
   return Promise.reject(error)
 })
 window.Lockr = Lockr

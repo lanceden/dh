@@ -9,6 +9,9 @@
   </div>
 </template>
 <script>
+const insNameArr = [
+  'ezcash', 'ezcash', 'myway', 'ican', 'iwell'
+]
 export default {
   methods: {
     /**
@@ -21,7 +24,11 @@ export default {
      * 前往填寫聯絡資料
      */
     GoNext() {
-      this.$router.push('/upcash-4')
+      insNameArr.forEach(name => {
+        if (window.location.pathname.toLowerCase().match(name) !== null && window.location.pathname.toLowerCase().match(name).index === 1) {
+          this.$router.push(`/${name}-4`)
+        }
+      })
     }
   }
 }

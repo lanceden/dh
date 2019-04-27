@@ -64,8 +64,8 @@
             <div class="col-sm-12 insure-select-align">
               <select id class="form-control data-input insure-select insure-input-edit" v-model="modx_99_ind">
                 <option value="0" selected="selected">請選擇</option>
-                <option value="'Y'" >不定期繳</option>
-                <option value="'N'">分期繳付</option>
+                <option value="1">不定期繳</option>
+                <option value="2">分期繳付之續期保險費</option>
               </select>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default {
         // 分期繳付:N 不定期繳:Y
         this.OnUntimed(value)
         this.GetUpCashPostData.mode_prem = 0
-        this.GetUpCashPostData.modx_99_ind = value
+        this.GetEZCashPostData.modx_99_ind = parseInt(value) === 1 ? 'Y' : 'N'
       }
     },
     // 分期保費每期 請輸入續期保險費。

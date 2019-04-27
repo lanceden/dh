@@ -12,6 +12,13 @@ import EZCashStepThree from '../components/Insurance/EZCash/StepThree/stepThree_
 import EZCashStepFour from '../components/Insurance/EZCash/StepFour/stepFour_build'
 import EZCashInsuredData from '../components/Insurance/EZCash/InsuredData/insureddata_build'
 
+import ICanElecForm from '../components/Insurance/ICan/StepOne/stepOne_elecform'
+import ICanStepOne from '../components/Insurance/ICan/StepOne/stepOne_build'
+import ICanStepTwo from '../components/Insurance/ICan/StepTwo/stepTwo_build'
+import ICanStepThree from '../components/Insurance/ICan/StepThree/stepThree_build'
+import ICanStepFour from '../components/Insurance/ICan/StepFour/stepFour_build'
+import ICanInsuredData from '../components/Insurance/ICan/InsuredData/insureddata_build'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
@@ -71,6 +78,29 @@ const router = new Router({
     component: EZCashStepFour
   },
   {
+    path: '/icanelecform',
+    component: ICanElecForm
+  },
+  {
+    path: '/ICan-1',
+    component: ICanStepOne,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/ICan-2',
+    component: ICanStepTwo
+  },
+  {
+    path: '/ICan-3',
+    component: ICanStepThree
+  },
+  {
+    path: '/ICan-4',
+    component: ICanStepFour
+  },
+  {
     path: '/benf',
     component: Benfbuild
   },
@@ -85,6 +115,10 @@ const router = new Router({
   {
     path: '/ezcash-insureddata',
     component: EZCashInsuredData
+  },
+  {
+    path: '/ican-insureddata',
+    component: ICanInsuredData
   },
   {
     path: '/otp',

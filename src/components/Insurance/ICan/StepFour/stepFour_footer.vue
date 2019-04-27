@@ -10,7 +10,7 @@
 </template>
 <script>
 const insNameArr = [
-  'ezcash', 'ezcash', 'myway', 'ican', 'iwell'
+  'ICan', 'ezcash', 'myway', 'ican', 'iwell'
 ]
 export default {
   methods: {

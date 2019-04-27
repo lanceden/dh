@@ -45,18 +45,19 @@
             <div class="col-sm-12 insure-select-align">
               <select id class="form-control data-input insure-select insure-input-edit" v-model="modx_99_ind">
                 <option value="0" selected="selected">請選擇</option>
-                <option value="'Y'" >不定期繳</option>
-                <option value="'N'">分期繳付</option>
+                <option value="1">不定期繳</option>
+                <option value="2">分期繳付之續期保險費</option>
               </select>
             </div>
           </div>
 
-          <!--Start 不定期繳-全國新光人壽行政中心繳費 -->
-          <div class="form-group row" v-show="!GetEZCashPostData.IsOneTimePayment">
+          <!--Start 分期繳付之續期保險費 -->
+          <div class="form-group row">
             <label for class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
             <div class="col-sm-12">
-              <select id class="form-control data-input">
-                <option v-for="(item, index) in payType" :key="index" :value="index">{{item}}</option>
+              <select id class="form-control data-input" v-model="payType">
+                <option value="1">全國新光人壽行政中心繳費</option>
+                <option value="2">銀行或郵局帳戶轉帳</option>
               </select>
             </div>
             <div class="row">
@@ -82,13 +83,13 @@
                 <!-- End 不定期繳-全國新光人壽行政中心繳費-->
 
                 <!--Start 分期繳付 -->
-                <div class="form-group row" v-show="(GetEZCashPostData.modx_99_ind === 'N' && !GetEZCashPostData.IsOneTimePayment)">
+                <div class="form-group row" v-show="(GetEZCashPostData.modx_99_ind === 'N')">
                   <label for class="col-sm-12 col-form-label insure-label insure-label">分期保費每期</label>
                   <div class="col-sm-12">
                     <input type="text" class="form-control insure-input insure-input-edit" v-model="qpoop_25_prem">
                   </div>
                 </div>
-                <div class="form-group row" v-show="(GetEZCashPostData.modx_99_ind === 'N' && !GetEZCashPostData.IsOneTimePayment)">
+                <div class="form-group row" v-show="(GetEZCashPostData.modx_99_ind === 'N')">
                   <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
                   <div class="col-sm-12 insure-select-align">
                     <select id class="form-control data-input insure-select insure-input-edit" v-model="qpoop_25_modx">
@@ -112,14 +113,6 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
 export default {
-  data() {
-    return {
-      payType: [
-        '全國新光人壽行政中心繳費',
-        '銀行或郵局轉帳'
-      ]
-    }
-  },
   created() {
     this.GetEZCashPostData.init_method = 'B'
   },
@@ -144,18 +137,27 @@ export default {
         this.GetEZCashPostData.face_amt = value
       }
     },
+    // 續期繳費管道
+    payType: {
+      get() {
+        return
+      },
+      set(value) {
+
+      }
+    },
     // 約定續期繳法別
     modx_99_ind: {
       get() {
         let result = this.GetEZCashPostData.modx_99_ind || 0
-        if(result !== 0) this.OnUntimed(result)
-        return result === 'Y' ? 'Y' : result
+        if (result !== 0) this.OnUntimed(result)
+        return result
       },
       set(value) {
         // 分期繳付:N 不定期繳:Y
         this.OnUntimed(value)
         this.GetEZCashPostData.mode_prem = 0
-        this.GetEZCashPostData.modx_99_ind = value
+        this.GetEZCashPostData.modx_99_ind = parseInt(value) === 1 ? 'Y' : 'N'
       }
     },
     // 分期保費每期 請輸入續期保險費。
@@ -183,8 +185,8 @@ export default {
   },
   methods: {
     OnUntimed(value) {
-      // 不定期繳:Y 只有全國新光人壽行政中心繳費 分期繳付:N 只有帳戶或信用卡
-      // this.payType = value === 'Y' ? ['活期性帳戶(電子化授權/全國繳費網)'] : ['信用卡', '銀行或郵局轉帳']
+      // 不定期繳:Y 只有全國新光人壽行政中心繳費 分期繳付:N 銀行或郵局帳戶轉帳
+      this.payType = value === 'Y' ? ['活期性帳戶(電子化授權/全國繳費網)'] : ['信用卡', '銀行或郵局轉帳']
     }
   }
 }
