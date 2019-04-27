@@ -65,11 +65,11 @@ const UpCashEstimate = `${Domain}/UpCash/Estimate`
  * UpCash投保流程下一步
  */
 const UpCashSubmitQuote = `${Domain}/UpCash/SubmitQuote`
-
 /**
  * UpCash成立訂單
  */
 const UpCashSubmitOrder = `${Domain}/UpCash/SubmitOrder`
+
 /**
  * EZCash初始化
  */

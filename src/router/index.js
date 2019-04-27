@@ -5,6 +5,13 @@ import UpcashStepTwo from '../components/Insurance/UpCash/StepTwo/stepTwo_build'
 import UpcashStepThree from '../components/Insurance/UpCash/StepThree/stepThree_build'
 import UpCashStepFour from '../components/Insurance/UpCash/StepFour/stepFour_build'
 import UpcashInsuredData from '../components/Insurance/UpCash/InsuredData/insureddata_build'
+
+import EZCashStepOne from '../components/Insurance/EZCash/StepOne/stepOne_build'
+import EZCashStepTwo from '../components/Insurance/EZCash/StepTwo/stepTwo_build'
+import EZCashStepThree from '../components/Insurance/EZCash/StepThree/stepThree_build'
+import EZCashStepFour from '../components/Insurance/EZCash/StepFour/stepFour_build'
+import EZCashInsuredData from '../components/Insurance/EZCash/InsuredData/insureddata_build'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
@@ -45,6 +52,25 @@ const router = new Router({
     component: UpCashStepFour
   },
   {
+    path: '/ezcash-1',
+    component: EZCashStepOne,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/ezcash-2',
+    component: EZCashStepTwo
+  },
+  {
+    path: '/ezcash-3',
+    component: EZCashStepThree
+  },
+  {
+    path: '/ezcash-4',
+    component: EZCashStepFour
+  },
+  {
     path: '/benf',
     component: Benfbuild
   },
@@ -55,6 +81,10 @@ const router = new Router({
   {
     path: '/upcash-insureddata',
     component: UpcashInsuredData
+  },
+  {
+    path: '/ezcash-insureddata',
+    component: EZCashInsuredData
   },
   {
     path: '/otp',

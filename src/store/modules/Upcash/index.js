@@ -20,8 +20,8 @@ const actions = {
    * @param {commit} param0 提交狀態
    * @param {bool} MYWAYISINIT 是否已初始化
    */
-  [functionTypes.FuncUpCashIsInit]({ commit }, MYWAYISINIT) {
-    commit(functionTypes.FuncUpCashIsInit, { result: MYWAYISINIT })
+  [functionTypes.FuncUpCashIsInit]({ commit }, UPCASHISINIT) {
+    commit(functionTypes.FuncUpCashIsInit, { result: UPCASHISINIT })
   },
   /**
    * UpCash 投保流程初始化

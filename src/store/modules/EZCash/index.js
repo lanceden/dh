@@ -20,8 +20,8 @@ const actions = {
    * @param {commit} param0 提交狀態
    * @param {bool} MYWAYISINIT 是否已初始化
    */
-  [functionTypes.FuncEZCashIsInit]({ commit }, MYWAYISINIT) {
-    commit(functionTypes.FuncEZCashIsInit, { result: MYWAYISINIT })
+  [functionTypes.FuncEZCashIsInit]({ commit }, EZCashISINIT) {
+    commit(functionTypes.FuncEZCashIsInit, { result: EZCashISINIT })
   },
   /**
    * EZCash 投保流程初始化
