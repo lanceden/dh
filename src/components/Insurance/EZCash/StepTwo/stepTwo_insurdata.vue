@@ -24,16 +24,6 @@
             <div class="insure-input-block">{{GetEZCashPostData.po_issue_date_Name}}</div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
-          <div class="col-sm-12">
-            <select id class="form-control data-input" v-model="init_method">
-              <option selected="selected" value="0">未選擇</option>
-              <option value="B">活期性帳戶(電子化授權/全國繳費網)</option>
-              <option value="C">信用卡</option>
-            </select>
-          </div>
-        </div>
         <div class="col-sm-12">
           <div class="insure-tips-text">
             <img src="../../../../../static/img/insure-link.png" alt>刷卡攻略
@@ -125,33 +115,18 @@ export default {
   data() {
     return {
       payType: [
-        '活期性帳戶(電子化授權/全國繳費網)',
-        '信用卡',
+        '全國新光人壽行政中心繳費',
         '銀行或郵局轉帳'
       ]
     }
+  },
+  created() {
+    this.GetEZCashPostData.init_method = 'B'
   },
   computed: {
     ...mapGetters([
       GetterTypes.GetEZCashPostData
     ]),
-    /**
-     * 首期繳費管道 請選首期繳費管道。
-     */
-    init_method: {
-      get() {
-        if (this.GetEZCashPostData.init_method === undefined ||
-          this.GetEZCashPostData.init_method === null ||
-          this.GetEZCashPostData.init_method === '') {
-          return 0
-        }
-        return this.GetEZCashPostData.init_method
-      },
-      set(value) {
-        this.GetEZCashPostData.mode_prem = 0
-        this.GetEZCashPostData.init_method = value
-      }
-    },
     /**
      * 第一期保險費
      */
@@ -209,7 +184,7 @@ export default {
   methods: {
     OnUntimed(value) {
       // 不定期繳:Y 只有全國新光人壽行政中心繳費 分期繳付:N 只有帳戶或信用卡
-      this.payType = value === 'Y' ? ['活期性帳戶(電子化授權/全國繳費網)'] : ['信用卡', '銀行或郵局轉帳']
+      // this.payType = value === 'Y' ? ['活期性帳戶(電子化授權/全國繳費網)'] : ['信用卡', '銀行或郵局轉帳']
     }
   }
 }
