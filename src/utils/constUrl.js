@@ -99,7 +99,6 @@ const ICanEstimate = `${Domain}/ICan/Estimate`
  * ICan投保流程下一步
  */
 const ICanSubmitQuote = `${Domain}/ICan/SubmitQuote`
-
 /**
  * ICan成立訂單
  */
@@ -113,6 +112,14 @@ const MyWayInit = `${Domain}/MyWay/Initialize`
  * MyWay投保流程試算
  */
 const MyWayEstimate = `${Domain}/MyWay/Estimate`
+/**
+ * MyWay投保流程下一步
+ */
+const MyWaySubmitQuote = `${Domain}/MyWay/SubmitQuote`
+/**
+ * UpCash成立訂單
+ */
+const MyWaySubmitOrder = `${Domain}/MyWay/SubmitOrder`
 
 export default {
   Domain,
@@ -141,5 +148,7 @@ export default {
   ICanSubmitQuote,
   ICanSubmitOrder,
   MyWayInit,
-  MyWayEstimate
+  MyWayEstimate,
+  MyWaySubmitQuote,
+  MyWaySubmitOrder
 }

@@ -26,12 +26,24 @@ import IWellStepThree from '../components/Insurance/IWell/StepThree/stepThree_bu
 import IWellStepFour from '../components/Insurance/IWell/StepFour/stepFour_build'
 import IWellInsuredData from '../components/Insurance/IWell/InsuredData/insureddata_build'
 
+import MyWayStepOne from '../components/Insurance/MyWay/StepOne/stepOne_build'
+import MyWayStepTwo from '../components/Insurance/MyWay/StepTwo/stepTwo_build'
+import MyWayStepThree from '../components/Insurance/MyWay/StepThree/stepThree_build'
+import MyWayStepFour from '../components/Insurance/MyWay/StepFour/stepFour_build'
+import MyWayInsuredData from '../components/Insurance/MyWay/InsuredData/insureddata_build'
+
+import IGoingStepOne from '../components/Insurance/IGoing/StepOne/stepOne_build'
+import IGoingStepTwo from '../components/Insurance/IGoing/StepTwo/stepTwo_build'
+import IGoingStepThree from '../components/Insurance/IGoing/StepThree/stepThree_build'
+import IGoingStepFour from '../components/Insurance/IGoing/StepFour/stepFour_build'
+import IGoingInsuredData from '../components/Insurance/IGoing/InsuredData/insureddata_build'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
 import OtpVerify from '../components/OTPVerify/otpverify_build'
 import Payment from '../components/Payment/payment_build.vue'
-import MyWayStepOne from '../components/Insurance/MyWay/StepOne/stepOne_build'
+
 import MyError from '../components/error'
 
 Vue.use(Router)
@@ -45,6 +57,18 @@ const router = new Router({
     meta: {
       requiresAuth: false
     }
+  },
+  {
+    path: '/myway-2',
+    component: MyWayStepTwo
+  },
+  {
+    path: '/myway-3',
+    component: MyWayStepThree
+  },
+  {
+    path: '/myway-4',
+    component: MyWayStepFour
   },
   {
     path: '/upcash-1',
@@ -64,6 +88,25 @@ const router = new Router({
   {
     path: '/upcash-4',
     component: UpCashStepFour
+  },
+  {
+    path: '/igoing-1',
+    component: IGoingStepOne,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/igoing-2',
+    component: IGoingStepTwo
+  },
+  {
+    path: '/igoing-3',
+    component: IGoingStepThree
+  },
+  {
+    path: '/igoing-4',
+    component: IGoingStepFour
   },
   {
     path: '/ezcash-1',
@@ -153,6 +196,14 @@ const router = new Router({
   {
     path: '/iwell-insureddata',
     component: IWellInsuredData
+  },
+  {
+    path: '/myway-insureddata',
+    component: MyWayInsuredData
+  },
+  {
+    path: '/igoing-insureddata',
+    component: IGoingInsuredData
   },
   {
     path: '/otp',

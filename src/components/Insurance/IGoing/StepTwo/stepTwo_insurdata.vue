@@ -1,0 +1,136 @@
+<template>
+  <div class="bg-radius">
+    <div class="top">
+      <div class="top-title">
+        <div class="insure-notice-box">
+          <div class="insure-check">
+            <img src="../../../../../static/img/chat.png" alt>
+          </div>
+          <div class="insure-check-title">請填寫投保資料</div>
+        </div>
+      </div>
+    </div>
+    <div class="border-bottom-line"></div>
+    <form class="form-bottom">
+      <div class="form-group row">
+        <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
+        <div class="col-sm-12">
+          <div class="insure-input-block">{{GetIGoingPostData.ins_type_name}}</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
+        <div class="col-sm-12">
+          <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
+            <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
+          </select>
+          <div class="form-control insure-select">，至 民國{{test}}午夜十二時止</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
+        <div class="col-sm-12">
+          <select name="face_amt" id="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
+            <option value="450" selected="selected">450萬</option>
+            <option value="440">440萬</option>
+            <option value="430">430萬</option>
+            <option value="420">420萬</option>
+            <option value="410">410萬</option>
+            <option value="400">400萬</option>
+            <option value="390">390萬</option>
+            <option value="380">380萬</option>
+            <option value="370">370萬</option>
+            <option value="360">360萬</option>
+            <option value="350">350萬</option>
+            <option value="340">340萬</option>
+            <option value="330">330萬</option>
+            <option value="320">320萬</option>
+            <option value="310">310萬</option>
+            <option value="300">300萬</option>
+            <option value="290">290萬</option>
+            <option value="280">280萬</option>
+            <option value="270">270萬</option>
+            <option value="260">260萬</option>
+            <option value="250">250萬</option>
+            <option value="240">240萬</option>
+            <option value="230">230萬</option>
+            <option value="220">220萬</option>
+            <option value="210">210萬</option>
+            <option value="200">200萬</option>
+            <option value="190">190萬</option>
+            <option value="180">180萬</option>
+            <option value="170">170萬</option>
+            <option value="160">160萬</option>
+            <option value="150">150萬</option>
+            <option value="140">140萬</option>
+            <option value="130">130萬</option>
+            <option value="120">120萬</option>
+            <option value="110">110萬</option>
+            <option value="100">100萬</option>
+            <option value="90">90萬</option>
+            <option value="80">80萬</option>
+            <option value="70">70萬</option>
+            <option value="60">60萬</option>
+            <option value="50">50萬</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script>
+import moment from 'moment'
+import { mapGetters } from 'vuex'
+import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes.js'
+export default {
+  data() {
+    return {
+      insDateArr: [],
+      test: ''
+    }
+  },
+  created() {
+    for (let i = 1; i <= 7; i++) {
+      this.insDateArr.push({
+        utc: moment().add(`${i}`, 'days').format(`YYYY-MM-DD`),
+        roc: moment().add(`${i}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日午夜十二時`)
+      })
+    }
+  },
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetIGoingPostData
+    ]),
+    /**
+     * 保險期間 投保始期
+     */
+    po_issue_date: {
+      get() {
+        return this.GetIGoingPostData.po_issue_date || moment().add(`1`, 'days').format(`YYYY-MM-DD`)
+      },
+      set(value) {
+        this.GetIGoingPostData.po_issue_date = value
+        console.log(this.GetIGoingPostData.po_issue_date)
+      }
+    },
+    /**
+     * 投保額度
+     */
+    face_amt: {
+      get() {
+        return this.GetIGoingPostData.face_amt || 450
+      },
+      set(value) {
+        this.GetIGoingPostData.face_amt = value
+      }
+    }
+  },
+  methods: {
+    OnIssueDateChange(event) {
+      console.log(event)
+    }
+  }
+}
+
+</script>

@@ -9,6 +9,7 @@ import EZCash from './modules/EZCash'
 import ICan from './modules/ICan'
 import IWell from './modules/IWell'
 import MyWay from './modules/MyWay'
+import IGoing from './modules/IGoing'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     EZCash,
     ICan,
     IWell,
-    MyWay
+    MyWay,
+    IGoing
   },
   mutations,
   actions,

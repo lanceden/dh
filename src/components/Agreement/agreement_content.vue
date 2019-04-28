@@ -46,19 +46,6 @@ export default {
     OnToggle() {
       this.isScroll = !this.isScroll
       this.contentButtonTitle = this.isScroll ? '已閱讀' : '展開閱讀更多'
-    },
-    /**
-     * 上一步(回到第一頁)
-     */
-    GoPrev() {
-      this.SetHeaderIsActive(false)
-      this.$router.push('/benf')
-    },
-    /**
-     * 前往填寫聯絡資料
-     */
-    GoNext() {
-      this.$router.push('/upcash-4')
     }
   }
 }

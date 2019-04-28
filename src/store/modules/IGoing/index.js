@@ -1,0 +1,112 @@
+import Url from '../../../utils/constUrl'
+import stateTypes from './Types/IGoingStateTypes'
+import getterTypes from './Types/IGoingGetterTypes'
+import functionTypes from './Types/IGoingFunctionTypes'
+import rootState from '../../state'
+
+const APICODE = 'InsuranceWeb'
+
+const state = {
+  [stateTypes.IGoingISINIT]: false,
+  [stateTypes.POSTDATA]: []
+}
+const getters = {
+  [getterTypes.GetIGoingIsInit]: state => state.IGoingISINIT,
+  [getterTypes.GetIGoingPostData]: state => state.POSTDATA
+}
+const actions = {
+  /**
+   * 設置投保流程是否已初始化
+   * @param {commit} param0 提交狀態
+   * @param {bool} MYWAYISINIT 是否已初始化
+   */
+  [functionTypes.FuncIGoingIsInit]({ commit }, IGoingISINIT) {
+    commit(functionTypes.FuncIGoingIsInit, { result: IGoingISINIT })
+  },
+  /**
+   * IGoing 投保流程初始化
+   * @param {commit} param0 提交狀態
+   */
+  [functionTypes.FuncIGoingInit]({ commit }) {
+    rootState.Http.axios.post(`${Url.IGoingInit}`, {
+      CoreData: {},
+      InsurerSourceID: APICODE
+    }).then(response => {
+      commit(functionTypes.FuncIGoingInit, { result: response.data })
+    })
+  },
+  /**
+   * IGoing 投保流程試算
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {object} para 請求參數
+   */
+  [functionTypes.FuncIGoingEstimate]({ commit }, { para }) {
+    rootState.Http.axios.post(`${Url.IGoingEstimate}`, {
+      CoreData: para,
+      InsurerSourceID: APICODE
+    }).then(response => {
+      commit(functionTypes.FuncIGoingEstimate, { result: response.data })
+    })
+  },
+  /**
+   * IGoing 投保流程下一步
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {object} para 請求參數
+   */
+  [functionTypes.FuncIGoingSubmitQuote]({ commit }, { para, router }) {
+    rootState.Http.axios.post(`${Url.IGoingSubmitQuote}`, {
+      CoreData: para,
+      InsurerSourceID: APICODE
+    }).then(response => {
+      commit(functionTypes.FuncIGoingSubmitQuote, { result: response.data, router })
+    })
+  }
+}
+
+const mutations = {
+  /**
+   * 設置投保流程是否已初始化
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncIGoingIsInit](state, { result }) {
+    state.IGoingISINIT = result
+  },
+  /**
+   * IGoing 投保流程初始化
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncIGoingInit](state, { result }) {
+    if (result.ResultCode !== '0000') return
+    state.POSTDATA = result.Data.Result
+    state.POSTDATA.QusAns = [{ Answar: false }, { Answar: false }, { Answar: false },
+      { Answar: false }, { Answar: false }
+    ]
+  },
+  /**
+   * IGoing 投保流程試算
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncIGoingEstimate(state, { result }) {
+    if (result.ResultCode !== '0000') return
+    state.POSTDATA = result.Data.Result
+  },
+  /**
+   * IGoing 投保流程下一步
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncIGoingSubmitQuote](state, { result }) {
+    if (result.ResultCode !== '0000') return
+    state.POSTDATA = result.Data.Result
+  }
+}
+
+export default {
+  state,
+  getters,
+  actions,
+  mutations
+}

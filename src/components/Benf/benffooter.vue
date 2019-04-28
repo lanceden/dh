@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { ToNext } from '../../utils/goNext.js'
+import { BenfToNext } from '../../utils/goNext.js'
 export default {
   props: [
     'insname'
@@ -25,7 +25,7 @@ export default {
      * 前往填寫聯絡資料
      */
     GoNext() {
-      ToNext(this.$router, this.insname)
+      BenfToNext(this.$router, this.insname)
     }
   }
 }

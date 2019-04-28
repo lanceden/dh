@@ -4,45 +4,45 @@ let data = JSON.parse(`{
     "Data": {
         "Result": {
             "VerifyTypeList": {
-                "3": "使用簡訊 OTP 動態密碼驗證，您的手機號碼為：0912345678"
+                "3": "使用簡訊 OTP 動態密碼驗證，您的手機號碼為：0952184733"
             },
-            "ID": "11858",
-            "last_update_time": "2019/01/16 15:34:56",
+            "ID": "11868",
+            "last_update_time": "2019/01/16 17:24:39",
             "step_status": "FILLIN",
-            "InsAddressCity": "台北市",
-            "InsAddressDistrict": "中正區",
-            "InsAddressRoad": "死侍路1號1樓",
-            "InsAddressZip": "100",
-            "InsAddress": "台北市中正區死侍路1號1樓",
+            "InsAddressCity": "台東縣",
+            "InsAddressDistrict": "大武鄉",
+            "InsAddressRoad": "步更新1號",
+            "InsAddressZip": "965",
+            "InsAddress": "台東縣大武鄉步更新1號",
             "IsSuccess": true,
             "IsClose": false,
             "Msg": "",
             "ins_type": 2,
-            "ins_type_name": "新光人壽i-can傷害保險",
+            "ins_type_name": "新光人壽i-well傷害保險",
             "po_issue_date": "2019/01/16 00:00:00",
             "po_issue_date_Name": "108年01月16日",
-            "matured_date": "2019/02/07 00:00:00",
-            "matured_date_Name": "108年02月07日",
-            "client_rate_sex": "2",
-            "client_birth": "1990/01/01 00:00:00",
-            "Birthday_Full": "民國 79 年 01 月 01 日",
+            "matured_date": "2019/01/25 00:00:00",
+            "matured_date_Name": "108年01月25日",
+            "client_rate_sex": "1",
+            "client_birth": "1996/07/15 00:00:00",
+            "Birthday_Full": "民國 85 年 07 月 15 日",
             "coverage_cnt": 1,
             "init_method": "C",
             "init_methodCht": "信用卡",
             "face_amt": 200,
             "face_amt_max": 200,
-            "mode_prem": 345,
+            "mode_prem": 121,
             "Accept_ind": "",
-            "plan_code": "20530",
-            "version": "2",
+            "plan_code": "20540",
+            "version": "1",
             "client_occupation_class": "1",
             "client_occupation_class_name": "第一類",
             "client_occupation_class_detail": "內勤行政文書相關工作",
             "client_occupation_class_code": null,
             "client_occupation_class_code_name": null,
-            "client_id": "A222277777",
+            "client_id": "F181853569",
             "Nationality": "219",
-            "client_names": "測試女",
+            "client_names": "文姓名",
             "web_appl_ind": "3",
             "Blacklist_ind": "N",
             "benf_num": "2",
@@ -104,18 +104,18 @@ let data = JSON.parse(`{
             "BenfBankBranchName3": null,
             "BenfBankAccount3": null,
             "adph_type": "3",
-            "phone": "0912345678",
+            "phone": "0952184733",
             "dicPhone": {
                 "1": "02-8825252(52)",
-                "3": "0912345678"
+                "3": "0952184733"
             },
             "phone_area": "02",
             "phone_main": "8825252",
             "phone_ext": "52",
-            "phone_mobile": "0912345678",
+            "phone_mobile": "0952184733",
             "address1Type": "1",
             "Agreement": null,
-            "AgreementString": "新光人壽i-can傷害保險商品說明(6),新光人壽i-can傷害保險保險單條款(15),新光人壽網路投保傷害醫療保險附加條款(5),新光人壽網路投保個人傷害險投保人須知(7),新光人壽網路投保個人傷害保險要保書填寫說明(3),蒐集、處理及利用個人資料告知事項(51),病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項(3),電子單據服務約定事項(2)",
+            "AgreementString": "新光人壽i-well傷害保險商品說明(5),新光人壽i-well傷害保險保險單條款(7),新光人壽網路投保傷害醫療保險附加條款(5),新光人壽網路投保個人傷害險投保人須知(7),新光人壽網路投保個人傷害保險要保書填寫說明(3),蒐集、處理及利用個人資料告知事項(51),病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項(3),電子單據服務約定事項(2)",
             "email": "skek1008@skl.com.tw",
             "zip1": "950",
             "address1": "台北市中正區台北市路1號1樓",
@@ -123,7 +123,7 @@ let data = JSON.parse(`{
             "district1": "中正區",
             "road1": "台北市路1號1樓",
             "IsSaveCommu": false,
-            "address2Type": "0",
+            "address2Type": "1",
             "zip2": "983",
             "address2": "台東縣大武鄉死侍路1號1樓",
             "city2": "台東縣",
@@ -142,13 +142,31 @@ let data = JSON.parse(`{
             "visit_time3": "1",
             "pol_contract_typ": "E",
             "web_order_no": "",
-            "Age": "29",
+            "Age": "23",
             "union_process_date": "2019/01/16",
-            "union_batch_no": "73",
+            "union_batch_no": "120",
             "IsRetry": false,
             "QusAns": [
-              { "Answar": false }, { "Answar": false }, { "Answar": false },
-              { "Answar": false }, { "Answar": false }
+                {
+                    "Answar": true,
+                    "AnswarText": null
+                },
+                {
+                    "Answar": true,
+                    "AnswarText": null
+                },
+                {
+                    "Answar": true,
+                    "AnswarText": null
+                },
+                {
+                    "Answar": true,
+                    "AnswarText": null
+                },
+                {
+                    "Answar": true,
+                    "AnswarText": null
+                }
             ],
             "DeclarationCode": [
                 "R333"
@@ -221,7 +239,7 @@ let data = JSON.parse(`{
             "IsOneTimePayment": false,
             "OtpSendTime": null,
             "OtpValidateTime": null,
-            "TrvDays": 22,
+            "TrvDays": 9,
             "SupplementalTerms": [
                 {
                     "PlanCode": "20551",
@@ -277,7 +295,7 @@ let data = JSON.parse(`{
         "Message": null,
         "Exceptions": null
     }
-  }`)
+}`)
 
 export {
   data
