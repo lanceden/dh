@@ -33,8 +33,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
-import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes.js'
+import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
+import FunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes.js'
 export default {
   data() {
     return {
@@ -44,22 +44,22 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetICanElecFormIsRed
+      GetterTypes.GetIWellElecFormIsRed
     ])
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncICanElecFormIsRead
+      FunctionTypes.FuncIWellElecFormIsRead
     ]),
     GotoNext() {
-      if (this.GetICanElecFormIsRed) {
-        this.$router.push('/ICan-1')
+      if (this.GetIWellElecFormIsRed) {
+        this.$router.push('/IWell-1')
       } else {
         alert('我們將帶您回到網站之首頁！')
       }
     },
     OnCheck(value) {
-      this.FuncICanElecFormIsRead(value)
+      this.FuncIWellElecFormIsRead(value)
       this.isAgree = value
       this.isDisAgree = !value
     }

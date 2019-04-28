@@ -7,6 +7,7 @@ import getters from './getters'
 import UpCash from './modules/Upcash'
 import EZCash from './modules/EZCash'
 import ICan from './modules/ICan'
+import IWell from './modules/IWell'
 import MyWay from './modules/MyWay'
 Vue.use(Vuex)
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     UpCash,
     EZCash,
     ICan,
+    IWell,
     MyWay
   },
   mutations,

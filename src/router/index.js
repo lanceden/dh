@@ -19,6 +19,13 @@ import ICanStepThree from '../components/Insurance/ICan/StepThree/stepThree_buil
 import ICanStepFour from '../components/Insurance/ICan/StepFour/stepFour_build'
 import ICanInsuredData from '../components/Insurance/ICan/InsuredData/insureddata_build'
 
+import IWellElecForm from '../components/Insurance/IWell/StepOne/stepOne_elecform'
+import IWellStepOne from '../components/Insurance/IWell/StepOne/stepOne_build'
+import IWellStepTwo from '../components/Insurance/IWell/StepTwo/stepTwo_build'
+import IWellStepThree from '../components/Insurance/IWell/StepThree/stepThree_build'
+import IWellStepFour from '../components/Insurance/IWell/StepFour/stepFour_build'
+import IWellInsuredData from '../components/Insurance/IWell/InsuredData/insureddata_build'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
@@ -78,6 +85,29 @@ const router = new Router({
     component: EZCashStepFour
   },
   {
+    path: '/iwellelecform',
+    component: IWellElecForm
+  },
+  {
+    path: '/IWell-1',
+    component: IWellStepOne,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/IWell-2',
+    component: IWellStepTwo
+  },
+  {
+    path: '/IWell-3',
+    component: IWellStepThree
+  },
+  {
+    path: '/IWell-4',
+    component: IWellStepFour
+  },
+  {
     path: '/icanelecform',
     component: ICanElecForm
   },
@@ -119,6 +149,10 @@ const router = new Router({
   {
     path: '/ican-insureddata',
     component: ICanInsuredData
+  },
+  {
+    path: '/iwell-insureddata',
+    component: IWellInsuredData
   },
   {
     path: '/otp',

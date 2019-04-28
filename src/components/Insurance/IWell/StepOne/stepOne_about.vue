@@ -113,22 +113,22 @@
 </template>
 
 <script>
-import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
+import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import { mapGetters } from 'vuex'
 export default {
   created() {
-    this.GetICanPostData.QusAns = [{ Answar: false }, { Answar: false }, { Answar: false },
+    this.GetIWellPostData.QusAns = [{ Answar: false }, { Answar: false }, { Answar: false },
       { Answar: false }, { Answar: false }
     ]
-    if (this.GetICanPostData.client_occupation_class !== '' && this.GetICanPostData.client_occupation_class !== undefined) {
-      this.client_occupation_class = this.GetICanPostData.client_occupation_class
+    if (this.GetIWellPostData.client_occupation_class !== '' && this.GetIWellPostData.client_occupation_class !== undefined) {
+      this.client_occupation_class = this.GetIWellPostData.client_occupation_class
     }
-    if (this.GetICanPostData.QusAns !== null && this.GetICanPostData.client_occupation_class !== undefined) {
-      this.isShowAns1Error = this.GetICanPostData.QusAns[0].Answar
-      this.insure_peer_plan_1 = this.GetICanPostData.insure_peer_plan_1 ? 'Y' : 'N'
-      this.isShowAns2Error = this.GetICanPostData.QusAns[2].Answar
-      this.isShowAns3Error = this.GetICanPostData.QusAns[3].Answar
-      this.isShowAns4Error = this.GetICanPostData.QusAns[4].Answar
+    if (this.GetIWellPostData.QusAns !== null && this.GetIWellPostData.client_occupation_class !== undefined) {
+      this.isShowAns1Error = this.GetIWellPostData.QusAns[0].Answar
+      this.insure_peer_plan_1 = this.GetIWellPostData.insure_peer_plan_1 ? 'Y' : 'N'
+      this.isShowAns2Error = this.GetIWellPostData.QusAns[2].Answar
+      this.isShowAns3Error = this.GetIWellPostData.QusAns[3].Answar
+      this.isShowAns4Error = this.GetIWellPostData.QusAns[4].Answar
     }
   },
   data() {
@@ -143,8 +143,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetICanIsInit,
-      GetterTypes.GetICanPostData
+      GetterTypes.GetIWellIsInit,
+      GetterTypes.GetIWellPostData
     ]),
     // 職業類別
     client_occupation_class_computed: {
@@ -152,7 +152,7 @@ export default {
         return this.client_occupation_class
       },
       set(value) {
-        this.GetICanPostData.client_occupation_class = value
+        this.GetIWellPostData.client_occupation_class = value
         this.client_occupation_class = value
       }
     },
@@ -163,8 +163,8 @@ export default {
       },
       set(value) {
         this.insure_peer_plan_1 = value
-        this.GetICanPostData.insure_peer_plan_1 = value
-        this.GetICanPostData.QusAns[1].Answar = value === 'Y'
+        this.GetIWellPostData.insure_peer_plan_1 = value
+        this.GetIWellPostData.QusAns[1].Answar = value === 'Y'
       }
     },
     // 請問您是否領有身心障礙手冊或身心障礙證明
@@ -174,7 +174,7 @@ export default {
       },
       set(value) {
         this.isShowAns1Error = value === 'true'
-        this.GetICanPostData.QusAns[0].Answar = value === 'true'
+        this.GetIWellPostData.QusAns[0].Answar = value === 'true'
       }
     },
     // 被保險人目前是否受有監護宣告
@@ -184,7 +184,7 @@ export default {
       },
       set(value) {
         this.isShowAns2Error = value === 'true'
-        this.GetICanPostData.QusAns[2].Answar = value === 'true'
+        this.GetIWellPostData.QusAns[2].Answar = value === 'true'
       }
     },
     // 請問您過去二年內是否曾因患有下列疾病而接受醫師治療、診療或用藥? (有任一者，請選擇”是”)
@@ -194,7 +194,7 @@ export default {
       },
       set(value) {
         this.isShowAns3Error = value === 'true'
-        this.GetICanPostData.QusAns[3].Answar = value === 'true'
+        this.GetIWellPostData.QusAns[3].Answar = value === 'true'
       }
     },
     // 請問您目前身體機能是否有下列障害：(有任一者，請選擇”是”)
@@ -204,7 +204,7 @@ export default {
       },
       set(value) {
         this.isShowAns4Error = value === 'true'
-        this.GetICanPostData.QusAns[4].Answar = value === 'true'
+        this.GetIWellPostData.QusAns[4].Answar = value === 'true'
       }
     }
   }
