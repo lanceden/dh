@@ -395,11 +395,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
-// import { data } from './mockData'
+import { data } from './mockData'
 export default {
   data() {
     return {
-      // mockData: data.Data.Result
+      mockData: data.Data.Result
     }
   },
   created() {

@@ -9,12 +9,10 @@
   </div>
 </template>
 <script>
-const insNameArr = [
-  'upcash', 'ezcash', 'myway', 'ican', 'iwell'
-]
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import { ToNext } from '../../utils/goNext.js'
 export default {
   props: [
     'insname'
@@ -38,20 +36,7 @@ export default {
      * 投保資訊
      */
     GoNext() {
-      let insname = this.insname
-      var self = this
-      insNameArr.forEach(name => {
-        if (insname.toLowerCase().match(name) !== null) {
-          switch (name) {
-            case 'upcash':
-              self.$router.push(`/upcash-insureddata`)
-              break
-            case 'ezcash':
-              self.$router.push(`/ezcash-insureddata`)
-              break
-          }
-        }
-      })
+      ToNext(this.$router, this.insname)
     }
   }
 }

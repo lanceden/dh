@@ -8,7 +8,7 @@
     <BenfTwoAccount></BenfTwoAccount>
     <BenfThree></BenfThree>
     <BenfThreeAccount></BenfThreeAccount>
-    <BenfFooter></BenfFooter>
+    <BenfFooter :insname="instypename"></BenfFooter>
   </div>
 </template>
 
@@ -23,6 +23,15 @@ import BenfThree from './benfthree'
 import BenfThreeAccount from './benfthreeAccount'
 import BenfFooter from './benffooter'
 export default {
+  data() {
+    return {
+      instypename: ''
+    }
+  },
+  created() {
+    const urlParams = new URLSearchParams(window.location.search)
+    this.instypename = urlParams.get('instypename').toLowerCase()
+  },
   computed: {
     ...mapGetters([
       'GetLoading'

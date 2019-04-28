@@ -35,6 +35,7 @@
               <option value="false">否</option>
             </select>
           </div>
+          <label class="col-sm-12 col-form-label insure-label" v-show="QusAns1">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
         </div>
         <!-- 請問您是否已投保其他商業實支實付型傷害醫療保險 -->
         <div class="form-group row">
@@ -112,6 +113,11 @@
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import { mapGetters } from 'vuex'
 export default {
+  data() {
+    return {
+      isShow: false
+    }
+  },
   created() {
     if (this.GetICanPostData.QusAns === null || this.GetICanPostData.QusAns === undefined) {
       this.GetICanPostData.QusAns = []
@@ -146,7 +152,8 @@ export default {
         return this.GetICanPostData.QusAns[0] || false
       },
       set(value) {
-        this.GetICanPostData.QusAns[0] = value
+        this.tttt(value)
+        this.GetICanPostData.QusAns[0] = value === 'true'
       }
     },
     // 被保險人目前是否受有監護宣告
@@ -180,8 +187,11 @@ export default {
   methods: {
     debugPrint() {
       console.log('client_occupation_class', this.GetICanPostData.client_occupation_class)
-      console.log('QusAns1', this.GetICanPostData.QusAns)
+      console.log('QusAns', this.GetICanPostData.QusAns)
       console.log('insure_peer_plan_1', this.GetICanPostData.insure_peer_plan_1)
+    },
+    tttt(value) {
+      this.isShow = value === 'true'
     }
   }
 }

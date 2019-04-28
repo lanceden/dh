@@ -9,10 +9,11 @@
   </div>
 </template>
 <script>
-const insNameArr = [
-  'ezcash', 'ezcash', 'myway', 'ican', 'iwell'
-]
+import { ToNext } from '../../utils/goNext.js'
 export default {
+  props: [
+    'insname'
+  ],
   methods: {
     /**
      * 上一步(回到第一頁)
@@ -24,11 +25,7 @@ export default {
      * 前往填寫聯絡資料
      */
     GoNext() {
-      insNameArr.forEach(name => {
-        if (window.location.pathname.toLowerCase().match(name) !== null && window.location.pathname.toLowerCase().match(name).index === 1) {
-          this.$router.push(`/${name}-4`)
-        }
-      })
+      ToNext(this.$router, this.insname)
     }
   }
 }

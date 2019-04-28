@@ -16,7 +16,7 @@ export default {
       this.$router.push('ICan-2')
     },
     GoNext() {
-      this.$router.push('benf')
+      this.$router.push('/benf?instypename=ican')
     }
   }
 }
