@@ -1,0 +1,24 @@
+<template lang="">
+  <div>
+    <StepFourOtherNotify></StepFourOtherNotify>
+    <StepFourPhone></StepFourPhone>
+    <StepFourSendType></StepFourSendType>
+    <StepFourFooter></StepFourFooter>
+  </div>
+</template>
+
+<script>
+import StepFourOtherNotify from './EZCashStepFour_othernotify'
+import StepFourPhone from './EZCashStepFour_phone'
+import StepFourSendType from './EZCashStepFour_sendtype'
+import StepFourFooter from './EZCashStepFour_footer'
+export default {
+  components: {
+    StepFourOtherNotify,
+    StepFourPhone,
+    StepFourSendType,
+    StepFourFooter
+  }
+}
+
+</script>

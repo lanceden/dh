@@ -105,6 +105,23 @@ const ICanSubmitQuote = `${Domain}/ICan/SubmitQuote`
 const ICanSubmitOrder = `${Domain}/ICan/SubmitOrder`
 
 /**
+ * IWell初始化
+ */
+const IWellInit = `${Domain}/IWell/Initialize`
+/**
+ * IWell投保流程試算
+ */
+const IWellEstimate = `${Domain}/IWell/Estimate`
+/**
+ * IWell投保流程下一步
+ */
+const IWellSubmitQuote = `${Domain}/IWell/SubmitQuote`
+/**
+ * IWell成立訂單
+ */
+const IWellSubmitOrder = `${Domain}/IWell/SubmitOrder`
+
+/**
  * MyWay初始化
  */
 const MyWayInit = `${Domain}/MyWay/Initialize`
@@ -120,6 +137,23 @@ const MyWaySubmitQuote = `${Domain}/MyWay/SubmitQuote`
  * UpCash成立訂單
  */
 const MyWaySubmitOrder = `${Domain}/MyWay/SubmitOrder`
+
+/**
+ * IGoing初始化
+ */
+const IGoingInit = `${Domain}/IGoing/Initialize`
+/**
+ * IGoing投保流程試算
+ */
+const IGoingEstimate = `${Domain}/IGoing/Estimate`
+/**
+ * IGoing投保流程下一步
+ */
+const IGoingSubmitQuote = `${Domain}/IGoing/SubmitQuote`
+/**
+ * UpCash成立訂單
+ */
+const IGoingSubmitOrder = `${Domain}/IGoing/SubmitOrder`
 
 export default {
   Domain,
@@ -147,6 +181,14 @@ export default {
   ICanEstimate,
   ICanSubmitQuote,
   ICanSubmitOrder,
+  IWellInit,
+  IWellEstimate,
+  IWellSubmitQuote,
+  IWellSubmitOrder,
+  IGoingInit,
+  IGoingEstimate,
+  IGoingSubmitQuote,
+  IGoingSubmitOrder,
   MyWayInit,
   MyWayEstimate,
   MyWaySubmitQuote,
