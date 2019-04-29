@@ -32,7 +32,6 @@ export default {
       this.$router.push('/IGoing-2')
     },
     ValidateData() {
-      console.log('this.GetIGoingPostData.QusAns', this.GetIGoingPostData.QusAns)
       if (parseInt(this.GetIGoingPostData.client_occupation_class) === 0) {
         alert('請選擇職業類別')
         return

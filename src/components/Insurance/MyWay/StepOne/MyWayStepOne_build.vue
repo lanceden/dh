@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <StepOneCustomer></StepOneCustomer>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
@@ -15,12 +16,20 @@ import StepOneAbout from './MyWayStepOne_about'
 import StepOneFooter from './MyWayStepOne_footer'
 export default {
   created() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const tokenArr = urlParams.get('token').split(' ')
+    let token = ''
+    tokenArr.forEach(item => {
+      token += `+${item}`
+    })
+    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetMyWayIsInit) {
       this.FuncMyWayInit()
     }
   },
   computed: {
     ...mapGetters([
+      'GetLoading',
       GetterTypes.GetMyWayIsInit
     ])
   },
@@ -31,6 +40,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'SetApiToken',
       FunctionTypes.FuncMyWayInit
     ])
   }

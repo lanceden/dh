@@ -10,12 +10,44 @@
 </template>
 
 <script>
+import $ from 'jquery'
+import { mapGetters } from 'vuex'
+import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
 export default {
+  computed: {
+    ...mapGetters([
+      GetterTypes.GetMyWayPostData,
+      'GetContactCheckBox'
+    ])
+  },
   methods: {
     GoPrev() {
       this.$router.push('MyWay-2')
     },
     GoNext() {
+      // 戶籍地址-輸入新的戶籍地址
+      if ($('#txtNewAddress2').val() !== '') {
+        this.GetMyWayPostData.address2 = $('#txtNewAddress2').val()
+        this.GetMyWayPostData.zip2 = '234'
+        this.GetMyWayPostData.city2 = '新北市'
+        this.GetMyWayPostData.district2 = '永和區'
+        this.GetMyWayPostData.road2 = '安和里12鄰水源街19號'
+      }
+      // 要保人匯款帳戶驗證
+      if(this.GetMyWayPostData.Applicant_BankCode === '' || this.GetMyWayPostData.Applicant_BankCode === undefined) {
+        alert('請選擇要保人匯款帳戶金融機構代碼')
+        return
+      }
+      // 要保人匯款帳戶驗證
+      if(this.GetMyWayPostData.Applicant_BranchCode === '' || this.GetMyWayPostData.Applicant_BranchCode === undefined) {
+        alert('請選擇要保人匯款帳戶金融機構分行代號')
+        return
+      }
+      // 要保人匯款帳戶驗證
+      if(this.GetMyWayPostData.Applicant_BranchCode === '' || this.GetMyWayPostData.Applicant_BranchCode === undefined) {
+        alert('請填寫要保人匯款帳戶銀行帳號')
+        return
+      }
       this.$router.push('/benf?instypename=myway')
     }
   }

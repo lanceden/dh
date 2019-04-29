@@ -1,17 +1,17 @@
 <template>
   <div>
-    <Insureddata></Insureddata>
-    <InsureddataFooter></InsureddataFooter>
+    <IGoingInsureddata></IGoingInsureddata>
+    <IGoingInsureddataFooter></IGoingInsureddataFooter>
   </div>
 </template>
 
 <script>
-import Insureddata from './IGoingInsureddata'
-import InsureddataFooter from './IGoingInsureddata_footer'
+import IGoingInsureddata from './IGoingInsureddata'
+import IGoingInsureddataFooter from './IGoingInsureddata_footer'
 export default {
   components: {
-    Insureddata,
-    InsureddataFooter
+    IGoingInsureddata,
+    IGoingInsureddataFooter
   }
 }
 

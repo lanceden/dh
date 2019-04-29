@@ -24,7 +24,7 @@
           <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
             <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
           </select>
-          <div class="form-control insure-select" id="matured_date">，至 民國 午夜十二時止</div>
+          <div class="form-control insure-select" id="matured_date"></div>
         </div>
       </div>
       <div class="form-group row">
@@ -83,17 +83,6 @@
           </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保障內容</label>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            <ul class="insure-notice-text-ul">
-              <li>交通意外身故保險金或喪葬費用保險金 > <label id="CalcAmtDesc1"></label>萬 元</li>
-              <li>交通意外失能保險金 > 依失能程度按契約附表比例計算，最高為<label id="CalcAmtDesc2"></label>萬 元</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </form>
   </div>
 </template>
@@ -116,6 +105,13 @@ export default {
         roc: moment().add(`${i}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日午夜十二時`)
       })
     }
+  },
+  mounted() {
+    // 頁面加載完成 將保險期間訖日傳值
+    let maturedDate = moment().add(`1`, 'days').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
+    $('#matured_date').html(`至 ${maturedDate}`)
+    $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt || 450)
+    $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt || 450)
   },
   computed: {
     ...mapGetters([

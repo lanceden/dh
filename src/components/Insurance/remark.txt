@@ -1,0 +1,24 @@
+// 通訊地址
+zip1: 983
+city1: 花蓮縣
+district1: 富里鄉
+road1: 水往上流1號
+
+// 戶籍地址
+zip2: 234
+city2: 新北市
+district2: 永和區
+road2: 安和里12鄰水源街19號
+
+// 要保人匯款帳戶
+Applicant_BankCode: 103
+Applicant_BankName: 新光商銀
+Applicant_BranchCode: 0763
+Applicant_BranchName: 新光銀江子翠
+Applicant_Account: 1021500062896
+
+
+myway ok
+igoing ok
+ican ok
+iwell ok

@@ -34,9 +34,7 @@
           </select>
         </div>
         <div class="col-sm-12">
-          <div class="insure-notice-text" id="matured_date">
-            至 民國 108 年 06 月 03 日午夜十二時止
-          </div>
+          <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date"></div>
         </div>
       </div>
       <div class="form-group row">
@@ -72,20 +70,6 @@
           </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保障內容</label>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            <ul class="insure-notice-text-ul">
-              <li>意外身故保險金或喪葬費用保險金 > <label id="CalcAmtDesc2"></label>元</li>
-              <li>特定意外身故保險金或喪葬費用保險金(額外給付) > <label id="CalcAmtDesc3"></label>元</li>
-              <li>意外失能保險金 > <label id="blind-acc-amt"></label>元</li>
-              <li>特定意外失能保險金(額外給付) > <label id="specific-blind-acc-amt">2 萬</label>元</li>
-              <li>傷害醫療保險金 > <label>2 萬</label>元</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </form>
   </div>
 </template>
@@ -96,6 +80,8 @@ import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
+
+const initFaceAmt = 400
 export default {
   data() {
     return {
@@ -104,6 +90,16 @@ export default {
       startDay: moment().format(`DD`),
       insDateArr: []
     }
+  },
+  mounted() {
+    var maxPerc = 100 * 0.5
+    var minPerc = 5 * 0.5
+    var maxAmt = initFaceAmt * maxPerc / 100
+    var minAmt = initFaceAmt * minPerc / 100
+    $('#CalcAmtDesc2').text(maxAmt + '萬')
+    $('#CalcAmtDesc3').text(maxAmt + '萬')
+    $('#blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+    $('#specific-blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
   },
   created() {
     for (let i = 1; i <= 7; i++) {
@@ -128,6 +124,8 @@ export default {
       },
       set(value) {
         this.GetIWellPostData.po_issue_date = value
+        let maturedDate = moment(value, 'YYYY-MM-DD').add(`${parseInt(this.GetIWellPostData.TrvDays)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
+        $('#matured_date').html(`天至 ${maturedDate}`)
       }
     },
     /**
@@ -155,12 +153,13 @@ export default {
      */
     face_amt: {
       get() {
-        let result = InitColumnData(this.GetIWellPostData.face_amt, 400)
+        let result = InitColumnData(this.GetIWellPostData.face_amt, initFaceAmt)
         this.GetIWellPostData.face_amt = result
         return result
       },
       set(value) {
         this.GetIWellPostData.face_amt = value
+        this.GetIWellPostData.mode_prem = 0
         var prem = parseInt(value)
         var maxPerc = 100 * 0.5
         var minPerc = 5 * 0.5

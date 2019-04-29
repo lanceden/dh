@@ -34,9 +34,7 @@
           </select>
         </div>
         <div class="col-sm-12">
-          <div class="insure-notice-text" id="matured_date">
-            
-          </div>
+          <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date"></div>
         </div>
       </div>
       <div class="form-group row">
@@ -72,19 +70,6 @@
           </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保障內容</label>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            <ul class="insure-notice-text-ul">
-              <li>意外身故保險金或喪葬費用保險金 > <label id="CalcAmtDesc2"></label>元</li>
-              <li>意外失能保險金 > <label id="CalcAmtDesc3"></label>元</li>
-              <li>意外骨折保險金 > <label id="broken-bones-acc-amt"></label>元</li>
-              <li>傷害醫療保險金 > <label>2 萬</label>元</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </form>
   </div>
 </template>
@@ -95,6 +80,8 @@ import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
+
+const initFaceAmt = 400
 export default {
   data() {
     return {
@@ -104,6 +91,15 @@ export default {
       insDateArr: []
     }
   },
+  mounted() {
+    $('#CalcAmtDesc2').text($('#face_amt option:selected').text())
+    $('#CalcAmtDesc3').text($('#face_amt option:selected').text())
+    var maxPerc = 1.75
+    var minPerc = 0.1 / 4
+    var maxAmt = initFaceAmt * maxPerc / 100
+    var minAmt = initFaceAmt * minPerc / 100
+    $('#broken-bones-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+  },
   created() {
     for (let i = 1; i <= 7; i++) {
       this.insDateArr.push({
@@ -111,7 +107,6 @@ export default {
         roc: moment().add(`${i}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日午夜十二時`)
       })
     }
-    console.log(this.insDateArr)
   },
   computed: {
     ...mapGetters([
@@ -128,6 +123,8 @@ export default {
       },
       set(value) {
         this.GetICanPostData.po_issue_date = value
+        let maturedDate = moment(value, 'YYYY-MM-DD').add(`${parseInt(this.GetICanPostData.TrvDays)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
+        $('#matured_date').html(`天至 ${maturedDate}`)
       }
     },
     /**
@@ -147,7 +144,7 @@ export default {
       set(value) {
         this.GetICanPostData.TrvDays = value
         let maturedDate = moment(this.GetICanPostData.po_issue_date, 'YYYY-MM-DD').add(`${parseInt(value)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
-        $('#matured_date').html(`至 ${maturedDate}`)
+        $('#matured_date').html(`天至 ${maturedDate}`)
       }
     },
     /**
@@ -155,7 +152,7 @@ export default {
      */
     face_amt: {
       get() {
-        let result = InitColumnData(this.GetICanPostData.face_amt, 400)
+        let result = InitColumnData(this.GetICanPostData.face_amt, initFaceAmt)
         this.GetICanPostData.face_amt = result
         return result
       },

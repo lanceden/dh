@@ -36,7 +36,7 @@ import IGoingStepOne from '../components/Insurance/IGoing/StepOne/IGoingStepOne_
 import IGoingStepTwo from '../components/Insurance/IGoing/StepTwo/IGoingStepTwo_build.vue'
 import IGoingStepThree from '../components/Insurance/IGoing/StepThree/IGoingStepThree_build.vue'
 import IGoingStepFour from '../components/Insurance/IGoing/StepFour/IGoingStepFour_build.vue'
-import IGoingInsuredData from '../components/Insurance/IGoing/InsuredData/IGoingInsureddata.vue'
+import IGoingInsuredData from '../components/Insurance/IGoing/InsuredData/IGoingInsureddata_build.vue'
 
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'

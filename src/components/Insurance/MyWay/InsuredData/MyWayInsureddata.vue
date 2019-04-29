@@ -12,6 +12,37 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">保險費</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{mockData.mode_prem|decimalComma}} 元</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">保險單形式</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">紙本保單</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{mockData.city1}}{{mockData.district1}}{{mockData.road1}}</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check-title">保障內容</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-bottom-line"></div>
+      <form class="form-bottom">
+        <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">險種名稱</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.ins_type_name}}</div>
@@ -36,25 +67,6 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險費</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.mode_prem|decimalComma}} 元</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">保障內容</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身故保險金或喪葬費用保險金</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
@@ -66,6 +78,11 @@
             <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
           </div>
         </div>
+        <div class="col-sm-12">
+          <div class="insure-notice-text">
+            註：本公司另加計按日數比例計算當期已繳付之未到期保險費，併入身故保險金或喪葬費用保險金或完全失能保險金內給付。
+          </div>
+        </div>
       </form>
     </div>
     <div class="bg-radius">
@@ -73,7 +90,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">保單資料</div>
+            <div class="insure-check-title">保單資訊</div>
           </div>
         </div>
       </div>
@@ -392,19 +409,19 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.AccountData[0].bank_code_1}}</div>
+            <div class="insure-input-block">{{mockData.Applicant_BankCode}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.AccountData[0].bank_name_2}}</div>
+            <div class="insure-input-block">{{mockData.Applicant_BranchName}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.AccountData[0].account}}</div>
+            <div class="insure-input-block">{{mockData.Applicant_Account}}</div>
           </div>
         </div>
       </form>

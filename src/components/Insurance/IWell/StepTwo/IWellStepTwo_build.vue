@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <StepTwoInsuranceData></StepTwoInsuranceData>
-    <StepTwoBaoZhangContent></StepTwoBaoZhangContent>
+    <StepTwoEnsureContent></StepTwoEnsureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
     <StepTwoCalculateResult></StepTwoCalculateResult>
     <StepTwoFooter></StepTwoFooter>
@@ -13,9 +13,9 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import StepTwoInsuranceData from './IWellStepTwo_insurdata'
-import StepTwoBaoZhangContent from './IWellStepTwo_baozhangcontent'
 import StepTwoCalculateTitle from './IWellStepTwo_calculatetitle'
 import StepTwoCalculateResult from './IWellStepTwo_calculateresult'
+import StepTwoEnsureContent from './IWellStepTwo_ensurecontent'
 import StepTwoFooter from './IWellStepTwo_footer'
 export default {
   computed: {
@@ -29,9 +29,9 @@ export default {
   },
   components: {
     StepTwoInsuranceData,
-    StepTwoBaoZhangContent,
     StepTwoCalculateTitle,
     StepTwoCalculateResult,
+    StepTwoEnsureContent,
     StepTwoFooter
   }
 }

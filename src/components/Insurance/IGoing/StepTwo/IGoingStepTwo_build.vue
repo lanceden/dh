@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <StepTwoInsuranceData></StepTwoInsuranceData>
-    <StepTwoBaoZhangContent></StepTwoBaoZhangContent>
+    <StepTwoEnSureContent></StepTwoEnSureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
     <StepTwoCalculateResult></StepTwoCalculateResult>
     <StepTwoFooter></StepTwoFooter>
@@ -13,7 +13,7 @@
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes.js'
 import StepTwoInsuranceData from './IGoingStepTwo_insurdata'
-import StepTwoBaoZhangContent from './IGoingStepTwo_baozhangcontent'
+import StepTwoEnSureContent from './IGoingStepTwo_ensurecontent'
 import StepTwoCalculateTitle from './IGoingStepTwo_calculatetitle'
 import StepTwoCalculateResult from './IGoingStepTwo_calculateresult'
 import StepTwoFooter from './IGoingStepTwo_footer'
@@ -29,7 +29,7 @@ export default {
   },
   components: {
     StepTwoInsuranceData,
-    StepTwoBaoZhangContent,
+    StepTwoEnSureContent,
     StepTwoCalculateTitle,
     StepTwoCalculateResult,
     StepTwoFooter

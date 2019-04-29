@@ -500,7 +500,7 @@ input{
 }
 
 input[type="checkbox"] {
-	display: none;
+	display: block;
 }
 .checkbox{
 	-webkit-appearance: none;
@@ -510,7 +510,7 @@ input[type="checkbox"] {
 	height: 43px;
 	cursor: pointer;
 	position: absolute;
-    right: 40px;
+	right: 40px;
 }
 .checkbox.checked {
 	background: url(../img/checked.png) no-repeat;

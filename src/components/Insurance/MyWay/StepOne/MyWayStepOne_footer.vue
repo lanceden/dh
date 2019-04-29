@@ -36,37 +36,19 @@ export default {
       this.$router.push('/myway-2')
     },
     ValidateData() {
-      // if (this.GetMyWayPostData.client_occupation_class === '' ||
-      //   this.GetMyWayPostData.client_occupation_class_code === '' ||
-      //   this.GetMyWayPostData.client_occupation_class_code_name === ''
-      // ) {
-      //   alert('請選擇職業名稱')
-      //   return false
-      // }
-      if (this.GetMyWayPostData.QusAns === null) {
+      console.log(this.GetMyWayPostData.QusAns)
+      if (this.GetMyWayPostData.client_occupation_class === '' ||
+        this.GetMyWayPostData.client_occupation_class_code === '' ||
+        this.GetMyWayPostData.client_occupation_class_code_name === ''
+      ) {
+        alert('請選擇職業名稱')
+        return false
+      }
+      if (this.GetMyWayPostData.QusAns === null || this.GetMyWayPostData.QusAns === undefined) {
         alert('請選擇告知事項')
         return false
       }
-      // let ans = this.GetMyWayPostData.QusAns.filter(obj => obj.Answar === true)
-      if (this.GetMyWayPostData.QusAns[0].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[1].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[2].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[3].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[4].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[5].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[6].Answar === '0' ||
-        this.GetMyWayPostData.QusAns[7].Answar === '0') {
-        alert('請選擇告知事項')
-        return false
-      }
-      if (this.GetMyWayPostData.QusAns[0].Answar === false ||
-        this.GetMyWayPostData.QusAns[1].Answar === false ||
-        this.GetMyWayPostData.QusAns[2].Answar === false ||
-        this.GetMyWayPostData.QusAns[3].Answar === false ||
-        this.GetMyWayPostData.QusAns[4].Answar === false ||
-        this.GetMyWayPostData.QusAns[5].Answar === false ||
-        this.GetMyWayPostData.QusAns[6].Answar === false ||
-        this.GetMyWayPostData.QusAns[7].Answar === false) {
+      if (!this.GetMyWayPostData.QusAns[0].Answar || !this.GetMyWayPostData.QusAns[1].Answar || !this.GetMyWayPostData.QusAns[2].Answar || !this.GetMyWayPostData.QusAns[3].Answar || !this.GetMyWayPostData.QusAns[4].Answar || !this.GetMyWayPostData.QusAns[5].Answar || !this.GetMyWayPostData.QusAns[6].Answar || !this.GetMyWayPostData.QusAns[7].Answar) {
         alert('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
         return false
       }
