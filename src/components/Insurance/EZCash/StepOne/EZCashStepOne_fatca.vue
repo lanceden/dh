@@ -39,7 +39,7 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">選擇國籍</label>
           <div class="col-sm-12 insure-select-align">
-            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="nation" ref="nation">
+            <select id class="form-control data-input insure-select insure-input-block-edit" v-model="birth_national" ref="birth_national">
               <option value="0">請選擇</option>
               <option v-for="(item, index) in GetNationData" :key="index" :value="item.Name">{{item.Name}}</option>
             </select>
@@ -48,7 +48,7 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label">城市</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" ref="city" placeholder="請填寫城市" v-model="city" />
+            <input type="text" class="form-control insure-input-block" ref="birth_city" placeholder="請填寫城市" v-model="birth_city" />
           </div>
         </div>
       </form>
@@ -57,17 +57,8 @@
 
 <script>
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
-import {
-  mapGetters,
-  mapActions
-} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  data() {
-    return {
-      nationData: ['請選擇'],
-      cityData: []
-    }
-  },
   created() {
     if (!this.GetEZCashIsInit) {
       this.FuncGetNationality('')
@@ -77,23 +68,20 @@ export default {
     ...mapGetters([
       GetterTypes.GetEZCashIsInit,
       GetterTypes.GetEZCashPostData,
-      'GetNation',
       'GetNationData',
-      'GetCity',
       'GetCityData'
     ]),
-    nation: {
+    birth_national: {
       get() {
-        return (this.GetEZCashPostData.NATION === undefined || this.GetEZCashPostData.NATION === null) ? 0 : this.GetEZCashPostData.NATION
+        return (this.GetEZCashPostData.CRSData.birth_national === undefined || this.GetEZCashPostData.CRSData.birth_national === null || this.GetEZCashPostData.CRSData.birth_national === 'null') ? 0 : this.GetEZCashPostData.CRSData.birth_national
       },
       set(value) {
-        this.GetEZCashPostData.NATION = value
         this.GetEZCashPostData.CRSData.birth_national = value
       }
     },
-    city: {
+    birth_city: {
       get() {
-        return this.GetCity
+        return (this.GetEZCashPostData.CRSData.birth_city === undefined || this.GetEZCashPostData.CRSData.birth_city === null || this.GetEZCashPostData.CRSData.birth_city === 'null') ? 0 : this.GetEZCashPostData.CRSData.birth_city
       },
       set(value) {
         this.GetEZCashPostData.CRSData.birth_city = value

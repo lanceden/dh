@@ -137,7 +137,7 @@ export default {
           this.cbNewMail = false
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [true, false, false, false]
-          this.GetUpCashPostData.value_ind = '4'
+          this.GetUpCashPostData.value_ind = '4' // 電子郵件
           this.road3 = ''
           this.newMail = ''
           break
@@ -147,7 +147,7 @@ export default {
           this.cbNewMail = false
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [false, true, false, false]
-          this.GetUpCashPostData.value_ind = '1'
+          this.GetUpCashPostData.value_ind = '1' // 寄送到客戶住所(通訊地址)： 花蓮縣富里鄉水往上流1號
           this.road3 = ''
           this.newMail = ''
           break
@@ -157,7 +157,7 @@ export default {
           this.cbNewMail = true
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [false, false, true, false]
-          this.GetUpCashPostData.value_ind = '4'
+          this.GetUpCashPostData.value_ind = '3' // 輸入新的電子郵件
           this.road3 = ''
           break
         case 'cbNewAddr':
@@ -166,7 +166,7 @@ export default {
           this.cbNewMail = false
           this.cbNewAddr = true
           this.$store.state.NOTIFYCHECKBOX = [false, false, false, true]
-          this.GetUpCashPostData.value_ind = '2'
+          this.GetUpCashPostData.value_ind = '2' // 輸入新的寄送地址
           this.newMail = ''
           break
       }

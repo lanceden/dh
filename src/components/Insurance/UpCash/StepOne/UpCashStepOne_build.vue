@@ -17,8 +17,10 @@ import StepOneAbout from './UpCashStepOne_about'
 import StepOneFatca from './UpCashStepOne_fatca'
 import StepOneFooter from './UpCashStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+import { data } from './UpCashInitMockData'
 export default {
   created() {
+    this.$store.state.UpCash.POSTDATA = data.Data.Result
     const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {

@@ -45,8 +45,9 @@
 </template>
 
 <script>
-import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import { mapActions, mapGetters } from 'vuex'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([
@@ -67,12 +68,12 @@ export default {
       },
       set(value) {
         if (value === '0') {
-          alert('請選擇本人僅為台灣之稅務居民')
+          toggleModalShow('請選擇本人僅為台灣之稅務居民。')
           return
         }
         let result = value === 'true'
         if (!result) {
-          alert('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
+          toggleModalShow('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
         }
         this.GetUpCashPostData.QusAns = [{ Answar: result }]
         this.GetUpCashPostData.IsTaiwanTaxDuty = result

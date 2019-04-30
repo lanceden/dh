@@ -290,7 +290,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(三)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_name2}}</div>
+            <div class="insure-input-block">{{mockData.benf_name3}}</div>
           </div>
         </div>
         <div class="form-group row">

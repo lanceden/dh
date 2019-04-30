@@ -24,6 +24,7 @@ import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import { valEstimateData, setDataOnEstimateStep } from '../../../../utils/validateEstimateData'
+import { toggleModalShow } from '../../../../utils/toggleModal'
 export default {
   computed: {
     ...mapGetters([
@@ -49,10 +50,10 @@ export default {
       // 輸入新的寄送地址
       if (this.$store.state.NOTIFYCHECKBOX[3]) {}
       if (this.GetUpCashPostData.face_amt === '' || this.GetUpCashPostData.face_amt <= 0) {
-        alert('請填寫第一期保險費。')
+        toggleModalShow('請填寫第一期保險費。')
         return
       }
-      console.log(valEstimateData(this.GetUpCashPostData, this.GetNotifyCheckBox))
+      toggleModalShow(valEstimateData(this.GetUpCashPostData, this.GetNotifyCheckBox))
       setDataOnEstimateStep(this.GetUpCashPostData)
       this.FuncUpCashEstimate({ para: this.GetUpCashPostData })
     }
