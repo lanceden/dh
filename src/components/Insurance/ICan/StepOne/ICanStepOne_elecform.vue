@@ -35,6 +35,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes.js'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 export default {
   data() {
     return {
@@ -43,8 +44,7 @@ export default {
     }
   },
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const tokenArr = urlParams.get('token').split(' ')
+    const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {
       token += `+${item}`

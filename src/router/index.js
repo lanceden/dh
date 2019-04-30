@@ -48,7 +48,7 @@ import MyError from '../components/error'
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  mode: 'hash',
   scrollBehavior: () => ({ x: 0, y: 0 }),
   routes: [{
     path: '/myway-1',

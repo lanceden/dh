@@ -16,10 +16,10 @@ import StepOneCustomer from './UpCashStepOne_customer'
 import StepOneAbout from './UpCashStepOne_about'
 import StepOneFatca from './UpCashStepOne_fatca'
 import StepOneFooter from './UpCashStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 export default {
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const tokenArr = urlParams.get('token').split(' ')
+    const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {
       token += `+${item}`

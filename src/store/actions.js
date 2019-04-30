@@ -8,6 +8,9 @@ export default {
   SethideLoading({ commit }) {
     commit('SethideLoading')
   },
+  SetIsShowModal({ commit }, isShow) {
+    commit('SetIsShowModal', isShow)
+  },
   SetHttp({ commit }, { http }) {
     commit('SetHttp', { http })
   },

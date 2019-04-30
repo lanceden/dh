@@ -7,6 +7,9 @@ export default {
       state.ShowLoading = false
     }, 1000)
   },
+  SetIsShowModal(state, isShow) {
+    state.isShowModal = isShow
+  },
   SetHttp(state, { http }) {
     state.Http = http
   },
@@ -31,7 +34,6 @@ export default {
    */
   FuncGetJob(state, { result }) {
     state.JOBDATA = result.Data.Result
-    state.JOB = result.Data.Result[0].OCCUPATION_CODE
   },
   /**
    * 取回金融機構分行
@@ -57,9 +59,8 @@ export default {
   FuncGetOccupation(state, { result, para }) {
     if (para.Type === '4') {
       state.OCCUPATIONDATA = result.Data.Result
-      state.OCCUPATION = result.Data.Result[0].OCCUPATION_CODE
     } else {
-      state.JOBSUbOCCUPATIONDATA = result.Data.Result[0]
+      state.JOBSUBOCCUPATIONDATA = result.Data.Result[0]
     }
   },
   /**

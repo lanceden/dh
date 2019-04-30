@@ -14,10 +14,10 @@ import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterType
 import StepOneCustomer from './IGoingStepOne_customer'
 import StepOneAbout from './IGoingStepOne_about'
 import StepOneFooter from './IGoingStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 export default {
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const tokenArr = urlParams.get('token').split(' ')
+    const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {
       token += `+${item}`

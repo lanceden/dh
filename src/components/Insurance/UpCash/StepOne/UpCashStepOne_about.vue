@@ -4,43 +4,44 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">被保人投保資料告知事項</div>
-          </div>
+          <div class="insure-check-title">被保人投保資料告知事項</div>
         </div>
       </div>
-      <div class="border-bottom-line"></div>
-      <div class="insure-text">
-        主管機關規定，要保人及被保人資料需為同一人，如需修改個人資料，請洽本公司客戶服務中心。
-      </div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">您的職業類別</label>
-          <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
-              <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-            </select>
-            <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
-              <option value="0" selected="selected">請選擇</option>
-              <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-            </select>
-            <select class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
-              <option value="0" selected="selected">請選擇</option>
-              <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-12 col-form-label insure-label">本人僅為台灣之稅務居民</label>
-          <div class="col-sm-12 insure-select-align">
-            <select class="form-control data-input insure-select insure-input-block-edit" v-model="QusAns">
-              <option value="0">請選擇</option>
-              <option value="true">是</option>
-              <option value="false">否</option>
-            </select>
-          </div>
-        </div>
-      </form>
     </div>
+    <div class="border-bottom-line"></div>
+    <div class="insure-text">
+      主管機關規定，要保人及被保人資料需為同一人，如需修改個人資料，請洽本公司客戶服務中心。
+    </div>
+    <form class="form-bottom">
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">您的職業類別</label>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+          </select>
+          <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+          </select>
+          <select class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-12 col-form-label insure-label">本人僅為台灣之稅務居民</label>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select insure-input-block-edit" v-model="QusAns">
+            <option value="0">請選擇</option>
+            <option value="true">是</option>
+            <option value="false">否</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -77,9 +78,10 @@ export default {
         this.GetUpCashPostData.IsTaiwanTaxDuty = result
       }
     },
+    // 您的職業類別
     jobCode: {
       get() {
-        return this.GetJob
+        return this.GetJob || 0
       },
       set(value) {
         this.FuncGetOccupation({
@@ -90,9 +92,10 @@ export default {
         this.$store.state.JOB = value
       }
     },
+    // 職業中類
     jobSubCode: {
       get() {
-        return this.$store.state.JOBSUBCODE
+        return this.$store.state.JOBSUBCODE || 0
       },
       set(value) {
         this.FuncGetOccupation({
@@ -106,7 +109,7 @@ export default {
     },
     occupation: {
       get() {
-        return this.GetOccupation
+        return this.GetOccupation || 0
       },
       set(value) {
         this.$store.state.OCCUPATION = value
@@ -115,6 +118,8 @@ export default {
           this.GetUpCashPostData.client_occupation_class = ''
           this.GetUpCashPostData.client_occupation_class_code = ''
           this.GetUpCashPostData.client_occupation_class_code_name = ''
+          this.GetUpCashPostData.client_occupation_level = ''
+          this.GetUpCashPostData.client_occupation_sub_level = ''
           return
         }
         this.GetJobSubCodeData.forEach(data => {
@@ -122,6 +127,8 @@ export default {
             this.GetUpCashPostData.client_occupation_class = data.OCCUPATION_CLASS
             this.GetUpCashPostData.client_occupation_class_code = data.OCCUPATION_CODE
             this.GetUpCashPostData.client_occupation_class_code_name = data.OCCUPATION_DESC
+            this.GetUpCashPostData.client_occupation_level = this.$store.state.JOB
+            this.GetUpCashPostData.client_occupation_sub_level = this.$store.state.JOBSUBCODE
           }
         })
       }

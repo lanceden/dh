@@ -14,10 +14,10 @@ import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.
 import StepOneCustomer from './MyWayStepOne_customer'
 import StepOneAbout from './MyWayStepOne_about'
 import StepOneFooter from './MyWayStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 export default {
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const tokenArr = urlParams.get('token').split(' ')
+    const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {
       token += `+${item}`

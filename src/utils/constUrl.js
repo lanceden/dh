@@ -3,7 +3,7 @@
  */
 // const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi'
 // const Domain = 'https://ea5af470-fbb3-4cf8-b060-301a1bccb034.mock.pstmn.io'
-const Domain = 'http://localhost:57246'
+const Domain = process.env.URL
 /**
  * 職業類別
  */

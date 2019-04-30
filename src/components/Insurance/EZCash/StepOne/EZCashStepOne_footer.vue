@@ -16,16 +16,17 @@ import moment from 'moment'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetEZCashPostData,
-      'HeaderIsActive'
+      GetterTypes.GetEZCashPostData
     ])
   },
   methods: {
     ...mapActions([
       'SetHeaderIsActive',
+      'SetIsShowModal',
       FunctionTypes.FuncEZCashIsInit
     ]),
     GotoNext() {
+      this.SetIsShowModal(true)
       let result = this.ValidateData()
       if (!result) return
       this.SetHeaderIsActive(true)

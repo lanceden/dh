@@ -1,6 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
+    <modal v-show="GetLoading" ></modal>
     <StepOneCustomer></StepOneCustomer>
     <StepOneAbout></StepOneAbout>
     <StepOneFatca></StepOneFatca>
@@ -16,10 +17,10 @@ import StepOneCustomer from './EZCashStepOne_customer'
 import StepOneAbout from './EZCashStepOne_about'
 import StepOneFatca from './EZCashStepOne_fatca'
 import StepOneFooter from './EZCashStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 export default {
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    const tokenArr = urlParams.get('token').split(' ')
+    const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {
       token += `+${item}`
@@ -32,6 +33,7 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
+      'GetIsShowModal',
       GetterTypes.GetEZCashIsInit
     ])
   },

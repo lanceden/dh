@@ -17,6 +17,7 @@
         <label for="" class="col-sm-12 col-form-label insure-label">您的職業類別</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
+            <option value="0" selected="selected">請選擇</option>
             <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
           </select>
           <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
@@ -250,9 +251,10 @@ export default {
         this.GetMyWayPostData.QusAns[7].Answar = (value === 'true')
       }
     },
+    // 您的職業類別
     jobCode: {
       get() {
-        return this.GetJob
+        return this.GetJob || 0
       },
       set(value) {
         this.FuncGetOccupation({
@@ -263,9 +265,10 @@ export default {
         this.$store.state.JOB = value
       }
     },
+    // 職業中類
     jobSubCode: {
       get() {
-        return this.$store.state.JOBSUBCODE
+        return this.$store.state.JOBSUBCODE || 0
       },
       set(value) {
         this.FuncGetOccupation({
@@ -279,22 +282,26 @@ export default {
     },
     occupation: {
       get() {
-        return this.GetOccupation
+        return this.GetOccupation || 0
       },
       set(value) {
         this.$store.state.OCCUPATION = value
         if (value === '0') {
           alert('請選擇職業名稱')
-          this.GetUpCashPostData.client_occupation_class = ''
-          this.GetUpCashPostData.client_occupation_class_code = ''
-          this.GetUpCashPostData.client_occupation_class_code_name = ''
+          this.GetMyWayPostData.client_occupation_class = ''
+          this.GetMyWayPostData.client_occupation_class_code = ''
+          this.GetMyWayPostData.client_occupation_class_code_name = ''
+          this.GetMyWayPostData.client_occupation_level = ''
+          this.GetMyWayPostData.client_occupation_sub_level = ''
           return
         }
         this.GetJobSubCodeData.forEach(data => {
           if (data.OCCUPATION_CODE === value) {
-            this.GetUpCashPostData.client_occupation_class = data.OCCUPATION_CLASS
-            this.GetUpCashPostData.client_occupation_class_code = data.OCCUPATION_CODE
-            this.GetUpCashPostData.client_occupation_class_code_name = data.OCCUPATION_DESC
+            this.GetMyWayPostData.client_occupation_class = data.OCCUPATION_CLASS
+            this.GetMyWayPostData.client_occupation_class_code = data.OCCUPATION_CODE
+            this.GetMyWayPostData.client_occupation_class_code_name = data.OCCUPATION_DESC
+            this.GetMyWayPostData.client_occupation_level = this.$store.state.JOB
+            this.GetMyWayPostData.client_occupation_sub_level = this.$store.state.JOBSUBCODE
           }
         })
       }

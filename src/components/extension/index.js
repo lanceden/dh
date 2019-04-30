@@ -1,7 +1,10 @@
-const LoadingComponent = require('./Loading.vue')
+import LoadingComponent from './Loading.vue'
+import ModalComponent from './Modal.vue'
+
 const ext = {
-  install: function (Vue) {
+  install: function(Vue) {
     Vue.component('loading', LoadingComponent)
+    Vue.component('modal', ModalComponent)
   }
 }
-module.exports = ext
+export default ext

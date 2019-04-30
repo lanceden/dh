@@ -96,7 +96,6 @@ export default {
         return this.GetCity
       },
       set(value) {
-        this.GetEZCashPostData.CITY = value
         this.GetEZCashPostData.CRSData.birth_city = value
       }
     }
