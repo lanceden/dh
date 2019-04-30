@@ -3,6 +3,7 @@
     <template>
       <Header></Header>
       <router-view></router-view>
+      <modal></modal>
     </template>
   </div>
 </template>

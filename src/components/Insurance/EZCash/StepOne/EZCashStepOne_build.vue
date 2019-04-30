@@ -1,7 +1,6 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <modal v-show="GetLoading" ></modal>
     <StepOneCustomer></StepOneCustomer>
     <StepOneAbout></StepOneAbout>
     <StepOneFatca></StepOneFatca>
@@ -33,7 +32,6 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      'GetIsShowModal',
       GetterTypes.GetEZCashIsInit
     ])
   },
