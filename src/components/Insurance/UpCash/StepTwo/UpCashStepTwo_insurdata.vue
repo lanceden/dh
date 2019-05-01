@@ -120,7 +120,7 @@
         <div class="insure-tips">續期繳費管道同時約定為信用卡，會同首期信用卡卡號做繳費。</div>
       </div>
 
-      <div v-show="GetUpCashPostData.modx_99_ind === 'N'">
+      <div v-show="GetUpCashPostData.modx_99_ind === 'N' && GetUpCashPostData.method === 'B'">
         <div class="form-group row" @click="OnAccount('isEdda')">
           <div class="checkbox " :class="{ checked: isEdda }"></div>
           <div class="insure-tips">已約定帳戶</div>

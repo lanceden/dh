@@ -90,19 +90,22 @@ export default {
       'GetCityData',
       'GetDistrictData'
     ]),
+    // 電子郵件
     email: {
       get() {
         return this.GetUpCashPostData.email
       }
     },
+    // 輸入新的電子郵件
     newMail: {
       get() {
-        return this.GetUpCashPostData.email
+        return this.GetUpCashPostData.road3
       },
       set(value) {
-        this.GetUpCashPostData.email = value
+        this.GetUpCashPostData.road3 = value
       }
     },
+    // 輸入新的寄送地址-縣市
     city3: {
       get() {
         return this.GetUpCashPostData.city3
@@ -111,6 +114,7 @@ export default {
         this.GetUpCashPostData.city3 = value
       }
     },
+    // 輸入新的寄送地址-區域
     district3: {
       get() {
         return this.GetUpCashPostData.district3
@@ -119,6 +123,7 @@ export default {
         this.GetUpCashPostData.district3 = value
       }
     },
+    // 輸入新的寄送地址-路
     road3: {
       get() {
         return this.GetUpCashPostData.road3

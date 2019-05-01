@@ -11,6 +11,7 @@ import { mapGetters } from 'vuex'
 import AgreementCheck from './agreement_check'
 import AgreementContent from './agreement_content'
 import AgreementFooter from './agreement_footer'
+import { getQueryStringParameterByKey } from '../../utils/getQueryStringParameterByKey.js'
 export default {
   data() {
     return {
@@ -19,8 +20,7 @@ export default {
     }
   },
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    this.instypename = urlParams.get('instypename').toLowerCase()
+    const instypename = getQueryStringParameterByKey('instypename')
     switch (this.instypename) {
       case 'upcash':
         this.GetProvision.push('新光人壽Up Cash利率變動型年金保險【乙型】商品說明')

@@ -37,6 +37,7 @@ export default {
       FunctionTypes.FuncUpCashEstimate
     ]),
     Estimate() {
+      setDataOnEstimateStep(this.GetUpCashPostData)
       // 寄送至客戶住所(通訊地址)
       if (this.$store.state.NOTIFYCHECKBOX[1]) {
         this.GetUpCashPostData.city3 = this.GetUpCashPostData.InsAddressCity || ''
@@ -53,8 +54,10 @@ export default {
         toggleModalShow('請填寫第一期保險費。')
         return
       }
-      toggleModalShow(valEstimateData(this.GetUpCashPostData, this.GetNotifyCheckBox))
-      setDataOnEstimateStep(this.GetUpCashPostData)
+      let errors = valEstimateData(this.GetUpCashPostData, this.GetNotifyCheckBox)
+      if(errors !== '') {
+        toggleModalShow(errors)
+      }
       this.FuncUpCashEstimate({ para: this.GetUpCashPostData })
     }
   }

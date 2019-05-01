@@ -13,19 +13,19 @@
         依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保，如需電訪，您的方便聯絡時間為：
       </div>
       <div class="row insure-time-box">
-        <div class="col-sm-4" @click="OnCkech('visit_time1')">
+        <div class="col-sm-4" @click="OnCheck('visit_time1')">
           <div :class="{ 'insure-times-active': visit_time1 }" class="insure-times">
             早上<br>
             9點~12點
           </div>
         </div>
-        <div class="col-sm-4" @click="OnCkech('visit_time2')">
+        <div class="col-sm-4" @click="OnCheck('visit_time2')">
           <div :class="{ 'insure-times-active': visit_time2 }" class="insure-times">
             下午<br>
             1點~6點
           </div>
         </div>
-        <div class="col-sm-4" @click="OnCkech('visit_time3')">
+        <div class="col-sm-4" @click="OnCheck('visit_time3')">
           <div :class="{ 'insure-times-active': visit_time3 }" class="insure-times">
             晚上<br>
             6點~9點
@@ -42,7 +42,7 @@ import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterType
 export default {
   data() {
     return {
-      visit_time1: true,
+      visit_time1: false,
       visit_time2: false,
       visit_time3: false
     }
@@ -53,7 +53,7 @@ export default {
     ])
   },
   methods: {
-    OnCkech(phoneTime) {
+    OnCheck(phoneTime) {
       switch (phoneTime) {
         case 'visit_time1':
           this.visit_time1 = !this.visit_time1

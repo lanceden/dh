@@ -95,7 +95,7 @@ function valEstimateData(postData, notifyArr) {
     errors += '請選擇給付方式。\n'
   } else {
     // 分期給付
-    if (annyFrequence !== '0') {
+    if (parseInt(annyFrequence) !== 0) {
       if (qpoop19year === '') {
         errors += '請選擇年金約定之分期給付保證期間。\n'
       }
@@ -179,6 +179,8 @@ function setDataOnEstimateStep(postData) {
   console.log('client_occupation_class', postData.client_occupation_class)
   console.log('client_occupation_class_code', postData.client_occupation_class_code)
   console.log('client_occupation_class_code_name', postData.client_occupation_class_code_name)
+  console.log('client_occupation_level', postData.client_occupation_level)
+  console.log('client_occupation_sub_level', postData.client_occupation_sub_level)
   console.log('web_appl_ind', postData.web_appl_ind)
   console.log('po_issue_date', postData.po_issue_date)
   console.log('face_amt', postData.face_amt)
@@ -199,10 +201,15 @@ function setDataOnEstimateStep(postData) {
   console.log('road3', postData.road3)
   console.log('zip3', postData.zip3)
   console.log('EmployeeNo', postData.EmployeeNo)
-  console.log('QusAns[0][Answar]', postData.QusAns[0].Answar)
-  console.log('CRSData[birth_city]', postData.CRSData.birth_city)
-  console.log('CRSData[birth_national]', postData.CRSData.birth_national)
+  console.log('QusAns', postData.QusAns)
+  console.log('birth_city', postData.CRSData.birth_city)
+  console.log('birth_national', postData.CRSData.birth_national)
   console.log('IsTaiwanTaxDuty', postData.IsTaiwanTaxDuty)
+  console.log('modx_99_ind', postData.modx_99_ind)
+  console.log('qpoop_25_prem', postData.qpoop_25_prem)
+  console.log('qpoop_25_modx', postData.qpoop_25_modx)
+  console.log('method', postData.method)
+  console.log('Renewed_Prefer', postData.Renewed_Prefer)
 }
 
 export {

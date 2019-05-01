@@ -13,7 +13,7 @@ import { mapActions, mapGetters } from 'vuex'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 
-const PREVURL = 'upcash-1'
+const PREVURL = '/upcash-1'
 const NEXTURL = '/upcash-3'
 export default {
   computed: {
