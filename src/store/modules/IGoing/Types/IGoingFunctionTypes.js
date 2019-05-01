@@ -3,5 +3,6 @@ export default {
   FuncIGoingIsInit: 'FuncIGoingIsInit',
   FuncIGoingInit: 'FuncIGoingInit',
   FuncIGoingEstimate: 'FuncIGoingEstimate',
-  FuncIGoingSubmitQuote: 'FuncIGoingSubmitQuote'
+  FuncIGoingSubmitQuote: 'FuncIGoingSubmitQuote',
+  FuncIGoingSubmitOrder: 'FuncIGoingSubmitOrder'
 }

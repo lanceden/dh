@@ -60,6 +60,21 @@ const actions = {
     }).then(response => {
       commit(functionTypes.FuncIGoingSubmitQuote, { result: response.data, router })
     })
+  },
+  /**
+   * IGoing 投保流程送出訂單
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {object} para 請求參數
+   */
+  [functionTypes.FuncIGoingSubmitOrder]({ commit }, { nccModels, para, router }) {
+    console.log(para)
+    rootState.Http.axios.post(`${Url.IGoingSubmitOrder}`, {
+      NCCCModels: nccModels,
+      CoreData: para,
+      InsurerSourceID: APICODE
+    }).then(response => {
+      commit(functionTypes.FuncIGoingSubmitOrder, { result: response.data, router })
+    })
   }
 }
 
@@ -100,6 +115,14 @@ const mutations = {
    */
   [functionTypes.FuncIGoingSubmitQuote](state, { result }) {
     if (result.ResultCode !== '0000') return
+    state.POSTDATA = result.Data.Result
+  },
+  /**
+   * IGoing 投保流程送出訂單
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncIGoingSubmitOrder](state, { result }) {
     state.POSTDATA = result.Data.Result
   }
 }

@@ -31,7 +31,7 @@ let data = JSON.parse(`{
             "init_methodCht": "活期性帳戶(電子化授權/全國繳費網)",
             "face_amt": 600,
             "face_amt_max": 10000000,
-            "mode_prem": 0,
+            "mode_prem": 654312,
             "Accept_ind": "",
             "plan_code": "UCA99",
             "version": "1",

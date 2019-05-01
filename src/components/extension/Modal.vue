@@ -23,7 +23,8 @@ export default {}
 
 <style>
 .modalTop {
-  margin-top: 30%;
+  margin-top: 10%;
+  overflow: hidden;
 }
 
 </style>

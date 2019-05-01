@@ -118,5 +118,15 @@ export default {
     setTimeout(rootState.Http.axios.post(`${Url.Provision}?provisionName=${provisionName}`).then(response => {
       commit('FuncGetProvision', { provisionName, result: response.data })
     }), 1000)
+  },
+  /**
+   * 驗證是否為花錢銀行卡
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {string} para 請求參數
+   */
+  FuncIsCityBank({ commit }, cardNo) {
+    rootState.Http.axios.post(`${Url.IsCityBank}?cardNp=${cardNo}`).then(response => {
+      commit('FuncIsCityBank', { result: response.data })
+    })
   }
 }

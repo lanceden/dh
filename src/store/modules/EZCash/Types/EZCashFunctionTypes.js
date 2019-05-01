@@ -2,5 +2,6 @@ export default {
   FuncEZCashIsInit: 'FuncEZCashIsInit',
   FuncEZCashInit: 'FuncEZCashInit',
   FuncEZCashEstimate: 'FuncEZCashEstimate',
-  FuncEZCashSubmitQuote: 'FuncEZCashSubmitQuote'
+  FuncEZCashSubmitQuote: 'FuncEZCashSubmitQuote',
+  FuncEZCashSubmitOrder: 'FuncEZCashSubmitOrder'
 }

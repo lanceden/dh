@@ -9,6 +9,10 @@ const Domain = process.env.URL
  */
 const Job = `${Domain}/Query/Job`
 /**
+ * 是否為花旗銀行卡
+ */
+const IsCityBank = `${Domain}/Query/IsCityBank`
+/**
  * 職業名稱
  */
 const Occupation = `${Domain}/Query/Occupation`
@@ -158,6 +162,7 @@ const IGoingSubmitOrder = `${Domain}/IGoing/SubmitOrder`
 export default {
   Domain,
   Job,
+  IsCityBank,
   Occupation,
   Nationality,
   Provision,

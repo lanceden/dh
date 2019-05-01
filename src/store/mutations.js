@@ -131,5 +131,13 @@ export default {
       provisionName,
       Result: result.Data.Result
     })
+  },
+  /**
+   * 驗證是否為花錢銀行卡
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncIsCityBank(state, { result }) {
+    state.ISCITYBANKCARD = result.ResultCode === '0000'
   }
 }

@@ -21,6 +21,7 @@ import { data } from './UpCashInitMockData'
 export default {
   created() {
     this.$store.state.UpCash.POSTDATA = data.Data.Result
+    this.$store.state.PLANNAME = 'UPCASH'
     const tokenArr = getQueryStringParameterByKey('token').split(' ')
     let token = ''
     tokenArr.forEach(item => {

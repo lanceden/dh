@@ -3,5 +3,6 @@ export default {
   FuncICanIsInit: 'FuncICanIsInit',
   FuncICanInit: 'FuncICanInit',
   FuncICanEstimate: 'FuncICanEstimate',
-  FuncICanSubmitQuote: 'FuncICanSubmitQuote'
+  FuncICanSubmitQuote: 'FuncICanSubmitQuote',
+  FuncICanSubmitOrder: 'FuncICanSubmitOrder'
 }

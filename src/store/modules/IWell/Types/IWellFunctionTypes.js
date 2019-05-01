@@ -3,5 +3,6 @@ export default {
   FuncIWellIsInit: 'FuncIWellIsInit',
   FuncIWellInit: 'FuncIWellInit',
   FuncIWellEstimate: 'FuncIWellEstimate',
-  FuncIWellSubmitQuote: 'FuncIWellSubmitQuote'
+  FuncIWellSubmitQuote: 'FuncIWellSubmitQuote',
+  FuncIWellSubmitOrder: 'FuncIWellSubmitOrder'
 }

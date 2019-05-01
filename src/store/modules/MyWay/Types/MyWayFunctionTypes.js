@@ -3,5 +3,6 @@ export default {
   FuncMyWayIsInit: 'FuncMyWayIsInit',
   FuncMyWayInit: 'FuncMyWayInit',
   FuncMyWayEstimate: 'FuncMyWayEstimate',
-  FuncMyWaySubmitQuote: 'FuncMyWaySubmitQuote'
+  FuncMyWaySubmitQuote: 'FuncMyWaySubmitQuote',
+  FuncMyWaySubmitOrder: 'FuncMyWaySubmitOrder'
 }

@@ -60,6 +60,21 @@ const actions = {
     }).then(response => {
       commit(functionTypes.FuncUpCashSubmitQuote, { result: response.data, router })
     })
+  },
+  /**
+   * UpCash 投保流程送出訂單
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {object} para 請求參數
+   */
+  [functionTypes.FuncUpCashSubmitOrder]({ commit }, { nccModels, para, router }) {
+    console.log(para)
+    rootState.Http.axios.post(`${Url.UpCashSubmitOrder}`, {
+      NCCCModels: nccModels,
+      CoreData: para,
+      InsurerSourceID: APICODE
+    }).then(response => {
+      commit(functionTypes.FuncUpCashSubmitOrder, { result: response.data, router })
+    })
   }
 }
 
@@ -97,6 +112,14 @@ const mutations = {
    */
   [functionTypes.FuncUpCashSubmitQuote](state, { result }) {
     if (result.ResultCode !== '0000') return
+    state.POSTDATA = result.Data.Result
+  },
+  /**
+   * UpCash 投保流程送出訂單
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncUpCashSubmitOrder](state, { result }) {
     state.POSTDATA = result.Data.Result
   }
 }

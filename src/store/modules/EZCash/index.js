@@ -60,6 +60,21 @@ const actions = {
     }).then(response => {
       commit(functionTypes.FuncEZCashSubmitQuote, { result: response.data, router })
     })
+  },
+  /**
+   * EZCash 投保流程送出訂單
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {object} para 請求參數
+   */
+  [functionTypes.FuncEZCashSubmitOrder]({ commit }, { nccModels, para, router }) {
+    console.log(para)
+    rootState.Http.axios.post(`${Url.EZCashSubmitOrder}`, {
+      NCCCModels: nccModels,
+      CoreData: para,
+      InsurerSourceID: APICODE
+    }).then(response => {
+      commit(functionTypes.FuncEZCashSubmitOrder, { result: response.data, router })
+    })
   }
 }
 
@@ -97,6 +112,14 @@ const mutations = {
    */
   [functionTypes.FuncEZCashSubmitQuote](state, { result }) {
     if (result.ResultCode !== '0000') return
+    state.POSTDATA = result.Data.Result
+  },
+  /**
+   * EZCash 投保流程送出訂單
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncEZCashSubmitOrder](state, { result }) {
     state.POSTDATA = result.Data.Result
   }
 }
