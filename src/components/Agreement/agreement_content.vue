@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../static/img/oval.png" alt=""></div>
+          <div class="insure-check insure-checked"><img src="../../../static/img/oval.png" alt=""></div>
             <div class="insure-check-title">{{provisionname}}</div>
           </div>
         </div>

@@ -32,7 +32,7 @@
           </select>
           <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="district1">
             <option selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip">{{item.Area}}</option>
+            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
           </select>
           <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road1" :disabled="!cbNewAddr" />
         </div>
@@ -49,8 +49,10 @@
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+
+const CITYNAME = '基隆市'
 export default {
   data() {
     return {
@@ -61,9 +63,13 @@ export default {
   },
   created() {
     this.tempAddr = this.GetUpCashPostData.InsAddress
+    this.FuncGetCityData()
+    this.FuncGetDistrictData(CITYNAME)
   },
   computed: {
     ...mapGetters([
+      'GetCityData',
+      'GetDistrictData',
       GetterTypes.GetUpCashPostData
     ]),
     // 輸入新的客戶住所(通訊地址)-縣市
@@ -73,15 +79,22 @@ export default {
       },
       set(value) {
         this.GetUpCashPostData.city1 = value
+        // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+        this.FuncGetDistrictData(value)
+        this.GetUpCashPostData.district1 = 0
       }
     },
     // 輸入新的客戶住所(通訊地址)-區域
     district1: {
       get() {
-        return this.GetUpCashPostData.district1
+        if (this.GetUpCashPostData.district1 === 0) return 0
+        return (`${this.GetUpCashPostData.zip1}-${this.GetUpCashPostData.district1}`) || 0
       },
       set(value) {
-        this.GetUpCashPostData.district1 = value
+        // item.Zip|item.Area
+        let data = value.split('-')
+        this.GetUpCashPostData.zip1 = data[0]
+        this.GetUpCashPostData.district1 = data[1]
       }
     },
     // 輸入新的客戶住所(通訊地址)-路
@@ -95,6 +108,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'FuncGetCityData',
+      'FuncGetDistrictData'
+    ]),
     OnCheck(type) {
       switch (type) {
         case 'cbOldAddr':

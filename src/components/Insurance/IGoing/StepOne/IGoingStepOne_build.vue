@@ -25,7 +25,9 @@ export default {
     this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetIGoingIsInit) {
       this.FuncIGoingInit()
+      this.$store.state.PLANNAME = 'IGOING'
     }
+    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([

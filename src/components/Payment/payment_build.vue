@@ -11,6 +11,9 @@ import PaymentAccount from './payment_account'
 import PaymentCreditcard from './payment_creditcard'
 import PaymentFooter from './payment_footer'
 export default {
+  props: [
+    'stateData'
+  ],
   components: {
     PaymentAccount,
     PaymentCreditcard,

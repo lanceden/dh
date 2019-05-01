@@ -70,7 +70,6 @@ export default {
    */
   FuncGetCityData(state, { result }) {
     state.CITYDATA = result.Data.Result
-    state.CITY = result.Data.Result[0].City
   },
   /**
    * 取回鄉鎮市區
@@ -114,7 +113,7 @@ export default {
    * @param {請求結果} param1 請求回傳結果
    */
   FuncCheckOTP(state, { result, router }) {
-    // OTP驗證成功
+    // OTP驗證成功跳轉至付款頁
     if (result.ResultCode === '0000') {
       state.OTPVALIDSTETIME = result.Data.Result.OtpValidateTime
       router.push('/payment')

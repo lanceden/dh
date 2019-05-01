@@ -27,7 +27,9 @@ export default {
     this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetEZCashIsInit) {
       this.FuncEZCashInit()
+      this.$store.state.PLANNAME = 'EZCASH'
     }
+    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([

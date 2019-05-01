@@ -21,7 +21,7 @@
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{GetUpCashPostData.po_issue_date_Name}}</div>
+          <div class="insure-input-block">{{poIssueDate}}</div>
         </div>
       </div>
       <div class="form-group row">
@@ -158,12 +158,14 @@
 </template>
 
 <script>
+import moment from 'moment'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   data() {
     return {
       isEdda: true,
+      poIssueDate: '',
       payType: [
         { name: '全國新光人壽行政中心繳費', method: 'P' },
         { name: '銀行或郵局帳戶轉帳', method: 'B' },
@@ -173,6 +175,8 @@ export default {
   },
   created() {
     this.GetUpCashPostData.AccountData[0] = {}
+    this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
+    this.GetUpCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
     this.OnUntimed(1)
   },
   computed: {

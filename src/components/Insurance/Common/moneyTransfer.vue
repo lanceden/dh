@@ -15,7 +15,7 @@
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="Applicant_BankCode">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in mockBanks" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
+            <option v-for="(item, index) in GetBankData" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
           </select>
         </div>
       </div>
@@ -29,7 +29,7 @@
         <div class="col-sm-12">
           <select class="form-control data-input insure-select insure-input-block-edit" ref="Applicant_BranchCode" v-model="Applicant_BranchCode">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in mockBankBranches" :key="index" :value="item.code + '-' + item.name">{{item.code}} {{item.name}}</option>
+            <option v-for="(item, index) in GetBankBranches" :key="index" :value="item.code + '-' + item.name">{{item.code}} {{item.name}}</option>
           </select>
         </div>
       </div>
@@ -77,11 +77,12 @@ export default {
   created() {
     this.mockBanks = banks.Data.Result
     this.mockBankBranches = BankBranches.Data.Result
+    this.FuncGetBank()
   },
   computed: {
     ...mapGetters([
-      'GetBankBranches',
-      'GetBankData'
+      'GetBankData',
+      'GetBankBranches'
     ]),
     // 金融機構代碼
     Applicant_BankCode: {
@@ -123,6 +124,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'FuncGetBank',
       'FuncGetBankBranches'
     ])
   }

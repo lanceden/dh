@@ -17,9 +17,10 @@ import StepOneFooter from './IWellStepOne_footer'
 export default {
   created() {
     if (!this.GetIWellIsInit) {
-      this.FuncIWellIsInit()
       this.FuncIWellInit()
+      this.$store.state.PLANNAME = 'IWELL'
     }
+    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
@@ -34,8 +35,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncIWellInit,
-      FunctionTypes.FuncIWellIsInit
+      FunctionTypes.FuncIWellInit
     ])
   }
 }

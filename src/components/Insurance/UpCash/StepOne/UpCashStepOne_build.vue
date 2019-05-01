@@ -29,7 +29,9 @@ export default {
     this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetUpCashIsInit) {
       this.FuncUpCashInit()
+      this.$store.state.PLANNAME = 'UPCASH'
     }
+    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([

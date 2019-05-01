@@ -85,6 +85,7 @@ export default {
     anny_frequence: {
       get() {
         let result = InitColumnData(this.GetUpCashPostData.anny_frequence, 0)
+        this.GetUpCashPostData.anny_frequence = result
         return parseInt(result) !== 0 ? 1 : 0
       },
       set(value) {

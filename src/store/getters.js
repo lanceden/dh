@@ -6,7 +6,6 @@ export default {
   [types.BenfinheritOneDisable]: state => state.BenfinheritOneDisable,
   GetJob: state => state.JOB,
   GetJobData: state => state.JOBDATA,
-  GetCity: state => state.CITY,
   GetCityData: state => state.CITYDATA,
   GetBank: state => state.BANK,
   GetBankData: state => state.BANKDATA,

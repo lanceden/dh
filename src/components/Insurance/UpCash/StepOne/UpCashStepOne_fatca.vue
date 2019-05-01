@@ -68,8 +68,7 @@ export default {
     ...mapGetters([
       GetterTypes.GetUpCashIsInit,
       GetterTypes.GetUpCashPostData,
-      'GetNationData',
-      'GetCityData'
+      'GetNationData'
     ]),
     birth_national: {
       get() {
@@ -81,7 +80,7 @@ export default {
     },
     birth_city: {
       get() {
-        return (this.GetUpCashPostData.CRSData.birth_city === undefined || this.GetUpCashPostData.CRSData.birth_city === null || this.GetUpCashPostData.CRSData.birth_city === 'null') ? 0 : this.GetUpCashPostData.CRSData.birth_city
+        return (this.GetUpCashPostData.CRSData.birth_city === undefined || this.GetUpCashPostData.CRSData.birth_city === null || this.GetUpCashPostData.CRSData.birth_city === 'null') ? '' : this.GetUpCashPostData.CRSData.birth_city
       },
       set(value) {
         this.GetUpCashPostData.CRSData.birth_city = value

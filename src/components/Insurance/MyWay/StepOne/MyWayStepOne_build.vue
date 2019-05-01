@@ -25,7 +25,9 @@ export default {
     this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetMyWayIsInit) {
       this.FuncMyWayInit()
+      this.$store.state.PLANNAME = 'MYWAY'
     }
+    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([

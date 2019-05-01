@@ -38,6 +38,16 @@ export default {
     })
   },
   /**
+   * 取回金融機構
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetBank({ commit }) {
+    rootState.Http.axios.post(`${Url.Banks}`).then(response => {
+      commit('FuncGetBank', { result: response.data })
+    })
+  },
+  /**
    * 取回銀行
    * @param {commit} param0 提交狀態
    * @param {string} bankCode 銀行代碼
@@ -70,16 +80,6 @@ export default {
   FuncGetDistrictData({ commit }, cityName) {
     rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
       commit('FuncGetDistrictData', { result: response.data })
-    })
-  },
-  /**
-   * 取回金融機構
-   * @param {當前Vuex狀態} state VuexStoreState
-   * @param {請求結果} param1 請求回傳結果
-   */
-  FuncGetBank({ commit }) {
-    rootState.Http.axios.post(`${Url.Banks}`).then(response => {
-      commit('FuncGetBank', { result: response.data })
     })
   },
   /**
