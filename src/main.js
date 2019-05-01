@@ -9,6 +9,7 @@ import Lockr from 'lockr'
 import filters from './filters'
 import axios from 'axios'
 import { GetErrorMsg } from '../src/utils/getErrorMsg'
+import { toggleModalShow } from './utils/toggleModal'
 
 Vue.config.productionTip = false
 Vue.use(extension)
@@ -28,7 +29,7 @@ axios.interceptors.request.use(function(config) {
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
   if (response.data.ResultCode !== '0000') {
-    console.log(GetErrorMsg(response.data.ErrorMessage))
+    toggleModalShow(GetErrorMsg(response.data.ErrorMessage))
     return response
   }
   return response
@@ -36,6 +37,9 @@ axios.interceptors.response.use(function(response) {
   if (error.response === undefined) {
     console.log(`${error.config.url} , errorMessage: ${error.message}`)
   } else {
+    if (error.response.status === 401) {
+      toggleModalShow('親愛的保戶您好，操作已逾時，請重新登入。')
+    }
     console.log(GetErrorMsg(error.response.data.ErrorMessage))
   }
   return Promise.reject(error)

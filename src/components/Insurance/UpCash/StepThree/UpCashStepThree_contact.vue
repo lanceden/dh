@@ -14,7 +14,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">手機</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input" :value="GetUpCashPostData.phone" readonly="readonly">
+          <input type="text" class="form-control insure-input" :value="GetUpCashPostData.phone_mobile" readonly="readonly">
         </div>
       </div>
       <div class="col-sm-12">

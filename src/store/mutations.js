@@ -139,5 +139,13 @@ export default {
    */
   FuncIsCityBank(state, { result }) {
     state.ISCITYBANKCARD = result.ResultCode === '0000'
+  },
+  /**
+   * 取得客戶約定帳戶
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetEachAccount(state, { result }) {
+    state.EACHACCOUNT = result.Data.Result
   }
 }

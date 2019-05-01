@@ -42,7 +42,10 @@ import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
 import OtpVerify from '../components/OTPVerify/otpverify_build'
+
 import Payment from '../components/Payment/payment_build.vue'
+import PaymentComplete from '../components/Payment/payment_complete.vue'
+
 import MyError from '../components/error'
 
 Vue.use(Router)
@@ -215,6 +218,10 @@ const router = new Router({
   {
     path: '/payment',
     component: Payment
+  },
+  {
+    path: '/paymentcomplete',
+    component: PaymentComplete
   },
   {
     path: '*',

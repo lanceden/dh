@@ -141,7 +141,7 @@ const mutations = {
    * @param {請求結果} param1 請求回傳結果
    */
   [functionTypes.FuncICanSubmitOrder](state, { result }) {
-    state.POSTDATA = result.Data.Result
+    state.PAYMENTCOMPLETE = result.Data.Result
   }
 }
 

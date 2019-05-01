@@ -217,7 +217,6 @@ export default {
       set(value) {
         this.GetUpCashPostData.mode_prem = 0
         this.GetUpCashPostData.init_method = value
-        let result = this.GetUpCashPostData.modx_99_ind === 'Y' ? 1 : 2
         this.OnUntimed(this.GetUpCashPostData.modx_99_ind)
       }
     },

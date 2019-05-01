@@ -3,7 +3,7 @@
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
         <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">回前一頁</div>
-        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">保費試算</div>
+        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">下一步</div>
       </nav>
     </div>
   </div>

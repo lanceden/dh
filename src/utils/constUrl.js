@@ -49,6 +49,10 @@ const Nationality = `${Domain}/Query/Nationality`
  */
 const Beneficiary = `${Domain}/Query/Beneficiary`
 /**
+ * 取得客戶約定帳戶
+ */
+const EACHAccount = `${Domain}/Customer/EachAccount`
+/**
  * 發送OTP
  */
 const SendOTP = `${Domain}/OTP/Send`
@@ -172,6 +176,7 @@ export default {
   BankBranches,
   ValidateAccount,
   Beneficiary,
+  EACHAccount,
   SendOTP,
   CheckOTP,
   UpCashInit,

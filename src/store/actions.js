@@ -125,7 +125,16 @@ export default {
    * @param {string} para 請求參數
    */
   FuncIsCityBank({ commit }, cardNo) {
-    rootState.Http.axios.post(`${Url.IsCityBank}?cardNp=${cardNo}`).then(response => {
+    rootState.Http.axios.post(`${Url.IsCityBank}?cardNo=${cardNo}`).then(response => {
+      commit('FuncIsCityBank', { result: response.data })
+    })
+  },
+  /**
+   * 取得客戶約定帳戶
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   */
+  FuncGetEachAccount({ commit }) {
+    rootState.Http.axios.post(`${Url.EACHAccount}`).then(response => {
       commit('FuncIsCityBank', { result: response.data })
     })
   }

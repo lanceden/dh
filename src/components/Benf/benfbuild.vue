@@ -31,6 +31,8 @@ export default {
   created() {
     const urlParams = new URLSearchParams(window.location.search)
     this.instypename = urlParams.get('instypename').toLowerCase()
+    
+    const tokenArr = getQueryStringParameterByKey('token').split(' ')
   },
   computed: {
     ...mapGetters([

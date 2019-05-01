@@ -20,6 +20,9 @@ import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTyp
 import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+import { CheckCardno } from '../../utils/checkCreditCard.js'
+import { toggleModalShow } from '../../utils/toggleModal.js'
+
 export default {
   props: [
     'stateData'
@@ -34,7 +37,7 @@ export default {
       MyWayFunctionTypes.FuncMyWaySubmitOrder
     ]),
     doPayment() {
-      // 當前險種名稱
+      // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
       let planName = this.$store.state.PLANNAME.toLowerCase()
       // 付款資料
       let postData = {
@@ -47,7 +50,21 @@ export default {
         CoreData: this.stateData,
         router: this.$router
       }
+      console.log('postData.CoreData', JSON.stringify(postData.CoreData))
+      if (postData.CoreData.init_method === '') {
+        toggleModalShow('請選擇繳費管道。')
+        return
+      }
+      // 判斷是否為信用卡繳費, 若是則要驗證卡號
+      if (postData.CoreData.init_method.toUpperCase() === 'C') {
+        let validateResult = CheckCardno(postData.NCCCModels.CardNo)
+        if (!validateResult) {
+          toggleModalShow('信用卡號不正確，請重新輸入。')
+          return
+        }
+      }
       console.log('postData.NCCCModels', postData.NCCCModels)
+      console.log('postData.CoreData', JSON.stringify(postData.CoreData))
       // 執行付款
       switch (planName) {
         case 'upcash':

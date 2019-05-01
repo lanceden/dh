@@ -33,9 +33,10 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
-import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes.js'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes'
+import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
+import { toggleModalShow } from '../../../../utils/toggleModal'
 export default {
   data() {
     return {
@@ -65,9 +66,13 @@ export default {
       if (this.GetICanElecFormIsRed) {
         this.$router.push(`/ICan-1?token=${this.$store.state.ApiToken}`)
       } else {
-        alert('我們將帶您回到網站之首頁！')
+        toggleModalShow('我們將帶您回到網站之首頁。')
       }
     },
+    /**
+     * 是否同意電子保單
+     * @param {bool} value 同意: true 不同意: false
+     */
     OnCheck(value) {
       this.FuncICanElecFormIsRead(value)
       this.isAgree = value
@@ -77,7 +82,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 .insure-times-active {
   color: red;
 }
