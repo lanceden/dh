@@ -51,7 +51,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 .provision {
   height: 300px;
   overflow: hidden;
