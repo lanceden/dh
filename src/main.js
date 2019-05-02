@@ -38,7 +38,7 @@ axios.interceptors.response.use(function(response) {
     console.log(`${error.config.url} , errorMessage: ${error.message}`)
   } else {
     if (error.response.status === 401) {
-      toggleModalShow('親愛的保戶您好，操作已逾時，請重新登入。')
+      toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     }
     console.log(GetErrorMsg(error.response.data.ErrorMessage))
   }

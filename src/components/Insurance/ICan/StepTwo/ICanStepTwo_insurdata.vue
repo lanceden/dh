@@ -34,7 +34,7 @@
           </select>
         </div>
         <div class="col-sm-12">
-          <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date"></div>
+          <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date">123</div>
         </div>
       </div>
       <div class="form-group row">
@@ -99,6 +99,10 @@ export default {
     var maxAmt = initFaceAmt * maxPerc / 100
     var minAmt = initFaceAmt * minPerc / 100
     $('#broken-bones-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+
+    let maturedDate = moment().add(`31`, 'days')
+      .format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
+    $('#matured_date').html(`天至 ${maturedDate}`)
   },
   created() {
     for (let i = 1; i <= 7; i++) {
@@ -132,7 +136,7 @@ export default {
      */
     TrvDays: {
       get() {
-        let result = this.GetICanPostData.TrvDays
+        let result = InitColumnData(this.GetICanPostData.TrvDays, 0)
         if (parseInt(result) === 0) {
           this.GetICanPostData.TrvDays = 30
           result = 30

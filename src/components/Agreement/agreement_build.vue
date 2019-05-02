@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <AgreementCheck></AgreementCheck>
     <AgreementContent v-for="n in provisionCount" :key="n" :provisionindex="n - 1" :provisionname="GetProvision[n-1]"></AgreementContent>
     <AgreementFooter :insname="instypename"></AgreementFooter>
@@ -114,6 +115,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetLoading',
       'GetProvision'
     ])
   }

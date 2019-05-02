@@ -64,7 +64,7 @@ export default {
     // 年收入
     insured_income: {
       get() {
-        return this.GetICanPostData.insured_income
+        return this.GetICanPostData.insured_income || ''
       },
       set(value) {
         this.GetICanPostData.insured_income = value
@@ -73,7 +73,7 @@ export default {
     // 家庭收入
     insured_fam_income: {
       get() {
-        return this.GetICanPostData.insured_fam_income
+        return this.GetICanPostData.insured_fam_income || ''
       },
       set(value) {
         this.GetICanPostData.insured_fam_income = value

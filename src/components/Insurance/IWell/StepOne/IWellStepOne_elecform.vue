@@ -36,6 +36,8 @@ import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import FunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes.js'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   data() {
     return {
@@ -65,7 +67,7 @@ export default {
       if (this.GetIWellElecFormIsRed) {
         this.$router.push(`/IWell-1?token=${this.$store.state.ApiToken}`)
       } else {
-        alert('我們將帶您回到網站之首頁！')
+        toggleModalShow('我們將帶您回到網站之首頁。')
       }
     },
     OnCheck(value) {
@@ -77,7 +79,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 .insure-times-active {
   color: red;
 }

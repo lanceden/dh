@@ -99,6 +99,7 @@
 import $ from 'jquery'
 import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
+import { InitColumnData } from '../../../../utils/initColumnData.js'
 
 const CITYNAME = '基隆市'
 export default {
@@ -160,7 +161,7 @@ export default {
     // 輸入新的通訊地址-縣市
     city1: {
       get() {
-        return this.GetICanPostData.city1
+        return this.GetICanPostData.city1 || '0'
       },
       set(value) {
         this.GetICanPostData.city1 = value
@@ -172,7 +173,8 @@ export default {
     // 輸入新的通訊地址-區域
     district1: {
       get() {
-        if (this.GetICanPostData.district1 === 0) return 0
+        let result = InitColumnData(this.GetICanPostData.district1, '0')
+        if (result === '0') return '0'
         return (`${this.GetICanPostData.zip1}-${this.GetICanPostData.district1}`) || 0
       },
       set(value) {
@@ -194,7 +196,7 @@ export default {
     // 輸入新的戶籍地址-縣市
     city2: {
       get() {
-        return this.GetICanPostData.city2
+        return this.GetICanPostData.city2 || '0'
       },
       set(value) {
         this.GetICanPostData.city2 = value
@@ -206,7 +208,8 @@ export default {
     // 輸入新的戶籍地址-區域
     district2: {
       get() {
-        if (this.GetICanPostData.district2 === 0) return 0
+        let result = InitColumnData(this.GetICanPostData.district2, '0')
+        if (result === '0') return '0'
         return (`${this.GetICanPostData.zip2}-${this.GetICanPostData.district2}`) || 0
       },
       set(value) {

@@ -1,5 +1,6 @@
-<template lang="">
+<template>
   <div>
+    <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
     <StepFourPhone></StepFourPhone>
     <StepFourSendType></StepFourSendType>
@@ -8,11 +9,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import StepFourOtherNotify from './UpCashStepFour_othernotify'
 import StepFourPhone from './UpCashStepFour_phone'
 import StepFourSendType from './UpCashStepFour_sendtype'
 import StepFourFooter from './UpCashStepFour_footer'
 export default {
+  computed: {
+    ...mapGetters([
+      'GetLoading'
+    ])
+  },
   components: {
     StepFourOtherNotify,
     StepFourPhone,
