@@ -3,7 +3,7 @@
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
         <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">回前一頁</div>
-        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">保費試算</div>
+        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">下一頁</div>
       </nav>
     </div>
   </div>
@@ -22,14 +22,14 @@ export default {
       'SetHeaderIsActive'
     ]),
     /**
-     * 上一步(回到第一頁)
+     * 回前一頁
      */
     GoPrev() {
       this.SetHeaderIsActive(false)
       this.$router.push('IGoing-1')
     },
     /**
-     * 前往填寫聯絡資料
+     * 下一頁
      */
     GoNext() {
       // 判斷是否有試算,沒有則跳錯誤

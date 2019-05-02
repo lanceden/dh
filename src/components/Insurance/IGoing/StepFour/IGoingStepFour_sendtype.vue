@@ -14,18 +14,32 @@
     </div>
     <form class="form-bottom">
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label" @click="OnCheck('cbOldAddr')">同通訊地址</label>
+        <!-- 客戶住所(通訊地址) -->
+        <label for="" class="col-sm-12 col-form-label insure-label">客戶住所(通訊地址)</label>
         <div class="col-sm-12">
-          <div class="insure-input-block" v-show="cbOldAddr">{{GetIGoingPostData.InsAddress}}</div>
+          <input type="text" class="form-control insure-input" id="txtOldAddress1" :value="GetIGoingPostData.address1" disabled="disabled">
         </div>
-        <div :class="{ checked: cbOldAddr }" class="checkbox" @click="OnCheck('cbOldAddr')"></div>
+        <div :class="{checkbox: true, checked: true}" id="divOldAddress1" @click="OnCommunityAddr('old')"></div>
       </div>
+      <!-- 輸入新的通訊地址 -->
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label" @click="OnCheck('cbNewAddr')">輸入新的通訊地址</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">輸入新的通訊地址</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" id="newCommunityAddress" v-show="cbNewAddr" placeholder="為保障您的權益，此欄位不可為空白" v-model="newAddress">
+          <template>
+            <div v-show="cbNewAddr1">
+              <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr1" v-model="city1">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+              </select>
+              <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr1" v-model="district1">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
+              </select>
+              <input type="text" class="form-control insure-input-block" id="txtNewAddress1" placeholder="為保障您的權益，此欄位不可為空白" v-model="road1" />
+            </div>
+          </template>
         </div>
-        <div :class="{ checked: cbNewAddr }" class="checkbox" @click="OnCheck('cbNewAddr')"></div>
+        <div :class="{checkbox: true, checked: false}" id="divNewAddress1" @click="OnCommunityAddr('new')"></div>
       </div>
       <div class="col-sm-12">
         <div class="insure-tips">
@@ -38,49 +52,104 @@
 
 
 <script>
-import { mapGetters } from 'vuex'
+import $ from 'jquery'
+import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes.js'
+import { InitColumnData } from '../../../../utils/initColumnData.js'
+
+const CITYNAME = '基隆市'
 export default {
   data() {
     return {
+      cbOldAddr1: true,
+      cbNewAddr1: false,
       cbOldAddr: true,
       cbNewAddr: false,
-      tempAddr: ''
+      tempZip1: '',
+      tempCity1: '',
+      tempDistrict1: '',
+      tempRoad1: ''
     }
   },
   created() {
-    this.tempAddr = this.GetIGoingPostData.InsAddress
+    this.FuncGetCityData()
+    this.FuncGetDistrictData(CITYNAME)
+  },
+  mounted() {
+    this.tempZip1 = this.GetIGoingPostData.zip1
+    this.tempCity1 = this.GetIGoingPostData.city1
+    this.tempDistrict1 = this.GetIGoingPostData.district1
+    this.tempRoad1 = this.GetIGoingPostData.road1
   },
   computed: {
     ...mapGetters([
+      'GetCityData',
+      'GetDistrictData',
       GetterTypes.GetIGoingPostData
     ]),
-    newAddress: {
+    // 輸入新的通訊地址-縣市
+    city1: {
       get() {
-        return this.tempAddr
+        return this.GetIGoingPostData.city1 || '0'
       },
       set(value) {
-        /**
-         * city1: 花蓮縣
-           district1: 富里鄉
-           road1: 水往上流1號
-         */
-        this.tempAddr = value
-        this.GetMyWayPostData.InsAddress = value
+        this.GetIGoingPostData.city1 = value
+        // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+        this.FuncGetDistrictData(value)
+        this.GetIGoingPostData.district1 = 0
+      }
+    },
+    // 輸入新的通訊地址-區域
+    district1: {
+      get() {
+        let result = InitColumnData(this.GetIGoingPostData.district1, '0')
+        if (result === '0') return '0'
+        return (`${this.GetIGoingPostData.zip1}-${this.GetIGoingPostData.district1}`) || 0
+      },
+      set(value) {
+        // item.Zip|item.Area
+        let data = value.split('-')
+        this.GetIGoingPostData.zip1 = data[0]
+        this.GetIGoingPostData.district1 = data[1]
+      }
+    },
+    // 輸入新的通訊地址-路
+    road1: {
+      get() {
+        return this.GetIGoingPostData.road1
+      },
+      set(value) {
+        this.GetIGoingPostData.road1 = value
       }
     }
   },
   methods: {
-    OnCheck(type) {
-      switch (type) {
-        case 'cbOldAddr':
-          this.cbOldAddr = true
-          this.cbNewAddr = false
-          this.tempAddr = ''
+    ...mapActions([
+      'FuncGetCityData',
+      'FuncGetDistrictData'
+    ]),
+    /**
+     * 通訊地址
+     */
+    OnCommunityAddr(target) {
+      switch (target) {
+        case 'old':
+          $('#divOldAddress1').removeClass('checked').addClass('checked')
+          $('#divNewAddress1').removeClass('checked')
+          $('#txtNewAddress1').attr('disabled', true)
+          $('#txtNewAddress1').val('')
+          this.cbNewAddr1 = false
+          this.GetIGoingPostData.zip1 = this.tempZip1
+          this.GetIGoingPostData.city1 = this.tempCity1
+          this.GetIGoingPostData.district1 = this.tempDistrict1
+          this.GetIGoingPostData.road1 = this.tempRoad1
           break
-        case 'cbNewAddr':
-          this.cbOldAddr = false
-          this.cbNewAddr = true
+        case 'new':
+          $('#divOldAddress1').removeClass('checked')
+          $('#divNewAddress1').removeClass('checked').addClass('checked')
+          $('#txtOldAddress1').attr('disabled', true)
+          $('#txtNewAddress1').removeAttr('disabled')
+          this.cbNewAddr1 = true
           break
       }
     }

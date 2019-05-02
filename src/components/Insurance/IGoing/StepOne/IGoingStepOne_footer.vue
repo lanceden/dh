@@ -36,7 +36,7 @@ export default {
       this.$router.push(NEXTURL)
     },
     ValidateData() {
-      let occuClass = InitColumnData(this.GetIWellPostData.client_occupation_class, 0)
+      let occuClass = InitColumnData(this.GetIGoingPostData.client_occupation_class, 0)
       if (parseInt(occuClass) === 0) {
         toggleModalShow('請選擇職業類別。')
         return false

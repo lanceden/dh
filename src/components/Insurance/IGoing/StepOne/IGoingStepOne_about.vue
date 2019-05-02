@@ -109,12 +109,8 @@ export default {
     if (this.GetIGoingPostData.client_occupation_class !== '' && this.GetIGoingPostData.client_occupation_class !== undefined) {
       this.client_occupation_class = this.GetIGoingPostData.client_occupation_class
     }
-    if (this.GetIGoingPostData.AuthorizedRep !== '' && this.GetIGoingPostData.AuthorizedRep !== undefined) {
-      this.AuthorizedRep = this.GetIGoingPostData.AuthorizedRep
-    }
     if (this.GetIGoingPostData.QusAns !== null && this.GetIGoingPostData.client_occupation_class !== undefined) {
       this.isShowAns1Error = this.GetIGoingPostData.QusAns[0].Answar
-      this.AuthorizedRep = this.GetIGoingPostData.AuthorizedRep
       this.isShowAns2Error = this.GetIGoingPostData.QusAns[2].Answar
       this.isShowAns3Error = this.GetIGoingPostData.QusAns[3].Answar
     }
@@ -160,6 +156,7 @@ export default {
       set(value) {
         this.isShowAns2Error = value === 'true'
         this.GetIGoingPostData.QusAns[1].Answar = (value === 'true')
+        this.GetIGoingPostData.AuthorizedRep = (value === 'true')
       }
     },
     // 請問您過去二年內是否曾因患有下列疾病而接受醫師治療、診療或用藥? (有任一者，請選擇”是”)

@@ -13,7 +13,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">手機</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input" :value="GetICanPostData.phone_mobile">
+          <input type="text" class="form-control insure-input" v-model="phone_mobile">
         </div>
       </div>
       <div class="col-sm-12">
@@ -24,8 +24,8 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input" :value="GetICanPostData.phone_area">
-          <input type="text" class="form-control insure-input" :value="GetICanPostData.phone_main">
+          <input type="text" class="form-control insure-input" v-model="phone_area">
+          <input type="text" class="form-control insure-input" v-model="phone_main">
         </div>
       </div>
 
@@ -142,12 +142,31 @@ export default {
       'GetDistrictData',
       'GetContactCheckBox'
     ]),
-    phone: {
+    // 手機
+    phone_mobile: {
       get() {
-        this.GetICanPostData.phone
+        return this.GetICanPostData.phone_mobile || ''
       },
       set(value) {
-        console.log(value)
+        this.this.GetICanPostData.phone_mobile = value
+      }
+    },
+    // 電話區碼
+    phone_area: {
+      get() {
+        return this.GetICanPostData.phone_area || ''
+      },
+      set(value) {
+        this.GetICanPostData.phone_area = value
+      }
+    },
+    // 電話
+    phone_main: {
+      get() {
+        return this.GetICanPostData.phone_main || ''
+      },
+      set(value) {
+        this.GetICanPostData.phone_main = value
       }
     },
     address: {

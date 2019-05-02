@@ -31,6 +31,7 @@
         <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
         <div class="col-sm-12">
           <select name="face_amt" id="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
+            <option value="0" selected="selected">請選擇</option>
             <option value="450" selected="selected">450萬</option>
             <option value="440">440萬</option>
             <option value="430">430萬</option>
@@ -126,6 +127,7 @@ export default {
       },
       set(value) {
         this.GetIGoingPostData.po_issue_date = value
+        this.GetIGoingPostData.mode_prem = 0
         let maturedDate = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
         $('#matured_date').html(`至 ${maturedDate}`)
       }
@@ -139,14 +141,10 @@ export default {
       },
       set(value) {
         this.GetIGoingPostData.face_amt = value
+        this.GetIGoingPostData.mode_prem = 0
         $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt)
         $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt)
       }
-    }
-  },
-  methods: {
-    OnIssueDateChange(event) {
-      console.log(event)
     }
   }
 }
