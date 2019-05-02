@@ -22,7 +22,6 @@ import BenfTwoAccount from './benftwoAccount'
 import BenfThree from './benfthree'
 import BenfThreeAccount from './benfthreeAccount'
 import BenfFooter from './benffooter'
-import { getQueryStringParameterByKey } from '../../utils/getQueryStringParameterByKey.js'
 export default {
   data() {
     return {

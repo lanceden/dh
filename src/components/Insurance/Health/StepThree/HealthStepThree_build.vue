@@ -22,8 +22,8 @@ export default {
     ])
   },
   components: {
-    StepThreeAccount,
     StepThreeContact,
+    StepThreeAccount,
     StepThreeFooter
   },
   methods: {

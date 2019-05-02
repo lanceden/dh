@@ -216,11 +216,6 @@ export default {
   },
   created() {
     if (!this.GetHealthIsInit) {
-      this.GetHealthPostData.QusAns = [{ Answar: false }, { Answar: false }, { Answar: false },
-        { Answar: false }, { Answar: false }, { Answar: false },
-        { Answar: false }, { Answar: false }, { Answar: false },
-        { Answar: false }, { Answar: false }
-      ]
       this.FuncGetJob()
       this.FuncGetOccupation({
         NoClass: '00',

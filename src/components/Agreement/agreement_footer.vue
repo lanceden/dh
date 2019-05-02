@@ -9,13 +9,14 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
-import EZCashFunctionTypes from '../../store/modules/EZCash/Types/EZCashFunctionTypes.js'
-import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes.js'
-import IGoingFunctionTypes from '../../store/modules/IGoing/Types/IGoingFunctionTypes.js'
-import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTypes.js'
-import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
-import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes.js'
+import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes'
+import EZCashFunctionTypes from '../../store/modules/EZCash/Types/EZCashFunctionTypes'
+import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes'
+import IGoingFunctionTypes from '../../store/modules/IGoing/Types/IGoingFunctionTypes'
+import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTypes'
+import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes'
+import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes'
+import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 export default {
@@ -30,7 +31,8 @@ export default {
       'GetIWellPostData',
       'GetIGoingPostData',
       'GetMyWayPostData',
-      'GetAccidentPostData'
+      'GetAccidentPostData',
+      'GetHealthPostData'
     ])
   },
   methods: {
@@ -41,7 +43,8 @@ export default {
       IWellFunctionTypes.FuncIWellSubmitQuote,
       IGoingFunctionTypes.FuncIGoingSubmitQuote,
       MyWayFunctionTypes.FuncMyWaySubmitQuote,
-      AccidentFunctionTypes.FuncAccidentSubmitQuote
+      AccidentFunctionTypes.FuncAccidentSubmitQuote,
+      HealthFunctionTypes.FuncHealthSubmitQuote
     ]),
     /**
      * 投保資訊
@@ -78,6 +81,10 @@ export default {
         case 'accident':
           console.log('this.FuncAccidentSubmitQuote')
           this.FuncAccidentSubmitQuote({ para: this.GetAccidentPostData, router: this.$router })
+          break
+        case 'health':
+          console.log('this.FuncHealthSubmitQuote')
+          this.FuncHealthSubmitQuote({ para: this.GetHealthPostData, router: this.$router })
           break
       }
     }

@@ -1,18 +1,18 @@
 <template>
-  <MoneyTransfer :stateData="GetHealthPostData"></MoneyTransfer>
+  <MoneyTransfer :stateData="GetMyWayPostData"></MoneyTransfer>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import MoneyTransfer from '../../Common/moneyTransfer'
-import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes'
+import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes'
 export default {
   components: {
     MoneyTransfer
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetHealthPostData
+      GetterTypes.GetMyWayPostData
     ])
   }
 }

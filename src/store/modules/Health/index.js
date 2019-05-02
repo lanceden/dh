@@ -94,10 +94,10 @@ const mutations = {
    */
   [functionTypes.FuncHealthInit](state, { result }) {
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [
-      { Answar: false }, { Answar: false }, { Answar: false },
-      { Answar: false }, { Answar: false }, { Answar: false },
-      { Answar: false }, { Answar: false }, { Answar: false }
+    state.POSTDATA.QusAns = [{ Answar: true }, { Answar: true }, { Answar: true },
+      { Answar: true }, { Answar: true }, { Answar: true },
+      { Answar: true }, { Answar: true }, { Answar: true },
+      { Answar: false }, { Answar: false }
     ]
   },
   /**

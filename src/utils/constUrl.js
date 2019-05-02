@@ -179,6 +179,24 @@ const AccidentSubmitQuote = `${Domain}/Accident/SubmitQuote`
  * UpCash成立訂單
  */
 const AccidentSubmitOrder = `${Domain}/Accident/SubmitOrder`
+
+/**
+ * Health初始化
+ */
+const HealthInit = `${Domain}/Health/Initialize`
+/**
+ * Health投保流程試算
+ */
+const HealthEstimate = `${Domain}/Health/Estimate`
+/**
+ * Health投保流程下一步
+ */
+const HealthSubmitQuote = `${Domain}/Health/SubmitQuote`
+/**
+ * UpCash成立訂單
+ */
+const HealthSubmitOrder = `${Domain}/Health/SubmitOrder`
+
 export default {
   Domain,
   Job,
@@ -219,6 +237,10 @@ export default {
   AccidentEstimate,
   AccidentSubmitQuote,
   AccidentSubmitOrder,
+  HealthInit,
+  HealthEstimate,
+  HealthSubmitQuote,
+  HealthSubmitOrder,
   MyWayInit,
   MyWayEstimate,
   MyWaySubmitQuote,
