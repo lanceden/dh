@@ -27,6 +27,7 @@ export default {
   OTPVERIFY: '',
   OTPSENDTIME: '',
   OTPLASTTIME: '',
+  OTPVALIDSTETIME: '',
   NATION: '',
   NATIONDATA: [],
   OCCUPATION: '',

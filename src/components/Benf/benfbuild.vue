@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <BenfSetup></BenfSetup>
-    <BenfOne></BenfOne>
+    <BenfOne :stateData="stateData"></BenfOne>
     <BenfOneAccount></BenfOneAccount>
     <BenfTwo></BenfTwo>
     <BenfTwoAccount></BenfTwoAccount>
@@ -26,15 +26,48 @@ import { getQueryStringParameterByKey } from '../../utils/getQueryStringParamete
 export default {
   data() {
     return {
-      instypename: ''
+      instypename: '',
+      stateData: []
     }
   },
   created() {
     this.instypename = getQueryStringParameterByKey('instypename').toLowerCase()
+    switch (this.instypename) {
+      case 'upcash':
+        console.log('this.GetUpCashPostData')
+        this.stateData = this.GetUpCashPostData
+        break
+      case 'ezcash':
+        console.log('this.GetEZCashPostData')
+        this.stateData = this.GetEZCashPostData
+        break
+      case 'ican':
+        console.log('this.GetICanPostData')
+        this.stateData = this.GetICanPostData
+        break
+      case 'iwell':
+        console.log('this.GetIWellPostData')
+        this.stateData = this.GetIWellPostData
+        break
+      case 'igoing':
+        console.log('this.GetIGoingPostData')
+        this.stateData = this.GetIGoingPostData
+        break
+      case 'myway':
+        console.log('this.GetMyWayPostData')
+        this.stateData = this.GetMyWayPostData
+        break
+    }
   },
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      'GetUpCashPostData',
+      'GetEZCashPostData',
+      'GetICanPostData',
+      'GetIWellPostData',
+      'GetIGoingPostData',
+      'GetMyWayPostData'
     ])
   },
   components: {

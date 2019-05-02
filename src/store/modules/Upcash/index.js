@@ -120,8 +120,10 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncUpCashSubmitOrder](state, { result }) {
+  [functionTypes.FuncUpCashSubmitOrder](state, { result, router }) {
+    if (result.ResultCode !== '0000') return
     state.PAYMENTCOMPLETE = result.Data.Result
+    router.push(`/paymentcomplete`)
   }
 }
 

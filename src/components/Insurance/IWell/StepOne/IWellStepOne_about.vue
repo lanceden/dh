@@ -170,6 +170,7 @@ export default {
       set(value) {
         this.isShowAns3Error = value === 'true'
         this.GetIWellPostData.QusAns[2].Answar = (value === 'true')
+        this.GetIWellPostData.AuthorizedRep = (value === 'true')
       }
     },
     // 請問您過去二年內是否曾因患有下列疾病而接受醫師治療、診療或用藥? (有任一者，請選擇是)

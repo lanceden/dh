@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import { mapActions } from 'vuex'
 export default {
-  computed: {
-    ...mapGetters([
-      GetterTypes.GetUpCashPostData
-    ])
-  },
+  props: [
+    'stateData'
+  ],
   methods: {
     ...mapActions([
       'FuncSendOTP'
@@ -29,9 +26,9 @@ export default {
     GoNext() {
       let sendData = {
         para: {
-          MobileNum: this.GetUpCashPostData.phone_mobile,
-          OTPMail: this.GetUpCashPostData.email,
-          UserIDN: this.GetUpCashPostData.client_id
+          MobileNum: this.stateData.phone_mobile,
+          OTPMail: this.stateData.email,
+          UserIDN: this.stateData.client_id
         },
         router: this.$router
       }

@@ -39,6 +39,11 @@ export default {
     doPayment() {
       // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
       let planName = this.$store.state.PLANNAME.toLowerCase()
+
+      // OTP發送及驗證時間賦值
+      this.stateData.OtpSendTime = this.$store.state.OTPSENDTIME
+      this.stateData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
+
       // 付款資料
       let postData = {
         NCCCModels: {
@@ -65,6 +70,7 @@ export default {
       }
       console.log('postData.NCCCModels', postData.NCCCModels)
       console.log('postData.CoreData', JSON.stringify(postData.CoreData))
+
       // 執行付款
       switch (planName) {
         case 'upcash':

@@ -45,9 +45,9 @@
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death_seq" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected">請選擇</option>
-              <option value="1" v-show="parseInt(GetUpCashPostData.benf_num) === 1">順位1</option>
-              <option value="2" v-show="parseInt(GetUpCashPostData.benf_num) >= 2">順位2</option>
-              <option value="3" v-show="parseInt(GetUpCashPostData.benf_num) > 2">順位3</option>
+              <option value="1" v-show="parseInt(stateData.benf_num) === 1">順位1</option>
+              <option value="2" v-show="parseInt(stateData.benf_num) >= 2">順位2</option>
+              <option value="3" v-show="parseInt(stateData.benf_num) > 2">順位3</option>
             </select>
           </div>
         </div>
@@ -125,6 +125,9 @@
 import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  props: [
+    'stateData'
+  ],
   created() {
     this.FuncGetCityData()
   },
@@ -137,7 +140,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData,
       'GetNationData',
       'GetCityData',
       'GetDistrictData',
@@ -148,10 +150,10 @@ export default {
      */
     benf_dob: {
       get() {
-        return this.GetUpCashPostData.benf_dob
+        return this.stateData.benf_dob
       },
       set(value) {
-        this.GetUpCashPostData.benf_dob = value
+        this.stateData.benf_dob = value
       }
     },
     /**
@@ -159,10 +161,10 @@ export default {
      */
     benf_phone: {
       get() {
-        return this.GetUpCashPostData.benf_phone
+        return this.stateData.benf_phone
       },
       set(value) {
-        this.GetUpCashPostData.benf_phone = value
+        this.stateData.benf_phone = value
       }
     },
     /**
@@ -170,10 +172,10 @@ export default {
      */
     benf_id: {
       get() {
-        return this.GetUpCashPostData.benf_id
+        return this.stateData.benf_id
       },
       set(value) {
-        this.GetUpCashPostData.benf_id = value
+        this.stateData.benf_id = value
       }
     },
     /**
@@ -181,10 +183,10 @@ export default {
      */
     benf_name: {
       get() {
-        return this.GetUpCashPostData.benf_name
+        return this.stateData.benf_name
       },
       set(value) {
-        this.GetUpCashPostData.benf_name = value
+        this.stateData.benf_name = value
       }
     },
     /**
@@ -192,10 +194,10 @@ export default {
      */
     relation_ben_death_seq: {
       get() {
-        return this.GetUpCashPostData.relation_ben_death_seq
+        return this.stateData.relation_ben_death_seq
       },
       set(value) {
-        this.GetUpCashPostData.relation_ben_death_seq = value
+        this.stateData.relation_ben_death_seq = value
       }
     },
     /**
@@ -203,21 +205,21 @@ export default {
      */
     relation_ben_death: {
       get() {
-        if (this.GetUpCashPostData.relation_ben_death === undefined || this.GetUpCashPostData.relation_ben_death === null || this.GetUpCashPostData.relation_ben_death === '') {
+        if (this.stateData.relation_ben_death === undefined || this.stateData.relation_ben_death === null || this.stateData.relation_ben_death === '') {
           return 0
         }
-        return this.GetUpCashPostData.relation_ben_death
+        return this.stateData.relation_ben_death
       },
       set(value) {
         if (value === '8') {
           this.SetBenfinheritOneDisable(true)
-          this.GetUpCashPostData.benf_name = '法定繼承人'
-          if (parseInt(this.GetUpCashPostData.benf_num) === 1) {
-            this.GetUpCashPostData.relation_ben_death_seq = 1
-            this.GetUpCashPostData.relation_ben_death_seq_percent = '100'
+          this.stateData.benf_name = '法定繼承人'
+          if (parseInt(this.stateData.benf_num) === 1) {
+            this.stateData.relation_ben_death_seq = 1
+            this.stateData.relation_ben_death_seq_percent = '100'
           }
         }
-        this.GetUpCashPostData.relation_ben_death = value
+        this.stateData.relation_ben_death = value
       }
     },
     /**
@@ -225,10 +227,10 @@ export default {
      */
     relation_ben_death_seq_percent: {
       get() {
-        return this.GetUpCashPostData.relation_ben_death_seq_percent
+        return this.stateData.relation_ben_death_seq_percent
       },
       set(value) {
-        this.GetUpCashPostData.relation_ben_death_seq_percent = value
+        this.stateData.relation_ben_death_seq_percent = value
       }
     },
     /**
@@ -236,10 +238,10 @@ export default {
      */
     BenfNationality: {
       get() {
-        return (this.GetUpCashPostData.BenfNationality === undefined || this.GetUpCashPostData.BenfNationality === null) ? 0 : this.GetUpCashPostData.BenfNationality
+        return (this.stateData.BenfNationality === undefined || this.stateData.BenfNationality === null) ? 0 : this.stateData.BenfNationality
       },
       set(value) {
-        this.GetUpCashPostData.BenfNationality = value
+        this.stateData.BenfNationality = value
       }
     },
     /**
@@ -247,12 +249,12 @@ export default {
      */
     BenfAdd_City: {
       get() {
-        return (this.GetUpCashPostData.BenfAdd_City === undefined ||
-          this.GetUpCashPostData.BenfAdd_City === null || this.GetUpCashPostData.BenfAdd_City === '') ? 0 : this.GetUpCashPostData.BenfAdd_City
+        return (this.stateData.BenfAdd_City === undefined ||
+          this.stateData.BenfAdd_City === null || this.stateData.BenfAdd_City === '') ? 0 : this.stateData.BenfAdd_City
       },
       set(value) {
         this.FuncGetDistrictData(value)
-        this.GetUpCashPostData.BenfAdd_City = value
+        this.stateData.BenfAdd_City = value
       }
     },
     /**
@@ -260,12 +262,12 @@ export default {
      */
     BenfAdd_County: {
       get() {
-        return (this.GetUpCashPostData.BenfAdd_County === undefined ||
-          this.GetUpCashPostData.BenfAdd_County === null || this.GetUpCashPostData.BenfAdd_County === '') ? 0 : this.GetUpCashPostData.BenfAdd_County
+        return (this.stateData.BenfAdd_County === undefined ||
+          this.stateData.BenfAdd_County === null || this.stateData.BenfAdd_County === '') ? 0 : this.stateData.BenfAdd_County
       },
       set(value) {
-        this.GetUpCashPostData.BenfAddZip = value.substring(0, 3)
-        this.GetUpCashPostData.BenfAdd_County = value
+        this.stateData.BenfAddZip = value.substring(0, 3)
+        this.stateData.BenfAdd_County = value
       }
     },
     /**
@@ -273,10 +275,10 @@ export default {
      */
     BenfAddRemain: {
       get() {
-        return this.GetUpCashPostData.BenfAddRemain
+        return this.stateData.BenfAddRemain
       },
       set(value) {
-        this.GetUpCashPostData.BenfAddRemain = value
+        this.stateData.BenfAddRemain = value
       }
     }
   }
