@@ -12,12 +12,12 @@
         </div>
         <div class="border-bottom-line"></div>
         <div class="insure-text">
-          感謝您使用新光人壽網路投保並承蒙購買保險商品，在此致上我們最誠摯的謝意。您已於 2019/02/19 16:08:56 完成網路投保一「新光人壽Up Cash利率變動型年金保險」。
+          感謝您使用新光人壽網路投保並承蒙購買保險商品，在此致上我們最誠摯的謝意。您已於 {{$store.state.PAYMENTCOMPLETE.TransDate}} 完成網路投保一「新光人壽Up Cash利率變動型年金保險」。
         </div>
         <div class="bg-money">
           <div class="col-sm-12">
             <div class="font-label">訂單編號：</div>
-            <div class="font-money">0100000000005168</div>
+            <div class="font-money">{{$store.state.PAYMENTCOMPLETE.OrderNo}}</div>
           </div>
         </div>
         <div class="bg-time">
@@ -27,7 +27,7 @@
             </div>
             <div>
               <div class="font-label">保單號碼：</div>
-              <div class="font-money">9006276757</div>
+              <div class="font-money">{{$store.state.PAYMENTCOMPLETE.PolicyNo}}</div>
             </div>
           </div>
           <div class="col-sm-12">

@@ -123,7 +123,7 @@ const mutations = {
    */
   [functionTypes.FuncEZCashSubmitOrder](state, { result, router }) {
     if (result.ResultCode !== '0000') return
-    state.PAYMENTCOMPLETE = result.Data.Result
+    rootState.PAYMENTCOMPLETE = result.Data.Result
     router.push(`/paymentcomplete`)
   }
 }
