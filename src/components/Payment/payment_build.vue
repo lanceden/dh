@@ -19,6 +19,16 @@ export default {
       stateData: []
     }
   },
+  computed: {
+    ...mapGetters([
+      'GetUpCashPostData',
+      'GetEZCashPostData',
+      'GetICanPostData',
+      'GetIWellPostData',
+      'GetIGoingPostData',
+      'GetMyWayPostData'
+    ])
+  },
   created() {
     let result = this.$store.state.PLANNAME.toLowerCase()
     switch (result) {
@@ -48,16 +58,6 @@ export default {
     PaymentAccount,
     PaymentCreditcard,
     PaymentFooter
-  },
-  computed: {
-    ...mapGetters([
-      'GetUpCashPostData',
-      'GetEZCashPostData',
-      'GetICanPostData',
-      'GetIWellPostData',
-      'GetIGoingPostData',
-      'GetMyWayPostData'
-    ])
   }
 }
 

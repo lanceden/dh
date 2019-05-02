@@ -19,7 +19,7 @@ export default {
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.$router.push('/upcash-3')
+      this.$router.push(`/${this.insname}-3`)
     },
     /**
      * 前往填寫聯絡資料

@@ -22,6 +22,7 @@ import BenfTwoAccount from './benftwoAccount'
 import BenfThree from './benfthree'
 import BenfThreeAccount from './benfthreeAccount'
 import BenfFooter from './benffooter'
+import { getQueryStringParameterByKey } from '../../utils/getQueryStringParameterByKey.js'
 export default {
   data() {
     return {
@@ -29,10 +30,7 @@ export default {
     }
   },
   created() {
-    const urlParams = new URLSearchParams(window.location.search)
-    this.instypename = urlParams.get('instypename').toLowerCase()
-    
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
+    this.instypename = getQueryStringParameterByKey('instypename').toLowerCase()
   },
   computed: {
     ...mapGetters([

@@ -113,9 +113,10 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncMyWaySubmitQuote](state, { result }) {
+  [functionTypes.FuncMyWaySubmitQuote](state, { result, router }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
+    router.push(`/myway-insureddata`)
   },
   /**
    * MyWay 投保流程送出訂單

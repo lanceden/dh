@@ -3,6 +3,7 @@ import stateTypes from './Types/EZCashStateTypes'
 import getterTypes from './Types/EZCashGetterTypes'
 import functionTypes from './Types/EZCashFunctionTypes'
 import rootState from '../../state'
+// import { toggleModalShow } from '../../../utils/toggleModal'
 
 const APICODE = 'InsuranceWeb'
 
@@ -110,9 +111,10 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncEZCashSubmitQuote](state, { result }) {
+  [functionTypes.FuncEZCashSubmitQuote](state, { result, router }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
+    router.push(`/ezcash-insureddata`)
   },
   /**
    * EZCash 投保流程送出訂單
