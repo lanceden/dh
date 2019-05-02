@@ -123,7 +123,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   props: [
     'stateData'

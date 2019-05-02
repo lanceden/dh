@@ -163,6 +163,22 @@ const IGoingSubmitQuote = `${Domain}/IGoing/SubmitQuote`
  */
 const IGoingSubmitOrder = `${Domain}/IGoing/SubmitOrder`
 
+/**
+ * Accident初始化
+ */
+const AccidentInit = `${Domain}/Accident/Initialize`
+/**
+ * Accident投保流程試算
+ */
+const AccidentEstimate = `${Domain}/Accident/Estimate`
+/**
+ * Accident投保流程下一步
+ */
+const AccidentSubmitQuote = `${Domain}/Accident/SubmitQuote`
+/**
+ * UpCash成立訂單
+ */
+const AccidentSubmitOrder = `${Domain}/Accident/SubmitOrder`
 export default {
   Domain,
   Job,
@@ -199,6 +215,10 @@ export default {
   IGoingEstimate,
   IGoingSubmitQuote,
   IGoingSubmitOrder,
+  AccidentInit,
+  AccidentEstimate,
+  AccidentSubmitQuote,
+  AccidentSubmitOrder,
   MyWayInit,
   MyWayEstimate,
   MyWaySubmitQuote,

@@ -15,6 +15,7 @@ import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes.
 import IGoingFunctionTypes from '../../store/modules/IGoing/Types/IGoingFunctionTypes.js'
 import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTypes.js'
 import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
+import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes.js'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 export default {
@@ -28,7 +29,8 @@ export default {
       'GetICanPostData',
       'GetIWellPostData',
       'GetIGoingPostData',
-      'GetMyWayPostData'
+      'GetMyWayPostData',
+      'GetAccidentPostData'
     ])
   },
   methods: {
@@ -38,7 +40,8 @@ export default {
       ICanFunctionTypes.FuncICanSubmitQuote,
       IWellFunctionTypes.FuncIWellSubmitQuote,
       IGoingFunctionTypes.FuncIGoingSubmitQuote,
-      MyWayFunctionTypes.FuncMyWaySubmitQuote
+      MyWayFunctionTypes.FuncMyWaySubmitQuote,
+      AccidentFunctionTypes.FuncAccidentSubmitQuote
     ]),
     /**
      * 投保資訊
@@ -71,6 +74,10 @@ export default {
         case 'myway':
           console.log('this.FuncMyWaySubmitQuote')
           this.FuncMyWaySubmitQuote({ para: this.GetMyWayPostData, router: this.$router })
+          break
+        case 'accident':
+          console.log('this.FuncAccidentSubmitQuote')
+          this.FuncAccidentSubmitQuote({ para: this.GetAccidentPostData, router: this.$router })
           break
       }
     }

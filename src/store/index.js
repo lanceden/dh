@@ -10,6 +10,7 @@ import ICan from './modules/ICan'
 import IWell from './modules/IWell'
 import MyWay from './modules/MyWay'
 import IGoing from './modules/IGoing'
+import Accident from './modules/Accident'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     ICan,
     IWell,
     MyWay,
-    IGoing
+    IGoing,
+    Accident
   },
   mutations,
   actions,

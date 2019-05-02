@@ -38,6 +38,12 @@ import IGoingStepThree from '../components/Insurance/IGoing/StepThree/IGoingStep
 import IGoingStepFour from '../components/Insurance/IGoing/StepFour/IGoingStepFour_build.vue'
 import IGoingInsuredData from '../components/Insurance/IGoing/InsuredData/IGoingInsureddata_build.vue'
 
+import AccidentStepOne from '../components/Insurance/Accident/StepOne/AccidentStepOne_build.vue'
+import AccidentStepTwo from '../components/Insurance/Accident/StepTwo/AccidentStepTwo_build.vue'
+import AccidentStepThree from '../components/Insurance/Accident/StepThree/AccidentStepThree_build.vue'
+import AccidentStepFour from '../components/Insurance/Accident/StepFour/AccidentStepFour_build.vue'
+import AccidentInsuredData from '../components/Insurance/Accident/InsuredData/AccidentInsureddata_build.vue'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
@@ -107,8 +113,27 @@ const router = new Router({
     component: IGoingStepThree
   },
   {
-    path: '/igoing-4',
+    path: '/igoing-34',
     component: IGoingStepFour
+  },
+  {
+    path: '/accident-1',
+    component: AccidentStepOne,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/accident-2',
+    component: AccidentStepTwo
+  },
+  {
+    path: '/accident-3',
+    component: AccidentStepThree
+  },
+  {
+    path: '/accident-4',
+    component: AccidentStepFour
   },
   {
     path: '/ezcash-1',
@@ -206,6 +231,10 @@ const router = new Router({
   {
     path: '/igoing-insureddata',
     component: IGoingInsuredData
+  },
+  {
+    path: '/accident-insureddata',
+    component: AccidentInsuredData
   },
   {
     path: '/otp',
