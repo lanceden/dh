@@ -66,22 +66,23 @@
             <div class="insure-input-block">{{mockData.matured_date_Name}} 止</div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故保險金或喪葬費用保險金</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
+      </form>
+    </div>
+
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check-title">保障內容</div>
           </div>
         </div>
+      </div>
+      <div class="border-bottom-line"></div>
+
+      <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">完全失能保險金</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            註：本公司另加計按日數比例計算當期已繳付之未到期保險費，併入身故保險金或喪葬費用保險金或完全失能保險金內給付。
-          </div>
+          <label for="" class="col-sm-12 col-form-label insure-label">住院醫療費用保險金為 同一次住院期間，憑收據於{{mockData.face_amt}}萬元內實支實付 </label>
         </div>
       </form>
     </div>
@@ -149,160 +150,6 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(一)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(一)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_name}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{mockData.relation_ben_death_seq_percent}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">國籍</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfNationality}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_dob}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_id}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.benf_phone}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfAdd_City}}{{mockData.BenfAdd_County}}{{mockData.BenfAddRemain}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">金融機構代號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfBankCode1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">分行中文名稱</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfBankBranchName1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">帳號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfBankAccount1}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 1">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(二)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_name2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{mockData.relation_ben_death_seq_percent2}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.benf_phone2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfAdd_City2}}{{mockData.BenfAdd_County2}}{{mockData.BenfAddRemain2}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 2">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(三)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(三)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位3，100%</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
             <div class="insure-check"><img src="../../../../../static/img/account.png" alt=""></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
@@ -318,6 +165,12 @@
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">請問您是否領有身心障礙手冊或身心障礙證明</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">否</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label insure-label">請問您是否已投保其他商業實支實付型醫療保險?</label>
           <div class="col-sm-12">
             <div class="insure-input-block">否</div>
           </div>
@@ -390,6 +243,23 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">目前身體機能狀況是否有失明、聾啞及言語、咀嚼、四肢機能障害、智能障礙（外表無法明顯判斷者）？</label>
           <div class="col-sm-12">
             <div class="insure-input-block">否</div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label insure-label">投保健康險者請繼續填寫本項</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">否</div>
+          </div>
+          <div class="insure-notice-text">
+            <div class="insure-notice-text">身故受益人可選擇以下給付比例％方式</div>
+            <ul class="insure-notice-text-ul">
+              <li>現在是否仍患有下列疾病？精神官能症、何杰金氏症、膽管炎、膽囊炎、梅毒、腦性麻痺、腦膿瘍、
+                化膿性骨髓炎、併發有嘔吐現象的持續性頭痛、內耳炎、鼻竇炎、乳突炎、坐骨神經痛、椎間板
+                脫出、腎結石、輸尿管結石、膀胱結石、腦膜炎、腦炎、水腦症 ?</li>
+              <li>是否曾金屬中毒、化學中毒或施行剖腹生產？</li>
+            </ul>
           </div>
         </div>
       </form>

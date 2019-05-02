@@ -48,7 +48,7 @@ export default {
         alert('請填寫要保人匯款帳戶銀行帳號')
         return
       }
-      this.$router.push('/benf?instypename=Health')
+      this.$router.push('/health-4')
     }
   }
 }
