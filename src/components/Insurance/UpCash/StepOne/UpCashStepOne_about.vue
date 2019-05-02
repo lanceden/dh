@@ -48,6 +48,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+
+let PLANCODE = 'UCA99'
 export default {
   computed: {
     ...mapGetters([
@@ -87,7 +89,7 @@ export default {
       set(value) {
         this.FuncGetOccupation({
           NoClass: value,
-          PlanCode: 'UCA99',
+          PlanCode: PLANCODE,
           Type: '4'
         })
         this.$store.state.JOB = value
@@ -101,7 +103,7 @@ export default {
       set(value) {
         this.FuncGetOccupation({
           NoClass: this.$store.state.JOB,
-          PlanCode: 'UCA99',
+          PlanCode: PLANCODE,
           Type: '8',
           subCode: value
         })
@@ -140,7 +142,7 @@ export default {
       this.FuncGetJob()
       this.FuncGetOccupation({
         NoClass: '00',
-        PlanCode: 'UCA99',
+        PlanCode: PLANCODE,
         Type: '4'
       })
     }

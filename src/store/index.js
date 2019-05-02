@@ -11,6 +11,7 @@ import IWell from './modules/IWell'
 import MyWay from './modules/MyWay'
 import IGoing from './modules/IGoing'
 import Accident from './modules/Accident'
+import Health from './modules/Health'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -21,7 +22,8 @@ export default new Vuex.Store({
     IWell,
     MyWay,
     IGoing,
-    Accident
+    Accident,
+    Health
   },
   mutations,
   actions,

@@ -26,9 +26,9 @@ export default {
     ]),
     Estimate() {
       console.log('client_rate_sex', this.GetAccidentPostData.client_rate_sex)
-      console.log('face_amt', face_amt)
-      console.log('client_occupation_class', client_occupation_class)
-      console.log('po_issue_date', po_issue_date)
+      console.log('face_amt', this.GetAccidentPostData.face_amt)
+      console.log('client_occupation_class', this.GetAccidentPostData.client_occupation_class)
+      console.log('po_issue_date', this.GetAccidentPostData.po_issue_date)
       this.FuncAccidentEstimate({ para: this.GetAccidentPostData })
     }
   }
