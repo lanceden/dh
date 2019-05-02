@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <PaymentAmount :amount="stateData.mode_prem"></PaymentAmount>
     <PaymentAccount v-show="false"></PaymentAccount>
     <PaymentCreditcard :amount="stateData.mode_prem"></PaymentCreditcard>
@@ -21,15 +22,19 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetLoading',
       'GetUpCashPostData',
       'GetEZCashPostData',
       'GetICanPostData',
       'GetIWellPostData',
       'GetIGoingPostData',
-      'GetMyWayPostData'
+      'GetMyWayPostData',
+      'GetAccidentPostData',
+      'GetHealthPostData'
     ])
   },
   created() {
+    // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
     let result = this.$store.state.PLANNAME.toLowerCase()
     switch (result) {
       case 'upcash':
@@ -49,6 +54,12 @@ export default {
         break
       case 'myway':
         this.stateData = this.GetMyWayPostData
+        break
+      case 'accident':
+        this.stateData = this.GetAccidentPostData
+        break
+      case 'health':
+        this.stateData = this.GetHealthPostData
         break
     }
     console.log('this.stateData', this.stateData)

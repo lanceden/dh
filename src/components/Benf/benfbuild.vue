@@ -8,7 +8,7 @@
     <BenfTwoAccount></BenfTwoAccount>
     <BenfThree></BenfThree>
     <BenfThreeAccount></BenfThreeAccount>
-    <BenfFooter :insname="instypename"></BenfFooter>
+    <BenfFooter></BenfFooter>
   </div>
 </template>
 
@@ -26,13 +26,13 @@ import { getQueryStringParameterByKey } from '../../utils/getQueryStringParamete
 export default {
   data() {
     return {
-      instypename: '',
       stateData: []
     }
   },
   created() {
-    this.instypename = getQueryStringParameterByKey('instypename').toLowerCase()
-    switch (this.instypename) {
+    // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
+    let planName = this.$store.state.PLANNAME.toLowerCase()
+    switch (planName) {
       case 'upcash':
         console.log('this.GetUpCashPostData')
         this.stateData = this.GetUpCashPostData
@@ -61,6 +61,10 @@ export default {
         console.log('this.GetAccidentPostData')
         this.stateData = this.GetAccidentPostData
         break
+      case 'health':
+        console.log('this.GetHealthPostData')
+        this.stateData = this.GetHealthPostData
+        break
     }
   },
   computed: {
@@ -72,7 +76,8 @@ export default {
       'GetIWellPostData',
       'GetIGoingPostData',
       'GetMyWayPostData',
-      'GetAccidentPostData'
+      'GetAccidentPostData',
+      'GetHealthPostData'
     ])
   },
   components: {

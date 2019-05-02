@@ -18,8 +18,8 @@ import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes.
 import IGoingFunctionTypes from '../../store/modules/IGoing/Types/IGoingFunctionTypes.js'
 import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTypes.js'
 import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
-// import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
-// import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes.js'
+import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes.js'
 import { CheckCardno } from '../../utils/checkCreditCard.js'
 import { toggleModalShow } from '../../utils/toggleModal.js'
 
@@ -34,7 +34,9 @@ export default {
       ICanFunctionTypes.FuncICanSubmitOrder,
       IWellFunctionTypes.FuncIWellSubmitOrder,
       IGoingFunctionTypes.FuncIGoingSubmitOrder,
-      MyWayFunctionTypes.FuncMyWaySubmitOrder
+      MyWayFunctionTypes.FuncMyWaySubmitOrder,
+      AccidentFunctionTypes.FuncAccidentSubmitOrder,
+      HealthFunctionTypes.FuncHealthSubmitOrder
     ]),
     doPayment() {
       // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
@@ -96,6 +98,14 @@ export default {
         case 'myway':
           console.log('this.FuncMyWaySubmitOrder')
           this.FuncMyWaySubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
+          break
+        case 'accident':
+          console.log('this.FuncAccidentSubmitOrder')
+          this.FuncAccidentSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
+          break
+        case 'health':
+          console.log('this.FuncHealthSubmitOrder')
+          this.FuncHealthSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
       }
     }

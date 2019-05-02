@@ -11,21 +11,18 @@
 <script>
 import { BenfToNext } from '../../utils/goNext.js'
 export default {
-  props: [
-    'insname'
-  ],
   methods: {
     /**
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.$router.push(`/${this.insname}-3`)
+      this.$router.push(`/${this.$store.state.PLANNAME.toLowerCase()}-3`)
     },
     /**
      * 前往填寫聯絡資料
      */
     GoNext() {
-      BenfToNext(this.$router, this.insname)
+      BenfToNext(this.$router, this.$store.state.PLANNAME.toLowerCase())
     }
   }
 }

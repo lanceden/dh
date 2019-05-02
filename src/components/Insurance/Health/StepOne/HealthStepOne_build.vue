@@ -25,7 +25,7 @@ export default {
     this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetHealthIsInit) {
       this.FuncHealthInit()
-      this.$store.state.PLANNAME = 'Health'
+      this.$store.state.PLANNAME = 'HEALTH'
     }
     console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
