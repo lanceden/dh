@@ -27,22 +27,21 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
+  props: [
+    'stateData'
+  ],
   computed: {
-    ...mapGetters([
-      GetterTypes.GetUpCashPostData
-    ]),
     benf_num: {
       get() {
-        if (this.GetUpCashPostData.benf_num === '' || this.GetUpCashPostData.benf_num === undefined || this.GetUpCashPostData.benf_num === null) {
-          this.GetUpCashPostData.benf_num = 1
+        if (this.stateData.benf_num === '' || this.stateData.benf_num === undefined || this.stateData.benf_num === null) {
+          this.stateData.benf_num = 1
         }
-        return this.GetUpCashPostData.benf_num
+        return this.stateData.benf_num
       },
       set(value) {
-        this.GetUpCashPostData.benf_num = value
+        this.stateData.benf_num = value
       }
     }
   }

@@ -1,5 +1,5 @@
 const insNameArr = [
-  'upcash', 'ezcash', 'myway', 'ican', 'iwell', 'igoing'
+  'upcash', 'ezcash', 'myway', 'ican', 'iwell', 'igoing', 'accident', 'health'
 ]
 
 function ToNext(router, insname) {

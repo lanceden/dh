@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <BenfSetup></BenfSetup>
+    <BenfSetup :stateData="stateData"></BenfSetup>
     <BenfOne :stateData="stateData"></BenfOne>
     <BenfOneAccount></BenfOneAccount>
     <BenfTwo></BenfTwo>
@@ -57,6 +57,10 @@ export default {
         console.log('this.GetMyWayPostData')
         this.stateData = this.GetMyWayPostData
         break
+      case 'accident':
+        console.log('this.GetAccidentPostData')
+        this.stateData = this.GetAccidentPostData
+        break
     }
   },
   computed: {
@@ -67,7 +71,8 @@ export default {
       'GetICanPostData',
       'GetIWellPostData',
       'GetIGoingPostData',
-      'GetMyWayPostData'
+      'GetMyWayPostData',
+      'GetAccidentPostData'
     ])
   },
   components: {

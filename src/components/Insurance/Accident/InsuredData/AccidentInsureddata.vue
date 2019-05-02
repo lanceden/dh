@@ -67,15 +67,15 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">交通意外身故保險金或喪葬費用保險金</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">身故或喪葬費用保險金</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">交通意外失能保險金</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">意外失能保險金</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
+            <div class="insure-input-block">依失能程度按契約附表比例計算，最高為{{mockData.face_amt}}萬元</div>
           </div>
         </div>
         <div class="col-sm-12">
