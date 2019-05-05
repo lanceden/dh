@@ -53,6 +53,10 @@ const Beneficiary = `${Domain}/Query/Beneficiary`
  */
 const EACHAccount = `${Domain}/Customer/EachAccount`
 /**
+ * 取回各商品不同身份別保額
+ */
+const Premiums = `${Domain}/QueryPremiums`
+/**
  * 發送OTP
  */
 const SendOTP = `${Domain}/OTP/Send`
@@ -197,6 +201,44 @@ const HealthSubmitQuote = `${Domain}/Health/SubmitQuote`
  */
 const HealthSubmitOrder = `${Domain}/Health/SubmitOrder`
 
+/**
+ * EntTravel初始化
+ */
+const EntTravelInit = `${Domain}/EntTravel/Initialize`
+/**
+ * EntTravel投保流程試算
+ */
+const EntTravelEstimate = `${Domain}/EntTravel/Estimate`
+/**
+ * EntTravel投保流程下一步
+ */
+const EntTravelSubmitQuote = `${Domain}/EntTravel/SubmitQuote`
+/**
+ * UpCash成立訂單
+ */
+const EntTravelSubmitOrder = `${Domain}/EntTravel/SubmitOrder`
+
+/**
+ * Travel初始化
+ */
+const TravelInit = `${Domain}/Travel/Initialize`
+/**
+ * 處理被保人資料
+ */
+const TravelInsuredData = `${Domain}/Travel/InsuredData`
+/**
+ * Travel投保流程試算
+ */
+const TravelEstimate = `${Domain}/Travel/Estimate`
+/**
+ * Travel投保流程下一步
+ */
+const TravelSubmitQuote = `${Domain}/Travel/SubmitQuote`
+/**
+ * UpCash成立訂單
+ */
+const TravelSubmitOrder = `${Domain}/Travel/SubmitOrder`
+
 export default {
   Domain,
   Job,
@@ -211,6 +253,7 @@ export default {
   ValidateAccount,
   Beneficiary,
   EACHAccount,
+  Premiums,
   SendOTP,
   CheckOTP,
   UpCashInit,
@@ -244,5 +287,14 @@ export default {
   MyWayInit,
   MyWayEstimate,
   MyWaySubmitQuote,
-  MyWaySubmitOrder
+  MyWaySubmitOrder,
+  TravelInit,
+  TravelInsuredData,
+  TravelEstimate,
+  TravelSubmitQuote,
+  TravelSubmitOrder,
+  EntTravelInit,
+  EntTravelEstimate,
+  EntTravelSubmitQuote,
+  EntTravelSubmitOrder
 }

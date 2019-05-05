@@ -89,6 +89,14 @@ export default {
     state.BANK = result.Data.Result[0].bank_code
   },
   /**
+   * 取回各商品不同身份別保額
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetPremiums(state, { result }) {
+    state.PREMIUMS = result.Data.Result
+  },
+  /**
    * 取回上一張保單受益人
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果

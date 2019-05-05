@@ -50,6 +50,13 @@ import HealthStepThree from '../components/Insurance/Health/StepThree/HealthStep
 import HealthStepFour from '../components/Insurance/Health/StepFour/HealthStepFour_build.vue'
 import HealthInsuredData from '../components/Insurance/Health/InsuredData/HealthInsureddata_build.vue'
 
+import EntTravelOne from '../components/Insurance/EntTravel/travel1.vue'
+
+import TravelOne from '../components/Insurance/Travel/StepOne1/travel1Build'
+import TravelOneInsureData from '../components/Insurance/Travel/StepOne2/travel1-insuredataBuild.vue'
+import TravelTwo from '../components/Insurance/Travel/StepTwo/travel2Build.vue'
+import TravelThree from '../components/Insurance/Travel/StepThree/travel3Build.vue'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
@@ -66,6 +73,21 @@ const router = new Router({
   mode: 'hash',
   scrollBehavior: () => ({ x: 0, y: 0 }),
   routes: [{
+    path: '/enttravel-1',
+    component: EntTravelOne
+  }, {
+    path: '/travel-1',
+    component: TravelOne
+  }, {
+    path: '/travel-1-1',
+    component: TravelOneInsureData
+  }, {
+    path: '/travel-2',
+    component: TravelTwo
+  }, {
+    path: '/travel-3',
+    component: TravelThree
+  }, {
     path: '/myway-1',
     component: MyWayStepOne,
     meta: {
