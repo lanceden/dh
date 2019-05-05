@@ -77,7 +77,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import { data } from './mockBaoerData'
 import { silData } from './mockSupplCoverageSli'
 export default {

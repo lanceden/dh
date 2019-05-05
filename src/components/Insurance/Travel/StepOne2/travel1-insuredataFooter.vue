@@ -63,7 +63,10 @@ export default {
         return
       }
       // 前往被保人填寫資料頁
-      this.$router.push('/travel-2')
+      this.FuncTravelInsuredData({
+        para: this.GetTravelPostData,
+        router: this.$router
+      })
     }
   }
 }

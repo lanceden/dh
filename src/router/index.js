@@ -56,6 +56,8 @@ import TravelOne from '../components/Insurance/Travel/StepOne1/travel1Build'
 import TravelOneInsureData from '../components/Insurance/Travel/StepOne2/travel1-insuredataBuild.vue'
 import TravelTwo from '../components/Insurance/Travel/StepTwo/travel2Build.vue'
 import TravelThree from '../components/Insurance/Travel/StepThree/travel3Build.vue'
+import TravelFour from '../components/Insurance/Travel/StepFour/travel4.vue'
+import TravelFive from '../components/Insurance/Travel/StepFive/travel5Build'
 
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
@@ -87,6 +89,12 @@ const router = new Router({
   }, {
     path: '/travel-3',
     component: TravelThree
+  }, {
+    path: '/travel-4',
+    component: TravelFour
+  }, {
+    path: '/travel-5',
+    component: TravelFive
   }, {
     path: '/myway-1',
     component: MyWayStepOne,

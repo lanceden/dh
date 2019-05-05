@@ -42,12 +42,12 @@ const actions = {
    * @param {commit} param0 提交狀態
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncTravelInsuredData]({ commit }, { para }) {
+  [functionTypes.FuncTravelInsuredData]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.TravelInsuredData}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncTravelInsuredData, { result: response.data })
+      commit(functionTypes.FuncTravelInsuredData, { result: response.data, router })
     })
   },
   /**
@@ -55,12 +55,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncTravelEstimate]({ commit }, { para }) {
+  [functionTypes.FuncTravelEstimate]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.TravelEstimate}`, {
-      CoreData: para,
-      InsurerSourceID: APICODE
+      InsurerSourceID: APICODE,
+      TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncTravelEstimate, { result: response.data })
+      commit(functionTypes.FuncTravelEstimate, { result: response.data, router })
     })
   },
   /**
@@ -116,17 +116,20 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncTravelInsuredData](state, { result }) {
+  [functionTypes.FuncTravelInsuredData](state, { result, router }) {
     state.TRAVELPOSTDATA = result.Data.Result
+    router.push('/travel-2')
   },
   /**
    * Travel 投保流程試算
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncTravelEstimate](state, { result }) {
+  [functionTypes.FuncTravelEstimate](state, { result, router }) {
     if (result.ResultCode !== '0000') return
+    console.log(result.Data.Result.PolicyData.TotalPremium)
     state.TRAVELPOSTDATA = result.Data.Result
+    router.push('/travel-4')
   },
   /**
    * Travel 投保流程下一步

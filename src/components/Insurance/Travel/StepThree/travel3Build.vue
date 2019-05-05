@@ -15,7 +15,6 @@
 import TravelThree from './travel3'
 import TravelChild from './travel3child'
 import TravelThreeFooter from './travel3Footer'
-import { mockInsData } from './mockData.js'
 
 export default {
   components: {
