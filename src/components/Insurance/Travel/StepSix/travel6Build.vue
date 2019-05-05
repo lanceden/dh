@@ -5,14 +5,11 @@
     </div>
     <loading v-show="GetLoading" />
     <TravelFive v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelFive>
-    <TravelFiveFooter></TravelFiveFooter>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import TravelFive from './travel5'
-import TravelFiveFooter from './travel5Footer'
-import { data } from './mockData.js'
+import TravelSixChild from './travel6child'
 export default {
   computed: {
     ...mapGetters([
@@ -20,8 +17,7 @@ export default {
     ])
   },
   components: {
-    TravelFive,
-    TravelFiveFooter
+    TravelSixChild
   }
 }
 

@@ -1,9 +1,6 @@
 <template>
   <div v-if="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].Relation) === 1">
     <div class="container">
-      <div class="progress-bar">
-        <img src="../../../../../static/img/progress-bar-06-3.png">
-      </div>
       <div class="bg-radius">
         <div class="top">
           <div class="top-title">
@@ -75,18 +72,19 @@
               <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫聯絡電話" v-model="ContactNumber">
             </div>
           </div>
-          <div class="col-sm-12">
+          <div class="form-group row">
             <template>
-              <div v-show="cbNewAddr">
-                <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
+              <div>
+                <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
+                <select class="form-control data-input insure-select insure-input-edit" v-model="city3">
                   <option selected="selected" value="0">請選擇</option>
                   <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
                 </select>
-                <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="district3">
+                <select class="form-control data-input insure-select insure-input-edit" v-model="district3">
                   <option selected="selected" value="0">請選擇</option>
-                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
+                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
                 </select>
-                <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr" />
+                <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" />
               </div>
             </template>
           </div>
@@ -111,127 +109,158 @@ import moment from 'moment'
 
 const CITYNAME = '基隆市'
 export default {
+  props: [
+    'index'
+  ],
+  data() {
+    return {
+      cbOldAddr: true,
+      cbNewAddr: false,
+      tempZip2: '',
+      tempCity2: '',
+      tempDistrict2: '',
+      tempRoad2: ''
+    }
+  },
   created() {
     this.FuncGetCityData()
     this.FuncGetDistrictData(CITYNAME)
   },
+  mounted() {
+    // 暫存舊的通訊地址
+    this.tempCity2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City
+    this.tempDistrict2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.District
+    this.tempRoad2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.Street
+  },
   computed: {
     ...mapGetters([
+      'GetCityData',
+      'GetDistrictData',
       TravelGetterTypes.GetTravelPostData
     ]),
+    // 關係
+    Relation: {
+      get() {
+        switch (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].Relation) {
+          case 1:
+            return '本人'
+          case 3:
+            return '子女'
+        }
+      }
+    },
     // 身故受益人關係
     BeneficiaryDataRelationship: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].Relationship
+        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Relationship
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].Relationship = value
+        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Relationship = value
       }
     },
     // 身故受益人姓名
     BeneficiaryDataName: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].Name
+        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Name
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].Name = value
+        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Name = value
       }
     },
     // 身故受益人身分證字號
     IdNo: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].IdNo
+        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].IdNo
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].IdNo = value
+        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].IdNo = value
       }
     },
     // 身故受益人電話
     ContactNumber: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].ContactNumber
+        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].ContactNumber
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[0].ContactNumber = value
+        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].ContactNumber = value
       }
     },
     // 身故受益人生日-年
     DobYear: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob === '') {
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob === '') {
           return 2019
         }
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[0]
+        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[0]
         return parseInt(result)
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob = `${value}-${this.DobMonth}-${this.DobDay}`
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = `${value}-${this.DobMonth}-${this.DobDay}`
       }
     },
     // 身故受益人生日-月
     DobMonth: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob === '') {
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob === '') {
           return 1
         }
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[1]
+        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[1]
         return parseInt(result)
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob = `${this.DobYear}-${value}-${this.DobDay}`
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = `${this.DobYear}-${value}-${this.DobDay}`
       }
     },
     // 身故受益人生日-日
     DobDay: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob === '') {
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob === '') {
           return 1
         }
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[2]
+        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[2]
         return parseInt(result)
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Dob = `${this.DobYear}-${this.DobMonth}-${value}`
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = `${this.DobYear}-${this.DobMonth}-${value}`
       }
     },
     // 身故受益人地址-縣市
     city3: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.City
+        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.City = value
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
         this.FuncGetDistrictData(value)
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.District = 0
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.District = 0
       }
     },
     // 身故受益人地址-區域
     district3: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.District === 0) return 0
-        return (`${this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.District}`) || 0
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.District === 0) return 0
+        return (`${this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.District}`) || 0
       },
       set(value) {
         // item.Zip|item.Area
-        let data = value.split('-')
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.District = data[1]
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.District = value
       }
     },
     // 身故受益人地址-路
     road3: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.Street
+        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.Street
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[0].Address.Street = value
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.Street = value
       }
     }
   },
   methods: {
     ...mapActions([
-      'GetCityData',
-      'GetDistrictData'
+      'FuncGetCityData',
+      'FuncGetDistrictData'
     ])
   }
 }

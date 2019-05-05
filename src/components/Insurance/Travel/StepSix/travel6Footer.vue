@@ -2,16 +2,17 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
-        <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">確認送出</div>
+        <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
+        <div class="col-sm-8 footer-title footer-right" @click="GotoNext()">確認送出</div>
       </nav>
     </div>
   </div>
 </template>
-
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   computed: {
     ...mapGetters([
@@ -20,10 +21,10 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.push('/travel-4')
+      this.$router.push('/travel-5')
     },
-    GoToNext() {
-      this.$router.push('/travel-6')
+    GotoNext() {
+      this.$router.push('/travel-7')
     }
   }
 }

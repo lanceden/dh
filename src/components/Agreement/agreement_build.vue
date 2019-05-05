@@ -104,6 +104,15 @@ export default {
         this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
         this.GetProvision.push('電子單據服務約定事項')
         break
+      case 'travel':
+        this.GetProvision.push('新光人壽Enjoy Life旅行平安保險商品說明')
+        this.GetProvision.push('新光人壽Enjoy Life旅行平安保險保險單條款')
+        this.GetProvision.push('新光人壽Enjoy Life傷害醫療保險給付附加條款')
+        this.GetProvision.push('新光人壽Enjoy Life海外突發疾病健康保險附加條款')
+        this.GetProvision.push('新光人壽網路投保旅行平安險投保人須知')
+        this.GetProvision.push('新光人壽網路投保旅行平安險要保書填寫說明')
+        this.GetProvision.push('蒐集、處理及利用個人資料告知事項』、『父母為7歲以下未成年子女投保告知')
+        break
     }
     this.provisionCount = this.GetProvision.length
     console.log('this.GetProvision[0]', this.GetProvision[0])

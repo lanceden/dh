@@ -2,7 +2,8 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-12 footer-title footer-gary" @click="GoNext">我已同意並閱讀完成</div>
+        <div class="col-sm-4 footer-title footer-left">回前一頁</div>
+        <div class="col-sm-8 footer-title " :class="{ 'footer-gary': true, 'footer-right': false }" @click="GoNext">我已同意並閱讀完成</div>
       </nav>
     </div>
   </div>

@@ -129,6 +129,22 @@ const mutations = {
     if (result.ResultCode !== '0000') return
     console.log(result.Data.Result.PolicyData.TotalPremium)
     state.TRAVELPOSTDATA = result.Data.Result
+    state.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
+      item.BeneficiaryData = []
+      item.BeneficiaryData.push({
+        Relationship: '',
+        Name: '',
+        IdNo: '',
+        Dob: '',
+        ContactNumber: '',
+        Address: {
+          City: '',
+          District: '',
+          Street: ''
+        }
+      })
+      item.BeneficiaryQty = 1
+    })
     router.push('/travel-4')
   },
   /**

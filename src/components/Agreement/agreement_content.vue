@@ -11,21 +11,15 @@
       <div class="border-bottom-line"></div>
       <div class="col-sm-12">
         <ul class="insure-text-notice">
-          <li :class="{ height100: isScroll }" class="provision" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''"></li>
+          <li :class="{ height100: this.$store.state.AGREEMENTTOGGLE }" class="provision" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''"></li>
         </ul>
-        <div class="text-center table-more insure-more-img" @click="OnToggle()">{{contentButtonTitle}}<img src="../../../static/img/table-more.png" alt=""></div>
+        <div class="text-center table-more insure-more-img" @click="OnToggle()">{{this.$store.state.AGREEMENTTOGGLE ? '已閱讀' : '展開閱讀更多'}}<img src="../../../static/img/table-more.png" alt=""></div>
         </div>
       </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  data() {
-    return {
-      isScroll: false,
-      contentButtonTitle: '展開閱讀更多'
-    }
-  },
   created() {
     this.FuncGetProvision(this.GetProvision[this.provisionindex])
   },
@@ -44,8 +38,7 @@ export default {
       'FuncGetProvision'
     ]),
     OnToggle() {
-      this.isScroll = !this.isScroll
-      this.contentButtonTitle = this.isScroll ? '已閱讀' : '展開閱讀更多'
+      this.$store.state.AGREEMENTTOGGLE = !this.$store.state.AGREEMENTTOGGLE
     }
   }
 }

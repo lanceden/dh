@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading v-show="GetLoading" />
     <div class="container">
       <div class="progress-bar">
         <img src="../../../../../static/img/progress-bar-06-2.png">
@@ -49,6 +50,7 @@ import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGett
 export default {
   computed: {
     ...mapGetters([
+      'GetLoading',
       TravelGetterTypes.GetTravelPostData
     ])
   },

@@ -33,6 +33,7 @@ export default {
   NATIONDATA: [],
   OCCUPATION: '',
   OCCUPATIONDATA: [],
+  AGREEMENTTOGGLE: false,
   CONTACTCHECKBOX: true,
   NOTIFYCHECKBOX: [
     true,
