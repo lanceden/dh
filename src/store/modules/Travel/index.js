@@ -70,8 +70,8 @@ const actions = {
    */
   [functionTypes.FuncTravelSubmitQuote]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.TravelSubmitQuote}`, {
-      CoreData: para,
-      InsurerSourceID: APICODE
+      InsurerSourceID: APICODE,
+      TravelRq_Order: para
     }).then(response => {
       commit(functionTypes.FuncTravelSubmitQuote, { result: response.data, router })
     })
@@ -86,7 +86,7 @@ const actions = {
     rootState.Http.axios.post(`${Url.TravelSubmitOrder}`, {
       NCCCModels: nccModels,
       CoreData: para,
-      InsurerSourceID: APICODE
+      TravelRq_Order: APICODE
     }).then(response => {
       commit(functionTypes.FuncTravelSubmitOrder, { result: response.data, router })
     })

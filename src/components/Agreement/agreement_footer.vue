@@ -18,6 +18,7 @@ import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTyp
 import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes'
 import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes'
 import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes'
+import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunctionTypes'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 export default {
@@ -33,7 +34,8 @@ export default {
       'GetIGoingPostData',
       'GetMyWayPostData',
       'GetAccidentPostData',
-      'GetHealthPostData'
+      'GetHealthPostData',
+      'GetTravelPostData'
     ])
   },
   methods: {
@@ -45,7 +47,8 @@ export default {
       IGoingFunctionTypes.FuncIGoingSubmitQuote,
       MyWayFunctionTypes.FuncMyWaySubmitQuote,
       AccidentFunctionTypes.FuncAccidentSubmitQuote,
-      HealthFunctionTypes.FuncHealthSubmitQuote
+      HealthFunctionTypes.FuncHealthSubmitQuote,
+      TravelFunctionTypes.FuncTravelSubmitQuote
     ]),
     /**
      * 投保資訊
@@ -87,6 +90,11 @@ export default {
           console.log('this.FuncHealthSubmitQuote')
           this.FuncHealthSubmitQuote({ para: this.GetHealthPostData, router: this.$router })
           break
+        case 'travel':
+          console.log('this.FuncTravelSubmitQuote')
+          this.FuncTravelSubmitQuote({ para: this.GetTravelPostData, router: this.$router })
+          break
+
       }
     }
   }

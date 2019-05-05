@@ -36,25 +36,25 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">身故受益人姓名</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫受益人姓名" v-model="BeneficiaryDataName">
+              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫受益人姓名" v-model="BeneficiaryDataName" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
             </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
             <div class="col-sm-3 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
                 <option v-if="Relation === '本人'" :value="DobYear">{{DobYear}}</option>
                 <option v-else v-for="n in 100" :key="n" :value="new Date().getFullYear() + 1 - n">{{new Date().getFullYear() + 1 - n}}</option>
               </select>年
             </div>
             <div class="col-sm-3 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
                 <option v-if="Relation === '本人'" :value="DobMonth">{{DobMonth}}</option>
                 <option v-else v-for="n in 12" :key="n" :value="n">{{n}}</option>
               </select>月
             </div>
             <div class="col-sm-3 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
                 <option v-if="Relation === '本人'" :value="DobDay">{{DobDay}}</option>
                 <option v-else v-for="n in 31" :key="n" :value="n">{{n}}</option>
               </select>日
@@ -63,34 +63,34 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫身分證字號" v-model="IdNo">
+              <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" :disabled="parseInt(BeneficiaryDataRelationship) === 8" placeholder="請填寫身分證字號" v-model="IdNo">
             </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫聯絡電話" v-model="ContactNumber">
+              <input type="text" class="form-control insure-input insure-input-edit" :disabled="parseInt(BeneficiaryDataRelationship) === 8" placeholder="請填寫聯絡電話" v-model="ContactNumber">
             </div>
           </div>
           <div class="form-group row">
             <template>
               <div>
                 <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-                <select class="form-control data-input insure-select insure-input-edit" v-model="city3">
+                <select class="form-control data-input insure-select insure-input-edit" v-model="city3" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
                   <option selected="selected" value="0">請選擇</option>
                   <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
                 </select>
-                <select class="form-control data-input insure-select insure-input-edit" v-model="district3">
+                <select class="form-control data-input insure-select insure-input-edit" v-model="district3" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
                   <option selected="selected" value="0">請選擇</option>
-                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
+                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area" :disabled="parseInt(BeneficiaryDataRelationship) === 8">{{item.Area}}</option>
                 </select>
                 <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" />
               </div>
             </template>
           </div>
           <div class="form-group posr row">
-            <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼：0920277248<br>同客戶住所地址：台北市松山區敦化北路102號B1樓</label>
-            <div class="checkbox"></div>
+            <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼</label>
+            <div class="checkbox" @click="GetAccountData()" v-show="parseInt(BeneficiaryDataRelationship) !== 8"></div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="col-sm-12">
@@ -152,7 +152,7 @@ export default {
     // 身故受益人關係
     BeneficiaryDataRelationship: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Relationship
+        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Relationship || 0
       },
       set(value) {
         this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Relationship = value
@@ -227,7 +227,7 @@ export default {
     // 身故受益人地址-縣市
     city3: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City
+        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City || 0
       },
       set(value) {
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City = value
@@ -260,8 +260,15 @@ export default {
   methods: {
     ...mapActions([
       'FuncGetCityData',
-      'FuncGetDistrictData'
-    ])
+      'FuncGetDistrictData',
+      'FuncGetAccountData'
+    ]),
+    // 取回保戶資料
+    GetAccountData() {
+      this.FuncGetAccountData().then(result => {
+        console.log(result)
+      })
+    }
   }
 }
 

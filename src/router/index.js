@@ -61,6 +61,7 @@ import TravelFive from '../components/Insurance/Travel/StepFive/travel5Build'
 import TravelSix from '../components/Insurance/Travel/StepSix/travel6Build.vue'
 import TravelSeven from '../components/Insurance/Travel/travel7'
 import TravelEight from '../components/Insurance/Travel/travel8'
+import TravelInsuredData from '../components/Insurance/Travel/InsuredData/travel10.vue'
 
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
@@ -302,6 +303,10 @@ const router = new Router({
   {
     path: '/health-insureddata',
     component: HealthInsuredData
+  },
+  {
+    path: '/travel-insureddata',
+    component: TravelInsuredData
   },
   {
     path: '/accident-insureddata',

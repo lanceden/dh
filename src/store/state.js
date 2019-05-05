@@ -17,6 +17,7 @@ export default {
   CITYDATA: [],
   EACHACCOUNT: [],
   PREMIUMS: [],
+  ACCOUNTDATA: {},
   BANK: [],
   BANKDATA: [],
   DISTRICTDATA: [],

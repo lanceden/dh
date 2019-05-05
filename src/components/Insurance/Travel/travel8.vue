@@ -18,14 +18,14 @@
         <div class="border-bottom-line"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('elec')">
-            <div class="insure-check"><img src="../../../../static/img/oval-ed.png" alt=""></div>
+            <div class="insure-check"><img :src="ensure.elec" alt=""></div>
             <div class="insure-check-content">電子保單</div>
           </div>
         </div>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('paper')">
-            <div class="insure-check"><img src="../../../../static/img/oval.png" alt=""></div>
+            <div class="insure-check"><img :src="ensure.paper" alt=""></div>
             <div class="insure-check-content">紙本保單</div>
           </div>
         </div>
@@ -34,7 +34,7 @@
             <!-- 客戶住所(通訊地址) -->
             <label for="" class="col-sm-12 col-form-label insure-label">客戶住所(通訊地址)</label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input" id="txtOldAddress1" :value="GetTravelPostData.PolicyData.ProposerInfo[0].Address" disabled="disabled">
+              <input type="text" class="form-control insure-input" id="txtOldAddress1" :value="GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address" disabled="disabled">
             </div>
             <div :class="{checkbox: true, checked: true}" id="divOldAddress1" @click="OnCommunityAddr('old')"></div>
           </div>
@@ -60,7 +60,7 @@
           </div>
         </form>
       </div>
-      <div class="bg-radius">
+      <div class="bg-radius" v-show="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType) === 2">
         <div class="top">
           <div class="top-title">
             <div class="insure-notice-box">
@@ -77,14 +77,14 @@
             <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件
             </label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input-block" id="" placeholder="" value="richard@winwinmedia.com.tw">
+              <input type="text" class="form-control insure-input-block" disabled="disabled" :value="GetTravelPostData.PolicyData.ProposerInfo[0].Email">
             </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">要保人手機
             </label>
             <div class="col-sm-12">
-              <input type="text" class="form-control insure-input-block" id="" placeholder="" value="0920277248">
+              <input type="text" class="form-control insure-input-block" :value="GetTravelPostData.PolicyData.ProposerInfo[0].Phone">
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
@@ -112,13 +112,14 @@
 
 <script>
 import $ from 'jquery'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import TravelGetterTypes from '../../../store/modules/Travel/Types/TravelGetterTypes.js'
 
 const CITYNAME = '基隆市'
 export default {
   data() {
     return {
+      cbNewAddr1: false,
       ensure: {
         elec: '../../../../../static/img/oval.png',
         paper: '../../../../../static/img/oval.png',
@@ -132,12 +133,14 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetCityData',
+      'GetDistrictData',
       TravelGetterTypes.GetTravelPostData
     ]),
     // 紙本保單-輸入新的客戶住所(通訊地址)-縣市
     MailingAddrCity: {
       get() {
-        return this.GetTravelPostData.PolicyData.MailingAddr.City
+        return this.GetTravelPostData.PolicyData.MailingAddr.City || 0
       },
       set(value) {
         this.GetTravelPostData.PolicyData.MailingAddr.City = value
@@ -146,7 +149,7 @@ export default {
     // 紙本保單-輸入新的客戶住所(通訊地址)-區域
     MailingAddrDistrict: {
       get() {
-        return this.GetTravelPostData.PolicyData.MailingAddr.District
+        return this.GetTravelPostData.PolicyData.MailingAddr.District || 0
       },
       set(value) {
         this.GetTravelPostData.PolicyData.MailingAddr.District = value
@@ -155,20 +158,38 @@ export default {
     // 紙本保單-輸入新的客戶住所(通訊地址)-路
     MailingAddrStreet: {
       get() {
-        return this.GetTravelPostData.PolicyData.MailingAddr.Street
+        return this.GetTravelPostData.PolicyData.MailingAddr.Street || ''
       },
       set(value) {
         this.GetTravelPostData.PolicyData.MailingAddr.Street = value
       }
     }
   },
-  mounted() {
-    this.tempZip1 = this.GetTravelPostData.zip1
-    this.tempCity1 = this.GetTravelPostData.city1
-    this.tempDistrict1 = this.GetTravelPostData.district1
-    this.tempRoad1 = this.GetTravelPostData.road1
+  created() {
+    this.FuncGetCityData()
+    this.FuncGetDistrictData(CITYNAME)
+    let result = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType
+    // 第一次進來無資料所以不執行
+    if (result !== null) {
+      this.OnEnsure(result === '2' ? 'elec' : 'paper')
+    }
+    if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailingAddr === null) {
+      this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailingAddr = {
+        City: '',
+        District: '',
+        Street: ''
+      }
+    } else {
+      this.tempCity1 = this.GetTravelPostData.PolicyData.MailingAddr.City
+      this.tempDistrict1 = this.GetTravelPostData.PolicyData.MailingAddr.District
+      this.tempRoad1 = this.GetTravelPostData.PolicyData.MailingAddr.Street
+    }
   },
   methods: {
+    ...mapActions([
+      'FuncGetCityData',
+      'FuncGetDistrictData'
+    ]),
     /**
      * 設置請確認保障對象
      * @param {string} target 本人:own 子女:child 本人與子女:both
@@ -176,18 +197,19 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'elec': // 電子保單:2
-          this.ensure.own = '../../../../../static/img/oval-ed.png'
-          this.ensure.child = '../../../../../static/img/oval.png'
+          this.ensure.elec = '../../../../../static/img/oval-ed.png'
+          this.ensure.paper = '../../../../../static/img/oval.png'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType = '2'
           this.isPaper = false
           break
         case 'paper': // 紙本保單:1
-          this.ensure.own = '../../../../../static/img/oval.png'
-          this.ensure.child = '../../../../../static/img/oval-ed.png'
+          this.ensure.elec = '../../../../../static/img/oval.png'
+          this.ensure.paper = '../../../../../static/img/oval-ed.png'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType = '1'
           this.isPaper = true
           break
       }
+      console.log('GetTravelPostData.PolicyData.ProposerInfo[0].Address', this.GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address)
     },
     /**
      * 通訊地址
@@ -223,7 +245,7 @@ export default {
       this.$router.push('/travel-7')
     },
     GoToNext() {
-      this.$router.push('/travel-9')
+      this.$router.push(`/agreement?instypename=travel`)
     }
   }
 }

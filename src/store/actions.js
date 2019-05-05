@@ -101,6 +101,15 @@ export default {
     })
   },
   /**
+   * 取回保戶帳號資料
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
+  async FuncGetAccountData({ commit }) {
+    await rootState.Http.axios.post(`${Url.GetAccountData}`).then(response => {
+      commit('FuncGetAccountData', { result: response.data })
+    })
+  },
+  /**
    * 發送OTP
    * @param {當前Vuex狀態} commit VuexStoreState
    */

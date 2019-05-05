@@ -64,8 +64,8 @@
       <div class="footer">
         <div class="footer-content">
           <nav class="navbar navbar-dark row">
-            <div class="col-sm-4 footer-title footer-left">回前一頁</div>
-            <div class="col-sm-8 footer-title footer-right">確認送出</div>
+            <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
+            <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">確認送出</div>
           </nav>
         </div>
       </div>
@@ -92,19 +92,18 @@ export default {
   created() {
     this.FuncGetCityData()
     this.FuncGetDistrictData(CITYNAME)
-  },
-  mounted() {
     if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr === null) {
       this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr = {
         City: '',
         District: '',
         Street: ''
       }
+    } else {
+      // 暫存舊的通訊地址
+      this.tempCity2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City
+      this.tempDistrict2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District
+      this.tempRoad2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.Street
     }
-    // 暫存舊的通訊地址
-    this.tempCity2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City
-    this.tempDistrict2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District
-    this.tempRoad2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.Street
   },
   computed: {
     ...mapGetters([
@@ -133,7 +132,7 @@ export default {
     // 緊急聯絡人地址-縣市
     EmergencyContactAddrCity: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City
+        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City || 0
       },
       set(value) {
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City = value
@@ -167,7 +166,22 @@ export default {
     ...mapActions([
       'FuncGetCityData',
       'FuncGetDistrictData'
-    ])
+    ]),
+    GoToPrev() {
+      if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.leght > 0) {
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
+          if (parseInt(item.Relation) !== 1) {
+            this.$router.push('/travel-6')
+            return
+          }
+        })
+      } else {
+        this.$router.push('/travel-5')
+      }
+    },
+    GoToNext() {
+      this.$router.push('/travel-8')
+    }
   }
 }
 

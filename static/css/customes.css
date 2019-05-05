@@ -740,7 +740,7 @@ input[type="checkbox"] {
 .checkbox-oneline {
     -webkit-appearance: none;
     display: inline-block;
-    background: url(../images/checked-un.png) no-repeat;
+    background: url(../img/checked-un.png) no-repeat;
     width: 44px;
     height: 43px;
     cursor: pointer;
@@ -755,7 +755,7 @@ input[type="checkbox"] {
 
 .checkbox.checked,
 .checkbox-oneline.checked {
-    background: url(../images/checked.png) no-repeat;
+    background: url(../img/checked.png) no-repeat;
 }
 
 
@@ -1451,14 +1451,14 @@ input[type=radio] {
 }
 
 .NoCheck {
-    background: url(../images/2019app/oval.png);
+    background: url(../img/2019app/oval.png);
     background-size: 37px auto;
     background-position: center;
     background-repeat: no-repeat
 }
 
 .Check {
-    background: url(../images/2019app/oval-ed.png);
+    background: url(../img/2019app/oval-ed.png);
     background-size: 37px auto;
     background-position: center;
     background-repeat: no-repeat;

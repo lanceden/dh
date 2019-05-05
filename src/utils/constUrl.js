@@ -55,7 +55,11 @@ const EACHAccount = `${Domain}/Customer/EachAccount`
 /**
  * 取回各商品不同身份別保額
  */
-const Premiums = `${Domain}/QueryPremiums`
+const Premiums = `${Domain}/Query/Premiums`
+/**
+ * 取回各商品不同身份別保額
+ */
+const GetAccountData = `${Domain}/Account/GetAccountData`
 /**
  * 發送OTP
  */
@@ -254,6 +258,7 @@ export default {
   Beneficiary,
   EACHAccount,
   Premiums,
+  GetAccountData,
   SendOTP,
   CheckOTP,
   UpCashInit,

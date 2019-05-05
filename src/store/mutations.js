@@ -97,6 +97,15 @@ export default {
     state.PREMIUMS = result.Data.Result
   },
   /**
+   * 取回保戶帳號資料
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetAccountData(state, { result }) {
+    state.ACCOUNTDATA = result.Data.Result
+    return state.ACCOUNTDATA
+  },
+  /**
    * 取回上一張保單受益人
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
@@ -155,5 +164,6 @@ export default {
    */
   FuncGetEachAccount(state, { result }) {
     state.EACHACCOUNT = result.Data.Result
+    return state.EACHACCOUNT
   }
 }
