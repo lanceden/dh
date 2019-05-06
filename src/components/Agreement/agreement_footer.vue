@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-4 footer-title footer-left">回前一頁</div>
+        <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
         <div class="col-sm-8 footer-title " :class="{ 'footer-gary': true, 'footer-right': false }" @click="GoNext">我已同意並閱讀完成</div>
       </nav>
     </div>
@@ -50,6 +50,12 @@ export default {
       HealthFunctionTypes.FuncHealthSubmitQuote,
       TravelFunctionTypes.FuncTravelSubmitQuote
     ]),
+    /**
+     * 回上一頁
+     */
+    GoToPrev() {
+      this.$router.go(-1)
+    },
     /**
      * 投保資訊
      */

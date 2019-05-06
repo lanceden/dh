@@ -121,12 +121,13 @@ export default {
      */
     po_issue_date: {
       get() {
-        let result = InitColumnData(this.GetICanPostData.po_issue_date, moment().add(`1`, 'days').format(`YYYY-MM-DD`))
-        this.GetICanPostData.po_issue_date = result
-        return result
+        this.GetICanPostData.po_issue_date = InitColumnData(this.GetICanPostData.po_issue_date, moment().add(`1`, 'days').format(`YYYY-MM-DD`))
+        console.log(this.GetICanPostData.po_issue_date)
+        return moment(this.GetICanPostData.po_issue_date, 'YYYY-MM-DD')
       },
       set(value) {
         this.GetICanPostData.po_issue_date = value
+        this.GetICanPostData.mode_prem = 0
         let maturedDate = moment(value, 'YYYY-MM-DD').add(`${parseInt(this.GetICanPostData.TrvDays)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
         $('#matured_date').html(`天至 ${maturedDate}`)
       }
@@ -147,6 +148,7 @@ export default {
       },
       set(value) {
         this.GetICanPostData.TrvDays = value
+        this.GetICanPostData.mode_prem = 0
         let maturedDate = moment(this.GetICanPostData.po_issue_date, 'YYYY-MM-DD').add(`${parseInt(value)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
         $('#matured_date').html(`天至 ${maturedDate}`)
       }
@@ -162,6 +164,7 @@ export default {
       },
       set(value) {
         this.GetICanPostData.face_amt = value
+        this.GetICanPostData.mode_prem = 0
         $('#CalcAmtDesc2').text($('#face_amt option:selected').text())
         $('#CalcAmtDesc3').text($('#face_amt option:selected').text())
         var prem = parseInt(value)

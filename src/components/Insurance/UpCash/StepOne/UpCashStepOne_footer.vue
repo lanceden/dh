@@ -43,13 +43,6 @@ export default {
       let occuClass = InitColumnData(this.GetUpCashPostData.client_occupation_class, '')
       let occuClassCode = InitColumnData(this.GetUpCashPostData.client_occupation_class_code, '')
       let occuClassCodeName = InitColumnData(this.GetUpCashPostData.client_occupation_class_code_name, '')
-
-      // debug
-      this.GetUpCashPostData.client_occupation_class = '6'
-      this.GetUpCashPostData.client_occupation_class_code = '03010030'
-      this.GetUpCashPostData.client_occupation_class_code_name = '伐木工人'
-      // debug
-
       if (occuClass === '' || occuClassCode === '' || occuClassCodeName === '') {
         toggleModalShow('請選擇職業名稱。')
         return false

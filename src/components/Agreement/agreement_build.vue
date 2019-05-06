@@ -22,100 +22,40 @@ export default {
   },
   created() {
     this.instypename = getQueryStringParameterByKey('instypename').toLowerCase()
+    let agreementArr = []
     switch (this.instypename) {
       case 'upcash':
-        this.GetProvision.push('新光人壽Up Cash利率變動型年金保險【乙型】商品說明')
-        this.GetProvision.push('新光人壽Up Cash利率變動型年金保險【乙型】保險單條款')
-        this.GetProvision.push('人壽保險投保人須知_網路投保')
-        this.GetProvision.push('要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('配合FATCA法案蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('保險特性摘要說明')
-        this.GetProvision.push('保險費暨保險單借款利息自動轉帳付款委託約定條款')
-        this.GetProvision.push('電子單據服務約定事項')
-        this.GetProvision.push('信用卡授權書審閱條款')
+        agreementArr = this.GetUpCashPostData.AgreementString.split(',')
         break
       case 'ezcash':
-        this.GetProvision.push('新光人壽EZ Cash利率變動型年金保險【乙型】商品說明')
-        this.GetProvision.push('新光人壽EZ Cash利率變動型年金保險【乙型】保險單條款')
-        this.GetProvision.push('人壽保險投保人須知_網路投保')
-        this.GetProvision.push('要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('配合FATCA法案蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('保險費暨保險單借款利息自動轉帳付款委託約定條款')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetEZCashPostData.AgreementString.split(',')
         break
       case 'ican':
-        this.GetProvision.push('新光人壽i-can傷害保險商品說明')
-        this.GetProvision.push('新光人壽i-can傷害保險保險單條款')
-        this.GetProvision.push('新光人壽網路投保傷害醫療保險附加條款')
-        this.GetProvision.push('新光人壽網路投保個人傷害險投保人須知')
-        this.GetProvision.push('新光人壽網路投保個人傷害保險要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetICanPostData.AgreementString.split(',')
         break
       case 'iwell':
-        this.GetProvision.push('新光人壽i-well傷害保險商品說明')
-        this.GetProvision.push('新光人壽i-well傷害保險保險單條款')
-        this.GetProvision.push('新光人壽網路投保傷害醫療保險附加條款')
-        this.GetProvision.push('新光人壽網路投保個人傷害險投保人須知')
-        this.GetProvision.push('新光人壽網路投保個人傷害保險要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetIWellPostData.AgreementString.split(',')
         break
       case 'myway':
-        this.GetProvision.push('新光人壽My Way定期壽險商品說明')
-        this.GetProvision.push('新光人壽My Way定期壽險保險單條款')
-        this.GetProvision.push('人壽保險投保人須知_網路投保')
-        this.GetProvision.push('要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('審閱期聲明書')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetMyWayPostData.AgreementString.split(',')
         break
       case 'igoing':
-        this.GetProvision.push('新光人壽i-going意外傷害保險商品說明')
-        this.GetProvision.push('新光人壽i-going意外傷害保險保險單條款')
-        this.GetProvision.push('新光人壽網路投保個人傷害險投保人須知')
-        this.GetProvision.push('新光人壽網路投保個人傷害保險要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetIGoingPostData.AgreementString.split(',')
         break
       case 'accident':
-        this.GetProvision.push('新光人壽i平安傷害保險商品說明')
-        this.GetProvision.push('新光人壽i平安傷害保險保險單條款')
-        this.GetProvision.push('新光人壽網路投保個人傷害險投保人須知')
-        this.GetProvision.push('新光人壽網路投保個人傷害保險要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetAccidentPostData.AgreementString.split(',')
         break
       case 'health':
-        this.GetProvision.push('新光人壽New Health健康保險商品說明')
-        this.GetProvision.push('新光人壽New Health健康保險保險單條款')
-        this.GetProvision.push('人壽保險投保人須知_網路投保')
-        this.GetProvision.push('要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項')
-        this.GetProvision.push('病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項')
-        this.GetProvision.push('電子單據服務約定事項')
+        agreementArr = this.GetHealthPostData.AgreementString.split(',')
         break
       case 'travel':
-        this.GetProvision.push('新光人壽Enjoy Life旅行平安保險商品說明')
-        this.GetProvision.push('新光人壽Enjoy Life旅行平安保險保險單條款')
-        this.GetProvision.push('新光人壽Enjoy Life傷害醫療保險給付附加條款')
-        this.GetProvision.push('新光人壽Enjoy Life海外突發疾病健康保險附加條款')
-        this.GetProvision.push('新光人壽網路投保旅行平安險投保人須知')
-        this.GetProvision.push('新光人壽網路投保旅行平安險要保書填寫說明')
-        this.GetProvision.push('蒐集、處理及利用個人資料告知事項』、『父母為7歲以下未成年子女投保告知')
+        agreementArr = this.GetTravelPostData.AgreementTitle.split('『')
         break
     }
+    agreementArr.forEach(item => {
+      this.GetProvision.push(this.instypename === 'travel' ? item.split('』')[0] : item.split('(')[0])
+    })
     this.provisionCount = this.GetProvision.length
-    console.log('this.GetProvision[0]', this.GetProvision[0])
   },
   components: {
     AgreementCheck,
@@ -125,7 +65,16 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      'GetProvision'
+      'GetProvision',
+      'GetUpCashPostData',
+      'GetEZCashPostData',
+      'GetICanPostData',
+      'GetIWellPostData',
+      'GetIGoingPostData',
+      'GetMyWayPostData',
+      'GetAccidentPostData',
+      'GetHealthPostData',
+      'GetTravelPostData'
     ])
   }
 }

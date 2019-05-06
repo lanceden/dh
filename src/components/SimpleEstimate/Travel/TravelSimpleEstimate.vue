@@ -215,7 +215,8 @@ const URLPREMIUMS = Url.Premiums
 const URL = Url.TravelSimpleEstimate
 export default {
   mounted() {
-    this.faceamtList()
+    var self = this
+    self.faceamtList()
     $('[name=InsuredRadio]').on('change', function() {
       var insuredRadio = $('input[name=InsuredRadio]:checked')
       $('.insured-sub').hide()
@@ -257,15 +258,18 @@ export default {
           $('#ChildCount2').prop('disabled', true)
           break
       }
-      this.Compute()
+      console.log(self)
+      self.Compute()
     })
 
     $('.ChildCount').on('change', function() {
       var insuredRadio = $('input[name=InsuredRadio]:checked').val()
+      let $count = ''
+      let paInt = ''
       switch (insuredRadio) {
         case '2':
-          let $count = $('#ChildCount1')
-          let paInt = parseInt($count.val())
+          $count = $('#ChildCount1')
+          paInt = parseInt($count.val())
           if (isNaN(paInt) || paInt > 5 || paInt < 1) {
             $('.child-box.child').html('子女各')
             $count.val('')
@@ -275,8 +279,8 @@ export default {
           $('.child-box.child').html($('#ChildCount1').val() + '名子女各')
           break
         case '3':
-          let $count = $('#ChildCount2')
-          let paInt = parseInt($count.val())
+          $count = $('#ChildCount2')
+          paInt = parseInt($count.val())
           if (isNaN(paInt) || paInt > 5 || paInt < 1) {
             $('.child-box.child').html('子女各')
             $count.val('')
@@ -288,12 +292,12 @@ export default {
         default:
           $('.child-box.child').html('')
       }
-      this.Compute()
+      self.Compute()
     })
-    // 國內：１　國外：２
+    // 國內1國外2
     $('[name=inputTravel]').on('change', function() {
-      $('.TravelAim').toggle($('[name=inputTravel]:checked').val() == '2')
-      if ($('[name=inputTravel]:checked').val() == '1') {
+      $('.TravelAim').toggle($('[name=inputTravel]:checked').val() === '2')
+      if ($('[name=inputTravel]:checked').val() === '1') {
         $('#TravelOverseaExtra').val(0)
         $('#TravelOverseaExtraC').val(0)
       }
@@ -362,7 +366,7 @@ export default {
       $('#TravelOverseaExtra').empty()
       $('#TravelOverseaExtra').html(selectHTML)
       $('#TravelOverseaExtra').prop('disabled', false)
-      this.Compute()
+      self.Compute()
     })
 
     $('#TravelInsuranceC').on('change', function() {
@@ -394,7 +398,7 @@ export default {
           }
           selectHTML += `<option value='${Prize}'>${Prize}萬</option>`
         }
-      } else if (percentage == 0.2) {
+      } else if (percentage === 0.2) {
         // 申根
         var covVal = parseInt($this.val())
         var max = isNaN(covVal) ? 0 : covVal * percentage
@@ -405,7 +409,7 @@ export default {
           }
           return aInt <= max
         })
-        for (var i = 0; i < alist.length; i++) {
+        for (let i = 0; i < alist.length; i++) {
           selectHTML += `<option value='${alist[i]}'>${alist[i]}萬</option>`
         }
       }
@@ -415,13 +419,12 @@ export default {
       // 傷害醫療保障
       $('#TravelExtraC').empty()
       $('#TravelExtraC').html(selectHTML)
-      //海外突發疾病
+      // 海外突發疾病
       $('#TravelOverseaExtraC').empty()
       $('#TravelOverseaExtraC').html(selectHTML)
       $('#TravelOverseaExtraC').prop('disabled', false)
-      this.Compute()
+      self.Compute()
     })
-
 
     // 傷害醫療保障
     $('#TravelExtra').on('change', function() {
@@ -431,7 +434,7 @@ export default {
         $('#TravelOverseaExtra').val('0')
         $('#TravelOverseaExtra').prop('disabled', true)
       }
-      this.Compute()
+      self.Compute()
     })
 
     // 傷害醫療保障
@@ -442,12 +445,12 @@ export default {
         $('#TravelOverseaExtraC').val('0')
         $('#TravelOverseaExtraC').prop('disabled', true)
       }
-      this.Compute()
+      self.Compute()
     })
 
     // 保單年度未
     $('#TravelDay, #TravelOverseaExtra, #TravelOverseaExtraC').on('change', function() {
-      this.Compute()
+      self.Compute()
     })
   },
   methods: {
@@ -471,7 +474,7 @@ export default {
             $('#TravelInsurance').html(option).trigger('change')
             $('#TravelInsuranceC').trigger('change')
             this.Compute()
-          } else if (rep.Status == 'OK' && !rep.Data.IsSuccess) {
+          } else if (rep.Status === 'OK' && !rep.Data.IsSuccess) {
             toggleModalShow(rep.Data.Message)
             return
           } else {
@@ -492,18 +495,20 @@ export default {
       var TravelExtraC = $('#TravelExtraC').val()
       var TravelOverseaExtraC = inputType === '1' ? '' : $('#TravelOverseaExtraC').val()
 
+      let $count = ''
+      let paInt = ''
       switch (insuredRadio) {
         case '2':
-          var $count = $('#ChildCount1')
-          var paInt = parseInt($count.val())
+          $count = $('#ChildCount1')
+          paInt = parseInt($count.val())
           if (isNaN(paInt) || paInt > 5) {
             $('#PayNum').html('NT$ 0')
             return false
           }
           break
         case '3':
-          var $count = $('#ChildCount2')
-          var paInt = parseInt($count.val())
+          $count = $('#ChildCount2')
+          paInt = parseInt($count.val())
           if (isNaN(paInt) || paInt > 5) {
             $('#PayNum').html('NT$ 0')
             return false
@@ -541,7 +546,7 @@ export default {
         }
       }
       if (insuredRadio === '1' || insuredRadio === '3') {
-        if ((TravelOverseaExtra === '' && inputType == '2') || TravelInsurance === '' || TravelExtra === '') {
+        if ((TravelOverseaExtra === '' && inputType === '2') || TravelInsurance === '' || TravelExtra === '') {
           $('#PayNum').html('NT$ 0')
           return false
         }
@@ -559,10 +564,9 @@ export default {
         }
       }
 
-      var insuredRadio = $('[name=InsuredRadio]:checked').val()
       // 本人
       if (insuredRadio === '1' || insuredRadio === '3') {
-        var insured = {
+        let insured = {
           Relation: '1',
           PrimaryPolicy: {
             PlanCode: '66020',
@@ -581,7 +585,7 @@ export default {
         Edata.TravelRq_Order.PolicyData.ChildrenNo = 0
       }
 
-      //子女
+      // 子女
       if (insuredRadio === '2' || insuredRadio === '3') {
         var childCount = parseInt($(`select[name='ChildCount']`).not(':disabled').val())
         let insured = {
@@ -612,7 +616,7 @@ export default {
         success: function(rep) {
           if (rep.Status === 'OK' && rep.Data.IsSuccess && rep.Data !== undefined && rep.Data.Result !== undefined) {
             $('#PayNum').html('NT$' + rep.Data.Result.mode_prem.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','))
-          } else if (rep.Status == 'OK' && !rep.Data.IsSuccess) {
+          } else if (rep.Status === 'OK' && !rep.Data.IsSuccess) {
             toggleModalShow(rep.Data.Message)
             return
           } else {
@@ -628,37 +632,47 @@ export default {
 
 <style scoped>
 input[type='tel'].data-input {
-  color: #fa6400
+  color: #fa6400;
 }
 
 input[type=radio] {
-  display: none
+  display: none;
 }
 
 .radio-group {
-  height: 45px
+  height: 45px;
 }
 
 .radio-group .insure-check-content {
-  margin: auto margin-left: 20px
+  margin: auto;
+  margin-left: 20px;
 }
 
 .NoCheck {
-  background: url(../../../../static/img/oval.png) background-size: 37px auto background-position: center background-repeat: no-repeat
+  background: url('../../../../static/img/oval.png');
+  background-size: 37px auto;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .Check {
-  background: url(../../../../static/img/oval-ed.png) background-size: 37px auto background-position: center background-repeat: no-repeat
+  background: url('../../../../static/img/oval-ed.png');
+  background-size: 37px auto;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 select {
-  background-image: url(../../../../static/img/down-arrow.png) -webkit-appearance: none outline: none !important box-shadow: 0 0 0 0 #fff
+  background-image: url('../../../../static/img/down-arrow.png');
+  -webkit-appearance: none;
+  outline: none !important;
+  box-shadow: 0 0 0 0 #fff;
 }
 
 .insured-sub,
 .child-box,
 .TravelAim {
-  display: none
+  display: none;
 }
 
 </style>

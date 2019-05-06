@@ -42,9 +42,20 @@ import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetter
 export default {
   data() {
     return {
-      visit_time1: true,
+      visit_time1: false,
       visit_time2: false,
       visit_time3: false
+    }
+  },
+  created() {
+    if (this.GetAccidentPostData.visit_time1 !== '') {
+      this.visit_time1 = this.GetAccidentPostData.visit_time1 === '1'
+    }
+    if (this.GetAccidentPostData.visit_time2 !== '') {
+      this.visit_time2 = this.GetAccidentPostData.visit_time2 === '1'
+    }
+    if (this.GetAccidentPostData.visit_time3 !== '') {
+      this.visit_time3 = this.GetAccidentPostData.visit_time3 === '1'
     }
   },
   computed: {

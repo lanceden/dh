@@ -2,7 +2,10 @@
   <div id="app" class="container">
     <template>
       <Header></Header>
-      <router-view></router-view>
+      <keep-alive>
+        <!-- 所有路徑匹配到的視圖組件都會被緩存！ -->
+        <router-view></router-view>
+      </keep-alive>
       <modal></modal>
     </template>
   </div>

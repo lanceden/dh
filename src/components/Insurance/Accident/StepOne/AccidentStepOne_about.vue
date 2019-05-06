@@ -105,14 +105,15 @@ import { InitColumnData } from '../../../../utils/initColumnData'
 import { mapGetters } from 'vuex'
 export default {
   created() {
-    this.GetAccidentPostData.QusAns = [{ Answar: false }, { Answar: false }, { Answar: false }, { Answar: false }]
+    this.GetAccidentPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
     if (this.GetAccidentPostData.client_occupation_class !== '' && this.GetAccidentPostData.client_occupation_class !== undefined) {
       this.client_occupation_class = this.GetAccidentPostData.client_occupation_class
     }
     if (this.GetAccidentPostData.QusAns !== null && this.GetAccidentPostData.client_occupation_class !== undefined) {
       this.isShowAns1Error = this.GetAccidentPostData.QusAns[0].Answar
-      this.isShowAns2Error = this.GetAccidentPostData.QusAns[2].Answar
-      this.isShowAns3Error = this.GetAccidentPostData.QusAns[3].Answar
+      this.isShowAns2Error = this.GetAccidentPostData.QusAns[1].Answar
+      this.isShowAns3Error = this.GetAccidentPostData.QusAns[2].Answar
+      this.isShowAns4Error = this.GetAccidentPostData.QusAns[3].Answar
     }
   },
   data() {
@@ -131,7 +132,8 @@ export default {
     // 職業類別
     client_occupation_class_computed: {
       get() {
-        return InitColumnData(this.GetAccidentPostData.client_occupation_class, 0)
+        this.this.GetAccidentPostData.client_occupation_class = InitColumnData(this.GetAccidentPostData.client_occupation_class, 0)
+        return this.GetAccidentPostData.client_occupation_class
       },
       set(value) {
         this.client_occupation_class = value

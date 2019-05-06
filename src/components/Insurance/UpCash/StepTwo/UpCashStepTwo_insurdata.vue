@@ -140,14 +140,16 @@
             <div class="insure-input-block">委託人身分證字號:
             </div>
             <div class="insure-input-block">金融機構代碼:
-              <select v-model="bank_code_1">
-                <option value="0">請選擇</option>
-                <option value="103">新光銀行</option>
+              <select id="" class="form-control data-input insure-select insure-input-edit" v-model="bank_code_1">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetBankData" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
               </select>
             </div>
-            <div class="insure-input-block">金融機構中文名稱: </div>
+            <div class="insure-input-block">金融機構中文名稱:
+              <input type="text" class="form-control insure-input-block" id placeholder :value="branchName.split('-')[1]" disabled="disabled" />
+            </div>
             <div class="insure-input-block">銀行帳號:
-              <input type="text" v-model="account" />
+              <input type="number" min="0" class="form-control insure-input insure-input-edit" placeholder="請輸入銀行帳號" v-model="account">
             </div>
           </div>
         </div>
@@ -159,13 +161,15 @@
 
 <script>
 import moment from 'moment'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   data() {
     return {
       isEdda: true,
       poIssueDate: '',
+      branchName: '0',
+      accountComputed: '',
       payType: [
         { name: '全國新光人壽行政中心繳費', method: 'P' },
         { name: '銀行或郵局帳戶轉帳', method: 'B' },
@@ -174,6 +178,7 @@ export default {
     }
   },
   created() {
+    this.FuncGetBank()
     this.GetUpCashPostData.AccountData[0] = {}
     this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
     this.GetUpCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
@@ -181,25 +186,34 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData
+      GetterTypes.GetUpCashPostData,
+      'GetBankData',
+      'GetBankBranches'
     ]),
     // 非約定帳戶金融機構代碼
     bank_code_1: {
       get() {
-        console.log('this.GetUpCashPostData.AccountData', this.GetUpCashPostData.AccountData)
-        return this.GetUpCashPostData.AccountData[0].bank_code_1 || 0
+        return this.branchName
       },
       set(value) {
-        this.GetUpCashPostData.AccountData[0].bank_code_1 = value
+        let data = value.split('-')
+        this.FuncGetBankBranches(data[0])
+        this.GetUpCashPostData.AccountData[0].account = this.accountComputed
+        this.GetUpCashPostData.AccountData[0].bank_code_1 = data[0]
+        this.GetUpCashPostData.AccountData[0].bank_name_1 = data[1]
+        this.branchName = value
       }
     },
     // 非約定帳戶銀行帳號
     account: {
       get() {
-        return this.GetUpCashPostData.AccountData[0].account
+        return this.accountComputed
       },
       set(value) {
         this.GetUpCashPostData.AccountData[0].account = value
+        this.GetUpCashPostData.AccountData[0].bank_code_1 = this.branchName.split('-')[0]
+        this.GetUpCashPostData.AccountData[0].bank_name_1 = this.branchName.split('-')[1]
+        this.accountComputed = value
       }
     },
     /**
@@ -228,7 +242,6 @@ export default {
       },
       set(value) {
         this.GetUpCashPostData.method = value
-        console.log(this.GetUpCashPostData.method)
       }
     },
     /**
@@ -268,8 +281,8 @@ export default {
         } else if (this.GetUpCashPostData.modx_99_ind === 'N') {
           return 2
         }
-        this.GetUpCashPostData.modx_99_ind = 1
-        return this.GetUpCashPostData.modx_99_ind
+        this.GetUpCashPostData.modx_99_ind = 'Y'
+        return 1
       },
       set(value) {
         // 分期繳付:2 不定期繳:1
@@ -308,6 +321,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'FuncGetBank',
+      'FuncGetBankBranches'
+    ]),
     OnUntimed(value) {
       // 分期繳付:2 不定期繳:1
       /**
@@ -361,10 +378,12 @@ export default {
         this.GetUpCashPostData.Renewed_Prefer = true
         this.GetUpCashPostData.AccountData[0] = {}
       } else { // 非約定帳戶
-        this.GetUpCashPostData.AccountData[0].account_type = 'Z'
-        this.GetUpCashPostData.AccountData[0].account = '1021500062896'
-        this.GetUpCashPostData.AccountData[0].bank_code_1 = '103'
-        this.GetUpCashPostData.AccountData[0].bank_name_1 = '新光銀行'
+        this.GetUpCashPostData.AccountData[0] = {
+          account_type: 'Z',
+          account: '',
+          bank_code_1: '',
+          bank_name_1: ''
+        }
         this.isEdda = false
       }
     }

@@ -32,7 +32,7 @@
         <div class="col-sm-12">
           <select name="face_amt" id="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
             <option value="0" selected="selected">請選擇</option>
-            <option value="450" selected="selected">450萬</option>
+            <option value="450">450萬</option>
             <option value="440">440萬</option>
             <option value="430">430萬</option>
             <option value="420">420萬</option>
@@ -123,7 +123,10 @@ export default {
      */
     po_issue_date: {
       get() {
-        return this.GetIGoingPostData.po_issue_date || moment().add(`1`, 'days').format(`YYYY-MM-DD`)
+        if (this.GetIGoingPostData.po_issue_date === null || this.GetIGoingPostData.po_issue_date === undefined || this.GetIGoingPostData.po_issue_date === '') {
+          this.GetIGoingPostData.po_issue_date = moment().add(`1`, 'days').format(`YYYY-MM-DD`)
+        }
+        return this.GetIGoingPostData.po_issue_date
       },
       set(value) {
         this.GetIGoingPostData.po_issue_date = value
@@ -137,7 +140,7 @@ export default {
      */
     face_amt: {
       get() {
-        return this.GetIGoingPostData.face_amt || 450
+        return this.GetIGoingPostData.face_amt > 450 ? 450 : this.GetIGoingPostData.face_amt
       },
       set(value) {
         this.GetIGoingPostData.face_amt = value

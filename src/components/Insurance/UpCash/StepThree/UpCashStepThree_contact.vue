@@ -51,9 +51,9 @@
               </select>
               <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road2" />
             </div>
+            <div :class="{checkbox: true, checked: !GetContactCheckBox}" @click="OnRegisterAddr('cbNewAddr')"></div>
           </template>
         </div>
-        <div :class="{checkbox: true, checked: !GetContactCheckBox}" @click="OnRegisterAddr('cbNewAddr')"></div>
       </div>
       <div class="col-sm-12">
         <div class="insure-tips">

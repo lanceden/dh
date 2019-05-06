@@ -35,8 +35,8 @@
         <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
         <div class="col-sm-12">
           <input type="text" class="form-control insure-input" id="txtOldAddress2" :value="GetIGoingPostData.address2" disabled="disabled">
+          <div :class="{checkbox: true, checked: true}" id="divOldAddress2" @click="OnRegisterAddr('old')"></div>
         </div>
-        <div :class="{checkbox: true, checked: true}" id="divOldAddress2" @click="OnRegisterAddr('old')"></div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">輸入新的戶籍地址</label>
@@ -53,9 +53,9 @@
               </select>
               <input type="text" class="form-control insure-input-block" id="txtNewAddress2" placeholder="為保障您的權益，此欄位不可為空白" v-model="road2" />
             </div>
+            <div :class="{checkbox: true, checked: false}" id="divNewAddress2" @click="OnRegisterAddr('new')"></div>
           </template>
         </div>
-        <div :class="{checkbox: true, checked: false}" id="divNewAddress2" @click="OnRegisterAddr('new')"></div>
       </div>
 
       <div class="col-sm-12">

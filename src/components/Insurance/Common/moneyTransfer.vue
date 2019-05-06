@@ -58,13 +58,10 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { banks } from './mockBanksData'
-import { BankBranches } from './mockBankBranchsData'
+
 export default {
   data() {
     return {
-      mockBanks: [],
-      mockBankBranches: [],
       bankCode: 0,
       branchCode: 0,
       branchName: '',
@@ -75,8 +72,6 @@ export default {
     'stateData'
   ],
   created() {
-    this.mockBanks = banks.Data.Result
-    this.mockBankBranches = BankBranches.Data.Result
     this.FuncGetBank()
   },
   computed: {

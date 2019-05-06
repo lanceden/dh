@@ -99,19 +99,21 @@ import Url from '../../../utils/constUrl.js'
 const URL = Url.UpCashSimpleEstimate
 export default {
   mounted() {
+    let self = this
     // 一進來頁面就計算
-    this.Compute()
+    self.Compute()
     // 繳法別
     $('#payMode').on('change', () => {
-      var word = $(this).val() === '1' ? '一次' : '一年'
+      var value = $('#payMode').val()
+      var word = $('#payMode').val() === '1' ? '一次' : '一年'
       $('#span_payMode').text(word)
-      if (this.value === '1') {
+      if (value === '1') {
         $('#insurePay').val('10')
-      } else if (this.value === '2') {
+      } else if (value === '2') {
         $('#insurePay').val('5')
       }
       $('#insurePay').trigger('change')
-      this.Compute()
+      self.Compute()
     })
 
     // 投保金額
@@ -125,11 +127,11 @@ export default {
       } else {
         this.UpdateInsurePayList(66)
       }
-      this.Compute()
+      self.Compute()
     })
 
     // 保單年度未
-    $('#insureYear').on('change', () => this.Compute())
+    $('#insureYear').on('change', () => self.Compute())
 
     // 試算詳細頁
     $('#CountUpCashDetails').on('click', () => {

@@ -87,13 +87,12 @@ export default {
       GetterTypes.GetMyWayPostData
     ]),
     /**
-     * 第一期保險費
+     * 投保額度
      */
     face_amt: {
       get() {
-        let result = InitColumnData(this.GetMyWayPostData.face_amt, 220)
-        this.GetMyWayPostData.face_amt = result
-        return result
+        this.GetMyWayPostData.face_amt = InitColumnData(this.GetMyWayPostData.face_amt, 220)
+        return this.GetAccidentPostData.face_amt > 220 ? 220 : this.GetAccidentPostData.face_amt
       },
       set(value) {
         this.GetMyWayPostData.mode_prem = 0

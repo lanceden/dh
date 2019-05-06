@@ -309,9 +309,9 @@ export default {
   },
   created() {
     if (!this.GetMyWayIsInit) {
-      this.GetMyWayPostData.QusAns = [{ Answar: true }, { Answar: false }, { Answar: false },
-        { Answar: false }, { Answar: false }, { Answar: false },
-        { Answar: false }, { Answar: false }, { Answar: false }
+      this.GetMyWayPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
+        { Answar: '0' }, { Answar: '0' }, { Answar: '0' },
+        { Answar: '0' }, { Answar: false }, { Answar: false }
       ]
       this.FuncGetJob()
       this.FuncGetOccupation({

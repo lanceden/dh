@@ -42,9 +42,20 @@ import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.
 export default {
   data() {
     return {
-      visit_time1: true,
+      visit_time1: false,
       visit_time2: false,
       visit_time3: false
+    }
+  },
+  created() {
+    if (this.GetMyWayPostData.visit_time1 !== '') {
+      this.visit_time1 = this.GetMyWayPostData.visit_time1 === '1'
+    }
+    if (this.GetMyWayPostData.visit_time2 !== '') {
+      this.visit_time2 = this.GetMyWayPostData.visit_time2 === '1'
+    }
+    if (this.GetMyWayPostData.visit_time3 !== '') {
+      this.visit_time3 = this.GetMyWayPostData.visit_time3 === '1'
     }
   },
   computed: {

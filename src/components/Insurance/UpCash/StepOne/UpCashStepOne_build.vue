@@ -20,15 +20,15 @@ import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringPa
 import { data } from './UpCashInitMockData'
 export default {
   created() {
-    this.$store.state.UpCash.POSTDATA = data.Data.Result
-    this.$store.state.PLANNAME = 'UPCASH'
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetUpCashIsInit) {
+      this.$store.state.UpCash.POSTDATA = data.Data.Result
+      this.$store.state.PLANNAME = 'UPCASH'
+      const tokenArr = getQueryStringParameterByKey('token').split(' ')
+      let token = ''
+      tokenArr.forEach(item => {
+        token += `+${item}`
+      })
+      this.SetApiToken({ token: token.replace('+', '') })
       this.FuncUpCashInit()
       this.$store.state.PLANNAME = 'UPCASH'
     }
