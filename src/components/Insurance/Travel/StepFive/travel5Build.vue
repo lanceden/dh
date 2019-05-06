@@ -12,7 +12,6 @@
 import { mapGetters } from 'vuex'
 import TravelFive from './travel5'
 import TravelFiveFooter from './travel5Footer'
-import { data } from './mockData.js'
 export default {
   computed: {
     ...mapGetters([

@@ -63,6 +63,10 @@ import TravelSeven from '../components/Insurance/Travel/travel7'
 import TravelEight from '../components/Insurance/Travel/travel8'
 import TravelInsuredData from '../components/Insurance/Travel/InsuredData/travel10.vue'
 
+import UpcashSimpleEstimate from '../components/SimpleEstimate/Upcash/UpcashSimpleEstimate'
+import UpcashSimpleEstimateResult from '../components/SimpleEstimate/Upcash/UpcashSimpleEstimate-Result'
+import TravelSimpleEstimate from '../components/SimpleEstimate/Travel/TravelSimpleEstimate'
+
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
 import Otp from '../components/OTP/otp_build'
@@ -327,6 +331,18 @@ const router = new Router({
   {
     path: '/paymentcomplete',
     component: PaymentComplete
+  },
+  {
+    path: '/UpcashSimpleEstimate',
+    component: UpcashSimpleEstimate
+  },
+  {
+    path: '/UpCashSimpleEstimateResult',
+    component: UpcashSimpleEstimateResult
+  },
+  {
+    path: '/TravelSimpleEstimate',
+    component: TravelSimpleEstimate
   },
   {
     path: '*',

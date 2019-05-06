@@ -243,6 +243,17 @@ const TravelSubmitQuote = `${Domain}/Travel/SubmitQuote`
  */
 const TravelSubmitOrder = `${Domain}/Travel/SubmitOrder`
 
+/**
+ * UpCash 簡易試算
+ */
+const UpCashSimpleEstimate = `${Domain}/UpCash/SimpleEstimate`
+/**
+ * UpCash 簡易試算詳
+ */
+const UpCashSimpleEstimateDetails = `${Domain}/UpCash/SimpleEstimateDetails`
+
+const TravelSimpleEstimate = `${Domain}/Travel/SimpleEstimate`
+
 export default {
   Domain,
   Job,
@@ -301,5 +312,8 @@ export default {
   EntTravelInit,
   EntTravelEstimate,
   EntTravelSubmitQuote,
-  EntTravelSubmitOrder
+  EntTravelSubmitOrder,
+  UpCashSimpleEstimate,
+  UpCashSimpleEstimateDetails,
+  TravelSimpleEstimate
 }

@@ -1,0 +1,271 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=640, target-densitydpi=device-dpi, maximum-scale=2.0, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no">
+    <title>新光人壽</title>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link rel="stylesheet" href="../../content/2019app/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../content/2019app/reset.css" type="text/css" />
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="../../content/2019app/docs.theme.min.css">
+    <link rel="stylesheet" href="../../content/2019app/all.css">
+    <link rel="stylesheet" href="../../content/2019app/customes.css" type="text/css" />
+    <link rel="stylesheet" type="../../content/2019app/css" href="../../content/2019app/fontawesome.min.css">
+    <script src="../../scripts/2019app/jquery.min.js"></script>
+    <style>
+        input[type="tel"].data-input {
+            color: #fa6400;
+        }
+
+        input[type=radio] {
+            display: none;
+        }
+
+        .radio-group {
+            height: 45px;
+        }
+
+            .radio-group .insure-check-content {
+                margin: auto;
+                margin-left: 20px;
+            }
+
+        .NoCheck {
+            background: url(../../images/2019app/oval.png);
+            background-size: 37px auto;
+            background-position: center;
+            background-repeat: no-repeat
+        }
+
+        .Check {
+            background: url(../../images/2019app/oval-ed.png);
+            background-size: 37px auto;
+            background-position: center;
+            background-repeat: no-repeat
+        }
+
+        select {
+            background-image: url(../../images/2019app/down-arrow.png);
+            -webkit-appearance: none;
+            outline: none !important;
+            box-shadow: 0 0 0 0 #fff;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="banner-img">
+            <img src="../../images/2019app/banner_upcash.jpg" alt="">
+        </div>
+        <div class="bg-radius">
+            <div class="top">
+                <div class="top-title">
+                    <img src="../../images/2019app/calculator.png" alt="">
+                    保費試算
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="top-tips">
+                若您為新光人壽之保戶，請先登入以利享有更多保額優惠喔！
+            </div>
+            <div class="form-bottom">
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label">您的性別是?</label>
+                    <div class="border-bottom-line col-sm-12"></div>
+                    <div class="top col-sm-12">
+                        <div class="insure-notice-box radio-group">
+                            <input id="input1" name="inputSex" type="radio" value="2" class="radio-circle" checked>
+                            <div class="insure-check radio-item NoCheck"></div>
+                            <div class="insure-check-content">
+                                <label for="input1" class="radio-label" data-val="2" data-group="inputSex">女</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom-line col-sm-12"></div>
+                    <div class="top col-sm-12">
+                        <div class="insure-notice-box radio-group">
+                            <input id="input2" name="inputSex" type="radio" value="1" class="radio-circle">
+                            <div class="insure-check radio-item NoCheck"></div>
+                            <div class="insure-check-content">
+                                <label for="input2" class="radio-label" data-val="1" data-group="inputSex">男</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label">您的生日是?</label>
+                    <div class="col-sm-3 insure-select-align">
+                        <select class="form-control data-input insure-select insure-input-block-edit" id="inputyear" name="inputyear">
+                            <option value="1999">1999</option>
+                            <option value="1998">1998</option>
+                            <option value="1997">1997</option>
+                            <option value="1996">1996</option>
+                            <option value="1995">1995</option>
+                            <option value="1994">1994</option>
+                            <option value="1993">1993</option>
+                            <option value="1992">1992</option>
+                            <option value="1991">1991</option>
+                            <option value="1990">1990</option>
+                            <option value="1989">1989</option>
+                            <option value="1988">1988</option>
+                            <option value="1987">1987</option>
+                            <option value="1986">1986</option>
+                            <option value="1985">1985</option>
+                            <option value="1984">1984</option>
+                            <option value="1983">1983</option>
+                            <option value="1982">1982</option>
+                            <option value="1981">1981</option>
+                            <option value="1980">1980</option>
+                            <option value="1979">1979</option>
+                        </select>年
+                    </div>
+                    <div class="col-sm-3 insure-select-align">
+                        <select id="inputMonth" name="inputMonth" class="form-control data-input insure-select insure-input-block-edit">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>月
+                    </div>
+                    <div class="col-sm-3 insure-select-align">
+                        <select id="inputDay" name="inputDay" class="form-control data-input insure-select insure-input-block-edit" required></select>日
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-12 col-form-label">您希望擁有多少保障?</label>
+                <div class="col-sm-12">
+                    <select class="form-control data-input" id="insurePay" name="insurePay">
+                        <option value="">請選擇</option>
+                    </select>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="bg-money">
+                <div class="col-sm-12">
+                    <div class="font-label">您所需支付的保費為</div>
+                    <div id="PayNum" class="font-money"> NT$ 0</div>
+                    <div class="money-icon"><img src="../../images/2019app/coins.png" alt=""></div>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="text-description">
+                <img src="../../images/2019app/loudspeaker.png" alt="">
+                首次登入》肯德基6折優惠券
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <nav class="navbar navbar-dark row">
+                <div class="col-sm-12 footer-title footer-right">立即投保</div>
+            </nav>
+        </div>
+    </div>
+    <script src="../../scripts/2019app/bootstrap.bundle.min.js"></script>
+    <script src="../../scripts/2019app/popper.min.js"></script>
+    <script src="../../scripts/2019app/bootstrap.min.js"></script>
+    <script src="../../scripts/2019NewInsure/2019NewInsureJS.js"></script>
+    <script src="../../scripts/2019app/estimation.js"></script>
+
+    <script>
+        function faceamtList() {
+            var Pdata = {
+                "PLAN_Code_1": "KAA01",
+                "Verified": "Y"
+            };
+            $.ajax({
+                url: 'https://test-online.skl.com.tw/InsuranceWebApi//Query/Premiums',
+                type: 'POST',
+                data: Pdata,
+                success: function (rep) {
+                    if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined && rep.Data.Result.length > 0) {
+                        var premList = rep.Data.Result[0].Prem_List.split(',');
+                        var option = "";
+                        for (var i = 0; i < premList.length; i++) {
+                            option += "<option value='" + premList[i] + "'>" + premList[i] + "萬</option>";
+                        }
+                        $("#insurePay").empty();
+                        $("#insurePay").html(option);
+                        Compute();
+                    }
+                    else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
+                        alert(rep.Data.Message);
+                        return;
+                    }
+                    else {
+                        alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
+                    }
+                }
+            });
+        }
+
+        //試算
+        function Compute() {
+            var sex = $("input[name='inputSex']:checked").val();
+            var BYear = $('#inputyear').val();
+            var BMonth = $('#inputMonth').val();
+            var BDay = $('#inputDay').val();
+            var faceamt = $("#insurePay").val();
+
+            if (sex == '' || BYear == '' || BMonth == '' || BDay == '' || faceamt == '')
+                return;
+
+            var Edata = {
+                "InsurerSourceID": "InsuranceWeb",
+                "CoreData": {
+                    "client_rate_sex": sex,
+                    "client_birth": BYear + "-" + BMonth + "-" + BDay,
+                    "face_amt": faceamt
+                }
+            };
+
+            $.ajax({
+                url: 'https://test-online.skl.com.tw/InsuranceWebApi//Health/SimpleEstimate',
+                type: 'POST',
+                data: Edata,
+                success: function (rep) {
+                    if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined) {
+                        $("#PayNum").html("NT$" + rep.Data.Result.mode_prem.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                    }
+                    else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
+                        alert(rep.Data.Message);
+                        return;
+                    }
+                    else {
+                        alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            faceamtList();
+            Compute();
+
+            //保單年度未
+            $('#insurePay, #inputyear, #inputMonth, #inputDay, input[name="inputSex"]').on('change', function () {
+                Compute();
+            });
+        });
+    </script>
+</body>
+</html>
