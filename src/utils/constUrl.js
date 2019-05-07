@@ -61,6 +61,10 @@ const Premiums = `${Domain}/Query/Premiums`
  */
 const GetAccountData = `${Domain}/Account/GetAccountData`
 /**
+ * 險種的保額表 (驗證與未驗證)
+ */
+const InsCoverageSelectListItem = `${Domain}/Query/InsCoverageSelectListItem`
+/**
  * 發送OTP
  */
 const SendOTP = `${Domain}/OTP/Send`
@@ -270,6 +274,7 @@ export default {
   EACHAccount,
   Premiums,
   GetAccountData,
+  InsCoverageSelectListItem,
   SendOTP,
   CheckOTP,
   UpCashInit,

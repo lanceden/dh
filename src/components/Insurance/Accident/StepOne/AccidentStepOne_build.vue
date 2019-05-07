@@ -14,20 +14,13 @@ import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetter
 import StepOneCustomer from './AccidentStepOne_customer'
 import StepOneAbout from './AccidentStepOne_about'
 import StepOneFooter from './AccidentStepOne_footer'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+
 export default {
   created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetAccidentIsInit) {
       this.FuncAccidentInit()
       this.$store.state.PLANNAME = 'ACCIDENT'
     }
-    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
@@ -42,7 +35,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
+      'FuncGetAccountData',
       FunctionTypes.FuncAccidentInit
     ])
   }

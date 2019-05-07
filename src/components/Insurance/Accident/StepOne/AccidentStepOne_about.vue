@@ -17,8 +17,8 @@
         <label for="" class="col-sm-12 col-form-label insure-label">您的職業類別</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-block-edit" id="client_occupation_class" v-model="client_occupation_class_computed" name="client_occupation_class">
-            <option value="0">請選擇</option>
-            <option selected="selected" value="1">第一類 內勤行政文書相關</option>
+            <option selected="selected" value="0">請選擇</option>
+            <option value="1">第一類 內勤行政文書相關</option>
             <option value="2">第二類 外勤業務相關</option>
           </select>
         </div>
@@ -100,9 +100,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
-import { mapGetters } from 'vuex'
+
 export default {
   created() {
     this.GetAccidentPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
@@ -132,7 +133,7 @@ export default {
     // 職業類別
     client_occupation_class_computed: {
       get() {
-        this.this.GetAccidentPostData.client_occupation_class = InitColumnData(this.GetAccidentPostData.client_occupation_class, 0)
+        this.GetAccidentPostData.client_occupation_class = InitColumnData(this.GetAccidentPostData.client_occupation_class, 0)
         return this.GetAccidentPostData.client_occupation_class
       },
       set(value) {

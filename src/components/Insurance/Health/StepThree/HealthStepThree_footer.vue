@@ -22,16 +22,12 @@ export default {
   },
   methods: {
     GoPrev() {
-      this.$router.push('Health-2')
+      this.$router.go(-1)
     },
     GoNext() {
       // 戶籍地址-輸入新的戶籍地址
       if ($('#txtNewAddress2').val() !== '') {
         this.GetHealthPostData.address2 = $('#txtNewAddress2').val()
-        this.GetHealthPostData.zip2 = '234'
-        this.GetHealthPostData.city2 = '新北市'
-        this.GetHealthPostData.district2 = '永和區'
-        this.GetHealthPostData.road2 = '安和里12鄰水源街19號'
       }
       // 要保人匯款帳戶驗證
       if(this.GetHealthPostData.Applicant_BankCode === '' || this.GetHealthPostData.Applicant_BankCode === undefined) {

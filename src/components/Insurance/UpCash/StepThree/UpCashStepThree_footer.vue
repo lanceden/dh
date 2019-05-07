@@ -13,7 +13,7 @@
 export default {
   methods: {
     GoPrev() {
-      this.$router.push('upcash-2')
+      this.$router.go(-1)
     },
     GoNext() {
       this.$router.push('/benf?instypename=upcash')

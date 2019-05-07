@@ -15,7 +15,7 @@ export default {
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.$router.push('/benf')
+      this.$router.push(-1)
     },
     /**
      * 前往填寫聯絡資料

@@ -22,16 +22,12 @@ export default {
   },
   methods: {
     GoPrev() {
-      this.$router.push('MyWay-2')
+      this.$router.go(-1)
     },
     GoNext() {
       // 戶籍地址-輸入新的戶籍地址
       if ($('#txtNewAddress2').val() !== '') {
         this.GetMyWayPostData.address2 = $('#txtNewAddress2').val()
-        this.GetMyWayPostData.zip2 = '234'
-        this.GetMyWayPostData.city2 = '新北市'
-        this.GetMyWayPostData.district2 = '永和區'
-        this.GetMyWayPostData.road2 = '安和里12鄰水源街19號'
       }
       // 要保人匯款帳戶驗證
       if(this.GetMyWayPostData.Applicant_BankCode === '' || this.GetMyWayPostData.Applicant_BankCode === undefined) {

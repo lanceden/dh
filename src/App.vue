@@ -13,9 +13,22 @@
 <script>
 import Header from './components/header'
 import { mapActions } from 'vuex'
+import { getQueryStringParameterByKey } from '../src/utils/getQueryStringParameterByKey.js'
+
 export default {
   components: { Header },
   created() {
+    // 判斷當前url中是否有token
+    let result = getQueryStringParameterByKey('token')
+    if (result !== null) {
+      const tokenArr = result.split(' ')
+      let token = ''
+      tokenArr.forEach(item => {
+        token += `+${item}`
+      })
+      this.SetApiToken({ token: token.replace('+', '') })
+      this.FuncGetAccountData()
+    }
     this.SetHttp({ http: this.$http })
   },
   methods: {

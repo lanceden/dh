@@ -35,7 +35,6 @@
 import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes'
 import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 export default {
   data() {
@@ -44,14 +43,6 @@ export default {
       isDisAgree: false
     }
   },
-  created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
-  },
   computed: {
     ...mapGetters([
       GetterTypes.GetICanElecFormIsRed
@@ -59,7 +50,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
       FunctionTypes.FuncICanElecFormIsRead
     ]),
     GotoNext() {

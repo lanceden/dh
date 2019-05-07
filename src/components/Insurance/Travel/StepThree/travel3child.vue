@@ -100,7 +100,6 @@ export default {
   },
   created() {
     // 取回保額
-    // this.FuncGetPremiums()
     console.log(this.index)
     this.baoer = data.Data.Result
     this.silData = silData.Data.Result
@@ -119,11 +118,11 @@ export default {
         // 變更值後傷害醫療及海外突發疾病下拉框需一起改變值
         let maxIndex = value.toString().substring(0, 1)
         this.silDataChild = []
-        for (let index = maxIndex; maxIndex >= 0; maxIndex--) {
-          if (maxIndex !== 0) {
+        for (let index = maxIndex; index >= 0; index--) {
+          if (index !== 0) {
             this.silDataChild.push({
-              Text: `${maxIndex}0萬`,
-              Value: `${maxIndex}0`
+              Text: `${index}0萬`,
+              Value: `${index}0`
             })
           } else {
             this.silDataChild.push({

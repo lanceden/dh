@@ -14,6 +14,7 @@ import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes'
 import StepOneCustomer from './ICanStepOne_customer'
 import StepOneAbout from './ICanStepOne_about'
 import StepOneFooter from './ICanStepOne_footer'
+
 export default {
   created() {
     if (!this.GetICanIsInit) {

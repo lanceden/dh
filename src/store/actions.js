@@ -92,21 +92,22 @@ export default {
     })
   },
   /**
-   * 取回各商品不同身份別保額
-   * @param {當前Vuex狀態} commit VuexStoreState
-   */
-  async FuncGetPremiums({ commit }) {
-    await rootState.Http.axios.post(`${Url.Premiums}`).then(response => {
-      commit('FuncGetBeneficiary', { result: response.data })
-    })
-  },
-  /**
    * 取回保戶帳號資料
    * @param {當前Vuex狀態} commit VuexStoreState
    */
   async FuncGetAccountData({ commit }) {
     await rootState.Http.axios.post(`${Url.GetAccountData}`).then(response => {
       commit('FuncGetAccountData', { result: response.data })
+    })
+  },
+  /**
+   * 險種的保額表 (驗證與未驗證)
+   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {object} parpa 請求參數
+   */
+  async FuncGetPremiums({ commit }, parpa) {
+    await rootState.Http.axios.post(`${Url.Premiums}`, parpa).then(response => {
+      commit('FuncGetPremiums', { result: response.data })
     })
   },
   /**

@@ -16,15 +16,9 @@ import StepOneCustomer from './EZCashStepOne_customer'
 import StepOneAbout from './EZCashStepOne_about'
 import StepOneFatca from './EZCashStepOne_fatca'
 import StepOneFooter from './EZCashStepOne_footer'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+
 export default {
   created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetEZCashIsInit) {
       this.FuncEZCashInit()
       this.$store.state.PLANNAME = 'EZCASH'
@@ -45,7 +39,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
       FunctionTypes.FuncEZCashInit
     ])
   }

@@ -26,7 +26,7 @@ export default {
      */
     GoPrev() {
       this.SetHeaderIsActive(false)
-      this.$router.push('IWell-1')
+      this.$router.go(-1)
     },
     /**
      * 前往填寫聯絡資料

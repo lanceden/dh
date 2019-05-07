@@ -3,7 +3,7 @@
     <loading v-show="GetLoading" />
     <BenfSetup :stateData="stateData"></BenfSetup>
     <BenfOne :stateData="stateData"></BenfOne>
-    <BenfOneAccount></BenfOneAccount>
+    <BenfOneAccount :stateData="stateData"></BenfOneAccount>
     <BenfTwo></BenfTwo>
     <BenfTwoAccount></BenfTwoAccount>
     <BenfThree></BenfThree>

@@ -29,28 +29,9 @@
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
         <div class="col-sm-12">
-          <select name="face_amt" id="face_amt" class="form-control data-input insure-select insure-input-edit" v-model="face_amt">
-            <option value="220" selected="selected">220萬</option>
-            <option value="210">210萬</option>
-            <option value="200">200萬</option>
-            <option value="190">190萬</option>
-            <option value="180">180萬</option>
-            <option value="170">170萬</option>
-            <option value="160">160萬</option>
-            <option value="150">150萬</option>
-            <option value="140">140萬</option>
-            <option value="130">130萬</option>
-            <option value="120">120萬</option>
-            <option value="110">110萬</option>
-            <option value="100">100萬</option>
-            <option value="90">90萬</option>
-            <option value="80">80萬</option>
-            <option value="70">70萬</option>
-            <option value="60">60萬</option>
-            <option value="50">50萬</option>
-            <option value="40">40萬</option>
-            <option value="30">30萬</option>
-            <option value="20">20萬</option>
+          <select id="face_amt" name="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in this.GetPremiums" :key="index" :value="item.Value">{{item.Text}}</option>
           </select>
         </div>
       </div>
@@ -67,10 +48,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
 import moment from 'moment'
 import { InitColumnData } from '../../../../utils/initColumnData'
+
+const PLANCODE = `20530`
 export default {
   data() {
     return {
@@ -79,11 +62,18 @@ export default {
     }
   },
   created() {
+    // 取回保額下拉框
+    this.FuncGetPremiums({
+      IsVerified: this.GetAccountData.JoinSource !== '3',
+      PlanCode: PLANCODE
+    })
     this.GetMyWayPostData.po_issue_date = moment().format('YYYY-MM-DD')
     this.GetMyWayPostData.AuthorizedRep = false
   },
   computed: {
     ...mapGetters([
+      'GetAccountData',
+      'GetPremiums',
       GetterTypes.GetMyWayPostData
     ]),
     /**
@@ -99,6 +89,11 @@ export default {
         this.GetMyWayPostData.face_amt = value
       }
     }
+  },
+  methods: {
+    ...mapActions([
+      'FuncGetPremiums'
+    ])
   }
 }
 

@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <AgreementCheck></AgreementCheck>
-    <AgreementContent v-for="n in provisionCount" :key="n" :provisionindex="n - 1" :provisionname="GetProvision[n-1]"></AgreementContent>
+    <AgreementContent v-for="n in provisionCount" :key="n" :provisionindex="n - 1" :provisionname="GetProvision[n-1]" stagger="100"></AgreementContent>
     <AgreementFooter :insname="instypename"></AgreementFooter>
   </div>
 </template>

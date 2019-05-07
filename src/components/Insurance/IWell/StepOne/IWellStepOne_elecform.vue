@@ -35,7 +35,6 @@
 import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import FunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes.js'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 
 export default {
@@ -45,14 +44,6 @@ export default {
       isDisAgree: false
     }
   },
-  created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
-  },
   computed: {
     ...mapGetters([
       GetterTypes.GetIWellElecFormIsRed
@@ -60,7 +51,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
       FunctionTypes.FuncIWellElecFormIsRead
     ]),
     GotoNext() {

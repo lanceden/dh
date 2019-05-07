@@ -65,7 +65,7 @@ import TravelInsuredData from '../components/Insurance/Travel/InsuredData/travel
 
 import UpcashSimpleEstimate from '../components/SimpleEstimate/Upcash/UpcashSimpleEstimate'
 import UpcashSimpleEstimateResult from '../components/SimpleEstimate/Upcash/UpcashSimpleEstimate-Result'
-import TravelSimpleEstimate from '../components/SimpleEstimate/Travel/TravelSimpleEstimate'
+// import TravelSimpleEstimate from '../components/SimpleEstimate/Travel/TravelSimpleEstimate'
 
 import Agreement from '../components/Agreement/agreement_build'
 import Benfbuild from '../components/Benf/benfbuild'
@@ -340,10 +340,10 @@ const router = new Router({
     path: '/UpCashSimpleEstimateResult',
     component: UpcashSimpleEstimateResult
   },
-  {
-    path: '/TravelSimpleEstimate',
-    component: TravelSimpleEstimate
-  },
+  // {
+  //   path: '/TravelSimpleEstimate',
+  //   component: TravelSimpleEstimate
+  // },
   {
     path: '*',
     component: MyError,

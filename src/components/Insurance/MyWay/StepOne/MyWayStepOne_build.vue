@@ -14,20 +14,13 @@ import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.
 import StepOneCustomer from './MyWayStepOne_customer'
 import StepOneAbout from './MyWayStepOne_about'
 import StepOneFooter from './MyWayStepOne_footer'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+
 export default {
   created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetMyWayIsInit) {
       this.FuncMyWayInit()
       this.$store.state.PLANNAME = 'MYWAY'
     }
-    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
@@ -42,7 +35,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
       FunctionTypes.FuncMyWayInit
     ])
   }

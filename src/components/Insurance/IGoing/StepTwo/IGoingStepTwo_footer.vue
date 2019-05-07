@@ -26,7 +26,7 @@ export default {
      */
     GoPrev() {
       this.SetHeaderIsActive(false)
-      this.$router.push('IGoing-1')
+      this.$router.og(-1)
     },
     /**
      * 下一頁

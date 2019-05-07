@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     GoPrev() {
-      this.$router.push('ICan-2')
+      this.$router.go(-1)
     },
     GoNext() {
       // 戶籍地址-輸入新的戶籍地址

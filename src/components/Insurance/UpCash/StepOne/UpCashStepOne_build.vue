@@ -16,23 +16,13 @@ import StepOneCustomer from './UpCashStepOne_customer'
 import StepOneAbout from './UpCashStepOne_about'
 import StepOneFatca from './UpCashStepOne_fatca'
 import StepOneFooter from './UpCashStepOne_footer'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
-import { data } from './UpCashInitMockData'
+
 export default {
   created() {
     if (!this.GetUpCashIsInit) {
-      this.$store.state.UpCash.POSTDATA = data.Data.Result
-      this.$store.state.PLANNAME = 'UPCASH'
-      const tokenArr = getQueryStringParameterByKey('token').split(' ')
-      let token = ''
-      tokenArr.forEach(item => {
-        token += `+${item}`
-      })
-      this.SetApiToken({ token: token.replace('+', '') })
       this.FuncUpCashInit()
       this.$store.state.PLANNAME = 'UPCASH'
     }
-    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
@@ -48,7 +38,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
       FunctionTypes.FuncUpCashInit
     ])
   }

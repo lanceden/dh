@@ -109,7 +109,7 @@ export default {
     // 輸入新的寄送地址-縣市
     city3: {
       get() {
-        return this.GetUpCashPostData.city3
+        return this.GetUpCashPostData.city3 || '0'
       },
       set(value) {
         this.GetUpCashPostData.city3 = value

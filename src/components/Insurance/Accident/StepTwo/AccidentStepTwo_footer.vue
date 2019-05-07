@@ -26,7 +26,7 @@ export default {
      */
     GoPrev() {
       this.SetHeaderIsActive(false)
-      this.$router.push('Accident-1')
+      this.$router.go(-1)
     },
     /**
      * 下一頁

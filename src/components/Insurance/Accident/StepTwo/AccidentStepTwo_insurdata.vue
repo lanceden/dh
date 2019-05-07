@@ -32,47 +32,7 @@
         <div class="col-sm-12">
           <select name="face_amt" id="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
             <option value="0" selected="selected">請選擇</option>
-            <option value="450">450萬</option>
-            <option value="440">440萬</option>
-            <option value="430">430萬</option>
-            <option value="420">420萬</option>
-            <option value="410">410萬</option>
-            <option value="400">400萬</option>
-            <option value="390">390萬</option>
-            <option value="380">380萬</option>
-            <option value="370">370萬</option>
-            <option value="360">360萬</option>
-            <option value="350">350萬</option>
-            <option value="340">340萬</option>
-            <option value="330">330萬</option>
-            <option value="320">320萬</option>
-            <option value="310">310萬</option>
-            <option value="300">300萬</option>
-            <option value="290">290萬</option>
-            <option value="280">280萬</option>
-            <option value="270">270萬</option>
-            <option value="260">260萬</option>
-            <option value="250">250萬</option>
-            <option value="240">240萬</option>
-            <option value="230">230萬</option>
-            <option value="220">220萬</option>
-            <option value="210">210萬</option>
-            <option value="200">200萬</option>
-            <option value="190">190萬</option>
-            <option value="180">180萬</option>
-            <option value="170">170萬</option>
-            <option value="160">160萬</option>
-            <option value="150">150萬</option>
-            <option value="140">140萬</option>
-            <option value="130">130萬</option>
-            <option value="120">120萬</option>
-            <option value="110">110萬</option>
-            <option value="100">100萬</option>
-            <option value="90">90萬</option>
-            <option value="80">80萬</option>
-            <option value="70">70萬</option>
-            <option value="60">60萬</option>
-            <option value="50">50萬</option>
+            <option v-for="(item, index) in this.GetPremiums" :key="index" :value="item.Value">{{item.Text}}</option>
           </select>
         </div>
       </div>
@@ -91,8 +51,10 @@
 <script>
 import $ from 'jquery'
 import moment from 'moment'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
+
+const PLANCODE = `20511`
 export default {
   data() {
     return {
@@ -100,6 +62,11 @@ export default {
     }
   },
   created() {
+    // 取回保額下拉框
+    this.FuncGetPremiums({
+      IsVerified: this.GetAccountData.JoinSource !== '3',
+      PlanCode: PLANCODE
+    })
     for (let i = 1; i <= 7; i++) {
       this.insDateArr.push({
         utc: moment().add(`${i}`, 'days').format(`YYYY-MM-DD`),
@@ -116,6 +83,8 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetAccountData',
+      'GetPremiums',
       GetterTypes.GetAccidentPostData
     ]),
     /**
@@ -140,7 +109,7 @@ export default {
      */
     face_amt: {
       get() {
-        return this.GetAccidentPostData.face_amt > 450 ? 450 : this.GetAccidentPostData.face_amt
+        return this.GetAccidentPostData.mode_prem === 0 ? this.GetPremiums[0] : this.GetAccidentPostData.face_amt
       },
       set(value) {
         this.GetAccidentPostData.face_amt = value
@@ -149,6 +118,11 @@ export default {
         $('#CalcAmtDesc2').html(this.GetAccidentPostData.face_amt)
       }
     }
+  },
+  methods: {
+    ...mapActions([
+      'FuncGetPremiums'
+    ])
   }
 }
 

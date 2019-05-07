@@ -12,16 +12,9 @@ import FunctionTypes from '../../../../store/modules/Travel/Types/TravelFunction
 import GetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
 import TravelOne from './travel1'
 import TravelOneFooter from './travel1Footer'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
 
 export default {
   created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetTravelIsInit) {
       // 初始化旅平險資料
       this.FuncTravelInit()
@@ -41,7 +34,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
       FunctionTypes.FuncTravelInit
     ])
   }

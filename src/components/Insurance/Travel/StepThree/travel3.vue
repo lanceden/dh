@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { data } from './mockBaoerData'
 import { silData } from './mockSupplCoverageSli'
 export default {
@@ -91,7 +92,6 @@ export default {
   },
   created() {
     // 取回保額
-    // this.FuncGetPremiums()
     console.log(this.index)
     this.baoer = data.Data.Result
     this.silData = silData.Data.Result
@@ -100,7 +100,7 @@ export default {
     // 被保險人(本人)：旅行平安保險
     PrimaryPolicyFaceAmtOne: {
       get() {
-        if(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt === null) {
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt === null) {
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = 800
         }
         return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt
@@ -110,11 +110,11 @@ export default {
         // 變更值後傷害醫療及海外突發疾病下拉框需一起改變值
         let maxIndex = value.toString().substring(0, 1)
         this.silData = []
-        for (let index = maxIndex; maxIndex >= 0; maxIndex--) {
-          if (maxIndex !== 0) {
+        for (let index = maxIndex; index >= 0; index--) {
+          if (index !== 0) {
             this.silData.push({
-              Text: `${maxIndex}0萬`,
-              Value: `${maxIndex}0`
+              Text: `${index}0萬`,
+              Value: `${index}0`
             })
           } else {
             this.silData.push({
@@ -133,7 +133,7 @@ export default {
     // 被保險人(本人)：傷害醫療
     SupplementPolicyFaceAmt: {
       get() {
-        if(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt === null) {
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt === null) {
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = 80
         }
         return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt
@@ -155,6 +155,11 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    ...mapActions([
+      'FuncGetInsCoverageSelectListItem'
+    ])
   }
 }
 

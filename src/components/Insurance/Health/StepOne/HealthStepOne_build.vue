@@ -14,20 +14,13 @@ import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterType
 import StepOneCustomer from './HealthStepOne_customer'
 import StepOneAbout from './HealthStepOne_about'
 import StepOneFooter from './HealthStepOne_footer'
-import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey.js'
+
 export default {
   created() {
-    const tokenArr = getQueryStringParameterByKey('token').split(' ')
-    let token = ''
-    tokenArr.forEach(item => {
-      token += `+${item}`
-    })
-    this.SetApiToken({ token: token.replace('+', '') })
     if (!this.GetHealthIsInit) {
       this.FuncHealthInit()
       this.$store.state.PLANNAME = 'HEALTH'
     }
-    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
@@ -42,7 +35,7 @@ export default {
   },
   methods: {
     ...mapActions([
-      'SetApiToken',
+      'FuncGetAccountData',
       FunctionTypes.FuncHealthInit
     ])
   }

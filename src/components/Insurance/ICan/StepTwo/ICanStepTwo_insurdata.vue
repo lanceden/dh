@@ -41,9 +41,8 @@
         <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
         <div class="col-sm-12">
           <select id="face_amt" name="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
-            <option value="400">400萬</option>
-            <option value="300">300萬</option>
-            <option value="200">200萬</option>
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in this.GetPremiums" :key="index" :value="item.Value">{{item.Text}}</option>
           </select>
         </div>
       </div>
@@ -77,11 +76,12 @@
 <script>
 import moment from 'moment'
 import $ from 'jquery'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
 
 const initFaceAmt = 400
+const PLANCODE = `20530`
 export default {
   data() {
     return {
@@ -105,6 +105,11 @@ export default {
     $('#matured_date').html(`天至 ${maturedDate}`)
   },
   created() {
+    // 取回保額下拉框
+    this.FuncGetPremiums({
+      IsVerified: this.GetAccountData.JoinSource !== '3',
+      PlanCode: PLANCODE
+    })
     for (let i = 1; i <= 7; i++) {
       this.insDateArr.push({
         utc: moment().add(`${i}`, 'days').format(`YYYY-MM-DD`),
@@ -114,6 +119,8 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetAccountData',
+      'GetPremiums',
       GetterTypes.GetICanPostData
     ]),
     /**
@@ -122,8 +129,7 @@ export default {
     po_issue_date: {
       get() {
         this.GetICanPostData.po_issue_date = InitColumnData(this.GetICanPostData.po_issue_date, moment().add(`1`, 'days').format(`YYYY-MM-DD`))
-        console.log(this.GetICanPostData.po_issue_date)
-        return moment(this.GetICanPostData.po_issue_date, 'YYYY-MM-DD')
+        return this.GetICanPostData.po_issue_date
       },
       set(value) {
         this.GetICanPostData.po_issue_date = value
@@ -176,7 +182,11 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    ...mapActions([
+      'FuncGetPremiums'
+    ])
+  }
 }
 
 </script>
