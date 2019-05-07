@@ -4,7 +4,7 @@
     <div class="col-sm-12">
       <select id="face_amt" name="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
         <option value="0" selected="selected">請選擇</option>
-        <option v-for="(item, index) in GetPremiums.Prem_List.split(',')" :key="index" :value="item">{{item}} 萬</option>
+        <option v-for="(item, index) in GetPremiumsProp" :key="index" :value="item">{{item}} 萬</option>
       </select>
     </div>
   </div>
@@ -27,7 +27,13 @@ export default {
     ...mapGetters([
       'GetPremiums',
       'GetAccountData'
-    ])
+    ]),
+    GetPremiumsProp: {
+      get() {
+        if (this.GetPremiums.length === 0) return []
+        return this.GetPremiums[0].Prem_List.split(',')
+      }
+    }
   },
   methods: {
     ...mapActions([

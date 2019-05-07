@@ -27,13 +27,15 @@ export default {
         token += `+${item}`
       })
       this.SetApiToken({ token: token.replace('+', '') })
-      this.FuncGetAccountData()
     }
     this.SetHttp({ http: this.$http })
+    this.FuncGetAccountData()
   },
   methods: {
     ...mapActions([
-      'SetHttp'
+      'SetHttp',
+      'SetApiToken',
+      'FuncGetAccountData'
     ])
   }
 }

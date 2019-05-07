@@ -46,8 +46,12 @@ import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
 import moment from 'moment'
 import { InitColumnData } from '../../../../utils/initColumnData'
+import PremiumsComponent from '../../Common/premiums'
 
 export default {
+  components: {
+    PremiumsComponent
+  },
   data() {
     return {
       insStartDateROC: moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日午夜十二時`),
