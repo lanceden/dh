@@ -37,15 +37,8 @@
           <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date"></div>
         </div>
       </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
-        <div class="col-sm-12">
-          <select id="face_amt" name="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in this.GetPremiums" :key="index" :value="item.Value">{{item.Text}}</option>
-          </select>
-        </div>
-      </div>
+      <!-- 投保額度 -->
+      <PremiumsComponent :plancode="GetIWellPostData.plan_code"></PremiumsComponent>
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">傷害醫療</label>
         <div class="col-sm-12">
@@ -76,13 +69,16 @@
 <script>
 import moment from 'moment'
 import $ from 'jquery'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
+import PremiumsComponent from '../../Common/premiums'
 
 const initFaceAmt = 400
-const PLANCODE = `20540`
 export default {
+  components: {
+    PremiumsComponent
+  },
   data() {
     return {
       startYear: parseInt(new Date().getFullYear()) - 1911,
@@ -106,11 +102,6 @@ export default {
     $('#matured_date').html(`天至 ${maturedDate}`)
   },
   created() {
-    // 取回保額下拉框
-    this.FuncGetPremiums({
-      IsVerified: this.GetAccountData.JoinSource !== '3',
-      PlanCode: PLANCODE
-    })
     for (let i = 1; i <= 7; i++) {
       this.insDateArr.push({
         utc: moment().add(`${i}`, 'days').format(`YYYY-MM-DD`),
@@ -120,8 +111,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'GetAccountData',
-      'GetPremiums',
       GetterTypes.GetIWellPostData
     ]),
     /**
@@ -183,11 +172,6 @@ export default {
         $('#specific-blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
       }
     }
-  },
-  methods: {
-    ...mapActions([
-      'FuncGetPremiums'
-    ])
   }
 }
 

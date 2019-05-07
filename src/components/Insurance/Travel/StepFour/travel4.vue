@@ -56,10 +56,15 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.push('/travel-3')
+      this.$router.go(-1)
     },
     GoToNext() {
-      this.$router.push('/travel-5')
+      // 只有子女不會有本人的受益人需跳過此步驟
+      if (parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TargetType) !== 1) {
+        this.$router.push('/travel-5')
+      } else {
+        this.$router.push('/travel-6')
+      }
     }
   }
 }

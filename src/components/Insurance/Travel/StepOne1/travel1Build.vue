@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loading v-show="false" />
+    <loading v-show="GetLoading" />
     <TravelOne></TravelOne>
     <TravelOneFooter></TravelOneFooter>
   </div>

@@ -13,7 +13,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
         <div class="col-sm-12 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-edit" v-model="BenfBankcode1">
+          <select id="" class="form-control data-input insure-select insure-input-edit" v-model="BenfBankCode1">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetBankData" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
           </select>
@@ -80,14 +80,14 @@ export default {
       'GetBankBranches'
     ]),
     // 金融機構代碼
-    BenfBankcode1: {
+    BenfBankCode1: {
       get() {
         return this.BenfBankcode
       },
       set(value) {
         let data = value.split('-')
         this.FuncGetBankBranches(data[0])
-        this.stateData.BenfBankcode1 = data[0]
+        this.stateData.BenfBankCode1 = data[0]
         this.stateData.BenfBankName1 = data[1]
         this.BenfBankcode = value
       }

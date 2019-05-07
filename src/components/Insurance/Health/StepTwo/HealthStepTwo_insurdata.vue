@@ -26,15 +26,8 @@
           <div class="insure-input-block" id="matured_date">{{insEndDateROC}}</div>
         </div>
       </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
-        <div class="col-sm-12">
-          <select name="face_amt" id="face_amt" class="form-control data-input insure-select insure-input-edit" v-model="face_amt">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in this.GetPremiums" :key="index" :value="item.Value">{{item.Text}}</option>
-          </select>
-        </div>
-      </div>
+      <!-- 投保額度 -->
+      <PremiumsComponent :plancode="GetHealthPostData.plan_code"></PremiumsComponent>
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">注意事項</label>
         <div class="col-sm-12">
@@ -48,13 +41,16 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
 import moment from 'moment'
 import { InitColumnData } from '../../../../utils/initColumnData'
+import PremiumsComponent from '../../Common/premiums'
 
-const PLANCODE = `KAA01`
 export default {
+  components: {
+    PremiumsComponent
+  },
   data() {
     return {
       insStartDateROC: moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日午夜十二時`),
@@ -62,18 +58,11 @@ export default {
     }
   },
   created() {
-    // 取回保額下拉框
-    this.FuncGetPremiums({
-      IsVerified: this.GetAccountData.JoinSource !== '3',
-      PlanCode: PLANCODE
-    })
     this.GetHealthPostData.po_issue_date = moment().format('YYYY-MM-DD')
     this.GetHealthPostData.AuthorizedRep = false
   },
   computed: {
     ...mapGetters([
-      'GetAccountData',
-      'GetPremiums',
       GetterTypes.GetHealthPostData
     ]),
     /**
@@ -90,11 +79,6 @@ export default {
         this.GetHealthPostData.face_amt = value
       }
     }
-  },
-  methods: {
-    ...mapActions([
-      'FuncGetPremiums'
-    ])
   }
 }
 

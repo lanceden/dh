@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.push('/travel-1-1')
+      this.$router.go(-1)
     },
     GotoNext() {
       // 請選擇您的旅遊地點

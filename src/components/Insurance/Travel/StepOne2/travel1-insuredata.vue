@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <!-- 只有子女的話不顯示本人 -->
+  <div v-if="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].show">
     <!-- 被保險人資料 -->
     <div class="bg-radius">
       <div class="top">
@@ -28,18 +29,21 @@
           <label for="" class="col-sm-12 col-form-label insure-label">出生生日</label>
           <div class="col-sm-3 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear">
+              <option v-show="Relation !== '本人'" value="0">請選擇</option>
               <option v-if="Relation === '本人'" :value="DobYear">{{DobYear}}</option>
               <option v-else v-for="n in 100" :key="n" :value="new Date().getFullYear() + 1 - n">{{new Date().getFullYear() + 1 - n}}</option>
             </select>年
           </div>
           <div class="col-sm-3 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth">
+              <option v-show="Relation !== '本人'" value="0">請選擇</option>
               <option v-if="Relation === '本人'" :value="DobMonth">{{DobMonth}}</option>
               <option v-else v-for="n in 12" :key="n" :value="n">{{n}}</option>
             </select>月
           </div>
           <div class="col-sm-3 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay">
+              <option v-show="Relation !== '本人'" value="0">請選擇</option>
               <option v-if="Relation === '本人'" :value="DobDay">{{DobDay}}</option>
               <option v-else v-for="n in 31" :key="n" :value="n">{{n}}</option>
             </select>日
@@ -77,7 +81,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
-import moment from 'moment'
 
 export default {
   props: [
@@ -90,6 +93,9 @@ export default {
   },
   data() {
     return {
+      year: 0,
+      month: 0,
+      day: 0,
       ensure: {
         isHasAuthRepYes: '../../../../static/img/oval.png',
         isHasAuthRepNo: '../../../../static/img/oval.png'
@@ -107,6 +113,7 @@ export default {
           case 1:
             return '本人'
           case 3:
+            this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].Index = this.index
             return '子女'
         }
       }
@@ -122,38 +129,38 @@ export default {
     },
     DobYear: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob === '') {
-          return 2019
-        }
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[0]
-        return parseInt(result)
+        return this.year
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${value}-${this.DobMonth}-${this.DobDay}`
+        let result = parseInt(value)
+        if (result !== 0) {
+          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${value}/${this.DobMonth}/${this.DobDay}`
+        }
+        this.year = result
       }
     },
     DobMonth: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob === '') {
-          return 1
-        }
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[1]
-        return parseInt(result)
+        return this.month
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}-${value}-${this.DobDay}`
+        let result = parseInt(value)
+        if (result !== 0) {
+          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${value}/${this.DobDay}`
+        }
+        this.month = result
       }
     },
     DobDay: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob === '') {
-          return 1
-        }
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[2]
-        return parseInt(result)
+        return this.day
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}-${this.DobMonth}-${value}`
+        let result = parseInt(value)
+        if (result !== 0) {
+          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${this.DobMonth}/${value}`
+        }
+        this.day = result
       }
     },
     ProposerInfoId: {

@@ -26,15 +26,9 @@
           <div class="insure-input-block" id="matured_date">{{insEndDateROC}}</div>
         </div>
       </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
-        <div class="col-sm-12">
-          <select id="face_amt" name="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in this.GetPremiums" :key="index" :value="item.Value">{{item.Text}}</option>
-          </select>
-        </div>
-      </div>
+      <!-- 投保額度 -->
+      <PremiumsComponent :plancode="GetMyWayPostData.plan_code"></PremiumsComponent>
+
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">注意事項</label>
         <div class="col-sm-12">
@@ -48,12 +42,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
 import moment from 'moment'
 import { InitColumnData } from '../../../../utils/initColumnData'
 
-const PLANCODE = `20530`
 export default {
   data() {
     return {
@@ -62,18 +55,11 @@ export default {
     }
   },
   created() {
-    // 取回保額下拉框
-    this.FuncGetPremiums({
-      IsVerified: this.GetAccountData.JoinSource !== '3',
-      PlanCode: PLANCODE
-    })
     this.GetMyWayPostData.po_issue_date = moment().format('YYYY-MM-DD')
     this.GetMyWayPostData.AuthorizedRep = false
   },
   computed: {
     ...mapGetters([
-      'GetAccountData',
-      'GetPremiums',
       GetterTypes.GetMyWayPostData
     ]),
     /**
@@ -89,11 +75,6 @@ export default {
         this.GetMyWayPostData.face_amt = value
       }
     }
-  },
-  methods: {
-    ...mapActions([
-      'FuncGetPremiums'
-    ])
   }
 }
 

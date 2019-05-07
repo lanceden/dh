@@ -19,7 +19,7 @@ export default {
   GetNotifyCheckBox: state => state.NOTIFYCHECKBOX,
   GetProvision: state => state.PROVISION,
   GetAccountData: state => state.ACCOUNTDATA,
-  GetPremiums: state => state.PREPREMIUMS,
+  GetPremiums: state => state.PREMIUMS,
   GetProvisionData: state => state.PROVISIONDATA,
   GetJobSubCodeData: state => state.JOBSUBOCCUPATIONDATA,
   GetPayCompleteData: state => state.PAYMENTCOMPLETE,

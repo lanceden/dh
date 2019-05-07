@@ -30,7 +30,7 @@
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritOneDisable">
               <option selected="selected" value="0">請選擇</option>
-              <option v-for="(item, index) in GetNationData" :key="index" :value="item.Code">{{item.Name}}</option>
+              <option v-for="(item, index) in GetNationData" :key="index" :value="item.Name">{{item.Name}}</option>
             </select>
           </div>
         </div>
@@ -44,7 +44,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12 insure-select-align">
             <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death_seq" v-bind:disabled="BenfinheritOneDisable">
-              <option selected="selected">請選擇</option>
+              <option selected="selected" value="0">請選擇</option>
               <option value="1" v-show="parseInt(stateData.benf_num) === 1">順位1</option>
               <option value="2" v-show="parseInt(stateData.benf_num) >= 2">順位2</option>
               <option value="3" v-show="parseInt(stateData.benf_num) > 2">順位3</option>
@@ -193,7 +193,7 @@ export default {
      */
     relation_ben_death_seq: {
       get() {
-        return this.stateData.relation_ben_death_seq
+        return this.stateData.relation_ben_death_seq || 0
       },
       set(value) {
         this.stateData.relation_ben_death_seq = value

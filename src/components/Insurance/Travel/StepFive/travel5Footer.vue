@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.push('/travel-4')
+      this.$router.go(-1)
     },
     GoToNext() {
       if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.leght > 0) {

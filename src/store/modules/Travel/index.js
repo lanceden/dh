@@ -27,8 +27,8 @@ const actions = {
    * Travel 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncTravelInit]({ commit }) {
-    rootState.Http.axios.post(`${Url.TravelInit}`, {
+  async [functionTypes.FuncTravelInit]({ commit }) {
+    await rootState.Http.axios.post(`${Url.TravelInit}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: {
         ProcessId: ''
@@ -117,6 +117,7 @@ const mutations = {
    * @param {請求結果} param1 請求回傳結果
    */
   [functionTypes.FuncTravelInsuredData](state, { result, router }) {
+    if (result.ResultCode !== '0000') return
     state.TRAVELPOSTDATA = result.Data.Result
     router.push('/travel-2')
   },

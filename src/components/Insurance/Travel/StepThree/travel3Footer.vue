@@ -25,7 +25,7 @@ export default {
       TravelFunctionTypes.FuncTravelEstimate
     ]),
     GoToPrev() {
-      this.$router.push('/travel-2')
+      this.$router.go(-1)
     },
     Estimate() {
       console.log(JSON.stringify(this.GetTravelPostData))
