@@ -2,16 +2,14 @@
   <div>
     <loading v-show="GetLoading" />
     <PaymentAmount :amount="stateData.mode_prem"></PaymentAmount>
-    <PaymentAccount v-show="false"></PaymentAccount>
-    <PaymentCreditcard :amount="stateData.mode_prem"></PaymentCreditcard>
+    <PaymentInit :stateData="stateData"></PaymentInit>
     <PaymentFooter :stateData="stateData"></PaymentFooter>
   </div>
 </template>
 
 <script>
 import PaymentAmount from './payment_payamount'
-import PaymentAccount from './payment_account'
-import PaymentCreditcard from './payment_creditcard'
+import PaymentInit from './payment_init'
 import PaymentFooter from './payment_footer'
 import { mapGetters } from 'vuex'
 export default {
@@ -62,13 +60,20 @@ export default {
         this.stateData = this.GetHealthPostData
         break
     }
-    console.log('this.stateData', this.stateData)
   },
   components: {
     PaymentAmount,
-    PaymentAccount,
-    PaymentCreditcard,
+    PaymentInit,
     PaymentFooter
+  },
+  methods: {
+    isAccountShow() {
+      return true
+    },
+    // ican iwell life health
+    showSuperStore() {
+      return this.stateData.IsClose
+    }
   }
 }
 

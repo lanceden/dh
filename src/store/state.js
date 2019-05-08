@@ -35,6 +35,7 @@ export default {
   OCCUPATIONDATA: [],
   AGREEMENTTOGGLE: false,
   CONTACTCHECKBOX: true,
+  PAYTYPE: 'B',
   NOTIFYCHECKBOX: [
     true,
     false,

@@ -144,7 +144,11 @@ const mutations = {
   [functionTypes.FuncICanSubmitOrder](state, { result, router }) {
     if (result.ResultCode !== '0000') return
     rootState.PAYMENTCOMPLETE = result.Data.Result
-    router.push(`/paymentcomplete`)
+    if (rootState.PAYTYPE.toUpperCase() === 'B') {
+      router.push(`/ebillform`)
+    } else {
+      router.push(`/paymentcomplete`)
+    }
   }
 }
 

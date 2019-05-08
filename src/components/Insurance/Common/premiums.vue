@@ -13,14 +13,19 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
+  data() {
+    return {
+      premiums: 0
+    }
+  },
   props: [
-    'plancode'
+    'stateData'
   ],
   created() {
     // 取回保額下拉框
     this.FuncGetPremiums({
       Verified: this.GetAccountData.JoinSource !== '3' ? 'Y' : 'N',
-      PLAN_Code_1: this.plancode
+      PLAN_Code_1: this.stateData.plan_code
     })
   },
   computed: {
@@ -28,10 +33,21 @@ export default {
       'GetPremiums',
       'GetAccountData'
     ]),
+    // 保額下拉框
     GetPremiumsProp: {
       get() {
         if (this.GetPremiums.length === 0) return []
         return this.GetPremiums[0].Prem_List.split(',')
+      }
+    },
+    // 此次投保額度選取值
+    face_amt: {
+      get() {
+        return this.premiums
+      },
+      set(value) {
+        this.premiums = value
+        this.stateData.face_amt = value
       }
     }
   },

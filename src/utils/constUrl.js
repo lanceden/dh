@@ -72,7 +72,10 @@ const SendOTP = `${Domain}/OTP/Send`
  * 驗證OTP
  */
 const CheckOTP = `${Domain}/OTP/Check`
-
+/**
+ * 全繳網
+ */
+const EbillForm = `https://test-online.skl.com.tw/app/PaymentInfo`
 /**
  * UpCash初始化
  */
@@ -277,6 +280,7 @@ export default {
   InsCoverageSelectListItem,
   SendOTP,
   CheckOTP,
+  EbillForm,
   UpCashInit,
   UpCashEstimate,
   UpCashSubmitQuote,

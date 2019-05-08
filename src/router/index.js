@@ -74,6 +74,7 @@ import OtpVerify from '../components/OTPVerify/otpverify_build'
 
 import Payment from '../components/Payment/payment_build.vue'
 import PaymentComplete from '../components/Payment/payment_complete.vue'
+import Ebillform from '../components/Payment/payment_ebillform.vue'
 
 import MyError from '../components/error'
 
@@ -82,275 +83,281 @@ Vue.use(Router)
 const router = new Router({
   mode: 'hash',
   scrollBehavior: () => ({ x: 0, y: 0 }),
-  routes: [{
-    path: '/enttravel-1',
-    component: EntTravelOne
-  }, {
-    path: '/travel-1',
-    component: TravelOne
-  }, {
-    path: '/travel-1-1',
-    component: TravelOneInsureData
-  }, {
-    path: '/travel-2',
-    component: TravelTwo
-  }, {
-    path: '/travel-3',
-    component: TravelThree
-  }, {
-    path: '/travel-4',
-    component: TravelFour
-  }, {
-    path: '/travel-5',
-    component: TravelFive
-  }, {
-    path: '/travel-6',
-    component: TravelSix
-  }, {
-    path: '/travel-7',
-    component: TravelSeven
-  }, {
-    path: '/travel-8',
-    component: TravelEight
-  }, {
-    path: '/myway-1',
-    component: MyWayStepOne,
-    meta: {
-      requiresAuth: false
+  routes: [
+    {
+      path: '/enttravel-1',
+      component: EntTravelOne
+    }, {
+      path: '/travel-1',
+      component: TravelOne
+    }, {
+      path: '/travel-1-1',
+      component: TravelOneInsureData
+    }, {
+      path: '/travel-2',
+      component: TravelTwo
+    }, {
+      path: '/travel-3',
+      component: TravelThree
+    }, {
+      path: '/travel-4',
+      component: TravelFour
+    }, {
+      path: '/travel-5',
+      component: TravelFive
+    }, {
+      path: '/travel-6',
+      component: TravelSix
+    }, {
+      path: '/travel-7',
+      component: TravelSeven
+    }, {
+      path: '/travel-8',
+      component: TravelEight
+    }, {
+      path: '/myway-1',
+      component: MyWayStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/myway-2',
+      component: MyWayStepTwo
+    },
+    {
+      path: '/myway-3',
+      component: MyWayStepThree
+    },
+    {
+      path: '/myway-4',
+      component: MyWayStepFour
+    },
+    {
+      path: '/upcash-1',
+      component: UpcashStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/upcash-2',
+      component: UpcashStepTwo
+    },
+    {
+      path: '/upcash-3',
+      component: UpcashStepThree
+    },
+    {
+      path: '/upcash-4',
+      component: UpCashStepFour
+    },
+    {
+      path: '/igoing-1',
+      component: IGoingStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/igoing-2',
+      component: IGoingStepTwo
+    },
+    {
+      path: '/igoing-3',
+      component: IGoingStepThree
+    },
+    {
+      path: '/igoing-4',
+      component: IGoingStepFour
+    },
+    {
+      path: '/health-1',
+      component: HealthStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/health-2',
+      component: HealthStepTwo
+    },
+    {
+      path: '/health-3',
+      component: HealthStepThree
+    },
+    {
+      path: '/health-4',
+      component: HealthStepFour
+    },
+    {
+      path: '/accident-1',
+      component: AccidentStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/accident-2',
+      component: AccidentStepTwo
+    },
+    {
+      path: '/accident-3',
+      component: AccidentStepThree
+    },
+    {
+      path: '/accident-4',
+      component: AccidentStepFour
+    },
+    {
+      path: '/ezcash-1',
+      component: EZCashStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/ezcash-2',
+      component: EZCashStepTwo
+    },
+    {
+      path: '/ezcash-3',
+      component: EZCashStepThree
+    },
+    {
+      path: '/ezcash-4',
+      component: EZCashStepFour
+    },
+    {
+      path: '/iwellelecform',
+      component: IWellElecForm
+    },
+    {
+      path: '/IWell-1',
+      component: IWellStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/IWell-2',
+      component: IWellStepTwo
+    },
+    {
+      path: '/IWell-3',
+      component: IWellStepThree
+    },
+    {
+      path: '/IWell-4',
+      component: IWellStepFour
+    },
+    {
+      path: '/icanelecform',
+      component: ICanElecForm
+    },
+    {
+      path: '/ICan-1',
+      component: ICanStepOne,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/ICan-2',
+      component: ICanStepTwo
+    },
+    {
+      path: '/ICan-3',
+      component: ICanStepThree
+    },
+    {
+      path: '/ICan-4',
+      component: ICanStepFour
+    },
+    {
+      path: '/benf',
+      component: Benfbuild
+    },
+    {
+      path: '/agreement',
+      component: Agreement
+    },
+    {
+      path: '/upcash-insureddata',
+      component: UpcashInsuredData
+    },
+    {
+      path: '/ezcash-insureddata',
+      component: EZCashInsuredData
+    },
+    {
+      path: '/ican-insureddata',
+      component: ICanInsuredData
+    },
+    {
+      path: '/iwell-insureddata',
+      component: IWellInsuredData
+    },
+    {
+      path: '/myway-insureddata',
+      component: MyWayInsuredData
+    },
+    {
+      path: '/igoing-insureddata',
+      component: IGoingInsuredData
+    },
+    {
+      path: '/health-insureddata',
+      component: HealthInsuredData
+    },
+    {
+      path: '/travel-insureddata',
+      component: TravelInsuredData
+    },
+    {
+      path: '/accident-insureddata',
+      component: AccidentInsuredData
+    },
+    {
+      path: '/otp',
+      component: Otp
+    },
+    {
+      path: '/otpVerify',
+      component: OtpVerify
+    },
+    {
+      path: '/payment',
+      component: Payment
+    },
+    {
+      path: '/paymentcomplete',
+      component: PaymentComplete
+    },
+    {
+      path: '/ebillform',
+      component: Ebillform
+    },
+    {
+      path: '/UpcashSimpleEstimate',
+      component: UpcashSimpleEstimate
+    },
+    {
+      path: '/UpCashSimpleEstimateResult',
+      component: UpcashSimpleEstimateResult
+    },
+    // {
+    //   path: '/TravelSimpleEstimate',
+    //   component: TravelSimpleEstimate
+    // },
+    {
+      path: '*',
+      component: MyError,
+      meta: {
+        requiresAuth: true
+      }
     }
-  },
-  {
-    path: '/myway-2',
-    component: MyWayStepTwo
-  },
-  {
-    path: '/myway-3',
-    component: MyWayStepThree
-  },
-  {
-    path: '/myway-4',
-    component: MyWayStepFour
-  },
-  {
-    path: '/upcash-1',
-    component: UpcashStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/upcash-2',
-    component: UpcashStepTwo
-  },
-  {
-    path: '/upcash-3',
-    component: UpcashStepThree
-  },
-  {
-    path: '/upcash-4',
-    component: UpCashStepFour
-  },
-  {
-    path: '/igoing-1',
-    component: IGoingStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/igoing-2',
-    component: IGoingStepTwo
-  },
-  {
-    path: '/igoing-3',
-    component: IGoingStepThree
-  },
-  {
-    path: '/igoing-4',
-    component: IGoingStepFour
-  },
-  {
-    path: '/health-1',
-    component: HealthStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/health-2',
-    component: HealthStepTwo
-  },
-  {
-    path: '/health-3',
-    component: HealthStepThree
-  },
-  {
-    path: '/health-4',
-    component: HealthStepFour
-  },
-  {
-    path: '/accident-1',
-    component: AccidentStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/accident-2',
-    component: AccidentStepTwo
-  },
-  {
-    path: '/accident-3',
-    component: AccidentStepThree
-  },
-  {
-    path: '/accident-4',
-    component: AccidentStepFour
-  },
-  {
-    path: '/ezcash-1',
-    component: EZCashStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/ezcash-2',
-    component: EZCashStepTwo
-  },
-  {
-    path: '/ezcash-3',
-    component: EZCashStepThree
-  },
-  {
-    path: '/ezcash-4',
-    component: EZCashStepFour
-  },
-  {
-    path: '/iwellelecform',
-    component: IWellElecForm
-  },
-  {
-    path: '/IWell-1',
-    component: IWellStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/IWell-2',
-    component: IWellStepTwo
-  },
-  {
-    path: '/IWell-3',
-    component: IWellStepThree
-  },
-  {
-    path: '/IWell-4',
-    component: IWellStepFour
-  },
-  {
-    path: '/icanelecform',
-    component: ICanElecForm
-  },
-  {
-    path: '/ICan-1',
-    component: ICanStepOne,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: '/ICan-2',
-    component: ICanStepTwo
-  },
-  {
-    path: '/ICan-3',
-    component: ICanStepThree
-  },
-  {
-    path: '/ICan-4',
-    component: ICanStepFour
-  },
-  {
-    path: '/benf',
-    component: Benfbuild
-  },
-  {
-    path: '/agreement',
-    component: Agreement
-  },
-  {
-    path: '/upcash-insureddata',
-    component: UpcashInsuredData
-  },
-  {
-    path: '/ezcash-insureddata',
-    component: EZCashInsuredData
-  },
-  {
-    path: '/ican-insureddata',
-    component: ICanInsuredData
-  },
-  {
-    path: '/iwell-insureddata',
-    component: IWellInsuredData
-  },
-  {
-    path: '/myway-insureddata',
-    component: MyWayInsuredData
-  },
-  {
-    path: '/igoing-insureddata',
-    component: IGoingInsuredData
-  },
-  {
-    path: '/health-insureddata',
-    component: HealthInsuredData
-  },
-  {
-    path: '/travel-insureddata',
-    component: TravelInsuredData
-  },
-  {
-    path: '/accident-insureddata',
-    component: AccidentInsuredData
-  },
-  {
-    path: '/otp',
-    component: Otp
-  },
-  {
-    path: '/otpVerify',
-    component: OtpVerify
-  },
-  {
-    path: '/payment',
-    component: Payment
-  },
-  {
-    path: '/paymentcomplete',
-    component: PaymentComplete
-  },
-  {
-    path: '/UpcashSimpleEstimate',
-    component: UpcashSimpleEstimate
-  },
-  {
-    path: '/UpCashSimpleEstimateResult',
-    component: UpcashSimpleEstimateResult
-  },
-  // {
-  //   path: '/TravelSimpleEstimate',
-  //   component: TravelSimpleEstimate
-  // },
-  {
-    path: '*',
-    component: MyError,
-    meta: {
-      requiresAuth: true
-    }
-  }]
+  ]
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {

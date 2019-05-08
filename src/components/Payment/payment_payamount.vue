@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="images/calculator.png" alt=""></div>
+            <div class="insure-check"><img src="../../../static/img/calculator.png" alt=""></div>
             <div class="insure-check-title">保費金額</div>
           </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="col-sm-12">
           <div class="font-label">您所支付的第一期保險費為：</div>
           <div class="font-money"> NT$ {{amount}} 元</div>
-          <div class="money-icon"><img src="images/coins.png" alt=""></div>
+          <div class="money-icon"><img src="../../../static/img/coins.png" alt=""></div>
         </div>
       </div>
       <div class="col-sm-12">

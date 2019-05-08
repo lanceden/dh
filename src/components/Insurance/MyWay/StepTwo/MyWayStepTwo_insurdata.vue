@@ -27,7 +27,7 @@
         </div>
       </div>
       <!-- 投保額度 -->
-      <PremiumsComponent :plancode="GetMyWayPostData.plan_code"></PremiumsComponent>
+      <PremiumsComponent :stateData="GetMyWayPostData"></PremiumsComponent>
 
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">注意事項</label>

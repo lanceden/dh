@@ -58,6 +58,7 @@ export default {
         router: this.$router
       }
       console.log('postData.CoreData', JSON.stringify(postData.CoreData))
+      // 年金險用init_method 其餘用PAYTYPE
       if (postData.CoreData.init_method === '') {
         toggleModalShow('請選擇繳費管道。')
         return

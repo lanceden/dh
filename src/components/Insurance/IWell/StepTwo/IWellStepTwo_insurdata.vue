@@ -38,7 +38,7 @@
         </div>
       </div>
       <!-- 投保額度 -->
-      <PremiumsComponent :plancode="GetIWellPostData.plan_code"></PremiumsComponent>
+      <PremiumsComponent :stateData="GetIWellPostData"></PremiumsComponent>
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label insure-label">傷害醫療</label>
         <div class="col-sm-12">
