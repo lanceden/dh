@@ -5,19 +5,36 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
-            <div class="insure-check-title">旅行平安保險保額</div>
+            <div class="insure-check"><img src="../../../../../static/img/edit.png" alt=""></div>
+            <div class="insure-check-title">本人</div>
           </div>
         </div>
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row" v-show="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].Relation) === 1">
-          <label for="" class="col-sm-12 col-form-label insure-label">本人</label>
+          <!-- 旅行平安保險保額 -->
+          <label for="" class="col-sm-12 col-form-label insure-label">旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="PrimaryPolicyFaceAmtOne">
               <option v-for="item in baoer" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
+          </div>
+          <!-- 傷害醫療 -->
+          <label for="" class="col-sm-12 col-form-label insure-label">傷害醫療</label>
+          <div class="col-sm-12 insure-select-align">
+            <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
+              <option v-for="item in silData" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+            </select>
+          </div>
+          <!-- 海外突發疾病 -->
+          <div v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2 && this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry === '7'">
+            <label for="" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
+            <div class="col-sm-12 insure-select-align">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmtoOverSea">
+                <option v-for="item in silData" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              </select>
+            </div>
           </div>
         </div>
         <div class="col-sm-12">
@@ -28,50 +45,6 @@
           </ul>
         </div>
       </form>
-      <!-- 傷害醫療 -->
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
-            <div class="insure-check-title">傷害醫療</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row" v-show="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].Relation) === 1">
-          <label for="" class="col-sm-12 col-form-label insure-label">本人</label>
-          <div class="col-sm-12 insure-select-align">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
-              <option v-for="item in silData" :key="item.Value" :value="item.Value">{{item.Text}}</option>
-            </select>
-          </div>
-        </div>
-      </form>
-      <!-- 海外突發疾病 -->
-      <template>
-        <div v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2 && this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry === '7'">
-          <div class="top">
-            <div class="top-title">
-              <div class="insure-notice-box">
-                <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
-                <div class="insure-check-title">海外突發疾病</div>
-              </div>
-            </div>
-          </div>
-          <div class="border-bottom-line"></div>
-          <form class="form-bottom">
-            <div class="form-group row" v-show="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].Relation) === 1">
-              <label for="" class="col-sm-12 col-form-label insure-label">本人</label>
-              <div class="col-sm-12 insure-select-align">
-                <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmtoOverSea">
-                  <option v-for="item in silData" :key="item.Value" :value="item.Value">{{item.Text}}</option>
-                </select>
-              </div>
-            </div>
-          </form>
-        </div>
-      </template>
     </div>
   </div>
 </template>

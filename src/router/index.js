@@ -52,8 +52,7 @@ import HealthInsuredData from '../components/Insurance/Health/InsuredData/Health
 
 import EntTravelOne from '../components/Insurance/EntTravel/travel1.vue'
 
-import TravelOne from '../components/Insurance/Travel/StepOne1/travel1Build'
-import TravelOneInsureData from '../components/Insurance/Travel/StepOne2/travel1-insuredataBuild.vue'
+import TravelOne from '../components/Insurance/Travel/StepOne/travel1Build'
 import TravelTwo from '../components/Insurance/Travel/StepTwo/travel2Build.vue'
 import TravelThree from '../components/Insurance/Travel/StepThree/travel3Build.vue'
 import TravelFour from '../components/Insurance/Travel/StepFour/travel4.vue'
@@ -90,9 +89,6 @@ const router = new Router({
     }, {
       path: '/travel-1',
       component: TravelOne
-    }, {
-      path: '/travel-1-1',
-      component: TravelOneInsureData
     }, {
       path: '/travel-2',
       component: TravelTwo

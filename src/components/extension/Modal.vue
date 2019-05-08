@@ -5,7 +5,7 @@
       <div class="modal-content">
         <!-- <div class="modal-header"></div> -->
         <div class="modal-body">
-          <div class="modal-title">提醒</div>
+          <div class="modal-title" id="modalTitle">提醒</div>
           <div class="modal-title-line"></div>
           <div class="modal-text" id="modal-message"></div>
         </div>

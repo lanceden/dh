@@ -652,7 +652,7 @@ input {
 }
 
 .insure-select-withline {
-    margin-top: 15px
+    /* margin-top: 15px */
 }
 
 /*.insure-select-align select {
@@ -739,7 +739,7 @@ input[type="checkbox"] {
 .checkbox,
 .checkbox-oneline {
     -webkit-appearance: none;
-    display: inline-block;
+    /* display: inline-block; */
     background: url(../img/checked-un.png) no-repeat;
     width: 44px;
     height: 43px;

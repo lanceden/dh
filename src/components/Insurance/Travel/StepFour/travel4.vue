@@ -2,9 +2,6 @@
   <div>
     <loading v-show="GetLoading" />
     <div class="container">
-      <div class="progress-bar">
-        <img src="../../../../../static/img/progress-bar-06-2.png">
-      </div>
       <div class="bg-radius">
         <div class="top">
           <div class="top-title">
@@ -25,7 +22,7 @@
         <div class="border-bottom-line"></div>
         <div class="bg-time">
           <div class="col-sm-12">
-            <div class="font-label">投保始期：</div>
+            <div class="font-label">保障期間：</div>
             <div class="font-label text-red-i">自民國 {{GetTravelPostData.PolicyData.InsStartDisplay}}起</div>
             <div class="font-label text-red-i">自民國 {{GetTravelPostData.PolicyData.InsEndDisplay}}止</div>
           </div>
@@ -37,6 +34,7 @@
           <nav class="navbar navbar-dark row">
             <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
             <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">前往填寫身故受益人資料</div>
+            <div class="col-sm-12 footer-title footer-gray" @click="test()">tt</div>
           </nav>
         </div>
       </div>
@@ -47,7 +45,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import { mockInsData } from './mockData.js'
+
 export default {
+  created() {
+    this.$store.state.Travel.TRAVELPOSTDATA = mockInsData.Data.Result
+  },
   computed: {
     ...mapGetters([
       'GetLoading',
@@ -57,6 +60,14 @@ export default {
   methods: {
     GoToPrev() {
       this.$router.go(-1)
+    },
+    test() {
+      // 只有子女不會有本人的受益人需跳過此步驟
+      if (parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TargetType) !== 1) {
+        this.$router.push('/travel-5')
+      } else {
+        this.$router.push('/travel-6')
+      }
     },
     GoToNext() {
       // 只有子女不會有本人的受益人需跳過此步驟

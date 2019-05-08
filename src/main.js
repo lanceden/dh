@@ -29,7 +29,7 @@ axios.interceptors.request.use(function(config) {
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
   if (response.data.ResultCode !== '0000') {
-    toggleModalShow(GetErrorMsg(response.data.ErrorMessage))
+    toggleModalShow(GetErrorMsg(response.data.ErrorMessage), '貼心提醒您')
     return response
   }
   return response

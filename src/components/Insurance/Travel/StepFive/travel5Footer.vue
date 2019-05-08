@@ -4,6 +4,7 @@
       <nav class="navbar navbar-dark row">
         <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
         <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">確認送出</div>
+        <div class="col-sm-12 footer-title footer-gray" @click="test()">tt</div>
       </nav>
     </div>
   </div>
@@ -21,6 +22,9 @@ export default {
   methods: {
     GoToPrev() {
       this.$router.go(-1)
+    },
+    test() {
+      this.$router.push('/travel-6')
     },
     GoToNext() {
       if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.leght > 0) {

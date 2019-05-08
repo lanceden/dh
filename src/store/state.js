@@ -1,4 +1,5 @@
 export default {
+  PROGRESSBAR: '../../static/img/progress-bar-06-1.png',
   ShowLoading: false,
   ApiToken: '',
   isShowModal: false,
