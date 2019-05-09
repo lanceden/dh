@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
 export default {
   computed: {
@@ -18,15 +18,11 @@ export default {
     ])
   },
   methods: {
-    ...mapActions([
-      'SetHeaderIsActive'
-    ]),
     /**
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.SetHeaderIsActive(false)
-      this.$router.go(-1)
+      this.$router.push(`/MyWay-1`)
     },
     /**
      * 前往填寫聯絡資料

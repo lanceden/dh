@@ -24,15 +24,33 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.init_method}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.mode_prem}} 元</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{init_method}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">分期繳付每期{{mockData.qpoop_25_prem}}，{{qpoop_25_modx}}繳</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">續期收費管道</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{method}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">是否躉繳(一次繳清)</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{mockData.IsOneTimePayment ? '是' : '否'}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -42,9 +60,9 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">年金給付方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.anny_frequence}}</div>
+            <div class="insure-input-block">{{mockData.anny_frequence === '0' ? '一次給付' : '分期給付'}}</div>
           </div>
         </div>
         <div class="form-group row" v-show="mockData.anny_frequence > 0">
@@ -55,11 +73,21 @@
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">保價金通知方式</label>
+          <!-- 電子郵件 -->
           <div class="col-sm-12" v-show="mockData.value_ind === '4'">
             <div class="insure-input-block">{{mockData.email}}</div>
           </div>
-          <div class="col-sm-12" v-show="mockData.value_ind !== '4'">
-            <div class="insure-input-block">寄送地址：<br>台北市松山區敦化北路102號B1樓</div>
+          <!-- 寄送到客戶住所(通訊地址) -->
+          <div class="col-sm-12" v-show="mockData.value_ind === '1'">
+            <div class="insure-input-block">{{mockData.city1}}{{mockData.district1}}{{mockData.road1}}</div>
+          </div>
+          <!-- 輸入新的電子郵件 -->
+          <div class="col-sm-12" v-show="mockData.value_ind === '3'">
+            <div class="insure-input-block">{{mockData.email}}</div>
+          </div>
+          <!-- 輸入新的寄送地址 -->
+          <div class="col-sm-12" v-show="mockData.value_ind !== '2'">
+            <div class="insure-input-block">寄送地址：<br>{{mockData.city3}}{{mockData.district3}}{{mockData.road3}}</div>
           </div>
         </div>
       </form>
@@ -113,13 +141,13 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.address1}}</div>
+            <div class="insure-input-block">{{mockData.city1}}{{mockData.district1}}{{mockData.road1}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.address2}}</div>
+            <div class="insure-input-block">{{mockData.city2}}{{mockData.district2}}{{mockData.road2}}</div>
           </div>
         </div>
       </form>
@@ -218,7 +246,6 @@
       </form>
     </div>
 
-    
     <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 2">
       <div class="top">
         <div class="top-title">
@@ -346,9 +373,15 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生地</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">出生地-國家</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">台灣，台北市</div>
+            <div class="insure-input-block">{{mockData.CRSData.birth_national}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">出生地-城市</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{mockData.CRSData.birth_city}}</div>
           </div>
         </div>
       </form>
@@ -367,19 +400,19 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">822</div>
+            <div class="insure-input-block">{{mockData.Applicant_BankCode}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">中信銀行</div>
+            <div class="insure-input-block">{{mockData.Applicant_BranchName}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">123456789012</div>
+            <div class="insure-input-block">{{mockData.Applicant_Account}}</div>
           </div>
         </div>
       </form>
@@ -432,11 +465,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
-// import { data } from './mockData'
+import { data } from './mockData'
 export default {
   data() {
     return {
-      // mockData: data.Data.Result
+      mockData: data.Data.Result
     }
   },
   created() {
@@ -445,7 +478,48 @@ export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetEZCashPostData
-    ])
+    ]),
+    // 首期繳費管道
+    init_method: {
+      get() {
+        return this.getPayTypeName(this.mockData.init_method)
+      }
+    },
+    // 續期收費管道
+    method: {
+      get() {
+        return this.getPayTypeName(this.mockData.method)
+      }
+    },
+    // 約定續期繳法別
+    qpoop_25_modx: {
+      get() {
+        let modx = parseInt(this.mockData.qpoop_25_modx)
+        switch (modx) {
+          case '12':
+            return '年'
+          case '6':
+            return '半年'
+          case '3':
+            return '季'
+          case '1':
+            return '月'
+        }
+      }
+    }
+  },
+  methods: {
+    getPayTypeName(method) {
+      let type = method.toUpperCase()
+      switch (type) {
+        case 'P':
+          return '全國新光人壽行政中心繳費'
+        case 'C':
+          return '信用卡'
+        case 'B':
+          return '銀行或郵局帳戶轉帳'
+      }
+    }
   }
 }
 

@@ -15,13 +15,13 @@ export default {
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.$router.push('/benf')
+      this.$router.go(-1)
     },
     /**
      * 前往填寫聯絡資料
      */
     GoNext() {
-      this.$router.push(`/agreement?instypename=ezcash`)
+      this.$router.push(`/agreement?instypename=EZCash`)
     }
   }
 }

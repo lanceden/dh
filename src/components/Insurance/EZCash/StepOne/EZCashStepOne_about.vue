@@ -45,8 +45,11 @@
 </template>
 
 <script>
-import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
 import { mapActions, mapGetters } from 'vuex'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
+
+let PLANCODE = 'UCA99'
 export default {
   computed: {
     ...mapGetters([
@@ -62,17 +65,17 @@ export default {
       get() {
         if (this.GetEZCashPostData.QusAns === undefined ||
           this.GetEZCashPostData.QusAns === null) {
-          return 0
+          return '0'
         } else return this.GetEZCashPostData.QusAns[0].Answar
       },
       set(value) {
         if (value === '0') {
-          alert('請選擇本人僅為台灣之稅務居民')
+          toggleModalShow('請選擇本人僅為台灣之稅務居民。')
           return
         }
         let result = value === 'true'
         if (!result) {
-          alert('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
+          toggleModalShow('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
         }
         this.GetEZCashPostData.QusAns = [{ Answar: result }]
         this.GetEZCashPostData.IsTaiwanTaxDuty = result
@@ -86,7 +89,7 @@ export default {
       set(value) {
         this.FuncGetOccupation({
           NoClass: value,
-          PlanCode: 'EZA99',
+          PlanCode: PLANCODE,
           Type: '4'
         })
         this.$store.state.JOB = value
@@ -100,7 +103,7 @@ export default {
       set(value) {
         this.FuncGetOccupation({
           NoClass: this.$store.state.JOB,
-          PlanCode: 'EZA99',
+          PlanCode: PLANCODE,
           Type: '8',
           subCode: value
         })
@@ -127,8 +130,8 @@ export default {
             this.GetEZCashPostData.client_occupation_class = data.OCCUPATION_CLASS
             this.GetEZCashPostData.client_occupation_class_code = data.OCCUPATION_CODE
             this.GetEZCashPostData.client_occupation_class_code_name = data.OCCUPATION_DESC
-            this.GetUpCashPostData.client_occupation_level = this.$store.state.JOB
-            this.GetUpCashPostData.client_occupation_sub_level = this.$store.state.JOBSUBCODE
+            this.GetEZCashPostData.client_occupation_level = this.$store.state.JOB
+            this.GetEZCashPostData.client_occupation_sub_level = this.$store.state.JOBSUBCODE
           }
         })
       }
@@ -139,7 +142,7 @@ export default {
       this.FuncGetJob()
       this.FuncGetOccupation({
         NoClass: '00',
-        PlanCode: 'EZA99',
+        PlanCode: PLANCODE,
         Type: '4'
       })
     }

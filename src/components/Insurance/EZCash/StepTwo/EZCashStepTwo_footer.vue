@@ -10,7 +10,10 @@
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { toggleModalShow } from '../../../../utils/toggleModal'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
+
+const NEXTURL = '/EZCash-3'
 export default {
   computed: {
     ...mapGetters([
@@ -26,7 +29,7 @@ export default {
      */
     GoPrev() {
       this.SetHeaderIsActive(false)
-      this.$router.push('EZCash-1')
+      this.$router.go(-1)
     },
     /**
      * 前往填寫聯絡資料
@@ -34,11 +37,11 @@ export default {
     GoNext() {
       // 判斷是否有試算,沒有則跳錯誤
       let modePrem = this.GetEZCashPostData.mode_prem
-      if(!parseInt(modePrem) > 0) {
-        alert('請先試算保費')
+      if (!parseInt(modePrem) > 0) {
+        toggleModalShow('請先試算保費')
         return
       }
-      this.$router.push('/EZCash-3')
+      this.$router.push(NEXTURL)
     }
   }
 }

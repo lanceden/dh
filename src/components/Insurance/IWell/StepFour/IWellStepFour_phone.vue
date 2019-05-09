@@ -48,14 +48,14 @@ export default {
     }
   },
   created() {
-    if (this.GetICanPostData.visit_time1 !== '') {
-      this.visit_time1 = this.GetICanPostData.visit_time1 === '1'
+    if (this.GetIWellPostData.visit_time1 !== '') {
+      this.visit_time1 = this.GetIWellPostData.visit_time1 === '1'
     }
-    if (this.GetICanPostData.visit_time2 !== '') {
-      this.visit_time2 = this.GetICanPostData.visit_time2 === '1'
+    if (this.GetIWellPostData.visit_time2 !== '') {
+      this.visit_time2 = this.GetIWellPostData.visit_time2 === '1'
     }
-    if (this.GetICanPostData.visit_time3 !== '') {
-      this.visit_time3 = this.GetICanPostData.visit_time3 === '1'
+    if (this.GetIWellPostData.visit_time3 !== '') {
+      this.visit_time3 = this.GetIWellPostData.visit_time3 === '1'
     }
   },
   computed: {

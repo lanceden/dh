@@ -13,10 +13,10 @@
 export default {
   methods: {
     GoPrev() {
-      this.$router.push('EZCash-2')
+      this.$router.go(-1)
     },
     GoNext() {
-      this.$router.push('benf')
+      this.$router.push('/benf?instypename=EZCash')
     }
   }
 }

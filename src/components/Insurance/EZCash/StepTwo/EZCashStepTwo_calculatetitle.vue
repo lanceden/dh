@@ -24,6 +24,7 @@ import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/EZCash/Types/EZCashFunctionTypes.js'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
 import { valEstimateData, setDataOnEstimateStep } from '../../../../utils/validateEstimateData'
+import { toggleModalShow } from '../../../../utils/toggleModal'
 export default {
   computed: {
     ...mapGetters([
@@ -36,6 +37,7 @@ export default {
       FunctionTypes.FuncEZCashEstimate
     ]),
     Estimate() {
+      setDataOnEstimateStep(this.GetEZCashPostData)
       // 寄送至客戶住所(通訊地址)
       if (this.$store.state.NOTIFYCHECKBOX[1]) {
         this.GetEZCashPostData.city3 = this.GetEZCashPostData.InsAddressCity || ''
@@ -49,11 +51,13 @@ export default {
       // 輸入新的寄送地址
       if (this.$store.state.NOTIFYCHECKBOX[3]) {}
       if (this.GetEZCashPostData.face_amt === '' || this.GetEZCashPostData.face_amt <= 0) {
-        alert('請填寫第一期保險費。')
+        toggleModalShow('請填寫第一期保險費。')
         return
       }
-      console.log(valEstimateData(this.GetEZCashPostData, this.GetNotifyCheckBox))
-      setDataOnEstimateStep(this.GetEZCashPostData)
+      let errors = valEstimateData(this.GetEZCashPostData, this.GetNotifyCheckBox)
+      if(errors !== '') {
+        toggleModalShow(errors)
+      }
       this.FuncEZCashEstimate({ para: this.GetEZCashPostData })
     }
   }

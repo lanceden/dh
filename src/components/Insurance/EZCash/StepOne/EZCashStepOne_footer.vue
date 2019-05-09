@@ -16,21 +16,20 @@ import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterType
 import FunctionTypes from '../../../../store/modules/EZCash/Types/EZCashFunctionTypes.js'
 import moment from 'moment'
 
-const NEXTURL = '/ezcash-2'
+const NEXTURL = '/EZCash-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetEZCashPostData
+      GetterTypes.GetEZCashPostData,
+      'HeaderIsActive'
     ])
   },
   methods: {
     ...mapActions([
       'SetHeaderIsActive',
-      'SetIsShowModal',
       FunctionTypes.FuncEZCashIsInit
     ]),
     GotoNext() {
-      this.SetIsShowModal(true)
       let result = this.ValidateData()
       if (!result) return
       this.SetHeaderIsActive(true)

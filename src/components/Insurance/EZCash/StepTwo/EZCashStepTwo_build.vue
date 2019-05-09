@@ -2,7 +2,6 @@
   <div>
     <loading v-show="GetLoading" />
     <StepTwoInsuranceData></StepTwoInsuranceData>
-    <StepTwoNoteACH></StepTwoNoteACH>
     <StepTwoAnnuity></StepTwoAnnuity>
     <StepTwoNotify></StepTwoNotify>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
@@ -13,9 +12,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
+import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes'
 import StepTwoInsuranceData from './EZCashStepTwo_insurdata'
-import StepTwoNoteACH from './EZCashStepTwo_noteach'
 import StepTwoAnnuity from './EZCashStepTwo_annuity'
 import StepTwoNotify from './EZCashStepTwo_notify'
 import StepTwoCalculateTitle from './EZCashStepTwo_calculatetitle'
@@ -33,7 +31,6 @@ export default {
   },
   components: {
     StepTwoInsuranceData,
-    StepTwoNoteACH,
     StepTwoAnnuity,
     StepTwoNotify,
     StepTwoCalculateTitle,

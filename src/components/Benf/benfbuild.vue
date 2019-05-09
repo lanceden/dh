@@ -4,11 +4,12 @@
     <BenfSetup :stateData="stateData"></BenfSetup>
     <BenfOne :stateData="stateData"></BenfOne>
     <BenfOneAccount :stateData="stateData"></BenfOneAccount>
+    <BenfFooter></BenfFooter>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import BenfSetup from './benfsetup'
 import BenfOne from './benfone'
 import BenfOneAccount from './benfoneAccount'
@@ -20,6 +21,7 @@ export default {
     }
   },
   created() {
+    this.FuncGetNationality('')
     // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
     let planName = this.$store.state.PLANNAME.toLowerCase()
     switch (planName) {
@@ -77,7 +79,7 @@ export default {
       'GetAccidentPostData',
       'GetHealthPostData',
       'GetTravelPostData',
-      'GetEntTravelPostData',
+      'GetEntTravelPostData'
     ])
   },
   components: {
@@ -85,6 +87,11 @@ export default {
     BenfOne,
     BenfOneAccount,
     BenfFooter
+  },
+  methods: {
+    ...mapActions([
+      'FuncGetNationality'
+    ])
   }
 }
 

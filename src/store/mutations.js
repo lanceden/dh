@@ -110,12 +110,25 @@ export default {
    * @param {請求結果} param1 請求回傳結果
    */
   FuncGetBeneficiary(state, { result, planCode, stateData }) {
-    if (planCode !== '65020' || planCode != '66020') {
+    if (planCode !== '65020' || planCode !== '66020') {
       state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
       stateData.benf_num = state.BENEFICIARY.length
       if (stateData.benf_num > 0) {
-        state.BENEFICIARY.forEach((item, index) => { 
-          console.log('FuncGetBeneficiary', index)
+        state.BENEFICIARY.forEach((item, index) => {
+          stateData.relation_ben_death = item.Relationship
+          stateData.benf_phone = item.PhoneNo
+          stateData.benf_name = item.Name
+          stateData.benf_nBenfNationalityCodeame = item.NalCode
+          stateData.BenfNationality = item.NalName
+          stateData.benf_id = item.IdNo
+          stateData.benf_dob = `${item.DobYear}/${item.DobMonth}/${item.DobDay}`
+          stateData.BenfBankCode1 = item.Bank_Code1
+          stateData.BenfAddZip = item.AddrZipCode
+          stateData.BenfAdd_City = item.AddrCity
+          stateData.BenfAdd_County = item.AddrCounty
+          stateData.BenfAddRemain = item.AddrStreet
+          stateData.BenfAddress = `${item.AddrCity}${item.AddrCounty}${item.AddrStreet}`
+          stateData.BenfBankAccount1 = item.Account
         })
       }
     }

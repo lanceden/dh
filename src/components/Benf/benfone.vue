@@ -123,12 +123,15 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
+const CITYNAME = '基隆市'
 export default {
   props: [
     'stateData'
   ],
   created() {
     this.FuncGetCityData()
+    this.FuncGetDistrictData(CITYNAME)
   },
   methods: {
     ...mapActions([
@@ -248,8 +251,7 @@ export default {
      */
     BenfAdd_City: {
       get() {
-        return (this.stateData.BenfAdd_City === undefined ||
-          this.stateData.BenfAdd_City === null || this.stateData.BenfAdd_City === '') ? 0 : this.stateData.BenfAdd_City
+        return this.stateData.BenfAdd_City || 0
       },
       set(value) {
         this.FuncGetDistrictData(value)
