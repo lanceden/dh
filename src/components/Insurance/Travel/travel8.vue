@@ -23,8 +23,6 @@
           <div class="insure-check-content">紙本保單</div>
         </div>
       </div>
-      <form class="form-bottom" v-show="isPaper">
-      </form>
     </div>
 
     <!-- 客戶住所(通訊地址) -->
@@ -38,33 +36,51 @@
         </div>
       </div>
       <div class="border-bottom-line"></div>
+      <!-- 輸入新的通訊地址 -->
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">客戶住所(通訊地址)</label>
-          <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" id="txtOldAddress1" :value="GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address" disabled="disabled">
+          <div class="top col-sm-12">
+            <div class="insure-notice-box" @click="OnCommunityAddr('old')">
+              <div class="insure-check"><img :src="ensure.paperOld" alt=""></div>
+              <div class="insure-check-content">{{GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
+            </div>
           </div>
-          <div :class="{checkbox: true, checked: true}" id="divOldAddress1" @click="OnCommunityAddr('old')"></div>
+          <div class="top col-sm-12">
+            <div class="insure-notice-box" @click="OnCommunityAddr('new')">
+              <div class="insure-check"><img :src="ensure.paperNew" alt=""></div>
+              <div class="insure-check-content">輸入新的通訊地址</div>
+            </div>
+          </div>
         </div>
         <!-- 輸入新的通訊地址 -->
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">輸入新的通訊地址</label>
-          <div class="col-sm-12">
-            <template>
-              <div v-show="cbNewAddr1">
-                <select class="form-control data-input insure-select insure-input-edit" v-model="MailingAddrCity">
-                  <option selected="selected" value="0">請選擇</option>
-                  <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
-                </select>
-                <select class="form-control data-input insure-select insure-input-edit" v-model="MailingAddrDistrict">
-                  <option selected="selected" value="0">請選擇</option>
-                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
-                </select>
-                <input type="text" class="form-control insure-input-block" id="txtNewAddress1" placeholder="為保障您的權益，此欄位不可為空白" v-model="MailingAddrStreet" />
-              </div>
-            </template>
+        <div v-show="this.cbNewAddr1">
+          <!-- 選擇城市 -->
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
+            <div class="col-sm-12 insure-select-align">
+              <select class="form-control data-input insure-select insure-input-block-edit" v-model="MailingAddrCity">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+              </select>
+            </div>
           </div>
-          <div :class="{checkbox: true, checked: false}" id="divNewAddress1" @click="OnCommunityAddr('new')"></div>
+          <!-- 選擇鄉鎮地區 -->
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
+            <div class="col-sm-12 insure-select-align">
+              <select class="form-control data-input insure-select insure-input-block-edit" v-model="MailingAddrDistrict">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
+              </select>
+            </div>
+          </div>
+          <!--  -->
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
+            <div class="col-sm-12 insure-select-align">
+              <input type="text" class="form-control insure-input-block" id="txtNewAddress1" placeholder="為保障您的權益，此欄位不可為空白" v-model="MailingAddrStreet" />
+            </div>
+          </div>
         </div>
 
         <div class="border-bottom-line col-sm-12"></div>
@@ -93,14 +109,14 @@
           <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件
           </label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" disabled="disabled" :value="GetTravelPostData.PolicyData.ProposerInfo[0].Email">
+            <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.ProposerInfo[0].Email}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">要保人手機
           </label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" :value="GetTravelPostData.PolicyData.ProposerInfo[0].Phone">
+            <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.ProposerInfo[0].Phone}}</div>
           </div>
         </div>
         <div class="border-bottom-line col-sm-12"></div>
@@ -136,10 +152,8 @@ export default {
       ensure: {
         elec: '../../../../../static/img/oval.png',
         paper: '../../../../../static/img/oval.png',
-        tempZip1: '',
-        tempCity1: '',
-        tempDistrict1: '',
-        tempRoad1: ''
+        paperOld: '../../../../../static/img/oval-ed.png',
+        paperNew: '../../../../../static/img/oval.png'
       },
       isPaper: false
     }
@@ -192,10 +206,6 @@ export default {
         District: '',
         Street: ''
       }
-    } else {
-      this.tempCity1 = this.GetTravelPostData.PolicyData.MailingAddr.City
-      this.tempDistrict1 = this.GetTravelPostData.PolicyData.MailingAddr.District
-      this.tempRoad1 = this.GetTravelPostData.PolicyData.MailingAddr.Street
     }
   },
   methods: {
@@ -220,6 +230,7 @@ export default {
           this.ensure.paper = '../../../../../static/img/oval-ed.png'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType = '1'
           this.isPaper = true
+          this.OnCommunityAddr('old')
           break
       }
       console.log('GetTravelPostData.PolicyData.ProposerInfo[0].Address', this.GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address)
@@ -230,20 +241,25 @@ export default {
     OnCommunityAddr(target) {
       switch (target) {
         case 'old':
-          $('#divOldAddress1').removeClass('checked').addClass('checked')
-          $('#divNewAddress1').removeClass('checked')
           $('#txtNewAddress1').attr('disabled', true)
           $('#txtNewAddress1').val('')
           this.cbNewAddr1 = false
+          this.ensure.paperOld = './../../../../static/img/oval-ed.png'
+          this.ensure.paperNew = './../../../../static/img/oval.png'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType = '1'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailingType = '0'
+          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailingAddr = {
+            City: this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.ProposerInfo[0].MailingAddr.Zip,
+            District: this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.ProposerInfo[0].MailingAddr.District,
+            Street: this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.ProposerInfo[0].MailingAddr.Street
+          }
           break
         case 'new':
-          $('#divOldAddress1').removeClass('checked')
-          $('#divNewAddress1').removeClass('checked').addClass('checked')
           $('#txtOldAddress1').attr('disabled', true)
           $('#txtNewAddress1').removeAttr('disabled')
           this.cbNewAddr1 = true
+          this.ensure.paperOld = './../../../../static/img/oval.png'
+          this.ensure.paperNew = './../../../../static/img/oval-ed.png'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType = '1'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailingType = '1'
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailingAddr = {
@@ -255,7 +271,7 @@ export default {
       }
     },
     GoToPrev() {
-      this.$router.push('/travel-7')
+      this.$router.go(-1)
     },
     GoToNext() {
       this.$router.push(`/agreement?instypename=travel`)

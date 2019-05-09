@@ -1,7 +1,12 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <PaymentAmount :amount="stateData.mode_prem"></PaymentAmount>
+    <!-- 非旅平 -->
+    <PaymentAmount 
+        v-if="this.$store.state.PLANNAME.toLowerCase() !== 'travel' || this.$store.state.PLANNAME.toLowerCase() !== 'enttravel'" :amount="stateData.mode_prem">
+    </PaymentAmount>
+    <!-- 旅平 -->
+    <PaymentAmount v-else :amount="stateData.PolicyData.TotalPremium"></PaymentAmount>
     <PaymentInit :stateData="stateData"></PaymentInit>
     <PaymentFooter :stateData="stateData"></PaymentFooter>
   </div>
@@ -28,7 +33,9 @@ export default {
       'GetIGoingPostData',
       'GetMyWayPostData',
       'GetAccidentPostData',
-      'GetHealthPostData'
+      'GetHealthPostData',
+      'GetTravelPostData',
+      'GetEntTravelPostData',
     ])
   },
   created() {
@@ -58,6 +65,12 @@ export default {
         break
       case 'health':
         this.stateData = this.GetHealthPostData
+        break
+      case 'travel':
+        this.stateData = this.GetTravelPostData
+        break
+      case 'enttravel':
+        this.stateData = this.GetEntTravelPostData
         break
     }
   },

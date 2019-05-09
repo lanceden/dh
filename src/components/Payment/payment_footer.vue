@@ -59,12 +59,12 @@ export default {
       }
       console.log('postData.CoreData', JSON.stringify(postData.CoreData))
       // 年金險用init_method 其餘用PAYTYPE
-      if (postData.CoreData.init_method === '') {
+      if (this.$store.state.PAYTYPE === '') {
         toggleModalShow('請選擇繳費管道。')
         return
       }
       // 判斷是否為信用卡繳費, 若是則要驗證卡號
-      if (postData.CoreData.init_method.toUpperCase() === 'C') {
+      if (this.$store.state.PAYTYPE === 'C') {
         let validateResult = CheckCardno(postData.NCCCModels.CardNo)
         if (!validateResult) {
           toggleModalShow('信用卡號不正確，請重新輸入。')

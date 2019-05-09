@@ -10,6 +10,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import { toggleModalShow } from '../../utils/toggleModal.js'
 import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes'
 import EZCashFunctionTypes from '../../store/modules/EZCash/Types/EZCashFunctionTypes'
 import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes'
@@ -23,7 +24,8 @@ import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunction
 // import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 export default {
   props: [
-    'insname'
+    'insname',
+    'provisionCount'
   ],
   computed: {
     ...mapGetters([
@@ -60,6 +62,10 @@ export default {
      * 投保資訊
      */
     GoNext() {
+      if (this.$store.state.AGREEMENTCOUNT !== 0) {
+        toggleModalShow('請閱讀同意書', '貼心提醒您')
+        return
+      }
       // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
       let planName = this.$store.state.PLANNAME.toLowerCase()
       // 投保流程下一步

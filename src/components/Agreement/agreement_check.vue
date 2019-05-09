@@ -5,13 +5,13 @@
         <div class="insure-notice-box">
           <div class="insure-check"><img src="../../../static/img/chat.png" alt=""></div>
           <div class="insure-check-title">請閱讀同意書</div>
-          <span class="insure-check-title red-right-title" @click="test()">{{contentButtonTitle}}<img class="arrow" src="../../../static/img/arrowdown.png"></span>
+          <span class="insure-check-title red-right-title" @click="toggleAll()">{{contentButtonTitle}}<img class="arrow" src="../../../static/img/arrowdown.png"></span>
         </div>
       </div>
     </div>
     <div class="border-bottom-line"></div>
     <div class="insure-text">
-      我已閱讀且同意{{provisionTitle}}
+      我已閱讀{{provisionTitle}}
     </div>
     <div class="border-bottom-line"></div>
     <div class="col-sm-12">
@@ -45,7 +45,7 @@ export default {
     ])
   },
   methods: {
-    test() {
+    toggleAll() {
       this.$store.state.AGREEMENTTOGGLE = !this.$store.state.AGREEMENTTOGGLE
       this.contentButtonTitle = this.$store.state.AGREEMENTTOGGLE ? '全部收起' : '全部展開'
       console.log(this.$store.state.AGREEMENTTOGGLE)

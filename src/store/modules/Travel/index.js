@@ -84,9 +84,9 @@ const actions = {
   [functionTypes.FuncTravelSubmitOrder]({ commit }, { nccModels, para, router }) {
     console.log(para)
     rootState.Http.axios.post(`${Url.TravelSubmitOrder}`, {
+      InsurerSourceID: APICODE,
       NCCCModels: nccModels,
-      CoreData: para,
-      TravelRq_Order: APICODE
+      TravelRq_Order: para
     }).then(response => {
       commit(functionTypes.FuncTravelSubmitOrder, { result: response.data, router })
     })

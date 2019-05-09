@@ -1,5 +1,5 @@
 <template>
-  <div v-if="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].Relation) === 1">
+  <div v-if="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].Relation) === 1">
     <div class="container">
       <div class="bg-radius">
         <div class="top">

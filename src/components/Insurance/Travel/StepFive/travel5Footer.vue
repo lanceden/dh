@@ -23,7 +23,7 @@ export default {
       this.$router.go(-1)
     },
     GoToNext() {
-      if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.leght > 0) {
+      if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length > 0) {
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
           if (parseInt(item.Relation) !== 1) {
             this.$router.push('/travel-6')

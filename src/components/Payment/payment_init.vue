@@ -162,15 +162,15 @@ export default {
     },
     init_method: {
       get() {
-        return this.stateData.init_method
+        return this.$store.state.PAYTYPE
       },
       set(value) {
-        this.stateData.init_method = value
+        this.$store.state.PAYTYPE = value
       }
     },
     isEbill: {
       get() {
-        return this.stateData.init_method === 'B'
+        return this.$store.state.PAYTYPE === 'B'
       }
     }
   },

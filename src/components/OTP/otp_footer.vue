@@ -11,24 +11,23 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  props: [
-    'stateData'
-  ],
+  computed: {
+    ...mapGetters([
+      'GetAccountData'
+    ])
+  },
   methods: {
     ...mapActions([
       'FuncSendOTP'
     ]),
-    /**
-     * OTP Verify
-     */
     GoNext() {
       let sendData = {
         para: {
-          MobileNum: this.stateData.phone_mobile,
-          OTPMail: this.stateData.email,
-          UserIDN: this.stateData.client_id
+          MobileNum: this.GetAccountData.CustMobile,
+          OTPMail: this.GetAccountData.CusteMail,
+          UserIDN: this.GetAccountData.CustIDN
         },
         router: this.$router
       }

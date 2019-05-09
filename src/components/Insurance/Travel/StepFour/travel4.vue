@@ -45,12 +45,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
-import { mockInsData } from './mockData.js'
 
 export default {
-  created() {
-    this.$store.state.Travel.TRAVELPOSTDATA = mockInsData.Data.Result
-  },
   computed: {
     ...mapGetters([
       'GetLoading',
@@ -63,7 +59,7 @@ export default {
     },
     test() {
       // 只有子女不會有本人的受益人需跳過此步驟
-      if (parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TargetType) !== 1) {
+      if (parseInt(this.GetTravelPostData.TargetType) !== 1) {
         this.$router.push('/travel-5')
       } else {
         this.$router.push('/travel-6')
@@ -71,7 +67,8 @@ export default {
     },
     GoToNext() {
       // 只有子女不會有本人的受益人需跳過此步驟
-      if (parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TargetType) !== 1) {
+      console.log('this.GetTravelPostData.TargetType', this.GetTravelPostData.TargetType)
+      if (parseInt(this.GetTravelPostData.TargetType) !== 1) {
         this.$router.push('/travel-5')
       } else {
         this.$router.push('/travel-6')

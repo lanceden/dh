@@ -3,7 +3,7 @@
     <loading v-show="GetLoading" />
     <AgreementCheck></AgreementCheck>
     <AgreementContent v-for="n in provisionCount" :key="n" :provisionindex="n - 1" :provisionname="GetProvision[n-1]" stagger="100"></AgreementContent>
-    <AgreementFooter :insname="instypename"></AgreementFooter>
+    <AgreementFooter :insname="instypename" :provisionCount="provisionCount"></AgreementFooter>
   </div>
 </template>
 
@@ -53,9 +53,16 @@ export default {
         break
     }
     agreementArr.forEach(item => {
-      this.GetProvision.push(this.instypename === 'travel' ? item.split('』')[0] : item.split('(')[0])
+      if (this.instypename === 'travel') {
+        if (item !== '') {
+          this.GetProvision.push(item.split('』')[0])
+        }
+      } else {
+        this.GetProvision.push(item.split('(')[0])
+      }
     })
     this.provisionCount = this.GetProvision.length
+    this.$store.state.AGREEMENTCOUNT = this.GetProvision.length
   },
   components: {
     AgreementCheck,

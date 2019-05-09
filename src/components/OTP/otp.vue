@@ -10,7 +10,7 @@
       </div>
       <div class="border-bottom-line"></div>
       <div class="insure-text">
-        我們將透過簡訊發送『OTP動態密碼驗證』至您的手機：<span class="text-red-i">{{GetUpCashPostData.phone_mobile}}</span>，及您客戶資料中所留存的電子信箱：<span class="text-red-i">{{GetUpCashPostData.email}}</span>。
+        我們將透過簡訊發送『OTP動態密碼驗證』至您的手機：<span class="text-red-i">{{this.GetAccountData.CustMobile}}</span>，及您客戶資料中所留存的電子信箱：<span class="text-red-i">{{this.GetAccountData.CusteMail}}</span>。
       </div>
       <div class="row col-width">
         <div class="col-sm-12">
@@ -27,11 +27,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData
+      'GetAccountData'
     ])
   }
 }

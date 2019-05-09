@@ -174,16 +174,7 @@ export default {
       'FuncGetDistrictData'
     ]),
     GoToPrev() {
-      if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.leght > 0) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
-          if (parseInt(item.Relation) !== 1) {
-            this.$router.push('/travel-6')
-            return
-          }
-        })
-      } else {
-        this.$router.push('/travel-5')
-      }
+      this.$router.go(-1)
     },
     GoToNext() {
       this.errorMsg = ''
