@@ -109,8 +109,18 @@ export default {
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncGetBeneficiary(state, { result }) {
-    state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
+  FuncGetBeneficiary(state, { result, planCode, stateData }) {
+    if (planCode !== '65020' || planCode != '66020') {
+      state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
+      stateData.benf_num = state.BENEFICIARY.length
+      if (stateData.benf_num > 0) {
+        state.BENEFICIARY.forEach((item, index) => { 
+          console.log('FuncGetBeneficiary', index)
+        })
+      }
+    }
+    // 旅平用
+    stateData = []
   },
   /**
    * 發送OTP

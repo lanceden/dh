@@ -297,7 +297,7 @@ body {
     box-shadow: 0 0 0 0 #fff;
 }
 select{
-	background-image: url(../images/down-arrow.png);
+	background-image: url(../../static/img/down-arrow.png);
 	-webkit-appearance: none;
 	outline: none !important;
     box-shadow: 0 0 0 0 #fff;
@@ -748,7 +748,7 @@ input[type="checkbox"] {
 .checkbox,.checkbox-oneline{
 	-webkit-appearance: none;
 	display:inline-block;
-	background: url(../images/checked-un.png) no-repeat;
+	background: url(../../static/img/checked-un.png) no-repeat;
 	width: 44px;
 	height: 43px;
 	cursor: pointer;
@@ -762,7 +762,7 @@ input[type="checkbox"] {
 }
 
 .checkbox.checked,.checkbox-oneline.checked {
-	background: url(../images/checked.png) no-repeat;
+	background: url(../../static/img/checked.png) no-repeat;
 }
 
 

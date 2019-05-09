@@ -10,7 +10,6 @@ export default {
   GetBank: state => state.BANK,
   GetBankData: state => state.BANKDATA,
   GetBankBranches: state => state.BANKBRANCHESDATA,
-  GetBeneficiary: state => state.BENEFICIARY,
   GetNationData: state => state.NATIONDATA,
   GetOccupation: state => state.OCCUPATION,
   GetOccupationData: state => state.OCCUPATIONDATA,

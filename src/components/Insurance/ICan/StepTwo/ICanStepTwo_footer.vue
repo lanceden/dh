@@ -3,13 +3,13 @@
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
         <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">回前一頁</div>
-        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">下一步</div>
+        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">確認送出</div>
       </nav>
     </div>
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 export default {
   computed: {
@@ -18,14 +18,10 @@ export default {
     ])
   },
   methods: {
-    ...mapActions([
-      'SetHeaderIsActive'
-    ]),
     /**
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.SetHeaderIsActive(false)
       this.$router.go(-1)
     },
     /**

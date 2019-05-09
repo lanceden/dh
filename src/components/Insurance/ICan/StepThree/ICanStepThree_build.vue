@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import StepThreeContact from './ICanStepThree_contact'
 import StepThreeFooter from './ICanStepThree_footer'
 export default {
@@ -22,11 +22,6 @@ export default {
   components: {
     StepThreeContact,
     StepThreeFooter
-  },
-  methods: {
-    ...mapActions([
-      'FuncGetBeneficiary'
-    ])
   }
 }
 

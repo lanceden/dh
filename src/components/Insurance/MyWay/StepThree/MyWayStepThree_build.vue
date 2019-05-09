@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import StepThreeAccount from './MyWayStepThree_account'
 import StepThreeContact from './MyWayStepThree_contact'
 import StepThreeFooter from './MyWayStepThree_footer'
@@ -25,11 +25,6 @@ export default {
     StepThreeAccount,
     StepThreeContact,
     StepThreeFooter
-  },
-  methods: {
-    ...mapActions([
-      'FuncGetBeneficiary'
-    ])
   }
 }
 

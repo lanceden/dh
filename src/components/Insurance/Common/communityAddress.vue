@@ -1,33 +1,32 @@
 <template>
   <div>
-    <div class="form-group row">
-      <!-- 客戶住所(通訊地址) -->
-      <label for="" class="col-sm-12 col-form-label insure-label">客戶住所(通訊地址)</label>
-      <div class="col-sm-12">
-        <input type="text" class="form-control insure-input" id="txtOldAddress1" :value="stateData.city1 + stateData.district1 + stateData.road1" disabled="disabled">
-        <div :class="{checkbox: true, checked: true}" id="divOldAddress1" @click="OnCommunityAddr('old')"></div>
-      </div>
-    </div>
-    <!-- 輸入新的通訊地址 -->
-    <div class="form-group row">
-      <label for="" class="col-sm-12 col-form-label insure-label">輸入新的通訊地址</label>
-      <div class="col-sm-12">
-        <template>
-          <div v-show="cbNewAddr1">
-            <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr1" v-model="city1">
+    <form class="form-bottom">
+      <div class="form-group row">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box" @click="OnCommunityAddr('old')">
+            <div class="insure-check"><img :src="ensure.old" /></div>
+            <div class="insure-check-content">客戶住所(通訊地址):{{stateData.city1 + stateData.district1 + stateData.road1}}</div>
+          </div>
+        </div>
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box" @click="OnCommunityAddr('new')">
+            <div class="insure-check"><img :src="ensure.new" /></div>
+            <div class="insure-check-content">輸入新的戶籍地址</div>
+            <select class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr1" v-model="city1">
               <option selected="selected" value="0">請選擇</option>
               <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
             </select>
-            <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr1" v-model="district1">
+            <select class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr1" v-model="district1">
               <option selected="selected" value="0">請選擇</option>
               <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
             </select>
             <input type="text" class="form-control insure-input-block" id="txtNewAddress1" placeholder="為保障您的權益，此欄位不可為空白" v-model="road1" />
           </div>
-        </template>
-        <div :class="{checkbox: true, checked: false}" id="divNewAddress1" @click="OnCommunityAddr('new')"></div>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -43,6 +42,10 @@ export default {
   ],
   data() {
     return {
+      ensure: {
+        old: `../../../static/img/oval.png`,
+        new: '../../../static/img/oval.png'
+      },
       cbOldAddr1: true,
       cbNewAddr1: false
     }
@@ -108,6 +111,8 @@ export default {
           $('#divNewAddress1').removeClass('checked')
           $('#txtNewAddress1').attr('disabled', true)
           $('#txtNewAddress1').val('')
+          this.ensure.old = '../../../static/img/oval-ed.png'
+          this.ensure.new = '../../../static/img/oval.png'
           this.cbNewAddr1 = false
           this.stateData.IsSaveCommu = false
           break
@@ -116,6 +121,8 @@ export default {
           $('#divNewAddress1').addClass('checked')
           $('#txtOldAddress1').attr('disabled', true)
           $('#txtNewAddress1').removeAttr('disabled')
+          this.ensure.old = '../../../static/img/oval.png'
+          this.ensure.new = '../../../static/img/oval-ed.png'
           this.cbNewAddr1 = true
           this.stateData.IsSaveCommu = true
           break

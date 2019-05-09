@@ -4,11 +4,6 @@
     <BenfSetup :stateData="stateData"></BenfSetup>
     <BenfOne :stateData="stateData"></BenfOne>
     <BenfOneAccount :stateData="stateData"></BenfOneAccount>
-    <BenfTwo></BenfTwo>
-    <BenfTwoAccount></BenfTwoAccount>
-    <BenfThree></BenfThree>
-    <BenfThreeAccount></BenfThreeAccount>
-    <BenfFooter></BenfFooter>
   </div>
 </template>
 
@@ -17,10 +12,6 @@ import { mapGetters } from 'vuex'
 import BenfSetup from './benfsetup'
 import BenfOne from './benfone'
 import BenfOneAccount from './benfoneAccount'
-import BenfTwo from './benftwo'
-import BenfTwoAccount from './benftwoAccount'
-import BenfThree from './benfthree'
-import BenfThreeAccount from './benfthreeAccount'
 import BenfFooter from './benffooter'
 export default {
   data() {
@@ -64,6 +55,14 @@ export default {
         console.log('this.GetHealthPostData')
         this.stateData = this.GetHealthPostData
         break
+      case 'travel':
+        console.log('this.GetTravelPostData')
+        this.stateData = this.GetTravelPostData
+        break
+      case 'enttravel':
+        console.log('this.GetEntTravelPostData')
+        this.stateData = this.GetEntTravelPostData
+        break
     }
   },
   computed: {
@@ -76,17 +75,15 @@ export default {
       'GetIGoingPostData',
       'GetMyWayPostData',
       'GetAccidentPostData',
-      'GetHealthPostData'
+      'GetHealthPostData',
+      'GetTravelPostData',
+      'GetEntTravelPostData',
     ])
   },
   components: {
     BenfSetup,
     BenfOne,
     BenfOneAccount,
-    BenfTwo,
-    BenfTwoAccount,
-    BenfThree,
-    BenfThreeAccount,
     BenfFooter
   }
 }

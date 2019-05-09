@@ -86,9 +86,9 @@ export default {
    * 取回上一張保單受益人
    * @param {當前Vuex狀態} commit VuexStoreState
    */
-  async FuncGetBeneficiary({ commit }) {
+  async FuncGetBeneficiary({ commit }, { planCode, stateData }) {
     await rootState.Http.axios.post(`${Url.Beneficiary}`).then(response => {
-      commit('FuncGetBeneficiary', { result: response.data })
+      commit('FuncGetBeneficiary', { result: response.data, planCode, stateData })
     })
   },
   /**

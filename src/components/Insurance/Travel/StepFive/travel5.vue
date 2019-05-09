@@ -147,7 +147,6 @@ export default {
     ...mapGetters([
       'GetCityData',
       'GetDistrictData',
-      'GetBeneficiary',
       'GetAccountData',
       TravelGetterTypes.GetTravelPostData
     ]),
