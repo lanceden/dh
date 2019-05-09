@@ -436,9 +436,6 @@ export default {
       mockData: data.Data.Result
     }
   },
-  created() {
-    console.log(this.mockData)
-  },
   computed: {
     ...mapGetters([
       GetterTypes.GetAccidentPostData

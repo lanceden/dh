@@ -1,12 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <!-- 非旅平 -->
-    <PaymentAmount 
-        v-if="this.$store.state.PLANNAME.toLowerCase() !== 'travel' || this.$store.state.PLANNAME.toLowerCase() !== 'enttravel'" :amount="stateData.mode_prem">
-    </PaymentAmount>
-    <!-- 旅平 -->
-    <PaymentAmount v-else :amount="stateData.PolicyData.TotalPremium"></PaymentAmount>
+    <PaymentAmount :amount="amount"></PaymentAmount>
     <PaymentInit :stateData="stateData"></PaymentInit>
     <PaymentFooter :stateData="stateData"></PaymentFooter>
   </div>
@@ -20,7 +15,8 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      stateData: []
+      stateData: [],
+      amount: 0
     }
   },
   computed: {
@@ -35,7 +31,7 @@ export default {
       'GetAccidentPostData',
       'GetHealthPostData',
       'GetTravelPostData',
-      'GetEntTravelPostData',
+      'GetEntTravelPostData'
     ])
   },
   created() {
@@ -72,6 +68,11 @@ export default {
       case 'enttravel':
         this.stateData = this.GetEntTravelPostData
         break
+    }
+    if (result === 'travel' || result === 'enttravel') {
+      this.amount = this.stateData.PolicyData.TotalPremium
+    } else {
+      this.amount = this.stateData.mode_prem
     }
   },
   components: {

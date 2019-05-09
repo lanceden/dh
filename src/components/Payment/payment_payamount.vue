@@ -4,15 +4,15 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../static/img/calculator.png" alt=""></div>
-            <div class="insure-check-title">保費金額</div>
+            <div class="insure-check"><img src="../../../static/img/coin.png" alt=""></div>
+            <div class="insure-check-title">請選擇繳費方式</div>
           </div>
         </div>
       </div>
       <div class="border-bottom-line"></div>
       <div class="bg-money">
         <div class="col-sm-12">
-          <div class="font-label">您所支付的第一期保險費為：</div>
+          <div class="font-label">本次投保的保險費為：</div>
           <div class="font-money"> NT$ {{amount}} 元</div>
           <div class="money-icon"><img src="../../../static/img/coins.png" alt=""></div>
         </div>
@@ -30,7 +30,10 @@
 export default {
   props: [
     'amount'
-  ]
+  ],
+  created() {
+    console.log(this.amount)
+  }
 }
 
 </script>

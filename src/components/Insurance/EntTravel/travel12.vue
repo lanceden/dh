@@ -59,7 +59,6 @@
               <li class="decimal">您的手機其簡訊記憶體空間為足夠。</li>
               <li class="decimal">請洽詢您的行動電話系統業者，是否有阻擋企業簡訊、垃圾簡訊或是簡訊功能未開啟等狀況。</li>
               <li class="decimal">如有任何疑問，請洽本公司客服中心。</li>
-
             </ul>
           </div>
           <div class="col-sm-12">

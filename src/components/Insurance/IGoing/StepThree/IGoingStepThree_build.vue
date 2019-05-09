@@ -12,7 +12,7 @@ import StepThreeContact from './IGoingStepThree_contact'
 import StepThreeFooter from './IGoingStepThree_footer'
 export default {
   created() {
-    this.FuncGetBeneficiary()
+    this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-3.png'
   },
   computed: {
     ...mapGetters([

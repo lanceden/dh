@@ -23,13 +23,9 @@ export default {
       this.$router.go(-1)
     },
     GoToNext() {
-      if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length > 0) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
-          if (parseInt(item.Relation) !== 1) {
-            this.$router.push('/travel-6')
-            return
-          }
-        })
+      // 本人及本人加子女
+      if (this.$store.state.Travel.TRAVELPOSTDATA.TargetType === '0' || this.$store.state.Travel.TRAVELPOSTDATA.TargetType === '2') {
+        this.$router.push('/travel-6')
       } else {
         this.$router.push('/travel-7')
       }

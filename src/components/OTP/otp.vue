@@ -19,7 +19,7 @@
       <div class="border-bottom-line"></div>
       <div class="col-sm-12">
         <div class="insure-tips-text insure-tips-mt-20">
-          變更手機號碼：新光人壽客戶服務中心>客戶資料管理>客戶認證資料修改。
+          <img src="../../../static/img/insure-link.png" />>變更手機號碼：新光人壽客戶服務中心>客戶資料管理>客戶認證資料修改。
         </div>
       </div>
     </div>

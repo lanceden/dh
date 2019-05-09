@@ -20,6 +20,7 @@ import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTyp
 import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
 import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes.js'
 import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes.js'
+import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunctionTypes.js'
 import { CheckCardno } from '../../utils/checkCreditCard.js'
 import { toggleModalShow } from '../../utils/toggleModal.js'
 
@@ -36,7 +37,8 @@ export default {
       IGoingFunctionTypes.FuncIGoingSubmitOrder,
       MyWayFunctionTypes.FuncMyWaySubmitOrder,
       AccidentFunctionTypes.FuncAccidentSubmitOrder,
-      HealthFunctionTypes.FuncHealthSubmitOrder
+      HealthFunctionTypes.FuncHealthSubmitOrder,
+      TravelFunctionTypes.FuncTravelSubmitOrder
     ]),
     doPayment() {
       // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
@@ -45,6 +47,12 @@ export default {
       // OTP發送及驗證時間賦值
       this.stateData.OtpSendTime = this.$store.state.OTPSENDTIME
       this.stateData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
+
+      // 年金險用init_method 其餘用PAYTYPE
+      if (this.$store.state.PAYTYPE === '') {
+        toggleModalShow('請選擇繳費管道。')
+        return
+      }
 
       // 付款資料
       let postData = {
@@ -58,11 +66,6 @@ export default {
         router: this.$router
       }
       console.log('postData.CoreData', JSON.stringify(postData.CoreData))
-      // 年金險用init_method 其餘用PAYTYPE
-      if (this.$store.state.PAYTYPE === '') {
-        toggleModalShow('請選擇繳費管道。')
-        return
-      }
       // 判斷是否為信用卡繳費, 若是則要驗證卡號
       if (this.$store.state.PAYTYPE === 'C') {
         let validateResult = CheckCardno(postData.NCCCModels.CardNo)
@@ -75,6 +78,8 @@ export default {
       console.log('postData.CoreData', JSON.stringify(postData.CoreData))
 
       // 執行付款
+      postData.CoreData.OtpSendTime = this.$store.state.OTPSENDTIME
+      postData.CoreData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
       switch (planName) {
         case 'upcash':
           console.log('this.FuncUpCashSubmitOrder')
@@ -107,6 +112,18 @@ export default {
         case 'health':
           console.log('this.FuncHealthSubmitOrder')
           this.FuncHealthSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
+          break
+        case 'travel':
+          console.log('this.FuncTravelSubmitOrder')
+          postData.CoreData.PolicyData.PayType = this.$store.state.PAYTYPE
+          postData.CoreData.PolicyData.OtpSendTime = this.$store.state.OTPSENDTIME
+          postData.CoreData.PolicyData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
+          this.FuncTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
+          break
+        case 'enttravel':
+          console.log('this.EntTravelFunctionTypes')
+          postData.CoreData.PolicyData.PayType = this.$store.state.PAYTYPE
+          // this.EntTravelFunctionTypes({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
       }
     }
