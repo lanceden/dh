@@ -48,6 +48,29 @@ export default {
       set(value) {
         this.premiums = value
         this.stateData.face_amt = value
+
+        if (this.$store.state.PLANNAME.toLowerCase() === 'ican') {
+          $('#CalcAmtDesc2').text($('#face_amt option:selected').text())
+          $('#CalcAmtDesc3').text($('#face_amt option:selected').text())
+          var prem = parseInt(value)
+          var maxPerc = 1.75
+          var minPerc = 0.1 / 4
+          var maxAmt = prem * maxPerc / 100
+          var minAmt = prem * minPerc / 100
+          $('#broken-bones-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+        }
+
+        if (this.$store.state.PLANNAME.toLowerCase() === 'iwell') {
+          var prem = parseInt(value)
+          var maxPerc = 100 * 0.5
+          var minPerc = 5 * 0.5
+          var maxAmt = prem * maxPerc / 100
+          var minAmt = prem * minPerc / 100
+          $('#CalcAmtDesc2').text(maxAmt + '萬')
+          $('#CalcAmtDesc3').text(maxAmt + '萬')
+          $('#blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+          $('#specific-blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+        }
       }
     }
   },

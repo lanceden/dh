@@ -2,8 +2,8 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-6 footer-title footer-left" @click="GoPrev">上一步</div>
-        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">下一步</div>
+        <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">回前一頁</div>
+        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">填寫受益人資料</div>
       </nav>
     </div>
   </div>

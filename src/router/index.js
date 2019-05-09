@@ -15,6 +15,7 @@ import EZCashInsuredData from '../components/Insurance/EZCash/InsuredData/EZCash
 import ICanElecForm from '../components/Insurance/ICan/StepOne/ICanStepOne_elecform.vue'
 import ICanStepOne from '../components/Insurance/ICan/StepOne/ICanStepOne_build.vue'
 import ICanStepTwo from '../components/Insurance/ICan/StepTwo/ICanStepTwo_build.vue'
+import ICanStepTwoResult from '../components/Insurance/ICan/StepTwo/ICanStepTwo_calculateresult.vue'
 import ICanStepThree from '../components/Insurance/ICan/StepThree/ICanStepThree_build.vue'
 import ICanStepFour from '../components/Insurance/ICan/StepFour/ICanStepFour_build.vue'
 import ICanInsuredData from '../components/Insurance/ICan/InsuredData/ICanInsureddata_build.vue'
@@ -261,6 +262,10 @@ const router = new Router({
     {
       path: '/ICan-2',
       component: ICanStepTwo
+    },
+    {
+      path: '/ICan-Estimate',
+      component: ICanStepTwoResult
     },
     {
       path: '/ICan-3',

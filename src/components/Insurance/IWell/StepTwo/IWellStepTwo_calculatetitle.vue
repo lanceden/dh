@@ -1,10 +1,12 @@
 <template>
-  <div class="bg-radius">
-    <div class="form-bottom">
-      <div class="row col-width">
-        <div class="col-sm-12">
-          <button class="button-blue btn-block" @click="Estimate()">保費試算</button>
-        </div>
+  <div>
+    <loading v-show="GetLoading" />
+    <div class="footer">
+      <div class="footer-content">
+        <nav class="navbar navbar-dark row">
+          <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
+          <div class="col-sm-8 footer-title footer-right" @click="Estimate()">保費試算</div>
+        </nav>
       </div>
     </div>
   </div>
@@ -12,20 +14,24 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import FunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes'
-import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes'
+import IWellFunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes.js'
+import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetIWellPostData
+      'GetLoading',
+      IWellGetterTypes.GetIWellPostData
     ])
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncIWellEstimate
+      IWellFunctionTypes.FuncIWellEstimate
     ]),
+    GoToPrev() {
+      this.$router.push(`/ICan-1`)
+    },
     Estimate() {
-      this.FuncIWellEstimate({ para: this.GetIWellPostData })
+      this.FuncIWellEstimate({ para: this.GetIWellPostData, router: this.$router })
     }
   }
 }

@@ -4,8 +4,6 @@
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoEnSureContent></StepTwoEnSureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
-    <StepTwoCalculateResult></StepTwoCalculateResult>
-    <StepTwoFooter></StepTwoFooter>
   </div>
 </template>
 
@@ -15,8 +13,6 @@ import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js
 import StepTwoInsuranceData from './ICanStepTwo_insurdata'
 import StepTwoEnSureContent from './ICanStepTwo_ensurecontent'
 import StepTwoCalculateTitle from './ICanStepTwo_calculatetitle'
-import StepTwoCalculateResult from './ICanStepTwo_calculateresult'
-import StepTwoFooter from './ICanStepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
@@ -30,9 +26,7 @@ export default {
   components: {
     StepTwoInsuranceData,
     StepTwoEnSureContent,
-    StepTwoCalculateTitle,
-    StepTwoCalculateResult,
-    StepTwoFooter
+    StepTwoCalculateTitle
   }
 }
 

@@ -2,7 +2,8 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-12 footer-title footer-right" @click="GotoNext()">下一步</div>
+        <div class="col-sm-6 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
+        <div class="col-sm-6 footer-title footer-right" @click="GotoNext()">填寫投保資料</div>
       </nav>
     </div>
   </div>
@@ -28,6 +29,9 @@ export default {
       'SetHeaderIsActive',
       FunctionTypes.FuncIWellIsInit
     ]),
+    GoToPrev() {
+      this.$router.push(`/IWellelecform?token=${this.$store.state.ApiToken}`)
+    },
     /**
      * 下一步
      */

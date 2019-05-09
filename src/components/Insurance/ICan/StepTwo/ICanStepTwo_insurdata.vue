@@ -4,7 +4,7 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check">
-            <img src="../../../../../static/img/chat.png" alt>
+            <img src="../../../../../static/img/edit.png" alt>
           </div>
           <div class="insure-check-title">請填寫投保資料</div>
         </div>
@@ -144,28 +144,6 @@ export default {
         this.GetICanPostData.mode_prem = 0
         let maturedDate = moment(this.GetICanPostData.po_issue_date, 'YYYY-MM-DD').add(`${parseInt(value)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
         $('#matured_date').html(`天至 ${maturedDate}`)
-      }
-    },
-    /**
-     * 投保額度
-     */
-    face_amt: {
-      get() {
-        let result = InitColumnData(this.GetICanPostData.face_amt, initFaceAmt)
-        this.GetICanPostData.face_amt = result
-        return result
-      },
-      set(value) {
-        this.GetICanPostData.face_amt = value
-        this.GetICanPostData.mode_prem = 0
-        $('#CalcAmtDesc2').text($('#face_amt option:selected').text())
-        $('#CalcAmtDesc3').text($('#face_amt option:selected').text())
-        var prem = parseInt(value)
-        var maxPerc = 1.75
-        var minPerc = 0.1 / 4
-        var maxAmt = prem * maxPerc / 100
-        var minAmt = prem * minPerc / 100
-        $('#broken-bones-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
       }
     }
   }

@@ -29,14 +29,6 @@
             </div>
           </div>
         </div>
-        <div class='col-sm-12'>
-          <div class='insure-notice-text' v-show='isEbill'>
-            (使用活期性存款帳戶繳費， 手續費0元 )
-            <div class='insure-notice-text' v-show='!isEbill'>
-              (限台灣核發之VISA、MASTER、JCB、UCard信用卡)
-            </div>
-          </div>
-        </div>
         <div class='border-bottom-line'></div>
         <!-- 查詢線上繳費發卡銀行 -->
         <div class='col-sm-12'>
@@ -48,10 +40,9 @@
           </div>
         </div>
       </form>
-
     </div>
 
-    <div class='bg-radius'>
+    <div class='bg-radius' v-show='!isEbill'>
       <div class='top'>
         <div class='top-title'>
           <div class='insure-notice-box'>
@@ -61,9 +52,9 @@
         </div>
       </div>
       <!-- 信用卡卡號 -->
-      <form class='form-bottom' v-show='!isEbill'>
-        <div class='col-sm-12'>
-          <div class='insure-check-title'>限台灣核發之 VISA、MASTER、JCB、UCard 信用卡，商務卡不適用</div>
+      <form class='form-bottom'>
+        <div class='insure-notice-text'>
+          限台灣核發之VISA、MASTER、JCB、UCard信用卡
         </div>
         <!-- 信用卡卡號 -->
         <div class='form-group row'>
@@ -124,10 +115,11 @@
       </form>
     </div>
 
-    <div class='border-bottom-line'></div>
-    <div class='col-sm-12'>
-      <div class='insure-tips insure-tips-mt-20'>
-        請注意！！<br>信用卡若無有效期限起日、起月、年欄位請輸入今天日期。進入繳費畫面後，請勿關閉視窗以完成投保！
+    <div class='bg-radius'>
+      <div class='col-sm-12'>
+        <div class='insure-tips insure-tips-mt-20'>
+          請注意！！<br>信用卡若無有效期限起日、起月、年欄位請輸入今天日期。進入繳費畫面後，請勿關閉視窗以完成投保！
+        </div>
       </div>
     </div>
 

@@ -4,7 +4,7 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check">
-            <img src="../../../../../static/img/chat.png" alt>
+            <img src="../../../../../static/img/edit.png" alt>
           </div>
           <div class="insure-check-title">請填寫投保資料</div>
         </div>
@@ -147,29 +147,6 @@ export default {
         this.GetIWellPostData.mode_prem = 0
         let maturedDate = moment(this.GetIWellPostData.po_issue_date, 'YYYY-MM-DD').add(`${parseInt(value)}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年 MM 月 DD 日午夜十二時`)
         $('#matured_date').html(`至 ${maturedDate}`)
-      }
-    },
-    /**
-     * 投保額度
-     */
-    face_amt: {
-      get() {
-        let result = InitColumnData(this.GetIWellPostData.face_amt, initFaceAmt)
-        this.GetIWellPostData.face_amt = result
-        return result
-      },
-      set(value) {
-        this.GetIWellPostData.face_amt = value
-        this.GetIWellPostData.mode_prem = 0
-        var prem = parseInt(value)
-        var maxPerc = 100 * 0.5
-        var minPerc = 5 * 0.5
-        var maxAmt = prem * maxPerc / 100
-        var minAmt = prem * minPerc / 100
-        $('#CalcAmtDesc2').text(maxAmt + '萬')
-        $('#CalcAmtDesc3').text(maxAmt + '萬')
-        $('#blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
-        $('#specific-blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
       }
     }
   }

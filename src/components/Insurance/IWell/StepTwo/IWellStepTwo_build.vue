@@ -4,8 +4,6 @@
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoEnsureContent></StepTwoEnsureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
-    <StepTwoCalculateResult></StepTwoCalculateResult>
-    <StepTwoFooter></StepTwoFooter>
   </div>
 </template>
 
@@ -14,9 +12,7 @@ import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import StepTwoInsuranceData from './IWellStepTwo_insurdata'
 import StepTwoCalculateTitle from './IWellStepTwo_calculatetitle'
-import StepTwoCalculateResult from './IWellStepTwo_calculateresult'
 import StepTwoEnsureContent from './IWellStepTwo_ensurecontent'
-import StepTwoFooter from './IWellStepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
@@ -30,9 +26,7 @@ export default {
   components: {
     StepTwoInsuranceData,
     StepTwoCalculateTitle,
-    StepTwoCalculateResult,
-    StepTwoEnsureContent,
-    StepTwoFooter
+    StepTwoEnsureContent
   }
 }
 
