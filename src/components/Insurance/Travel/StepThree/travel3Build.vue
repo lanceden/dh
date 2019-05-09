@@ -14,13 +14,8 @@ import { mapGetters } from 'vuex'
 import TravelThree from './travel3'
 import TravelChild from './travel3child'
 import TravelThreeFooter from './travel3Footer'
-import { mockInsData } from './mockDataOwnWithChild.js'
 
 export default {
-  created() {
-    this.$store.state.Travel.TRAVELPOSTDATA = mockInsData.Data.Result
-    console.log(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry)
-  },
   computed: {
     ...mapGetters([
       'GetLoading'

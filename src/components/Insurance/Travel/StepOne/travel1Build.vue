@@ -19,18 +19,13 @@ import GetterTypes from '../../../../store/modules/Travel/Types/TravelGetterType
 import TravelOne from './travel1'
 import TravelOneInsureData from './travel1-insuredata'
 import TravelOneFooter from './travel1Footer'
-import { data } from './mockData.js'
-
 export default {
   created() {
     if (!this.GetTravelIsInit) {
       // 初始化旅平險資料
-      // this.FuncTravelInit()
-      this.$store.state.Travel.TRAVELPOSTDATA = data.Data.Result
-      console.log(this.$store.state.Travel.TRAVELPOSTDATA)
+      this.FuncTravelInit()
       this.$store.state.PLANNAME = 'TRAVEL'
     }
-    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
