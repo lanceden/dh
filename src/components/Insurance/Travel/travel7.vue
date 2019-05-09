@@ -1,10 +1,6 @@
 <template>
   <div>
     <div class="container">
-      <div class="product-name">企業客戶專區</div>
-      <div class="progress-bar">
-        <img src="../../../../static/img/progress-bar-06-3.png">
-      </div>
       <div class="bg-radius">
         <div class="top">
 
@@ -15,15 +11,10 @@
             </div>
           </div>
         </div>
-        <div class="border-bottom-line"></div>
-        <div class="insure-text">
-          依「保險業辦理電子商務應注意事項」第七點所規範，身故受益人以直系血親、配偶或法定繼承人為限。
-        </div>
-
         <form class="form-bottom">
-          <div class="form-group posr row">
+          <div class="form-group posr row" @click="SetAccountData()">
             <label for="" class="col-sm-12 col-form-label">使用客戶基本資料</label>
-            <div class="checkbox-oneline"></div>
+            <div class="checkbox checkbox-oneline" :class="{ checked: isSetAccountData }"></div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">聯絡人姓名</label>
@@ -37,22 +28,33 @@
               <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫聯絡電話" v-model="EmergencyContactTel">
             </div>
           </div>
-
+          <!-- 選擇城市 -->
           <div class="form-group row">
-            <template>
-              <div>
-                <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-                <select class="form-control data-input insure-select insure-input-edit" v-model="EmergencyContactAddrCity">
-                  <option selected="selected" value="0">請選擇</option>
-                  <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
-                </select>
-                <select class="form-control data-input insure-select insure-input-edit" v-model="EmergencyContactAddrDistrict">
-                  <option selected="selected" value="0">請選擇</option>
-                  <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
-                </select>
-                <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="EmergencyContactAddrStreet" />
-              </div>
-            </template>
+            <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
+            <div class="col-sm-12 insure-select-align">
+              <select class="form-control data-input insure-select insure-input-edit" v-model="EmergencyContactAddrCity">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 選擇城市 -->
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
+            <div class="col-sm-12 insure-select-align">
+              <select class="form-control data-input insure-select insure-input-edit" v-model="EmergencyContactAddrDistrict">
+                <option selected="selected" value="0">請選擇</option>
+                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
+              </select>
+            </div>
+          </div>
+          <!-- 詳細地址 -->
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
+            <div class="col-sm-12 insure-select-align">
+              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="EmergencyContactAddrStreet" />
+            </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="col-sm-12">
@@ -76,17 +78,20 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import TravelGetterTypes from '../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import { toggleModalShow } from '../../../utils/toggleModal'
 
 const CITYNAME = '基隆市'
 export default {
   data() {
     return {
+      isSetAccountData: false,
       cbOldAddr: true,
       cbNewAddr: false,
       tempZip2: '',
       tempCity2: '',
       tempDistrict2: '',
-      tempRoad2: ''
+      tempRoad2: '',
+      errorMsg: ''
     }
   },
   created() {
@@ -109,6 +114,7 @@ export default {
     ...mapGetters([
       'GetCityData',
       'GetDistrictData',
+      'GetAccountData',
       TravelGetterTypes.GetTravelPostData
     ]),
     // 緊急聯絡人姓名
@@ -180,7 +186,44 @@ export default {
       }
     },
     GoToNext() {
+      this.errorMsg = ''
+      if (this.EmergencyContactName === null) {
+        this.errorMsg += '請填寫緊急聯絡人「姓名」。<br/>'
+      }
+      if (this.EmergencyContactTel === null || this.EmergencyContactTel === '') {
+        this.errorMsg += '請填寫緊急聯絡人「電話」。<br/>'
+      }
+      if (this.EmergencyContactAddrCity === '0') {
+        this.errorMsg += '請填寫緊急聯絡人聯絡地址「縣市」。<br/>'
+      }
+      if (this.EmergencyContactAddrDistrict === null) {
+        this.errorMsg += '請填寫緊急聯絡人聯絡地址「縣市」。<br/>'
+      }
+      if (this.EmergencyContactAddrStreet === null) {
+        this.errorMsg += '請填寫緊急聯絡人聯絡地址「縣市」。<br/>'
+      }
+      if (this.errorMsg !== '') {
+        toggleModalShow(this.errorMsg)
+        return
+      }
       this.$router.push('/travel-8')
+    },
+    // 使用客戶基本資料
+    SetAccountData() {
+      this.isSetAccountData = !this.isSetAccountData
+      if (!this.isSetAccountData) {
+        this.EmergencyContactName = ''
+        this.EmergencyContactTel = ''
+        this.EmergencyContactAddrCity = ''
+        this.EmergencyContactAddrDistrict = ''
+        this.EmergencyContactAddrStreet = ''
+        return
+      }
+      this.EmergencyContactName = this.GetAccountData.EmergencyName
+      this.EmergencyContactTel = `${this.GetAccountData.EmergencyTel1Area}${this.GetAccountData.EmergencyTel1}`
+      this.EmergencyContactAddrCity = this.GetAccountData.EmergencyAddress.City
+      this.EmergencyContactAddrDistrict = this.GetAccountData.EmergencyAddress.District
+      this.EmergencyContactAddrStreet = this.GetAccountData.EmergencyAddress.Road
     }
   }
 }

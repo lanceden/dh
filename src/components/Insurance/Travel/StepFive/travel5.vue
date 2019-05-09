@@ -290,6 +290,7 @@ export default {
         this.city3 = ''
         this.district3 = ''
         this.road3 = ''
+        return
       }
       this.ContactNumber = this.GetAccountData.CustMobile
       this.city3 = this.GetAccountData.CommunicationAddress.City
