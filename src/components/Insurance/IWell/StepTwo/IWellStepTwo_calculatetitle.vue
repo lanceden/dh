@@ -28,7 +28,7 @@ export default {
       IWellFunctionTypes.FuncIWellEstimate
     ]),
     GoToPrev() {
-      this.$router.push(`/ICan-1`)
+      this.$router.push(`/IWell-1`)
     },
     Estimate() {
       this.FuncIWellEstimate({ para: this.GetIWellPostData, router: this.$router })

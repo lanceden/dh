@@ -19,22 +19,22 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
+        <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
         <div class="col-sm-12">
           <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
             <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
           </select>
+          <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date"></div>
+          <div class="insure-check-title insure-input-block-edit">自午夜十二時起</div>
         </div>
       </div>
       <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
+        <label for class="col-sm-12 col-form-label insure-label insure-label">投保期間</label>
         <div class="col-sm-12">
           <select class="form-control data-input insure-select insure-input-block-edit" v-model="TrvDays">
-            <option v-for="n in 30" :key="n" :value="31 - n">{{31 - n}}</option>
+            <option v-for="n in 30" :key="n" :value="31 - n">{{31 - n}}天</option>
           </select>
-        </div>
-        <div class="col-sm-12">
-          <div class="form-control data-input insure-select insure-input-block-edit" id="matured_date"></div>
+          <div class="insure-check-title insure-input-block-edit">最高受理30天</div>
         </div>
       </div>
       <!-- 投保額度 -->

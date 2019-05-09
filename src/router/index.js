@@ -23,6 +23,7 @@ import ICanInsuredData from '../components/Insurance/ICan/InsuredData/ICanInsure
 import IWellElecForm from '../components/Insurance/IWell/StepOne/IWellStepOne_elecform.vue'
 import IWellStepOne from '../components/Insurance/IWell/StepOne/IWellStepOne_build.vue'
 import IWellStepTwo from '../components/Insurance/IWell/StepTwo/IWellStepTwo_build.vue'
+import IWellStepTwoResult from '../components/Insurance/IWell/StepTwo/IWellStepTwo_calculateresult.vue'
 import IWellStepThree from '../components/Insurance/IWell/StepThree/IWellStepThree_build.vue'
 import IWellStepFour from '../components/Insurance/IWell/StepFour/IWellStepFour_build.vue'
 import IWellInsuredData from '../components/Insurance/IWell/InsuredData/IWellInsureddata_build.vue'
@@ -239,6 +240,10 @@ const router = new Router({
     {
       path: '/IWell-2',
       component: IWellStepTwo
+    },
+    {
+      path: '/IWell-Estimate',
+      component: IWellStepTwoResult
     },
     {
       path: '/IWell-3',
