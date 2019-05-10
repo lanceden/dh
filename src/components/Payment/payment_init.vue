@@ -75,13 +75,13 @@
           </div>
         </div>
         <!-- 有效期限迄 -->
-        <!-- <div class='form-group row'>
+        <div class='form-group row' >
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限迄</label>
           <div class='col-sm-12 insure-select-align row'>
             <input type='tel' id='cc_exp_month' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' placeholder='月份'> /
             <input type='tel' id='cc_exp_year' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' placeholder='年份'>
           </div>
-        </div> -->
+        </div>
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>卡片背後三碼</label>
           <div class='col-sm-12 insure-select-align'>

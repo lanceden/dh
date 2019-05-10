@@ -19,7 +19,7 @@
     "moment": "^2.24.0",
     "noty": "^3.1.0-beta",
     "toastr": "^2.1.2",
-    "vee-validate": "^2.2.6",
+    "vee-validate": "^2.2.7",
     "vue": "^2.2.2",
     "vue-router": "^2.2.0",
     "vuex": "^2.2.1"

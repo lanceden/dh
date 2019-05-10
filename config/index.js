@@ -23,13 +23,13 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8888,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
        '/api': {
-        target: 'http://localhost:57246',
+        target: 'https://onlinetest.skl.com.tw/InsuranceWebApi',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'

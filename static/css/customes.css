@@ -297,7 +297,7 @@ body {
     box-shadow: 0 0 0 0 #fff;
 }
 select{
-	background-image: url(../../static/img/down-arrow.png);
+	background-img: url(../img/down-arrow.png);
 	-webkit-appearance: none;
 	outline: none !important;
     box-shadow: 0 0 0 0 #fff;
@@ -530,6 +530,10 @@ input{
 	text-align: left;
 	    margin-bottom: 15px;
 }
+.insure-input,.black{
+	color: #565654;
+}
+
 
 .insure-input-edit{
 	color: #A57248 !important;
@@ -592,8 +596,14 @@ input{
 }
 
 .insure-select-withline{
-	margin-top: 15px
+	margin-top: 15px;
 }
+
+.insure-select-withradio{
+	padding-left: 79px !important;
+	padding-top: 10px !important;
+}
+/*點擊單選出現的下拉式選單*/
 
 /*.insure-select-align select {
    text-align-last: right;
@@ -657,9 +667,10 @@ input{
 	word-break: break-all;
 }
 
-/*ul ul{
-	padding-left: 27px;
-}*/
+.insure-tips-text.first-blue{
+	margin: 0 0 0 13px;
+}
+
 
 .ul-indentation{
 	padding-left: 27px;
@@ -689,6 +700,9 @@ input{
 .insure-text-product.margin-top{
 	margin-top: 0
 }
+
+
+
 
 iframe {
 	margin: 35px 0; 
@@ -729,6 +743,12 @@ iframe:nth-child(3){
 	margin-right: 5px;
 }
 
+.insure-tips-text .arrowblue{
+	margin-top: 10px;
+    margin-left: 50px;
+}
+
+
 .insure-tips-text img.inline{
 	margin-top: 8px;
 	margin-right: 5px;
@@ -748,7 +768,7 @@ input[type="checkbox"] {
 .checkbox,.checkbox-oneline{
 	-webkit-appearance: none;
 	display:inline-block;
-	background: url(../../static/img/checked-un.png) no-repeat;
+	background: url(../img/checked-un.png) no-repeat;
 	width: 44px;
 	height: 43px;
 	cursor: pointer;
@@ -762,7 +782,7 @@ input[type="checkbox"] {
 }
 
 .checkbox.checked,.checkbox-oneline.checked {
-	background: url(../../static/img/checked.png) no-repeat;
+	background: url(../img/checked.png) no-repeat;
 }
 
 
@@ -1171,6 +1191,7 @@ input[type="checkbox"] {
     line-height: 150%;
     padding: 0px 10px !important;
     height: auto !important;
+    color: #545456!important;
 }
 
 .otp-time{

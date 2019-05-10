@@ -3,5 +3,5 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  URL: '"http://localhost:57246"'
+  URL: '"https://onlinetest.skl.com.tw/InsuranceWebApi"'
 })

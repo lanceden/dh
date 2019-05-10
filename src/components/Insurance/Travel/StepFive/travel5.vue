@@ -16,14 +16,14 @@
         </div>
 
         <form class="form-bottom">
-          <div class="form-group posr row" @click="OnBenf()">
+          <div class="form-group posr row">
             <label for="" class="col-sm-12 col-form-label">點此匯入最近一張保單的受益人</label>
-            <div class="checkbox checkbox-oneline" :class="{ checked: isOnBenf }"></div>
+            <div class="checkbox checked checkbox-oneline"></div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
             <div class="col-sm-12 insure-select-align">
-              <select class="form-control data-input insure-select insure-input-edit" v-model="BeneficiaryDataRelationship">
+              <select class="form-control insure-input-block" v-model="BeneficiaryDataRelationship">
                 <option selected="selected" value="0">請選擇</option>
                 <option value="2">配偶</option>
                 <option value="3">父母子女</option>
@@ -134,8 +134,8 @@ export default {
     }
   },
   created() {
-    this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    // this.FuncGetCityData()
+    // this.FuncGetDistrictData(CITYNAME)
   },
   mounted() {
     // 暫存舊的通訊地址

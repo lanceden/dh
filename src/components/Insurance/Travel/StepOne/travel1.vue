@@ -52,28 +52,35 @@
           <div class="insure-notice-box" @click="OnEnsure('child')">
             <div class="insure-check"><img :src="ensure.child" alt=""></div>
             <div class="insure-check-content">七歲以下子女</div>
-            <select class="form-control data-input insure-select insure-input-block-edit TravelCount notRequired" v-model="childrenNo" v-show="ensure.target === 'child'">
-              <option value="1" selected="selected">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
           </div>
         </div>
         <div class="border-bottom-line col-sm-12"></div>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select  insure-select-withradio" v-model="childrenNo" v-show="ensure.target === 'child'">
+            <option value="1" selected="selected">1位子女</option>
+            <option value="2">2位子女</option>
+            <option value="3">3位子女</option>
+            <option value="4">4位子女</option>
+            <option value="5">5位子女</option>
+          </select>
+        </div>
+        <div class="border-bottom-line col-sm-12"></div>
+
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('both')">
             <div class="insure-check"><img :src="ensure.both" alt=""></div>
             <div class="insure-check-content">本人與七歲以下子女</div>
-            <select class="form-control data-input insure-select insure-input-block-edit TravelCount notRequired" v-model="childrenNo" v-show="ensure.target === 'both'">
-              <option value="1" selected="selected">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
           </div>
+        </div>
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select  insure-select-withradio" v-model="childrenNo" v-show="ensure.target === 'both'">
+            <option value="1" selected="selected">1位子女</option>
+            <option value="2">2位子女</option>
+            <option value="3">3位子女</option>
+            <option value="4">4位子女</option>
+            <option value="5">5位子女</option>
+          </select>
         </div>
       </div>
     </form>
@@ -196,7 +203,7 @@ export default {
      */
     OnEnsure(target) {
       this.ensure.target = target
-      if(this.childrenNo === 0 && target !== 'own') {
+      if (this.childrenNo === 0 && target !== 'own') {
         this.childrenNo = 1
       }
       switch (target) {
