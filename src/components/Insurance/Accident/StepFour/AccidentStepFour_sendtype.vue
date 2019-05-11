@@ -3,23 +3,16 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="images/chat.png" alt=""></div>
-          <div class="insure-check-title">保單寄送地址</div>
+          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check-title">保單寄送資料</div>
         </div>
       </div>
     </div>
-    <div class="border-bottom-line"></div>
-    <div class="insure-form">
+    <div class="border-bottom-line col-sm-12"></div>
+    <div class="insure-text">
       保險單形式：<span class="insure-form-im">紙本保單</span>
     </div>
-    <form class="form-bottom">
-      <CommunityAddressComponent :stateData="GetAccidentPostData"></CommunityAddressComponent>
-      <div class="col-sm-12">
-        <div class="insure-tips">
-          ※將同步更新客戶基本資料
-        </div>
-      </div>
-    </form>
+    <CommunityAddressComponent :stateData="GetAccidentPostData"></CommunityAddressComponent>
   </div>
 </template>
 

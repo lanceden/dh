@@ -25,25 +25,25 @@
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">受益人國籍</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality" v-bind:disabled="BenfinheritOneDisable">
+          <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetNationData" :key="index" :value="item.Name">{{item.Name}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_name" v-bind:disabled="BenfinheritOneDisable">
+          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_name" />
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death_seq" v-bind:disabled="BenfinheritOneDisable">
+          <select class="form-control data-input insure-select insure-input-block" v-model="relation_ben_death_seq" >
             <option selected="selected" value="0">請選擇</option>
             <option value="1" v-show="parseInt(stateData.benf_num) === 1">順位1</option>
             <option value="2" v-show="parseInt(stateData.benf_num) >= 2">順位2</option>
@@ -51,74 +51,67 @@
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式之比例</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="number" class="form-control insure-input insure-input-edit" v-model="relation_ben_death_seq_percent" v-bind:disabled="BenfinheritOneDisable">
+          <input type="number" class="form-control insure-input-block" v-model="relation_ben_death_seq_percent">
         </div>
       </div>
-      <div class="col-sm-12">
-        <div class="insure-notice-text">
-          <div class="insure-notice-text">身故受益人可選擇以下給付比例％方式</div>
-          <ul class="insure-notice-text-ol">
-            <li>​選擇不同順位給付比例％，皆為100％。</li>
-            <li>選擇相同順位給付比例％，加總為100％。</li>
-          </ul>
-        </div>
-      </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="date" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="benf_dob" />
+          <input type="date" class="form-control insure-input insure-input-edit" v-model="benf_dob" />
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-        <div class="col-sm-12 insure-select-align">
-          <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="benf_id" />
+        <div class="col-sm-12">
+          <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_id" />
         </div>
       </div>
-      <div class="form-group posr row" @click="SetAccountData()">
-        <div class="checkbox checkbox-oneline" :class="{ checked: isSetAccountData }"></div>
-        <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼:{{this.GetAccountData.CustMobile}}</label>
-        <label for="" class="col-sm-10 col-form-label">同客戶住所地址:{{this.GetAccountData.CommunicationAddress.City}}{{this.GetAccountData.CommunicationAddress.District}}{{this.GetAccountData.CommunicationAddress.Road}}</label>
+      <div class="form-group posr row form-group-checked" @click="SetAccountData()" v-show="!BenfinheritOneDisable">
+        <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼：{{this.GetAccountData.CustMobile}}<br>同客戶住所地址：{{this.GetAccountData.CommunicationAddress.City}}{{this.GetAccountData.CommunicationAddress.District}}{{this.GetAccountData.CommunicationAddress.Road}}</label>
+        <div class="checkbox" :class="{ checked: isSetAccountData }"></div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone" v-bind:disabled="BenfinheritOneDisable" />
+          <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone" />
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
           </select>
-          <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City" v-bind:disabled="BenfinheritOneDisable">
+          <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
           </select>
-          <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County" v-bind:disabled="BenfinheritOneDisable">
+          <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + item.Area">{{item.Area}}</option>
+            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="!BenfinheritOneDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control data-input insure-input-edit" v-bind:disabled="BenfinheritOneDisable" v-model="BenfAddRemain" />
+          <input type="text" class="form-control data-input insure-input-edit" v-model="BenfAddRemain" />
         </div>
       </div>
+    </form>
+    <div class="border-bottom-line col-sm-12"></div>
+    <form class="form-bottom">
       <div class="col-sm-12">
-        <div class="insure-notice-text">
+        <div class="insure-tips-text">
           如要保人不同意填寫受益人聯絡地址及電話，則以要保人最後所留之聯絡方式，作為日後通知依據。
         </div>
       </div>
@@ -161,7 +154,7 @@ export default {
       }
       this.benf_phone = this.GetAccountData.CustMobile
       this.BenfAdd_City = this.GetAccountData.CommunicationAddress.City
-      this.BenfAdd_County = this.GetAccountData.CommunicationAddress.District
+      this.BenfAdd_County = this.GetAccountData.CommunicationAddress.Zip + '-' + this.GetAccountData.CommunicationAddress.District
       this.BenfAddRemain = this.GetAccountData.CommunicationAddress.Road
     }
   },
@@ -292,11 +285,13 @@ export default {
     BenfAdd_County: {
       get() {
         return (this.stateData.BenfAdd_County === undefined ||
-          this.stateData.BenfAdd_County === null || this.stateData.BenfAdd_County === '') ? 0 : this.stateData.BenfAdd_County
+          this.stateData.BenfAdd_County === null || this.stateData.BenfAdd_County === '') ? 0 : this.stateData.BenfAddZip + '-' + this.stateData.BenfAdd_County
       },
       set(value) {
-        this.stateData.BenfAddZip = value.substring(0, 3)
-        this.stateData.BenfAdd_County = value
+        // item.Zip-item.Area
+        let data = value.split('-')
+        this.stateData.BenfAddZip = data[0]
+        this.stateData.BenfAdd_County = data[1]
       }
     },
     /**

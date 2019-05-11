@@ -1,32 +1,52 @@
 <template>
   <div>
-    <form class="form-bottom">
-      <div class="form-group row">
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12">
-          <div class="insure-notice-box" @click="OnCommunityAddr('old')">
-            <div class="insure-check"><img :src="ensure.old" /></div>
-            <div class="insure-check-content">客戶住所(通訊地址):{{stateData.city1 + stateData.district1 + stateData.road1}}</div>
-          </div>
-        </div>
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12">
-          <div class="insure-notice-box" @click="OnCommunityAddr('new')">
-            <div class="insure-check"><img :src="ensure.new" /></div>
-            <div class="insure-check-content">輸入新的戶籍地址</div>
-            <select class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr1" v-model="city1">
-              <option selected="selected" value="0">請選擇</option>
-              <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
-            </select>
-            <select class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr1" v-model="district1">
-              <option selected="selected" value="0">請選擇</option>
-              <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
-            </select>
-            <input type="text" class="form-control insure-input-block" id="txtNewAddress1" placeholder="為保障您的權益，此欄位不可為空白" v-model="road1" />
-          </div>
+    <div>
+      <div class="border-bottom-line col-sm-12"></div>
+      <div class="top col-sm-12">
+        <div class="insure-notice-box" @click="OnCommunityAddress('old')">
+          <div class="insure-check"><img :src="ensure.old" /></div>
+          <div class="insure-check-content">{{stateData.city1 + stateData.district1 + stateData.road1}}</div>
         </div>
       </div>
-    </form>
+
+      <!-- 輸入新的戶籍地址 -->
+      <div class="border-bottom-line col-sm-12"></div>
+      <div class="top col-sm-12">
+        <div class="insure-notice-box" @click="OnCommunityAddress('new')">
+          <div class="insure-check"><img :src="ensure.new" /></div>
+          <div class="insure-check-content">輸入新的寄送地址</div>
+        </div>
+      </div>
+      <!-- 選擇城市 -->
+      <div class="border-bottom-line col-sm-12"></div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
+        <div class="col-sm-12 insure-select-align">
+          <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr2" v-model="city1">
+            <option selected="selected" value="0">請選擇</option>
+            <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+          </select>
+        </div>
+      </div>
+      <!-- 選擇鄉鎮地區 -->
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr2" v-model="district1">
+            <option selected="selected" value="0">請選擇</option>
+            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
+          </select>
+        </div>
+      </div>
+      <!-- 詳細地址 -->
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
+        <div class="col-sm-12">
+          <input type="text" class="orm-control insure-input insure-input-edit" id="txtNewAddress2" placeholder="為保障您的權益，此欄位不可為空白" v-model="road1" />
+        </div>
+      </div>
+      <div class="border-bottom-line col-sm-12"></div>
+    </div>
   </div>
 </template>
 
@@ -46,21 +66,29 @@ export default {
         old: `../../../static/img/oval.png`,
         new: '../../../static/img/oval.png'
       },
-      cbOldAddr1: true,
-      cbNewAddr1: false
+      cbOldAddr2: true,
+      cbNewAddr2: false,
+      tempzip1: '',
+      tempcity1: '',
+      tempdistrict1: '',
+      temproad2: ''
     }
   },
   created() {
+    this.tempzip1 = this.stateData.zip1
+    this.tempcity1 = this.stateData.city1
+    this.tempdistrict1 = this.stateData.zip1 + '-' + this.stateData.district1
+    this.temproad2 = this.stateData.road1
     this.FuncGetCityData()
     this.FuncGetDistrictData(DEFAULTCITYNAME)
-    this.OnCommunityAddr(this.stateData.IsSaveCommu ? 'new' : 'old')
+    this.OnCommunityAddress(this.stateData.IsSaveCommu ? 'new' : 'old')
   },
   computed: {
     ...mapGetters([
       'GetCityData',
       'GetDistrictData'
     ]),
-    // 輸入新的通訊地址-縣市
+    // 輸入新的戶籍地址-縣市
     city1: {
       get() {
         return this.stateData.city1 || '0'
@@ -72,7 +100,7 @@ export default {
         this.stateData.district1 = 0
       }
     },
-    // 輸入新的通訊地址-區域
+    // 輸入新的戶籍地址-區域
     district1: {
       get() {
         let result = InitColumnData(this.stateData.district1, '0')
@@ -80,13 +108,13 @@ export default {
         return (`${this.stateData.zip1}-${this.stateData.district1}`) || 0
       },
       set(value) {
-        // item.Zip|item.Area
+        // item.Zip-item.Area
         let data = value.split('-')
         this.stateData.zip1 = data[0]
         this.stateData.district1 = data[1]
       }
     },
-    // 輸入新的通訊地址-路
+    // 輸入新的戶籍地址-路
     road1: {
       get() {
         return this.stateData.road1
@@ -102,28 +130,31 @@ export default {
       'FuncGetDistrictData'
     ]),
     /**
-     * 通訊地址
+     * 戶籍地址
      */
-    OnCommunityAddr(target) {
+    OnCommunityAddress(target) {
       switch (target) {
         case 'old':
-          $('#divOldAddress1').addClass('checked')
-          $('#divNewAddress1').removeClass('checked')
-          $('#txtNewAddress1').attr('disabled', true)
-          $('#txtNewAddress1').val('')
+          $('#divOldAddress2').addClass('checked')
+          $('#divNewAddress2').removeClass('checked')
+          $('#txtNewAddress2').attr('disabled', true)
+          $('#txtNewAddress2').val('')
           this.ensure.old = '../../../static/img/oval-ed.png'
           this.ensure.new = '../../../static/img/oval.png'
-          this.cbNewAddr1 = false
+          this.cbNewAddr2 = false
           this.stateData.IsSaveCommu = false
+          this.city1 = this.tempcity1
+          this.district1 = this.tempzip1 + '-' + this.tempcity1
+          this.road1 = this.temproad2
           break
         case 'new':
-          $('#divOldAddress1').removeClass('checked')
-          $('#divNewAddress1').addClass('checked')
-          $('#txtOldAddress1').attr('disabled', true)
-          $('#txtNewAddress1').removeAttr('disabled')
+          $('#divOldAddress2').removeClass('checked')
+          $('#divNewAddress2').addClass('checked')
+          $('#txtOldAddress2').attr('disabled', true)
+          $('#txtNewAddress2').removeAttr('disabled')
           this.ensure.old = '../../../static/img/oval.png'
           this.ensure.new = '../../../static/img/oval-ed.png'
-          this.cbNewAddr1 = true
+          this.cbNewAddr2 = true
           this.stateData.IsSaveCommu = true
           break
       }

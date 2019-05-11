@@ -12,9 +12,9 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險費</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.mode_prem|decimalComma}} 元</div>
+            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['3']}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -29,35 +29,29 @@
             <div class="insure-input-block">{{mockData.city1}}{{mockData.district1}}{{mockData.road1}}</div>
           </div>
         </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">總保險費</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">NT$ {{mockData.mode_prem|decimalComma}} </div>
+          </div>
+        </div>
       </form>
     </div>
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">保障內容</div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check-title">投保內容</div>
           </div>
         </div>
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">險種名稱</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">險種名稱-主約</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.ins_type_name}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.po_issue_date_Name}} 起</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">滿期日</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.matured_date_Name}} 止</div>
           </div>
         </div>
         <div class="form-group row">
@@ -67,24 +61,39 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故或喪葬費用保險金</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">意外失能保險金</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">依失能程度按契約附表比例計算，最高為{{mockData.face_amt}}萬元</div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            註：本公司另加計按日數比例計算當期已繳付之未到期保險費，併入身故保險金或喪葬費用保險金或完全失能保險金內給付。
+            <div class="form-control insure-input-block">{{mockData.po_issue_date_Name}} 午夜十二時起</div>
+            <div class="form-control insure-input-block">{{mockData.matured_date_Name}} 午夜十二時止，共 365</div>
+            <div class="form-control insure-input-block">天</div>
           </div>
         </div>
       </form>
     </div>
+
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check-title">保障內容</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">身故或喪葬費用保險金</label>
+        <div class="col-sm-12">
+          <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">意外失能保險金</label>
+        <div class="col-sm-12">
+          <div class="insure-input-block">依失能程度按契約附表比例計算，最高為{{mockData.face_amt}}萬元</div>
+        </div>
+      </div>
+    </div>
+
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -99,28 +108,29 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_names}}</div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-tips">
-            (要被保人須為同一人)
+            <div class="insure-input-block">{{mockData.client_names}}(要被保人須為同一人)</div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.Birthday_Full}}</div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{mockData.Age}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.client_id}}</div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人性別</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{mockData.client_rate_sex === '1' ? '男' : '女'}}</div>
           </div>
@@ -128,7 +138,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.phone_area}}{{mockData.phone_main}}{{mockData.phone_ext}}<br>手機：{{mockData.phone_mobile}}</div>
+            <div class="insure-input-block">{{mockData.phone_area}}{{mockData.phone_main}}{{mockData.phone_ext}}<br>手機：{{mockData.phone_mobile}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -149,7 +159,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">身故受益人(一)資料</div>
           </div>
         </div>
@@ -198,7 +208,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.benf_phone}}</div>
+            <div class="insure-input-block">{{mockData.benf_phone}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -207,31 +217,13 @@
             <div class="insure-input-block">{{mockData.BenfAdd_City}}{{mockData.BenfAdd_County}}{{mockData.BenfAddRemain}}</div>
           </div>
         </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">金融機構代號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfBankCode1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">分行中文名稱</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfBankBranchName1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">帳號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfBankAccount1}}</div>
-          </div>
-        </div>
       </form>
     </div>
     <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 1">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">身故受益人(二)資料</div>
           </div>
         </div>
@@ -263,7 +255,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.benf_phone2}}</div>
+            <div class="insure-input-block">{{mockData.benf_phone2}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -278,7 +270,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">身故受益人(三)資料</div>
           </div>
         </div>
@@ -303,7 +295,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/account.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
         </div>
@@ -313,7 +305,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">您的職業類別</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_occupation_class_detail}}</div>
+            <div class="insure-input-block">{{mockData.client_occupation_class_name}} {{mockData.client_occupation_class_detail}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -329,41 +321,38 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">您過去二年內是否曾因患有下列疾病而接受醫師治療、診療或用藥?</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">(有任一者，請選擇“是”)</div>
-          </div>
+          <label for="" class="col-sm-12 col-form-label insure-label insure-label">您過去二年內是否曾因患有下列疾病而接受醫師治療、診療或用藥?(有任一者，請選擇“是”)</label>
           <div class="col-sm-12">
             <div class="insure-input-block">否</div>
           </div>
-          <div class="insure-notice-text">
-            <ul class="insure-notice-text-ul">
-              <li>​高血壓症(指收縮壓140mmHg或舒張壓90mmHg以上)、狹心症、心肌梗塞、先天性心臟病、主動脈血管瘤。</li>
-              <li>腦中風(腦中風、腦梗塞)、腦瘤、癲癇、智能障礙(外表無法明顯判斷者)、精神病、巴金森氏症。
-                癌症(惡性腫瘤)、肝硬化、尿毒、血友病。</li>
-              <li>糖尿病。</li>
-              <li>酒精或藥物濫用成癮、眩暈症。</li>
-              <li>視網膜出血或剝離、視神經病變。</li>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="insure-text insure-text-explan">
+            <ul class="insure-text-explancontent">
+              <li class="decimal first">(高血壓症(指收縮壓140mmHg或舒張壓90mmHg以上)、狹心症、心肌梗塞、先天性心臟病、主動脈血管瘤。
+              <li class="decimal">腦中風(腦中風、腦梗塞)、腦瘤、癲癇、智能障礙(外表無法明顯判斷者)、精神病、巴金森氏症。</li>
+              <li class="decimal">癌症(惡性腫瘤)、肝硬化、尿毒、血友病。</li>
+              <li class="decimal">糖尿病。</li>
+              <li class="decimal">酒精或藥物濫用成癮、眩暈症。</li>
+              <li class="decimal">視網膜出血或剝離、視神經病變。</li>
             </ul>
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">您目前身體機能是否有下列障害：</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">(有任一者，請選擇“是”)</div>
-          </div>
+          <label for="" class="col-sm-12 col-form-label insure-label insure-label">您目前身體機能是否有下列障害：(有任一者，請選擇“是”)</label>
           <div class="col-sm-12">
             <div class="insure-input-block">否</div>
           </div>
-          <div class="insure-notice-text">
-            <ul class="insure-notice-text-ul">
-              <li>失明。</li>
-              <li>是否曾因眼科疾病或傷害接受眼科專科醫師治療、診療或用藥，且一目視力經矯正後，最佳矯正視力在萬國視力表0.3以下。</li>
-              <li>聾。</li>
-              <li>是否曾因耳部疾病或傷害接受耳鼻喉科專科醫師治療、診療或用藥，且單耳聽力喪失程度在五十分貝(dB)以上。</li>
-              <li>啞。</li>
-              <li>咀嚼、吞嚥或言語機能障害。</li>
-              <li>四肢(含手指、足趾)缺損或畸形。</li>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="insure-text insure-text-explan">
+            <ul class="insure-text-explancontent">
+              <li class="decimal first">失明。
+              <li class="decimal">是否曾因眼科疾病或傷害接受眼科專科醫師治療、診療或用藥，且一目視力經矯正後，最佳矯正視力在萬國視力表0.3以下。</li>
+              <li class="decimal">聾。</li>
+              <li class="decimal">是否曾因耳部疾病或傷害接受耳鼻喉科專科醫師治療、診療或用藥，且單耳聽力喪失程度在五十分貝(dB)以上。</li>
+              <li class="decimal">啞。</li>
+              <li class="decimal">咀嚼、吞嚥或言語機能障害。</li>
+              <li class="decimal">四肢(含手指、足趾)缺損或畸形。</li>
+
             </ul>
           </div>
         </div>
@@ -374,7 +363,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">被保人其他告知事項</div>
           </div>
         </div>
@@ -410,9 +399,11 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
           <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.visit_time1) === 1">早上9點~12點</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.visit_time2) === 1">下午1點～6點</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.visit_time3) === 1">晚上6點~9點</div>
+            <div class="insure-input-block">
+              <span v-show="parseInt(mockData.visit_time1) === 1">早上9點~12點,</span>
+              <span v-show="parseInt(mockData.visit_time2) === 1">下午1點～6點,</span>
+              <span v-show="parseInt(mockData.visit_time3) === 1">晚上6點~9點</span>
+            </div>
           </div>
         </div>
         <div class="col-sm-12">

@@ -14,7 +14,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">手機</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_mobile">
+            <div type="text" class="form-control insure-input-block">{{phone_mobile}}</div>
           </div>
         </div>
         <div class="col-sm-12">
@@ -26,52 +26,35 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話區號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_area">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_area">
           </div>
         </div>
         <!-- 電話號碼 -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話號碼</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_main">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_main">
           </div>
         </div>
         <!-- 電話分號 -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話分號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_ext">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_ext">
           </div>
         </div>
         <!-- 電子郵件(E-mail) -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">電子郵件(E-mail)：</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="email">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="email">
           </div>
         </div>
       </form>
     </div>
 
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/business-card-of-a-man-with-contact-info.png" alt=""></div>
-            <div class="insure-check-title">戶籍地址</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <!-- 戶籍地址 -->
-      <RegisterAddressComponent :stateData="GetAccidentPostData"></RegisterAddressComponent>
-
-      <div class="col-sm-12">
-        <div class="insure-tips">
-          ※將同步更新客戶基本資料
-        </div>
-      </div>
-    </div>
+    <!-- 戶籍地址 -->
+    <RegisterAddressComponent :stateData="GetAccidentPostData"></RegisterAddressComponent>
   </div>
 </template>
 

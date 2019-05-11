@@ -20,9 +20,6 @@ export default {
       GetterTypes.GetIGoingPostData
     ])
   },
-  created() {
-    console.log(this.GetIGoingPostData.ins_type_name)
-  },
   components: {
     StepTwoInsuranceData,
     StepTwoEnSureContent,

@@ -3,7 +3,7 @@
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
         <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">回前一頁</div>
-        <div class="col-sm-6 footer-title footer-right" @click="doPayment()">確認繳費</div>
+        <div class="col-sm-6 footer-title footer-right" @click="doPayment()">確認付款</div>
       </nav>
     </div>
   </div>

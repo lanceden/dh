@@ -21,7 +21,7 @@ export default {
     ])
   },
   created() {
-    console.log(this.GetAccidentPostData.ins_type_name)
+    this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-2.png'
   },
   components: {
     StepTwoInsuranceData,

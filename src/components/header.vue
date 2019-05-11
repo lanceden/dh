@@ -37,7 +37,7 @@ export default {
         this.name = 'i-going意外傷害保險'
         break
       case 'accident':
-        this.name = 'i平安傷害險'
+        this.name = 'i平安傷害保險'
         break
       case 'health':
         this.name = ''
