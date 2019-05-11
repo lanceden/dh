@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <div class="container">
+    <div class="">
       <div class="bg-radius">
         <div class="top">
           <div class="top-title">
@@ -34,7 +34,6 @@
           <nav class="navbar navbar-dark row">
             <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
             <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">前往填寫身故受益人資料</div>
-            <div class="col-sm-12 footer-title footer-gray" @click="test()">tt</div>
           </nav>
         </div>
       </div>
@@ -56,14 +55,6 @@ export default {
   methods: {
     GoToPrev() {
       this.$router.go(-1)
-    },
-    test() {
-      // 只有子女不會有本人的受益人需跳過此步驟
-      if (parseInt(this.GetTravelPostData.TargetType) !== 1) {
-        this.$router.push('/travel-5')
-      } else {
-        this.$router.push('/travel-6')
-      }
     },
     GoToNext() {
       // 只有子女不會有本人的受益人需跳過此步驟

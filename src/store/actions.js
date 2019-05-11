@@ -2,6 +2,9 @@ import Url from '../utils/constUrl'
 import rootState from './state'
 
 export default {
+  SetTitle({ commit }, title) {
+    commit('SetTitle', title)
+  },
   SetShowLoading({ commit }) {
     commit('SetShowLoading')
   },

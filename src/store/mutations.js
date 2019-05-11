@@ -1,4 +1,7 @@
 export default {
+  SetTitle(state, title) {
+    state.PLANNAME = title
+  },
   SetShowLoading(state) {
     state.ShowLoading = true
   },
@@ -131,6 +134,25 @@ export default {
           stateData.BenfBankAccount1 = item.Account
         })
       }
+    } else {
+      state.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach((item, index) => {
+        if (index === 0) {
+          item.BeneficiaryData = []
+          item.BeneficiaryData.push({
+            Relationship: item.Relationship,
+            Name: item.Name,
+            IdNo: item.IdNo,
+            Dob: `${item.DobYear}/${item.DobMonth}/${item.DobDay}`,
+            ContactNumber: item.PhoneNo,
+            Address: {
+              City: item.AddrCity,
+              District: item.AddrCounty,
+              Street: item.AddrStreet
+            }
+          })
+          item.BeneficiaryQty = 1
+        }
+      })
     }
     // 旅平用
     stateData = []

@@ -29,7 +29,9 @@ axios.interceptors.request.use(function(config) {
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
   if (response.data.ResultCode !== '0000') {
-    toggleModalShow(GetErrorMsg(response.data.ErrorMessage), '貼心提醒您')
+    if (response.request.responseURL.match('IsCityBank') === null) {
+      toggleModalShow(GetErrorMsg(response.data.ErrorMessage), '貼心提醒您')
+    }
     return response
   }
   return response
@@ -40,7 +42,9 @@ axios.interceptors.response.use(function(response) {
     if (error.response.status === 401) {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     }
-    console.log(GetErrorMsg(error.response.data.ErrorMessage))
+    if (error.response.status === 501) {
+      toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
+    }
   }
   return Promise.reject(error)
 })

@@ -4,8 +4,6 @@
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoEnSureContent></StepTwoEnSureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
-    <StepTwoCalculateResult></StepTwoCalculateResult>
-    <StepTwoFooter></StepTwoFooter>
   </div>
 </template>
 
@@ -15,8 +13,6 @@ import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetter
 import StepTwoInsuranceData from './AccidentStepTwo_insurdata'
 import StepTwoEnSureContent from './AccidentStepTwo_ensurecontent'
 import StepTwoCalculateTitle from './AccidentStepTwo_calculatetitle'
-import StepTwoCalculateResult from './AccidentStepTwo_calculateresult'
-import StepTwoFooter from './AccidentStepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
@@ -30,9 +26,7 @@ export default {
   components: {
     StepTwoInsuranceData,
     StepTwoEnSureContent,
-    StepTwoCalculateTitle,
-    StepTwoCalculateResult,
-    StepTwoFooter
+    StepTwoCalculateTitle
   }
 }
 

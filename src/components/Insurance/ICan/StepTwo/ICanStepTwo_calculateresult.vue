@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.push('/ICan-1')
+      this.$router.push('/ICan-2')
     },
     GoToNext() {
       // 判斷是否有試算,沒有則跳錯誤

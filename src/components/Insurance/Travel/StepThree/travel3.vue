@@ -5,7 +5,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/edit.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
             <div class="insure-check-title">本人</div>
           </div>
         </div>
@@ -13,8 +13,8 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row" v-show="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[index].Relation) === 1">
-          <!-- 旅行平安保險保額 -->
-          <label for="" class="col-sm-12 col-form-label insure-label">旅行平安保險保額</label>
+          <!-- Enjoy Life旅行平安保險保額 -->
+          <label for="" class="col-sm-12 col-form-label insure-label">Enjoy Life旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="PrimaryPolicyFaceAmtOne">
               <option v-for="item in baoer" :key="item.Value" :value="item.Value">{{item.Text}}</option>

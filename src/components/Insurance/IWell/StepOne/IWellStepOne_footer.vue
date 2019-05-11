@@ -51,10 +51,12 @@ export default {
         toggleModalShow('請選擇職業類別。')
         return false
       }
-      if (this.GetIWellPostData.QusAns[0].Answar || this.GetIWellPostData.QusAns[2].Answar || this.GetIWellPostData.QusAns[3].Answar || this.GetIWellPostData.QusAns[4].Answar) {
+      console.log(JSON.stringify(this.GetIWellPostData.QusAns))
+      if(this.GetIWellPostData.QusAns[0].Answar || this.GetIWellPostData.QusAns[2].Answar || this.GetIWellPostData.QusAns[3].Answar || this.GetIWellPostData.QusAns[4].Answar) {
         toggleModalShow('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉,再次感謝您的惠顧。')
         return false
       }
+      console.log(JSON.stringify(this.GetIWellPostData.QusAns))
       this.GetIWellPostData.insure_peer_plan_1 = this.GetIWellPostData.QusAns[1].Answar ? 'Y' : 'N'
       return true
     }

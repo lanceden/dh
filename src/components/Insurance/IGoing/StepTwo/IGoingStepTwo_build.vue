@@ -4,8 +4,6 @@
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoEnSureContent></StepTwoEnSureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
-    <StepTwoCalculateResult></StepTwoCalculateResult>
-    <StepTwoFooter></StepTwoFooter>
   </div>
 </template>
 
@@ -15,8 +13,6 @@ import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterType
 import StepTwoInsuranceData from './IGoingStepTwo_insurdata'
 import StepTwoEnSureContent from './IGoingStepTwo_ensurecontent'
 import StepTwoCalculateTitle from './IGoingStepTwo_calculatetitle'
-import StepTwoCalculateResult from './IGoingStepTwo_calculateresult'
-import StepTwoFooter from './IGoingStepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
@@ -30,9 +26,7 @@ export default {
   components: {
     StepTwoInsuranceData,
     StepTwoEnSureContent,
-    StepTwoCalculateTitle,
-    StepTwoCalculateResult,
-    StepTwoFooter
+    StepTwoCalculateTitle
   }
 }
 

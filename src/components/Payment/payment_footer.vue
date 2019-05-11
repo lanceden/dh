@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-6 footer-title footer-left">離開投保流程</div>
+        <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">回前一頁</div>
         <div class="col-sm-6 footer-title footer-right" @click="doPayment()">確認繳費</div>
       </nav>
     </div>
@@ -40,6 +40,9 @@ export default {
       HealthFunctionTypes.FuncHealthSubmitOrder,
       TravelFunctionTypes.FuncTravelSubmitOrder
     ]),
+    GoPrev() {
+      this.$router.push(`/otpverify`)
+    },
     doPayment() {
       // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
       let planName = this.$store.state.PLANNAME.toLowerCase()

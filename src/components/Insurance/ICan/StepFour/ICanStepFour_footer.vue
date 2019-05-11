@@ -15,7 +15,7 @@ export default {
      * 上一步(回到第一頁)
      */
     GoPrev() {
-      this.$router.push(-1)
+      this.$router.push(`benf?instypename=ican`)
     },
     /**
      * 前往閱讀同意書

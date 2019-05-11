@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="">
       <div class="bg-radius">
         <div class="top">
 
@@ -53,7 +53,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="EmergencyContactAddrStreet" />
+              <input type="text" class="form-control insure-input insure-input-edit" placeholder="為保障您的權益，此欄位不可為空白" v-model="EmergencyContactAddrStreet" />
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>

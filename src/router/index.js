@@ -36,12 +36,14 @@ import MyWayInsuredData from '../components/Insurance/MyWay/InsuredData/MyWayIns
 
 import IGoingStepOne from '../components/Insurance/IGoing/StepOne/IGoingStepOne_build.vue'
 import IGoingStepTwo from '../components/Insurance/IGoing/StepTwo/IGoingStepTwo_build.vue'
+import IGoingStepTwoResult from '../components/Insurance/IGoing/StepTwo/IGoingStepTwo_calculateresult.vue'
 import IGoingStepThree from '../components/Insurance/IGoing/StepThree/IGoingStepThree_build.vue'
 import IGoingStepFour from '../components/Insurance/IGoing/StepFour/IGoingStepFour_build.vue'
 import IGoingInsuredData from '../components/Insurance/IGoing/InsuredData/IGoingInsureddata_build.vue'
 
 import AccidentStepOne from '../components/Insurance/Accident/StepOne/AccidentStepOne_build.vue'
 import AccidentStepTwo from '../components/Insurance/Accident/StepTwo/AccidentStepTwo_build.vue'
+import AccidentTwoResult from '../components/Insurance/Accident/StepTwo/AccidentStepTwo_calculateresult.vue'
 import AccidentStepThree from '../components/Insurance/Accident/StepThree/AccidentStepThree_build.vue'
 import AccidentStepFour from '../components/Insurance/Accident/StepFour/AccidentStepFour_build.vue'
 import AccidentInsuredData from '../components/Insurance/Accident/InsuredData/AccidentInsureddata_build.vue'
@@ -87,7 +89,10 @@ const router = new Router({
   routes: [
     {
       path: '/enttravel-1',
-      component: EntTravelOne
+      component: EntTravelOne,
+      meta: {
+        requiresAuth: false
+      }
     }, {
       path: '/travel-1',
       component: TravelOne
@@ -162,6 +167,10 @@ const router = new Router({
       component: IGoingStepTwo
     },
     {
+      path: '/igoing-Estimate',
+      component: IGoingStepTwoResult
+    },
+    {
       path: '/igoing-3',
       component: IGoingStepThree
     },
@@ -198,6 +207,10 @@ const router = new Router({
     {
       path: '/accident-2',
       component: AccidentStepTwo
+    },
+    {
+      path: '/accident-Estimate',
+      component: AccidentTwoResult
     },
     {
       path: '/accident-3',

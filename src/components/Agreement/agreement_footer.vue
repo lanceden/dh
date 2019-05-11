@@ -3,7 +3,7 @@
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
         <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
-        <div class="col-sm-8 footer-title " :class="{ 'footer-gary': true, 'footer-right': false }" @click="GoNext">我已同意並閱讀完成</div>
+        <div class="col-sm-8 footer-title " :class="{ 'footer-gary': true, 'footer-right': false }" @click="GoNext()">我已同意並閱讀完成</div>
       </nav>
     </div>
   </div>
@@ -62,7 +62,7 @@ export default {
      * 投保資訊
      */
     GoNext() {
-      if (this.$store.state.AGREEMENTCOUNT !== 0) {
+      if (this.$store.state.AGREEMENTCOUNT > 0) {
         toggleModalShow('請閱讀同意書', '貼心提醒您')
         return
       }
@@ -80,10 +80,20 @@ export default {
           break
         case 'ican':
           console.log('this.FuncICanSubmitQuote')
+          // 驗證完成
+          this.GetICanPostData.QusAns[0].Answar = true
+          this.GetICanPostData.QusAns[2].Answar = true
+          this.GetICanPostData.QusAns[3].Answar = true
+          this.GetICanPostData.QusAns[4].Answar = true
           this.FuncICanSubmitQuote({ para: this.GetICanPostData, router: this.$router })
           break
         case 'iwell':
           console.log('this.FuncIWellSubmitQuote')
+          // 驗證完成
+          this.GetIWellPostData.QusAns[0].Answar = true
+          this.GetIWellPostData.QusAns[2].Answar = true
+          this.GetIWellPostData.QusAns[3].Answar = true
+          this.GetIWellPostData.QusAns[4].Answar = true
           this.FuncIWellSubmitQuote({ para: this.GetIWellPostData, router: this.$router })
           break
         case 'igoing':

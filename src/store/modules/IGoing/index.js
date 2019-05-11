@@ -40,12 +40,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncIGoingEstimate]({ commit }, { para }) {
+  [functionTypes.FuncIGoingEstimate]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.IGoingEstimate}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncIGoingEstimate, { result: response.data })
+      commit(functionTypes.FuncIGoingEstimate, { result: response.data, router })
     })
   },
   /**
@@ -104,9 +104,10 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncIGoingEstimate(state, { result }) {
+  FuncIGoingEstimate(state, { result, router }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
+    router.push(`/igoing-Estimate`)
   },
   /**
    * IGoing 投保流程下一步

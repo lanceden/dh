@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -36,22 +36,22 @@
         </div>
       </div>
       <div class="border-bottom-line"></div>
+      <div class="top col-sm-12">
+        <div class="insure-notice-box" @click="OnCommunityAddr('old')">
+          <div class="insure-check"><img :src="ensure.paperOld" alt=""></div>
+          <div class="insure-check-content">{{GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
+        </div>
+      </div>
+			<div class="border-bottom-line col-sm-12"></div>
+			<div class="top col-sm-12">
+				<div class="insure-notice-box" @click="OnCommunityAddr('new')">
+              <div class="insure-check"><img :src="ensure.paperNew" alt=""></div>
+					<div class="insure-check-content">輸入新的寄送地址</div>
+				</div>
+			</div>
+			<div class="border-bottom-line col-sm-12"></div>
       <!-- 輸入新的通訊地址 -->
       <form class="form-bottom">
-        <div class="form-group row">
-          <div class="top col-sm-12">
-            <div class="insure-notice-box" @click="OnCommunityAddr('old')">
-              <div class="insure-check"><img :src="ensure.paperOld" alt=""></div>
-              <div class="insure-check-content">{{GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
-            </div>
-          </div>
-          <div class="top col-sm-12">
-            <div class="insure-notice-box" @click="OnCommunityAddr('new')">
-              <div class="insure-check"><img :src="ensure.paperNew" alt=""></div>
-              <div class="insure-check-content">輸入新的通訊地址</div>
-            </div>
-          </div>
-        </div>
         <!-- 輸入新的通訊地址 -->
         <div v-show="this.cbNewAddr1">
           <!-- 選擇城市 -->
@@ -83,13 +83,6 @@
           </div>
         </div>
 
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="col-sm-12">
-          <ul class="insure-tips-text">
-            <li class="decimal">變更資料請至：客戶服務中心>客戶資料管理>客戶驗證狀態。</li>
-            <li class="decimal">電子保單投保成功後，將以電子郵件及簡訊方式通知下載。保戶可至本公司會員專區或是網路投保網頁的「客戶服務中心」中 的「保單管理」進行下載。</li>
-          </ul>
-        </div>
       </form>
     </div>
 

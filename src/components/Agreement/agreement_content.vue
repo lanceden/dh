@@ -4,14 +4,12 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check"><img :src="read" alt=""></div>
-          <div class="insure-check-title">{{provisionname}}</div>
+          <div class="insure-check-title text-left">{{provisionname}}</div>
         </div>
       </div>
     </div>
-    <div class="border-bottom-line"></div>
-    <div class="col-sm-12">
-      <div class="provision" v-show="isToggle || this.$store.state.AGREEMENTTOGGLE" :class="{ height100: isToggle || this.$store.state.AGREEMENTTOGGLE }" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''">
-      </div>
+    <div class="insure-text">
+      <div class="decimal" v-show="isToggle || this.$store.state.AGREEMENTTOGGLE" :class="{ height100: isToggle || this.$store.state.AGREEMENTTOGGLE }" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''">條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容。容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容。</div>
     </div>
   </div>
 </template>
@@ -51,10 +49,8 @@ export default {
 
 </script>
 <style scoped>
-.provision {
-  height: 300px;
-  overflow: hidden;
-  overflow-x: hidden;
+.text-left {
+  text-align: left;
 }
 
 .height100 {

@@ -16,9 +16,9 @@
         <label for="" class="col-sm-12 col-form-label insure-label">身故受益人個數</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="benf_num">
-            <option selected="selected" value="1">一位</option>
-            <option value="2">二位</option>
-            <option value="3">三位</option>
+            <option selected="selected" value="1">一個</option>
+            <option value="2">二個</option>
+            <option value="3">三個</option>
           </select>
         </div>
       </div>

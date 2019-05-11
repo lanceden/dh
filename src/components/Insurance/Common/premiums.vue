@@ -49,16 +49,17 @@ export default {
       set(value) {
         this.premiums = value
         this.stateData.face_amt = value
+        this.stateData.mode_prem = 0
 
         if (this.$store.state.PLANNAME.toLowerCase() === 'ican') {
-          $('#CalcAmtDesc2').text($('#face_amt option:selected').text())
-          $('#CalcAmtDesc3').text($('#face_amt option:selected').text())
+          $('#CalcAmtDesc2').text($('#face_amt option:selected').text() + '元')
+          $('#CalcAmtDesc3').text($('#face_amt option:selected').text() + '元')
           let prem = parseInt(value)
           let maxPerc = 1.75
           let minPerc = 0.1 / 4
           let maxAmt = prem * maxPerc / 100
           let minAmt = prem * minPerc / 100
-          $('#broken-bones-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+          $('#broken-bones-acc-amt').text(minAmt + '萬元' + ' ~ ' + maxAmt + '萬元')
         }
 
         if (this.$store.state.PLANNAME.toLowerCase() === 'iwell') {
@@ -67,10 +68,20 @@ export default {
           let minPerc = 5 * 0.5
           let maxAmt = prem * maxPerc / 100
           let minAmt = prem * minPerc / 100
-          $('#CalcAmtDesc2').text(maxAmt + '萬')
-          $('#CalcAmtDesc3').text(maxAmt + '萬')
-          $('#blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
-          $('#specific-blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
+          $('#CalcAmtDesc2').text(maxAmt + '萬元')
+          $('#CalcAmtDesc3').text(maxAmt + '萬元')
+          $('#blind-acc-amt').text(minAmt + '萬元' + ' ~ ' + maxAmt + '萬元')
+          $('#specific-blind-acc-amt').text(minAmt + '萬元' + ' ~ ' + maxAmt + '萬元')
+        }
+
+        if (this.$store.state.PLANNAME.toLowerCase() === 'igoing') {
+          $('#CalcAmtDesc1').html(value)
+          $('#CalcAmtDesc2').html(value)
+        }
+
+        if (this.$store.state.PLANNAME.toLowerCase() === 'accident') {
+          $('#CalcAmtDesc1').html(value)
+          $('#CalcAmtDesc2').html(value)
         }
       }
     }

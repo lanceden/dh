@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="">
     <loading v-show="GetLoading" />
     <TravelSixChild v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelSixChild>
     <TravelSixFooter></TravelSixFooter>

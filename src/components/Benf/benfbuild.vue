@@ -3,7 +3,11 @@
     <loading v-show="GetLoading" />
     <BenfSetup :stateData="stateData"></BenfSetup>
     <BenfOne :stateData="stateData"></BenfOne>
-    <BenfOneAccount :stateData="stateData"></BenfOneAccount>
+    <template>
+      <div v-if="isShowAccount">
+        <BenfOneAccount :stateData="stateData"></BenfOneAccount>
+      </div>
+    </template>
     <BenfFooter></BenfFooter>
   </div>
 </template>
@@ -17,7 +21,8 @@ import BenfFooter from './benffooter'
 export default {
   data() {
     return {
-      stateData: []
+      stateData: [],
+      isShowAccount: true
     }
   },
   created() {
@@ -36,14 +41,17 @@ export default {
       case 'ican':
         console.log('this.GetICanPostData')
         this.stateData = this.GetICanPostData
+        this.isShowAccount = false
         break
       case 'iwell':
         console.log('this.GetIWellPostData')
         this.stateData = this.GetIWellPostData
+        this.isShowAccount = false
         break
       case 'igoing':
         console.log('this.GetIGoingPostData')
         this.stateData = this.GetIGoingPostData
+        this.isShowAccount = false
         break
       case 'myway':
         console.log('this.GetMyWayPostData')
@@ -52,6 +60,7 @@ export default {
       case 'accident':
         console.log('this.GetAccidentPostData')
         this.stateData = this.GetAccidentPostData
+        this.isShowAccount = false
         break
       case 'health':
         console.log('this.GetHealthPostData')

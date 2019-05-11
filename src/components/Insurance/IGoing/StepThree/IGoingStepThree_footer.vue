@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     GoPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/igoing-2`)
     },
     GoNext() {
       // 戶籍地址-輸入新的戶籍地址

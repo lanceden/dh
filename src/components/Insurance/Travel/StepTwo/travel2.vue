@@ -27,34 +27,27 @@
           <div class="insure-check-content">國外</div>
         </div>
       </div>
-      <div class="top col-sm-12" v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2">
-        <div class="col-sm-12 insure-select-align insure-select-withline">
-          <div class="col-sm-12 insure-select-align insure-select-withline">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="TravelCountry">
-              <option value="0" selected="selected">請選擇准備前往國家</option>
-              <option value="2">加拿大</option>
-              <option value="7">歐洲 (申根地區)</option>
-              <option value="3">歐洲 (非申根地區)</option>
-              <option value="4">紐澳</option>
-              <option value="5">日本</option>
-              <option value="8">韓國</option>
-              <option value="9">中港澳</option>
-              <option value="A">東南亞</option>
-              <option value="6">其他地區</option>
-            </select>
-          </div>
-          <div class="col-sm-7" v-show="TravelCountry === '6'">
-            <input type="text" class="form-control insure-input insure-input-edit col-sm-9" id="" placeholder="請填寫其他地區" v-model="EtcCountry">
-          </div>
-        </div>
+      <div class="border-bottom-line col-sm-12"></div>
+      <div class="col-sm-12 insure-select-align" v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2">
+        <select id="" class="form-control data-input insure-select  insure-select-withradio" v-model="TravelCountry">
+          <option value="0" selected="selected">請選擇准備前往國家</option>
+          <option value="2">加拿大</option>
+          <option value="7">歐洲 (申根地區)</option>
+          <option value="3">歐洲 (非申根地區)</option>
+          <option value="4">紐澳</option>
+          <option value="5">日本</option>
+          <option value="8">韓國</option>
+          <option value="9">中港澳</option>
+          <option value="A">東南亞</option>
+          <option value="6">其他地區</option>
+        </select>
       </div>
     </div>
-
     <div class="col-sm-12">
-      <div class="insure-tips-text">備註:最高受理天數，國內旅遊：９０天，國外旅遊：１８０天。</div>
+      <div class="insure-tips-text first-blue">備註:最高受理天數，國內旅遊：９０天，國外旅遊：１８０天。</div>
     </div>
     <div class="col-sm-12">
-      <div class="insure-tips-text">
+      <div class="insure-tips-text ">
         <img src="../../../../../static/img/insure-link.png" alt="">
         <a href="https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&n=C1B19EF0ACDD3C91&sms=867F5398A49F758A">申根地區國查詢</a>
       </div>

@@ -1,43 +1,54 @@
 <template>
-  <div class="bg-radius">
-    <div class="top">
-      <div class="top-title">
-        <div class="insure-notice-box">
-          <div class="insure-check">
-            <img src="../../../../../static/img/chat.png" alt>
+  <div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check">
+              <img src="../../../../../static/img/edit.png" alt>
+            </div>
+            <div class="insure-check-title">請填寫投保資料</div>
           </div>
-          <div class="insure-check-title">請填寫投保資料</div>
         </div>
       </div>
+      <div class="border-bottom-line"></div>
+      <form class="form-bottom">
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{GetIGoingPostData.ins_type_name}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
+          <div class="col-sm-12">
+            <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
+              <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
+            </select>
+            <div class="insure-tips-text" id="matured_date"></div>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="border-bottom-line"></div>
-    <form class="form-bottom">
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
-        <div class="col-sm-12">
-          <div class="insure-input-block">{{GetIGoingPostData.ins_type_name}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
-        <div class="col-sm-12">
-          <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
-            <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
-          </select>
-          <div class="form-control insure-select" id="matured_date"></div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check">
+              <img src="../../../../../static/img/edit.png" alt>
+            </div>
+            <div class="insure-check-title">請填寫投保額度</div>
+          </div>
         </div>
       </div>
       <!-- 投保額度 -->
       <PremiumsComponent :stateData="GetIGoingPostData"></PremiumsComponent>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">注意事項</label>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            變更或增加驗證方式請至：客戶服務中心>客戶資料管理>客戶驗證狀態
-          </div>
+      <div class="col-sm-12">
+        <div class="insure-tips">
+          驗證方式為簡訊OTP動態密碼者，新光既有保戶同業累積限450萬、非既有保戶限225萬
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -69,7 +80,8 @@ export default {
   mounted() {
     // 頁面加載完成 將保險期間訖日傳值
     let maturedDate = moment().add(`1`, 'days').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
-    $('#matured_date').html(`至 ${maturedDate}`)
+    // $('#matured_date').html(`至 ${maturedDate}`)
+    $('#matured_date').html(`自午夜十二時起`)
     $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt || 450)
     $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt || 450)
   },
@@ -89,7 +101,8 @@ export default {
         this.GetIGoingPostData.po_issue_date = value
         this.GetIGoingPostData.mode_prem = 0
         let maturedDate = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
-        $('#matured_date').html(`至 ${maturedDate}`)
+        // $('#matured_date').html(`至 ${maturedDate}`)
+        $('#matured_date').html(`自午夜十二時起`)
       }
     },
     /**

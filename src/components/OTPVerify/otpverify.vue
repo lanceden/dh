@@ -40,38 +40,35 @@
     <div class="border-bottom-line"></div>
     <div class="col-sm-12" @click="isShowOtp = !isShowOtp">
       <div class="insure-tips-text insure-tips-mt-25 pointer">
-        <img src="../../../static/img/insure-link.png" alt="">為什麼我的手機無法收到『簡訊OTP動態密碼』
+        為什麼我的手機無法收到『簡訊OTP動態密碼』
+        <img class="arrowblue" src="../../../static/img/arrow_blue_up.png" v-show="isShowOtp">
+        <img class="arrowblue" src="../../../static/img/arrow_blue_down.png" v-show="!isShowOtp">
       </div>
     </div>
+    <div class="border-bottom-line"></div>
+    <form class="form-bottom" v-show="isShowOtp">
+      <div class="insure-text insure-text-explan">
+        煩請您先確認下列事項：
+        <ul class="insure-tips-text insure-text-explan insure-text-explancontent ul-indentation">
+          <li class="decimal first">您於本公司留存的手機號碼是正確的，如需要變更手機號碼，請至「客戶基本資料修改」進行變更。</li>
+          <li class="decimal">您的手機為開機狀態。</li>
+          <li class="decimal">您的手機其簡訊記憶體空間為足夠。</li>
+          <li class="decimal">請洽詢您的行動電話系統業者，是否有阻擋企業簡訊、垃圾簡訊或是簡訊功能未開啟等狀況。</li>
+          <li class="decimal">如有任何疑問，請洽本公司客服中心。</li>
+        </ul>
+      </div>
+      <div class="col-sm-12">
+        <div class="insure-tips-text">
+          <img src="../../../static/img/tel.png" class="tel">0800 031 115
+        </div>
+      </div>
+    </form>
 
-    <div class="col-sm-12" v-show="isShowOtp">
-      <ul class="insure-tips-text">
-        <div class="font-label text-red-i">煩請您先確認下列事項：</div>
-        <li  class="decimal">
-          您於本公司留存的手機號碼是正確的，如需要變更手機號碼，請至「客戶基本資料修改」進行變更。
-        </li>
-        <li class="decimal">
-          您的手機為開機狀態。
-        </li>
-        <li class="decimal">
-          您的手機其簡訊記憶體空間為足夠。
-        </li>
-        <li class="decimal">
-          請洽詢您的行動電話系統業者，是否有阻擋企業簡訊、垃圾簡訊或是簡訊功能未開啟等狀況。
-        </li>
-        <li class="decimal">
-          如您已確認無法收到「簡訊OTP動態密碼」，若您持有金融憑證，需要開通金融憑證投保，請至我的客戶資料管理/認證資料修改，開通以金融憑證進行投保。
-        </li>
-        <li class="decimal">
-          如有任何疑問，請洽本公司客服中心免付費電話0800-031-115。
-        </li>
-
-      </ul>
-    </div>
     <div class="footer">
       <div class="footer-content">
         <nav class="navbar navbar-dark row">
-          <div class="col-sm-12 footer-title footer-right" @click="GoNext()">驗證</div>
+          <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
+          <div class="col-sm-8 footer-title footer-right" @click="GoNext()">確認送出</div>
         </nav>
       </div>
     </div>
@@ -107,12 +104,14 @@ export default {
     ...mapActions([
       'FuncCheckOTP'
     ]),
+    GoPrev() {
+      this.$router.push(`/otp`)
+    },
     /**
      * 付款頁
      */
     GoNext() {
       let verifyCode = `${this.codeOne}${this.codeTwo}${this.codeThree}${this.codeFour}${this.codeFive}${this.codeSix}`
-
       let sendData = {
         verify: {
           MobileNum: this.GetUpCashPostData.phone_mobile,

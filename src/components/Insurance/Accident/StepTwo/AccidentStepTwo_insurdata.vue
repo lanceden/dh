@@ -1,43 +1,56 @@
 <template>
-  <div class="bg-radius">
-    <div class="top">
-      <div class="top-title">
-        <div class="insure-notice-box">
-          <div class="insure-check">
-            <img src="../../../../../static/img/chat.png" alt>
+  <div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check">
+              <img src="../../../../../static/img/edit.png" alt>
+            </div>
+            <div class="insure-check-title">請填寫投保資料</div>
           </div>
-          <div class="insure-check-title">請填寫投保資料</div>
         </div>
       </div>
+      <div class="border-bottom-line"></div>
+      <form class="form-bottom">
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{GetAccidentPostData.ins_type_name}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
+          <div class="col-sm-12">
+            <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
+              <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
+            </select>
+            <div class="form-control insure-select" id="matured_date"></div>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="border-bottom-line"></div>
-    <form class="form-bottom">
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
-        <div class="col-sm-12">
-          <div class="insure-input-block">{{GetAccidentPostData.ins_type_name}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
-        <div class="col-sm-12">
-          <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
-            <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
-          </select>
-          <div class="form-control insure-select" id="matured_date"></div>
+
+    <!-- 投保額度 -->
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check">
+              <img src="../../../../../static/img/edit.png" alt>
+            </div>
+            <div class="insure-check-title">請填寫投保額度</div>
+          </div>
         </div>
       </div>
       <!-- 投保額度 -->
       <PremiumsComponent :stateData="GetAccidentPostData"></PremiumsComponent>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">注意事項</label>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            變更或增加驗證方式請至：客戶服務中心>客戶資料管理>客戶驗證狀態
-          </div>
+      <div class="col-sm-12">
+        <div class="insure-tips">
+          驗證方式為簡訊OTP動態密碼者，新光既有保戶同業累積限450萬、非既有保戶限225萬
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 

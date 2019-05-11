@@ -1,6 +1,6 @@
 <template>
   <div v-if="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].Relation) === 1">
-    <div class="container">
+    <div>
       <div class="bg-radius">
         <div class="top">
           <div class="top-title">
@@ -16,9 +16,9 @@
         </div>
 
         <form class="form-bottom">
-          <div class="form-group posr row">
+          <div class="form-group posr row" @click="OnBenf()">
             <label for="" class="col-sm-12 col-form-label">點此匯入最近一張保單的受益人</label>
-            <div class="checkbox checked checkbox-oneline"></div>
+            <div class="checkbox checkbox-oneline" :class="{ checked: isOnBenf }"></div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
@@ -34,9 +34,9 @@
           </div>
 
           <div class="form-group row">
-            <label for="" class="col-sm-12 col-form-label insure-label">身故受益人姓名</label>
+            <label for="" class="col-sm-12 col-form-label insure-label">身故受益人</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫受益人姓名" v-model="BeneficiaryDataName" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" v-model="BeneficiaryDataName" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
             </div>
           </div>
           <div class="form-group row">
@@ -63,7 +63,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" :disabled="parseInt(BeneficiaryDataRelationship) === 8" placeholder="請填寫身分證字號" v-model="IdNo">
+              <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" :disabled="parseInt(BeneficiaryDataRelationship) === 8" placeholder="請填寫" v-model="IdNo">
             </div>
           </div>
           <div class="form-group posr row" @click="SetAccountData()">
@@ -98,7 +98,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" />
+              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="parseInt(BeneficiaryDataRelationship) === 8" />
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
@@ -134,8 +134,8 @@ export default {
     }
   },
   created() {
-    // this.FuncGetCityData()
-    // this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetCityData()
+    this.FuncGetDistrictData(CITYNAME)
   },
   mounted() {
     // 暫存舊的通訊地址
@@ -279,7 +279,12 @@ export default {
     // 取回上一張保單受益人
     OnBenf() {
       this.isOnBenf = !this.isOnBenf
-      if (this.isOnBenf) this.FuncGetBeneficiary()
+      if (this.isOnBenf) {
+        this.FuncGetBeneficiary({
+          planCode: this.$store.state.Travel.TRAVELPOSTDATA.InsurancePlanCode,
+          stateData: this.$store.state.Travel.TRAVELPOSTDATA
+        })
+      }
     },
     // 同客戶資料
     SetAccountData() {

@@ -26,13 +26,13 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
         <div class="col-sm-12">
-          <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入年收入" v-model="insured_income" />
+          <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" v-model="insured_income" />
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
         <div class="col-sm-12">
-          <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入家庭收入" v-model="insured_fam_income" />
+          <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" v-model="insured_fam_income" />
         </div>
       </div>
       <div class="col-sm-12">

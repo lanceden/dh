@@ -199,7 +199,6 @@ export default {
           break
       }
       this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
-      console.log(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep)
     }
   }
 }

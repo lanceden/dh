@@ -1,6 +1,6 @@
 <template>
   <div v-if="parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].Relation) !== 1">
-    <div class="container">
+    <div class="">
       <div class="bg-radius">
         <div class="top">
           <div class="top-title">
@@ -96,7 +96,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" />
+              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="parseInt(BeneficiaryDataRelationship) === 8" />
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
@@ -271,7 +271,12 @@ export default {
     // 取回上一張保單受益人
     OnBenf() {
       this.isOnBenf = !this.isOnBenf
-      if (this.isOnBenf) this.FuncGetBeneficiary()
+      if (this.isOnBenf) {
+        this.FuncGetBeneficiary({
+          planCode: this.$store.state.Travel.TRAVELPOSTDATA.InsurancePlanCode,
+          stateData: this.$store.state.Travel.TRAVELPOSTDATA
+        })
+      }
     },
     // 同客戶資料
     SetAccountData() {

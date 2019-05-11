@@ -1,30 +1,39 @@
 <template>
-  <div class="bg-radius">
-    <div class="top">
-      <div class="top-title">
-        <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-          <div class="insure-check-title">電子保單</div>
+  <div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check-title">電子保單</div>
+          </div>
+        </div>
+        <div class="border-bottom-line"></div>
+        「為響應政府節能減碳政策，愛護地球並為環保盡一份心力，本商品僅提供電子保單。」
+      </div>
+      <div class="row insure-time-box">
+        <div class="col-sm-12" @click="OnCheck(true)">
+          <div :class="{ 'insure-times-active': isAgree }" class="insure-times">
+            同意<br>
+          </div>
+        </div>
+        <div class="col-sm-12" @click="OnCheck(false)">
+          <div :class="{ 'insure-times-active': isDisAgree }" class="insure-times">
+            不同意<br>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row insure-time-box">
-      <div class="col-sm-12" @click="OnCheck(true)">
-        <div :class="{ 'insure-times-active': isAgree }" class="insure-times">
-          同意<br>
-        </div>
-      </div>
-      <div class="col-sm-12" @click="OnCheck(false)">
-        <div :class="{ 'insure-times-active': isDisAgree }" class="insure-times">
-          不同意<br>
-        </div>
-        <label v-show="isDisAgree">很抱歉，本商品目前只提供電子保單</label>
+    <div class="bg-radius" v-show="isDisAgree">
+      <div class="col-sm-12">
+        <div class="insure-tips">很抱歉，本商品目前只提供電子保單</div>
       </div>
     </div>
     <div class="footer">
       <div class="footer-content">
         <nav class="navbar navbar-dark row">
-          <div class="col-sm-12 footer-title footer-right" @click="GotoNext()">下一步</div>
+          <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
+          <div class="col-sm-8 footer-title " :class="{ 'footer-gary': false, 'footer-right': true }" @click="GotoNext()">確定送出</div>
         </nav>
       </div>
     </div>
@@ -52,11 +61,15 @@ export default {
     ...mapActions([
       FunctionTypes.FuncICanElecFormIsRead
     ]),
+    GoPrev() {
+      this.$router.push(`/icanelecform?leave=true&token=${this.$store.state.ApiToken}`)
+    },
     GotoNext() {
       if (this.GetICanElecFormIsRed) {
         this.$router.push(`/ICan-1?token=${this.$store.state.ApiToken}`)
       } else {
         toggleModalShow('我們將帶您回到網站之首頁。')
+        this.$router.push(`/icanelecform?leave=true&token=${this.$store.state.ApiToken}`)
       }
     },
     /**

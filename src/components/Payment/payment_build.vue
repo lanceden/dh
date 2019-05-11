@@ -1,22 +1,19 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <PaymentAmount :amount="amount"></PaymentAmount>
-    <PaymentInit :stateData="stateData"></PaymentInit>
+    <PaymentAmount :stateData="stateData"></PaymentAmount>
     <PaymentFooter :stateData="stateData"></PaymentFooter>
   </div>
 </template>
 
 <script>
 import PaymentAmount from './payment_payamount'
-import PaymentInit from './payment_init'
 import PaymentFooter from './payment_footer'
 import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      stateData: [],
-      amount: 0
+      stateData: []
     }
   },
   computed: {
@@ -69,15 +66,9 @@ export default {
         this.stateData = this.GetEntTravelPostData
         break
     }
-    if (result === 'travel' || result === 'enttravel') {
-      this.amount = this.stateData.PolicyData.TotalPremium
-    } else {
-      this.amount = this.stateData.mode_prem
-    }
   },
   components: {
     PaymentAmount,
-    PaymentInit,
     PaymentFooter
   },
   methods: {
