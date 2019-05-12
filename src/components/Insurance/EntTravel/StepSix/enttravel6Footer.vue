@@ -10,19 +10,19 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 
 export default {
   computed: {
     ...mapGetters([
-      TravelGetterTypes.GetTravelPostData
+      EntTravelGetterTypes.GetEntTravelPostData
     ])
   },
   methods: {
     GoToPrev() {
       // 只有子女不會有本人的受益人需跳過此步驟
-      console.log('this.GetTravelPostData.TargetType', this.GetTravelPostData.TargetType)
-      if (parseInt(this.GetTravelPostData.TargetType) !== 1) {
+      console.log('this.GetEntTravelPostData.TargetType', this.GetEntTravelPostData.TargetType)
+      if (parseInt(this.GetEntTravelPostData.TargetType) !== 1) {
         this.$router.push('/travel-5')
       } else {
         this.$router.push('/travel-4')

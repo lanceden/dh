@@ -31,72 +31,72 @@
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">身故受益人姓名</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫受益人姓名" v-model="BeneficiaryDataName" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫受益人姓名" v-model="BeneficiaryDataName">
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
             <div class="col-sm-4 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear">
                 <option v-if="Relation === '本人'" :value="DobYear">{{DobYear}}</option>
                 <option v-else v-for="n in 100" :key="n" :value="new Date().getFullYear() + 1 - n">{{new Date().getFullYear() + 1 - n}}</option>
               </select>年
             </div>
             <div class="col-sm-4 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth">
                 <option v-if="Relation === '本人'" :value="DobMonth">{{DobMonth}}</option>
                 <option v-else v-for="n in 12" :key="n" :value="n">{{n}}</option>
               </select>月
             </div>
             <div class="col-sm-4 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay">
                 <option v-if="Relation === '本人'" :value="DobDay">{{DobDay}}</option>
                 <option v-else v-for="n in 31" :key="n" :value="n">{{n}}</option>
               </select>日
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" :disabled="parseInt(BeneficiaryDataRelationship) === 8" placeholder="請填寫身分證字號" v-model="IdNo">
+              <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" placeholder="請填寫身分證字號" v-model="IdNo">
             </div>
           </div>
-          <div class="form-group posr row" @click="SetAccountData()">
+          <div class="form-group posr row" v-show="BeneficiaryDataRelationship !== '8'" @click="SetAccountData()">
             <div class="checkbox checkbox-oneline" :class="{ checked: isSetAccountData }"></div>
             <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼:{{this.GetAccountData.CustMobile}}</label>
             <label for="" class="col-sm-10 col-form-label">同客戶住所地址:{{this.GetAccountData.CommunicationAddress.City}}{{this.GetAccountData.CommunicationAddress.District}}{{this.GetAccountData.CommunicationAddress.Road}}</label>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" :disabled="parseInt(BeneficiaryDataRelationship) === 8" placeholder="請填寫聯絡電話" v-model="ContactNumber">
+              <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫聯絡電話" v-model="ContactNumber">
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
             <div class="col-sm-12 insure-select-align">
-              <select class="form-control data-input insure-select insure-input-edit" v-model="city3" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <select class="form-control data-input insure-select insure-input-edit" v-model="city3">
                 <option selected="selected" value="0">請選擇</option>
                 <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
               </select>
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
             <div class="col-sm-12 insure-select-align">
-              <select class="form-control data-input insure-select insure-input-edit" v-model="district3" :disabled="parseInt(BeneficiaryDataRelationship) === 8">
+              <select class="form-control data-input insure-select insure-input-edit" v-model="district3">
                 <option selected="selected" value="0">請選擇</option>
-                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area" :disabled="parseInt(BeneficiaryDataRelationship) === 8">{{item.Area}}</option>
+                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
               </select>
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="parseInt(BeneficiaryDataRelationship) === 8" />
+              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" />
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>

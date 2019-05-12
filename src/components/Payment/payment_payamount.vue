@@ -14,7 +14,7 @@
         <div class="col-sm-12">
           <div class="font-label">本次投保的保險費為：</div>
           <div class="font-money" v-if="(this.$store.state.PLANNAME.toLowerCase() === 'travel' || this.$store.state.PLANNAME.toLowerCase() === 'enttravel')">NT$ {{this.stateData.PolicyData.TotalPremium}} 元</div>
-          <div class="font-money" v-else> NT$ {{this.stateData.mode_prem}} 元</div>
+          <div class="font-money" v-else> NT$ {{this.stateData.mode_prem|decimalComma}} 元</div>
           <div class="money-icon"><img src="../../../static/img/coins.png" alt=""></div>
         </div>
       </div>

@@ -7,8 +7,8 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import TravelFive from './travel5'
-import TravelFiveFooter from './travel5Footer'
+import TravelFive from './enttravel5'
+import TravelFiveFooter from './enttravel5Footer'
 
 export default {
   created() {

@@ -128,7 +128,6 @@ const mutations = {
    */
   [functionTypes.FuncTravelEstimate](state, { result, router }) {
     if (result.ResultCode !== '0000') return
-    console.log(result.Data.Result.PolicyData.TotalPremium)
     state.TRAVELPOSTDATA = result.Data.Result
     state.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
       item.BeneficiaryData = []

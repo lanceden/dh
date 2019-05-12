@@ -116,11 +116,21 @@ export default {
   /**
    * 險種的保額表 (驗證與未驗證)
    * @param {當前Vuex狀態} commit VuexStoreState
-   * @param {object} parpa 請求參數
+   * @param {object} para 請求參數
    */
-  async FuncGetPremiums({ commit }, parpa) {
-    await rootState.Http.axios.post(`${Url.Premiums}`, parpa).then(response => {
+  async FuncGetPremiums({ commit }, para) {
+    await rootState.Http.axios.post(`${Url.Premiums}`, para).then(response => {
       commit('FuncGetPremiums', { result: response.data })
+    })
+  },
+  /**
+   * 檢查是否為企業客戶
+   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {object} para 請求參數
+   */
+  FuncVerifyEmploymentId({ commit }, entCode) {
+    rootState.Http.axios.post(`${Url.VerifyEmploymentId}?empId=${entCode}`).then(response => {
+      commit('FuncVerifyEmploymentId', { result: response.data })
     })
   },
   /**

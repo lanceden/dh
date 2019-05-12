@@ -77,7 +77,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import TravelGetterTypes from '../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import EntTravelGetterTypes from '../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 import { toggleModalShow } from '../../../utils/toggleModal'
 
 const CITYNAME = '基隆市'
@@ -97,17 +97,17 @@ export default {
   created() {
     this.FuncGetCityData()
     this.FuncGetDistrictData(CITYNAME)
-    if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr === null) {
-      this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr = {
+    if (this.GetEntTravelPostData.EmergencyContactAddr === null) {
+      this.GetEntTravelPostData.EmergencyContactAddr = {
         City: '',
         District: '',
         Street: ''
       }
     } else {
       // 暫存舊的通訊地址
-      this.tempCity2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City
-      this.tempDistrict2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District
-      this.tempRoad2 = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.Street
+      this.tempCity2 = this.GetEntTravelPostData.EmergencyContactAddr.City
+      this.tempDistrict2 = this.GetEntTravelPostData.EmergencyContactAddr.District
+      this.tempRoad2 = this.GetEntTravelPostData.EmergencyContactAddr.Street
     }
   },
   computed: {
@@ -116,56 +116,56 @@ export default {
       'GetCityData',
       'GetDistrictData',
       'GetAccountData',
-      TravelGetterTypes.GetTravelPostData
+      EntTravelGetterTypes.GetEntTravelPostData
     ]),
     // 緊急聯絡人姓名
     EmergencyContactName: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactName
+        return this.GetEntTravelPostData.EmergencyContactName
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactName = value
+        this.GetEntTravelPostData.EmergencyContactName = value
       }
     },
     // 緊急聯絡人電話
     EmergencyContactTel: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactTel
+        return this.GetEntTravelPostData.EmergencyContactTel
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactTel = value
+        this.GetEntTravelPostData.EmergencyContactTel = value
       }
     },
     // 緊急聯絡人地址-縣市
     EmergencyContactAddrCity: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City || 0
+        return this.GetEntTravelPostData.EmergencyContactAddr.City || 0
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.City = value
+        this.GetEntTravelPostData.EmergencyContactAddr.City = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
         this.FuncGetDistrictData(value)
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District = 0
+        this.GetEntTravelPostData.EmergencyContactAddr.District = 0
       }
     },
     // 緊急聯絡人地址-區域
     EmergencyContactAddrDistrict: {
       get() {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District === 0) return 0
-        return (`${this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District}`) || 0
+        if (this.GetEntTravelPostData.EmergencyContactAddr.District === 0) return 0
+        return (`${this.GetEntTravelPostData.EmergencyContactAddr.District}`) || 0
       },
       set(value) {
         // item.Zip|item.Area
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.District = value
+        this.GetEntTravelPostData.EmergencyContactAddr.District = value
       }
     },
     // 緊急聯絡人地址-路
     EmergencyContactAddrStreet: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.Street
+        return this.GetEntTravelPostData.EmergencyContactAddr.Street
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EmergencyContactAddr.Street = value
+        this.GetEntTravelPostData.EmergencyContactAddr.Street = value
       }
     }
   },

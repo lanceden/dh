@@ -216,6 +216,7 @@ const HealthSubmitQuote = `${Domain}/Health/SubmitQuote`
  */
 const HealthSubmitOrder = `${Domain}/Health/SubmitOrder`
 
+const VerifyEmploymentId = `${Domain}/EntTravel/VerifyEmploymentId?`
 /**
  * EntTravel初始化
  */
@@ -323,6 +324,7 @@ export default {
   TravelEstimate,
   TravelSubmitQuote,
   TravelSubmitOrder,
+  VerifyEmploymentId,
   EntTravelInit,
   EntTravelEstimate,
   EntTravelSubmitQuote,

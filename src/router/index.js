@@ -60,7 +60,15 @@ import HealthStepThreeAccount from '../components/Insurance/Health/StepThree/Hea
 import HealthStepFour from '../components/Insurance/Health/StepFour/HealthStepFour_build.vue'
 import HealthInsuredData from '../components/Insurance/Health/InsuredData/HealthInsureddata_build.vue'
 
-import EntTravelOne from '../components/Insurance/EntTravel/travel1.vue'
+import EntTravelOne from '../components/Insurance/EntTravel//StepOne/enttravel1Build.vue'
+import EntTravelTwo from '../components/Insurance/EntTravel/StepTwo/enttravel2Build.vue'
+import EntTravelThree from '../components/Insurance/EntTravel/StepThree/enttravel3Build.vue'
+import EntTravelFour from '../components/Insurance/EntTravel/StepFour/enttravel4.vue'
+import EntTravelFive from '../components/Insurance/EntTravel/StepFive/enttravel5Build'
+import EntTravelSix from '../components/Insurance/EntTravel/StepSix/enttravel6Build.vue'
+import EntTravelSeven from '../components/Insurance/EntTravel/enttravel7'
+import EntTravelEight from '../components/Insurance/EntTravel/enttravel8'
+import EntTravelInsuredData from '../components/Insurance/EntTravel/InsuredData/enttravel10.vue'
 
 import TravelOne from '../components/Insurance/Travel/StepOne/travel1Build'
 import TravelTwo from '../components/Insurance/Travel/StepTwo/travel2Build.vue'
@@ -95,10 +103,28 @@ const router = new Router({
   routes: [
     {
       path: '/enttravel-1',
-      component: EntTravelOne,
-      meta: {
-        requiresAuth: false
-      }
+      component: EntTravelOne
+    }, {
+      path: '/enttravel-2',
+      component: EntTravelTwo
+    }, {
+      path: '/enttravel-3',
+      component: EntTravelThree
+    }, {
+      path: '/enttravel-4',
+      component: EntTravelFour
+    }, {
+      path: '/enttravel-5',
+      component: EntTravelFive
+    }, {
+      path: '/enttravel-6',
+      component: EntTravelSix
+    }, {
+      path: '/enttravel-7',
+      component: EntTravelSeven
+    }, {
+      path: '/enttravel-8',
+      component: EntTravelEight
     }, {
       path: '/travel-1',
       component: TravelOne
@@ -362,6 +388,10 @@ const router = new Router({
     {
       path: '/travel-insureddata',
       component: TravelInsuredData
+    },
+    {
+      path: '/enttravel-insureddata',
+      component: EntTravelInsuredData
     },
     {
       path: '/accident-insureddata',

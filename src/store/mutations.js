@@ -116,6 +116,14 @@ export default {
     state.PREMIUMS = result.Data.Result
   },
   /**
+   * 檢查是否為企業客戶
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncVerifyEmploymentId(state, { result }) {
+    state.ISENTERPRISECODE = result.Data.Result
+  },
+  /**
    * 取回上一張保單受益人
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果

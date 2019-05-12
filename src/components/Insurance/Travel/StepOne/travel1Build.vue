@@ -11,7 +11,6 @@
               v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelOneInsureData>
           </div>
         </template>
-
       </div>
     </template>
     <TravelOneFooter></TravelOneFooter>

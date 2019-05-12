@@ -23,6 +23,11 @@ const actions = {
   [functionTypes.FuncEntTravelIsInit]({ commit }, ENTTRAVELISINIT) {
     commit(functionTypes.FuncEntTravelIsInit, { result: ENTTRAVELISINIT })
   },
+  /**
+   * 企業客戶代碼驗證
+   * @param {commit} param0 提交狀態
+   * @param {bool} ENTTRAVELISINIT 是否已初始化
+   */
   [functionTypes.FuncEntTravelValidate]({ commit }, entCode) {
     rootState.Http.axios.post(`${Url.EntTravelValidate}?entCode=${entCode}`).then(response => {
       commit(functionTypes.FuncEntTravelValidate, { result: response.data })
@@ -33,11 +38,26 @@ const actions = {
    * @param {commit} param0 提交狀態
    */
   [functionTypes.FuncEntTravelInit]({ commit }) {
-    rootState.Http.axios.post(`${Url.EntTravelInit}`, {
-      CoreData: {},
-      InsurerSourceID: APICODE
+    rootState.Http.axios.post(`${Url.TravelInit}`, {
+      InsurerSourceID: APICODE,
+      TravelRq_Order: {
+        ProcessId: ''
+      }
     }).then(response => {
       commit(functionTypes.FuncEntTravelInit, { result: response.data })
+    })
+  },
+  /**
+   * Travel 處理被保人資料
+   * @param {commit} param0 提交狀態
+   * @param {object} para 請求參數
+   */
+  [functionTypes.FuncEntTravelInsuredData]({ commit }, { para, router }) {
+    rootState.Http.axios.post(`${Url.TravelInsuredData}`, {
+      InsurerSourceID: APICODE,
+      TravelRq_Order: para
+    }).then(response => {
+      commit(functionTypes.FuncEntTravelInsuredData, { result: response.data, router })
     })
   },
   /**
@@ -45,12 +65,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncEntTravelEstimate]({ commit }, { para }) {
-    rootState.Http.axios.post(`${Url.EntTravelEstimate}`, {
-      CoreData: para,
-      InsurerSourceID: APICODE
+  [functionTypes.FuncEntTravelEstimate]({ commit }, { para, router }) {
+    rootState.Http.axios.post(`${Url.TravelEstimate}`, {
+      InsurerSourceID: APICODE,
+      TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncEntTravelEstimate, { result: response.data })
+      commit(functionTypes.FuncEntTravelEstimate, { result: response.data, router })
     })
   },
   /**
@@ -59,11 +79,11 @@ const actions = {
    * @param {object} para 請求參數
    */
   [functionTypes.FuncEntTravelSubmitQuote]({ commit }, { para, router }) {
-    rootState.Http.axios.post(`${Url.EntTravelSubmitQuote}`, {
-      CoreData: para,
-      InsurerSourceID: APICODE
+    rootState.Http.axios.post(`${Url.TravelSubmitQuote}`, {
+      InsurerSourceID: APICODE,
+      TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncEntTravelSubmitQuote, { result: response.data, router })
+      commit(functionTypes.FuncTravelSubmitQuote, { result: response.data, router })
     })
   },
   /**
@@ -73,12 +93,12 @@ const actions = {
    */
   [functionTypes.FuncEntTravelSubmitOrder]({ commit }, { nccModels, para, router }) {
     console.log(para)
-    rootState.Http.axios.post(`${Url.EntTravelSubmitOrder}`, {
+    rootState.Http.axios.post(`${Url.TravelSubmitOrder}`, {
+      InsurerSourceID: APICODE,
       NCCCModels: nccModels,
-      CoreData: para,
-      InsurerSourceID: APICODE
+      TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncEntTravelSubmitOrder, { result: response.data, router })
+      commit(functionTypes.FuncTravelSubmitOrder, { result: response.data, router })
     })
   }
 }
@@ -105,13 +125,40 @@ const mutations = {
     state.ENTTRAVELISVALIDATE = result.Data.Result
   },
   /**
+   * Travel 處理被保人資料
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  [functionTypes.FuncEntTravelInsuredData](state, { result, router }) {
+    if (result.ResultCode !== '0000') return
+    state.ENTTRAVELPOSTDATA = result.Data.Result
+    router.push('/enttravel-2')
+  },
+  /**
    * EntTravel 投保流程試算
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  [functionTypes.FuncEntTravelEstimate](state, { result }) {
+  [functionTypes.FuncEntTravelEstimate](state, { result, router }) {
     if (result.ResultCode !== '0000') return
     state.ENTTRAVELPOSTDATA = result.Data.Result
+    state.ENTTRAVELPOSTDATA.PolicyData.InsuredInfo.forEach(item => {
+      item.BeneficiaryData = []
+      item.BeneficiaryData.push({
+        Relationship: '',
+        Name: '',
+        IdNo: '',
+        Dob: '',
+        ContactNumber: '',
+        Address: {
+          City: '',
+          District: '',
+          Street: ''
+        }
+      })
+      item.BeneficiaryQty = 1
+    })
+    router.push('/enttravel-4')
   },
   /**
    * EntTravel 投保流程下一步
@@ -120,8 +167,8 @@ const mutations = {
    */
   [functionTypes.FuncEntTravelSubmitQuote](state, { result, router }) {
     if (result.ResultCode !== '0000') return
-    state.ENTTRAVELPOSTDATA = result.Data.Result
-    router.push(`/travel-insureddata`)
+    state.TRAVELPOSTDATA = result.Data.Result
+    router.push(`/enttravel-insureddata`)
   },
   /**
    * EntTravel 投保流程送出訂單
@@ -130,8 +177,12 @@ const mutations = {
    */
   [functionTypes.FuncEntTravelSubmitOrder](state, { result, router }) {
     if (result.ResultCode !== '0000') return
-    rootState.PAYMENTCOMPLETE = result.Data.Result
-    router.push(`/paymentcomplete`)
+    rootState.PAYMCOMPLETE = result.Data.Result
+    if (rootState.PAYTYPE.toUpperCase() === 'B') {
+      router.push(`/ebillform`)
+    } else {
+      router.push(`/paymentcomplete`)
+    }
   }
 }
 

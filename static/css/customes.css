@@ -519,10 +519,6 @@ input{
 	margin-top: 0;
 }
 
-.career img{
-	margin-bottom: 15px !important;
-}
-
 .insure-text-closetable{
 	margin: 0px 25px;
     font-weight: 600;
@@ -631,7 +627,12 @@ input{
 .insure-select-withradio{
 	padding-left: 79px !important;
 	padding-top: 10px !important;
+	background-color: #F5F5F5;
 }
+.brown-select-withradio{
+	background-color: #F5F5F5;	
+}
+
 /*點擊單選出現的下拉式選單*/
 
 /*.insure-select-align select {

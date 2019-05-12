@@ -18,21 +18,32 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保險人</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.length === 0 ? '' : this.GetTravelPostData.PolicyData.ProposerInfo[0].Name}}</div>
+          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.length === 0 ? '' : this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Name}}</div>
         </div>
       </div>
       <!-- 要保險人身分證字號 -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保險人身分證字號</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.length === 0 ? '' : this.GetTravelPostData.PolicyData.ProposerInfo[0].ID}}</div>
+          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.length === 0 ? '' : this.GetEntTravelPostData.PolicyData.ProposerInfo[0].ID}}</div>
         </div>
       </div>
       <!-- 要保險人性別 -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保險人性別</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.length === 0 ? '' : this.GetTravelPostData.PolicyData.ProposerInfo[0].Gender === '1' ? '男' : '女'}}</div>
+          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.length === 0 ? '' : this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Gender === '1' ? '男' : '女'}}</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">企業客戶專區代碼</label>
+        <div class="col-sm-12">
+          <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" v-model="entCodeComputed">
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="insure-tips-text first-blue">
+          若忘記代碼，請洽詢您公司的負責窗口。
         </div>
       </div>
     </form>
@@ -88,8 +99,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import { mapGetters, mapActions } from 'vuex'
+import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 
 export default {
   data() {
@@ -99,13 +110,14 @@ export default {
         child: '../../../../../static/img/oval.png',
         both: '../../../../../static/img/oval.png',
         target: '0'
-      }
+      },
+      entCode: ''
     }
   },
   mounted() {
     // 初始化旅平險資料
-    if (this.GetTravelPostData.length === 0) return
-    let target = parseInt(this.GetTravelPostData.TargetType)
+    if (this.GetEntTravelPostData.length === 0) return
+    let target = parseInt(this.GetEntTravelPostData.TargetType)
     switch (target) {
       case 0:
         this.OnEnsure('own')
@@ -120,35 +132,43 @@ export default {
   },
   computed: {
     ...mapGetters([
-      TravelGetterTypes.GetTravelIsInit,
-      TravelGetterTypes.GetTravelPostData
+      EntTravelGetterTypes.GetEntTravelIsInit,
+      EntTravelGetterTypes.GetEntTravelPostData
     ]),
+    entCodeComputed: {
+      get() {
+        return this.entCode
+      },
+      set(value) {
+        this.FuncVerifyEmploymentId(value)
+      }
+    },
     // 子女數量
     childrenNo: {
       get() {
-        if (this.GetTravelPostData.length === 0) return 0
-        return this.GetTravelPostData.PolicyData.ChildrenNo
+        if (this.GetEntTravelPostData.length === 0) return 0
+        return this.GetEntTravelPostData.PolicyData.ChildrenNo
       },
       set(value) {
         let result = parseInt(value)
-        this.GetTravelPostData.PolicyData.ChildrenNo = result
+        this.GetEntTravelPostData.PolicyData.ChildrenNo = result
         // 子女
         if (this.ensure.target === 'child') {
-          this.GetTravelPostData.PolicyData.InsuredInfo = []
+          this.GetEntTravelPostData.PolicyData.InsuredInfo = []
 
-          this.GetTravelPostData.PolicyData.InsuredInfo.push({
+          this.GetEntTravelPostData.PolicyData.InsuredInfo.push({
             Index: 0,
             Relation: 1,
             PersonalData: {
-              ID: this.GetTravelPostData.PolicyData.ProposerInfo[0].ID,
-              Name: this.GetTravelPostData.PolicyData.ProposerInfo[0].Name,
-              Dob: this.GetTravelPostData.PolicyData.ProposerInfo[0].Dob
+              ID: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].ID,
+              Name: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Name,
+              Dob: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Dob
             },
             HasAuthRep: false,
             show: false
           })
           for (let i = 1; i <= result; i++) {
-            this.GetTravelPostData.PolicyData.InsuredInfo.push({
+            this.GetEntTravelPostData.PolicyData.InsuredInfo.push({
               Index: i,
               Relation: 3,
               PersonalData: {
@@ -163,22 +183,22 @@ export default {
         }
         // 本人與子女
         if (this.ensure.target === 'both') {
-          this.GetTravelPostData.PolicyData.InsuredInfo = []
+          this.GetEntTravelPostData.PolicyData.InsuredInfo = []
           // 先將本人資料帶入
-          this.GetTravelPostData.PolicyData.InsuredInfo.push({
+          this.GetEntTravelPostData.PolicyData.InsuredInfo.push({
             Index: 0,
             Relation: 1,
             PersonalData: {
-              ID: this.GetTravelPostData.PolicyData.ProposerInfo[0].ID,
-              Name: this.GetTravelPostData.PolicyData.ProposerInfo[0].Name,
-              Dob: this.GetTravelPostData.PolicyData.ProposerInfo[0].Dob
+              ID: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].ID,
+              Name: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Name,
+              Dob: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Dob
             },
             HasAuthRep: null,
             show: true
           })
           // 在帶入子女資料
           for (let i = 1; i <= result; i++) {
-            this.GetTravelPostData.PolicyData.InsuredInfo.push({
+            this.GetEntTravelPostData.PolicyData.InsuredInfo.push({
               Index: i,
               Relation: 3,
               PersonalData: {
@@ -195,6 +215,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'FuncVerifyEmploymentId'
+    ]),
     /**
      * 設置請確認保障對象
      * @param {string} target 本人:own 子女:child 本人與子女:both
@@ -209,16 +232,16 @@ export default {
           this.ensure.own = '../../../../../static/img/oval-ed.png'
           this.ensure.child = '../../../../../static/img/oval.png'
           this.ensure.both = '../../../../../static/img/oval.png'
-          this.GetTravelPostData.TargetType = 0
+          this.GetEntTravelPostData.TargetType = 0
           this.childrenNo = 0
-          this.GetTravelPostData.PolicyData.InsuredInfo = []
-          this.GetTravelPostData.PolicyData.InsuredInfo.push({
+          this.GetEntTravelPostData.PolicyData.InsuredInfo = []
+          this.GetEntTravelPostData.PolicyData.InsuredInfo.push({
             Index: 0,
             Relation: 1,
             PersonalData: {
-              ID: this.GetTravelPostData.PolicyData.ProposerInfo[0].ID,
-              Name: this.GetTravelPostData.PolicyData.ProposerInfo[0].Name,
-              Dob: this.GetTravelPostData.PolicyData.ProposerInfo[0].Dob
+              ID: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].ID,
+              Name: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Name,
+              Dob: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Dob
             },
             HasAuthRep: null,
             show: true
@@ -228,13 +251,13 @@ export default {
           this.ensure.own = '../../../../../static/img/oval.png'
           this.ensure.child = '../../../../../static/img/oval-ed.png'
           this.ensure.both = '../../../../../static/img/oval.png'
-          this.GetTravelPostData.TargetType = 1
+          this.GetEntTravelPostData.TargetType = 1
           break
         case 'both': // 本與人與子 array數量要依選擇數量定 2
           this.ensure.own = '../../../../../static/img/oval.png'
           this.ensure.child = '../../../../../static/img/oval.png'
           this.ensure.both = '../../../../../static/img/oval-ed.png'
-          this.GetTravelPostData.TargetType = 2
+          this.GetEntTravelPostData.TargetType = 2
           break
       }
     }

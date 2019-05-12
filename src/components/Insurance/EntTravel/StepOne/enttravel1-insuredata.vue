@@ -1,6 +1,6 @@
 <template>
   <!-- 被保險人資料 只有子女的話不顯示本人-->
-  <div class="bg-radius" v-if="this.GetTravelPostData.PolicyData.InsuredInfo[index].show">
+  <div class="bg-radius" v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].show">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
@@ -21,7 +21,7 @@
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
           <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" 
-          :disabled="this.GetTravelPostData.PolicyData.InsuredInfo[index].Relation === 1"
+          :disabled="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1"
           v-model="Name">
         </div>
       </div>
@@ -53,7 +53,7 @@
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
           <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入" 
-          :disabled="this.GetTravelPostData.PolicyData.InsuredInfo[index].Relation === 1"
+          :disabled="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1"
           v-model="ProposerInfoId">
         </div>
       </div>
@@ -66,7 +66,7 @@
             <div class="insure-check-content">是</div>
           </div>
         </div>
-        <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="this.GetTravelPostData.PolicyData.InsuredInfo[index].HasAuthRep">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
+        <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].HasAuthRep">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('no')">
@@ -81,7 +81,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 import moment from 'moment'
 
 export default {
@@ -89,8 +89,8 @@ export default {
     'index'
   ],
   created() {
-    if (this.GetTravelPostData.PolicyData.TravelCountry !== null) {
-      this.OnEnsure(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep === true ? 'yes' : 'no')
+    if (this.GetEntTravelPostData.PolicyData.TravelCountry !== null) {
+      this.OnEnsure(this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep === true ? 'yes' : 'no')
     }
   },
   data() {
@@ -106,16 +106,16 @@ export default {
   },
   computed: {
     ...mapGetters([
-      TravelGetterTypes.GetTravelPostData
+      EntTravelGetterTypes.GetEntTravelPostData
     ]),
     // 關係
     Relation: {
       get() {
-        switch (this.GetTravelPostData.PolicyData.InsuredInfo[this.index].Relation) {
+        switch (this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].Relation) {
           case 1:
             return '本人'
           case 3:
-            this.GetTravelPostData.PolicyData.InsuredInfo[this.index].Index = this.index
+            this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].Index = this.index
             return '子女'
         }
       }
@@ -123,16 +123,16 @@ export default {
     // 姓名
     Name: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Name
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Name
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Name = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Name = value
       }
     },
     DobYear: {
       get() {
         if(this.Relation === '本人') {
-          let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY')
+          let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY')
           this.year = result
         }
         return this.year
@@ -140,7 +140,7 @@ export default {
       set(value) {
         let result = parseInt(value)
         if (result !== 0) {
-          this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${value}/${this.DobMonth}/${this.DobDay}`
+          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${value}/${this.DobMonth}/${this.DobDay}`
         }
         this.year = result
       }
@@ -148,7 +148,7 @@ export default {
     DobMonth: {
       get() {
         if(this.Relation === '本人') {
-          let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY/MM')
+          let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY/MM')
           this.month = result.split('/')[1]
         }
         return this.month
@@ -156,7 +156,7 @@ export default {
       set(value) {
         let result = parseInt(value)
         if (result !== 0) {
-          this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${value}/${this.DobDay}`
+          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${value}/${this.DobDay}`
         }
         this.month = result
       }
@@ -164,7 +164,7 @@ export default {
     DobDay: {
       get() {
         if(this.Relation === '本人') {
-          let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY/MM/DD')
+          let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY/MM/DD')
           this.day = result.split('/')[2]
         }
         return this.day
@@ -172,17 +172,17 @@ export default {
       set(value) {
         let result = parseInt(value)
         if (result !== 0) {
-          this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${this.DobMonth}/${value}`
+          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${this.DobMonth}/${value}`
         }
         this.day = result
       }
     },
     ProposerInfoId: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.ID
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.ID
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.ID = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.ID = value
       }
     }
   },
@@ -202,7 +202,7 @@ export default {
           this.ensure.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
           break
       }
-      this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
+      this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
     }
   }
 }
