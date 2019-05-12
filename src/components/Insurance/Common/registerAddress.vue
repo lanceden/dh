@@ -13,7 +13,7 @@
       <div class="top col-sm-12">
         <div class="insure-notice-box" @click="OnRegisterAddr('old')">
           <div class="insure-check"><img :src="ensure.old" /></div>
-          <div class="insure-check-content">{{stateData.city2 + stateData.district2 + stateData.road2}}</div>
+          <div class="insure-check-content">{{stateData.address2}}</div>
         </div>
       </div>
 

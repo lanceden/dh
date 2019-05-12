@@ -5,7 +5,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/edit.png" alt>
+              <img src="../../../../../static/img/insurance.png" alt>
             </div>
             <div class="insure-check-title">請填寫投保資料</div>
           </div>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for class="col-sm-12 col-form-label insure-label insure-label">保險期間</label>
+          <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
           <div class="col-sm-12">
             <select class="form-control data-input insure-select insure-input-block-edit" v-model="po_issue_date">
               <option v-for="(item, index) in insDateArr" :key="index" :value="item.utc">自{{item.roc}}起</option>
@@ -28,6 +28,11 @@
             <div class="insure-tips-text" id="matured_date"></div>
           </div>
         </div>
+        <div class="col-sm-12">
+					<div class="insure-tips-text  first-blue insure-text-explan">
+		    	自午夜十二時起
+					</div>
+				</div>
       </form>
     </div>
     <div class="bg-radius">
@@ -35,7 +40,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/edit.png" alt>
+              <img src="../../../../../static/img/insurance.png" alt>
             </div>
             <div class="insure-check-title">請填寫投保額度</div>
           </div>
@@ -43,11 +48,13 @@
       </div>
       <!-- 投保額度 -->
       <PremiumsComponent :stateData="GetIGoingPostData"></PremiumsComponent>
-      <div class="col-sm-12">
-        <div class="insure-tips">
-          驗證方式為簡訊OTP動態密碼者，新光既有保戶同業累積限450萬、非既有保戶限225萬
+      <form class="form-bottom">
+        <div class="col-sm-12">
+          <div class="insure-tips-text first-blue">
+            驗證方式為簡訊OTP動態密碼者，新光既有保戶同業累積限450萬、非既有保戶限225萬。
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </template>
@@ -79,9 +86,8 @@ export default {
   },
   mounted() {
     // 頁面加載完成 將保險期間訖日傳值
-    let maturedDate = moment().add(`1`, 'days').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
+    // let maturedDate = moment().add(`1`, 'days').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
     // $('#matured_date').html(`至 ${maturedDate}`)
-    $('#matured_date').html(`自午夜十二時起`)
     $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt || 450)
     $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt || 450)
   },
@@ -102,7 +108,7 @@ export default {
         this.GetIGoingPostData.mode_prem = 0
         let maturedDate = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
         // $('#matured_date').html(`至 ${maturedDate}`)
-        $('#matured_date').html(`自午夜十二時起`)
+        // $('#matured_date').html(`自午夜十二時起`)
       }
     },
     /**

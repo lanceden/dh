@@ -1,161 +1,278 @@
 <template>
-  <div class="bg-radius">
-    <div class="top">
-      <div class="top-title">
-        <div class="insure-notice-box">
-          <div class="insure-check">
-            <img src="../../../../../static/img/chat.png" alt>
+  <div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check">
+              <img src="../../../../../static/img/insurance.png" alt>
+            </div>
+            <div class="insure-check-title">請填寫投保資料</div>
           </div>
-          <div class="insure-check-title">請填寫投保資料</div>
         </div>
+      </div>
+      <div class="border-bottom-line"></div>
+      <form class="form-bottom">
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{GetUpCashPostData.ins_type_name}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{poIssueDate}}</div>
+          </div>
+        </div>
+        <form class="form-bottom">
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">是否躉繳（一次繳清）</label>
+            <div class="border-bottom-line col-sm-12"></div>
+            <div class="top col-sm-12" @click="OnOneTimePayment(true)">
+              <div class="insure-notice-box">
+                <div class="insure-check"><img :src="ensure.onetimepaytrue" /></div>
+                <div class="insure-check-content">是</div>
+              </div>
+            </div>
+            <div class="border-bottom-line col-sm-12"></div>
+            <div class="top col-sm-12" @click="OnOneTimePayment(false)">
+              <div class="insure-notice-box">
+                <div class="insure-check"><img :src="ensure.onetimepayfalse" /></div>
+                <div class="insure-check-content">否</div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <form class="form-bottom">
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
+            <div class="border-bottom-line col-sm-12"></div>
+            <div class="top col-sm-12" @click="OnInitMethod('B')">
+              <div class="insure-notice-box">
+                <div class="insure-check"><img :src="ensure.initmethodebill" alt=""></div>
+                <div class="insure-check-content">活期性帳戶(電子化授權/全國繳費網)</div>
+              </div>
+            </div>
+            <div class="border-bottom-line col-sm-12"></div>
+            <div class="top col-sm-12" @click="OnInitMethod('C')">
+              <div class="insure-notice-box">
+                <div class="insure-check"><img :src="ensure.initmethodcreditcard" alt=""></div>
+                <div class="insure-check-content">信用卡</div>
+              </div>
+            </div>
+          </div>
+          <div class="insure-tips-text first-blue" v-show="GetUpCashPostData.init_method === 'C'">
+            <img src="../../../../../static/img/insure-link.png" alt>刷卡攻略
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control insure-input insure-input-edit col-sm-9" v-model="face_amt" placeholder="請輸入" />
+            </div>
+            <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+          </div>
+          <div class="col-sm-12">
+            <div class="insure-tips-text text-red-i" v-show="GetUpCashPostData.IsOneTimePayment">最低保費限10,000元</div>
+            <div class="insure-tips-text text-red-i" v-show="!GetUpCashPostData.IsOneTimePayment">最低保費限 3,000元</div>
+            <div class="insure-tips-text">單筆保費限75萬，單一公司累積限750萬。</div>
+          </div>
+        </form>
+      </form>
+    </div>
+
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check-title">約定續期繳費方式</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-bottom" v-show="!GetUpCashPostData.IsOneTimePayment">
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="top col-sm-12" @click="Onmodx_99_ind(1)">
+            <div class="insure-notice-box">
+              <div class="insure-check"><img :src="ensure.modx_99_indtrue" alt=""></div>
+              <div class="insure-check-content">不定期繳</div>
+            </div>
+          </div>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="top col-sm-12" @click="Onmodx_99_ind(2)">
+            <div class="insure-notice-box">
+              <div class="insure-check"><img :src="ensure.modx_99_indfalse" alt=""></div>
+              <div class="insure-check-content">分期繳付</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
+          <label for="" class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
+          <div class="col-sm-12">
+            <div class="form-control insure-input-block">全國新光人壽行政中心繳費</div>
+          </div>
+        </div>
+        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
+          <div class="insure-tips-text first-blue">
+            <img src="../../../../../static/img/insure-link.png">
+            <a href="https://www.skl.com.tw/serviceCenter.html" target="_blank">查詢各服務中心資訊</a>
+          </div>
+        </div>
+        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
+          <div class="insure-tips-text first-blue">
+            <img src="../../../../../static/img/insure-link.png">
+            <a href="https://www.skl.com.tw/092da5cb14.html" target="_blank">繳費方式</a>
+          </div>
+        </div>
+
+        <!--Start 分期繳付 -->
+        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control insure-input insure-input-edit col-sm-9" v-model="qpoop_25_prem">
+          </div>
+          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+        </div>
+        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
+          <div class="col-sm-12 insure-select-align">
+            <select id class="form-control data-input insure-select insure-input-edit" v-model="qpoop_25_modx">
+              <option selected="selected" value="0">未選擇</option>
+              <option value="12">年</option>
+              <option value="6">半年</option>
+              <option value="3">季</option>
+              <option value="1">月</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="bg-radius" v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B' || GetUpCashPostData.method === 'C')">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check-title">續期收費管道</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-bottom-line col-sm-12"></div>
+      <form class="form-bottom">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12" @click="OnMethod('C')">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img :src="ensure.methodcredit" alt=""></div>
+            <div class="insure-check-content">信用卡</div>
+          </div>
+        </div>
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12" @click="OnMethod('B')">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img :src="ensure.methodtrans" alt=""></div>
+            <div class="insure-check-content">銀行或郵局帳戶轉帳</div>
+          </div>
+        </div>
+        <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B')" @click="OnAccount('isEdda')">
+          <div class="form-group posr row">
+            <label for="" class="col-sm-12 col-form-label" :class="{ 'form-group-checked': isEdda }">已約定帳戶</label>
+            <div class="checkbox checkbox-oneline" :class="{ checked: isEdda }"></div>
+          </div>
+          <div v-show="isEdda">
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetUpCashPostData.client_names}}</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetUpCashPostData.client_id}}</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetEachAccount.BankCode}}</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetEachAccount.BankName}}</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetEachAccount.AccountNo}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B')" @click="OnAccount('isNotEdda')">
+          <div class="form-group posr row">
+            <label for="" class="col-sm-12 col-form-label" :class="{ 'form-group-checked': !isEdda }">非約定帳戶</label>
+            <div class="checkbox checkbox-oneline" :class="{ checked: isNotEdda }"></div>
+          </div>
+          <div v-show="isNotEdda">
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetUpCashPostData.client_names}}</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
+              <div class="col-sm-12">
+                <div class="form-control insure-input-block">{{GetUpCashPostData.client_id}}</div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
+              <div class="col-sm-12">
+                <select id="" class="form-control data-input insure-select insure-input-edit" v-model="bank_code_1">
+                  <option selected="selected" value="0">請選擇</option>
+                  <option v-for="(item, index) in GetBankData" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
+              <div class="col-sm-12">
+                <input type="text" class="form-control insure-input-block" id placeholder :value="branchName.split('-')[1]" disabled="disabled" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
+              <div class="col-sm-12">
+                <input type="number" min="0" class="form-control insure-input insure-input-edit" placeholder="請輸入銀行帳號" v-model="account">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="insure-tips-text">備註:續期收費管道若為「銀行或郵局帳戶轉帳」：<br />
+            ①請記得列印『保險費暨保單借款利息自動轉帳付款委託書』並檢視資料正確性。若委託書須再進行補印，您可至 新光人壽客戶服務中心 > 保單管理 > 保單明細中重新下載列印。<br />
+            ②若確認資料無誤後，再於「原留帳戶印鑑」欄，簽蓋銀行開戶印鑑或簽名，並於二日內自付郵資寄回本公司受理，才算申請完成。請寄到：10018台北市中正區忠孝西路一段66號18樓 新光人壽保險股份有限公司 保費部 轉帳管理課收。
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="footer">
+      <div class="footer-content">
+        <nav class="navbar navbar-dark row">
+          <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
+          <div class="col-sm-8 footer-title footer-right" @click="GoNext()">確認送出</div>
+        </nav>
       </div>
     </div>
-    <div class="border-bottom-line"></div>
-    <form class="form-bottom">
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
-        <div class="col-sm-12">
-          <div class="insure-input-block">{{GetUpCashPostData.ins_type_name}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
-        <div class="col-sm-12">
-          <div class="insure-input-block">{{poIssueDate}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">是否躉繳(一次繳清)</label>
-        <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit" v-model="IsOneTimePayment">
-            <option selected="selected" value="true">是</option>
-            <option value="false">否</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">第一期保險費</label>
-        <div class="col-sm-12">
-          <input type="number" class="form-control insure-input insure-input-edit" ref="face_amt" v-model="face_amt" placeholder="請輸入" />
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
-        <div class="col-sm-12">
-          <select id class="form-control data-input" v-model="init_method">
-            <option selected="selected" value="0">未選擇</option>
-            <option value="B">活期性帳戶(電子化授權/全國繳費網)</option>
-            <option value="C">信用卡</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm-12" v-show="GetUpCashPostData.init_method === 'C'">
-        <div class="insure-tips-text">
-          <img src="../../../../../static/img/insure-link.png" alt>刷卡攻略
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="insure-tips" v-show="GetUpCashPostData.IsOneTimePayment">限輸入10,000 至 750,000元</div>
-        <div class="insure-tips" v-show="!GetUpCashPostData.IsOneTimePayment">限輸入 3,000 至 750,000元</div>
-        <div class="insure-tips-text">備註：單筆保費限75萬，單一公司累積限750萬。</div>
-      </div>
-      <!-- v-show: 非躉繳才顯示續期繳法別 -->
-      <div class="form-group row" v-show="!GetUpCashPostData.IsOneTimePayment">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">約定續期繳法別</label>
-        <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit" v-model="modx_99_ind">
-            <option value="1">不定期繳</option>
-            <option value="2">分期繳付</option>
-          </select>
-        </div>
-      </div>
-
-      <!--Start 分期繳付 -->
-      <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">分期繳付之續期保險費每期</label>
-        <div class="col-sm-12">
-          <input type="number" min="0" class="form-control insure-input insure-input-edit" v-model="qpoop_25_prem">
-        </div>
-        <label for class="col-sm-12 col-form-label insure-label insure-label">元</label>
-      </div>
-      <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
-        <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
-        <div class="col-sm-12 insure-select-align">
-          <select id class="form-control data-input insure-select insure-input-edit" v-model="qpoop_25_modx">
-            <option selected="selected" value="0">未選擇</option>
-            <option value="12">年</option>
-            <option value="6">半年</option>
-            <option value="3">季</option>
-            <option value="1">月</option>
-          </select>
-        </div>
-      </div>
-      <!-- End 分期繳付-->
-
-      <!--Start 不定期繳-全國新光人壽行政中心繳費 -->
-      <div class="form-group row" v-show="!GetUpCashPostData.IsOneTimePayment">
-        <label for class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
-        <div class="col-sm-12">
-          <select id class="form-control data-input" v-model="method">
-            <option v-for="(item, index) in payType" :key="index" :value="item.method">{{item.name}}</option>
-          </select>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="insure-tips-text" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#service-center">
-              <img src="../../../../../static/img/insure-link.png">
-              查詢各服務中心資訊
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="insure-tips-text">
-              <img src="../../../../../static/img/insure-link.png">繳費方式
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End 不定期繳-全國新光人壽行政中心繳費-->
-
-      <div class="col-sm-12">
-        <div class="insure-tips">續期繳費管道同時約定為信用卡，會同首期信用卡卡號做繳費。</div>
-      </div>
-
-      <div v-show="GetUpCashPostData.modx_99_ind === 'N' && GetUpCashPostData.method === 'B'">
-        <div class="form-group row" @click="OnAccount('isEdda')">
-          <div class="checkbox " :class="{ checked: isEdda }"></div>
-          <div class="insure-tips">已約定帳戶</div>
-          <div class="col-sm-12">
-            <div class="insure-input-block">委託人姓名: </div>
-            <div class="insure-input-block">委託人身分證字號: </div>
-            <div class="insure-input-block">金融機構代碼: </div>
-            <div class="insure-input-block">金融機構中文名稱: </div>
-            <div class="insure-input-block">銀行帳號: </div>
-          </div>
-        </div>
-        <div class="form-group row" @click="OnAccount('isNotEdda')">
-          <div class="checkbox" :class="{ checked: !isEdda }"></div>
-          <div class="insure-tips">非約定帳戶</div>
-          <div class="col-sm-12">
-            <div class="insure-input-block">委託人姓名: </div>
-            <div class="insure-input-block">委託人身分證字號:
-            </div>
-            <div class="insure-input-block">金融機構代碼:
-              <select id="" class="form-control data-input insure-select insure-input-edit" v-model="bank_code_1">
-                <option selected="selected" value="0">請選擇</option>
-                <option v-for="(item, index) in GetBankData" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
-              </select>
-            </div>
-            <div class="insure-input-block">金融機構中文名稱:
-              <input type="text" class="form-control insure-input-block" id placeholder :value="branchName.split('-')[1]" disabled="disabled" />
-            </div>
-            <div class="insure-input-block">銀行帳號:
-              <input type="number" min="0" class="form-control insure-input insure-input-edit" placeholder="請輸入銀行帳號" v-model="account">
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </form>
   </div>
 </template>
 
@@ -167,6 +284,7 @@ export default {
   data() {
     return {
       isEdda: true,
+      isNotEdda: false,
       poIssueDate: '',
       branchName: '0',
       accountComputed: '',
@@ -174,11 +292,22 @@ export default {
         { name: '全國新光人壽行政中心繳費', method: 'P' },
         { name: '銀行或郵局帳戶轉帳', method: 'B' },
         { name: '信用卡', method: 'C' }
-      ]
+      ],
+      ensure: {
+        onetimepaytrue: '../../../../../static/img/oval.png',
+        onetimepayfalse: '../../../../../static/img/oval.png',
+        initmethodebill: '../../../../../static/img/oval.png',
+        initmethodcreditcard: '../../../../../static/img/oval.png',
+        modx_99_indtrue: '../../../../../static/img/oval.png',
+        modx_99_indfalse: '../../../../../static/img/oval.png',
+        methodcredit: '../../../../../static/img/oval.png',
+        methodtrans: '../../../../../static/img/oval.png'
+      }
     }
   },
   created() {
     this.FuncGetBank()
+    this.FuncEachAccount()
     this.GetUpCashPostData.AccountData[0] = {}
     this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
     this.GetUpCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
@@ -187,6 +316,7 @@ export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetUpCashPostData,
+      'GetEachAccount',
       'GetBankData',
       'GetBankBranches'
     ]),
@@ -242,6 +372,7 @@ export default {
       },
       set(value) {
         this.GetUpCashPostData.method = value
+        console.log(value)
       }
     },
     /**
@@ -253,7 +384,7 @@ export default {
       },
       set(value) {
         this.GetUpCashPostData.mode_prem = 0
-        this.GetUpCashPostData.IsOneTimePayment = value === 'true'
+        this.GetUpCashPostData.IsOneTimePayment = value
       }
     },
     /**
@@ -323,10 +454,49 @@ export default {
   methods: {
     ...mapActions([
       'FuncGetBank',
-      'FuncGetBankBranches'
+      'FuncGetBankBranches',
+      'FuncEachAccount'
     ]),
+    GoPrev() {
+      this.$router.push(`/upcash-1?token=${this.$store.state.ApiToken}`)
+    },
+    GoNext() {
+      this.$router.push(`/upcash-2-1`)
+    },
+    // 約定續期繳費方式
+    Onmodx_99_ind(value) {
+      if (parseInt(value) === 1) {
+        this.ensure.modx_99_indtrue = '../../../../../static/img/oval-ed.png'
+        this.ensure.modx_99_indfalse = '../../../../../static/img/oval.png'
+      } else {
+        this.ensure.modx_99_indtrue = '../../../../../static/img/oval.png'
+        this.ensure.modx_99_indfalse = '../../../../../static/img/oval-ed.png'
+      }
+      this.modx_99_ind = value
+    },
+    // 是否躉繳
+    OnOneTimePayment(value) {
+      if (value) {
+        this.ensure.onetimepaytrue = '../../../../../static/img/oval-ed.png'
+        this.ensure.onetimepayfalse = '../../../../../static/img/oval.png'
+      } else {
+        this.ensure.onetimepaytrue = '../../../../../static/img/oval.png'
+        this.ensure.onetimepayfalse = '../../../../../static/img/oval-ed.png'
+      }
+      this.IsOneTimePayment = value
+    },
+    // 首期繳費管道
+    OnInitMethod(value) {
+      if (value === 'B') {
+        this.ensure.initmethodebill = '../../../../../static/img/oval-ed.png'
+        this.ensure.initmethodcreditcard = '../../../../../static/img/oval.png'
+      } else {
+        this.ensure.initmethodebill = '../../../../../static/img/oval.png'
+        this.ensure.initmethodcreditcard = '../../../../../static/img/oval-ed.png'
+      }
+      this.init_method = value
+    },
     OnUntimed(value) {
-      // 分期繳付:2 不定期繳:1
       /**
       if(this.GetUpCashPostData.modx_99_ind === 'Y') {
         return 1
@@ -369,22 +539,37 @@ export default {
         }
       }
     },
+    OnMethod(target) {
+      // 分期繳付:2 不定期繳:1
+      if (target === 'C') {
+        this.ensure.methodcredit = '../../../../../static/img/oval-ed.png'
+        this.ensure.methodtrans = '../../../../../static/img/oval.png'
+      } else {
+        this.ensure.methodcredit = '../../../../../static/img/oval.png'
+        this.ensure.methodtrans = '../../../../../static/img/oval-ed.png'
+      }
+      this.method = target
+    },
     // 約定帳號點擊事件
     OnAccount(target) {
+      console.log(target)
       // @click="isEdda = true"
       // 點選已約定帳戶, 要清空AccountData
       if (target === 'isEdda') {
         this.isEdda = true
+        this.isNotEdda = false
         this.GetUpCashPostData.Renewed_Prefer = true
         this.GetUpCashPostData.AccountData[0] = {}
       } else { // 非約定帳戶
+        this.isEdda = false
+        this.isNotEdda = true
+        this.GetUpCashPostData.Renewed_Prefer = false
         this.GetUpCashPostData.AccountData[0] = {
           account_type: 'Z',
           account: '',
           bank_code_1: '',
           bank_name_1: ''
         }
-        this.isEdda = false
       }
     }
   }

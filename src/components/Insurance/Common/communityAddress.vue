@@ -1,11 +1,19 @@
 <template>
   <div>
-    <div>
+    <div class="bg-radius">
+      <div class="top">
+        <div class="top-title">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check-title">通訊地址</div>
+          </div>
+        </div>
+      </div>
       <div class="border-bottom-line col-sm-12"></div>
       <div class="top col-sm-12">
         <div class="insure-notice-box" @click="OnCommunityAddress('old')">
           <div class="insure-check"><img :src="ensure.old" /></div>
-          <div class="insure-check-content">{{stateData.city1 + stateData.district1 + stateData.road1}}</div>
+          <div class="insure-check-content">{{stateData.address1}}</div>
         </div>
       </div>
 

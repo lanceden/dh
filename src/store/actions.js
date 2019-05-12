@@ -41,6 +41,16 @@ export default {
     })
   },
   /**
+   * 取得客戶約定帳戶
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncEachAccount({ commit }) {
+    rootState.Http.axios.post(`${Url.EachAccount}`).then(response => {
+      commit('FuncEachAccount', { result: response.data })
+    })
+  },
+  /**
    * 取回金融機構
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果

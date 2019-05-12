@@ -1,15 +1,16 @@
 <template>
-  <div class="bg-radius">
-    <div class="form-bottom">
-      <div class="row col-width">
-        <div class="col-sm-12">
-          <button class="button-blue btn-block" @click="Estimate()">保費試算</button>
-        </div>
+  <div>
+    <loading v-show="GetLoading" />
+    <div class="footer">
+      <div class="footer-content">
+        <nav class="navbar navbar-dark row">
+          <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
+          <div class="col-sm-8 footer-title footer-right" @click="Estimate()">保費試算</div>
+        </nav>
       </div>
     </div>
   </div>
 </template>
-
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/Health/Types/HealthFunctionTypes.js'
@@ -17,7 +18,7 @@ import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterType
 export default {
   computed: {
     ...mapGetters([
-      'GetNotifyCheckBox',
+      'GetLoading',
       GetterTypes.GetHealthPostData
     ])
   },
@@ -25,16 +26,11 @@ export default {
     ...mapActions([
       FunctionTypes.FuncHealthEstimate
     ]),
+    GoToPrev() {
+      this.$router.push(`/health-1?token=${this.$store.state.ApiToken}`)
+    },
     Estimate() {
-      console.log('client_rate_sex', this.GetHealthPostData.client_rate_sex)
-      console.log('face_amt', this.GetHealthPostData.face_amt)
-      console.log('client_occupation_class', this.GetHealthPostData.client_occupation_class)
-      console.log('client_occupation_class_code', this.GetHealthPostData.client_occupation_class_code)
-      console.log('client_occupation_class_code_name', this.GetHealthPostData.client_occupation_class_code_name)
-      console.log('client_occupation_level', this.GetHealthPostData.client_occupation_level)
-      console.log('client_occupation_sub_level', this.GetHealthPostData.client_occupation_sub_level)
-      console.log('po_issue_date', this.GetHealthPostData.po_issue_date)
-      this.FuncHealthEstimate({ para: this.GetHealthPostData })
+      this.FuncHealthEstimate({ para: this.GetHealthPostData, router: this.$router })
     }
   }
 }

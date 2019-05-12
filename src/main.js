@@ -41,11 +41,13 @@ axios.interceptors.response.use(function(response) {
   } else {
     if (error.response.status === 401) {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
-    }
-    if (error.response.status === 501) {
+    } else if (error.response.status === 501) {
+      toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
+    } else {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     }
   }
+  store.dispatch('SethideLoading')
   return Promise.reject(error)
 })
 window.Lockr = Lockr

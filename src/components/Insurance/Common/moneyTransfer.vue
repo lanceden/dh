@@ -3,12 +3,11 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/account.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
           <div class="insure-check-title">要保人匯款帳戶</div>
         </div>
       </div>
     </div>
-    <div class="border-bottom-line"></div>
     <form class="form-bottom">
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
@@ -36,7 +35,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" id placeholder v-model="branchName" disabled="disabled" />
+          <div class="form-control insure-input insure-input-edit">{{branchName}}</div>
         </div>
       </div>
       <div class="form-group row">
@@ -45,11 +44,11 @@
           <input type="number" min="0" class="form-control insure-input insure-input-edit" v-model="Applicant_Account">
         </div>
       </div>
+    </form>
+    <form class="form-bottom">
       <div class="col-sm-12">
-        <div class="insure-notice-text-ul">
-          <ul class="insure-notice-text-ul-p">
-            <li>​如有應退還、返還或應給付予要保人之款項，除已另有約定給付方式外，本公司得將該款項匯入上列要保人帳戶。</li>
-          </ul>
+        <div class="insure-tips-text text-red-i">
+          如有應退還、返還或應給付予要保人之款項，除已另有約定給付方式外，本公司得將該款項匯入上列要保人帳戶。
         </div>
       </div>
     </form>

@@ -31,7 +31,7 @@ export default {
         this.name = 'i-well傷害保險'
         break
       case 'myway':
-        this.name = ''
+        this.name = 'My Way定期壽險'
         break
       case 'igoing':
         this.name = 'i-going意外傷害保險'
@@ -40,7 +40,7 @@ export default {
         this.name = 'i平安傷害保險'
         break
       case 'health':
-        this.name = ''
+        this.name = 'New Health健康保險'
         break
       case 'travel':
         this.name = 'Enjoy Life旅行平安保險'

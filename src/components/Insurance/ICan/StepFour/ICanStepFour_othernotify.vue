@@ -24,20 +24,22 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
-        <div class="col-sm-12">
-          <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入年收入" v-model="insured_income" />
+        <label for="" class="col-sm-12 col-form-label insure-label">個人年收入</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control insure-input insure-input-edit col-sm-9" placeholder="請填寫" v-model="insured_income" />
         </div>
+        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
-        <div class="col-sm-12">
-          <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入家庭收入" v-model="insured_fam_income" />
+        <label for="" class="col-sm-12 col-form-label insure-label">家庭年收入</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control insure-input insure-input-edit col-sm-9" placeholder="請填寫" v-model="insured_fam_income" />
         </div>
+        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
       </div>
       <div class="col-sm-12">
-        <div class="insure-notice-text">
-          若要查詢先前填寫告知事項內容，登入後請至「客服中心」>「客戶服務中心」>「 保單管理」中，查詢您過往購買保單的保單明細。
+        <div class="insure-tips-text first-blue">
+          <img src="../../../../../static/img/insure-link.png" alt="">保單查詢：請至新光人壽客戶服務中心〉保單管理〉查詢保單明細
         </div>
       </div>
     </form>

@@ -83,6 +83,15 @@ export default {
           $('#CalcAmtDesc1').html(value)
           $('#CalcAmtDesc2').html(value)
         }
+
+        if (this.$store.state.PLANNAME.toLowerCase() === 'myway') {
+          $('#CalcAmtDesc1').html(value)
+          $('#CalcAmtDesc2').html(value)
+        }
+
+        if (this.$store.state.PLANNAME.toLowerCase() === 'health') {
+          $('#CalcAmtDesc1').html(value)
+        }
       }
     }
   },

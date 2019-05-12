@@ -4,8 +4,6 @@
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoEnsureContent></StepTwoEnsureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
-    <StepTwoCalculateResult></StepTwoCalculateResult>
-    <StepTwoFooter></StepTwoFooter>
   </div>
 </template>
 
@@ -15,8 +13,6 @@ import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.
 import StepTwoInsuranceData from './MyWayStepTwo_insurdata'
 import StepTwoEnsureContent from './MyWayStepTwo_ensurecontent'
 import StepTwoCalculateTitle from './MyWayStepTwo_calculatetitle'
-import StepTwoCalculateResult from './MyWayStepTwo_calculateresult'
-import StepTwoFooter from './MyWayStepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
@@ -25,14 +21,12 @@ export default {
     ])
   },
   created() {
-    console.log(this.GetMyWayPostData.ins_type_name)
+    this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-2.png'
   },
   components: {
     StepTwoInsuranceData,
     StepTwoEnsureContent,
-    StepTwoCalculateTitle,
-    StepTwoCalculateResult,
-    StepTwoFooter
+    StepTwoCalculateTitle
   }
 }
 

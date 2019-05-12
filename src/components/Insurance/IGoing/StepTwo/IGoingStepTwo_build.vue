@@ -20,6 +20,9 @@ export default {
       GetterTypes.GetIGoingPostData
     ])
   },
+  created() {
+    this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-2.png'
+  },
   components: {
     StepTwoInsuranceData,
     StepTwoEnSureContent,

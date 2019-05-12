@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     GoPrev() {
-      this.$router.push('/iWell-2')
+      this.$router.push('/iWell-Estimate')
     },
     GoNext() {
       // 戶籍地址-輸入新的戶籍地址

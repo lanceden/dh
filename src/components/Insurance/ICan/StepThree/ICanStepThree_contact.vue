@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/business-card-of-a-man-with-contact-info.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
             <div class="insure-check-title">請填寫聯絡資料</div>
           </div>
         </div>
@@ -53,27 +53,10 @@
       </form>
     </div>
 
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/business-card-of-a-man-with-contact-info.png" alt=""></div>
-            <div class="insure-check-title">戶籍地址</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <!-- 戶籍地址 -->
-      <RegisterAddressComponent :stateData="GetICanPostData"></RegisterAddressComponent>
-      <!-- 客戶住所(通訊地址) -->
-      <CommunityAddressComponent :stateData="GetICanPostData"></CommunityAddressComponent>
-
-      <div class="col-sm-12">
-        <div class="insure-tips">
-          ※將同步更新客戶基本資料
-        </div>
-      </div>
-    </div>
+    <!-- 戶籍地址 -->
+    <RegisterAddressComponent :stateData="GetICanPostData"></RegisterAddressComponent>
+    <!-- 客戶住所(通訊地址) -->
+    <CommunityAddressComponent :stateData="GetICanPostData"></CommunityAddressComponent>
   </div>
 </template>
 

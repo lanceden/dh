@@ -138,7 +138,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.phone_area}}{{mockData.phone_main}}{{mockData.phone_ext}}<br>手機：{{mockData.phone_mobile}}</div>
+            <div class="insure-input-block">電話：{{mockData.phone_area}}{{mockData.phone_main}}{{mockData.phone_ext}}</div>
+            <div class="insure-input-block">手機：{{mockData.phone_mobile}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -407,7 +408,7 @@
           </div>
         </div>
         <div class="col-sm-12">
-          <div class="insure-notice-text">
+          <div class="insure-tips-text first-blue">
             依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保。
           </div>
         </div>

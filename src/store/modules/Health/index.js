@@ -40,12 +40,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncHealthEstimate]({ commit }, { para }) {
+  [functionTypes.FuncHealthEstimate]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.HealthEstimate}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncHealthEstimate, { result: response.data })
+      commit(functionTypes.FuncHealthEstimate, { result: response.data, router })
     })
   },
   /**
@@ -105,8 +105,9 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncHealthEstimate(state, { result }) {
+  FuncHealthEstimate(state, { result, router }) {
     state.POSTDATA = result.Data.Result
+    router.push(`/health-Estimate`)
   },
   /**
    * Health 投保流程下一步

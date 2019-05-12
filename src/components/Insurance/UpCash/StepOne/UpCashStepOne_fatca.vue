@@ -3,37 +3,35 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check">
-            <img src="../../../../../static/img/chat.png" alt>
-          </div>
-          <div class="insure-check-title">FATCA及CRS個人客戶自我聲明書- 基本資料</div>
+          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check-title text-left">FATCA及CRS個人客戶自我聲明書 - 基本資料</div>
         </div>
       </div>
     </div>
-    <div class="border-bottom-line"></div>
+    <div class="border-bottom-line col-sm-12"></div>
     <form class="form-bottom">
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label">被保險人</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" id placeholder v-model="GetUpCashPostData.client_names" disabled="disabled" />
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
-        <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" id placeholder v-model="GetUpCashPostData.client_birth" disabled="disabled" />
+          <div class="form-control insure-input-block">{{GetUpCashPostData.client_names}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.client_id" disabled="disabled" />
+          <div class="form-control insure-input-block">{{GetUpCashPostData.client_id}}</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
+        <div class="col-sm-12">
+          <div class="form-control insure-input-block">{{GetUpCashPostData.Birthday_Full}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label">戶籍地址</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" v-model="GetUpCashPostData.InsAddress" disabled="disabled" />
+          <div class="form-control insure-input-block">同本次申請文件地址</div>
         </div>
       </div>
       <div class="form-group row">
@@ -95,3 +93,9 @@ export default {
 }
 
 </script>
+
+<style scoped>
+  .text-left{
+    text-align: left;
+  }
+</style>

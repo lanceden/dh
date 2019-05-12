@@ -29,16 +29,6 @@
           </div>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            ※變更請至：客戶服務中心>客戶資料管理>客戶驗證狀態
-          </div>
-          <div class="insure-notice-text">
-            ※備註：為響應政府節能減碳政策，愛護地球並為環保盡一份心力，本商品僅提供電子保單
-          </div>
-        </div>
-      </div>
     </form>
   </div>
 </template>

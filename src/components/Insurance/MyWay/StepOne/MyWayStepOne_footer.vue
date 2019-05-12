@@ -2,7 +2,8 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-12 footer-title footer-right" @click="GotoNext()">下一步</div>
+        <div class="col-sm-4 footer-title footer-left">回前一頁</div>
+        <div class="col-sm-8 footer-title footer-right" @click="GotoNext()">填寫投保資料</div>
       </nav>
     </div>
   </div>
@@ -61,10 +62,11 @@ export default {
         toggleModalShow('請選擇告知事項。。')
         return false
       }
-      if (this.GetMyWayPostData.QusAns[0].Answar || this.GetMyWayPostData.QusAns[1].Answar || this.GetMyWayPostData.QusAns[2].Answar || this.GetMyWayPostData.QusAns[3].Answar || this.GetMyWayPostData.QusAns[4].Answar || this.GetMyWayPostData.QusAns[5].Answar || this.GetMyWayPostData.QusAns[6].Answar || this.GetMyWayPostData.QusAns[7].Answar) {
+      if (!this.GetMyWayPostData.QusAns[0].Answar || !this.GetMyWayPostData.QusAns[1].Answar || !this.GetMyWayPostData.QusAns[2].Answar || !this.GetMyWayPostData.QusAns[3].Answar || !this.GetMyWayPostData.QusAns[4].Answar || !this.GetMyWayPostData.QusAns[5].Answar || !this.GetMyWayPostData.QusAns[6].Answar || !this.GetMyWayPostData.QusAns[7].Answar) {
         toggleModalShow('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
         return false
       }
+      console.log(JSON.stringify(this.GetMyWayPostData.QusAns))
       return true
     }
   }

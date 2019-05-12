@@ -4,8 +4,6 @@
     <StepTwoInsuranceData></StepTwoInsuranceData>
     <StepTwoEnsureContent></StepTwoEnsureContent>
     <StepTwoCalculateTitle></StepTwoCalculateTitle>
-    <StepTwoCalculateResult></StepTwoCalculateResult>
-    <StepTwoFooter></StepTwoFooter>
   </div>
 </template>
 
@@ -15,8 +13,6 @@ import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterType
 import StepTwoInsuranceData from './HealthStepTwo_insurdata'
 import StepTwoEnsureContent from './HealthStepTwo_ensurecontent'
 import StepTwoCalculateTitle from './HealthStepTwo_calculatetitle'
-import StepTwoCalculateResult from './HealthStepTwo_calculateresult'
-import StepTwoFooter from './HealthStepTwo_footer'
 export default {
   computed: {
     ...mapGetters([
@@ -25,14 +21,12 @@ export default {
     ])
   },
   created() {
-    console.log(this.GetHealthPostData.ins_type_name)
+    this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-2.png'
   },
   components: {
     StepTwoInsuranceData,
     StepTwoEnsureContent,
-    StepTwoCalculateTitle,
-    StepTwoCalculateResult,
-    StepTwoFooter
+    StepTwoCalculateTitle
   }
 }
 

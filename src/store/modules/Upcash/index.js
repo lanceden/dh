@@ -40,12 +40,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncUpCashEstimate]({ commit }, { para }) {
+  [functionTypes.FuncUpCashEstimate]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.UpCashEstimate}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncUpCashEstimate, { result: response.data })
+      commit(functionTypes.FuncUpCashEstimate, { result: response.data, router })
     })
   },
   /**
@@ -101,9 +101,10 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncUpCashEstimate(state, { result }) {
+  FuncUpCashEstimate(state, { result, router }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
+    router.push(`/upcash-Estimate`)
   },
   /**
    * UpCash 投保流程下一步

@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
           <div class="insure-check-title">被保人投保資料告知事項</div>
         </div>
       </div>
@@ -14,24 +14,7 @@
     </div>
     <form class="form-bottom">
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">您的職業類別</label>
-        <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-          </select>
-          <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-          </select>
-          <select class="form-control data-input insure-select insure-input-block-edit" v-model="occupation">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-sm-12 col-form-label insure-label">本人僅為台灣之稅務居民</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">本人僅為台灣之稅務居民</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-block-edit" v-model="QusAns">
             <option value="0">請選擇</option>
@@ -40,17 +23,55 @@
           </select>
         </div>
       </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">職業項目</label>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE + '-' + item.OCCUPATION_DESC">{{item.OCCUPATION_DESC}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">工作內容</label>
+        <div class="col-sm-12 insure-select-align">
+          <select class="form-control data-input insure-select insure-input-block-edit" id="occupation" v-model="occupation">
+            <option value="0" selected="selected">請選擇</option>
+            <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="insure-tips-text first-blue">
+          <span id="occupationselect"></span>
+        </div>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
 import { mapActions, mapGetters } from 'vuex'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 
 let PLANCODE = 'UCA99'
 export default {
+  data() {
+    return {
+      jobSubCodeText: ''
+    }
+  },
   computed: {
     ...mapGetters([
       GetterTypes.GetUpCashIsInit,
@@ -98,24 +119,29 @@ export default {
     // 職業中類
     jobSubCode: {
       get() {
-        return this.$store.state.JOBSUBCODE || 0
+        if (this.$store.state.JOBSUBCODE === '0' || this.$store.state.JOBSUBCODE === '') return 0
+        return this.$store.state.JOBSUBCODE
       },
       set(value) {
+        let result = value.split('-')
         this.FuncGetOccupation({
           NoClass: this.$store.state.JOB,
           PlanCode: PLANCODE,
           Type: '8',
-          subCode: value
+          subCode: result[0]
         })
-        this.$store.state.JOBSUBCODE = value
+        this.$store.state.JOBSUBCODE = result[0]
+        this.jobSubCodeText = result[1]
       }
     },
+    // 工作內容
     occupation: {
       get() {
         return this.GetOccupation || 0
       },
       set(value) {
         this.$store.state.OCCUPATION = value
+        $('#occupationselect').text(this.jobSubCodeText + ' ' + '【' + $('#occupation option:selected').text() + '】')
         if (value === '0') {
           alert('請選擇職業名稱')
           this.GetUpCashPostData.client_occupation_class = ''

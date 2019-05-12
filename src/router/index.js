@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import UpcashStepOne from '../components/Insurance/UpCash/StepOne/UpCashStepOne_build.vue'
 import UpcashStepTwo from '../components/Insurance/UpCash/StepTwo/UpCashStepTwo_build.vue'
+import UpcashStepTwoNotify from '../components/Insurance/UpCash/StepTwo/UpCashStepTwo_notify.vue'
+import UpCashStepTwoResult from '../components/Insurance/UpCash/StepTwo/UpCashStepTwo_calculateresult.vue'
 import UpcashStepThree from '../components/Insurance/UpCash/StepThree/UpCashStepThree_build.vue'
 import UpCashStepFour from '../components/Insurance/UpCash/StepFour/UpCashStepFour_build.vue'
 import UpcashInsuredData from '../components/Insurance/UpCash/InsuredData/UpCashInsureddata_build.vue'
@@ -30,7 +32,9 @@ import IWellInsuredData from '../components/Insurance/IWell/InsuredData/IWellIns
 
 import MyWayStepOne from '../components/Insurance/MyWay/StepOne/MyWayStepOne_build.vue'
 import MyWayStepTwo from '../components/Insurance/MyWay/StepTwo/MyWayStepTwo_build.vue'
+import MyWayStepTwoResult from '../components/Insurance/MyWay/StepTwo/MyWayStepTwo_calculateresult.vue'
 import MyWayStepThree from '../components/Insurance/MyWay/StepThree/MyWayStepThree_build.vue'
+import MyWayStepThreeAccount from '../components/Insurance/MyWay/StepThree/MyWayStepThree_account.vue'
 import MyWayStepFour from '../components/Insurance/MyWay/StepFour/MyWayStepFour_build.vue'
 import MyWayInsuredData from '../components/Insurance/MyWay/InsuredData/MyWayInsureddata_build.vue'
 
@@ -50,7 +54,9 @@ import AccidentInsuredData from '../components/Insurance/Accident/InsuredData/Ac
 
 import HealthStepOne from '../components/Insurance/Health/StepOne/HealthStepOne_build.vue'
 import HealthStepTwo from '../components/Insurance/Health/StepTwo/HealthStepTwo_build.vue'
+import HealthStepTwoResult from '../components/Insurance/Health/StepTwo/HealthStepTwo_calculateresult.vue'
 import HealthStepThree from '../components/Insurance/Health/StepThree/HealthStepThree_build.vue'
+import HealthStepThreeAccount from '../components/Insurance/Health/StepThree/HealthStepThree_account.vue'
 import HealthStepFour from '../components/Insurance/Health/StepFour/HealthStepFour_build.vue'
 import HealthInsuredData from '../components/Insurance/Health/InsuredData/HealthInsureddata_build.vue'
 
@@ -129,8 +135,16 @@ const router = new Router({
       component: MyWayStepTwo
     },
     {
+      path: '/myway-Estimate',
+      component: MyWayStepTwoResult
+    },
+    {
       path: '/myway-3',
       component: MyWayStepThree
+    },
+    {
+      path: '/myway-account',
+      component: MyWayStepThreeAccount
     },
     {
       path: '/myway-4',
@@ -146,6 +160,14 @@ const router = new Router({
     {
       path: '/upcash-2',
       component: UpcashStepTwo
+    },
+    {
+      path: '/upcash-2-1',
+      component: UpcashStepTwoNotify
+    },
+    {
+      path: '/upcash-Estimate',
+      component: UpCashStepTwoResult
     },
     {
       path: '/upcash-3',
@@ -190,8 +212,16 @@ const router = new Router({
       component: HealthStepTwo
     },
     {
+      path: '/health-Estimate',
+      component: HealthStepTwoResult
+    },
+    {
       path: '/health-3',
       component: HealthStepThree
+    },
+    {
+      path: '/health-account',
+      component: HealthStepThreeAccount
     },
     {
       path: '/health-4',

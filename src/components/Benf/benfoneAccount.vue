@@ -3,8 +3,8 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../static/img/account.png" alt=""></div>
-          <div class="insure-check-title">要保人匯款帳戶</div>
+          <div class="insure-check"><img src="../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check-title">身故受益人(一)匯款帳戶</div>
         </div>
       </div>
     </div>
@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <div class="insure-tips-text" onclick="location.href='Insure-BankList.html'">
-          <img src="../../../static/img/insure-link.png" alt="">查詢合作金融機構
+        <div class="insure-tips-text first-blue">
+          <img src="../../../static/img/insure-link.png" alt="">點擊查詢合作金融機構，將自動帶入數值
         </div>
       </div>
       <div class="form-group row">
@@ -34,9 +34,9 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構分行中文名稱</label>
+        <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" id placeholder v-model="branchName" disabled="disabled" />
+          <div class="orm-control insure-input insure-input-edit">{{branchName}}</div>
         </div>
       </div>
       <div class="form-group row">
@@ -46,10 +46,8 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <div class="insure-notice-text-ul">
-          <ul class="insure-notice-text-ul-p">
-            <li>​如有應退還、返還或應給付予要保人之款項，除已另有約定給付方式外，本公司得將該款項匯入上列要保人帳戶。</li>
-          </ul>
+        <div class="insure-tips-text text-red-i">
+          如有應退還、返還或應給付予要保人之款項，除已另有約定給付方式外，本公司得將該款項匯入上列要保人帳戶。
         </div>
       </div>
     </form>

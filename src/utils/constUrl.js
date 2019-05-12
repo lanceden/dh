@@ -21,6 +21,10 @@ const Occupation = `${Domain}/Query/Occupation`
  */
 const Provision = `${Domain}/Query/Provision`
 /**
+ * 取得客戶約定帳戶
+ */
+const EachAccount = `${Domain}/Customer/EachAccount`
+/**
  * 取回金融機構
  */
 const Banks = `${Domain}/Query/Banks`
@@ -268,6 +272,7 @@ export default {
   Occupation,
   Nationality,
   Provision,
+  EachAccount,
   City,
   District,
   Banks,

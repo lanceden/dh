@@ -40,12 +40,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncMyWayEstimate]({ commit }, { para }) {
+  [functionTypes.FuncMyWayEstimate]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.MyWayEstimate}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncMyWayEstimate, { result: response.data })
+      commit(functionTypes.FuncMyWayEstimate, { result: response.data, router })
     })
   },
   /**
@@ -105,8 +105,9 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncMyWayEstimate(state, { result }) {
+  FuncMyWayEstimate(state, { result, router }) {
     state.POSTDATA = result.Data.Result
+    router.push(`/myway-Estimate`)
   },
   /**
    * MyWay 投保流程下一步

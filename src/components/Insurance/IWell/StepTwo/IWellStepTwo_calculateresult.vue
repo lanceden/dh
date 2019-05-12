@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <div class="container">
+    <div class="">
       <div class="bg-radius">
         <div class="top">
           <div class="top-title">
@@ -15,7 +15,7 @@
         <div class="bg-money">
           <div class="col-sm-12">
             <div class="font-label">您所支付的保險費為：</div>
-            <div class="font-money">NT$ {{GetIWellPostData.mode_prem}}</div>
+            <div class="font-money">NT$ {{GetIWellPostData.mode_prem|decimalComma}}</div>
             <div class="money-icon"><img src="../../../../../static/img/coins.png" /></div>
           </div>
         </div>

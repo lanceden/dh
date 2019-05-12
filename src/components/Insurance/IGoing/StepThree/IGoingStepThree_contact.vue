@@ -14,7 +14,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">手機</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_mobile">
+            <div class="form-control insure-input">{{GetIGoingPostData.phone_mobile}}</div>
           </div>
         </div>
         <div class="col-sm-12">
@@ -52,25 +52,7 @@
         </div>
       </form>
     </div>
-
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/business-card-of-a-man-with-contact-info.png" alt=""></div>
-            <div class="insure-check-title">戶籍地址</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <!-- 戶籍地址 -->
-      <RegisterAddressComponent :stateData="GetIGoingPostData"></RegisterAddressComponent>
-      <div class="col-sm-12">
-        <div class="insure-tips">
-          ※將同步更新客戶基本資料
-        </div>
-      </div>
-    </div>
+    <RegisterAddressComponent :stateData="GetIGoingPostData"></RegisterAddressComponent>
   </div>
 </template>
 
@@ -87,15 +69,6 @@ export default {
     ...mapGetters([
       GetterTypes.GetIGoingPostData
     ]),
-    // 手機
-    phone_mobile: {
-      get() {
-        return this.GetIGoingPostData.phone_mobile || ''
-      },
-      set(value) {
-        this.this.GetIGoingPostData.phone_mobile = value
-      }
-    },
     // 電話區碼
     phone_area: {
       get() {

@@ -4,30 +4,35 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
             <div class="insure-check-title">電子保單</div>
           </div>
         </div>
-        <div class="border-bottom-line"></div>
+      </div>
+      <div class="border-bottom-line"></div>
+      <div class="insure-text">
         「為響應政府節能減碳政策，愛護地球並為環保盡一份心力，本商品僅提供電子保單。」
       </div>
-      <div class="row insure-time-box">
-        <div class="col-sm-12" @click="OnCheck(true)">
-          <div :class="{ 'insure-times-active': isAgree }" class="insure-times">
-            同意<br>
+      <div class="border-bottom-line"></div>
+
+      <form class="form-bottom">
+        <div class="top col-sm-12" @click="OnCheck(true)">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img :src="ensure.yes" alt=""></div>
+            <div class="insure-check-content">同意</div>
           </div>
         </div>
-        <div class="col-sm-12" @click="OnCheck(false)">
-          <div :class="{ 'insure-times-active': isDisAgree }" class="insure-times">
-            不同意<br>
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12" @click="OnCheck(false)">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img :src="ensure.no" alt=""></div>
+            <div class="insure-check-content">不同意</div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
-    <div class="bg-radius" v-show="isDisAgree">
-      <div class="col-sm-12">
-        <div class="insure-tips">很抱歉，本商品目前只提供電子保單</div>
-      </div>
+    <div class="form-group rowx" v-show="isDisAgree">
+      <label for="" class="col-sm-12 col-form-label insure-label text-with-select sorry">很抱歉，本商品目前只提供電子保單。</label>
     </div>
     <div class="footer">
       <div class="footer-content">
@@ -48,7 +53,10 @@ import { toggleModalShow } from '../../../../utils/toggleModal'
 export default {
   data() {
     return {
-      isAgree: false,
+      ensure: {
+        yes: '../../../../../static/img/oval.png',
+        no: '../../../../../static/img/oval.png'
+      },
       isDisAgree: false
     }
   },
@@ -68,7 +76,7 @@ export default {
       if (this.GetICanElecFormIsRed) {
         this.$router.push(`/ICan-1?token=${this.$store.state.ApiToken}`)
       } else {
-        toggleModalShow('我們將帶您回到網站之首頁。')
+        toggleModalShow('我們將帶您回首頁。')
         this.$router.push(`/icanelecform?leave=true&token=${this.$store.state.ApiToken}`)
       }
     },
@@ -78,7 +86,13 @@ export default {
      */
     OnCheck(value) {
       this.FuncICanElecFormIsRead(value)
-      this.isAgree = value
+      if (value) {
+        this.ensure.yes = '../../../../../static/img/oval-ed.png'
+        this.ensure.no = '../../../../../static/img/oval.png'
+      } else {
+        this.ensure.yes = '../../../../../static/img/oval.png'
+        this.ensure.no = '../../../../../static/img/oval-ed.png'
+      }
       this.isDisAgree = !value
     }
   }
