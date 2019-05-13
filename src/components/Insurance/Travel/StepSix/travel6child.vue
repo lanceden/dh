@@ -265,7 +265,6 @@ export default {
     ...mapActions([
       'FuncGetCityData',
       'FuncGetDistrictData',
-      'FuncGetAccountData',
       'FuncGetBeneficiary'
     ]),
     // 取回上一張保單受益人

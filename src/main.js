@@ -21,6 +21,9 @@ Vue.prototype.$http = { axios }
 
 axios.interceptors.request.use(function(config) {
   store.dispatch('SetShowLoading')
+  if (vm.$store.state.ApiToken === '') {
+    vm.$store.state.ApiToken = window.Lockr.get('ApiToken')
+  }
   config.headers['Authorization'] = 'Bearer ' + vm.$store.state.ApiToken
   return config
 }, function(error) {
@@ -57,7 +60,7 @@ var vm = new Vue({
   el: '#app',
   router,
   store,
-  template: '<App/>',
+  template: `<App/>`,
   components: {
     App
   }

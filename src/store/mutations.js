@@ -18,6 +18,8 @@ export default {
   },
   SetApiToken(state, { token }) {
     state.ApiToken = token
+    window.Lockr.rm('ApiToken')
+    window.Lockr.set('ApiToken', token)
   },
   SetHeaderIsActive(state, isAcvie) {
     state.HeaderIsActive = isAcvie
@@ -129,9 +131,10 @@ export default {
    * @param {請求結果} param1 請求回傳結果
    */
   FuncGetBeneficiary(state, { result, planCode, stateData }) {
-    if (planCode !== '65020' || planCode !== '66020') {
-      state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
-      stateData.benf_num = state.BENEFICIARY.length
+    state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
+    stateData.benf_num = state.BENEFICIARY.length
+    // 非旅平
+    if (planCode !== '65020' && planCode !== '66020') {
       if (stateData.benf_num > 0) {
         state.BENEFICIARY.forEach((item, index) => {
           stateData.relation_ben_death = item.Relationship
@@ -150,28 +153,27 @@ export default {
           stateData.BenfBankAccount1 = item.Account
         })
       }
-    } else {
-      state.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach((item, index) => {
+    } else { // ENTTRAVELPOSTDATA
+      let benfData = planCode === '66020' ? state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo : state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.InsuredInfo
+      benfData.forEach((item, index) => {
         if (index === 0) {
           item.BeneficiaryData = []
           item.BeneficiaryData.push({
-            Relationship: item.Relationship,
-            Name: item.Name,
-            IdNo: item.IdNo,
-            Dob: `${item.DobYear}/${item.DobMonth}/${item.DobDay}`,
-            ContactNumber: item.PhoneNo,
+            Relationship: state.BENEFICIARY[index].Relationship,
+            Name: state.BENEFICIARY[index].Name,
+            IdNo: state.BENEFICIARY[index].IdNo,
+            Dob: `${state.BENEFICIARY[index].DobYear}/${state.BENEFICIARY[index].DobMonth}/${state.BENEFICIARY[index].DobDay}`,
+            ContactNumber: state.BENEFICIARY[index].PhoneNo,
             Address: {
-              City: item.AddrCity,
-              District: item.AddrCounty,
-              Street: item.AddrStreet
+              City: state.BENEFICIARY[index].AddrCity,
+              District: state.BENEFICIARY[index].AddrCounty,
+              Street: state.BENEFICIARY[index].AddrStreet
             }
           })
-          item.BeneficiaryQty = 1
+          state.BENEFICIARY[index].BeneficiaryQty = 1
         }
       })
     }
-    // 旅平用
-    stateData = []
   },
   /**
    * 發送OTP
@@ -216,14 +218,5 @@ export default {
    */
   FuncIsCityBank(state, { result }) {
     state.ISCITYBANKCARD = result.ResultCode === '0000'
-  },
-  /**
-   * 取得客戶約定帳戶
-   * @param {當前Vuex狀態} state VuexStoreState
-   * @param {請求結果} param1 請求回傳結果
-   */
-  FuncGetEachAccount(state, { result }) {
-    state.EACHACCOUNT = result.Data.Result
-    return state.EACHACCOUNT
   }
 }

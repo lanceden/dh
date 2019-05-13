@@ -48,7 +48,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns1Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns1Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -124,7 +124,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns3Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns3Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -182,6 +182,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns4Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns4Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -238,6 +239,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns5Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns5Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
     </form>
@@ -274,15 +276,14 @@
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
-      <form class="form-bottom col-sm-12" @click='OnOccupation(5)'>
+      <form class="form-bottom col-sm-12" @click="OnToggle()">
         <div class=" insure-tips-text">
           查詢相關類別說明<img class="career" :src="occu.showOccupation" />
         </div>
       </form>
       <div class="border-bottom-line col-sm-12"></div>
-
       <!-- 第一類 -->
-      <div v-show="occu.show">
+      <div name="occudisplay1" v-show="occu.show">
         <label for="" class="col-sm-12 col-form-label insure-label red">第一類 內勤行政文書相關</label>
         <div class="insure-text career" v-show="!occu.leveltwo">
           一般內勤人員、一般內勤工作人員、一般內勤服務人員（辦公室職員、櫃檯、服務檯）、一般醫師、護士及藥劑師、 一般醫務行政人員、人體彩繪師、三溫暖業負責人、三溫暖業櫃臺人員、中途之家、安養院工作人員、內勤人員、 內勤工作人員、分析員、化粧人員、化粧師、手工藝品買賣商、文具商、禮品買賣商、水產實驗人員(室內)、 代書（內勤）、古董商、司儀、布商、布類紙品工藝品之加工工人、打版師、民意代表、監立委、省縣市議員、 寺廟及教堂管理人員、米商(不參與碾米作業)、自行車買賣商(不含修理)、作曲人員、作家、志願役行政及內勤人員、 村里幹事、汽車買賣商(不含修理)、系統工程師、車站剪票員、宗教團體工作人員、店員、店員（出版商、書店、文具店）、 服務臺人員、服飾、皮
@@ -295,8 +296,9 @@
           <img v-show="!occu.leveltwo" src="../../../../../static/img/double-arrow-down.png">
         </div>
       </div>
+
       <!-- 第二類 -->
-      <div v-show="occu.showTwo">
+      <div name="occudisplay2" v-show="occu.showTwo">
         <label for="" class="col-sm-12 col-form-label insure-label red">第二類 外勤業務相關</label>
         <div class="insure-text career" v-show="!occu.leveltwo">
           一般流動、固定攤販、一般看護人員、一般清潔工、一般演員（導演）、三溫暖業工作人員、大樓管理員、小吃店人員、工安人員、工程師、工藝教師、中藥材加工人員、五金商、公證行外務員、化妝品製造工人、化學品管人員、化學實驗師、引導參觀工地之服務人員、月臺工作人員、木材工廠負責人、木材工廠現場之職員、木材商、水族館經營者、水電衛生器材商(不含安裝)、火葬場處理人員、加油(氣)站工作人員、包裝工、包裝工人、包裹搬運人員、外務員、外務員、生前契約傳銷人員、外勤人員、外勤記者、外燴辦桌人員、布袋戲偶操作人員、平交道看守人員、平地育苗工人、民俗體育活動人員、皮革手工藝品加工、石材商、光電及光學工作人員、印刷工、地毯之裝設人員、地磅工作人員、地質探測員（平地）
@@ -311,7 +313,7 @@
       </div>
 
       <!-- 第三類 -->
-      <div v-show="occu.showThree">
+      <div name="occudisplay3" v-show="occu.showThree">
         <label for="" class="col-sm-12 col-form-label insure-label red">第三類 養殖、石化及放牧相關工作</label>
         <div class="insure-text career" v-show="!occu.leveltwo">
           長短工、果農、農業機械之操作或修護人員、檳榔種植、採檳榔、畜牧工作人員、獸醫(畜牧業、農業)、屠宰場工人、漁塭經營者（親自作業）、養殖工人（內陸）、捕魚人（內陸）、水產實驗人員(室外)、海邊撈魚苗者、領班、分級員、檢查員、標記員、磅秤員、吊車操作人員、木材工廠品管員、工程師、領班(不參與現場工作者)、遊覽車司機及服務員、客運車司機及服務員、小型客貨兩用車司機、人力三輪車伕、纜車操縱員、靈車司機、快遞送貨(機車)、堆高機駕駛（非航運）、貨櫃場管理員、教練車教練、送外賣機車駕駛、環保資源回收車司機、隨車人員、駕駛員、燃料填充員、修護廠技工、貨運：領班、倉庫管理人、稽查人員、機場內交通車司機、空橋車駕駛、行李貨運搬運工人、地面導航人員、理貨員、技工
@@ -326,7 +328,7 @@
       </div>
 
       <!-- 第四類 -->
-      <div v-show="occu.showFour">
+      <div name="occudisplay4" v-show="occu.showFour">
         <label for="" class="col-sm-12 col-form-label insure-label red">第四類 司機、採石及水電修理相關工作</label>
         <div class="insure-text career" v-show="!occu.leveltwo">
           訓犬人員、動物養殖人員、養殖工人（沿海）、捕魚人（沿海）、防腐劑工人、木材儲藏槽工人、合板製造工人、山地造林工人、山林管理人員、礦業工程師、技師、領班、工礦安全人員、採石業工人(河床)、採砂業工人、石材切割工人(大理石、花崗石)、石材磨光工人(大理石、花崗石)、採石輸送帶機器操作人員、工程師、自用貨車司機、隨車工人、小型自用貨車司機、道路工程車司機、機械操作員、鏟土機駕駛、機工、電工、修路工、維護工、貨運：搬運工人、巡查人員、碼頭工人及領班、推高機操作員、領航員、引水人、船艙清潔(船舶靠岸後)
@@ -345,10 +347,11 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
 import { mapGetters } from 'vuex'
-import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   data() {
     return {
@@ -401,6 +404,44 @@ export default {
     }
   },
   methods: {
+    OnToggle() {
+      this.occu.occuDown = !this.occu.occuDown
+      $('div[name=occudisplay1]').hide()
+      $('div[name=occudisplay2]').hide()
+      $('div[name=occudisplay3]').hide()
+      $('div[name=occudisplay4]').hide()
+
+      if (!this.occu.occuDown) {
+        if (this.client_occupation_class_computed === 1) {
+          this.occu.show = true
+          this.occu.showTwo = false
+          this.occu.showThree = false
+          this.occu.showFour = false
+          $('div[name=occudisplay1]').show()
+        }
+        if (this.client_occupation_class_computed === 2) {
+          this.occu.show = false
+          this.occu.showTwo = true
+          this.occu.showThree = false
+          this.occu.showFour = false
+          $('div[name=occudisplay2]').show()
+        }
+        if (this.client_occupation_class_computed === 3) {
+          this.occu.show = false
+          this.occu.showTwo = false
+          this.occu.showThree = true
+          this.occu.showFour = false
+          $('div[name=occudisplay3]').show()
+        }
+        if (this.client_occupation_class_computed === 4) {
+          this.occu.show = false
+          this.occu.showTwo = false
+          this.occu.showThree = false
+          this.occu.showFour = true
+          $('div[name=occudisplay4]').show()
+        }
+      }
+    },
     // 選取職業類別
     OnOccupation(value) {
       switch (value) {
@@ -431,10 +472,6 @@ export default {
           this.occu.three = '../../../../../static/img/oval.png'
           this.occu.four = '../../../../../static/img/oval-ed.png'
           this.client_occupation_class_computed = 4
-          break
-        case 5:
-          this.occu.show = false
-          this.occu.showTwo = false
           break
       }
       this.OnShowOccupation(value)
@@ -526,12 +563,7 @@ export default {
         this.occu.showTwo = false
         this.occu.showThree = false
         this.occu.showFour = true
-      } else {
-        this.occu.show = false
-        this.occu.showTwo = false
       }
-      this.occu.occuDown = !this.occu.occuDown
-      this.occu.showOccupation = this.occu.occuDown ? '../../../../../static/img/arrow_blue_up.png' : '../../../../../static/img/arrow_blue_down.png'
     }
   }
 }

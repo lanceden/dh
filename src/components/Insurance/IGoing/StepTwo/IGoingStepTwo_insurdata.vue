@@ -106,7 +106,7 @@ export default {
       set(value) {
         this.GetIGoingPostData.po_issue_date = value
         this.GetIGoingPostData.mode_prem = 0
-        let maturedDate = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
+        // let maturedDate = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
         // $('#matured_date').html(`至 ${maturedDate}`)
         // $('#matured_date').html(`自午夜十二時起`)
       }

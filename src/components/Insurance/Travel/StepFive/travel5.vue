@@ -272,7 +272,6 @@ export default {
     ...mapActions([
       'FuncGetCityData',
       'FuncGetDistrictData',
-      'FuncGetAccountData',
       'FuncGetBeneficiary'
     ]),
     // 取回上一張保單受益人
@@ -283,6 +282,8 @@ export default {
           planCode: this.$store.state.Travel.TRAVELPOSTDATA.InsurancePlanCode,
           stateData: this.$store.state.Travel.TRAVELPOSTDATA
         })
+      } else {
+        this.BeneficiaryDataRelationship = 0
       }
     },
     // 同客戶資料

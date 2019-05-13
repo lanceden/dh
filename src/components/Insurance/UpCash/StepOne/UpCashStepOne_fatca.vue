@@ -70,6 +70,7 @@ export default {
     ]),
     birth_national: {
       get() {
+        if(this.GetUpCashPostData.CRSData === undefined) return 0
         return (this.GetUpCashPostData.CRSData.birth_national === undefined || this.GetUpCashPostData.CRSData.birth_national === null || this.GetUpCashPostData.CRSData.birth_national === 'null') ? 0 : this.GetUpCashPostData.CRSData.birth_national
       },
       set(value) {
@@ -78,6 +79,7 @@ export default {
     },
     birth_city: {
       get() {
+        if(this.GetUpCashPostData.CRSData === undefined) return ''
         return (this.GetUpCashPostData.CRSData.birth_city === undefined || this.GetUpCashPostData.CRSData.birth_city === null || this.GetUpCashPostData.CRSData.birth_city === 'null') ? '' : this.GetUpCashPostData.CRSData.birth_city
       },
       set(value) {

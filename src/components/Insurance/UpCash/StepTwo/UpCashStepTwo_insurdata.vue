@@ -64,7 +64,8 @@
             </div>
           </div>
           <div class="insure-tips-text first-blue" v-show="GetUpCashPostData.init_method === 'C'">
-            <img src="../../../../../static/img/insure-link.png" alt>刷卡攻略
+            <img src="../../../../../static/img/insure-link.png" alt>
+            <a href="https://online.skl.com.tw/Event/upcash/card.html">刷卡攻略</a>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
@@ -82,7 +83,7 @@
       </form>
     </div>
 
-    <div class="bg-radius">
+    <div class="bg-radius" v-show="!GetUpCashPostData.IsOneTimePayment">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -91,8 +92,7 @@
           </div>
         </div>
       </div>
-
-      <form class="form-bottom" v-show="!GetUpCashPostData.IsOneTimePayment">
+      <form class="form-bottom" >
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
           <div class="border-bottom-line col-sm-12"></div>
@@ -177,7 +177,7 @@
             <div class="insure-check-content">銀行或郵局帳戶轉帳</div>
           </div>
         </div>
-        <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B')" @click="OnAccount('isEdda')">
+        <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B') && GetEachAccount !== null" @click="OnAccount('isEdda')">
           <div class="form-group posr row">
             <label for="" class="col-sm-12 col-form-label" :class="{ 'form-group-checked': isEdda }">已約定帳戶</label>
             <div class="checkbox checkbox-oneline" :class="{ checked: isEdda }"></div>
@@ -198,19 +198,19 @@
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
               <div class="col-sm-12">
-                <div class="form-control insure-input-block">{{GetEachAccount.BankCode}}</div>
+                <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.BankCode}}</div>
               </div>
             </div>
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
               <div class="col-sm-12">
-                <div class="form-control insure-input-block">{{GetEachAccount.BankName}}</div>
+                <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.BankName}}</div>
               </div>
             </div>
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
               <div class="col-sm-12">
-                <div class="form-control insure-input-block">{{GetEachAccount.AccountNo}}</div>
+                <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.AccountNo}}</div>
               </div>
             </div>
           </div>
@@ -392,7 +392,6 @@ export default {
      */
     face_amt: {
       get() {
-        this.GetUpCashPostData.face_amt = 66666
         return this.GetUpCashPostData.face_amt
       },
       set(value) {

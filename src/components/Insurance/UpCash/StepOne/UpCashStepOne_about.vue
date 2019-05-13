@@ -102,7 +102,7 @@ export default {
         this.GetUpCashPostData.IsTaiwanTaxDuty = result
       }
     },
-    // 您的職業類別
+    // 職業類別
     jobCode: {
       get() {
         return this.GetJob || 0
@@ -116,11 +116,11 @@ export default {
         this.$store.state.JOB = value
       }
     },
-    // 職業中類
+    // 職業項目
     jobSubCode: {
       get() {
         if (this.$store.state.JOBSUBCODE === '0' || this.$store.state.JOBSUBCODE === '') return 0
-        return this.$store.state.JOBSUBCODE
+        return this.$store.state.JOBSUBCODE + '-' + this.jobSubCodeText
       },
       set(value) {
         let result = value.split('-')

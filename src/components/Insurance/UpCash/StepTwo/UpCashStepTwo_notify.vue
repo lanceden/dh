@@ -33,7 +33,7 @@
         <div class="form-group posr row" :class="{ 'form-group-checked': cbNewMail }" @click="OnCheck('cbNewMail')">
           <label for="" class="col-sm-12 col-form-label insure-label">輸入新的電子信箱</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" placeholder="請填寫" v-model="newMail" :disabled="!cbNewMail">
+            <input type="text" class="form-control insure-input-block" placeholder="請填寫" v-model="newMail" :disabled="!cbNewMail" v-show="cbNewMail">
           </div>
           <div :class="{ checked: cbNewMail }" class="checkbox"></div>
         </div>
@@ -134,10 +134,10 @@ export default {
     // 輸入新的電子郵件
     newMail: {
       get() {
-        return this.GetUpCashPostData.email
+        return this.GetUpCashPostData.road3
       },
       set(value) {
-        this.GetUpCashPostData.email = value
+        this.GetUpCashPostData.road3 = value
       }
     },
     // 輸入新的寄送地址-縣市
@@ -192,12 +192,6 @@ export default {
         this.GetUpCashPostData.district3 = this.GetUpCashPostData.InsAddressDistrict || ''
         this.GetUpCashPostData.road3 = this.GetUpCashPostData.InsAddressRoad || ''
       }
-      // 輸入新的電子信箱
-      if (this.$store.state.NOTIFYCHECKBOX[2]) {
-
-      }
-      // 輸入新的寄送地址
-      if (this.$store.state.NOTIFYCHECKBOX[3]) {}
       if (this.GetUpCashPostData.face_amt === '' || this.GetUpCashPostData.face_amt <= 0) {
         toggleModalShow('請填寫第一期保險費。')
         return
@@ -205,6 +199,7 @@ export default {
       let errors = valEstimateData(this.GetUpCashPostData, this.GetNotifyCheckBox)
       if (errors !== '') {
         toggleModalShow(errors)
+        return
       }
       this.FuncUpCashEstimate({ para: this.GetUpCashPostData, router: this.$router })
     },
@@ -228,7 +223,6 @@ export default {
           this.$store.state.NOTIFYCHECKBOX = [false, true, false, false]
           this.GetUpCashPostData.value_ind = '1' // 寄送到客戶住所(通訊地址)： 花蓮縣富里鄉水往上流1號
           this.road3 = ''
-          this.newMail = ''
           break
         case 'cbNewMail':
           this.cbOldMail = false
@@ -236,7 +230,7 @@ export default {
           this.cbNewMail = true
           this.cbNewAddr = false
           this.$store.state.NOTIFYCHECKBOX = [false, false, true, false]
-          this.GetUpCashPostData.value_ind = '3' // 輸入新的電子郵件
+          this.GetUpCashPostData.value_ind = '4' // 輸入新的電子郵件
           this.road3 = ''
           break
         case 'cbNewAddr':

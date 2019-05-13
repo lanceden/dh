@@ -62,7 +62,7 @@ export default {
         NCCCModels: {
           CardNo: this.$store.state.CREDITCARD || '',
           StrDate: ($('#cc_from_month').val() || '') + ($('#cc_from_year').val() || ''),
-          ExpDate: ($('#cc_exp_month').val() || '') + ($('#cc_exp_year').val() || ''),
+          ExpDate: ($('#cc_exp_year').val() || '') + ($('#cc_exp_month').val() || ''),
           CVV: this.$store.state.CVV || ''
         },
         CoreData: this.stateData,

@@ -13,6 +13,7 @@
 import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
+import { toggleModalShow } from '../../../../utils/toggleModal.js'
 export default {
   computed: {
     ...mapGetters([
@@ -31,17 +32,17 @@ export default {
       }
       // 要保人匯款帳戶驗證
       if(this.GetHealthPostData.Applicant_BankCode === '' || this.GetHealthPostData.Applicant_BankCode === undefined) {
-        alert('請選擇要保人匯款帳戶金融機構代碼')
+        toggleModalShow('請選擇要保人匯款帳戶金融機構代碼')
         return
       }
       // 要保人匯款帳戶驗證
       if(this.GetHealthPostData.Applicant_BranchCode === '' || this.GetHealthPostData.Applicant_BranchCode === undefined) {
-        alert('請選擇要保人匯款帳戶金融機構分行代號')
+        toggleModalShow('請選擇要保人匯款帳戶金融機構分行代號')
         return
       }
       // 要保人匯款帳戶驗證
       if(this.GetHealthPostData.Applicant_BranchCode === '' || this.GetHealthPostData.Applicant_BranchCode === undefined) {
-        alert('請填寫要保人匯款帳戶銀行帳號')
+        toggleModalShow('請填寫要保人匯款帳戶銀行帳號')
         return
       }
       this.$router.push('/health-4')

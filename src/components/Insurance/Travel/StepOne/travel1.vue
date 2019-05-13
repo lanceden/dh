@@ -54,7 +54,7 @@
             <div class="insure-check-content">七歲以下子女</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="ensure.target === 'child'"></div>
         <div class="col-sm-12 insure-select-align brown-select-withradio">
           <select class="form-control data-input insure-select insure-select-withradio" v-model="childrenNo" v-show="ensure.target === 'child'">
             <option value="1" selected="selected">1位子女</option>
@@ -71,7 +71,7 @@
             <div class="insure-check-content">本人與七歲以下子女</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="ensure.target === 'both'"></div>
         <div class="col-sm-12 insure-select-align brown-select-withradio">
           <select class="form-control data-input insure-select insure-select-withradio" v-model="childrenNo" v-show="ensure.target === 'both'">
             <option value="1" selected="selected">1位子女</option>

@@ -50,7 +50,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns1Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns1Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
@@ -77,7 +77,6 @@
           </div>
         </div>
         <div class="border-bottom-line col-sm-12"></div>
-        <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12" @click="OnEnsure('QusAns2', false)">
           <div class="insure-notice-box">
             <div class="insure-check">
@@ -93,7 +92,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns2Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns2Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
@@ -134,7 +133,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns3Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns3Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
@@ -175,7 +174,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns4Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns4Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -233,6 +232,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns5Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns5Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -272,7 +272,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns6Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns6Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -335,6 +335,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns7Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns7Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -374,7 +375,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns8Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns8Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -413,7 +414,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns9Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns9Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -469,6 +470,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns10Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns10Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
 
@@ -589,9 +591,8 @@ export default {
     // 職業項目
     jobSubCode: {
       get() {
-        console.log(this.$store.state.JOBSUBCODE)
         if (this.$store.state.JOBSUBCODE === '0' || this.$store.state.JOBSUBCODE === '') return 0
-        return this.$store.state.JOBSUBCODE
+        return this.$store.state.JOBSUBCODE + '-' + this.jobSubCodeText
       },
       set(value) {
         let result = value.split('-')
@@ -601,10 +602,11 @@ export default {
           Type: '8',
           subCode: result[0]
         })
-        this.$store.state.JOBSUBCODE = value
+        this.$store.state.JOBSUBCODE = result[0]
         this.jobSubCodeText = result[1]
       }
     },
+    // 工作內容
     occupation: {
       get() {
         return this.GetOccupation || 0

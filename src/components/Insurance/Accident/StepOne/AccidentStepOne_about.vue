@@ -49,12 +49,12 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns1Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns1Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
       </div>
-      
+
       <!-- 被保險人目前是否受有監護宣告? -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">被保險人目前是否受有監護宣告?</label>
@@ -90,7 +90,7 @@
             <div class="insure-check-content">否</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns2Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns2Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
@@ -149,7 +149,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns3Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns3Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
@@ -210,7 +210,7 @@
             提醒: 有以上任一者，請選擇“是”
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
+        <div class="border-bottom-line col-sm-12" v-show="isShowAns4Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns4Error === true">
           親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。
         </label>
@@ -236,14 +236,14 @@
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
-      <form class="form-bottom col-sm-12" @click='OnOccupation(3)'>
+      <form class="form-bottom col-sm-12" @click="OnToggle()">
         <div class=" insure-tips-text">
           查詢相關類別說明<img class="career" :src="occu.showOccupation" />
         </div>
       </form>
       <div class="border-bottom-line col-sm-12"></div>
       <!-- 第一類 -->
-      <div v-show="occu.show">
+      <div name="occudisplay1" v-show="occu.show">
         <label for="" class="col-sm-12 col-form-label insure-label red">第一類 內勤行政文書相關</label>
         <div class="insure-text career" v-show="!occu.leveltwo">
           一般內勤人員、一般內勤工作人員、一般內勤服務人員（辦公室職員、櫃檯、服務檯）、一般醫師、護士及藥劑師、 一般醫務行政人員、人體彩繪師、三溫暖業負責人、三溫暖業櫃臺人員、中途之家、安養院工作人員、內勤人員、 內勤工作人員、分析員、化粧人員、化粧師、手工藝品買賣商、文具商、禮品買賣商、水產實驗人員(室內)、 代書（內勤）、古董商、司儀、布商、布類紙品工藝品之加工工人、打版師、民意代表、監立委、省縣市議員、 寺廟及教堂管理人員、米商(不參與碾米作業)、自行車買賣商(不含修理)、作曲人員、作家、志願役行政及內勤人員、 村里幹事、汽車買賣商(不含修理)、系統工程師、車站剪票員、宗教團體工作人員、店員、店員（出版商、書店、文具店）、 服務臺人員、服飾、皮
@@ -257,7 +257,7 @@
         </div>
       </div>
       <!-- 第二類 -->
-      <div v-show="occu.showTwo">
+      <div name="occudisplay2" v-show="occu.showTwo">
         <label for="" class="col-sm-12 col-form-label insure-label red">第二類 外勤業務相關</label>
         <div class="insure-text career" v-show="!occu.leveltwo">
           一般流動、固定攤販、一般看護人員、一般清潔工、一般演員（導演）、三溫暖業工作人員、大樓管理員、小吃店人員、工安人員、工程師、工藝教師、中藥材加工人員、五金商、公證行外務員、化妝品製造工人、化學品管人員、化學實驗師、引導參觀工地之服務人員、月臺工作人員、木材工廠負責人、木材工廠現場之職員、木材商、水族館經營者、水電衛生器材商(不含安裝)、火葬場處理人員、加油(氣)站工作人員、包裝工、包裝工人、包裹搬運人員、外務員、外務員、生前契約傳銷人員、外勤人員、外勤記者、外燴辦桌人員、布袋戲偶操作人員、平交道看守人員、平地育苗工人、民俗體育活動人員、皮革手工藝品加工、石材商、光電及光學工作人員、印刷工、地毯之裝設人員、地磅工作人員、地質探測員（平地）
@@ -276,6 +276,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
 import { InitColumnData } from '../../../../utils/initColumnData'
@@ -301,7 +302,7 @@ export default {
         one: '../../../../../static/img/oval.png',
         two: '../../../../../static/img/oval.png',
         showOccupation: '../../../../../static/img/arrow_blue_down.png',
-        occuDown: true,
+        occuDown: false,
         leveltwo: false
       },
       client_occupation_class: '0',
@@ -338,6 +339,24 @@ export default {
     }
   },
   methods: {
+    OnToggle() {
+      this.occu.occuDown = !this.occu.occuDown
+      $('div[name=occudisplay1]').hide()
+      $('div[name=occudisplay2]').hide()
+
+      if (!this.occu.occuDown) {
+        if (this.client_occupation_class_computed === 1) {
+          this.occu.show = true
+          this.occu.showTwo = false
+          $('div[name=occudisplay1]').show()
+        }
+        if (this.client_occupation_class_computed === 2) {
+          this.occu.show = false
+          this.occu.showTwo = true
+          $('div[name=occudisplay2]').show()
+        }
+      }
+    },
     // 選取職業類別
     OnOccupation(value) {
       switch (value) {
@@ -350,10 +369,6 @@ export default {
           this.occu.one = '../../../../../static/img/oval.png'
           this.occu.two = '../../../../../static/img/oval-ed.png'
           this.client_occupation_class_computed = 2
-          break
-        case 3:
-          this.occu.show = false
-          this.occu.showTwo = false
           break
       }
       this.OnShowOccupation(value)
@@ -420,12 +435,7 @@ export default {
       } else if (value === 2) {
         this.occu.show = false
         this.occu.showTwo = true
-      } else {
-        this.occu.show = false
-        this.occu.showTwo = false
       }
-      this.occu.occuDown = !this.occu.occuDown
-      this.occu.showOccupation = this.occu.occuDown ? '../../../../../static/img/arrow_blue_up.png' : '../../../../../static/img/arrow_blue_down.png'
     }
   }
 }

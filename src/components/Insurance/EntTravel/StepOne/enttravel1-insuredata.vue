@@ -20,8 +20,11 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" 
-          :disabled="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1"
+          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" 
+            class="form-control insure-input insure-input-edit">{{Name}}</div>
+          <input type="text" class="form-control insure-input insure-input-edit" 
+            placeholder="請填寫" 
+            v-else
           v-model="Name">
         </div>
       </div>
@@ -52,8 +55,11 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
-          <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入" 
-          :disabled="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1"
+          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" 
+            class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
+          <input type="text" class="form-control insure-input insure-input-edit" 
+            placeholder="請填寫" 
+            v-else
           v-model="ProposerInfoId">
         </div>
       </div>
@@ -66,6 +72,7 @@
             <div class="insure-check-content">是</div>
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].HasAuthRep"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].HasAuthRep">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
