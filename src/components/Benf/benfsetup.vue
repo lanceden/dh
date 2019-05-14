@@ -48,7 +48,7 @@ export default {
         return this.stateData.benf_num
       },
       set(value) {
-        this.stateData.benf_num = value
+        this.stateData.benf_num = parseInt(value)
       }
     }
   },

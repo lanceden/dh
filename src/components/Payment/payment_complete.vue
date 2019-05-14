@@ -17,7 +17,8 @@
         <form class="form-bottom">
           <div class="col-sm-12">
             <div class="insure-tips-text">
-              <img src="../../../static/img/tel.png" class="tel">0800 031 115
+              <img src="../../../static/img/tel.png" class="tel">
+              <a class="insure-tips-text first-blue" href="tel:0800-031-115">0800 031 115</a>
             </div>
           </div>
         </form>

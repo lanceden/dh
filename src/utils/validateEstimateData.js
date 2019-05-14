@@ -139,7 +139,7 @@ function CheckFirstPayAmt(postData) {
 
   var limitAmt = GetInitialPaymentRange(postData)
   if (amt < limitAmt.min || amt > limitAmt.max) {
-    return '第一期保險費限輸入" + limitAmt.min.toLocaleString() + "~" + limitAmt.max.toLocaleString() + "元，請調整。'
+    return `第一期保險費限輸入 + ${limitAmt.min.toLocaleString()} ~ ${limitAmt.max.toLocaleString()} + 元，請調整。`
   }
   return ''
 }

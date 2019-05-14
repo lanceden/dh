@@ -65,7 +65,7 @@
           </div>
           <div class="insure-tips-text first-blue" v-show="GetUpCashPostData.init_method === 'C'">
             <img src="../../../../../static/img/insure-link.png" alt>
-            <a href="https://online.skl.com.tw/Event/upcash/card.html">刷卡攻略</a>
+            <a href="https://online.skl.com.tw/Event/upcash/card.html" target="_blank">刷卡攻略</a>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>

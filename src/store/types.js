@@ -1,4 +1,6 @@
 export default {
   HeaderIsActive: 'HeaderIsActive',
-  BenfinheritOneDisable: 'BenfinheritOneDisable'
+  BenfinheritOneDisable: 'BenfinheritOneDisable',
+  BenfinheritTwoDisable: 'BenfinheritTwoDisable',
+  BenfinheritThreeDisable: 'BenfinheritThreeDisable'
 }

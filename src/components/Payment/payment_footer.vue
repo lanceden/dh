@@ -124,9 +124,11 @@ export default {
           this.FuncTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'enttravel':
-          console.log('this.EntTravelFunctionTypes')
+          console.log('this.FuncTravelSubmitQuote')
           postData.CoreData.PolicyData.PayType = this.$store.state.PAYTYPE
-          // this.EntTravelFunctionTypes({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
+          postData.CoreData.PolicyData.OtpSendTime = this.$store.state.OTPSENDTIME
+          postData.CoreData.PolicyData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
+          this.FuncTravelSubmitQuote({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
       }
     }

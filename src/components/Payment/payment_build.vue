@@ -13,6 +13,7 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      planName: '',
       stateData: []
     }
   },
@@ -33,8 +34,8 @@ export default {
   },
   created() {
     // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
-    let result = this.$store.state.PLANNAME.toLowerCase()
-    switch (result) {
+    this.planName = this.$store.state.PLANNAME.toLowerCase()
+    switch (this.planName) {
       case 'upcash':
         this.stateData = this.GetUpCashPostData
         break

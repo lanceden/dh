@@ -2,10 +2,26 @@
   <div>
     <loading v-show="GetLoading" />
     <BenfSetup :stateData="stateData"></BenfSetup>
-    <BenfOne :stateData="stateData"></BenfOne>
     <template>
-      <div v-if="isShowAccount">
-        <BenfOneAccount :stateData="stateData"></BenfOneAccount>
+      <div v-for="(item, index) in this.stateData.benf_num" :key="index">
+        <BenfOne
+        v-if="index === 0"
+        :stateData="stateData" :index="index"></BenfOne>
+        <BenfOneAccount
+        v-if="index === 0 && isShowAccount"
+        :stateData="stateData"></BenfOneAccount>
+        <BenfTwo
+        v-if="index === 1"
+        :stateData="stateData" :index="index"></BenfTwo>
+        <BenfTwoAccount
+        v-if="index === 1 && isShowAccount"
+        :stateData="stateData"></BenfTwoAccount>
+        <BenfThree
+        v-if="index === 2"
+        :stateData="stateData" :index="index"></BenfThree>
+        <BenfThreeAccount
+        v-if="index === 2 && isShowAccount"
+        :stateData="stateData"></BenfThreeAccount>
       </div>
     </template>
     <BenfFooter></BenfFooter>
@@ -16,7 +32,11 @@
 import { mapGetters, mapActions } from 'vuex'
 import BenfSetup from './benfsetup'
 import BenfOne from './benfone'
+import BenfTwo from './benftwo'
+import BenfThree from './benfthree'
 import BenfOneAccount from './benfoneAccount'
+import BenfTwoAccount from './benftwoAccount'
+import BenfThreeAccount from './benfthreeAccount'
 import BenfFooter from './benffooter'
 export default {
   data() {
@@ -24,6 +44,16 @@ export default {
       stateData: [],
       isShowAccount: true
     }
+  },
+  components: {
+    BenfSetup,
+    BenfOne,
+    BenfTwo,
+    BenfThree,
+    BenfOneAccount,
+    BenfTwoAccount,
+    BenfThreeAccount,
+    BenfFooter
   },
   created() {
     this.FuncGetNationality('')
@@ -33,10 +63,17 @@ export default {
       case 'upcash':
         console.log('this.GetUpCashPostData')
         this.stateData = this.GetUpCashPostData
+        this.isShowAccount = true
         break
       case 'ezcash':
         console.log('this.GetEZCashPostData')
         this.stateData = this.GetEZCashPostData
+        this.isShowAccount = true
+        break
+      case 'myway':
+        console.log('this.GetMyWayPostData')
+        this.stateData = this.GetMyWayPostData
+        this.isShowAccount = true
         break
       case 'ican':
         console.log('this.GetICanPostData')
@@ -53,10 +90,6 @@ export default {
         this.stateData = this.GetIGoingPostData
         this.isShowAccount = false
         break
-      case 'myway':
-        console.log('this.GetMyWayPostData')
-        this.stateData = this.GetMyWayPostData
-        break
       case 'accident':
         console.log('this.GetAccidentPostData')
         this.stateData = this.GetAccidentPostData
@@ -65,14 +98,7 @@ export default {
       case 'health':
         console.log('this.GetHealthPostData')
         this.stateData = this.GetHealthPostData
-        break
-      case 'travel':
-        console.log('this.GetTravelPostData')
-        this.stateData = this.GetTravelPostData
-        break
-      case 'enttravel':
-        console.log('this.GetEntTravelPostData')
-        this.stateData = this.GetEntTravelPostData
+        this.isShowAccount = false
         break
     }
   },
@@ -86,16 +112,8 @@ export default {
       'GetIGoingPostData',
       'GetMyWayPostData',
       'GetAccidentPostData',
-      'GetHealthPostData',
-      'GetTravelPostData',
-      'GetEntTravelPostData'
+      'GetHealthPostData'
     ])
-  },
-  components: {
-    BenfSetup,
-    BenfOne,
-    BenfOneAccount,
-    BenfFooter
   },
   methods: {
     ...mapActions([

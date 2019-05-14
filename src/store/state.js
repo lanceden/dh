@@ -7,6 +7,8 @@ export default {
   Http: {},
   HeaderIsActive: false,
   BenfinheritOneDisable: false,
+  BenfinheritTwoDisable: false,
+  BenfinheritThreeDisable: false,
   PLANNAME: '',
   ISCITYBANKCARD: false,
   CVV: '',
@@ -37,7 +39,6 @@ export default {
   OCCUPATIONDATA: [],
   AGREEMENTTOGGLE: false,
   AGREEMENTCOUNT: 0,
-  CONTACTCHECKBOX: true,
   PAYTYPE: 'B',
   NOTIFYCHECKBOX: [
     true,

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <textarea  style="height:150px;" v-model="this.$store.state.ApiToken"></textarea>
     <div class="product-name">{{name}}</div>
     <div class="progress-bar">
       <img :src="this.$store.state.PROGRESSBAR">

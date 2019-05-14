@@ -59,7 +59,8 @@
       </div>
       <div class="col-sm-12">
         <div class="insure-tips-text">
-          <img src="../../../static/img/tel.png" class="tel">0800 031 115
+          <img src="../../../static/img/tel.png" class="tel">
+          <a class="insure-tips-text first-blue" href="tel:0800-031-115">0800 031 115</a>
         </div>
       </div>
     </form>
@@ -77,7 +78,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import GetterTypes from '../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 export default {
   data() {
     return {
@@ -94,7 +94,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData
+      'GetAccountData'
     ]),
     OtpLastTime: {
       get() {
@@ -144,12 +144,14 @@ export default {
      */
     GoNext() {
       let verifyCode = `${this.codeOne}${this.codeTwo}${this.codeThree}${this.codeFour}${this.codeFive}${this.codeSix}`
+      console.log('verifyCode', verifyCode)
+      console.log('this.$store.state.OTPSENDCODE', this.$store.state.OTPSENDCODE)
       let sendData = {
         verify: {
-          MobileNum: this.GetUpCashPostData.phone_mobile,
-          OTPMail: this.GetUpCashPostData.email,
+          MobileNum: this.GetAccountData.CustMobile,
+          OTPMail: this.GetAccountData.CusteMail,
           OTPPassword: verifyCode,
-          UserIDN: this.GetUpCashPostData.client_id,
+          UserIDN: this.GetAccountData.CustIDN,
           SendCode: this.$store.state.OTPSENDCODE
         },
         router: this.$router

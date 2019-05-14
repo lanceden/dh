@@ -24,12 +24,12 @@ export default {
     commit('SetHeaderIsActive', isActive)
   },
   /**
-   * 設定受益人一關係輸入框是否關閉
+   * 設定受益人關係輸入框是否關閉
    * @param {commit} param0 提夜狀態
    * @param {bool} isDisable true:關閉輸入 false:開啟輸入
    */
-  SetBenfinheritOneDisable({ commit }, isDisable) {
-    commit('SetBenfinheritOneDisable', isDisable)
+  SetBenfinheritDisable({ commit }, { benfIndex, isDisable }) {
+    commit('SetBenfinheritDisable', { benfIndex, isDisable })
   },
   /**
    * 取回職業類別

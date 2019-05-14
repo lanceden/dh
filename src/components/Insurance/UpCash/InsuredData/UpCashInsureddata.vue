@@ -14,7 +14,9 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
+            <div class="form-control insure-input-block">{{GetUpCashPostData.VerifyTypeList['2']}}</div>
             <div class="form-control insure-input-block">{{GetUpCashPostData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block">{{GetUpCashPostData.VerifyTypeList['4']}}</div>
           </div>
         </div>
         <div class="form-group row">

@@ -23,12 +23,22 @@ export default {
     state.HeaderIsActive = isAcvie
   },
   /**
-   * 設定受益人一關係輸入框是否關閉
+   * 設定受益人關係輸入框是否關閉
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  SetBenfinheritOneDisable(state, isDisable) {
-    state.BenfinheritOneDisable = isDisable
+  SetBenfinheritDisable(state, { benfIndex, isDisable }) {
+    switch (benfIndex) {
+      case 1:
+        state.BenfinheritOneDisable = isDisable
+        break
+      case 2:
+        state.BenfinheritTwoDisable = isDisable
+        break
+      case 3:
+        state.BenfinheritThreeDisable = isDisable
+        break
+    }
   },
   /**
    * 取回職業類別
@@ -135,20 +145,54 @@ export default {
     if (planCode !== '65020' && planCode !== '66020') {
       if (stateData.benf_num > 0) {
         state.BENEFICIARY.forEach((item, index) => {
-          stateData.relation_ben_death = item.Relationship
-          stateData.benf_phone = item.PhoneNo
-          stateData.benf_name = item.Name
-          stateData.benf_nBenfNationalityCodeame = item.NalCode
-          stateData.BenfNationality = item.NalName
-          stateData.benf_id = item.IdNo
-          stateData.benf_dob = `${item.DobYear}/${item.DobMonth}/${item.DobDay}`
-          stateData.BenfBankCode1 = item.Bank_Code1
-          stateData.BenfAddZip = item.AddrZipCode
-          stateData.BenfAdd_City = item.AddrCity
-          stateData.BenfAdd_County = item.AddrCounty
-          stateData.BenfAddRemain = item.AddrStreet
-          stateData.BenfAddress = `${item.AddrCity}${item.AddrCounty}${item.AddrStreet}`
-          stateData.BenfBankAccount1 = item.Account
+          if (index === 0) {
+            stateData.relation_ben_death = item.Relationship
+            stateData.benf_phone = item.PhoneNo
+            stateData.benf_name = item.Name
+            stateData.BenfNationalityCode = item.NalCode
+            stateData.BenfNationality = item.NalName
+            stateData.benf_id = item.IdNo
+            if(item.DobYear !== null) stateData.benf_dob = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
+            stateData.BenfBankCode1 = item.Bank_Code1
+            stateData.BenfAddZip = item.AddrZipCode
+            stateData.BenfAdd_City = item.AddrCity
+            stateData.BenfAdd_County = item.AddrCounty
+            stateData.BenfAddRemain = item.AddrStreet
+            stateData.BenfAddress = `${item.AddrCity}${item.AddrCounty}${item.AddrStreet}`
+            stateData.BenfBankAccount1 = item.Account
+          }
+          if (index === 1) {
+            stateData.relation_ben_death2 = item.Relationship
+            stateData.benf_phone2 = item.PhoneNo
+            stateData.benf_name2 = item.Name
+            stateData.BenfNationalityCode2 = item.NalCode
+            stateData.BenfNationality2 = item.NalName
+            stateData.benf_id2 = item.IdNo
+            if(item.DobYear !== null) stateData.benf_dob2 = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
+            stateData.BenfBankCode2 = item.Bank_Code1
+            stateData.BenfAddZip2 = item.AddrZipCode
+            stateData.BenfAdd_City2 = item.AddrCity
+            stateData.BenfAdd_County2 = item.AddrCounty
+            stateData.BenfAddRemain2 = item.AddrStreet
+            stateData.BenfAddress2 = `${item.AddrCity}${item.AddrCounty}${item.AddrStreet}`
+            stateData.BenfBankAccount2 = item.Account
+          }
+          if (index === 2) {
+            stateData.relation_ben_death3 = item.Relationship
+            stateData.benf_phone3 = item.PhoneNo
+            stateData.benf_name3 = item.Name
+            stateData.BenfNationalityCode3 = item.NalCode
+            stateData.BenfNationality3 = item.NalName
+            stateData.benf_id3 = item.IdNo
+            if(item.DobYear !== null) stateData.benf_dob3 = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
+            stateData.BenfBankCode13 = item.Bank_Code1
+            stateData.BenfAddZip3 = item.AddrZipCode
+            stateData.BenfAdd_City3 = item.AddrCity
+            stateData.BenfAdd_County3 = item.AddrCounty
+            stateData.BenfAddRemain3 = item.AddrStreet
+            stateData.BenfAddress3 = `${item.AddrCity}${item.AddrCounty}${item.AddrStreet}`
+            stateData.BenfBankAccount3 = item.Account
+          }
         })
       }
     } else { // ENTTRAVELPOSTDATA

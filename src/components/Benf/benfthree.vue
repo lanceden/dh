@@ -4,7 +4,7 @@
       <div class="top-title">
         <div class="insure-notice-box">
           <div class="insure-check"><img src="../../../static/img/human-outline-with-heart2.png" alt=""></div>
-          <div class="insure-check-title">身故受益人(一)資料</div>
+          <div class="insure-check-title">身故受益人(三)資料</div>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death">
+          <select class="form-control data-input insure-select insure-input-edit" v-model="relation_ben_death3">
             <option selected="selected" value="0">請選擇</option>
             <option value="2">配偶</option>
             <option value="3">父母子女</option>
@@ -25,25 +25,25 @@
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">受益人國籍</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality">
+          <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetNationData" :key="index" :value="item.Name">{{item.Name}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_name" />
+          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_name3" />
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-block" v-model="relation_ben_death_seq">
+          <select class="form-control data-input insure-select insure-input-block" v-model="relation_ben_death_seq3">
             <option selected="selected" value="0">請選擇</option>
             <option value="1">順位1</option>
             <option value="2" v-show="parseInt(stateData.benf_num) > 1">順位2</option>
@@ -54,57 +54,57 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式之比例</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="number" class="form-control insure-input-block" v-model="relation_ben_death_seq_percent">
+          <input type="number" class="form-control insure-input-block" v-model="relation_ben_death_seq_percent3">
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="date" class="form-control insure-input insure-input-edit" v-model="benf_dob" />
+          <input type="date" class="form-control insure-input insure-input-edit" v-model="benf_dob3" />
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
-          <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_id" />
+          <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_id3" />
         </div>
       </div>
-      <div class="form-group posr row form-group-checked" @click="SetAccountData()" v-show="!BenfinheritOneDisable">
+      <div class="form-group posr row form-group-checked" @click="SetAccountData()" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼：{{this.GetAccountData.CustMobile}}<br>同客戶住所地址：{{this.GetAccountData.CommunicationAddress.City}}{{this.GetAccountData.CommunicationAddress.District}}{{this.GetAccountData.CommunicationAddress.Road}}</label>
         <div class="checkbox" :class="{ checked: isSetAccountData }"></div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone" />
+          <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone3" />
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
+          <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritThreeDisable">
           </select>
-          <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City">
+          <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
         <div class="col-sm-12 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritOneDisable">
+          <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritThreeDisable">
           </select>
-          <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County">
+          <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritOneDisable">
+      <div class="form-group row" v-show="!BenfinheritThreeDisable">
         <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control data-input insure-input-edit" v-model="BenfAddRemain" />
+          <input type="text" class="form-control data-input insure-input-edit" v-model="BenfAddRemain3" />
         </div>
       </div>
     </form>
@@ -153,10 +153,10 @@ export default {
         this.road3 = ''
         return
       }
-      this.benf_phone = this.GetAccountData.CustMobile
-      this.BenfAdd_City = this.GetAccountData.CommunicationAddress.City
-      this.BenfAdd_County = this.GetAccountData.CommunicationAddress.Zip + '-' + this.GetAccountData.CommunicationAddress.District
-      this.BenfAddRemain = this.GetAccountData.CommunicationAddress.Road
+      this.benf_phone3 = this.GetAccountData.CustMobile
+      this.BenfAdd_City3 = this.GetAccountData.CommunicationAddress.City
+      this.BenfAdd_County3 = this.GetAccountData.CommunicationAddress.Zip + '-' + this.GetAccountData.CommunicationAddress.District
+      this.BenfAddRemain3 = this.GetAccountData.CommunicationAddress.Road
     }
   },
   computed: {
@@ -165,146 +165,146 @@ export default {
       'GetCityData',
       'GetDistrictData',
       'GetAccountData',
-      'BenfinheritOneDisable'
+      'BenfinheritThreeDisable'
     ]),
     /**
      * 受益人生日
      */
-    benf_dob: {
+    benf_dob3: {
       get() {
-        return this.stateData.benf_dob
+        return this.stateData.benf_dob3
       },
       set(value) {
-        this.stateData.benf_dob = value
+        this.stateData.benf_dob3 = value
       }
     },
     /**
      * 受益人電話
      */
-    benf_phone: {
+    benf_phone3: {
       get() {
-        return this.stateData.benf_phone
+        return this.stateData.benf_phone3
       },
       set(value) {
-        this.stateData.benf_phone = value
+        this.stateData.benf_phone3 = value
       }
     },
     /**
      * 受益人身份證
      */
-    benf_id: {
+    benf_id3: {
       get() {
-        return this.stateData.benf_id
+        return this.stateData.benf_id3
       },
       set(value) {
-        this.stateData.benf_id = value
+        this.stateData.benf_id3 = value
       }
     },
     /**
      * 受益人姓名
      */
-    benf_name: {
+    benf_name3: {
       get() {
-        return this.stateData.benf_name
+        return this.stateData.benf_name3
       },
       set(value) {
-        this.stateData.benf_name = value
+        this.stateData.benf_name3 = value
       }
     },
     /**
      * 給付方式
      */
-    relation_ben_death_seq: {
+    relation_ben_death_seq3: {
       get() {
-        return this.stateData.relation_ben_death_seq || 0
+        return this.stateData.relation_ben_death_seq3 || 0
       },
       set(value) {
-        this.stateData.relation_ben_death_seq = value
+        this.stateData.relation_ben_death_seq3 = value
       }
     },
     /**
      * 受益人關係
      */
-    relation_ben_death: {
+    relation_ben_death3: {
       get() {
-        if (this.stateData.relation_ben_death === undefined || this.stateData.relation_ben_death === null || this.stateData.relation_ben_death === '') {
+        if (this.stateData.relation_ben_death3 === undefined || this.stateData.relation_ben_death3 === null || this.stateData.relation_ben_death3 === '') {
           return 0
         }
-        return this.stateData.relation_ben_death
+        return this.stateData.relation_ben_death3
       },
       set(value) {
         if (value === '8') {
-          this.stateData.benf_name = '法定繼承人'
+          this.stateData.benf_name3 = '法定繼承人'
           if (parseInt(this.stateData.benf_num) === 1) {
-            this.stateData.relation_ben_death_seq = 1
-            this.stateData.relation_ben_death_seq_percent = '100'
+            this.stateData.relation_ben_death_seq3 = 1
+            this.stateData.relation_ben_death_seq_percent3 = '100'
           }
         }
         this.SetBenfinheritDisable({
-          benfIndex: 1,
+          benfIndex: 3,
           isDisable: value === '8'
         })
-        this.stateData.relation_ben_death = value
+        this.stateData.relation_ben_death3 = value
       }
     },
     /**
      * 給付方式之比例
      */
-    relation_ben_death_seq_percent: {
+    relation_ben_death_seq_percent3: {
       get() {
-        return this.stateData.relation_ben_death_seq_percent
+        return this.stateData.relation_ben_death_seq_percent3
       },
       set(value) {
-        this.stateData.relation_ben_death_seq_percent = value
+        this.stateData.relation_ben_death_seq_percent3 = value
       }
     },
     /**
      * 受益人國籍
      */
-    BenfNationality: {
+    BenfNationality3: {
       get() {
-        return (this.stateData.BenfNationality === undefined || this.stateData.BenfNationality === null) ? 0 : this.stateData.BenfNationality
+        return (this.stateData.BenfNationality3 === undefined || this.stateData.BenfNationality3 === null) ? 0 : this.stateData.BenfNationality3
       },
       set(value) {
-        this.stateData.BenfNationality = value
+        this.stateData.BenfNationality3 = value
       }
     },
     /**
      * 受益人城市
      */
-    BenfAdd_City: {
+    BenfAdd_City3: {
       get() {
-        return this.stateData.BenfAdd_City || 0
+        return this.stateData.BenfAdd_City3 || 0
       },
       set(value) {
         this.FuncGetDistrictData(value)
-        this.stateData.BenfAdd_City = value
+        this.stateData.BenfAdd_City3 = value
       }
     },
     /**
      * 選擇鄉鎮地區
      */
-    BenfAdd_County: {
+    BenfAdd_County3: {
       get() {
-        return (this.stateData.BenfAdd_County === undefined ||
-          this.stateData.BenfAdd_County === null || this.stateData.BenfAdd_County === '') ? 0 : this.stateData.BenfAddZip + '-' + this.stateData.BenfAdd_County
+        return (this.stateData.BenfAdd_County3 === undefined ||
+          this.stateData.BenfAdd_County3 === null || this.stateData.BenfAdd_County3 === '') ? 0 : this.stateData.BenfAddZip + '-' + this.stateData.BenfAdd_County3
       },
       set(value) {
         // item.Zip-item.Area
         let data = value.split('-')
         this.stateData.BenfAddZip = data[0]
-        this.stateData.BenfAdd_County = data[1]
+        this.stateData.BenfAdd_County3 = data[1]
       }
     },
     /**
      * 詳細地址
      */
-    BenfAddRemain: {
+    BenfAddRemain3: {
       get() {
-        return this.stateData.BenfAddRemain
+        return this.stateData.BenfAddRemain3
       },
       set(value) {
-        this.stateData.BenfAddRemain = value
+        this.stateData.BenfAddRemain3 = value
       }
     }
   }

@@ -16,6 +16,7 @@
           <div class="col-sm-12">
             <div class="form-control insure-input-block">{{mockData.VerifyTypeList['2']}}</div>
             <div class="form-control insure-input-block">{{mockData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['4']}}</div>
           </div>
         </div>
         <div class="form-group row">
