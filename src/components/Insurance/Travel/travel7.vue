@@ -206,15 +206,15 @@ export default {
       if (!this.isSetAccountData) {
         this.EmergencyContactName = ''
         this.EmergencyContactTel = ''
-        this.EmergencyContactAddrCity = ''
-        this.EmergencyContactAddrDistrict = ''
+        this.EmergencyContactAddrCity = 0
+        this.EmergencyContactAddrDistrict = 0
         this.EmergencyContactAddrStreet = ''
         return
       }
       this.EmergencyContactName = this.GetAccountData.EmergencyName
       this.EmergencyContactTel = `${this.GetAccountData.EmergencyTel1Area}${this.GetAccountData.EmergencyTel1}`
-      this.EmergencyContactAddrCity = this.GetAccountData.EmergencyAddress.City
-      this.EmergencyContactAddrDistrict = this.GetAccountData.EmergencyAddress.District
+      this.EmergencyContactAddrCity = this.GetAccountData.EmergencyAddress.City || 0
+      this.EmergencyContactAddrDistrict = this.GetAccountData.EmergencyAddress.District || 0
       this.EmergencyContactAddrStreet = this.GetAccountData.EmergencyAddress.Road
     }
   }

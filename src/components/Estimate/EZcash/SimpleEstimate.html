@@ -1,0 +1,271 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=640, target-densitydpi=device-dpi, maximum-scale=2.0, user-scalable=yes" />
+	<meta name="format-detection" content="telephone=no">
+	<title>新光人壽</title>
+
+	<script type="text/javascript">
+		window.onload=function(){
+			window.scrollTo(0,1);	
+		}
+	</script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" />
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="../../css/docs.theme.min.css">
+    <link rel="stylesheet" href="../../css/all.css">
+    <link rel="stylesheet" href="../../css/customes.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/fontawesome.min.css">
+    <script src="../../js/jquery.min.js"></script>
+    <style>
+        input[type="tel"].data-input {
+            color: #fa6400;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="bg-radius">
+            <div class="top">
+                <div class="top-title">
+                    <img src="../../img/calculator.png" alt="">
+                    保費試算
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="top-tips">
+                若您為新光人壽之保戶，請先登入以利享有更多保額優惠喔！
+            </div>
+            <div class="form-bottom">
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label">您預計一年繳交多少保險費?</label>
+                    <div class="col-sm-12">
+                        <input class="form-control data-input" id="inputAnnuityAmount" name="inputAnnuityAmount" pattern="[0-9]*" placeholder="請輸入保險費限NT$3,000~$750,000" type="tel" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label">請問您想了解第_ _保單年度未，保單累計可領回多少金額?</label>
+                    <div class="col-sm-12">
+                        <select class="form-control data-input" id="inputAnnuityAge" name="inputAnnuityAge">
+                            <option selected="selected" value="6">6年</option>
+                            <option value="7">7年</option>
+                            <option value="8">8年</option>
+                            <option value="9">9年</option>
+                            <option value="10">10年</option>
+                            <option value="11">11年</option>
+                            <option value="12">12年</option>
+                            <option value="13">13年</option>
+                            <option value="14">14年</option>
+                            <option value="15">15年</option>
+                            <option value="16">16年</option>
+                            <option value="17">17年</option>
+                            <option value="18">18年</option>
+                            <option value="19">19年</option>
+                            <option value="20">20年</option>
+                            <option value="21">21年</option>
+                            <option value="22">22年</option>
+                            <option value="23">23年</option>
+                            <option value="24">24年</option>
+                            <option value="25">25年</option>
+                            <option value="26">26年</option>
+                            <option value="27">27年</option>
+                            <option value="28">28年</option>
+                            <option value="29">29年</option>
+                            <option value="30">30年</option>
+                            <option value="31">31年</option>
+                            <option value="32">32年</option>
+                            <option value="33">33年</option>
+                            <option value="34">34年</option>
+                            <option value="35">35年</option>
+                            <option value="36">36年</option>
+                            <option value="37">37年</option>
+                            <option value="38">38年</option>
+                            <option value="39">39年</option>
+                            <option value="40">40年</option>
+                            <option value="41">41年</option>
+                            <option value="42">42年</option>
+                            <option value="43">43年</option>
+                            <option value="44">44年</option>
+                            <option value="45">45年</option>
+                            <option value="46">46年</option>
+                            <option value="47">47年</option>
+                            <option value="48">48年</option>
+                            <option value="49">49年</option>
+                            <option value="50">50年</option>
+                            <option value="51">51年</option>
+                            <option value="52">52年</option>
+                            <option value="53">53年</option>
+                            <option value="54">54年</option>
+                            <option value="55">55年</option>
+                            <option value="56">56年</option>
+                            <option value="57">57年</option>
+                            <option value="58">58年</option>
+                            <option value="59">59年</option>
+                            <option value="60">60年</option>
+                            <option value="61">61年</option>
+                            <option value="62">62年</option>
+                            <option value="63">63年</option>
+                            <option value="64">64年</option>
+                            <option value="65">65年</option>
+                            <option value="66">66年</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="bg-money">
+                <div class="col-sm-12">
+                    <div class="font-label">當您所投保的保險商品達到第 <bid id="inputAge">Y</bid> 年度末時，您所累積可領回的金額為</div>
+                    <div id="EzCashSurrenderValue" class="font-money"> NT$ 0</div>
+                    <div class="money-icon"><img src="../../img/coins.png" alt=""></div>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="text-description">
+                說明：
+                <ol class="ol-number">
+                    <li>所領回金額為當時之年金保單價值準備金並假設宣告利率皆維持在2.58%不變之情況下。</li>
+                    <li>試算金額僅供參考，正式購買商品可依實際需求選擇投保金額。</li>
+                </ol>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="text-description">
+                <img src="../../img/loudspeaker.png" alt="">
+                首次登入》肯德基6折優惠券
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <nav class="navbar navbar-dark row">
+                <div class="col-sm-6 footer-title footer-left" id="CountEZCashDetails">詳細試算結果</div>
+                <div class="col-sm-12 footer-title footer-right" @click="OnGoInsure()">立即投保</div>
+            </nav>
+        </div>
+    </div>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/2019NewInsureJS.js"></script>
+    <script src="../../js/estimation.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            //判斷正整數
+            function TestRgexp(s) {
+                var r = /^[0-9]*[1-9][0-9]*$/;　　//正整數
+                return r.test(s);
+            }
+
+            function OnGoInsure() {
+            window.location.href = ''
+        }
+            function TestInputAmountAndAge(amt) {
+                var result = false;
+                var Amout = parseInt(amt) | 0;
+                if (amt == "") {
+                    alert("繳費額度限3,000元~750,000元");
+                    return false;
+                }
+                else {
+                    if (!TestRgexp(amt)) {
+                        alert("繳費額度限3,000元~750,000元正整數!");
+                        return false;
+                    }
+
+                    if (Amout < 3000 || Amout > 750000) {
+                        alert("繳費額度限3,000元~750,000元");
+                        return false;
+                    }
+
+                }
+
+                return true;
+            }
+
+            //投保金額
+            $('#inputAnnuityAmount').on('blur', function () {
+                var $this = $(this);
+                if (!TestInputAmountAndAge($this.val())) {
+                    return;
+                }
+
+                //定期繳上限750萬
+                var insurepay = $this.val();
+                var maxInsureYear = Math.floor(7500000 / (insurepay));
+                UpdateInsurePayList(maxInsureYear);
+                Compute();
+            });
+
+            //保單年度未
+            $('#inputAnnuityAge').on('change', function () {
+                Compute();
+            });
+
+            //試算詳細頁
+            $('#CountEZCashDetails').on('click', function () {
+                var insurePay = $('#inputAnnuityAmount').val();
+                var insureYear = $('#inputAnnuityAge').val();
+
+                if (insurePay == '' || insureYear == '' || !TestInputAmountAndAge(insurePay))
+                    return;
+
+                window.open('SimpleEstimate-Result.html?insurePay=' + insurePay + '&insureYear=' + insureYear, '_blank');
+            });
+
+            //試算
+            function Compute() {
+                $("#inputAge").text("Y");
+                var insurePay = $('#inputAnnuityAmount').val();
+                var insureYear = $('#inputAnnuityAge').val();
+
+                if (insurePay == '' || insureYear == '' || !TestInputAmountAndAge(insurePay))
+                    return;
+
+                var Edata = {
+                    "InsurerSourceID": "InsuranceWeb",
+                    "CoreData": {
+                        "Amount": insurePay,
+                        "Year": insureYear
+                    }
+                };
+
+                $.ajax({
+                    url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//EzCash/SimpleEstimate',
+                    type: 'POST',
+                    data: Edata,
+                    success: function (rep) {
+                        if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined) {
+                            $("#EzCashSurrenderValue").html("NT$" + rep.Data.Result.InvAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                            $("#inputAge").text(insureYear);
+                        }
+                        else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
+                            alert(rep.Data.Message);
+                            return;
+                        }
+                        else {
+                            alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
+                        }
+                    }
+                });
+            }
+
+            //更新保險年度下拉式選單
+            function UpdateInsurePayList(year) {
+                var strOption = '';
+                year = year > 66 ? 66 : year;
+                $('#inputAnnuityAge').empty();
+                for (var i = 6; i <= year; i++) {
+                    strOption += '<option value="' + i + '">' + i + '年</option>';
+                }
+                $('#inputAnnuityAge').html(strOption);
+            }
+        });
+    </script>
+</body>
+</html>

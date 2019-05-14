@@ -18,8 +18,6 @@ export default {
   },
   SetApiToken(state, { token }) {
     state.ApiToken = token
-    window.Lockr.rm('ApiToken')
-    window.Lockr.set('ApiToken', token)
   },
   SetHeaderIsActive(state, isAcvie) {
     state.HeaderIsActive = isAcvie

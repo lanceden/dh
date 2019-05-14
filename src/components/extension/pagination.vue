@@ -93,7 +93,6 @@ export default {
           else if (page <= 1) page = 1
           this.searchPage = ''
           this.currentPage = parseInt(page)
-          window.Lockr.set('currentPage', this.currentPage)
           this.callback(this.currentPage)
           break
       }
