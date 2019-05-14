@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: '"production"',
-  URL: '"https://online.skl.com.tw/InsuranceWebApi"'
+  URL: '"https://onlineTest.skl.com.tw/InsuranceWebApi"'
 }

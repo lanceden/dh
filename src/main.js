@@ -32,7 +32,7 @@ axios.interceptors.request.use(function(config) {
 axios.interceptors.response.use(function(response) {
   store.dispatch('SethideLoading')
   if (response.data.ResultCode !== '0000') {
-    if (response.request.responseURL.match('IsCityBank') === null) {
+    if (response.request.responseURL.match('IsCityBank') === null && response.request.responseURL.match('VerifyEmploymentId') === null) {
       toggleModalShow(GetErrorMsg(response.data.ErrorMessage), '貼心提醒您')
     }
     return response
