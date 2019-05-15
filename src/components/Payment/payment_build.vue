@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <PaymentAmount :stateData="stateData"></PaymentAmount>
+    <PaymentAmount :stateData="stateData" :planName="planName"></PaymentAmount>
     <PaymentFooter :stateData="stateData"></PaymentFooter>
   </div>
 </template>

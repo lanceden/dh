@@ -56,19 +56,6 @@ export default {
         toggleModalShow('請選擇繳費管道。')
         return
       }
-
-      // 付款資料
-      let postData = {
-        NCCCModels: {
-          CardNo: this.$store.state.CREDITCARD || '',
-          StrDate: ($('#cc_from_month').val() || '') + ($('#cc_from_year').val() || ''),
-          ExpDate: ($('#cc_exp_year').val() || '') + ($('#cc_exp_month').val() || ''),
-          CVV: this.$store.state.CVV || ''
-        },
-        CoreData: this.stateData,
-        router: this.$router
-      }
-      console.log('postData.CoreData', JSON.stringify(postData.CoreData))
       // 判斷是否為信用卡繳費, 若是則要驗證卡號
       if (this.$store.state.PAYTYPE === 'C') {
         let validateResult = CheckCardno(postData.NCCCModels.CardNo)
@@ -77,6 +64,20 @@ export default {
           return
         }
       }
+
+      // 付款資料
+      let postData = {
+        NCCCModels: {
+          CardNo: this.$store.state.CREDITCARD || '',
+          StrDate: ($('#cc_from_year').val() || '') + ($('#cc_from_month').val() || ''),
+          ExpDate: ($('#cc_exp_year').val() || '') + ($('#cc_exp_month').val() || ''),
+          PeriodNo: $(`[name='periodNo']:checked`).val(),
+          CVV: this.$store.state.CVV || ''
+        },
+        CoreData: this.stateData,
+        router: this.$router
+      }
+      console.log('postData.CoreData', JSON.stringify(postData.CoreData))
       console.log('postData.NCCCModels', postData.NCCCModels)
       console.log('postData.CoreData', JSON.stringify(postData.CoreData))
 

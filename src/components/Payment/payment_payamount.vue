@@ -18,24 +18,42 @@
           <div class="money-icon"><img src="../../../static/img/coins.png" alt=""></div>
         </div>
       </div>
-      <div class="border-bottom-line col-sm-12"></div>
-      <div class="top col-sm-12">
-        <div class="insure-notice-box" @click="OnEnsure('C')">
-          <div class="insure-check"><img :src="ensure.creditcard" /></div>
-          <div class="insure-check-content">使用信用卡</div>
+      <!-- 使用7-11統一超商ibon繳費 -->
+      <div v-show="isSuperStore">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box" @click="OnEnsure('P')">
+            <div class="insure-check"><img :src="ensure.superStore" /></div>
+            <div class="insure-check-content">使用7-11統一超商ibon繳費</div>
+          </div>
         </div>
       </div>
-      <div class="border-bottom-line col-sm-12"></div>
-      <div class="top col-sm-12">
-        <div class="insure-notice-box" @click="OnEnsure('B')">
-          <div class="insure-check"><img :src="ensure.ebill" /></div>
-          <div class="insure-check-content">使用活期性存款帳戶(手續費0元)</div>
+      <!-- 使用信用卡 -->
+      <div v-show="isCredieCard">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box" @click="OnEnsure('C')">
+            <div class="insure-check"><img :src="ensure.creditcard" /></div>
+            <div class="insure-check-content">使用信用卡</div>
+          </div>
         </div>
       </div>
-      <div class="border-bottom-line col-sm-12"></div>
-      <div class="col-sm-6 dib" @click='OnShowBanks()'>
-        <div class="insure-tips-text">
-          <img src="../../../static/img/insure-link.png">查詢線上繳費刷卡銀行
+      <!-- 使用活期性存款帳戶(手續費0元) -->
+      <div v-show="isEbill">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box" @click="OnEnsure('B')">
+            <div class="insure-check"><img :src="ensure.ebill" /></div>
+            <div class="insure-check-content">使用活期性存款帳戶(手續費0元)</div>
+          </div>
+        </div>
+      </div>
+      <div v-show="isCredieCard">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="col-sm-6 dib" @click='OnShowBanks()'>
+          <div class="insure-tips-text">
+            <img src="../../../static/img/insure-link.png">查詢線上繳費刷卡銀行
+          </div>
         </div>
       </div>
       <div class="col-sm-6 dib" @click='OnShowNotice()'>
@@ -52,8 +70,8 @@
         </div>
       </form>
     </div>
-
-    <div class='bg-radius' v-show='!isEbill'>
+    <!-- 選擇使用信用卡才顯示 -->
+    <div class='bg-radius' v-show='isCredieCard'>
       <div class='top'>
         <div class='top-title'>
           <div class='insure-notice-box'>
@@ -77,9 +95,9 @@
             <input type='tel' pattern='\d{4}' id='codeFour' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
           </div>
         </div>
-        <!-- 有效期限起 -->
-        <div class='form-group row'>
-          <label for='' class='col-sm-12 col-form-label insure-label'>有效期限</label>
+        <!-- 有效期限起:UpCash才會顯示 -->
+        <div class='form-group row' v-show="this.planName === 'upcash'">
+          <label for='' class='col-sm-12 col-form-label insure-label'>有效期限起</label>
           <div class='col-sm-12 insure-select-align row'>
             <input type='tel' id='cc_from_month' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' v-model="sMonth" placeholder='月份'> /
             <input type='tel' id='cc_from_year' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' v-model="sYear" placeholder='年份'>
@@ -137,18 +155,23 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { toggleModalShow } from '../../utils/toggleModal'
 export default {
   props: [
-    'stateData'
+    'stateData',
+    'planName'
   ],
   data() {
     return {
       ensure: {
         ebill: `../../../static/img/oval.png`,
-        creditcard: '../../../static/img/oval.png'
+        creditcard: '../../../static/img/oval.png',
+        superStore: '../../../static/img/oval.png'
       },
+      isCredieCard: false,
+      isSuperStore: false,
+      isEbill: false,
       codeOne: '',
       codeTwo: '',
       codeThree: '',
@@ -162,9 +185,37 @@ export default {
     this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-5.png'
   },
   mounted() {
-    this.OnEnsure('C')
+    // 年金險需額外判斷首期付款方式
+    // EZCash 只有全繳網
+    if (this.planName === 'ezcash') {
+      this.isEbill = true
+      this.OnEnsure('B')
+    } else if (this.planName === 'upcash') { // UPCASH 依保戶選擇之首期繳費管道顯示
+      let result = this.init_method.toLowerCase()
+      switch (result) {
+        case 'c': // 選擇信用卡繳費
+          this.isCredieCard = true
+          this.OnEnsure('C')
+          break
+        case 'b': // 選擇全繳網繳費
+          this.isEbill = true
+          this.OnEnsure('B')
+          this.FuncEachAccount()
+          break
+      }
+    } else { // 其他8個險種
+      // 判斷是否顯示超商繳費
+      this.isSuperStore = this.GetAccountData.JoinSource === '2' && this.stateData.IsSuperStore
+      this.isEbill = true
+      this.isCredieCard = true
+      this.OnEnsure('C')
+    }
   },
   computed: {
+    ...mapGetters([
+      'GetAccountData',
+      'GetEachAccount'
+    ]),
     Cvv: {
       get() {
         return this.$store.state.CVV
@@ -181,11 +232,6 @@ export default {
       },
       set(value) {
         this.$store.state.PAYTYPE = value
-      }
-    },
-    isEbill: {
-      get() {
-        return this.$store.state.PAYTYPE === 'B'
       }
     },
     sMonth: {
@@ -207,7 +253,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'FuncIsCityBank'
+      'FuncIsCityBank',
+      'FuncEachAccount'
     ]),
     keyup(fromId, toId) {
       this.$store.state.CREDITCARD = `${this.codeOne}${this.codeTwo}${this.codeThree}${this.codeFour}`
@@ -217,25 +264,34 @@ export default {
       }
       if (result === 4) document.getElementById(toId).focus()
     },
-    OnShowNotice() {
-      toggleModalShow(`<div class="bg-radius"> <div class="top"> <div class="top-title"> <div class="insure-notice-box"> <div class="insure-check"><img src="images/notepad.png" alt=""></div><div class="insure-check-title">注意事項</div></div></div></div><div class="border-bottom-line"></div><form class="form-bottom"><div class="col-sm-12"><ul class=" insure-text-product font-label"><li>目前提供以下繳款方式：<BR>1.信用卡線上付款（限本人持有之VISA、MASTER、JCB、UCard信用卡）。<br>2.銀行帳戶線上轉帳付款(限本人持有之銀行帳戶)。</li><li>繳費前請確認您的信用卡∕帳戶餘額足夠繳納保費，若餘額不足，將無法完成本項交易。</li><li>當您選擇信用卡或銀行帳戶進行付款交易時，請勿關閉視窗、回到上一畫面或跳離交易畫面，避免請款作業錯誤，影響您的權益。</li><li>本項交易採即時扣款，本交易款項經確認後，將立即自您的信用卡∕帳戶中扣繳、無法取消，付款前請務必確認您的交易內容。</li><li>如您使用個人銀行帳戶進行線上轉帳無需負擔交易手續費。</li><li>您的交易經完成確認後，我們將另行寄發收據(若您已申請電子單據，將以e-mail方式將收據寄至您的電子郵件信箱)。</li><li>交易過程中，有發現任何錯誤訊息導致交易不成功者，請洽本公司電話服務中心0800-031-115。</li><li>為保護您的個人資料之隱密性、完整性及可用性，新光人壽係使用國際安全認證SSL（Secure Sockets Layer）128位元機制進行資料傳輸加密，並透過防火牆、定期對主機系統網路弱點掃描及漏洞檢查、入侵防禦系統與全公司防毒機制輔助等安控機制，以防止不法侵入及惡意程式之破壞。</li></ul></div></form></div>`)
-    },
-    OnShowBanks() {
-      toggleModalShow(`<table class='table table-bordered table-rate table-top'> <tbody> <tr> <td class='text-center table-bank'>(001)<br>中央信託</td><td class='text-center table-bank'>(003)<br>交通銀行</td><td class='text-center table-bank'>(004)<br>台灣銀行</td></tr><tr> <td class='text-center table-bank'>(005)<br>土地銀行</td><td class='text-center table-bank'>(006)<br>合庫商銀</td><td class='text-center table-bank'>(007)<br>第一銀行</td></tr><tr> <td class='text-center table-bank'>(008)<br>華南銀行</td><td class='text-center table-bank'>(009)<br>彰化銀行</td><td class='text-center table-bank'>(010)<br>華僑銀行</td></tr><tr> <td class='text-center table-bank'>(011)<br>上海銀行</td><td class='text-center table-bank'>(012)<br>台北富邦</td><td class='text-center table-bank'>(013)<br>國泰世華</td></tr><tr> <td class='text-center table-bank'>(016)<br>高雄銀行</td><td class='text-center table-bank'>(017)<br>兆豐商銀</td><td class='text-center table-bank'>(018)<br>農業金庫</td></tr><tr> <td class='text-center table-bank'>(021)<br>花旗銀行</td><td class='text-center table-bank'>(024)<br>運通銀行</td><td class='text-center table-bank'>(025)<br>首都銀行</td></tr><tr> <td class='text-center table-bank'>(039)<br>荷蘭銀行</td><td class='text-center table-bank'>(040)<br>中華開發</td><td class='text-center table-bank'>(050)<br>臺灣企銀</td></tr><tr> <td class='text-center table-bank'>(051)<br>台北商銀</td><td class='text-center table-bank'>(052)<br>新竹商銀</td><td class='text-center table-bank'>(053)<br>台中商銀</td></tr><tr> <td class='text-center table-bank'>(054)<br>京城商銀</td><td class='text-center table-bank'>(056)<br>花蓮企銀</td><td class='text-center table-bank'>(057)<br>台東企銀</td></tr><tr> <td class='text-center table-bank'>(075)<br>東亞銀行</td><td class='text-center table-bank'>(081)<br>匯豐銀行</td><td class='text-center table-bank'>(083)<br>渣打銀行</td></tr><tr> <td class='text-center table-bank'>(822)<br>中信銀行</td><td class='text-center table-bank'>(101)<br>台北一信</td><td class='text-center table-bank'>(102)<br>華泰銀行</td></tr><tr> <td class='text-center table-bank'>(103)<br>臺灣新光商銀</td><td class='text-center table-bank'>(104)<br>台北五信</td><td class='text-center table-bank'>(106)<br>台北九信</td></tr><tr> <td class='text-center table-bank'>(108)<br>陽信銀行</td><td class='text-center table-bank'>(114)<br>基隆一信</td><td class='text-center table-bank'>(115)<br>基隆二信</td></tr><tr> <td class='text-center table-bank'>(118)<br>板信銀行</td><td class='text-center table-bank'>(119)<br>淡水一信</td><td class='text-center table-bank'>(120)<br>淡水信合社</td></tr></tbody> </table>`)
-    },
+    // 確認繳費管道
     OnEnsure(target) {
       switch (target) {
         case 'C': // 信用卡
           this.ensure.creditcard = '../../../static/img/oval-ed.png'
           this.ensure.ebill = '../../../static/img/oval.png'
+          this.ensure.superStore = '../../../static/img/oval.png'
           this.init_method = 'C'
           break
         case 'B': // 轉帳
           this.ensure.creditcard = '../../../static/img/oval.png'
           this.ensure.ebill = '../../../static/img/oval-ed.png'
+          this.ensure.superStore = '../../../static/img/oval.png'
           this.init_method = 'B'
           break
+        case 'P': // 超商繳費
+          this.ensure.creditcard = '../../../static/img/oval.png'
+          this.ensure.ebill = '../../../static/img/oval.png'
+          this.ensure.superStore = '../../../static/img/oval-ed.png'
+          this.init_method = 'P'
+          break
       }
+    },
+    OnShowNotice() {
+      toggleModalShow(`<div class="bg-radius"> <div class="top"> <div class="top-title"> <div class="insure-notice-box"> <div class="insure-check"><img src="images/notepad.png" alt=""></div><div class="insure-check-title">注意事項</div></div></div></div><div class="border-bottom-line"></div><form class="form-bottom"><div class="col-sm-12"><ul class=" insure-text-product font-label"><li>目前提供以下繳款方式：<BR>1.信用卡線上付款（限本人持有之VISA、MASTER、JCB、UCard信用卡）。<br>2.銀行帳戶線上轉帳付款(限本人持有之銀行帳戶)。</li><li>繳費前請確認您的信用卡∕帳戶餘額足夠繳納保費，若餘額不足，將無法完成本項交易。</li><li>當您選擇信用卡或銀行帳戶進行付款交易時，請勿關閉視窗、回到上一畫面或跳離交易畫面，避免請款作業錯誤，影響您的權益。</li><li>本項交易採即時扣款，本交易款項經確認後，將立即自您的信用卡∕帳戶中扣繳、無法取消，付款前請務必確認您的交易內容。</li><li>如您使用個人銀行帳戶進行線上轉帳無需負擔交易手續費。</li><li>您的交易經完成確認後，我們將另行寄發收據(若您已申請電子單據，將以e-mail方式將收據寄至您的電子郵件信箱)。</li><li>交易過程中，有發現任何錯誤訊息導致交易不成功者，請洽本公司電話服務中心0800-031-115。</li><li>為保護您的個人資料之隱密性、完整性及可用性，新光人壽係使用國際安全認證SSL（Secure Sockets Layer）128位元機制進行資料傳輸加密，並透過防火牆、定期對主機系統網路弱點掃描及漏洞檢查、入侵防禦系統與全公司防毒機制輔助等安控機制，以防止不法侵入及惡意程式之破壞。</li></ul></div></form></div>`)
+    },
+    OnShowBanks() {
+      toggleModalShow(`<table class='table table-bordered table-rate table-top'> <tbody> <tr> <td class='text-center table-bank'>(001)<br>中央信託</td><td class='text-center table-bank'>(003)<br>交通銀行</td><td class='text-center table-bank'>(004)<br>台灣銀行</td></tr><tr> <td class='text-center table-bank'>(005)<br>土地銀行</td><td class='text-center table-bank'>(006)<br>合庫商銀</td><td class='text-center table-bank'>(007)<br>第一銀行</td></tr><tr> <td class='text-center table-bank'>(008)<br>華南銀行</td><td class='text-center table-bank'>(009)<br>彰化銀行</td><td class='text-center table-bank'>(010)<br>華僑銀行</td></tr><tr> <td class='text-center table-bank'>(011)<br>上海銀行</td><td class='text-center table-bank'>(012)<br>台北富邦</td><td class='text-center table-bank'>(013)<br>國泰世華</td></tr><tr> <td class='text-center table-bank'>(016)<br>高雄銀行</td><td class='text-center table-bank'>(017)<br>兆豐商銀</td><td class='text-center table-bank'>(018)<br>農業金庫</td></tr><tr> <td class='text-center table-bank'>(021)<br>花旗銀行</td><td class='text-center table-bank'>(024)<br>運通銀行</td><td class='text-center table-bank'>(025)<br>首都銀行</td></tr><tr> <td class='text-center table-bank'>(039)<br>荷蘭銀行</td><td class='text-center table-bank'>(040)<br>中華開發</td><td class='text-center table-bank'>(050)<br>臺灣企銀</td></tr><tr> <td class='text-center table-bank'>(051)<br>台北商銀</td><td class='text-center table-bank'>(052)<br>新竹商銀</td><td class='text-center table-bank'>(053)<br>台中商銀</td></tr><tr> <td class='text-center table-bank'>(054)<br>京城商銀</td><td class='text-center table-bank'>(056)<br>花蓮企銀</td><td class='text-center table-bank'>(057)<br>台東企銀</td></tr><tr> <td class='text-center table-bank'>(075)<br>東亞銀行</td><td class='text-center table-bank'>(081)<br>匯豐銀行</td><td class='text-center table-bank'>(083)<br>渣打銀行</td></tr><tr> <td class='text-center table-bank'>(822)<br>中信銀行</td><td class='text-center table-bank'>(101)<br>台北一信</td><td class='text-center table-bank'>(102)<br>華泰銀行</td></tr><tr> <td class='text-center table-bank'>(103)<br>臺灣新光商銀</td><td class='text-center table-bank'>(104)<br>台北五信</td><td class='text-center table-bank'>(106)<br>台北九信</td></tr><tr> <td class='text-center table-bank'>(108)<br>陽信銀行</td><td class='text-center table-bank'>(114)<br>基隆一信</td><td class='text-center table-bank'>(115)<br>基隆二信</td></tr><tr> <td class='text-center table-bank'>(118)<br>板信銀行</td><td class='text-center table-bank'>(119)<br>淡水一信</td><td class='text-center table-bank'>(120)<br>淡水信合社</td></tr></tbody> </table>`)
     }
   }
 }
