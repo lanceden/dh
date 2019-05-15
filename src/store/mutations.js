@@ -202,6 +202,7 @@ export default {
           item.BeneficiaryData = []
           item.BeneficiaryData.push({
             Relationship: state.BENEFICIARY[index].Relationship,
+            Nationality: state.BENEFICIARY[index].NalName,
             Name: state.BENEFICIARY[index].Name,
             IdNo: state.BENEFICIARY[index].IdNo,
             Dob: `${state.BENEFICIARY[index].DobYear}/${state.BENEFICIARY[index].DobMonth}/${state.BENEFICIARY[index].DobDay}`,

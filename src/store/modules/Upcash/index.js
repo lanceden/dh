@@ -124,7 +124,12 @@ const mutations = {
   [functionTypes.FuncUpCashSubmitOrder](state, { result, router }) {
     if (result.ResultCode !== '0000') return
     rootState.PAYMENTCOMPLETE = result.Data.Result
-    router.push(`/paymentcomplete`)
+    // 全繳網
+    if (rootState.PAYTYPE.toUpperCase() === 'B' && !rootState.PAYMENTPREFER) {
+      router.push(`/ebillform`)
+    } else { // EACH 信用卡 超商
+      router.push(`/paymentcomplete`)
+    }
   }
 }
 

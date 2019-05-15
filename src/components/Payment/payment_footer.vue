@@ -44,25 +44,31 @@ export default {
       this.$router.push(`/otpverify`)
     },
     doPayment() {
-      // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
-      let planName = this.$store.state.PLANNAME.toLowerCase()
-
-      // OTP發送及驗證時間賦值
-      this.stateData.OtpSendTime = this.$store.state.OTPSENDTIME
-      this.stateData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
-
-      // 年金險用init_method 其餘用PAYTYPE
       if (this.$store.state.PAYTYPE === '') {
         toggleModalShow('請選擇繳費管道。')
         return
       }
       // 判斷是否為信用卡繳費, 若是則要驗證卡號
       if (this.$store.state.PAYTYPE === 'C') {
-        let validateResult = CheckCardno(postData.NCCCModels.CardNo)
-        if (!validateResult) {
+        if (!CheckCardno(postData.NCCCModels.CardNo)) {
           toggleModalShow('信用卡號不正確，請重新輸入。')
           return
         }
+      }
+
+      // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
+      let planName = this.$store.state.PLANNAME.toLowerCase()
+      // 旅平險要另外判斷
+      if (planName === 'travel' || planName === 'enttravel') {
+        this.stateData.PolicyData.PayType = this.$store.state.PAYTYPE
+        this.stateData.PolicyData.OtpSendTime = this.$store.state.OTPSENDTIME
+        this.stateData.PolicyData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
+        this.stateData.PolicyData.PaymentPreferredAccoun = this.$store.state.PAYMENTPREFER
+      } else {
+        this.stateData.init_method = this.$store.state.PAYTYPE
+        this.stateData.OtpSendTime = this.$store.state.OTPSENDTIME
+        this.stateData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
+        this.stateData.Payment_Prefer = this.$store.state.PAYMENTPREFER
       }
 
       // 付款資料
@@ -71,19 +77,14 @@ export default {
           CardNo: this.$store.state.CREDITCARD || '',
           StrDate: ($('#cc_from_year').val() || '') + ($('#cc_from_month').val() || ''),
           ExpDate: ($('#cc_exp_year').val() || '') + ($('#cc_exp_month').val() || ''),
-          PeriodNo: $(`[name='periodNo']:checked`).val(),
+          PeriodNo: this.$store.state.PERIODNO,
           CVV: this.$store.state.CVV || ''
         },
         CoreData: this.stateData,
         router: this.$router
       }
-      console.log('postData.CoreData', JSON.stringify(postData.CoreData))
-      console.log('postData.NCCCModels', postData.NCCCModels)
-      console.log('postData.CoreData', JSON.stringify(postData.CoreData))
+      console.log('postData', postData)
 
-      // 執行付款
-      postData.CoreData.OtpSendTime = this.$store.state.OTPSENDTIME
-      postData.CoreData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
       switch (planName) {
         case 'upcash':
           console.log('this.FuncUpCashSubmitOrder')
@@ -119,16 +120,10 @@ export default {
           break
         case 'travel':
           console.log('this.FuncTravelSubmitOrder')
-          postData.CoreData.PolicyData.PayType = this.$store.state.PAYTYPE
-          postData.CoreData.PolicyData.OtpSendTime = this.$store.state.OTPSENDTIME
-          postData.CoreData.PolicyData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
           this.FuncTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'enttravel':
           console.log('this.FuncTravelSubmitQuote')
-          postData.CoreData.PolicyData.PayType = this.$store.state.PAYTYPE
-          postData.CoreData.PolicyData.OtpSendTime = this.$store.state.OTPSENDTIME
-          postData.CoreData.PolicyData.OtpValidateTime = this.$store.state.OTPVALIDSTETIME
           this.FuncTravelSubmitQuote({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
       }

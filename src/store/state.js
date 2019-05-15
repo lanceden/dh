@@ -38,8 +38,14 @@ export default {
   OCCUPATION: '',
   OCCUPATIONDATA: [],
   AGREEMENTTOGGLE: false,
+  // 同意書總數
   AGREEMENTCOUNT: 0,
+  // 付款方式
   PAYTYPE: 'B',
+  // 花旗銀行是否分三期
+  PERIODNO: 0,
+  // 是否為約定帳戶付款
+  PAYMENTPREFER: false,
   NOTIFYCHECKBOX: [
     true,
     false,

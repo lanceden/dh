@@ -83,7 +83,7 @@ const actions = {
       InsurerSourceID: APICODE,
       TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncTravelSubmitQuote, { result: response.data, router })
+      commit(functionTypes.FuncEntTravelSubmitQuote, { result: response.data, router })
     })
   },
   /**
@@ -98,7 +98,7 @@ const actions = {
       NCCCModels: nccModels,
       TravelRq_Order: para
     }).then(response => {
-      commit(functionTypes.FuncTravelSubmitOrder, { result: response.data, router })
+      commit(functionTypes.FuncEntTravelSubmitOrder, { result: response.data, router })
     })
   }
 }
@@ -178,7 +178,8 @@ const mutations = {
   [functionTypes.FuncEntTravelSubmitOrder](state, { result, router }) {
     if (result.ResultCode !== '0000') return
     rootState.PAYMCOMPLETE = result.Data.Result
-    if (rootState.PAYTYPE.toUpperCase() === 'B') {
+    // 全繳網
+    if (rootState.PAYTYPE.toUpperCase() === 'B' && !rootState.PAYMENTPREFER) {
       router.push(`/ebillform`)
     } else {
       router.push(`/paymentcomplete`)

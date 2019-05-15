@@ -70,7 +70,7 @@
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control insure-input insure-input-edit col-sm-9" v-model="face_amt" placeholder="請輸入" />
+              <input type="number" class="form-control insure-input insure-input-edit col-sm-9" v-model="face_amtComputed" placeholder="請輸入" />
             </div>
             <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
           </div>
@@ -302,7 +302,8 @@ export default {
         modx_99_indfalse: '../../../../../static/img/oval.png',
         methodcredit: '../../../../../static/img/oval.png',
         methodtrans: '../../../../../static/img/oval.png'
-      }
+      },
+      faceAmount: ''
     }
   },
   created() {
@@ -311,7 +312,10 @@ export default {
     this.GetUpCashPostData.AccountData[0] = {}
     this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
     this.GetUpCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
-    this.OnUntimed(1)
+    this.OnMethod('C')
+  },
+  mounted() {
+    this.hasEachAccount = this.GetEachAccount.length > 0
   },
   computed: {
     ...mapGetters([
@@ -361,7 +365,6 @@ export default {
       set(value) {
         this.GetUpCashPostData.mode_prem = 0
         this.GetUpCashPostData.init_method = value
-        this.OnUntimed(this.GetUpCashPostData.modx_99_ind)
       }
     },
     // 續期繳費管道
@@ -390,15 +393,12 @@ export default {
     /**
      * 第一期保險費
      */
-    face_amt: {
+    face_amtComputed: {
       get() {
-        return this.GetUpCashPostData.face_amt
+        return this.faceAmount
       },
       set(value) {
-        if (value === '' || value <= 0) {
-          alert('請填寫第一期保險費。')
-          return
-        }
+        this.faceAmount = value
         this.GetUpCashPostData.mode_prem = 0
         this.GetUpCashPostData.face_amt = value
       }
@@ -424,7 +424,6 @@ export default {
         }
         this.GetUpCashPostData.mode_prem = 0
         this.GetUpCashPostData.modx_99_ind = result ? 'Y' : 'N'
-        this.OnUntimed(parseInt(value))
       }
     },
     // 分期保費每期 請輸入續期保險費。
@@ -495,49 +494,6 @@ export default {
       }
       this.init_method = value
     },
-    OnUntimed(value) {
-      /**
-      if(this.GetUpCashPostData.modx_99_ind === 'Y') {
-        return 1
-      } else if(this.GetUpCashPostData.modx_99_ind === 'N') {
-        return 2
-      }
-       */
-      // 不定期繳, 只有全國新光人壽行政中心繳費
-      if (parseInt(value) === 1) {
-        this.payType = [{ name: '全國新光人壽行政中心繳費', method: 'P' }]
-        this.GetUpCashPostData.method = 'P'
-        return
-      } else {
-        // 首期繳費管道:活期 約定續期:分期, 只有銀行或郵局帳戶轉帳
-        if (this.GetUpCashPostData.init_method === 'B' && parseInt(value) === 2) {
-          this.payType = [
-            { name: '銀行或郵局帳戶轉帳', method: 'B' }
-          ]
-          this.GetUpCashPostData.method = 'B'
-        } else if (this.GetUpCashPostData.init_method === '' && parseInt(value) === 1) {
-          this.payType = [{ name: '全國新光人壽行政中心繳費', method: 'P' }]
-          this.GetUpCashPostData.method = 'P'
-        } else if (this.GetUpCashPostData.init_method === '' && parseInt(value) === 2) {
-          this.payType = [
-            { name: '銀行或郵局帳戶轉帳', method: 'B' },
-            { name: '信用卡', method: 'C' }
-          ]
-          this.GetUpCashPostData.method = 'C'
-        } else {
-          if (parseInt(value) === 1) {
-            this.payType = [{ name: '全國新光人壽行政中心繳費', method: 'P' }]
-            this.GetUpCashPostData.method = 'P'
-          } else {
-            this.payType = [
-              { name: '銀行或郵局帳戶轉帳', method: 'B' },
-              { name: '信用卡', method: 'C' }
-            ]
-            this.GetUpCashPostData.method = 'C'
-          }
-        }
-      }
-    },
     OnMethod(target) {
       // 分期繳付:2 不定期繳:1
       if (target === 'C') {
@@ -546,6 +502,7 @@ export default {
       } else {
         this.ensure.methodcredit = '../../../../../static/img/oval.png'
         this.ensure.methodtrans = '../../../../../static/img/oval-ed.png'
+        this.OnAccount('isEdda')
       }
       this.method = target
     },

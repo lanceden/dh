@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-cloak>
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -48,12 +48,10 @@
           </div>
         </div>
       </div>
-      <div v-show="isCredieCard">
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="col-sm-6 dib" @click='OnShowBanks()'>
-          <div class="insure-tips-text">
-            <img src="../../../static/img/insure-link.png">查詢線上繳費刷卡銀行
-          </div>
+      <div class="border-bottom-line col-sm-12"></div>
+      <div class="col-sm-6 dib" @click='OnShowBanks()'>
+        <div class="insure-tips-text">
+          <img src="../../../static/img/insure-link.png">查詢線上繳費刷卡銀行
         </div>
       </div>
       <div class="col-sm-6 dib" @click='OnShowNotice()'>
@@ -71,7 +69,7 @@
       </form>
     </div>
     <!-- 選擇使用信用卡才顯示 -->
-    <div class='bg-radius' v-show='isCredieCard'>
+    <div class='bg-radius' v-show="this.init_method === 'C'">
       <div class='top'>
         <div class='top-title'>
           <div class='insure-notice-box'>
@@ -118,25 +116,30 @@
           </div>
         </div>
         <!-- 花旗銀行分期  -->
-        <div class='form-group row periodNo' v-show='stateData.mode_prem > 3000 && $store.state.ISCITYBANKCARD'>
-          <label for='' class='col-sm-12 col-form-label insure-label'>是否分三期</label>
-          <div class='border-bottom-line col-sm-12'></div>
-          <div class='top col-sm-12'>
-            <div class='insure-notice-box radio-group'>
-              <input id='periodNo0' name='periodNo' type='radio' value='0' checked>
-              <div class='insure-check radio-item NoCheck'></div>
-              <div class='insure-check-content'>
-                <label for='periodNo0' class='radio-label' data-val='0' data-group='periodNo'>否</label>
+        <div class="bg-radius" v-show='stateData.mode_prem > 3000 && $store.state.ISCITYBANKCARD'>
+          <div class="top">
+            <div class="top-title">
+              <div class="insure-notice-box">
+                <div class="insure-check"><img src="../../../static/img/notepad.png" alt=""></div>
+                <div class="insure-check-title">是否分三期</div>
               </div>
             </div>
           </div>
-          <div class='border-bottom-line col-sm-12'></div>
-          <div class='top col-sm-12'>
-            <div class='insure-notice-box radio-group'>
-              <input id='periodNo3' name='periodNo' type='radio' value='3'>
-              <div class='insure-check radio-item NoCheck'></div>
-              <div class='insure-check-content'>
-                <label for='periodNo3' class='radio-label' data-val='3' data-group='periodNo'>是</label>
+          <div>
+            <div class="border-bottom-line col-sm-12"></div>
+            <div class="top col-sm-12">
+              <div class="insure-notice-box" @click="OnInstallmen(false)">
+                <div class="insure-check"><img :src="ensure.installmentno" /></div>
+                <div class="insure-check-content">否</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="border-bottom-line col-sm-12"></div>
+            <div class="top col-sm-12">
+              <div class="insure-notice-box" @click="OnInstallmen(true)">
+                <div class="insure-check"><img :src="ensure.installmentyes" /></div>
+                <div class="insure-check-content">是</div>
               </div>
             </div>
           </div>
@@ -150,6 +153,63 @@
           </div>
         </div>
       </form>
+    </div>
+
+    <div class="bg-radius" v-show="this.init_method === 'B'">
+      <!-- 非約定-全繳網 -->
+      <div @click="OnAccount(false)">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img :src="ensure.eachNo" /></div>
+            <div class="insure-check-content">非約定帳戶(e-Bill全國繳費網)</div>
+          </div>
+        </div>
+      </div>
+      <div v-show="isEdda" @click="OnAccount(true)">
+        <div class="border-bottom-line col-sm-12"></div>
+        <div class="top col-sm-12">
+          <div class="insure-notice-box">
+            <div class="insure-check"><img :src="ensure.eachYes" /></div>
+            <div class="insure-check-content">已約定帳戶</div>
+          </div>
+        </div>
+      </div>
+      <!-- 約定-EACH -->
+      <div v-show="this.$store.state.PAYMENTPREFER">
+        <div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
+            <div class="col-sm-12">
+              <div class="form-control insure-input-block">{{this.GetAccountData.CustName}}</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
+            <div class="col-sm-12">
+              <div class="form-control insure-input-block">{{this.GetAccountData.CustIDN}}</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
+            <div class="col-sm-12">
+              <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.BankCode}}</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
+            <div class="col-sm-12">
+              <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.BankName}}</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
+            <div class="col-sm-12">
+              <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.AccountNo}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -167,11 +227,16 @@ export default {
       ensure: {
         ebill: `../../../static/img/oval.png`,
         creditcard: '../../../static/img/oval.png',
-        superStore: '../../../static/img/oval.png'
+        superStore: '../../../static/img/oval.png',
+        installmentyes: '../../../static/img/oval.png',
+        installmentno: '../../../static/img/oval.png',
+        eachNo: '../../../static/img/oval.png',
+        eachYes: '../../../static/img/oval.png'
       },
       isCredieCard: false,
       isSuperStore: false,
       isEbill: false,
+      isEdda: true,
       codeOne: '',
       codeTwo: '',
       codeThree: '',
@@ -181,7 +246,6 @@ export default {
     }
   },
   created() {
-    console.log(this.stateData)
     this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-5.png'
   },
   mounted() {
@@ -208,8 +272,11 @@ export default {
       this.isSuperStore = this.GetAccountData.JoinSource === '2' && this.stateData.IsSuperStore
       this.isEbill = true
       this.isCredieCard = true
+      this.FuncEachAccount()
       this.OnEnsure('C')
+      this.OnInstallmen(false)
     }
+    // this.isEdda = this.GetEachAccount.length !== 0
   },
   computed: {
     ...mapGetters([
@@ -256,15 +323,52 @@ export default {
       'FuncIsCityBank',
       'FuncEachAccount'
     ]),
+    /**
+     * 帳戶繳費方式
+     * @param {bool} target false:全繳網 true:EACH
+     */
+    OnAccount(target) {
+      if (target) {
+        this.ensure.eachYes = '../../../static/img/oval-ed.png'
+        this.ensure.eachNo = '../../../static/img/oval.png'
+      } else {
+        this.ensure.eachYes = '../../../static/img/oval.png'
+        this.ensure.eachNo = '../../../static/img/oval-ed.png'
+      }
+      this.$store.state.PAYMENTPREFER = target
+      console.log('this.$store.state.PAYMENTPREFER', this.$store.state.PAYMENTPREFER)
+    },
+    /**
+     * 花旗銀行是否分三期
+     * @param {bool} target false:不分期 true:分三期
+     */
+    OnInstallmen(target) {
+      if (target) {
+        this.ensure.installmentyes = '../../../static/img/oval-ed.png'
+        this.ensure.installmentno = '../../../static/img/oval.png'
+      } else {
+        this.ensure.installmentyes = '../../../static/img/oval.png'
+        this.ensure.installmentno = '../../../static/img/oval-ed.png'
+      }
+      this.$store.state.PERIODNO = target ? 3 : 0
+    },
+    /**
+     * 鍵盤KeyUp事件
+     * @param {string} fromId 來源輸入框
+     * @param {string} toId 跳轉輸入框
+     */
     keyup(fromId, toId) {
       this.$store.state.CREDITCARD = `${this.codeOne}${this.codeTwo}${this.codeThree}${this.codeFour}`
       let result = document.getElementById(fromId).value.length
-      if (fromId === 'codeTwo' && result >= 2) {
+      if (fromId === 'codeTwo' && result >= 3) {
         this.FuncIsCityBank(`${this.codeOne}${this.codeTwo}`)
       }
       if (result === 4) document.getElementById(toId).focus()
     },
-    // 確認繳費管道
+    /**
+     * 確認繳費管道
+     * @param {string} target C:信用卡 B:全繳網 P:超商
+     */
     OnEnsure(target) {
       switch (target) {
         case 'C': // 信用卡
@@ -278,6 +382,7 @@ export default {
           this.ensure.ebill = '../../../static/img/oval-ed.png'
           this.ensure.superStore = '../../../static/img/oval.png'
           this.init_method = 'B'
+          this.OnAccount(this.isEdda)
           break
         case 'P': // 超商繳費
           this.ensure.creditcard = '../../../static/img/oval.png'
