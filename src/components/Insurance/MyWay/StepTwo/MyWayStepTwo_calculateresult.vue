@@ -28,14 +28,14 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="footer">
-        <div class="footer-content">
-          <nav class="navbar navbar-dark row">
-            <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
-            <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">前往填寫聯絡資料</div>
-          </nav>
-        </div>
+    <div class="footer">
+      <div class="footer-content">
+        <nav class="navbar navbar-dark row">
+          <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
+          <div class="col-sm-8 footer-title footer-right" @click="GoToNext()">前往填寫聯絡資料</div>
+        </nav>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
     GoToNext() {
       // 判斷是否有試算,沒有則跳錯誤
       let modePrem = this.GetMyWayPostData.mode_prem
-      if(!parseInt(modePrem) > 0) {
+      if (!parseInt(modePrem) > 0) {
         alert('請先試算保費')
         return
       }

@@ -235,7 +235,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.push('/travel-8')
+      this.$router.push('/enttravel-8')
     },
     GoToNext() {
       this.$router.push('/otp')

@@ -20,14 +20,14 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/enttravel-4`)
     },
     GoToNext() {
       // 本人及本人加子女
       if (this.GetEntTravelPostData.TargetType === '0' || this.GetEntTravelPostData.TargetType === '2') {
-        this.$router.push('/travel-6')
+        this.$router.push('/enttravel-6')
       } else {
-        this.$router.push('/travel-7')
+        this.$router.push('/enttravel-7')
       }
     }
   }

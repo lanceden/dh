@@ -24,11 +24,10 @@ export default {
       EntTravelFunctionTypes.FuncEntTravelEstimate
     ]),
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/enttravel-2`)
     },
     Estimate() {
-      console.log(JSON.stringify(this.GetEntTravelPostData))
-      this.FuncTravelEstimate({
+      this.FuncEntTravelEstimate({
         para: this.GetEntTravelPostData,
         router: this.$router
       })

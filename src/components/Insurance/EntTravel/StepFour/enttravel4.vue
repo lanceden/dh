@@ -54,15 +54,15 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/enttravel-3`)
     },
     GoToNext() {
       // 只有子女不會有本人的受益人需跳過此步驟
       console.log('this.GetEntTravelPostData.TargetType', this.GetEntTravelPostData.TargetType)
       if (parseInt(this.GetEntTravelPostData.TargetType) !== 1) {
-        this.$router.push('/travel-5')
+        this.$router.push('/enttravel-5')
       } else {
-        this.$router.push('/travel-6')
+        this.$router.push('/enttravel-6')
       }
     }
   }

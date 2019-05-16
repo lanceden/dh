@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/travel-1?token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
       // 請選擇您的旅遊地點

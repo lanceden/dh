@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/enttravel-1?token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
       // 請選擇您的旅遊地點
@@ -30,7 +30,7 @@ export default {
         return
       }
       // 前往被保人填寫資料頁
-      this.$router.push('/travel-3')
+      this.$router.push('/enttravel-3')
     }
   }
 }

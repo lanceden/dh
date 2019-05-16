@@ -23,14 +23,15 @@ export default {
   methods: {
     ...mapActions([
       EntTravelFunctionTypes.FuncEntTravelIsInit,
-      EntTravelFunctionTypes.FuncEntTravelInsuredData
+      EntTravelFunctionTypes.FuncEntTravelInsuredData,
+      EntTravelFunctionTypes.FuncEntTravelValidate
     ]),
     GoPrev() {
-      this.$router.push(`/travel-1?leave=true&token=${this.$store.state.ApiToken}`)
+      this.$router.push(`/enttravel-1?leave=true&token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
       // 不是企業客戶
-      if(!this.$store.state.ISENTERPRISECODE) {
+      if (!this.$store.state.ISENTERPRISECODE) {
         toggleModalShow('您輸入的代碼驗證失敗，請洽詢您公司的負責窗口。', '貼心提醒您')
         return
       }

@@ -1,8 +1,6 @@
 /**
  * 根目錄網址
  */
-// const Domain = 'https://test-online.skl.com.tw/InsuranceWebApi'
-// const Domain = 'https://ea5af470-fbb3-4cf8-b060-301a1bccb034.mock.pstmn.io'
 const Domain = process.env.URL
 /**
  * 職業類別
@@ -216,7 +214,10 @@ const HealthSubmitQuote = `${Domain}/Health/SubmitQuote`
  */
 const HealthSubmitOrder = `${Domain}/Health/SubmitOrder`
 
-const VerifyEmploymentId = `${Domain}/EntTravel/VerifyEmploymentId?`
+/**
+ * 企業用戶代碼檢查
+ */
+const VerifyEmploymentId = `${Domain}/EntTravel/VerifyEmploymentId`
 /**
  * EntTravel初始化
  */

@@ -2,14 +2,14 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-6 footer-title footer-left" @click="GoPrev()">上一步</div>
-        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">前往填寫聯絡資料</div>
+        <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
+        <div class="col-sm-8 footer-title footer-right" @click="GoNext()">前往填寫聯絡資料</div>
       </nav>
     </div>
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
 
@@ -21,14 +21,10 @@ export default {
     ])
   },
   methods: {
-    ...mapActions([
-      'SetHeaderIsActive'
-    ]),
     /**
-     * 上一步(回到第一頁)
+     * 回前一頁
      */
     GoPrev() {
-      this.SetHeaderIsActive(false)
       this.$router.go(-1)
     },
     /**

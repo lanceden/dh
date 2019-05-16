@@ -10,20 +10,21 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import TravelFunctionTypes from '../../../../store/modules/Travel/Types/TravelFunctionTypes.js'
+import EntTravelFunctionTypes from '../../../../store/modules/EntTravel/Types/EntTravelFunctionTypes.js'
 import { toggleModalShow } from '../../../../utils/toggleModal'
-import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 
 export default {
   computed: {
     ...mapGetters([
-      TravelGetterTypes.GetTravelPostData
+      EntTravelGetterTypes.GetEntTravelPostData
     ])
   },
   methods: {
     ...mapActions([
-      TravelFunctionTypes.FuncTravelIsInit,
-      TravelFunctionTypes.FuncTravelInsuredData
+      EntTravelFunctionTypes.FuncEntTravelIsInit,
+      EntTravelFunctionTypes.FuncEntTravelValidate,
+      EntTravelFunctionTypes.FuncEntTravelInsuredData
     ]),
     GoPrev() {
       this.$router.push(`/travel-1?leave=true&token=${this.$store.state.ApiToken}`)
@@ -75,10 +76,10 @@ export default {
         return
       }
       // 設置旅平險已初始化
-      this.FuncTravelIsInit(true)
-
+      this.FuncEntTravelIsInit(true)
+      this.FuncEntTravelValidate()
       // 前往被保人填寫資料頁
-      this.FuncTravelInsuredData({
+      this.FuncEntTravelInsuredData({
         para: this.GetTravelPostData,
         router: this.$router
       })

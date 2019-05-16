@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/travel-3`)
     },
     GoToNext() {
       // 只有子女不會有本人的受益人需跳過此步驟

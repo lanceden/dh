@@ -264,10 +264,10 @@ export default {
       }
     },
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/enttravel-7`)
     },
     GoToNext() {
-      this.$router.push(`/agreement?instypename=travel`)
+      this.$router.push(`/agreement?instypename=enttravel`)
     }
   }
 }

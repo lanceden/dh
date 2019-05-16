@@ -19,7 +19,7 @@ export default {
   JOBSUBOCCUPATIONDATA: '',
   JOBDATA: [],
   CITYDATA: [],
-  EACHACCOUNT: [],
+  EACHACCOUNT: {},
   PREMIUMS: [],
   ACCOUNTDATA: {},
   BANK: [],

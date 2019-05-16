@@ -175,7 +175,7 @@ export default {
       'FuncGetDistrictData'
     ]),
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/travel-4`)
     },
     GoToNext() {
       this.errorMsg = ''

@@ -264,7 +264,7 @@ export default {
       }
     },
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/travel-7`)
     },
     GoToNext() {
       this.$router.push(`/agreement?instypename=travel`)

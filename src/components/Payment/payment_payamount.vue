@@ -166,7 +166,8 @@
           </div>
         </div>
       </div>
-      <div v-show="isEdda" @click="OnAccount(true)">
+      <div v-show="this.GetAccountData !== null && this.GetAccountData.hasOwnProperty('AccountNo')" 
+      @click="OnAccount(true)">
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box">
@@ -236,7 +237,6 @@ export default {
       isCredieCard: false,
       isSuperStore: false,
       isEbill: false,
-      isEdda: true,
       codeOne: '',
       codeTwo: '',
       codeThree: '',
@@ -276,7 +276,6 @@ export default {
       this.OnEnsure('C')
       this.OnInstallmen(false)
     }
-    // this.isEdda = this.GetEachAccount.length !== 0
   },
   computed: {
     ...mapGetters([
@@ -382,7 +381,7 @@ export default {
           this.ensure.ebill = '../../../static/img/oval-ed.png'
           this.ensure.superStore = '../../../static/img/oval.png'
           this.init_method = 'B'
-          this.OnAccount(this.isEdda)
+          this.OnAccount(this.GetAccountData !== null && this.GetAccountData.hasOwnProperty('AccountNo'))
           break
         case 'P': // 超商繳費
           this.ensure.creditcard = '../../../static/img/oval.png'

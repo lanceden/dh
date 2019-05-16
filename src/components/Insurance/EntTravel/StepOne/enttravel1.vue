@@ -38,7 +38,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">企業客戶專區代碼</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" v-model="entCodeComputed">
+          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="entCodeComputed">
         </div>
       </div>
       <div class="col-sm-12">
@@ -99,7 +99,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 
 export default {
@@ -140,7 +140,7 @@ export default {
         return this.entCode
       },
       set(value) {
-        this.FuncVerifyEmploymentId(value)
+        this.entCode = value
       }
     },
     // 子女數量
@@ -215,9 +215,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'FuncVerifyEmploymentId'
-    ]),
     /**
      * 設置請確認保障對象
      * @param {string} target 本人:own 子女:child 本人與子女:both

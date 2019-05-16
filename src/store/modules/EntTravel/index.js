@@ -122,7 +122,7 @@ const mutations = {
     state.ENTTRAVELPOSTDATA = result.Data.Result
   },
   [functionTypes.FuncEntTravelValidate](state, { result }) {
-    state.ENTTRAVELISVALIDATE = result.Data.Result
+    state.ISENTERPRISECODE = result.Data.Result
   },
   /**
    * Travel 處理被保人資料

@@ -12,7 +12,7 @@
 export default {
   methods: {
     /**
-     * 上一步(回到第一頁)
+     * 回前一頁
      */
     GoPrev() {
       this.$router.push(`/Health-account`)

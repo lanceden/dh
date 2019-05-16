@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/travel-4`)
     },
     GoToNext() {
       // 本人及本人加子女

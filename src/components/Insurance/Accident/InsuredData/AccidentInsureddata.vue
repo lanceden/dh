@@ -14,9 +14,9 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['2']}}</div>
-            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['4']}}</div>
+            <div class="form-control insure-input-block">{{GetAccidentPostData.VerifyTypeList['2']}}</div>
+            <div class="form-control insure-input-block">{{GetAccidentPostData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block">{{GetAccidentPostData.VerifyTypeList['4']}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -28,13 +28,13 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.city1}}{{mockData.district1}}{{mockData.road1}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.city1}}{{GetAccidentPostData.district1}}{{GetAccidentPostData.road1}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">總保險費</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">NT$ {{mockData.mode_prem|decimalComma}} </div>
+            <div class="insure-input-block">NT$ {{GetAccidentPostData.mode_prem|decimalComma}} </div>
           </div>
         </div>
       </form>
@@ -53,20 +53,20 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">險種名稱-主約</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.ins_type_name}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.ins_type_name}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">主約保額</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.face_amt}} 萬元</div>
+            <div class="insure-input-block">{{GetAccidentPostData.face_amt}} 萬元</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{mockData.po_issue_date_Name}} 午夜十二時起</div>
-            <div class="form-control insure-input-block">{{mockData.matured_date_Name}} 午夜十二時止，共 365</div>
+            <div class="form-control insure-input-block">{{GetAccidentPostData.po_issue_date_Name}} 午夜十二時起</div>
+            <div class="form-control insure-input-block">{{GetAccidentPostData.matured_date_Name}} 午夜十二時止，共 365</div>
             <div class="form-control insure-input-block">天</div>
           </div>
         </div>
@@ -85,13 +85,13 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">身故或喪葬費用保險金</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{mockData.face_amt}}萬元</div>
+          <div class="insure-input-block">{{GetAccidentPostData.face_amt}}萬元</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">意外失能保險金</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">依失能程度按契約附表比例計算，最高為{{mockData.face_amt}}萬元</div>
+          <div class="insure-input-block">依失能程度按契約附表比例計算，最高為{{GetAccidentPostData.face_amt}}萬元</div>
         </div>
       </div>
     </div>
@@ -110,50 +110,50 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_names}}(要被保人須為同一人)</div>
+            <div class="insure-input-block">{{GetAccidentPostData.client_names}}(要被保人須為同一人)</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Birthday_Full}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.Birthday_Full}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Age}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.Age}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_id}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.client_id}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_rate_sex === '1' ? '男' : '女'}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.client_rate_sex === '1' ? '男' : '女'}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.phone_area}}{{mockData.phone_main}}{{mockData.phone_ext}}</div>
-            <div class="insure-input-block">手機：{{mockData.phone_mobile}}</div>
+            <div class="insure-input-block">電話：{{GetAccidentPostData.phone_area}}{{GetAccidentPostData.phone_main}}{{GetAccidentPostData.phone_ext}}</div>
+            <div class="insure-input-block">手機：{{GetAccidentPostData.phone_mobile}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.address1}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.address1}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.address2}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.address2}}</div>
           </div>
         </div>
       </form>
@@ -172,57 +172,57 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(一)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_name}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.benf_name}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{mockData.relation_ben_death_seq_percent}}%</div>
+            <div class="insure-input-block">順位1，{{GetAccidentPostData.relation_ben_death_seq_percent}}%</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
           <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death) === 8">法定繼承人</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 2">配偶</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 3">父母子女</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 6">祖孫</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 8">法定繼承人</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">國籍</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfNationality}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.BenfNationality}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_dob}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.benf_dob}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_id}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.benf_id}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_phone}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.benf_phone}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfAdd_City}}{{mockData.BenfAdd_County}}{{mockData.BenfAddRemain}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.BenfAdd_City}}{{GetAccidentPostData.BenfAdd_County}}{{GetAccidentPostData.BenfAddRemain}}</div>
           </div>
         </div>
       </form>
     </div>
-    <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 1">
+    <div class="bg-radius" v-show="parseInt(GetAccidentPostData.benf_num) > 1">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -237,39 +237,39 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_name2}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.benf_name2}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{mockData.relation_ben_death_seq_percent2}}%</div>
+            <div class="insure-input-block">順位1，{{GetAccidentPostData.relation_ben_death_seq_percent2}}%</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
           <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.relation_ben_death2) === 8">法定繼承人</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 2">配偶</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 3">父母子女</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 6">祖孫</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 8">法定繼承人</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.benf_phone2}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.benf_phone2}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.BenfAdd_City2}}{{mockData.BenfAdd_County2}}{{mockData.BenfAddRemain2}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.BenfAdd_City2}}{{GetAccidentPostData.BenfAdd_County2}}{{GetAccidentPostData.BenfAddRemain2}}</div>
           </div>
         </div>
       </form>
     </div>
-    <div class="bg-radius" v-show="parseInt(mockData.benf_num) > 2">
+    <div class="bg-radius" v-show="parseInt(GetAccidentPostData.benf_num) > 2">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -308,7 +308,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">您的職業類別</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_occupation_class_name}} {{mockData.client_occupation_class_detail}}</div>
+            <div class="insure-input-block">{{GetAccidentPostData.client_occupation_class_name}} {{GetAccidentPostData.client_occupation_class_detail}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -379,33 +379,33 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
           <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 1">未婚</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 2">已婚</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 3">離婚</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 4">喪偶</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 5">分居</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 6">其他</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.owner_marriage) === 1">未婚</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.owner_marriage) === 2">已婚</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.owner_marriage) === 3">離婚</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.owner_marriage) === 4">喪偶</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.owner_marriage) === 5">分居</div>
+            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.owner_marriage) === 6">其他</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.insured_income}}萬元</div>
+            <div class="insure-input-block">{{GetAccidentPostData.insured_income}}萬元</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.insured_fam_income}}萬元</div>
+            <div class="insure-input-block">{{GetAccidentPostData.insured_fam_income}}萬元</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
           <div class="col-sm-12">
             <div class="insure-input-block">
-              <span v-show="parseInt(mockData.visit_time1) === 1">早上9點~12點,</span>
-              <span v-show="parseInt(mockData.visit_time2) === 1">下午1點～6點,</span>
-              <span v-show="parseInt(mockData.visit_time3) === 1">晚上6點~9點</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time1) === 1">早上9點~12點,</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time2) === 1">下午1點～6點,</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time3) === 1">晚上6點~9點</span>
             </div>
           </div>
         </div>
@@ -423,13 +423,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
-import { data } from './mockData'
+
 export default {
-  data() {
-    return {
-      mockData: data.Data.Result
-    }
-  },
   computed: {
     ...mapGetters([
       GetterTypes.GetAccidentPostData

@@ -1,5 +1,6 @@
 <template>
   <div class="form-group row">
+    <loading v-show="GetLoading" />
     <label for class="col-sm-12 col-form-label insure-label insure-label">投保額度</label>
     <div class="col-sm-12">
       <select id="face_amt" name="face_amt" class="form-control data-input insure-select insure-input-block-edit" v-model="face_amt">
@@ -29,8 +30,14 @@ export default {
       PLAN_Code_1: this.stateData.plan_code
     })
   },
+  mounted() {
+    $('#CalcAmtDesc1').html('0')
+    $('#CalcAmtDesc2').html('0')
+    $('#CalcAmtDesc3').text('0')
+  },
   computed: {
     ...mapGetters([
+      'GetLoading',
       'GetPremiums',
       'GetAccountData'
     ]),

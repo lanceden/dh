@@ -12,10 +12,10 @@
 export default {
   methods: {
     /**
-     * 上一步(回到第一頁)
+     * 回前一頁
      */
     GoPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/benf?instypename=upcash`)
     },
     /**
      * 前往填寫聯絡資料

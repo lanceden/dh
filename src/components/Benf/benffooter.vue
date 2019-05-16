@@ -13,7 +13,7 @@ import { BenfToNext } from '../../utils/goNext.js'
 export default {
   methods: {
     /**
-     * 上一步(回到第一頁)
+     * 回前一頁
      */
     GoPrev() {
       this.$router.push(`/${this.$store.state.PLANNAME.toLowerCase()}-3`)

@@ -132,7 +132,7 @@
 
       <!-- 過去一年內是否曾因患有下列疾病，而接受醫師治療、診療或用藥： -->
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">過去一年內是否曾因患有下列疾病，而接受醫師治療、診療或用藥：?</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">過去一年內是否曾因患有下列疾病，而接受醫師治療、診療或用藥?</label>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="col-sm-12 insure-select-align">
           <div class="insure-notice-text">
@@ -147,6 +147,7 @@
             </ul>
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12" @click="OnEnsure('QusAns4', true)">
           <div class="insure-notice-box">
             <div class="insure-check">
@@ -250,6 +251,7 @@
             </ul>
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12" @click="OnEnsure('QusAns6', true)">
           <div class="insure-notice-box">
             <div class="insure-check">
@@ -370,53 +372,24 @@
         <div class="border-bottom-line col-sm-12" v-show="isShowAns8Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns8Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
-
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
-        <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-block-edit" ref="jobCode" v-model="jobCode">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetJobData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">職業項目</label>
-        <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE + '-' + item.OCCUPATION_DESC">{{item.OCCUPATION_DESC}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">工作內容</label>
-        <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="occupation" v-model="occupation">
-            <option value="0" selected="selected">請選擇</option>
-            <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <div class="insure-tips-text first-blue">
-          <span id="occupationselect"></span>
-        </div>
-      </div>
+      <!-- 職業項目 -->
+      <OccupationComponent :stateData="this.GetMyWayPostData" :planCode="planCode"></OccupationComponent>
     </form>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
+import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
-import { mapActions, mapGetters } from 'vuex'
+import OccupationComponent from '../../Common/occupation'
 
-let PLANCODE = 'LAA01'
 export default {
+  components: {
+    OccupationComponent
+  },
   data() {
     return {
-      jobSubCodeText: '',
+      planCode: 'LAA01',
       isShowAns1Error: '0',
       isShowAns2Error: '0',
       isShowAns3Error: '0',
@@ -448,92 +421,10 @@ export default {
   computed: {
     ...mapGetters([
       GetterTypes.GetMyWayIsInit,
-      GetterTypes.GetMyWayPostData,
-      'GetJob',
-      'GetJobData',
-      'GetOccupation',
-      'GetOccupationData',
-      'GetJobSubCodeData'
-    ]),
-    // 您的職業類別
-    jobCode: {
-      get() {
-        return this.GetJob || 0
-      },
-      set(value) {
-        this.FuncGetOccupation({
-          NoClass: value,
-          PlanCode: 'LAA01',
-          Type: '4'
-        })
-        this.$store.state.JOB = value
-      }
-    },
-    // 職業項目
-    jobSubCode: {
-      get() {
-        if (this.$store.state.JOBSUBCODE === '0' || this.$store.state.JOBSUBCODE === '') return 0
-        return this.$store.state.JOBSUBCODE + '-' + this.jobSubCodeText
-      },
-      set(value) {
-        let result = value.split('-')
-        this.FuncGetOccupation({
-          NoClass: this.$store.state.JOB,
-          PlanCode: PLANCODE,
-          Type: '8',
-          subCode: result[0]
-        })
-        this.$store.state.JOBSUBCODE = result[0]
-        this.jobSubCodeText = result[1]
-      }
-    },
-    // 工作內容
-    occupation: {
-      get() {
-        return this.GetOccupation || 0
-      },
-      set(value) {
-        this.$store.state.OCCUPATION = value
-        $('#occupationselect').text(this.jobSubCodeText + ' ' + '【' + $('#occupation option:selected').text() + '】')
-        if (value === '0') {
-          this.GetMyWayPostData.client_occupation_class = ''
-          this.GetMyWayPostData.client_occupation_class_code = ''
-          this.GetMyWayPostData.client_occupation_class_code_name = ''
-          this.GetMyWayPostData.client_occupation_level = ''
-          this.GetMyWayPostData.client_occupation_sub_level = ''
-          return
-        }
-        this.GetJobSubCodeData.forEach(data => {
-          if (data.OCCUPATION_CODE === value) {
-            this.GetMyWayPostData.client_occupation_class = data.OCCUPATION_CLASS
-            this.GetMyWayPostData.client_occupation_class_code = data.OCCUPATION_CODE
-            this.GetMyWayPostData.client_occupation_class_code_name = data.OCCUPATION_DESC
-            this.GetMyWayPostData.client_occupation_level = this.$store.state.JOB
-            this.GetMyWayPostData.client_occupation_sub_level = this.$store.state.JOBSUBCODE
-          }
-        })
-      }
-    }
-  },
-  created() {
-    if (!this.GetMyWayIsInit) {
-      this.GetMyWayPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
-        { Answar: '0' }, { Answar: '0' }, { Answar: '0' },
-        { Answar: '0' }, { Answar: false }, { Answar: false }
-      ]
-      this.FuncGetJob()
-      this.FuncGetOccupation({
-        NoClass: '00',
-        PlanCode: 'LAA01',
-        Type: '4'
-      })
-    }
+      GetterTypes.GetMyWayPostData
+    ])
   },
   methods: {
-    ...mapActions([
-      'FuncGetJob',
-      'FuncGetOccupation'
-    ]),
     OnEnsure(target, value) {
       switch (target) {
         case 'QusAns1':

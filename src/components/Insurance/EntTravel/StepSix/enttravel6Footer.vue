@@ -21,15 +21,14 @@ export default {
   methods: {
     GoToPrev() {
       // 只有子女不會有本人的受益人需跳過此步驟
-      console.log('this.GetEntTravelPostData.TargetType', this.GetEntTravelPostData.TargetType)
       if (parseInt(this.GetEntTravelPostData.TargetType) !== 1) {
-        this.$router.push('/travel-5')
+        this.$router.push('/enttravel-5')
       } else {
-        this.$router.push('/travel-4')
+        this.$router.push('/enttravel-4')
       }
     },
     GotoNext() {
-      this.$router.push('/travel-7')
+      this.$router.push('/enttravel-7')
     }
   }
 }

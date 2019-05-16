@@ -175,7 +175,7 @@ export default {
       'FuncGetDistrictData'
     ]),
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/enttravel-4`)
     },
     GoToNext() {
       this.errorMsg = ''
@@ -198,7 +198,7 @@ export default {
         toggleModalShow(this.errorMsg)
         return
       }
-      this.$router.push('/travel-8')
+      this.$router.push('/enttravel-8')
     },
     // 使用客戶基本資料
     SetAccountData() {

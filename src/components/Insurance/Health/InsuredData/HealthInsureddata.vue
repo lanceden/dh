@@ -14,9 +14,9 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['2']}}</div>
-            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block">{{mockData.VerifyTypeList['4']}}</div>
+            <div class="form-control insure-input-block">{{GetHealthPostData.VerifyTypeList['2']}}</div>
+            <div class="form-control insure-input-block">{{GetHealthPostData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block">{{GetHealthPostData.VerifyTypeList['4']}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -28,13 +28,13 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.city1}}{{mockData.district1}}{{mockData.road1}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.city1}}{{GetHealthPostData.district1}}{{GetHealthPostData.road1}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">總保險費</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">NT$ {{mockData.mode_prem|decimalComma}} </div>
+            <div class="insure-input-block">NT$ {{GetHealthPostData.mode_prem|decimalComma}} </div>
           </div>
         </div>
       </form>
@@ -53,20 +53,20 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">險種名稱</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.ins_type_name}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.ins_type_name}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">保額</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.face_amt}} 萬元</div>
+            <div class="insure-input-block">{{GetHealthPostData.face_amt}} 萬元</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.po_issue_date_Name}} 午夜十二時起</div>
-            <div class="insure-input-block">至{{mockData.matured_date_Name}} 午夜十二時止，共 365</div>
+            <div class="insure-input-block">{{GetHealthPostData.po_issue_date_Name}} 午夜十二時起</div>
+            <div class="insure-input-block">至{{GetHealthPostData.matured_date_Name}} 午夜十二時止，共 365</div>
             <div class="insure-input-block">天</div>
           </div>
         </div>
@@ -86,7 +86,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">住院醫療費用保險金</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">同一次住院期間，憑收據正本於{{mockData.face_amt}}萬元內實</div>
+          <div class="form-control insure-input-block">同一次住院期間，憑收據正本於{{GetHealthPostData.face_amt}}萬元內實</div>
           <div class="form-control insure-input-block second">支實付。</div>
         </div>
       </div>
@@ -105,50 +105,50 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_names}}(要被保人須為同一人)</div>
+            <div class="insure-input-block">{{GetHealthPostData.client_names}}(要被保人須為同一人)</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Birthday_Full}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.Birthday_Full}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Age}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.Age}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_id}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.client_id}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_rate_sex === '1' ? '男' : '女'}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.client_rate_sex === '1' ? '男' : '女'}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{mockData.phone_area}}{{mockData.phone_main}}{{mockData.phone_ext}}</div>
-            <div class="insure-input-block">手機：{{mockData.phone_mobile}}</div>
+            <div class="insure-input-block">電話：{{GetHealthPostData.phone_area}}{{GetHealthPostData.phone_main}}{{GetHealthPostData.phone_ext}}</div>
+            <div class="insure-input-block">手機：{{GetHealthPostData.phone_mobile}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.address1}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.address1}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.address2}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.address2}}</div>
           </div>
         </div>
       </form>
@@ -167,7 +167,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">您的職業類別</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.client_occupation_class_name}} {{mockData.client_occupation_class_detail}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.client_occupation_class_name}} {{GetHealthPostData.client_occupation_class_detail}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -289,19 +289,19 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Applicant_BankCode}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.Applicant_BankCode}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Applicant_BranchName}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.Applicant_BranchName}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{mockData.Applicant_Account}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.Applicant_Account}}</div>
           </div>
         </div>
       </form>
@@ -324,39 +324,39 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
           <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 1">未婚</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 2">已婚</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 3">離婚</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 4">喪偶</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 5">分居</div>
-            <div class="insure-input-block" v-show="parseInt(mockData.owner_marriage) === 6">其他</div>
+            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 1">未婚</div>
+            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 2">已婚</div>
+            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 3">離婚</div>
+            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 4">喪偶</div>
+            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 5">分居</div>
+            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 6">其他</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">身高</label>
           <div class="col-sm-9">
-            <div class="insure-input-block">{{mockData.insured_height}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.insured_height}}</div>
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公分</label>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">體重</label>
           <div class="col-sm-9">
-            <div class="insure-input-block">{{mockData.insured_weight}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.insured_weight}}</div>
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公斤</label>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
           <div class="col-sm-9">
-            <div class="insure-input-block">{{mockData.insured_income}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.insured_income}}</div>
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
           <div class="col-sm-9">
-            <div class="insure-input-block">{{mockData.insured_fam_income}}</div>
+            <div class="insure-input-block">{{GetHealthPostData.insured_fam_income}}</div>
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
         </div>
@@ -364,9 +364,9 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
           <div class="col-sm-12">
             <div class="insure-input-block">
-              <span v-show="parseInt(mockData.visit_time1) === 1">早上9點~12點,</span>
-              <span v-show="parseInt(mockData.visit_time2) === 1">下午1點～6點,</span>
-              <span v-show="parseInt(mockData.visit_time3) === 1">晚上6點~9點</span>
+              <span v-show="parseInt(GetHealthPostData.visit_time1) === 1">早上9點~12點,</span>
+              <span v-show="parseInt(GetHealthPostData.visit_time2) === 1">下午1點～6點,</span>
+              <span v-show="parseInt(GetHealthPostData.visit_time3) === 1">晚上6點~9點</span>
             </div>
           </div>
         </div>
@@ -383,20 +383,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
-import { data } from './mockData'
+import HealthGetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
 export default {
-  data() {
-    return {
-      mockData: data.Data.Result
-    }
-  },
-  created() {
-    console.log(this.mockData)
-  },
   computed: {
     ...mapGetters([
-      GetterTypes.GetIWellPostData
+      HealthGetterTypes.GetHealthPostData
     ])
   }
 }

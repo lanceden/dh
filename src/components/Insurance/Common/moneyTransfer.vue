@@ -1,5 +1,6 @@
 <template>
   <div class="bg-radius">
+    <loading v-show="GetLoading" />
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
@@ -75,6 +76,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetLoading',
       'GetBankData',
       'GetBankBranches'
     ]),
