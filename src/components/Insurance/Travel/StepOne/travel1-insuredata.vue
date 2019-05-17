@@ -53,7 +53,9 @@
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
           <div v-if="this.GetTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
-          <input type="text" class="form-control insure-input insure-input-edit" maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
+          <input type="text" class="form-control insure-input insure-input-edit" 
+          maxlength="10" 
+          placeholder="請填寫" v-else v-model="ProposerInfoId">
         </div>
       </div>
       <div class="form-group row">

@@ -17,9 +17,6 @@ export default {
     GoPrev() {
       this.$router.push(`benf?instypename=ican`)
     },
-    /**
-     * 前往閱讀同意書
-     */
     GoNext() {
       this.$router.push(`/agreement?instypename=ican`)
     }

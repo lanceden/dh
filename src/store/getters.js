@@ -1,11 +1,6 @@
-import types from './types'
 export default {
   GetLoading: state => state.ShowLoading,
   GetIsShowModal: state => state.isShowModal,
-  [types.HeaderIsActive]: state => state.HeaderIsActive,
-  [types.BenfinheritOneDisable]: state => state.BenfinheritOneDisable,
-  [types.BenfinheritTwoDisable]: state => state.BenfinheritTwoDisable,
-  [types.BenfinheritThreeDisable]: state => state.BenfinheritThreeDisable,
   GetJob: state => state.JOB,
   GetJobData: state => state.JOBDATA,
   GetCityData: state => state.CITYDATA,

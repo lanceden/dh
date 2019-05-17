@@ -23,24 +23,6 @@ export default {
     state.HeaderIsActive = isAcvie
   },
   /**
-   * 設定受益人關係輸入框是否關閉
-   * @param {當前Vuex狀態} state VuexStoreState
-   * @param {請求結果} param1 請求回傳結果
-   */
-  SetBenfinheritDisable(state, { benfIndex, isDisable }) {
-    switch (benfIndex) {
-      case 1:
-        state.BenfinheritOneDisable = isDisable
-        break
-      case 2:
-        state.BenfinheritTwoDisable = isDisable
-        break
-      case 3:
-        state.BenfinheritThreeDisable = isDisable
-        break
-    }
-  },
-  /**
    * 取回職業類別
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果

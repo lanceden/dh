@@ -58,6 +58,7 @@
           <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" 
             class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
           <input type="text" class="form-control insure-input insure-input-edit" 
+            maxlength="10"
             placeholder="請填寫" 
             v-else
           v-model="ProposerInfoId">

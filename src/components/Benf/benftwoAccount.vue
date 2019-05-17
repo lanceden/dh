@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="col-sm-12">
-        <div class="insure-tips-text first-blue">
+        <div class="insure-tips-text first-blue" @click="OnShowBanks()">
           <img src="../../../static/img/insure-link.png" alt="">點擊查詢合作金融機構，將自動帶入數值
         </div>
       </div>
@@ -55,7 +55,9 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import { mapGetters, mapActions } from 'vuex'
+import { showBanks } from '../../utils/showBanks'
 
 export default {
   data() {
@@ -119,7 +121,16 @@ export default {
     ...mapActions([
       'FuncGetBank',
       'FuncGetBankBranches'
-    ])
+    ]),
+    OnShowBanks() {
+      let self = this
+      showBanks(this.GetBankData).then(() => {
+        $(`td[name='tdBanks']`).click((event) => {
+          self.BenfBankCode2 = $(event.target).data('bankcode')
+          window.jQuery('#errorModal').modal('hide')
+        })
+      })
+    }
   }
 }
 

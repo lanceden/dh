@@ -19,9 +19,10 @@
           </select>
         </div>
       </div>
+      <div></div>
       <div class="col-sm-12">
-        <div class="insure-tips-text" onclick="location.href='Insure-BankList.html'">
-          <img src="../../../../static/img/insure-link.png" alt="">查詢合作金融機構
+        <div class="insure-tips-text first-blue" @click="OnShowBanks()">
+          <img src="../../../../static/img/insure-link.png" alt="">點擊選取合作金融機構，將自動帶入數值
         </div>
       </div>
       <div class="form-group row">
@@ -57,7 +58,9 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import { mapActions, mapGetters } from 'vuex'
+import { showBanks } from '../../../utils/showBanks'
 
 export default {
   data() {
@@ -122,7 +125,16 @@ export default {
     ...mapActions([
       'FuncGetBank',
       'FuncGetBankBranches'
-    ])
+    ]),
+    OnShowBanks() {
+      let self = this
+      showBanks(this.GetBankData).then(() => {
+        $(`td[name='tdBanks']`).click((event) => {
+          self.Applicant_BankCode = $(event.target).data('bankcode')
+          window.jQuery('#errorModal').modal('hide')
+        })
+      })
+    }
   }
 }
 

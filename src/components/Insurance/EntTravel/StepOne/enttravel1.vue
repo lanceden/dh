@@ -141,6 +141,7 @@ export default {
       },
       set(value) {
         this.entCode = value
+        this.$store.state.ENTERPRISECODE = value
       }
     },
     // 子女數量

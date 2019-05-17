@@ -183,10 +183,10 @@ export default {
     // 身故受益人國籍
     BeneficiaryDataNationality: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Nationality
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Nationality
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index] = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index] = value
       }
     },
     // 身故受益人姓名

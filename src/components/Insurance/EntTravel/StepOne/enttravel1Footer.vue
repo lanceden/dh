@@ -8,6 +8,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import EntTravelFunctionTypes from '../../../../store/modules/EntTravel/Types/EntTravelFunctionTypes.js'
@@ -23,18 +24,12 @@ export default {
   methods: {
     ...mapActions([
       EntTravelFunctionTypes.FuncEntTravelIsInit,
-      EntTravelFunctionTypes.FuncEntTravelInsuredData,
-      EntTravelFunctionTypes.FuncEntTravelValidate
+      EntTravelFunctionTypes.FuncEntTravelInsuredData
     ]),
     GoPrev() {
       this.$router.push(`/enttravel-1?leave=true&token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
-      // 不是企業客戶
-      if (!this.$store.state.ISENTERPRISECODE) {
-        toggleModalShow('您輸入的代碼驗證失敗，請洽詢您公司的負責窗口。', '貼心提醒您')
-        return
-      }
       // 驗證是否有選擇請確認保障對象
       if (this.GetEntTravelPostData.TargetType === undefined || this.GetEntTravelPostData.TargetType === '') {
         toggleModalShow('請確認保障對象', '貼心提醒您')
@@ -82,11 +77,11 @@ export default {
       }
       // 設置旅平險已初始化
       this.FuncEntTravelIsInit(true)
-
       // 前往被保人填寫資料頁
       this.FuncEntTravelInsuredData({
-        para: this.GetTravelPostData,
-        router: this.$router
+        para: this.GetEntTravelPostData,
+        router: this.$router,
+        entCode: this.$store.state.ENTERPRISECODE
       })
     }
   }

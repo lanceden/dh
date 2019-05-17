@@ -25,7 +25,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">受益人國籍</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfNationality3">
@@ -34,7 +34,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12 insure-select-align">
           <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_name3" />
@@ -57,51 +57,47 @@
           <input type="number" class="form-control insure-input-block" v-model="relation_ben_death_seq_percent3">
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
         <div class="col-sm-12 insure-select-align">
           <input type="date" class="form-control insure-input insure-input-edit" v-model="benf_dob3" />
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
           <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_id3" />
         </div>
       </div>
-      <div class="form-group posr row form-group-checked" @click="SetAccountData()" v-show="!BenfinheritThreeDisable">
+      <div class="form-group posr row form-group-checked" @click="SetAccountData()" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼：{{this.GetAccountData.CustMobile}}<br>同客戶住所地址：{{this.GetAccountData.CommunicationAddress.City}}{{this.GetAccountData.CommunicationAddress.District}}{{this.GetAccountData.CommunicationAddress.Road}}</label>
         <div class="checkbox" :class="{ checked: isSetAccountData }"></div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
         <div class="col-sm-12 insure-select-align">
           <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone3" />
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
         <div class="col-sm-12 insure-select-align">
-          <select class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritThreeDisable">
-          </select>
-          <select v-else class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City3">
+          <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
         <div class="col-sm-12 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-edit" v-if="BenfinheritThreeDisable">
-          </select>
-          <select class="form-control data-input insure-select insure-input-edit" v-else v-model="BenfAdd_County3">
+          <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_County3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="!BenfinheritThreeDisable">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
         <div class="col-sm-12 insure-select-align">
           <input type="text" class="form-control data-input insure-input-edit" v-model="BenfAddRemain3" />
@@ -140,8 +136,7 @@ export default {
   methods: {
     ...mapActions([
       'FuncGetCityData',
-      'FuncGetDistrictData',
-      'SetBenfinheritDisable'
+      'FuncGetDistrictData'
     ]),
     // 同客戶資料
     SetAccountData() {
@@ -164,8 +159,7 @@ export default {
       'GetNationData',
       'GetCityData',
       'GetDistrictData',
-      'GetAccountData',
-      'BenfinheritThreeDisable'
+      'GetAccountData'
     ]),
     /**
      * 受益人生日
@@ -240,10 +234,6 @@ export default {
             this.stateData.relation_ben_death_seq_percent3 = '100'
           }
         }
-        this.SetBenfinheritDisable({
-          benfIndex: 3,
-          isDisable: value === '8'
-        })
         this.stateData.relation_ben_death3 = value
       }
     },

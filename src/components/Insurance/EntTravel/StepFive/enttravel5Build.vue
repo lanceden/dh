@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <TravelFive v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelFive>
+    <TravelFive v-for="n in this.GetEntTravelPostData.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelFive>
     <TravelFiveFooter></TravelFiveFooter>
   </div>
 </template>
@@ -9,6 +9,7 @@
 import { mapGetters } from 'vuex'
 import TravelFive from './enttravel5'
 import TravelFiveFooter from './enttravel5Footer'
+import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes'
 
 export default {
   created() {
@@ -16,7 +17,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      EntTravelGetterTypes.GetEntTravelPostData
     ])
   },
   components: {

@@ -56,7 +56,12 @@ export default {
      * 回上一頁
      */
     GoToPrev() {
-      this.$router.go(-1)
+      let planName = this.$store.state.PLANNAME.toLowerCase()
+      if(planName === 'travel' || planName === 'enttravel') {
+
+      } else {
+        this.$router.push(`/${planName}-4`)
+      }
     },
     /**
      * 投保資訊

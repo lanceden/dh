@@ -3,6 +3,7 @@ import stateTypes from './Types/EntTravelStateTypes'
 import getterTypes from './Types/EntTravelGetterTypes'
 import functionTypes from './Types/EntTravelFunctionTypes'
 import rootState from '../../state'
+import { toggleModalShow } from '../../../utils/toggleModal'
 
 const APICODE = 'InsuranceWeb'
 
@@ -24,16 +25,6 @@ const actions = {
     commit(functionTypes.FuncEntTravelIsInit, { result: ENTTRAVELISINIT })
   },
   /**
-   * 企業客戶代碼驗證
-   * @param {commit} param0 提交狀態
-   * @param {bool} ENTTRAVELISINIT 是否已初始化
-   */
-  [functionTypes.FuncEntTravelValidate]({ commit }, entCode) {
-    rootState.Http.axios.post(`${Url.EntTravelValidate}?entCode=${entCode}`).then(response => {
-      commit(functionTypes.FuncEntTravelValidate, { result: response.data })
-    })
-  },
-  /**
    * EntTravel 投保流程初始化
    * @param {commit} param0 提交狀態
    */
@@ -48,11 +39,26 @@ const actions = {
     })
   },
   /**
+   * 企業客戶代碼驗證
+   * @param {commit} param0 提交狀態
+   * @param {bool} ENTTRAVELISINIT 是否已初始化
+   */
+  async [functionTypes.FuncEntTravelValidate]({ commit }, entCode) {
+    await rootState.Http.axios.post(`${Url.VerifyEmploymentId}?empId=${entCode}`).then(response => {
+      commit(functionTypes.FuncEntTravelValidate, { result: response.data })
+    })
+  },
+  /**
    * Travel 處理被保人資料
    * @param {commit} param0 提交狀態
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncEntTravelInsuredData]({ commit }, { para, router }) {
+  async [functionTypes.FuncEntTravelInsuredData]({ commit, dispatch }, { para, router, entCode }) {
+    await dispatch('FuncEntTravelValidate', entCode)
+    if (!rootState.ISENTERPRISECODE) {
+      toggleModalShow('您輸入的代碼驗證失敗，請洽詢您公司的負責窗口。', '貼心提醒您')
+      return
+    }
     rootState.Http.axios.post(`${Url.TravelInsuredData}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: para
@@ -118,14 +124,22 @@ const mutations = {
    * @param {請求結果} param1 請求回傳結果
    */
   [functionTypes.FuncEntTravelInit](state, { result }) {
-    if (result.ResultCode !== '0000') return
+    if (result.ResultCode !== '0000') {
+      toggleModalShow('親愛的保戶您好,由於系統更新中,請您稍候在試!')
+      return
+    }
     state.ENTTRAVELPOSTDATA = result.Data.Result
   },
+  /**
+   * EntTravel 投保流程初始化
+   * @param {state} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
   [functionTypes.FuncEntTravelValidate](state, { result }) {
-    state.ISENTERPRISECODE = result.Data.Result
+    rootState.ISENTERPRISECODE = result.ResultCode === '0000'
   },
   /**
-   * Travel 處理被保人資料
+   * 企業客戶代碼驗證
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */

@@ -156,37 +156,37 @@ export default {
     // 身故受益人關係
     BeneficiaryDataRelationship: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Relationship || 0
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Relationship || 0
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Relationship = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Relationship = value
       }
     },
     // 身故受益人姓名
     BeneficiaryDataName: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Name
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Name
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Name = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Name = value
       }
     },
     // 身故受益人身分證字號
     IdNo: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].IdNo
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].IdNo
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].IdNo = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].IdNo = value
       }
     },
     // 聯絡電話
     ContactNumber: {
       get() {
-        return this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].ContactNumber
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].ContactNumber
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].ContactNumber = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].ContactNumber = value
       }
     },
     // 身故受益人生日-年

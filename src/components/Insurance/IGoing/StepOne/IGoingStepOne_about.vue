@@ -107,6 +107,7 @@
             </ul>
           </div>
         </div>
+        <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12" @click="OnEnsure('QusAns3', true)">
           <div class="insure-notice-box">
             <div class="insure-check">
@@ -225,8 +226,8 @@
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
-      <form class="form-bottom col-sm-12" @click="OnToggle()">
-        <div class=" insure-tips-text">
+      <form class="form-bottom col-sm-12">
+        <div class=" insure-tips-text" @click="OnToggle()">
           查詢相關類別說明<img class="career" :src="occu.showOccupation" />
         </div>
       </form>
