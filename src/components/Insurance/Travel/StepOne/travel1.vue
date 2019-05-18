@@ -144,7 +144,7 @@ export default {
               Name: this.GetTravelPostData.PolicyData.ProposerInfo[0].Name,
               Dob: this.GetTravelPostData.PolicyData.ProposerInfo[0].Dob
             },
-            HasAuthRep: false,
+            HasAuthRep: null,
             show: false
           })
           for (let i = 1; i <= result; i++) {
@@ -200,10 +200,14 @@ export default {
      * @param {string} target 本人:own 子女:child 本人與子女:both
      */
     OnEnsure(target) {
+      // 設置選擇的投保對象
       this.ensure.target = target
+      // 如果選擇的投保對象不是本人, 則需設置子女數量為1
       if (this.childrenNo === 0 || target !== 'own') {
         this.childrenNo = 1
       }
+      this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
+      this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
       switch (target) {
         case 'own': // 1本人
           this.ensure.own = '../../../../../static/img/oval-ed.png'

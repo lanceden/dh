@@ -16,6 +16,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import IWellFunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes.js'
 import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   computed: {
     ...mapGetters([
@@ -31,6 +33,10 @@ export default {
       this.$router.push(`/IWell-1`)
     },
     Estimate() {
+      if (parseInt(this.GetIWellPostData.face_amt) === 0) {
+        toggleModalShow(`請選擇投保額度`)
+        return
+      }
       this.FuncIWellEstimate({ para: this.GetIWellPostData, router: this.$router })
     }
   }

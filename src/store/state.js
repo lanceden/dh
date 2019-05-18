@@ -36,6 +36,9 @@ export default {
   OCCUPATION: '',
   OCCUPATIONDATA: [],
   AGREEMENTTOGGLE: false,
+  // 是否有監護宣告
+  isHasAuthRepYes: '../../../../static/img/oval.png',
+  isHasAuthRepNo: '../../../../static/img/oval.png',
   // 同意書總數
   AGREEMENTCOUNT: 0,
   // 付款方式

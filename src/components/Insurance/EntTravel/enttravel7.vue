@@ -97,17 +97,17 @@ export default {
   created() {
     this.FuncGetCityData()
     this.FuncGetDistrictData(CITYNAME)
-    if (this.GetEntTravelPostData.EmergencyContactAddr === null) {
-      this.GetEntTravelPostData.EmergencyContactAddr = {
+    if (this.GetEntTravelPostData.PolicyData.EmergencyContactAddr === null) {
+      this.GetEntTravelPostData.PolicyData.EmergencyContactAddr = {
         City: '',
         District: '',
         Street: ''
       }
     } else {
       // 暫存舊的通訊地址
-      this.tempCity2 = this.GetEntTravelPostData.EmergencyContactAddr.City
-      this.tempDistrict2 = this.GetEntTravelPostData.EmergencyContactAddr.District
-      this.tempRoad2 = this.GetEntTravelPostData.EmergencyContactAddr.Street
+      this.tempCity2 = this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.City
+      this.tempDistrict2 = this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District
+      this.tempRoad2 = this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.Street
     }
   },
   computed: {
@@ -121,51 +121,51 @@ export default {
     // 緊急聯絡人姓名
     EmergencyContactName: {
       get() {
-        return this.GetEntTravelPostData.EmergencyContactName
+        return this.GetEntTravelPostData.PolicyData.EmergencyContactName
       },
       set(value) {
-        this.GetEntTravelPostData.EmergencyContactName = value
+        this.GetEntTravelPostData.PolicyData.EmergencyContactName = value
       }
     },
     // 緊急聯絡人電話
     EmergencyContactTel: {
       get() {
-        return this.GetEntTravelPostData.EmergencyContactTel
+        return this.GetEntTravelPostData.PolicyData.EmergencyContactTel
       },
       set(value) {
-        this.GetEntTravelPostData.EmergencyContactTel = value
+        this.GetEntTravelPostData.PolicyData.EmergencyContactTel = value
       }
     },
     // 緊急聯絡人地址-縣市
     EmergencyContactAddrCity: {
       get() {
-        return this.GetEntTravelPostData.EmergencyContactAddr.City || 0
+        return this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.City || 0
       },
       set(value) {
-        this.GetEntTravelPostData.EmergencyContactAddr.City = value
+        this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.City = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
         this.FuncGetDistrictData(value)
-        this.GetEntTravelPostData.EmergencyContactAddr.District = 0
+        this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District = 0
       }
     },
     // 緊急聯絡人地址-區域
     EmergencyContactAddrDistrict: {
       get() {
-        if (this.GetEntTravelPostData.EmergencyContactAddr.District === 0) return 0
-        return (`${this.GetEntTravelPostData.EmergencyContactAddr.District}`) || 0
+        if (this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District === 0) return 0
+        return (`${this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District}`) || 0
       },
       set(value) {
         // item.Zip|item.Area
-        this.GetEntTravelPostData.EmergencyContactAddr.District = value
+        this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District = value
       }
     },
     // 緊急聯絡人地址-路
     EmergencyContactAddrStreet: {
       get() {
-        return this.GetEntTravelPostData.EmergencyContactAddr.Street
+        return this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.Street
       },
       set(value) {
-        this.GetEntTravelPostData.EmergencyContactAddr.Street = value
+        this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.Street = value
       }
     }
   },

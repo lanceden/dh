@@ -13,7 +13,7 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">旅行平安保險保額</label>
+          <label class="col-sm-12 col-form-label insure-label">旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="PrimaryPolicyFaceAmtChild">
               <option selected="selected" :value="200">200萬</option>
@@ -21,19 +21,17 @@
             </select>
           </div>
           <!-- 傷害醫療 -->
-          <label for="" class="col-sm-12 col-form-label insure-label">傷害醫療</label>
+          <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
               <option v-for="item in silDataChild" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
-          <div v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2 && this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry === '7'">
-            <label for="" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
-            <div class="col-sm-12 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmtoOverSea">
-                <option v-for="item in silDataChild" :key="item.Value" :value="item.Value">{{item.Text}}</option>
-              </select>
-            </div>
+          <label v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
+          <div class="col-sm-12 insure-select-align" v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2">
+            <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">
+              <option v-for="item in silDataChild" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+            </select>
           </div>
         </div>
         <div class="col-sm-12">
@@ -57,6 +55,7 @@ export default {
   ],
   data() {
     return {
+      SupplementPolicyFaceAmtoOverSeaDisable: false,
       baoer: [],
       silData: [],
       silDataChild: [{
@@ -103,7 +102,7 @@ export default {
           }
         }
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2 && this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry === '7') {
+        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2) {
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
           this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
         }
@@ -119,6 +118,7 @@ export default {
       },
       set(value) {
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = value
+        this.SupplementPolicyFaceAmtoOverSea = value
       }
     },
     // 被保險人(本人)：海外突發疾病
@@ -127,11 +127,13 @@ export default {
         return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt || 20
       },
       set(value) {
-        if (this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2 && this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry === '7') {
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = value
+        // 若為0要關閉
+        if (value === '0') {
+          this.SupplementPolicyFaceAmtoOverSeaDisable = true
         } else {
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = 0
+          this.SupplementPolicyFaceAmtoOverSeaDisable = false
         }
+        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = value
       }
     }
   }

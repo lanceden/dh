@@ -6,9 +6,10 @@
     <template>
       <div v-if="this.GetTravelPostData.length !== 0">
         <template>
-          <div v-if="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo !== null">
+          <div v-if="this.GetTravelPostData.PolicyData.InsuredInfo !== null">
             <TravelOneInsureData
-              v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelOneInsureData>
+              v-for="n in this.GetTravelPostData.PolicyData.InsuredInfo.length" :key="n" 
+              :index="n - 1"></TravelOneInsureData>
           </div>
         </template>
       </div>

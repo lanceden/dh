@@ -23,11 +23,18 @@ export default {
       this.$router.push(`/travel-4`)
     },
     GoToNext() {
-      // 本人及本人加子女
-      if (this.$store.state.Travel.TRAVELPOSTDATA.TargetType === '0' || this.$store.state.Travel.TRAVELPOSTDATA.TargetType === '2') {
-        this.$router.push('/travel-6')
-      } else {
+      let result = parseInt(this.$store.state.Travel.TRAVELPOSTDATA.TargetType)
+      // 本人
+      if (result === 0) {
         this.$router.push('/travel-7')
+      }
+      // 子女
+      if (result === 1) {
+        this.$router.push('/travel-6')
+      }
+      // 本人及本人加子女
+      if (result === 2) {
+        this.$router.push('/travel-6')
       }
     }
   }

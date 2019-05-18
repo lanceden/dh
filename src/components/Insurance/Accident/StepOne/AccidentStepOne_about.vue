@@ -158,7 +158,6 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">請問您目前身體機能是否有下列障害?</label>
         <div class="border-bottom-line col-sm-12"></div>
-        <div class="border-bottom-line col-sm-12"></div>
         <div class="insure-text insure-text-explan">
           <ul class="insure-text-explancontent">
             <li class="decimal first">失明。
@@ -219,7 +218,6 @@
     <!-- 職業類別 -->
     <div class="form-group row">
       <label for="" class="col-sm-12 col-form-label insure-label">職業類別</label>
-      <div class="border-bottom-line col-sm-12"></div>
       <div class="border-bottom-line col-sm-12"></div>
       <div class="top col-sm-12" @click="OnOccupation(1)">
         <div class="insure-notice-box">

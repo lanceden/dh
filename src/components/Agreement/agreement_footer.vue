@@ -58,7 +58,7 @@ export default {
     GoToPrev() {
       let planName = this.$store.state.PLANNAME.toLowerCase()
       if(planName === 'travel' || planName === 'enttravel') {
-
+        this.$router.push(`/travel-8`)
       } else {
         this.$router.push(`/${planName}-4`)
       }

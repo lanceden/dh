@@ -16,6 +16,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import FunctionTypes from '../../../../store/modules/Accident/Types/AccidentFunctionTypes'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   computed: {
     ...mapGetters([
@@ -31,6 +33,10 @@ export default {
       this.$router.push(`/accident-1?token=${this.$store.state.ApiToken}`)
     },
     Estimate() {
+      if (parseInt(this.GetAccidentPostData.face_amt) === 0) {
+        toggleModalShow(`請選擇投保額度`)
+        return
+      }
       this.FuncAccidentEstimate({ para: this.GetAccidentPostData, router: this.$router })
     }
   }

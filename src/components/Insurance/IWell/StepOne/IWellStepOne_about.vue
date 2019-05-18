@@ -144,7 +144,7 @@
             </ul>
           </div>
         </div>
-
+        <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12" @click="OnEnsure('QusAns4', true)">
           <div class="insure-notice-box">
             <div class="insure-check">

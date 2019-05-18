@@ -21,7 +21,6 @@ export default {
   methods: {
     GoToPrev() {
       // 只有子女不會有本人的受益人需跳過此步驟
-      console.log('this.GetTravelPostData.TargetType', this.GetTravelPostData.TargetType)
       if (parseInt(this.GetTravelPostData.TargetType) !== 1) {
         this.$router.push('/travel-5')
       } else {

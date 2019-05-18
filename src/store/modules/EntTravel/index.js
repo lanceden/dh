@@ -160,6 +160,7 @@ const mutations = {
       item.BeneficiaryData = []
       item.BeneficiaryData.push({
         Relationship: '',
+        Nationality: '',
         Name: '',
         IdNo: '',
         Dob: '',

@@ -225,6 +225,8 @@ export default {
       if (this.childrenNo === 0 || target !== 'own') {
         this.childrenNo = 1
       }
+      this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
+      this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
       switch (target) {
         case 'own': // 1本人
           this.ensure.own = '../../../../../static/img/oval-ed.png'

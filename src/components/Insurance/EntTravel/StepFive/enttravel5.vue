@@ -49,23 +49,8 @@
           </div>
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-            <div class="col-sm-4 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear">
-                <option v-if="Relation === '本人'" :value="DobYear">{{DobYear}}</option>
-                <option v-else v-for="n in 100" :key="n" :value="new Date().getFullYear() + 1 - n">{{new Date().getFullYear() + 1 - n}}</option>
-              </select>年
-            </div>
-            <div class="col-sm-4 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth">
-                <option v-if="Relation === '本人'" :value="DobMonth">{{DobMonth}}</option>
-                <option v-else v-for="n in 12" :key="n" :value="n">{{n}}</option>
-              </select>月
-            </div>
-            <div class="col-sm-4 insure-select-align">
-              <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay">
-                <option v-if="Relation === '本人'" :value="DobDay">{{DobDay}}</option>
-                <option v-else v-for="n in 31" :key="n" :value="n">{{n}}</option>
-              </select>日
+            <div class="col-sm-12 insure-select-align">
+              <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" :disabled="this.Relation === '本人'" />
             </div>
           </div>
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
@@ -131,14 +116,11 @@ export default {
   ],
   data() {
     return {
+      dbo: 0,
       isOnBenf: false,
       isSetAccountData: false,
       cbOldAddr: true,
-      cbNewAddr: false,
-      tempZip2: '',
-      tempCity2: '',
-      tempDistrict2: '',
-      tempRoad2: ''
+      cbNewAddr: false
     }
   },
   created() {
@@ -147,10 +129,6 @@ export default {
   },
   mounted() {
     this.FuncGetNationality('')
-    // 暫存舊的通訊地址
-    this.tempCity2 = this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.City
-    this.tempDistrict2 = this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.District
-    this.tempRoad2 = this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Address.Street
   },
   computed: {
     ...mapGetters([
@@ -183,10 +161,11 @@ export default {
     // 身故受益人國籍
     BeneficiaryDataNationality: {
       get() {
-        return this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Nationality
+        return this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Nationality || 0
       },
       set(value) {
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index] = value
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Nationality = value
+        console.log(this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Nationality)
       }
     },
     // 身故受益人姓名
@@ -216,43 +195,19 @@ export default {
         this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].ContactNumber = value
       }
     },
-    // 身故受益人生日-年
-    DobYear: {
+    // 身故受益人生日
+    DobComputed: {
       get() {
         if (this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob === '') {
-          return 2019
+          return
         }
-        let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[0]
-        return parseInt(result)
+        let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        this.dob = result
+        return this.dob
       },
       set(value) {
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = `${value}-${this.DobMonth}-${this.DobDay}`
-      }
-    },
-    // 身故受益人生日-月
-    DobMonth: {
-      get() {
-        if (this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob === '') {
-          return 1
-        }
-        let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[1]
-        return parseInt(result)
-      },
-      set(value) {
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = `${this.DobYear}-${value}-${this.DobDay}`
-      }
-    },
-    // 身故受益人生日-日
-    DobDay: {
-      get() {
-        if (this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob === '') {
-          return 1
-        }
-        let result = moment(this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD').split('-')[2]
-        return parseInt(result)
-      },
-      set(value) {
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = `${this.DobYear}-${this.DobMonth}-${value}`
+        this.GetEntTravelPostData.PolicyData.InsuredInfo[0].BeneficiaryData[this.index].Dob = value
+        this.dob = value
       }
     },
     // 身故受益人地址-縣市

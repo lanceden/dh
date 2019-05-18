@@ -28,7 +28,6 @@ export default {
       this.$router.push(`/travel-2`)
     },
     Estimate() {
-      console.log(JSON.stringify(this.GetTravelPostData))
       this.FuncTravelEstimate({
         para: this.GetTravelPostData,
         router: this.$router

@@ -123,7 +123,8 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{item.PersonalData.Name}}</div>
+          <div class="form-control insure-input-block" v-show="index === 0">{{item.PersonalData.Name}} (本人)</div>
+          <div class="form-control insure-input-block" v-show="index > 0">{{item.PersonalData.Name}} (子女)</div>
         </div>
       </div>
       <div class="form-group row">

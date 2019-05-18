@@ -41,6 +41,9 @@
           <option value="A">東南亞</option>
           <option value="6">其他地區</option>
         </select>
+        <div class="col-sm-12 insure-select-align" v-show="TravelCountry === '6'">
+          <input type="text" class="form-control insure-input insure-input-edit" id="" placeholder="請填寫" v-model="EtcCountry">
+        </div>
       </div>
     </div>
     <div class="col-sm-12">

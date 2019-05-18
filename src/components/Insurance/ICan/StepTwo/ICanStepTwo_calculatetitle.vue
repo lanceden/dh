@@ -16,6 +16,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   computed: {
     ...mapGetters([
@@ -31,6 +33,10 @@ export default {
       this.$router.push(`/ICan-1`)
     },
     Estimate() {
+      if (parseInt(this.GetICanPostData.face_amt) === 0) {
+        toggleModalShow(`請選擇投保額度`)
+        return
+      }
       this.FuncICanEstimate({ para: this.GetICanPostData, router: this.$router })
     }
   }

@@ -25,45 +25,24 @@
         </div>
       </div>
       <div class="form-group row">
-        <!-- <input type="date" class="form-control insure-input insure-input-edit"  value="2013-01-08" /> -->
         <label for="" class="col-sm-12 col-form-label insure-label">出生生日</label>
-        <div class="col-sm-4 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobYear">
-            <option v-show="Relation !== '本人'" value="0">請選擇</option>
-            <option v-if="Relation === '本人'" :value="DobYear">{{DobYear}}</option>
-            <option v-else v-for="n in 100" :key="n" :value="new Date().getFullYear() + 1 - n">{{new Date().getFullYear() + 1 - n}}</option>
-          </select>年
-        </div>
-        <div class="col-sm-4 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobMonth">
-            <option v-show="Relation !== '本人'" value="0">請選擇</option>
-            <option v-if="Relation === '本人'" :value="DobMonth">{{DobMonth}}</option>
-            <option v-else v-for="n in 12" :key="n" :value="n">{{n}}</option>
-          </select>月
-        </div>
-        <div class="col-sm-4 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="DobDay">
-            <option v-show="Relation !== '本人'" value="0">請選擇</option>
-            <option v-if="Relation === '本人'" :value="DobDay">{{DobDay}}</option>
-            <option v-else v-for="n in 31" :key="n" :value="n">{{n}}</option>
-          </select>日
+        <div class="col-sm-12 insure-select-align">
+          <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" :disabled="this.Relation === '本人'" />
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
           <div v-if="this.GetTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
-          <input type="text" class="form-control insure-input insure-input-edit" 
-          maxlength="10" 
-          placeholder="請填寫" v-else v-model="ProposerInfoId">
+          <input type="text" class="form-control insure-input insure-input-edit" maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">監護宣告</label>
         <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12">
+        <div class="top col-sm-12" >
           <div class="insure-notice-box" @click="OnEnsure('yes')">
-            <div class="insure-check"><img :src="ensure.isHasAuthRepYes" alt=""></div>
+            <div class="insure-check"><img id="imgHasAuthyes" :src="this.$store.state.isHasAuthRepYes" alt=""></div>
             <div class="insure-check-content">是</div>
           </div>
         </div>
@@ -72,7 +51,7 @@
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('no')">
-            <div class="insure-check"><img :src="ensure.isHasAuthRepNo" alt=""></div>
+            <div class="insure-check"><img id="imgHasAuthno" :src="this.$store.state.isHasAuthRepNo" alt=""></div>
             <div class="insure-check-content">否</div>
           </div>
         </div>
@@ -90,20 +69,14 @@ export default {
   props: [
     'index'
   ],
-  created() {
+  mounted() {
     if (this.GetTravelPostData.PolicyData.TravelCountry !== null) {
       this.OnEnsure(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep === true ? 'yes' : 'no')
     }
   },
   data() {
     return {
-      year: 0,
-      month: 0,
-      day: 0,
-      ensure: {
-        isHasAuthRepYes: '../../../../static/img/oval.png',
-        isHasAuthRepNo: '../../../../static/img/oval.png'
-      }
+      dbo: 0
     }
   },
   computed: {
@@ -131,52 +104,16 @@ export default {
         this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Name = value
       }
     },
-    DobYear: {
+    // 身故受益人生日
+    DobComputed: {
       get() {
-        if (this.Relation === '本人') {
-          let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY')
-          this.year = result
-        }
-        return this.year
+        let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        this.dob = result
+        return this.dob
       },
       set(value) {
-        let result = parseInt(value)
-        if (result !== 0) {
-          this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${value}/${this.DobMonth}/${this.DobDay}`
-        }
-        this.year = result
-      }
-    },
-    DobMonth: {
-      get() {
-        if (this.Relation === '本人') {
-          let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY/MM')
-          this.month = result.split('/')[1]
-        }
-        return this.month
-      },
-      set(value) {
-        let result = parseInt(value)
-        if (result !== 0) {
-          this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${value}/${this.DobDay}`
-        }
-        this.month = result
-      }
-    },
-    DobDay: {
-      get() {
-        if (this.Relation === '本人') {
-          let result = moment(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob, 'YYYY/MM/DD').format('YYYY/MM/DD')
-          this.day = result.split('/')[2]
-        }
-        return this.day
-      },
-      set(value) {
-        let result = parseInt(value)
-        if (result !== 0) {
-          this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${this.DobYear}/${this.DobMonth}/${value}`
-        }
-        this.day = result
+        this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PersonalData.Dob = `${value}`
+        this.dob = value
       }
     },
     ProposerInfoId: {
@@ -196,12 +133,16 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'yes':
-          this.ensure.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
-          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
+          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
+          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
         case 'no':
-          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
-          this.ensure.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
+          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
+          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
+          break
+        default:
+          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
+          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
       }
       this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
