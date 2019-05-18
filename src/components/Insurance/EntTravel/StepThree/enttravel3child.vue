@@ -16,22 +16,21 @@
           <label class="col-sm-12 col-form-label insure-label">旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="PrimaryPolicyFaceAmtChild">
-              <option selected="selected" :value="200">200萬</option>
-              <option :value="100">100萬</option>
+              <option v-for="(item, index) in this.$store.state.CHILDCOVERAGESLI" :key="index" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
           <!-- 傷害醫療 -->
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
-              <option v-for="item in silDataChild" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              <option v-for="item in this.$store.state.CHILDSUPPLCOVERAGESLI" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
           <label class="col-sm-12 col-form-label insure-label" v-show="ShowOverSea">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable"
             v-model="SupplementPolicyFaceAmtoOverSea">
-              <option v-for="item in silDataChild" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              <option v-for="item in this.$store.state.CHILDSUPPLCOVERAGESLI" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
         </div>
@@ -48,38 +47,27 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
-import { data } from './mockBaoerData'
-import { silData } from './mockSupplCoverageSli'
+
 export default {
   props: [
     'index'
   ],
   data() {
     return {
-      SupplementPolicyFaceAmtoOverSeaDisable: false,
-      baoer: [],
-      silData: [],
-      silDataChild: [{
-        Text: '20萬',
-        Value: 20
-      },
-      {
-        Text: '10萬',
-        Value: 10
-      }]
+      SupplementPolicyFaceAmtoOverSeaDisable: false
     }
   },
   created() {
     // 取回保額
-    console.log(this.index)
-    this.baoer = data.Data.Result
-    this.silData = silData.Data.Result
+    this.FuncGetInsTravelChildCoverageSli()
   },
   computed: {
     ...mapGetters([
       'GetLoading',
+      'CHILDCOVERAGESLI',
+      'CHILDSUPPLCOVERAGESLI',
       EntTravelGetterTypes.GetEntTravelPostData
     ]),
     ShowOverSea: {
@@ -98,21 +86,6 @@ export default {
       set(value) {
         this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = value
         // 變更值後傷害醫療及海外突發疾病下拉框需一起改變值
-        let maxIndex = value.toString().substring(0, 1)
-        this.silDataChild = []
-        for (let index = maxIndex; index >= 0; index--) {
-          if (index !== 0) {
-            this.silDataChild.push({
-              Text: `${index}0萬`,
-              Value: `${index}0`
-            })
-          } else {
-            this.silDataChild.push({
-              Text: `不投保`,
-              Value: `0`
-            })
-          }
-        }
         this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
         if (this.GetEntTravelPostData.PolicyData.TravelType === 2) {
           this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
@@ -148,6 +121,11 @@ export default {
         this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = value
       }
     }
+  },
+  methods: {
+    ...mapActions([
+      'FuncGetInsTravelChildCoverageSli' // 子女主約
+    ])
   }
 }
 

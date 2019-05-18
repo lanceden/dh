@@ -124,6 +124,36 @@ export default {
     })
   },
   /**
+   * 本人旅平附約保額(申根非申根)
+   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {object} para 請求參數
+   */
+  async FuncGetInsTravelSupplCoverageSli({ commit }, para) {
+    await rootState.Http.axios.post(`${Url.InsTravelSupplCoverageSli}`, para).then(response => {
+      commit('FuncGetInsTravelSupplCoverageSli', { result: response.data })
+    })
+  },
+  /**
+   * 旅平子女主約保額
+   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {object} para 請求參數
+   */
+  async FuncGetInsTravelChildCoverageSli({ commit }, para) {
+    await rootState.Http.axios.post(`${Url.InsTravelChildCoverageSli}`, para).then(response => {
+      commit('FuncGetInsTravelChildCoverageSli', { result: response.data })
+    })
+  },
+  /**
+   * 旅平子女附約保額
+   * @param {當前Vuex狀態} commit VuexStoreState
+   * @param {object} para 請求參數
+   */
+  async FuncGetInsTravelChildSupplCoverageSli({ commit }, schengen) {
+    await rootState.Http.axios.post(`${Url.InsTravelChildSupplCoverageSli}?schengen=${schengen}`).then(response => {
+      commit('FuncGetInsTravelChildSupplCoverageSli', { result: response.data })
+    })
+  },
+  /**
    * 檢查是否為企業客戶
    * @param {當前Vuex狀態} commit VuexStoreState
    * @param {object} para 請求參數

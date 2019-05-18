@@ -25,14 +25,14 @@
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
-              <option v-for="item in silData" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              <option v-for="item in this.$store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
           <!-- 海外突發疾病 -->
           <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
             <select class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">
-              <option v-for="item in silData" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              <option v-for="item in this.$store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
         </div>
@@ -51,8 +51,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes'
-import { data } from './mockBaoerData'
-import { silData } from './mockSupplCoverageSli'
 
 export default {
   props: [
@@ -60,32 +58,30 @@ export default {
   ],
   data() {
     return {
-      SupplementPolicyFaceAmtoOverSeaDisable: false,
-      baoer: [],
-      silData: []
+      SupplementPolicyFaceAmtoOverSeaDisable: false
     }
-  },
-  created() {
-    // 取回保額
-    console.log(this.index)
-    this.baoer = data.Data.Result
-    this.silData = silData.Data.Result
   },
   mounted() {
     this.FuncGetPremiums({
       Verified: this.GetAccountData.JoinSource !== '3' ? 'Y' : 'N',
       PLAN_Code_1: this.GetTravelPostData.InsurancePlanCode
     })
+    this.FuncGetInsTravelSupplCoverageSli({
+      IsVerified: this.GetTravelPostData.PolicyData.ProposerInfo[0].IsVerified,
+      PlanCode: this.GetTravelPostData.InsurancePlanCode,
+      Schengen: this.GetTravelPostData.PolicyData.TravelType === '2' && this.GetTravelPostData.PolicyData.TravelCountry === '7'
+    })
   },
   computed: {
     ...mapGetters([
       'GetPremiums',
+      'TRAVELSUPPL',
       'GetAccountData',
       TravelGetterTypes.GetTravelPostData
     ]),
     ShowOverSea: {
       get() {
-        return parseInt(this.GetEntTravelPostData.PolicyData.TravelType) === 2
+        return parseInt(this.GetTravelPostData.PolicyData.TravelType) === 2
       }
     },
     // 保額下拉框
@@ -106,21 +102,6 @@ export default {
       set(value) {
         this.GetTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = value
         // 變更值後傷害醫療及海外突發疾病下拉框需一起改變值
-        let maxIndex = value.toString().substring(0, 1)
-        this.silData = []
-        for (let index = maxIndex; index >= 0; index--) {
-          if (index !== 0) {
-            this.silData.push({
-              Text: `${index}0萬`,
-              Value: `${index}0`
-            })
-          } else {
-            this.silData.push({
-              Text: `不投保`,
-              Value: `0`
-            })
-          }
-        }
         this.GetTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[this.index].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
         if (this.ShowOverSea) {
           this.GetTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
@@ -159,7 +140,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'FuncGetPremiums'
+      'FuncGetPremiums', // 本人主約
+      'FuncGetInsTravelSupplCoverageSli' // 本人附約
     ])
   }
 }

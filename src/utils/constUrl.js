@@ -59,6 +59,18 @@ const EACHAccount = `${Domain}/Customer/EachAccount`
  */
 const Premiums = `${Domain}/Query/Premiums`
 /**
+ * 旅平附約保額(申根)
+ */
+const InsTravelSupplCoverageSli = `${Domain}/Query/InsTravelSupplCoverageSli`
+/**
+ * 旅平子女主約保額
+ */
+const InsTravelChildCoverageSli = `${Domain}/Query/InsTravelChildCoverageSli`
+/**
+ * 旅平子女附約保額
+ */
+const InsTravelChildSupplCoverageSli = `${Domain}/Query/InsTravelChildSupplCoverageSli`
+/**
  * 取回各商品不同身份別保額
  */
 const GetAccountData = `${Domain}/Account/GetAccountData`
@@ -283,6 +295,9 @@ export default {
   Beneficiary,
   EACHAccount,
   Premiums,
+  InsTravelSupplCoverageSli,
+  InsTravelChildCoverageSli,
+  InsTravelChildSupplCoverageSli,
   GetAccountData,
   InsCoverageSelectListItem,
   SendOTP,

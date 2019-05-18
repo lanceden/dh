@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
-      <div class="col-sm-12 insure-select-align" v-show="this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 2">
+      <div class="col-sm-12 insure-select-align" v-show="parseInt(this.GetTravelPostData.PolicyData.TravelType) === 2">
         <select id="" class="form-control data-input insure-select  insure-select-withradio" v-model="TravelCountry">
           <option value="0" selected="selected">請選擇准備前往國家</option>
           <option value="2">加拿大</option>
@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
 import moment from 'moment'
 
@@ -121,7 +121,7 @@ export default {
     }
   },
   mounted() {
-    this.OnEnsure(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType === 1)
+    this.OnEnsure(this.GetTravelPostData.PolicyData.TravelType === 1)
   },
   computed: {
     ...mapGetters([
@@ -129,67 +129,72 @@ export default {
     ]),
     year: {
       get() {
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[0]
+        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[0]
         return result
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate = `${value}-${this.month}-${this.day} ${this.time}`
+        this.GetTravelPostData.PolicyData.InsStartDate = `${value}-${this.month}-${this.day} ${this.time}`
       }
     },
     month: {
       get() {
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[1]
+        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[1]
         return result
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate = `${this.year}-${value}-${this.day} ${this.time}`
+        this.GetTravelPostData.PolicyData.InsStartDate = `${this.year}-${value}-${this.day} ${this.time}`
       }
     },
     day: {
       get() {
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[2].split(' ')[0]
+        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[2].split(' ')[0]
         return result
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate = `${this.year}-${this.month}-${value} ${this.time}`
+        this.GetTravelPostData.PolicyData.InsStartDate = `${this.year}-${this.month}-${value} ${this.time}`
       }
     },
     time: {
       get() {
-        let result = moment(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split(' ')[1]
+        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split(' ')[1]
         return result
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate = `${this.year}-${this.month}-${this.day} ${value}`
-        console.log(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsStartDate)
+        this.GetTravelPostData.PolicyData.InsStartDate = `${this.year}-${this.month}-${this.day} ${value}`
       }
     },
     TravelDay: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelDay
+        return this.GetTravelPostData.PolicyData.TravelDay
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelDay = value
+        this.GetTravelPostData.PolicyData.TravelDay = value
       }
     },
     TravelCountry: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry || 0
+        return this.GetTravelPostData.PolicyData.TravelCountry || 0
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry = value
+        this.GetTravelPostData.PolicyData.TravelCountry = value
+        this.FuncGetInsTravelChildSupplCoverageSli(
+          (parseInt(this.GetTravelPostData.PolicyData.TravelType) === 2 && parseInt(value) === 7) ? '1' : '0'
+        )
       }
     },
     EtcCountry: {
       get() {
-        return this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EtcCountry
+        return this.GetTravelPostData.PolicyData.EtcCountry
       },
       set(value) {
-        this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EtcCountry = value
+        this.GetTravelPostData.PolicyData.EtcCountry = value
       }
     }
   },
   methods: {
+    ...mapActions([
+      'FuncGetInsTravelChildSupplCoverageSli' // 子女附約'
+    ]),
     /**
      * 設置請確認保障對象
      * @param {string} target 國內:in 國外:out
@@ -199,15 +204,15 @@ export default {
         case 'in': // 國內
           this.ensure.in = '../../../../../static/img/oval-ed.png'
           this.ensure.out = '../../../../../static/img/oval.png'
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType = 1
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry = 1
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.EtcCountry = ''
+          this.GetTravelPostData.PolicyData.TravelType = 1
+          this.GetTravelPostData.PolicyData.TravelCountry = 1
+          this.GetTravelPostData.PolicyData.EtcCountry = ''
           break
         case 'out': // 國外
           this.ensure.in = '../../../../../static/img/oval.png'
           this.ensure.out = '../../../../../static/img/oval-ed.png'
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelType = 2
-          this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.TravelCountry = 0
+          this.GetTravelPostData.PolicyData.TravelType = 2
+          this.GetTravelPostData.PolicyData.TravelCountry = 0
           break
       }
     }

@@ -21,7 +21,7 @@ export default {
   created() {
     if (!this.GetEZCashIsInit) {
       this.FuncEZCashInit()
-      this.$store.state.PLANNAME = 'EZCash'
+      this.$store.state.PLANNAME = 'EZCASH'
     }
   },
   computed: {

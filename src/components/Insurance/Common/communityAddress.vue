@@ -65,7 +65,6 @@ import $ from 'jquery'
 import { mapGetters, mapActions } from 'vuex'
 import { InitColumnData } from '../../../utils/initColumnData'
 
-const DEFAULTCITYNAME = '基隆市'
 export default {
   props: [
     'stateData'
@@ -90,7 +89,7 @@ export default {
     this.tempdistrict1 = this.stateData.zip1 + '-' + this.stateData.district1
     this.temproad2 = this.stateData.road1
     this.FuncGetCityData()
-    this.FuncGetDistrictData(DEFAULTCITYNAME)
+    this.FuncGetDistrictData(this.stateData.city1)
     this.OnCommunityAddress(this.stateData.IsSaveCommu ? 'new' : 'old')
   },
   computed: {
@@ -107,7 +106,6 @@ export default {
         this.stateData.city1 = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
         this.FuncGetDistrictData(value)
-        this.stateData.district1 = 0
       }
     },
     // 輸入新的戶籍地址-區域
@@ -154,7 +152,7 @@ export default {
           this.cbNewAddr2 = false
           this.stateData.IsSaveCommu = false
           this.city1 = this.tempcity1
-          this.district1 = this.tempzip1 + '-' + this.tempcity1
+          this.district1 = this.tempdistrict1
           this.road1 = this.temproad2
           break
         case 'new':
@@ -166,6 +164,7 @@ export default {
           this.ensure.new = '../../../static/img/oval-ed.png'
           this.cbNewAddr2 = true
           this.stateData.IsSaveCommu = true
+          this.FuncGetDistrictData(this.city1)
           break
       }
     }

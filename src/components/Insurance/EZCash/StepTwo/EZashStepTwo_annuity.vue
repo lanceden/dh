@@ -24,19 +24,29 @@
           歲之保單週年日
         </div>
         <div class="insure-tips-text">
-          ※年金累積期間不得低於六年
+          ※年金累積期間不得低於6年
         </div>
       </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-        <div class="col-sm-12">
-          <select class="form-control data-input" v-model="anny_frequence">
-            <option selected="selected" value="0">一次給付</option>
-            <option value="1">分期給付</option>
-          </select>
+      <form class="form-bottom">
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="top col-sm-12" @click="OnEnsure('one')">
+            <div class="insure-notice-box">
+              <div class="insure-check"><img :src="ensure.anny_frequenceOne" alt=""></div>
+              <div class="insure-check-content">一次給付</div>
+            </div>
+          </div>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="top col-sm-12" @click="OnEnsure('more')">
+            <div class="insure-notice-box">
+              <div class="insure-check"><img :src="ensure.anny_frequenceMore" alt=""></div>
+              <div class="insure-check-content">分期給付</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="form-group row" v-show="GetEZCashPostData.anny_frequence !== 0">
+      </form>
+      <div class="form-group row" v-show="parseInt(GetEZCashPostData.anny_frequence) !== 0">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">分期給付方式</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="anny_frequence_computed">
@@ -48,7 +58,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="GetEZCashPostData.anny_frequence !== 0">
+      <div class="form-group row" v-show="parseInt(GetEZCashPostData.anny_frequence) !== 0">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">保證期間</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="qpoop_19_year">
@@ -59,11 +69,14 @@
           </select>
         </div>
       </div>
-      <div class="col-sm-12">
-        <div class="insure-tips">
-          年金給付帳戶：限要保人匯款帳戶。
+      <div class="border-bottom-line col-sm-12"></div>
+      <form class="form-bottom">
+        <div class="col-sm-12">
+          <div class="insure-tips-text text-red-i">
+            年金給付帳戶：限要保人匯款帳戶。
+          </div>
         </div>
-      </div>
+      </form>
     </form>
   </div>
 </template>
@@ -74,7 +87,11 @@ import { InitColumnData } from '../../../../utils/initColumnData'
 export default {
   data() {
     return {
-      tempAnnyFrequence: 0
+      tempAnnyFrequence: 0,
+      ensure: {
+        anny_frequenceOne: '../../../../../static/img/oval.png',
+        anny_frequenceMore: '../../../../../static/img/oval.png'
+      }
     }
   },
   computed: {
@@ -95,9 +112,9 @@ export default {
         }
         this.GetEZCashPostData.mode_prem = 0
         this.GetEZCashPostData.anny_frequence = parseInt(value)
-        console.log('this.GetEZCashPostData.anny_frequence', this.GetEZCashPostData.anny_frequence)
       }
     },
+    // 分期給付方式
     anny_frequence_computed: {
       get() {
         return this.tempAnnyFrequence
@@ -129,6 +146,22 @@ export default {
       set(value) {
         this.GetEZCashPostData.mode_prem = 0
         this.GetEZCashPostData.qpoop_19_year = value
+      }
+    }
+  },
+  methods: {
+    OnEnsure(target) {
+      switch (target) {
+        case 'one': // 一次
+          this.ensure.anny_frequenceOne = '../../../../../static/img/oval-ed.png'
+          this.ensure.anny_frequenceMore = '../../../../../static/img/oval.png'
+          this.anny_frequence = 0
+          break
+        case 'more': // 分期
+          this.ensure.anny_frequenceOne = '../../../../../static/img/oval.png'
+          this.ensure.anny_frequenceMore = '../../../../../static/img/oval-ed.png'
+          this.anny_frequence = 1
+          break
       }
     }
   }

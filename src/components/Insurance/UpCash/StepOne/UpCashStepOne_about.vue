@@ -22,8 +22,15 @@
             <option value="false">否</option>
           </select>
         </div>
+        <div class="border-bottom-line col-sm-12" v-show="!QusAns && QusAns !== 0"></div>
+        <label for="" class="col-sm-12 col-form-label insure-label text-with-select" v-show="!QusAns && QusAns !== 0">親愛的客戶謝謝您的申購保險，因相關法規
+          規定您的申請文件需另檢附相關證明文件。
+          很抱歉您無法於本網站進行投保動作。煩請
+          另洽新光人壽服務人員詢問相關保險商品購
+          買事宜，造成您的不便我們深感抱歉,再次感
+          謝您的惠顧。</label>
       </div>
-      
+
       <!-- 職業項目 -->
       <OccupationComponent :stateData="this.GetUpCashPostData" :planCode="planCode"></OccupationComponent>
     </form>
@@ -32,7 +39,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { toggleModalShow } from '../../../../utils/toggleModal'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import OccupationComponent from '../../Common/occupation'
 
@@ -42,7 +48,8 @@ export default {
   },
   data() {
     return {
-      planCode: 'UCA99'
+      planCode: 'UCA99',
+      isTaiwanDuty: 0
     }
   },
   computed: {
@@ -50,24 +57,17 @@ export default {
       GetterTypes.GetUpCashIsInit,
       GetterTypes.GetUpCashPostData
     ]),
+    // 本人僅為台灣之稅務居民
     QusAns: {
       get() {
-        if (this.GetUpCashPostData.QusAns === undefined ||
-          this.GetUpCashPostData.QusAns === null) {
-          return '0'
-        } else return this.GetUpCashPostData.QusAns[0].Answar
+        return this.isTaiwanDuty
       },
       set(value) {
-        if (value === '0') {
-          toggleModalShow('請選擇本人僅為台灣之稅務居民。')
-          return
-        }
         let result = value === 'true'
-        if (!result) {
-          toggleModalShow('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
-        }
         this.GetUpCashPostData.QusAns = [{ Answar: result }]
         this.GetUpCashPostData.IsTaiwanTaxDuty = result
+        if (value === '0') this.isTaiwanDuty = value
+        else this.isTaiwanDuty = result
       }
     }
   }

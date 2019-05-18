@@ -3,16 +3,15 @@ import stateTypes from './Types/EZCashStateTypes'
 import getterTypes from './Types/EZCashGetterTypes'
 import functionTypes from './Types/EZCashFunctionTypes'
 import rootState from '../../state'
-// import { toggleModalShow } from '../../../utils/toggleModal'
 
 const APICODE = 'InsuranceWeb'
 
 const state = {
-  [stateTypes.EZCashISINIT]: false,
+  [stateTypes.EZCASHISINIT]: false,
   [stateTypes.POSTDATA]: []
 }
 const getters = {
-  [getterTypes.GetEZCashIsInit]: state => state.EZCashISINIT,
+  [getterTypes.GetEZCashIsInit]: state => state.EZCASHISINIT,
   [getterTypes.GetEZCashPostData]: state => state.POSTDATA
 }
 const actions = {
@@ -21,8 +20,8 @@ const actions = {
    * @param {commit} param0 提交狀態
    * @param {bool} MYWAYISINIT 是否已初始化
    */
-  [functionTypes.FuncEZCashIsInit]({ commit }, EZCashISINIT) {
-    commit(functionTypes.FuncEZCashIsInit, { result: EZCashISINIT })
+  [functionTypes.FuncEZCashIsInit]({ commit }, EZCASHISINIT) {
+    commit(functionTypes.FuncEZCashIsInit, { result: EZCASHISINIT })
   },
   /**
    * EZCash 投保流程初始化
@@ -41,12 +40,12 @@ const actions = {
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {object} para 請求參數
    */
-  [functionTypes.FuncEZCashEstimate]({ commit }, { para }) {
+  [functionTypes.FuncEZCashEstimate]({ commit }, { para, router }) {
     rootState.Http.axios.post(`${Url.EZCashEstimate}`, {
       CoreData: para,
       InsurerSourceID: APICODE
     }).then(response => {
-      commit(functionTypes.FuncEZCashEstimate, { result: response.data })
+      commit(functionTypes.FuncEZCashEstimate, { result: response.data, router })
     })
   },
   /**
@@ -86,7 +85,7 @@ const mutations = {
    * @param {請求結果} param1 請求回傳結果
    */
   [functionTypes.FuncEZCashIsInit](state, { result }) {
-    state.EZCashISINIT = result
+    state.EZCASHISINIT = result
   },
   /**
    * EZCash 投保流程初始化
@@ -102,9 +101,10 @@ const mutations = {
    * @param {state} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncEZCashEstimate(state, { result }) {
+  FuncEZCashEstimate(state, { result, router }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
+    router.push(`/ezcash-Estimate`)
   },
   /**
    * EZCash 投保流程下一步

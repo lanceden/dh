@@ -63,9 +63,11 @@
               </div>
             </div>
           </div>
-          <div class="insure-tips-text first-blue" v-show="GetUpCashPostData.init_method === 'C'">
-            <img src="../../../../../static/img/insure-link.png" alt>
-            <a href="https://online.skl.com.tw/Event/upcash/card.html" target="_blank">刷卡攻略</a>
+          <div class="col-sm-12" v-show="GetUpCashPostData.init_method === 'C'">
+            <div class="insure-tips-text first-blue">
+              <img src="../../../../../static/img/insure-link.png" alt>
+              <a style="color:#0f71b0" href="https://online.skl.com.tw/Event/upcash/card.html" target="_blank">刷卡攻略</a>
+            </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
@@ -92,7 +94,7 @@
           </div>
         </div>
       </div>
-      <form class="form-bottom" >
+      <form class="form-bottom">
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
           <div class="border-bottom-line col-sm-12"></div>
@@ -116,16 +118,16 @@
             <div class="form-control insure-input-block">全國新光人壽行政中心繳費</div>
           </div>
         </div>
-        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
+        <div class="col-sm-6 dib" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
           <div class="insure-tips-text first-blue">
             <img src="../../../../../static/img/insure-link.png">
-            <a href="https://www.skl.com.tw/serviceCenter.html" target="_blank">查詢各服務中心資訊</a>
+            <a style="color:#0f71b0" href="https://www.skl.com.tw/serviceCenter.html" target="_blank">查詢各服務中心資訊</a>
           </div>
         </div>
-        <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
+        <div class="col-sm-6 dib" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
           <div class="insure-tips-text first-blue">
             <img src="../../../../../static/img/insure-link.png">
-            <a href="https://www.skl.com.tw/092da5cb14.html" target="_blank">繳費方式</a>
+            <a style="color:#0f71b0" href="https://www.skl.com.tw/092da5cb14.html" target="_blank">繳費方式</a>
           </div>
         </div>
 
@@ -136,6 +138,11 @@
             <input type="text" class="form-control insure-input insure-input-edit col-sm-9" v-model="qpoop_25_prem">
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+        </div>
+        <div class="col-sm-12" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
+          <div class="insure-tips-text first-blue text-red-i">
+            限輸入3,000~375,000元
+          </div>
         </div>
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
           <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
@@ -148,6 +155,8 @@
               <option value="1">月</option>
             </select>
           </div>
+          <div class="border-bottom-line col-sm-12" v-show="qpoop_25_modx === '1'"></div>
+          <label for="" class="col-sm-12 col-form-label insure-label text-with-select" v-show="qpoop_25_modx === '1'">選擇月繳續期保險費, 首次請繳付第一期與第二期保險費, 合計{{this.faceAmount * 2|decimalComma}}元</label>
         </div>
       </form>
     </div>
@@ -164,7 +173,7 @@
       <div class="border-bottom-line col-sm-12"></div>
       <form class="form-bottom">
         <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12" @click="OnMethod('C')">
+        <div class="top col-sm-12" @click="OnMethod('C')" v-show="init_method === 'C'">
           <div class="insure-notice-box">
             <div class="insure-check"><img :src="ensure.methodcredit" alt=""></div>
             <div class="insure-check-content">信用卡</div>
@@ -225,13 +234,13 @@
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
               <div class="col-sm-12">
-                <div class="form-control insure-input-block">{{GetUpCashPostData.client_names}}</div>
+                <div class="form-control insure-input insure-input-edit">{{GetUpCashPostData.client_names}}</div>
               </div>
             </div>
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
               <div class="col-sm-12">
-                <div class="form-control insure-input-block">{{GetUpCashPostData.client_id}}</div>
+                <div class="form-control insure-input insure-input-edit">{{GetUpCashPostData.client_id}}</div>
               </div>
             </div>
             <div class="form-group row">
@@ -246,7 +255,7 @@
             <div class="form-group row">
               <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
               <div class="col-sm-12">
-                <input type="text" class="form-control insure-input-block" id placeholder :value="branchName.split('-')[1]" disabled="disabled" />
+                <div class="form-control insure-input insure-input-edit">{{branchName.split('-')[1]}}</div>
               </div>
             </div>
             <div class="form-group row">
@@ -280,6 +289,8 @@
 import moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   data() {
     return {
@@ -288,11 +299,6 @@ export default {
       poIssueDate: '',
       branchName: '0',
       accountComputed: '',
-      payType: [
-        { name: '全國新光人壽行政中心繳費', method: 'P' },
-        { name: '銀行或郵局帳戶轉帳', method: 'B' },
-        { name: '信用卡', method: 'C' }
-      ],
       ensure: {
         onetimepaytrue: '../../../../../static/img/oval.png',
         onetimepayfalse: '../../../../../static/img/oval.png',
@@ -313,9 +319,6 @@ export default {
     this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
     this.GetUpCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
     this.OnMethod('C')
-  },
-  mounted() {
-    this.hasEachAccount = this.GetEachAccount.length > 0
   },
   computed: {
     ...mapGetters([
@@ -459,6 +462,13 @@ export default {
       this.$router.push(`/upcash-1?token=${this.$store.state.ApiToken}`)
     },
     GoNext() {
+      // 非約定帳號,要檢查帳號
+      if(!this.GetUpCashPostData.Renewed_Prefer) {
+        if(this.GetUpCashPostData.AccountData[0].account === '') {
+          toggleModalShow('請輸入銀行帳戶')
+          return
+        }
+      }
       this.$router.push(`/upcash-2-1`)
     },
     // 約定續期繳費方式
@@ -471,6 +481,8 @@ export default {
         this.ensure.modx_99_indfalse = '../../../../../static/img/oval-ed.png'
       }
       this.modx_99_ind = value
+      this.OnMethod('B')
+      this.OnAccount(this.GetEachAccount === null ? 'isNotEdda' : 'isEdda')
     },
     // 是否躉繳
     OnOneTimePayment(value) {
@@ -502,9 +514,9 @@ export default {
       } else {
         this.ensure.methodcredit = '../../../../../static/img/oval.png'
         this.ensure.methodtrans = '../../../../../static/img/oval-ed.png'
-        this.OnAccount('isEdda')
       }
       this.method = target
+      this.OnAccount(this.GetEachAccount === null ? 'isNotEdda' : 'isEdda')
     },
     // 約定帳號點擊事件
     OnAccount(target) {

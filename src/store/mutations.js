@@ -108,6 +108,30 @@ export default {
     state.PREMIUMS = result.Data.Result
   },
   /**
+   * 本人旅平附約保額(申根非申根)
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetInsTravelSupplCoverageSli(state, { result }) {
+    state.TRAVELSUPPL = result.Data.Result
+  },
+  /**
+   * 旅平子女主約保額
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetInsTravelChildCoverageSli(state, { result }) {
+    state.CHILDCOVERAGESLI = result.Data.Result
+  },
+  /**
+   * 旅平子女附約保額
+   * @param {當前Vuex狀態} state VuexStoreState
+   * @param {請求結果} param1 請求回傳結果
+   */
+  FuncGetInsTravelChildSupplCoverageSli(state, { result }) {
+    state.CHILDSUPPLCOVERAGESLI = result.Data.Result
+  },
+  /**
    * 檢查是否為企業客戶
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果

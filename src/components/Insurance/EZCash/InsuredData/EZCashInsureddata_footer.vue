@@ -3,7 +3,7 @@
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
         <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回上一頁</div>
-        <div class="col-sm-8 footer-title footer-right" @click="GoNext()">發送簡訊驗證</div>
+        <div class="col-sm-8 footer-title footer-right" @click="GoNext()">確認送出</div>
       </nav>
     </div>
   </div>
@@ -13,7 +13,7 @@
 export default {
   methods: {
     GoToPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/agreement?instypename=EZCash`)
     },
     /**
      * OTP

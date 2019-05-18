@@ -19,6 +19,14 @@
             <div class="money-icon"><img src="../../../../../static/img/coins.png" /></div>
           </div>
         </div>
+        <div class="border-bottom-line" v-show="GetUpCashPostData.qpoop_25_modx === '1'"></div>
+        <form class="form-bottom" v-show="GetUpCashPostData.qpoop_25_modx === '1'">
+          <div class="col-sm-12">
+            <div class="insure-tips-text">
+              選擇月繳續期保險費, 首次請繳付第一期與第二期保險費, 合計{{GetUpCashPostData.mode_prem|decimalComma}}元
+            </div>
+          </div>
+        </form>
         <div class="border-bottom-line"></div>
         <div class="bg-time">
           <div class="col-sm-12">
@@ -58,7 +66,7 @@ export default {
     GoToNext() {
       // 判斷是否有試算,沒有則跳錯誤
       let modePrem = this.GetUpCashPostData.mode_prem
-      if(!parseInt(modePrem) > 0) {
+      if (!parseInt(modePrem) > 0) {
         alert('請先試算保費')
         return
       }

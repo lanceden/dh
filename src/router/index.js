@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import UpcashStepOne from '../components/Insurance/UpCash/StepOne/UpCashStepOne_build.vue'
 import UpcashStepTwo from '../components/Insurance/UpCash/StepTwo/UpCashStepTwo_build.vue'
 import UpcashStepTwoNotify from '../components/Insurance/UpCash/StepTwo/UpCashStepTwo_notify.vue'
@@ -10,6 +11,8 @@ import UpcashInsuredData from '../components/Insurance/UpCash/InsuredData/UpCash
 
 import EZCashStepOne from '../components/Insurance/EZCash/StepOne/EZCashStepOne_build.vue'
 import EZCashStepTwo from '../components/Insurance/EZCash/StepTwo/EZCashStepTwo_build.vue'
+import EZcashStepTwoNotify from '../components/Insurance/EZCash/StepTwo/EZCashStepTwo_notify.vue'
+import EZCashStepTwoResult from '../components/Insurance/EZCash/StepTwo/EZCashStepTwo_calculateresult.vue'
 import EZCashStepThree from '../components/Insurance/EZCash/StepThree/EZCashStepThree_build.vue'
 import EZCashStepFour from '../components/Insurance/EZCash/StepFour/EZCashStepFour_build.vue'
 import EZCashInsuredData from '../components/Insurance/EZCash/InsuredData/EZCashInsureddata_build.vue'
@@ -178,10 +181,7 @@ const router = new Router({
     },
     {
       path: '/upcash-1',
-      component: UpcashStepOne,
-      meta: {
-        requiresAuth: false
-      }
+      component: UpcashStepOne
     },
     {
       path: '/upcash-2',
@@ -286,6 +286,14 @@ const router = new Router({
     {
       path: '/ezcash-2',
       component: EZCashStepTwo
+    },
+    {
+      path: '/ezcash-2-1',
+      component: EZcashStepTwoNotify
+    },
+    {
+      path: '/ezcash-Estimate',
+      component: EZCashStepTwoResult
     },
     {
       path: '/ezcash-3',

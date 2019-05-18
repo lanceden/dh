@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 import moment from 'moment'
 
@@ -178,6 +178,9 @@ export default {
       },
       set(value) {
         this.GetEntTravelPostData.PolicyData.TravelCountry = value
+        this.FuncGetInsTravelChildSupplCoverageSli(
+          (parseInt(this.GetEntTravelPostData.PolicyData.TravelType) === 2 && parseInt(value) === 7) ? '1' : '0'
+        )
       }
     },
     EtcCountry: {
@@ -190,6 +193,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'FuncGetInsTravelChildSupplCoverageSli' // 子女附約'
+    ]),
     /**
      * 設置請確認保障對象
      * @param {string} target 國內:in 國外:out

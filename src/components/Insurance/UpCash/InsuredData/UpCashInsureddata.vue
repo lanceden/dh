@@ -204,7 +204,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{GetUpCashPostData.relation_ben_death_seq_percent}}%</div>
+            <div class="insure-input-block">順位{{GetUpCashPostData.relation_ben_death_seq}}，{{GetUpCashPostData.relation_ben_death_seq_percent}}%</div>
           </div>
         </div>
         <div class="form-group row">
@@ -251,7 +251,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{GetUpCashPostData.relation_ben_death_seq_percent2}}%</div>
+            <div class="insure-input-block">順位{{GetUpCashPostData.relation_ben_death_seq2}}，{{GetUpCashPostData.relation_ben_death_seq_percent2}}%</div>
           </div>
         </div>
         <div class="form-group row">
@@ -298,7 +298,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{GetUpCashPostData.relation_ben_death_seq_percent3}}%</div>
+            <div class="insure-input-block">順位{{GetUpCashPostData.relation_ben_death_seq3}}，{{GetUpCashPostData.relation_ben_death_seq_percent3}}%</div>
           </div>
         </div>
         <div class="form-group row">
@@ -522,7 +522,7 @@ export default {
     // 約定續期繳法別
     qpoop_25_modx: {
       get() {
-        let modx = parseInt(this.GetUpCashPostData.qpoop_25_modx)
+        let modx = this.GetUpCashPostData.qpoop_25_modx
         switch (modx) {
           case '12':
             return '年'

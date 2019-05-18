@@ -2,8 +2,8 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-6 footer-title footer-left" @click="GoPrev">上一步</div>
-        <div class="col-sm-6 footer-title footer-right" @click="GoNext()">下一步</div>
+        <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
+        <div class="col-sm-8 footer-title footer-right" @click="GoNext()">確認送出</div>
       </nav>
     </div>
   </div>
@@ -13,7 +13,7 @@
 export default {
   methods: {
     GoPrev() {
-      this.$router.go(-1)
+      this.$router.push(`/EZCash-Estimate`)
     },
     GoNext() {
       this.$router.push('/benf?instypename=EZCash')
