@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="insure-text">
-      <div class="decimal" v-show="isToggle || this.$store.state.AGREEMENTTOGGLE" :class="{ height100: isToggle || this.$store.state.AGREEMENTTOGGLE }" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''">條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容。容條款內容條款內容條款內容條款內容條款內容條款內容條款內容條款內容。</div>
+      <div class="decimal" v-show="isToggle || this.$store.state.AGREEMENTTOGGLE" :class="{ height100: isToggle || this.$store.state.AGREEMENTTOGGLE }" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''"></div>
     </div>
   </div>
 </template>

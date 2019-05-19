@@ -225,8 +225,6 @@ export default {
       if (this.childrenNo === 0 || target !== 'own') {
         this.childrenNo = 1
       }
-      this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
-      this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
       switch (target) {
         case 'own': // 1本人
           this.ensure.own = '../../../../../static/img/oval-ed.png'
@@ -234,8 +232,7 @@ export default {
           this.ensure.both = '../../../../../static/img/oval.png'
           this.GetEntTravelPostData.TargetType = 0
           this.childrenNo = 0
-          this.GetEntTravelPostData.PolicyData.InsuredInfo = []
-          this.GetEntTravelPostData.PolicyData.InsuredInfo.push({
+          this.GetEntTravelPostData.PolicyData.InsuredInfo = [{
             Index: 0,
             Relation: 1,
             PersonalData: {
@@ -245,7 +242,7 @@ export default {
             },
             HasAuthRep: null,
             show: true
-          })
+          }]
           break
         case 'child': // 3 子女
           this.ensure.own = '../../../../../static/img/oval.png'

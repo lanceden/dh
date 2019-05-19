@@ -18,7 +18,7 @@ import StepOneFooter from './ICanStepOne_footer'
 export default {
   created() {
     if (!this.GetICanIsInit) {
-      this.FuncICanInit()
+      this.FuncICanInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'ICAN'
     }
     console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)

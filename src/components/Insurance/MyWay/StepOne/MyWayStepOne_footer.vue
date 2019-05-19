@@ -21,13 +21,11 @@ const NEXTURL = '/myway-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetMyWayPostData,
-      'HeaderIsActive'
+      GetterTypes.GetMyWayPostData
     ])
   },
   methods: {
     ...mapActions([
-      'SetHeaderIsActive',
       FunctionTypes.FuncMyWayIsInit
     ]),
     /**
@@ -36,7 +34,6 @@ export default {
     GotoNext() {
       let result = this.ValidateData()
       if (!result) return
-      this.SetHeaderIsActive(true)
       this.FuncMyWayIsInit(true)
       let year = parseInt(moment().format('YYYY')) - 1911
       this.GetMyWayPostData.po_issue_date = moment().format('YYYY-MM-DD')

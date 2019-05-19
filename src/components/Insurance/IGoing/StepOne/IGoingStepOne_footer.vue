@@ -20,13 +20,11 @@ const NEXTURL = '/IGoing-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetIGoingPostData,
-      'HeaderIsActive'
+      GetterTypes.GetIGoingPostData
     ])
   },
   methods: {
     ...mapActions([
-      'SetHeaderIsActive',
       FunctionTypes.FuncIGoingIsInit
     ]),
     GoPrev() {
@@ -35,7 +33,6 @@ export default {
     GotoNext() {
       let result = this.ValidateData()
       if (!result) return
-      this.SetHeaderIsActive(true)
       this.FuncIGoingIsInit(true)
       this.$router.push(NEXTURL)
     },

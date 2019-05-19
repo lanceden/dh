@@ -16,11 +16,13 @@ import StepOneCustomer from './UpCashStepOne_customer'
 import StepOneAbout from './UpCashStepOne_about'
 import StepOneFatca from './UpCashStepOne_fatca'
 import StepOneFooter from './UpCashStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
     if (!this.GetUpCashIsInit) {
-      this.FuncUpCashInit()
+      this.FuncUpCashInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'UPCASH'
     }
   },

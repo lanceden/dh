@@ -31,7 +31,7 @@
           謝您的惠顧。</label>
       </div>
       <!-- 職業項目 -->
-      <OccupationComponent :stateData="this.GetEZCashPostData" :planCode="planCode"></OccupationComponent>
+      <OccupationComponent :stateData="this.GetEZCashPostData"></OccupationComponent>
     </form>
   </div>
 </template>
@@ -47,7 +47,6 @@ export default {
   },
   data() {
     return {
-      planCode: 'UCA99',
       isTaiwanDuty: 0
     }
   },

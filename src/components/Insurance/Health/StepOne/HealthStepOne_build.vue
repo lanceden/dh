@@ -14,11 +14,13 @@ import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterType
 import StepOneCustomer from './HealthStepOne_customer'
 import StepOneAbout from './HealthStepOne_about'
 import StepOneFooter from './HealthStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
     if (!this.GetHealthIsInit) {
-      this.FuncHealthInit()
+      this.FuncHealthInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'HEALTH'
     }
   },

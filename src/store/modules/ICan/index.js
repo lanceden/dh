@@ -37,9 +37,11 @@ const actions = {
    * ICan 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncICanInit]({ commit }) {
+  [functionTypes.FuncICanInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.ICanInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncICanInit, { result: response.data })
@@ -113,9 +115,11 @@ const mutations = {
   [functionTypes.FuncICanInit](state, { result }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
-      { Answar: '0' }, { Answar: '0' }
-    ]
+    if (rootState.UNFINISHID === '') {
+      state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
+        { Answar: '0' }, { Answar: '0' }
+      ]
+    }
   },
   /**
    * ICan 投保流程試算

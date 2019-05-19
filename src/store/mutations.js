@@ -10,17 +10,11 @@ export default {
       state.ShowLoading = false
     }, 1000)
   },
-  SetIsShowModal(state, isShow) {
-    state.isShowModal = isShow
-  },
   SetHttp(state, { http }) {
     state.Http = http
   },
   SetApiToken(state, { token }) {
     state.ApiToken = token
-  },
-  SetHeaderIsActive(state, isAcvie) {
-    state.HeaderIsActive = isAcvie
   },
   /**
    * 取回職業類別
@@ -79,8 +73,13 @@ export default {
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
    */
-  FuncGetDistrictData(state, { result }) {
-    state.DISTRICTDATA = result.Data.Result
+  FuncGetDistrictData(state, { result, target }) {
+    // 戶籍地址
+    if(target === 'register') {
+      state.DISTRICTDATA = result.Data.Result
+    } else {
+      state.DISTRICTDATACOMMUNITY = result.Data.Result
+    }
   },
   /**
    * 取回金融機構
@@ -231,7 +230,7 @@ export default {
    */
   FuncSendOTP(state, { result, router }) {
     state.OTPSENDCODE = result.Data.Result.SendCode
-    state.OTPSENDTIME = result.Data.Result.OtpSendTime
+    state.OTPSENDTIME = new Date().getTime() + 300000
     state.OTPLASTTIME = result.Data.Result.OtpLastTime
     router.push('/otpverify')
   },

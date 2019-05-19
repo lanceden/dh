@@ -21,8 +21,7 @@ const NEXTURL = '/EZCash-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetEZCashPostData,
-      'HeaderIsActive'
+      GetterTypes.GetEZCashPostData
     ])
   },
   methods: {

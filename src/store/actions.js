@@ -11,17 +11,11 @@ export default {
   SethideLoading({ commit }) {
     commit('SethideLoading')
   },
-  SetIsShowModal({ commit }, isShow) {
-    commit('SetIsShowModal', isShow)
-  },
   SetHttp({ commit }, { http }) {
     commit('SetHttp', { http })
   },
   SetApiToken({ commit }, { token }) {
     commit('SetApiToken', { token })
-  },
-  SetHeaderIsActive({ commit }, isActive) {
-    commit('SetHeaderIsActive', isActive)
   },
   /**
    * 設定受益人關係輸入框是否關閉
@@ -80,19 +74,19 @@ export default {
    * @param {commit} param0 提交狀態
    * @param {string} bankCode 銀行代碼
    */
-  FuncGetOccupation({ commit }, para) {
-    rootState.Http.axios.post(`${Url.Occupation}`, para).then(response => {
+  async FuncGetOccupation({ commit }, para) {
+    await rootState.Http.axios.post(`${Url.Occupation}`, para).then(response => {
       commit('FuncGetOccupation', { result: response.data, para })
     })
   },
-  FuncGetCityData({ commit }) {
-    rootState.Http.axios.post(`${Url.City}`).then(response => {
+  async FuncGetCityData({ commit }) {
+    await rootState.Http.axios.post(`${Url.City}`).then(response => {
       commit('FuncGetCityData', { result: response.data })
     })
   },
-  FuncGetDistrictData({ commit }, cityName) {
-    rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
-      commit('FuncGetDistrictData', { result: response.data })
+  async FuncGetDistrictData({ commit }, { cityName, target }) {
+    await rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
+      commit('FuncGetDistrictData', { result: response.data, target })
     })
   },
   /**

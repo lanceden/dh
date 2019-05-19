@@ -20,13 +20,11 @@ const NEXTURL = '/IWell-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetIWellPostData,
-      'HeaderIsActive'
+      GetterTypes.GetIWellPostData
     ])
   },
   methods: {
     ...mapActions([
-      'SetHeaderIsActive',
       FunctionTypes.FuncIWellIsInit
     ]),
     GoToPrev() {
@@ -38,7 +36,6 @@ export default {
     GotoNext() {
       let result = this.ValidateData()
       if (!result) return
-      this.SetHeaderIsActive(true)
       this.FuncIWellIsInit(true)
       this.$router.push(NEXTURL)
     },

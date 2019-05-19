@@ -1,16 +1,20 @@
 export default {
+  // 檢查是否為企業客戶
   ISENTERPRISECODE: true,
+  // 企業客戶代碼
   ENTERPRISECODE: '',
+  // 進度條
   PROGRESSBAR: '../../static/img/progress-bar-06-1.png',
+  // 是否顯示讀取中動畫
   ShowLoading: false,
+  // Url傳備之token
   ApiToken: '',
-  isShowModal: false,
+  // 未完成保單編號finish
+  UNFINISHID: '',
+  // 共用之axios請求類
   Http: {},
-  HeaderIsActive: false,
+  // 險種名稱
   PLANNAME: '',
-  ISCITYBANKCARD: false,
-  CVV: '',
-  CREDITCARD: '',
   PAYMENTCOMPLETE: [],
   JOB: '',
   JOBSUBCODE: '',
@@ -26,9 +30,12 @@ export default {
   BANK: [],
   BANKDATA: [],
   DISTRICTDATA: [],
+  DISTRICTDATACOMMUNITY: [],
   BANKBRANCHESDATA: [],
   BENEFICIARY: [],
+  // 同意書標題陣列
   PROVISION: [],
+  // 同意書內容陣列
   PROVISIONDATA: [],
   OTPSENDCODE: '',
   OTPVERIFY: '',
@@ -39,15 +46,18 @@ export default {
   OCCUPATION: '',
   OCCUPATIONDATA: [],
   AGREEMENTTOGGLE: false,
-  // 是否有監護宣告
-  isHasAuthRepYes: '../../../../static/img/oval.png',
-  isHasAuthRepNo: '../../../../static/img/oval.png',
   // 同意書總數
   AGREEMENTCOUNT: 0,
   // 付款方式
   PAYTYPE: 'B',
+  // 是否為花旗銀行
+  ISCITYBANKCARD: false,
   // 花旗銀行是否分三期
   PERIODNO: 0,
+  // 卡片後三碼
+  CVV: '',
+  // 付款使用之信用卡號
+  CREDITCARD: '',
   // 是否為約定帳戶付款
   PAYMENTPREFER: false,
   NOTIFYCHECKBOX: [

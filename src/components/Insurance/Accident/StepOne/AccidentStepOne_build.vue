@@ -14,11 +14,13 @@ import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetter
 import StepOneCustomer from './AccidentStepOne_customer'
 import StepOneAbout from './AccidentStepOne_about'
 import StepOneFooter from './AccidentStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
     if (!this.GetAccidentIsInit) {
-      this.FuncAccidentInit()
+      this.FuncAccidentInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'ACCIDENT'
     }
   },

@@ -30,6 +30,13 @@ export default {
       PLAN_Code_1: this.stateData.plan_code
     })
   },
+  watch: {
+    GetPremiums(newValue, oldValue) {
+      if (this.$store.state.UNFINISHID !== null) {
+        this.face_amt = parseInt(this.stateData.face_amt)
+      }
+    }
+  },
   mounted() {
     $('#CalcAmtDesc1').html('0')
     $('#CalcAmtDesc2').html('0')
@@ -51,9 +58,6 @@ export default {
     // 此次投保額度選取值
     face_amt: {
       get() {
-        if(this.premiums === 0) {
-          this.stateData.face_amt = 0
-        }
         return this.premiums
       },
       set(value) {

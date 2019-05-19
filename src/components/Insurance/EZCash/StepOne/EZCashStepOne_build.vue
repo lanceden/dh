@@ -16,11 +16,13 @@ import StepOneCustomer from './EZCashStepOne_customer'
 import StepOneAbout from './EZCashStepOne_about'
 import StepOneFatca from './EZCashStepOne_fatca'
 import StepOneFooter from './EZCashStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
     if (!this.GetEZCashIsInit) {
-      this.FuncEZCashInit()
+      this.FuncEZCashInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'EZCASH'
     }
   },

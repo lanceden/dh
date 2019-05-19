@@ -319,6 +319,13 @@ export default {
     this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
     this.GetUpCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
     this.OnMethod('C')
+    // 不為空則為未完成保單進入, 需帶入預設值
+    if (this.$store.state.UNFINISHID !== null) {
+      this.OnInitMethod(this.GetUpCashPostData.init_method)
+      this.OnOneTimePayment(this.GetUpCashPostData.IsOneTimePayment)
+      this.Onmodx_99_ind(this.GetUpCashPostData.modx_99_ind === 'Y' ? '1' : '2')
+      this.face_amtComputed = this.GetUpCashPostData.face_amt
+    }
   },
   computed: {
     ...mapGetters([
@@ -378,7 +385,6 @@ export default {
       },
       set(value) {
         this.GetUpCashPostData.method = value
-        console.log(value)
       }
     },
     /**
@@ -463,8 +469,8 @@ export default {
     },
     GoNext() {
       // 非約定帳號,要檢查帳號
-      if(!this.GetUpCashPostData.Renewed_Prefer) {
-        if(this.GetUpCashPostData.AccountData[0].account === '') {
+      if (!this.GetUpCashPostData.Renewed_Prefer && this.modx_99_ind === '2' && this.init_method === 'B') {
+        if (this.GetUpCashPostData.AccountData[0].account === '') {
           toggleModalShow('請輸入銀行帳戶')
           return
         }
@@ -482,7 +488,6 @@ export default {
       }
       this.modx_99_ind = value
       this.OnMethod('B')
-      this.OnAccount(this.GetEachAccount === null ? 'isNotEdda' : 'isEdda')
     },
     // 是否躉繳
     OnOneTimePayment(value) {

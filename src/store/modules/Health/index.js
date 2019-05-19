@@ -27,9 +27,11 @@ const actions = {
    * Health 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncHealthInit]({ commit }) {
+  [functionTypes.FuncHealthInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.HealthInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncHealthInit, { result: response.data })

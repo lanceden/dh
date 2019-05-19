@@ -27,9 +27,11 @@ const actions = {
    * MyWay 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncMyWayInit]({ commit }) {
-    rootState.Http.axios.post(`${Url.MyWayInit}`, {
-      CoreData: {},
+  async [functionTypes.FuncMyWayInit]({ commit }, id) {
+    await rootState.Http.axios.post(`${Url.MyWayInit}`, {
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncMyWayInit, { result: response.data })

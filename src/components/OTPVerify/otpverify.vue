@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../static/img/smartphone.png" alt=""></div>
+          <div class="insure-check"><img src="../../../static/img/smartphone.png"></div>
           <div class="insure-check-title">請輸入『OTP動態密碼驗證』</div>
         </div>
       </div>
@@ -31,11 +31,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="otp-time"><img src="../../../static/img/otp-time.png" alt="">05:00</div>
+        <div class="otp-time">
+          <img src="../../../static/img/otp-time.png">
+          <!-- https://vac.js.org/zh/guide/#methods -->
+          <countdown :end-time="this.$store.state.OTPSENDTIME">
+            <span slot="process" slot-scope="lastTime">
+              {{ `${lastTime.timeObj.m}:${lastTime.timeObj.s}` }}
+            </span>
+            <span slot="finish">驗證碼失效</span>
+          </countdown>
+        </div>
       </div>
     </form>
     <div class="insure-text text-center">
-      密碼有效時間 <span class="text-red-i">{{OtpLastTime}} {{time}}</span>
+      密碼有效時間 <span class="text-red-i">{{OtpLastTime}}</span>
     </div>
     <div class="border-bottom-line"></div>
     <div class="col-sm-12" @click="isShowOtp = !isShowOtp">
@@ -87,10 +96,12 @@ export default {
       codeFour: '',
       codeFive: '',
       codeSix: '',
-      isShowOtp: false,
-      time: '',
-      flag: false
+      isShowOtp: false
     }
+  },
+  created() {
+    console.log(this.$store.state.OTPSENDTIME)
+    console.log(this.$store.state.OTPLASTTIME)
   },
   computed: {
     ...mapGetters([
@@ -102,39 +113,12 @@ export default {
       }
     }
   },
-  mounted() {
-    let time = setInterval(() => {
-      if (this.flag === true) {
-        clearInterval(time)
-      }
-      this.timeDown()
-    }, 500)
-  },
   methods: {
     ...mapActions([
       'FuncCheckOTP'
     ]),
-    timeDown() {
-      // https://juejin.im/post/58e87c1bac502e006c35567e
-      const endTime = new Date('2019-05-14')
-      const nowTime = new Date()
-      let leftTime = parseInt(300)
-      let d = 0
-      let h = 0
-      let m = this.formate(parseInt(leftTime / 60 % 60))
-      let s = this.formate(parseInt(leftTime % 60))
-      if (leftTime <= 0) {
-        this.flag = true
-        this.$emit('time-end')
-      }
-      this.time = `${m}分${s}秒`
-    },
-    formate(time) {
-      if (time >= 10) {
-        return time
-      } else {
-        return `0${time}`
-      }
+    startCallBack: function(x) {
+      console.log(x)
     },
     GoPrev() {
       this.$router.push(`/otp`)

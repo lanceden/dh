@@ -12,7 +12,7 @@
     <div class="form-group row" v-show="this.stepTwo">
       <label for="" class="col-sm-12 col-form-label insure-label">職業項目</label>
       <div class="col-sm-12 insure-select-align">
-        <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode" >
+        <select class="form-control data-input insure-select insure-input-block-edit" v-model="jobSubCode">
           <option value="0" selected="selected">請選擇</option>
           <option v-for="(item, index) in GetOccupationData" :key="index" :value="item.OCCUPATION_CODE + '-' + item.OCCUPATION_DESC">{{item.OCCUPATION_DESC}}</option>
         </select>
@@ -21,7 +21,7 @@
     <div class="form-group row" v-show="this.stepThree">
       <label for="" class="col-sm-12 col-form-label insure-label">工作內容</label>
       <div class="col-sm-12 insure-select-align">
-        <select class="form-control data-input insure-select insure-input-block-edit" id="occupation" v-model="occupationcomputed" >
+        <select class="form-control data-input insure-select insure-input-block-edit" id="occupation" v-model="occupationcomputed">
           <option value="0" selected="selected">請選擇</option>
           <option v-for="(item, index) in GetJobSubCodeData" :key="index" :value="item.OCCUPATION_CODE">{{item.OCCUPATION_DESC}}</option>
         </select>
@@ -40,8 +40,7 @@ import $ from 'jquery'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   props: [
-    'stateData',
-    'planCode'
+    'stateData'
   ],
   data() {
     return {
@@ -55,13 +54,33 @@ export default {
     }
   },
   created() {
-    if (!this.GetHealthIsInit) {
-      this.FuncGetJob()
+    this.FuncGetJob()
+  },
+  mounted() {
+    // 不為空則為未完成保單進入, 需帶入預設值
+    if (this.$store.state.UNFINISHID !== null) {
+      setTimeout(() => {
+        this.jobCode = this.stateData.client_occupation_level
+      }, 5000)
+    } else {
       this.FuncGetOccupation({
         NoClass: '00',
-        PlanCode: this.planCode,
+        PlanCode: this.stateData.plan_code,
         Type: '4'
       })
+    }
+  },
+  watch: {
+    GetOccupationData(newValue, oldValue) {
+      let result = this.stateData.client_occupation_sub_level
+      newValue.forEach(item => {
+        if (item.OCCUPATION_CODE === result) {
+          this.jobSubCode = item.OCCUPATION_CODE + '-' + item.OCCUPATION_DESC
+        }
+      })
+    },
+    GetJobSubCodeData(newValue, oldValue) {
+      this.occupationcomputed = this.stateData.client_occupation_class_code
     }
   },
   computed: {
@@ -76,9 +95,9 @@ export default {
         return this.job || 0
       },
       set(value) {
-        this.FuncGetOccupation({
+        this.$store.dispatch('FuncGetOccupation', {
           NoClass: value,
-          PlanCode: this.planCode,
+          PlanCode: this.stateData.plan_code,
           Type: '4'
         })
         this.job = value
@@ -96,7 +115,7 @@ export default {
         let result = value.split('-')
         this.FuncGetOccupation({
           NoClass: this.$store.state.JOB,
-          PlanCode: this.planCode,
+          PlanCode: this.stateData.plan_code,
           Type: '8',
           subCode: result[0]
         })

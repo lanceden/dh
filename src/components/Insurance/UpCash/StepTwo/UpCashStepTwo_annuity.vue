@@ -87,11 +87,16 @@ import { InitColumnData } from '../../../../utils/initColumnData'
 export default {
   data() {
     return {
-      tempAnnyFrequence: 0,
       ensure: {
         anny_frequenceOne: '../../../../../static/img/oval.png',
         anny_frequenceMore: '../../../../../static/img/oval.png'
       }
+    }
+  },
+  created() {
+    // 不為空則為未完成保單進入, 需帶入預設值
+    if (this.$store.state.UNFINISHID !== null) {
+      this.OnEnsure(this.GetUpCashPostData.anny_frequence === '0' ? 'one' : 'more')
     }
   },
   computed: {
@@ -99,29 +104,17 @@ export default {
       GetterTypes.GetUpCashPostData
     ]),
     // 給付方式: 0一次給付 1分期給付
-    anny_frequence: {
-      get() {
-        let result = InitColumnData(this.GetUpCashPostData.anny_frequence, 0)
-        this.GetUpCashPostData.anny_frequence = result
-        return parseInt(result) !== 0 ? 1 : 0
-      },
-      set(value) {
-        // 若是一次給付, 則要清空分期給付
-        if (parseInt(value) === 0) {
-          this.GetUpCashPostData.qpoop_19_year = ''
-        }
-        this.GetUpCashPostData.mode_prem = 0
-        this.GetUpCashPostData.anny_frequence = parseInt(value)
-      }
-    },
     anny_frequence_computed: {
       get() {
-        return this.tempAnnyFrequence
+        console.log(this.GetUpCashPostData.anny_frequence)
+        if(this.GetUpCashPostData.anny_frequence === '') {
+          this.GetUpCashPostData.anny_frequence = 0
+        }
+        return this.GetUpCashPostData.anny_frequence
       },
       set(value) {
         this.GetUpCashPostData.mode_prem = 0
         this.GetUpCashPostData.anny_frequence = parseInt(value)
-        this.tempAnnyFrequence = parseInt(value)
       }
     },
     // 給付開始日：保險年齡
@@ -154,12 +147,12 @@ export default {
         case 'one': // 一次
           this.ensure.anny_frequenceOne = '../../../../../static/img/oval-ed.png'
           this.ensure.anny_frequenceMore = '../../../../../static/img/oval.png'
-          this.anny_frequence = 0
+          this.anny_frequence_computed = 0
           break
         case 'more': // 分期
           this.ensure.anny_frequenceOne = '../../../../../static/img/oval.png'
           this.ensure.anny_frequenceMore = '../../../../../static/img/oval-ed.png'
-          this.anny_frequence = 1
+          this.anny_frequence_computed = 1
           break
       }
     }

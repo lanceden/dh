@@ -37,9 +37,11 @@ const actions = {
    * IWell 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncIWellInit]({ commit }) {
+  [functionTypes.FuncIWellInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.IWellInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncIWellInit, { result: response.data })
@@ -113,9 +115,11 @@ const mutations = {
   [functionTypes.FuncIWellInit](state, { result }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
-      { Answar: '0' }, { Answar: '0' }
-    ]
+    if (rootState.UNFINISHID === '') {
+      state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
+        { Answar: '0' }, { Answar: '0' }
+      ]
+    }
   },
   /**
    * IWell 投保流程試算

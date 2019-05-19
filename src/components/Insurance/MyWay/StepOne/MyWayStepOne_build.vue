@@ -14,11 +14,13 @@ import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.
 import StepOneCustomer from './MyWayStepOne_customer'
 import StepOneAbout from './MyWayStepOne_about'
 import StepOneFooter from './MyWayStepOne_footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
     if (!this.GetMyWayIsInit) {
-      this.FuncMyWayInit()
+      this.FuncMyWayInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'MYWAY'
     }
   },

@@ -27,9 +27,11 @@ const actions = {
    * IGoing 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncIGoingInit]({ commit }) {
+  [functionTypes.FuncIGoingInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.IGoingInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncIGoingInit, { result: response.data })

@@ -29,7 +29,7 @@ export default {
     if (!this.GetEntTravelIsInit) {
       // 初始化旅平險資料
       this.FuncEntTravelInit()
-      this.$store.state.PLANNAME = 'TRAVEL'
+      this.$store.state.PLANNAME = 'ENTTRAVEL'
     }
   },
   computed: {

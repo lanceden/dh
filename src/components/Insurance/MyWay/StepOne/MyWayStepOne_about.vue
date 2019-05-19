@@ -373,7 +373,7 @@
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns8Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
       <!-- 職業項目 -->
-      <OccupationComponent :stateData="this.GetMyWayPostData" :planCode="planCode"></OccupationComponent>
+      <OccupationComponent :stateData="this.GetMyWayPostData"></OccupationComponent>
     </form>
   </div>
 </template>
@@ -389,7 +389,6 @@ export default {
   },
   data() {
     return {
-      planCode: 'LAA01',
       isShowAns1Error: '0',
       isShowAns2Error: '0',
       isShowAns3Error: '0',

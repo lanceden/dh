@@ -21,13 +21,11 @@ const NEXTURL = '/Health-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetHealthPostData,
-      'HeaderIsActive'
+      GetterTypes.GetHealthPostData
     ])
   },
   methods: {
     ...mapActions([
-      'SetHeaderIsActive',
       FunctionTypes.FuncHealthIsInit
     ]),
     GoPrev() {
@@ -38,7 +36,6 @@ export default {
      */
     GotoNext() {
       if (!this.ValidateData()) return
-      this.SetHeaderIsActive(true)
       this.FuncHealthIsInit(true)
       let year = parseInt(moment().format('YYYY')) - 1911
       this.GetHealthPostData.po_issue_date = moment().format('YYYY-MM-DD')

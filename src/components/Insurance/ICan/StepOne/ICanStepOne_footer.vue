@@ -20,13 +20,11 @@ const NEXTURL = '/ICan-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetICanPostData,
-      'HeaderIsActive'
+      GetterTypes.GetICanPostData
     ])
   },
   methods: {
     ...mapActions([
-      'SetHeaderIsActive',
       FunctionTypes.FuncICanIsInit
     ]),
     GoToPrev() {
@@ -35,7 +33,6 @@ export default {
     GotoNext() {
       let result = this.ValidateData()
       if (!result) return
-      this.SetHeaderIsActive(true)
       this.FuncICanIsInit(true)
       this.$router.push(NEXTURL)
     },

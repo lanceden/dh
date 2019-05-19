@@ -50,6 +50,8 @@ import { mapGetters, mapActions } from 'vuex'
 import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import FunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes.js'
 import { toggleModalShow } from '../../../../utils/toggleModal'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
+
 export default {
   data() {
     return {
@@ -73,8 +75,9 @@ export default {
       this.$router.push(`/iWellelecform?leave=true&token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
+      this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
       if (this.GetIWellElecFormIsRed) {
-        this.$router.push(`/IWell-1?token=${this.$store.state.ApiToken}`)
+        this.$router.push(`/IWell-1?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
       } else {
         toggleModalShow('我們將帶您回首頁。')
         this.$router.push(`/iWellelecform?leave=true&token=${this.$store.state.ApiToken}`)

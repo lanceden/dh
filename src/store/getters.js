@@ -1,6 +1,5 @@
 export default {
   GetLoading: state => state.ShowLoading,
-  GetIsShowModal: state => state.isShowModal,
   GetJob: state => state.JOB,
   GetJobData: state => state.JOBDATA,
   GetCityData: state => state.CITYDATA,
@@ -11,12 +10,12 @@ export default {
   GetOccupation: state => state.OCCUPATION,
   GetOccupationData: state => state.OCCUPATIONDATA,
   GetDistrictData: state => state.DISTRICTDATA,
+  GetDistrictDataCommunity: state => state.DISTRICTDATACOMMUNITY,
   GetNotifyCheckBox: state => state.NOTIFYCHECKBOX,
   GetProvision: state => state.PROVISION,
+  GetProvisionData: state => state.PROVISIONDATA,
   GetAccountData: state => state.ACCOUNTDATA,
   GetPremiums: state => state.PREMIUMS,
-  GetProvisionData: state => state.PROVISIONDATA,
   GetJobSubCodeData: state => state.JOBSUBOCCUPATIONDATA,
-  GetPayCompleteData: state => state.PAYMENTCOMPLETE,
   GetEachAccount: state => state.EACHACCOUNT
 }

@@ -32,7 +32,7 @@
       </div>
 
       <!-- 職業項目 -->
-      <OccupationComponent :stateData="this.GetUpCashPostData" :planCode="planCode"></OccupationComponent>
+      <OccupationComponent :stateData="this.GetUpCashPostData"></OccupationComponent>
     </form>
   </div>
 </template>
@@ -48,7 +48,6 @@ export default {
   },
   data() {
     return {
-      planCode: 'UCA99',
       isTaiwanDuty: 0
     }
   },
@@ -60,7 +59,10 @@ export default {
     // 本人僅為台灣之稅務居民
     QusAns: {
       get() {
-        return this.isTaiwanDuty
+        if(this.GetUpCashPostData.IsTaiwanTaxDuty === null || this.GetUpCashPostData.IsTaiwanTaxDuty === '') {
+          this.GetUpCashPostData.IsTaiwanTaxDuty = 0
+        }
+        return this.GetUpCashPostData.IsTaiwanTaxDuty
       },
       set(value) {
         let result = value === 'true'

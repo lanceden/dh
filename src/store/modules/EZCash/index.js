@@ -27,9 +27,11 @@ const actions = {
    * EZCash 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncEZCashInit]({ commit }) {
+  [functionTypes.FuncEZCashInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.EZCashInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncEZCashInit, { result: response.data })

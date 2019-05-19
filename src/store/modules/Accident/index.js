@@ -27,9 +27,11 @@ const actions = {
    * Accident 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncAccidentInit]({ commit }) {
+  [functionTypes.FuncAccidentInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.AccidentInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncAccidentInit, { result: response.data })

@@ -27,9 +27,11 @@ const actions = {
    * UpCash 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncUpCashInit]({ commit }) {
+  [functionTypes.FuncUpCashInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.UpCashInit}`, {
-      CoreData: {},
+      CoreData: {
+        ID: id
+      },
       InsurerSourceID: APICODE
     }).then(response => {
       commit(functionTypes.FuncUpCashInit, { result: response.data })

@@ -10,16 +10,19 @@ import filters from './filters'
 import axios from 'axios'
 import { GetErrorMsg } from '../src/utils/getErrorMsg'
 import { toggleModalShow } from './utils/toggleModal'
+import vueAwesomeCountdown from 'vue-awesome-countdown'
 
 Vue.config.productionTip = false
 Vue.use(extension)
+Vue.use(vueAwesomeCountdown, 'vac') // Component name, `countdown` and `vac` by default
 
 Object.keys(filters)
   .forEach(key => Vue.filter(key, filters[key]))
 
 Vue.prototype.$http = { axios }
 
-axios.interceptors.request.use(function(config) {
+// 設置axios發送請求前之處理
+axios.interceptors.request.use((config) => {
   store.dispatch('SetShowLoading')
   if (vm.$store.state.ApiToken === '') {
     vm.$store.state.ApiToken = window.Lockr.get('ApiToken')
@@ -29,7 +32,8 @@ axios.interceptors.request.use(function(config) {
 }, function(error) {
   return Promise.reject(error)
 })
-axios.interceptors.response.use(function(response) {
+// 設置axios請求回傳時之處理
+axios.interceptors.response.use((response) => {
   store.dispatch('SethideLoading')
   if (response.data.ResultCode !== '0000') {
     if (response.request.responseURL.match('IsCityBank') === null && response.request.responseURL.match('VerifyEmploymentId') === null) {

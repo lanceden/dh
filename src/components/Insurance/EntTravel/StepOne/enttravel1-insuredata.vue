@@ -20,32 +20,21 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
-          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" 
-            class="form-control insure-input insure-input-edit">{{Name}}</div>
-          <input type="text" class="form-control insure-input insure-input-edit" 
-            placeholder="請填寫" 
-            v-else
-          v-model="Name">
+          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" class="form-control insure-input insure-input-edit">{{Name}}</div>
+          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-else v-model="Name">
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">出生生日</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" 
-            :disabled="this.Relation === '本人'"
-          />
+          <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" :disabled="this.Relation === '本人'" />
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
-          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" 
-            class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
-          <input type="text" class="form-control insure-input insure-input-edit" 
-            maxlength="10"
-            placeholder="請填寫" 
-            v-else
-          v-model="ProposerInfoId">
+          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation === 1" class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
+          <input type="text" class="form-control insure-input insure-input-edit" maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
         </div>
       </div>
       <div class="form-group row">
@@ -53,7 +42,7 @@
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('yes')">
-            <div class="insure-check"><img :src="$store.state.isHasAuthRepYes" alt=""></div>
+            <div class="insure-check"><img :src="ensure.isHasAuthRepYes" alt=""></div>
             <div class="insure-check-content">是</div>
           </div>
         </div>
@@ -62,7 +51,7 @@
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('no')">
-            <div class="insure-check"><img :src="$store.state.isHasAuthRepNo" alt=""></div>
+            <div class="insure-check"><img :src="ensure.isHasAuthRepNo" alt=""></div>
             <div class="insure-check-content">否</div>
           </div>
         </div>
@@ -87,7 +76,11 @@ export default {
   },
   data() {
     return {
-      dbo: 0
+      dbo: 0,
+      ensure: {
+        isHasAuthRepYes: '../../../../static/img/oval.png',
+        isHasAuthRepNo: '../../../../static/img/oval.png'
+      }
     }
   },
   computed: {
@@ -97,6 +90,7 @@ export default {
     // 關係
     Relation: {
       get() {
+        this.OnEnsure('empty')
         switch (this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].Relation) {
           case 1:
             return '本人'
@@ -144,12 +138,16 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'yes':
-          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
-          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
+          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
         case 'no':
-          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
-          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
+          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
+          break
+        default:
+          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
       }
       this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'

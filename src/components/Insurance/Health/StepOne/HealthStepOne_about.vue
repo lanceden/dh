@@ -475,7 +475,7 @@
         <div class="border-bottom-line col-sm-12" v-show="isShowAns10Error === true"></div>
         <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="isShowAns10Error === true">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
       </div>
-      <OccupationComponent :stateData="this.GetHealthPostData" :planCode="planCode"></OccupationComponent>
+      <OccupationComponent :stateData="this.GetHealthPostData"></OccupationComponent>
     </form>
   </div>
 </template>
@@ -491,7 +491,6 @@ export default {
   },
   data() {
     return {
-      planCode: 'KAA01',
       isShowAns1Error: '0',
       isShowAns2Error: '0',
       isShowAns3Error: '0',

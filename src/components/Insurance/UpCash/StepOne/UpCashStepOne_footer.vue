@@ -21,13 +21,11 @@ const NEXTURL = '/upcash-2'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData,
-      'HeaderIsActive'
+      GetterTypes.GetUpCashPostData
     ])
   },
   methods: {
     ...mapActions([
-      'SetHeaderIsActive',
       FunctionTypes.FuncUpCashIsInit
     ]),
     GoPrev() {
@@ -36,7 +34,6 @@ export default {
     GotoNext() {
       let result = this.ValidateData()
       if (!result) return
-      this.SetHeaderIsActive(true)
       this.FuncUpCashIsInit(true)
       let year = parseInt(moment().format('YYYY')) - 1911
       this.GetUpCashPostData.po_issue_date = moment().format('YYYY-MM-DD')

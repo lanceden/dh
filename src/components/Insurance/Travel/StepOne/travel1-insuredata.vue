@@ -40,9 +40,9 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">監護宣告</label>
         <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12" >
+        <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('yes')">
-            <div class="insure-check"><img id="imgHasAuthyes" :src="this.$store.state.isHasAuthRepYes" alt=""></div>
+            <div class="insure-check"><img id="imgHasAuthyes" :src="ensure.isHasAuthRepYes" alt=""></div>
             <div class="insure-check-content">是</div>
           </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('no')">
-            <div class="insure-check"><img id="imgHasAuthno" :src="this.$store.state.isHasAuthRepNo" alt=""></div>
+            <div class="insure-check"><img id="imgHasAuthno" :src="ensure.isHasAuthRepNo" alt=""></div>
             <div class="insure-check-content">否</div>
           </div>
         </div>
@@ -76,7 +76,11 @@ export default {
   },
   data() {
     return {
-      dbo: 0
+      dbo: 0,
+      ensure: {
+        isHasAuthRepYes: '../../../../static/img/oval.png',
+        isHasAuthRepNo: '../../../../static/img/oval.png'
+      }
     }
   },
   computed: {
@@ -86,6 +90,7 @@ export default {
     // 關係
     Relation: {
       get() {
+        this.OnEnsure('empty')
         switch (this.GetTravelPostData.PolicyData.InsuredInfo[this.index].Relation) {
           case 1:
             return '本人'
@@ -133,16 +138,16 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'yes':
-          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
-          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
+          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
         case 'no':
-          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
-          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
+          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
           break
         default:
-          this.$store.state.isHasAuthRepYes = '../../../../static/img/oval.png'
-          this.$store.state.isHasAuthRepNo = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
       }
       this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
