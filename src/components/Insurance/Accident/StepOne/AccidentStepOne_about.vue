@@ -280,15 +280,25 @@ import { InitColumnData } from '../../../../utils/initColumnData'
 
 export default {
   created() {
-    this.GetAccidentPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
-    if (this.GetAccidentPostData.client_occupation_class !== '' && this.GetAccidentPostData.client_occupation_class !== undefined) {
-      this.client_occupation_class = this.GetAccidentPostData.client_occupation_class
-    }
-    if (this.GetAccidentPostData.QusAns !== null && this.GetAccidentPostData.client_occupation_class !== undefined) {
-      this.isShowAns1Error = this.GetAccidentPostData.QusAns[0].Answar
-      this.isShowAns2Error = this.GetAccidentPostData.QusAns[1].Answar
-      this.isShowAns3Error = this.GetAccidentPostData.QusAns[2].Answar
-      this.isShowAns4Error = this.GetAccidentPostData.QusAns[3].Answar
+    // 不為空則為未完成保單進入, 需帶入預設值
+    if (this.$store.state.UNFINISHID !== null) {
+      setTimeout(() => {
+        this.OnOccupation(parseInt(this.GetAccidentPostData.client_occupation_class))
+        this.GetAccidentPostData.QusAns.forEach((qus, index) => {
+          this.OnEnsure(`QusAns${index + 1}`, qus.Answar)
+        })
+      }, 5000)
+    } else {
+      this.GetAccidentPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
+      if (this.GetAccidentPostData.client_occupation_class !== '' && this.GetAccidentPostData.client_occupation_class !== undefined) {
+        this.client_occupation_class = this.GetAccidentPostData.client_occupation_class
+      }
+      if (this.GetAccidentPostData.QusAns !== null && this.GetAccidentPostData.client_occupation_class !== undefined) {
+        this.isShowAns1Error = this.GetAccidentPostData.QusAns[0].Answar
+        this.isShowAns2Error = this.GetAccidentPostData.QusAns[1].Answar
+        this.isShowAns3Error = this.GetAccidentPostData.QusAns[2].Answar
+        this.isShowAns4Error = this.GetAccidentPostData.QusAns[3].Answar
+      }
     }
   },
   data() {

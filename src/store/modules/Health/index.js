@@ -95,12 +95,15 @@ const mutations = {
    * @param {請求結果} param1 請求回傳結果
    */
   [functionTypes.FuncHealthInit](state, { result }) {
+    if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [{ Answar: true }, { Answar: true }, { Answar: true },
-      { Answar: true }, { Answar: true }, { Answar: true },
-      { Answar: true }, { Answar: true }, { Answar: true },
-      { Answar: false }, { Answar: false }
-    ]
+    if (rootState.UNFINISHID === '') {
+      state.POSTDATA.QusAns = [{ Answar: true }, { Answar: true }, { Answar: true },
+        { Answar: true }, { Answar: true }, { Answar: true },
+        { Answar: true }, { Answar: true }, { Answar: true },
+        { Answar: false }, { Answar: false }
+      ]
+    }
   },
   /**
    * Health 投保流程試算

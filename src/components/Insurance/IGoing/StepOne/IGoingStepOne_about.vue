@@ -271,15 +271,25 @@ import { InitColumnData } from '../../../../utils/initColumnData'
 import { mapGetters } from 'vuex'
 export default {
   created() {
-    this.GetIGoingPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
-    if (this.GetIGoingPostData.client_occupation_class !== '' && this.GetIGoingPostData.client_occupation_class !== undefined) {
-      this.client_occupation_class = this.GetIGoingPostData.client_occupation_class
-    }
-    if (this.GetIGoingPostData.QusAns !== null && this.GetIGoingPostData.client_occupation_class !== undefined) {
-      this.isShowAns1Error = this.GetIGoingPostData.QusAns[0].Answar
-      this.isShowAns2Error = this.GetIGoingPostData.QusAns[1].Answar
-      this.isShowAns3Error = this.GetIGoingPostData.QusAns[2].Answar
-      this.isShowAns3Error = this.GetIGoingPostData.QusAns[3].Answar
+    // 不為空則為未完成保單進入, 需帶入預設值
+    if (this.$store.state.UNFINISHID !== null) {
+      setTimeout(() => {
+        this.OnOccupation(parseInt(this.GetIGoingPostData.client_occupation_class))
+        this.GetIGoingPostData.QusAns.forEach((qus, index) => {
+          this.OnEnsure(`QusAns${index + 1}`, qus.Answar)
+        })
+      }, 5000)
+    } else {
+      this.GetIGoingPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
+      if (this.GetIGoingPostData.client_occupation_class !== '' && this.GetIGoingPostData.client_occupation_class !== undefined) {
+        this.client_occupation_class = this.GetIGoingPostData.client_occupation_class
+      }
+      if (this.GetIGoingPostData.QusAns !== null && this.GetIGoingPostData.client_occupation_class !== undefined) {
+        this.isShowAns1Error = this.GetIGoingPostData.QusAns[0].Answar
+        this.isShowAns2Error = this.GetIGoingPostData.QusAns[1].Answar
+        this.isShowAns3Error = this.GetIGoingPostData.QusAns[2].Answar
+        this.isShowAns3Error = this.GetIGoingPostData.QusAns[3].Answar
+      }
     }
   },
   data() {

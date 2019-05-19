@@ -97,9 +97,11 @@ const mutations = {
   [functionTypes.FuncIGoingInit](state, { result }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
-      { Answar: '0' }, { Answar: '0' }
-    ]
+    if (rootState.UNFINISHID === '') {
+      state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
+        { Answar: '0' }, { Answar: '0' }
+      ]
+    }
   },
   /**
    * IGoing 投保流程試算

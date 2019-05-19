@@ -393,9 +393,7 @@ export default {
     if (this.$store.state.UNFINISHID !== null) {
       setTimeout(() => {
         this.OnOccupation(parseInt(this.GetIWellPostData.client_occupation_class))
-        console.log(this.GetIWellPostData.QusAns)
         this.GetIWellPostData.QusAns.forEach((qus, index) => {
-          console.log(qus.Answar)
           this.OnEnsure(`QusAns${index + 1}`, qus.Answar)
         })
       }, 5000)

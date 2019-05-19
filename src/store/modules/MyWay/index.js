@@ -95,12 +95,15 @@ const mutations = {
    * @param {請求結果} param1 請求回傳結果
    */
   [functionTypes.FuncMyWayInit](state, { result }) {
+    if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [
-      { Answar: false }, { Answar: false }, { Answar: false },
-      { Answar: false }, { Answar: false }, { Answar: false },
-      { Answar: false }, { Answar: false }, { Answar: false }
-    ]
+    if (rootState.UNFINISHID === '') {
+      state.POSTDATA.QusAns = [
+        { Answar: false }, { Answar: false }, { Answar: false },
+        { Answar: false }, { Answar: false }, { Answar: false },
+        { Answar: false }, { Answar: false }, { Answar: false }
+      ]
+    }
   },
   /**
    * MyWay 投保流程試算

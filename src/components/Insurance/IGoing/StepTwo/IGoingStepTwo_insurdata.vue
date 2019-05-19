@@ -83,6 +83,13 @@ export default {
         roc: moment().add(`${i}`, 'days').format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日午夜十二時`)
       })
     }
+    setTimeout(() => {
+      // 不為空則為未完成保單進入, 需帶入預設值
+      if (this.$store.state.UNFINISHID !== null) {
+        let result = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`YYYY-MM-DD`)
+        this.po_issue_date = result
+      }
+    }, 2000)
   },
   mounted() {
     // 頁面加載完成 將保險期間訖日傳值
