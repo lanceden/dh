@@ -34,7 +34,7 @@
         <div class="otp-time">
           <img src="../../../static/img/otp-time.png">
           <!-- https://vac.js.org/zh/guide/#methods -->
-          <countdown :end-time="this.$store.state.OTPSENDTIME">
+          <countdown :end-time="new Date().getTime() + 300000">
             <span slot="process" slot-scope="lastTime">
               {{ `${lastTime.timeObj.m}:${lastTime.timeObj.s}` }}
             </span>
@@ -98,10 +98,6 @@ export default {
       codeSix: '',
       isShowOtp: false
     }
-  },
-  created() {
-    console.log(this.$store.state.OTPSENDTIME)
-    console.log(this.$store.state.OTPLASTTIME)
   },
   computed: {
     ...mapGetters([

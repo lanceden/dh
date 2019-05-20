@@ -28,11 +28,10 @@ export default {
       FunctionTypes.FuncICanIsInit
     ]),
     GoToPrev() {
-      this.$router.push(`/ICanelecform?token=${this.$store.state.ApiToken}`)
+      this.$router.push(`/ICanelecform?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
-      let result = this.ValidateData()
-      if (!result) return
+      if (!this.ValidateData()) return
       this.FuncICanIsInit(true)
       this.$router.push(NEXTURL)
     },

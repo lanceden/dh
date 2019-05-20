@@ -115,7 +115,7 @@ const mutations = {
   [functionTypes.FuncICanInit](state, { result }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    if (rootState.UNFINISHID === '') {
+    if (rootState.UNFINISHID === '' || rootState.UNFINISHID === null) {
       state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' },
         { Answar: '0' }, { Answar: '0' }
       ]

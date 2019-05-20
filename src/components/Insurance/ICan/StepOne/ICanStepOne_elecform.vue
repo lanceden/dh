@@ -77,7 +77,7 @@ export default {
     GotoNext() {
       this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
       if (this.GetICanElecFormIsRed) {
-        this.$router.push(`/ICan-1?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
+        this.$router.push(`/ICan-1?token=${this.$store.state.ApiToken}`)
       } else {
         toggleModalShow('我們將帶您回首頁。')
         this.$router.push(`/icanelecform?leave=true&token=${this.$store.state.ApiToken}`)

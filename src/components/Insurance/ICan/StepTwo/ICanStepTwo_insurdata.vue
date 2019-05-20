@@ -118,8 +118,6 @@ export default {
     }
   },
   mounted() {
-    $('#CalcAmtDesc2').text($('#face_amt option:selected').text())
-    $('#CalcAmtDesc3').text($('#face_amt option:selected').text())
     var maxPerc = 1.75
     var minPerc = 0.1 / 4
     var maxAmt = initFaceAmt * maxPerc / 100

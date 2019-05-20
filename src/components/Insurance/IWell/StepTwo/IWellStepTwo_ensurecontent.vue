@@ -44,26 +44,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
-import { mapGetters } from 'vuex'
-import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
-export default {
-  computed: {
-    ...mapGetters([
-      GetterTypes.GetIWellPostData
-    ])
-  },
-  updated() {
-    var prem = parseInt(this.GetIWellPostData.face_amt)
-    var maxPerc = 100 * 0.5
-    var minPerc = 5 * 0.5
-    var maxAmt = prem * maxPerc / 100
-    var minAmt = prem * minPerc / 100
-    $('#CalcAmtDesc2').text(maxAmt + '萬')
-    $('#CalcAmtDesc3').text(maxAmt + '萬')
-    $('#blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
-    $('#specific-blind-acc-amt').text(minAmt + '萬' + ' ~ ' + maxAmt + '萬')
-  }
-}
+export default {}
 
 </script>

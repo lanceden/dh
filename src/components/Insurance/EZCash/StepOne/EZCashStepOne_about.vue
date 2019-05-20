@@ -58,13 +58,16 @@ export default {
     // 本人僅為台灣之稅務居民
     QusAns: {
       get() {
-        return this.isTaiwanDuty
+        if (this.GetEZCashPostData.IsTaiwanTaxDuty === null || this.GetEZCashPostData.IsTaiwanTaxDuty === '') {
+          this.GetEZCashPostData.IsTaiwanTaxDuty = 0
+        }
+        return this.GetEZCashPostData.IsTaiwanTaxDuty
       },
       set(value) {
         let result = value === 'true'
         this.GetEZCashPostData.QusAns = [{ Answar: result }]
         this.GetEZCashPostData.IsTaiwanTaxDuty = result
-        if(value === '0') this.isTaiwanDuty = value
+        if (value === '0') this.isTaiwanDuty = value
         else this.isTaiwanDuty = result
       }
     }

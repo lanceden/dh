@@ -97,9 +97,11 @@ const mutations = {
   [functionTypes.FuncAccidentInit](state, { result }) {
     if (result.ResultCode !== '0000') return
     state.POSTDATA = result.Data.Result
-    state.POSTDATA.QusAns = [{ Answar: false }, { Answar: false }, { Answar: false },
-      { Answar: false }, { Answar: false }
-    ]
+    if (rootState.UNFINISHID === '' || rootState.UNFINISHID === null) {
+      state.POSTDATA.QusAns = [{ Answar: '0' }, { Answar: '0' },
+        { Answar: '0' }, { Answar: '0' }
+      ]
+    }
   },
   /**
    * Accident 投保流程試算

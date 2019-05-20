@@ -17,7 +17,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
-      premiums: 0
+      premiums: '0'
     }
   },
   props: [

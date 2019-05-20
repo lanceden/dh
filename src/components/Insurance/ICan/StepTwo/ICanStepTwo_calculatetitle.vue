@@ -33,8 +33,9 @@ export default {
       this.$router.push(`/ICan-1`)
     },
     Estimate() {
-      if (parseInt(this.GetICanPostData.face_amt) === 0) {
-        toggleModalShow(`請選擇投保額度`)
+      let result = parseInt(window.jQuery('#face_amt').val())
+      if (result === 0) {
+        toggleModalShow('請填寫投保額度', '貼心提醒您')
         return
       }
       this.FuncICanEstimate({ para: this.GetICanPostData, router: this.$router })

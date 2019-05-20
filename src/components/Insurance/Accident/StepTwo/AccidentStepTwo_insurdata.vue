@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import moment from 'moment'
 import { mapGetters } from 'vuex'
 import PremiumsComponent from '../../Common/premiums'
@@ -86,17 +85,11 @@ export default {
     }
     setTimeout(() => {
       // 不為空則為未完成保單進入, 需帶入預設值
-      console.log(this.$store.state.UNFINISHID)
       if (this.$store.state.UNFINISHID !== null) {
         let result = moment(this.GetAccidentPostData.po_issue_date, 'YYYY/MM/DD').format(`YYYY/MM/DD`)
         this.po_issue_date = result
       }
     }, 2000)
-  },
-  mounted() {
-    // 頁面加載完成 將保險期間訖日傳值
-    $('#CalcAmtDesc1').html(this.GetAccidentPostData.face_amt || 450)
-    $('#CalcAmtDesc2').html(this.GetAccidentPostData.face_amt || 450)
   },
   computed: {
     ...mapGetters([
@@ -115,20 +108,6 @@ export default {
       set(value) {
         this.GetAccidentPostData.po_issue_date = value
         this.GetAccidentPostData.mode_prem = 0
-      }
-    },
-    /**
-     * 投保額度
-     */
-    face_amt: {
-      get() {
-        return this.GetAccidentPostData.mode_prem === 0 ? this.GetPremiums[0] : this.GetAccidentPostData.face_amt
-      },
-      set(value) {
-        this.GetAccidentPostData.face_amt = value
-        this.GetAccidentPostData.mode_prem = 0
-        $('#CalcAmtDesc1').html(this.GetAccidentPostData.face_amt)
-        $('#CalcAmtDesc2').html(this.GetAccidentPostData.face_amt)
       }
     }
   }

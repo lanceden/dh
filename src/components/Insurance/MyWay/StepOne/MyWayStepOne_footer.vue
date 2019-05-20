@@ -32,8 +32,7 @@ export default {
      * 下一步
      */
     GotoNext() {
-      let result = this.ValidateData()
-      if (!result) return
+      if (!this.ValidateData()) return
       this.FuncMyWayIsInit(true)
       let year = parseInt(moment().format('YYYY')) - 1911
       this.GetMyWayPostData.po_issue_date = moment().format('YYYY-MM-DD')
@@ -63,7 +62,6 @@ export default {
         toggleModalShow('親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。')
         return false
       }
-      console.log(JSON.stringify(this.GetMyWayPostData.QusAns))
       return true
     }
   }

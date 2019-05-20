@@ -16,6 +16,8 @@
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
 import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   computed: {
     ...mapGetters([
@@ -31,6 +33,11 @@ export default {
       this.$router.push(`/myway-1?token=${this.$store.state.ApiToken}`)
     },
     Estimate() {
+      let result = parseInt(window.jQuery('#face_amt').val())
+      if(result === 0) {
+        toggleModalShow('請填寫投保額度', '貼心提醒您')
+        return
+      }
       this.FuncMyWayEstimate({ para: this.GetMyWayPostData, router: this.$router })
     }
   }

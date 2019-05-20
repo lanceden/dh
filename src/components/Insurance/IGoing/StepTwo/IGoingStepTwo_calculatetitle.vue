@@ -16,6 +16,8 @@
 import { mapActions, mapGetters } from 'vuex'
 import FunctionTypes from '../../../../store/modules/IGoing/Types/IGoingFunctionTypes'
 import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes'
+import { toggleModalShow } from '../../../../utils/toggleModal'
+
 export default {
   computed: {
     ...mapGetters([
@@ -31,6 +33,11 @@ export default {
       this.$router.push(`/igoing-1?token=${this.$store.state.ApiToken}`)
     },
     Estimate() {
+      let result = parseInt(window.jQuery('#face_amt').val())
+      if (result === 0) {
+        toggleModalShow('請填寫投保額度', '貼心提醒您')
+        return
+      }
       this.FuncIGoingEstimate({ para: this.GetIGoingPostData, router: this.$router })
     }
   }

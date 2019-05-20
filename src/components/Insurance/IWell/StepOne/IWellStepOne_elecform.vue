@@ -77,7 +77,7 @@ export default {
     GotoNext() {
       this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
       if (this.GetIWellElecFormIsRed) {
-        this.$router.push(`/IWell-1?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
+        this.$router.push(`/IWell-1?token=${this.$store.state.ApiToken}`)
       } else {
         toggleModalShow('我們將帶您回首頁。')
         this.$router.push(`/iWellelecform?leave=true&token=${this.$store.state.ApiToken}`)

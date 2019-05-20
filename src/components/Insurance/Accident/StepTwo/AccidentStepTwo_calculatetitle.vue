@@ -33,8 +33,9 @@ export default {
       this.$router.push(`/accident-1?token=${this.$store.state.ApiToken}`)
     },
     Estimate() {
-      if (parseInt(this.GetAccidentPostData.face_amt) === 0) {
-        toggleModalShow(`請選擇投保額度`)
+      let result = parseInt(window.jQuery('#face_amt').val())
+      if (result === 0) {
+        toggleModalShow('請填寫投保額度', '貼心提醒您')
         return
       }
       this.FuncAccidentEstimate({ para: this.GetAccidentPostData, router: this.$router })

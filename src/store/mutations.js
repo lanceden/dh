@@ -230,7 +230,7 @@ export default {
    */
   FuncSendOTP(state, { result, router }) {
     state.OTPSENDCODE = result.Data.Result.SendCode
-    state.OTPSENDTIME = new Date().getTime() + 300000
+    state.OTPSENDTIME = result.Data.Result.OtpSendTime
     state.OTPLASTTIME = result.Data.Result.OtpLastTime
     router.push('/otpverify')
   },

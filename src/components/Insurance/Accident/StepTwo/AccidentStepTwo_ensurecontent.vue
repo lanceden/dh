@@ -25,14 +25,9 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
 export default {
-  updated() {
-    $('#CalcAmtDesc1').html(this.GetAccidentPostData.face_amt || 450)
-    $('#CalcAmtDesc2').html(this.GetAccidentPostData.face_amt || 450)
-  },
   computed: {
     ...mapGetters([
       GetterTypes.GetAccidentPostData

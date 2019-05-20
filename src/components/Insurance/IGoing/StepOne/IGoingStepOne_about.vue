@@ -280,10 +280,7 @@ export default {
         })
       }, 5000)
     } else {
-      this.GetIGoingPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
-      if (this.GetIGoingPostData.client_occupation_class !== '' && this.GetIGoingPostData.client_occupation_class !== undefined) {
-        this.client_occupation_class = this.GetIGoingPostData.client_occupation_class
-      }
+      this.OnOccupation(parseInt(this.GetIGoingPostData.client_occupation_class))
       if (this.GetIGoingPostData.QusAns !== null && this.GetIGoingPostData.client_occupation_class !== undefined) {
         this.isShowAns1Error = this.GetIGoingPostData.QusAns[0].Answar
         this.isShowAns2Error = this.GetIGoingPostData.QusAns[1].Answar

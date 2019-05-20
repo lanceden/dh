@@ -28,14 +28,13 @@ export default {
       FunctionTypes.FuncIWellIsInit
     ]),
     GoToPrev() {
-      this.$router.push(`/IWellelecform?token=${this.$store.state.ApiToken}`)
+      this.$router.push(`/IWellelecform?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
     },
     /**
      * 下一步
      */
     GotoNext() {
-      let result = this.ValidateData()
-      if (!result) return
+      if (!this.ValidateData()) return
       this.FuncIWellIsInit(true)
       this.$router.push(NEXTURL)
     },

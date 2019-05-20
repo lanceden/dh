@@ -264,6 +264,11 @@ export default {
     this.poIssueDate = moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日起`)
     this.GetEZCashPostData.po_issue_date = moment().format(`YYYY-MM-DD`)
     this.OnMethod('B')
+    // 不為空則為未完成保單進入, 需帶入預設值
+    if (this.$store.state.UNFINISHID !== null) {
+      this.Onmodx_99_ind(this.GetEZCashPostData.modx_99_ind === 'Y' ? '1' : '2')
+      this.face_amtComputed = this.GetEZCashPostData.face_amt
+    }
   },
   computed: {
     ...mapGetters([
@@ -390,7 +395,7 @@ export default {
     },
     GoNext() {
       // 非約定帳號,要檢查帳號
-      if(!this.GetEZCashPostData.Renewed_Prefer) {
+      if(!this.GetEZCashPostData.Renewed_Prefer && this.GetEZCashPostData.modx_99_ind === 'N') {
         if(this.GetEZCashPostData.AccountData[0].account === '') {
           toggleModalShow('請輸入銀行帳戶')
           return
@@ -415,8 +420,6 @@ export default {
     },
     // 約定帳號點擊事件
     OnAccount(target) {
-      console.log(target)
-      // @click="isEdda = true"
       // 點選已約定帳戶, 要清空AccountData
       if (target === 'isEdda') {
         this.isEdda = true

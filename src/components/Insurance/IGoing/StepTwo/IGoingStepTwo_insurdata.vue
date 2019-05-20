@@ -60,7 +60,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import moment from 'moment'
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes.js'
@@ -91,13 +90,6 @@ export default {
       }
     }, 2000)
   },
-  mounted() {
-    // 頁面加載完成 將保險期間訖日傳值
-    // let maturedDate = moment().add(`1`, 'days').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
-    // $('#matured_date').html(`至 ${maturedDate}`)
-    $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt || 450)
-    $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt || 450)
-  },
   computed: {
     ...mapGetters([
       GetterTypes.GetIGoingPostData
@@ -116,20 +108,6 @@ export default {
         // let maturedDate = moment(this.GetIGoingPostData.po_issue_date, 'YYYY-MM-DD').format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年 MM 月 DD 日午夜十二時`)
         // $('#matured_date').html(`至 ${maturedDate}`)
         // $('#matured_date').html(`自午夜十二時起`)
-      }
-    },
-    /**
-     * 投保額度
-     */
-    face_amt: {
-      get() {
-        return this.GetIGoingPostData.face_amt > 450 ? 450 : this.GetIGoingPostData.face_amt
-      },
-      set(value) {
-        this.GetIGoingPostData.face_amt = value
-        this.GetIGoingPostData.mode_prem = 0
-        $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt)
-        $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt)
       }
     }
   }

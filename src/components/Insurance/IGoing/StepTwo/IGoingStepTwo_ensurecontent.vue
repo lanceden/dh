@@ -17,25 +17,14 @@
     </div>
     <div class="form-group row">
       <label for="" class="col-sm-12 col-form-label insure-label">交通意外失能保險金</label>
-      <div class="form-control insure-input-block"> 依失能程度按契約附表比例計算，最高為 <span id="CalcAmtDesc2"></span>萬元</div>
+      <div class="col-sm-12">
+        <div class="form-control insure-input-block"> 依失能程度按契約附表比例計算，最高為 <span id="CalcAmtDesc2"></span>萬元</div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
-import { mapGetters } from 'vuex'
-import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes.js'
-export default {
-  updated() {
-    $('#CalcAmtDesc1').html(this.GetIGoingPostData.face_amt || 450)
-    $('#CalcAmtDesc2').html(this.GetIGoingPostData.face_amt || 450)
-  },
-  computed: {
-    ...mapGetters([
-      GetterTypes.GetIGoingPostData
-    ])
-  }
-}
+export default {}
 
 </script>

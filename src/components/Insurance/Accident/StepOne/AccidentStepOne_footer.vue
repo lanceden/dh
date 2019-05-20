@@ -31,8 +31,7 @@ export default {
       this.$router.push(`/Accident-1?leave=true&token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
-      let result = this.ValidateData()
-      if (!result) return
+      if (!this.ValidateData()) return
       this.FuncAccidentIsInit(true)
       this.$router.push(NEXTURL)
     },

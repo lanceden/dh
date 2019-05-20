@@ -289,10 +289,7 @@ export default {
         })
       }, 5000)
     } else {
-      this.GetAccidentPostData.QusAns = [{ Answar: '0' }, { Answar: '0' }, { Answar: '0' }, { Answar: '0' }]
-      if (this.GetAccidentPostData.client_occupation_class !== '' && this.GetAccidentPostData.client_occupation_class !== undefined) {
-        this.client_occupation_class = this.GetAccidentPostData.client_occupation_class
-      }
+      this.OnOccupation(parseInt(this.GetAccidentPostData.client_occupation_class))
       if (this.GetAccidentPostData.QusAns !== null && this.GetAccidentPostData.client_occupation_class !== undefined) {
         this.isShowAns1Error = this.GetAccidentPostData.QusAns[0].Answar
         this.isShowAns2Error = this.GetAccidentPostData.QusAns[1].Answar

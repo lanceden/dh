@@ -56,13 +56,13 @@ export default {
   },
   created() {
     console.log(this.stateData.visit_time1)
-    if (this.stateData.visit_time1 !== '') {
+    if (this.stateData.visit_time1 !== '' && this.stateData.visit_time1 === '1') {
       this.OnVisitTime('visit_time1')
     }
-    if (this.stateData.visit_time2 !== '') {
+    if (this.stateData.visit_time2 !== '' && this.stateData.visit_time2 === '1') {
       this.OnVisitTime('visit_time2')
     }
-    if (this.stateData.visit_time3 !== '') {
+    if (this.stateData.visit_time3 !== '' && this.stateData.visit_time3 === '1') {
       this.OnVisitTime('visit_time3')
     }
   },
