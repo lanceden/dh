@@ -90,7 +90,7 @@ import { mapGetters, mapActions } from 'vuex'
 import StepTwoAnnuity from './UpCashStepTwo_annuity'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes'
 import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
-import { valEstimateData, setDataOnEstimateStep } from '../../../../utils/validateEstimateData'
+import { valEstimateData } from '../../../../utils/validateEstimateData'
 import { toggleModalShow } from '../../../../utils/toggleModal'
 
 const CITYNAME = '基隆市'
@@ -115,7 +115,9 @@ export default {
     this.GetUpCashPostData.value_ind = '4'
     this.tempMail = this.GetUpCashPostData.email
     this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetDistrictData({
+      cityName: CITYNAME
+    })
   },
   computed: {
     ...mapGetters([
@@ -148,7 +150,9 @@ export default {
       set(value) {
         this.GetUpCashPostData.city3 = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
-        this.FuncGetDistrictData(value)
+        this.FuncGetDistrictData({
+          cityName: value
+        })
         this.GetUpCashPostData.district3 = 0
       }
     },
@@ -185,7 +189,6 @@ export default {
       this.$router.push(`/upcash-2`)
     },
     GoNext() {
-      setDataOnEstimateStep(this.GetUpCashPostData)
       // 寄送至客戶住所(通訊地址)
       if (this.$store.state.NOTIFYCHECKBOX[1]) {
         this.GetUpCashPostData.city3 = this.GetUpCashPostData.InsAddressCity || ''

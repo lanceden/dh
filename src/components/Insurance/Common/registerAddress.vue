@@ -97,8 +97,7 @@ export default {
     this.temproad2 = this.stateData.road2
     this.FuncGetCityData()
     this.FuncGetDistrictData({
-      cityName: this.city2,
-      target: 'register'
+      cityName: this.city2
     })
     this.OnRegisterAddr(this.stateData.IsSaveRegistered ? 'new' : 'old')
   },
@@ -116,8 +115,7 @@ export default {
         this.stateData.city2 = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
         this.FuncGetDistrictData({
-          cityName: this.city2,
-          target: 'register'
+          cityName: this.city2
         })
       }
     },
@@ -178,8 +176,7 @@ export default {
           this.cbNewAddr2 = true
           this.stateData.IsSaveRegistered = true
           this.FuncGetDistrictData({
-            cityName: this.city2,
-            target: 'register'
+            cityName: this.city2
           })
           break
       }

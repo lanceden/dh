@@ -131,7 +131,9 @@ export default {
   },
   created() {
     this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetDistrictData({
+      cityName: CITYNAME
+    })
   },
   methods: {
     ...mapActions([
@@ -267,7 +269,9 @@ export default {
         return this.stateData.BenfAdd_City3 || 0
       },
       set(value) {
-        this.FuncGetDistrictData(value)
+        this.FuncGetDistrictData({
+          cityName: value
+        })
         this.stateData.BenfAdd_City3 = value
       }
     },

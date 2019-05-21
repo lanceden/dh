@@ -90,7 +90,8 @@ export default {
     this.temproad2 = this.stateData.road1
     this.FuncGetCityData()
     this.FuncGetDistrictData({
-      cityName: this.stateData.city1
+      cityName: this.stateData.city1,
+      target: 'community'
     })
     this.OnCommunityAddress(this.stateData.IsSaveCommu ? 'new' : 'old')
   },
@@ -108,7 +109,8 @@ export default {
         this.stateData.city1 = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
         this.FuncGetDistrictData({
-          cityName: this.stateData.city1
+          cityName: this.stateData.city1,
+          target: 'community'
         })
       }
     },
@@ -169,7 +171,8 @@ export default {
           this.cbNewAddr2 = true
           this.stateData.IsSaveCommu = true
           this.FuncGetDistrictData({
-            cityName: this.stateData.city1
+            cityName: this.stateData.city1,
+            target: 'community'
           })
           break
       }

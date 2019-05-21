@@ -174,45 +174,6 @@ function GetInitialPaymentRange(postData) {
   return range
 }
 
-function setDataOnEstimateStep(postData) {
-  console.log('client_rate_sex', postData.client_rate_sex)
-  console.log('client_occupation_class', postData.client_occupation_class)
-  console.log('client_occupation_class_code', postData.client_occupation_class_code)
-  console.log('client_occupation_class_code_name', postData.client_occupation_class_code_name)
-  console.log('client_occupation_level', postData.client_occupation_level)
-  console.log('client_occupation_sub_level', postData.client_occupation_sub_level)
-  console.log('web_appl_ind', postData.web_appl_ind)
-  console.log('po_issue_date', postData.po_issue_date)
-  console.log('face_amt', postData.face_amt)
-  console.log('IsOneTimePayment', postData.IsOneTimePayment)
-  console.log('init_method', postData.init_method)
-  console.log('fst_anny_pay_age', postData.fst_anny_pay_age)
-  console.log('anny_frequence', postData.anny_frequence)
-  console.log('qpoop_19_year', postData.qpoop_19_year)
-  console.log('value_ind', postData.value_ind)
-  console.log('Applicant_BankCode', postData.Applicant_BankCode)
-  console.log('Applicant_BranchCode', postData.Applicant_BranchCode)
-  console.log('Applicant_Account', postData.Applicant_Account)
-  console.log('Applicant_BankName', postData.Applicant_BankName)
-  console.log('Applicant_BranchName', postData.Applicant_BranchName)
-  console.log('email', postData.email)
-  console.log('city3', postData.city3)
-  console.log('district3', postData.district3)
-  console.log('road3', postData.road3)
-  console.log('zip3', postData.zip3)
-  console.log('EmployeeNo', postData.EmployeeNo)
-  console.log('QusAns', postData.QusAns)
-  console.log('birth_city', postData.CRSData.birth_city)
-  console.log('birth_national', postData.CRSData.birth_national)
-  console.log('IsTaiwanTaxDuty', postData.IsTaiwanTaxDuty)
-  console.log('modx_99_ind', postData.modx_99_ind)
-  console.log('qpoop_25_prem', postData.qpoop_25_prem)
-  console.log('qpoop_25_modx', postData.qpoop_25_modx)
-  console.log('method', postData.method)
-  console.log('Renewed_Prefer', postData.Renewed_Prefer)
-}
-
 export {
-  valEstimateData,
-  setDataOnEstimateStep
+  valEstimateData
 }

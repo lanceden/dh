@@ -72,10 +72,11 @@ export default {
    * 取回鄉鎮市區
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
+   * @param {使用地址陣列} target community:通訊地址 空:一般使用
    */
   FuncGetDistrictData(state, { result, target }) {
     // 戶籍地址
-    if(target === 'register') {
+    if(target !== 'community') {
       state.DISTRICTDATA = result.Data.Result
     } else {
       state.DISTRICTDATACOMMUNITY = result.Data.Result

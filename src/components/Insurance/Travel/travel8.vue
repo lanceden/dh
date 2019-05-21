@@ -187,7 +187,9 @@ export default {
   },
   created() {
     this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetDistrictData({
+      cityName: CITYNAME
+    })
     let result = this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.MailType
     // 第一次進來無資料所以不執行
     if (result !== null) {

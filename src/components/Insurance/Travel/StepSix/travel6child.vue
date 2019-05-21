@@ -124,7 +124,9 @@ export default {
   },
   created() {
     this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetDistrictData({
+      cityName: CITYNAME
+    })
   },
   mounted() {
     this.FuncGetNationality('')
@@ -216,7 +218,9 @@ export default {
       set(value) {
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Address.City = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
-        this.FuncGetDistrictData(value)
+        this.FuncGetDistrictData({
+          cityName: value
+        })
         this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo[this.index].BeneficiaryData[0].Address.District = 0
       }
     },

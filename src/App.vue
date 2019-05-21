@@ -36,13 +36,7 @@ export default {
       'SetHttp',
       'SetApiToken',
       'FuncGetAccountData'
-    ]),
-    startCallBack: function(x) {
-      console.log(x)
-    },
-    endCallBack: function(x) {
-      console.log(x)
-    }
+    ])
   }
 }
 

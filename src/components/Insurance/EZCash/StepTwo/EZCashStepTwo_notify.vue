@@ -115,7 +115,9 @@ export default {
     this.GetEZCashPostData.value_ind = '4'
     this.tempMail = this.GetEZCashPostData.email
     this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetDistrictData({
+      cityName: CITYNAME
+    })
   },
   computed: {
     ...mapGetters([
@@ -148,7 +150,9 @@ export default {
       set(value) {
         this.GetEZCashPostData.city3 = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
-        this.FuncGetDistrictData(value)
+        this.FuncGetDistrictData({
+          cityName: value
+        })
         this.GetEZCashPostData.district3 = 0
       }
     },

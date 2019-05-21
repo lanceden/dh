@@ -96,7 +96,9 @@ export default {
   },
   created() {
     this.FuncGetCityData()
-    this.FuncGetDistrictData(CITYNAME)
+    this.FuncGetDistrictData({
+      cityName: CITYNAME
+    })
     if (this.GetEntTravelPostData.PolicyData.EmergencyContactAddr === null) {
       this.GetEntTravelPostData.PolicyData.EmergencyContactAddr = {
         City: '',
@@ -144,7 +146,9 @@ export default {
       set(value) {
         this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.City = value
         // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
-        this.FuncGetDistrictData(value)
+        this.FuncGetDistrictData({
+          cityName: value
+        })
         this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District = 0
       }
     },
