@@ -46,7 +46,7 @@
           </div>
         </div>
       </form>
-      <div class="form-group row" v-show="parseInt(stateData.anny_frequence) !== 0">
+      <div class="form-group row" v-show="parseInt(stateData.anny_frequence) !== 0 & stateData.anny_frequence !== ''">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">分期給付方式</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="anny_frequence_computed">
@@ -58,7 +58,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group row" v-show="parseInt(stateData.anny_frequence) !== 0">
+      <div class="form-group row" v-show="parseInt(stateData.anny_frequence) !== 0 & stateData.anny_frequence !== ''">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">保證期間</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="qpoop_19_year">
@@ -90,7 +90,6 @@ export default {
   ],
   data() {
     return {
-      tempAnnyFrequence: 0,
       ensure: {
         anny_frequenceOne: '../../../../static/img/oval.png',
         anny_frequenceMore: '../../../../static/img/oval.png'
@@ -107,12 +106,11 @@ export default {
     // 給付方式: 0一次給付 1分期給付
     anny_frequence_computed: {
       get() {
-        return this.tempAnnyFrequence
+        return this.stateData.anny_frequence | 0
       },
       set(value) {
         this.stateData.mode_prem = 0
         this.stateData.anny_frequence = parseInt(value)
-        this.tempAnnyFrequence = parseInt(value)
       }
     },
     // 給付開始日：保險年齡

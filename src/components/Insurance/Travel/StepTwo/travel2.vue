@@ -196,7 +196,7 @@ export default {
       'FuncGetInsTravelChildSupplCoverageSli' // 子女附約'
     ]),
     /**
-     * 設置請確認保障對象
+     * 設置您的旅遊地點
      * @param {string} target 國內:in 國外:out
      */
     OnEnsure(target) {
@@ -205,14 +205,14 @@ export default {
           this.ensure.in = '../../../../../static/img/oval-ed.png'
           this.ensure.out = '../../../../../static/img/oval.png'
           this.GetTravelPostData.PolicyData.TravelType = 1
-          this.GetTravelPostData.PolicyData.TravelCountry = 1
+          this.TravelCountry = 1
           this.GetTravelPostData.PolicyData.EtcCountry = ''
           break
         case 'out': // 國外
           this.ensure.in = '../../../../../static/img/oval.png'
           this.ensure.out = '../../../../../static/img/oval-ed.png'
           this.GetTravelPostData.PolicyData.TravelType = 2
-          this.GetTravelPostData.PolicyData.TravelCountry = 0
+          this.TravelCountry = 0
           break
       }
     }
