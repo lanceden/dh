@@ -104,15 +104,15 @@ export default {
         this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = value
         // 變更值後傷害醫療及海外突發疾病下拉框需一起改變值
         let maxIndex = value.toString().substring(0, 1)
-        this.silData = []
+        this.$store.state.TRAVELSUPPL = []
         for (let index = maxIndex; index >= 0; index--) {
           if (index !== 0) {
-            this.silData.push({
+            this.$store.state.TRAVELSUPPL.push({
               Text: `${index}0萬`,
               Value: `${index}0`
             })
           } else {
-            this.silData.push({
+            this.$store.state.TRAVELSUPPL.push({
               Text: `不投保`,
               Value: `0`
             })
@@ -135,13 +135,14 @@ export default {
       },
       set(value) {
         this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = value
-        this.SupplementPolicyFaceAmtoOverSea = value
+        if (this.GetEntTravelPostData.PolicyData.TravelType === 1) this.SupplementPolicyFaceAmtoOverSea = value
       }
     },
     // 被保險人(本人)：海外突發疾病
     SupplementPolicyFaceAmtoOverSea: {
       get() {
-        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt || 80
+        // TravelType 1:國內 2:國外
+        return this.GetEntTravelPostData.PolicyData.TravelType === 1 ? 0 : this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt || 80
       },
       set(value) {
         // 若為0要關閉
