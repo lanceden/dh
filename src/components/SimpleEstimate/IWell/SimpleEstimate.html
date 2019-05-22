@@ -11,15 +11,15 @@
             window.scrollTo(0, 1);
         }
     </script>
-    <link rel="stylesheet" href="../../content/2019app/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../content/2019app/reset.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" />
 
     <!-- Owl Stylesheets -->
-    <link rel="stylesheet" href="../../content/2019app/docs.theme.min.css">
-    <link rel="stylesheet" href="../../content/2019app/all.css">
-    <link rel="stylesheet" href="../../content/2019app/customes.css" type="text/css" />
-    <link rel="stylesheet" type="../../content/2019app/css" href="../../content/2019app/fontawesome.min.css">
-    <script src="../../scripts/2019app/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/docs.theme.min.css">
+    <link rel="stylesheet" href="../../css/all.css">
+    <link rel="stylesheet" href="../../css/customes.css" type="text/css" />
+    <link rel="stylesheet" type="../../css/css" href="../../css/fontawesome.min.css">
+    <script src="../../js/jquery.min.js"></script>
     <style>
         input[type="tel"].data-input {
             color: #fa6400;
@@ -39,21 +39,21 @@
             }
 
         .NoCheck {
-            background: url(../../images/2019app/oval.png);
-            background-size: 37px auto;
+            background: url(../../img/oval.png);
+            background-size: 35px auto;
             background-position: center;
             background-repeat: no-repeat
         }
 
         .Check {
-            background: url(../../images/2019app/oval-ed.png);
-            background-size: 37px auto;
+            background: url(../../img/oval-ed.png);
+            background-size: 35px auto;
             background-position: center;
             background-repeat: no-repeat
         }
 
         select {
-            background-image: url(../../images/2019app/down-arrow.png);
+            background-image: url(../../img/down-arrow.png);
             -webkit-appearance: none;
             outline: none !important;
             box-shadow: 0 0 0 0 #fff;
@@ -64,13 +64,10 @@
 
 <body>
     <div class="container">
-        <div class="banner-img">
-            <img src="../../images/2019app/banner_upcash.jpg" alt="">
-        </div>
         <div class="bg-radius">
             <div class="top">
                 <div class="top-title">
-                    <img src="../../images/2019app/calculator.png" alt="">
+                    <img src="../../img/calculator.png" alt="">
                     保費試算
                 </div>
             </div>
@@ -79,29 +76,6 @@
                 若您為新光人壽之保戶，請先登入以利享有更多保額優惠喔！
             </div>
             <div class="form-bottom">
-                <div class="form-group row">
-                    <label for="" class="col-sm-12 col-form-label">您的性別是?</label>
-                    <div class="border-bottom-line col-sm-12"></div>
-                    <div class="top col-sm-12">
-                        <div class="insure-notice-box radio-group">
-                            <input id="input1" name="inputSex" type="radio" value="2" class="radio-circle" checked>
-                            <div class="insure-check radio-item NoCheck"></div>
-                            <div class="insure-check-content">
-                                <label for="input1" class="radio-label" data-val="2" data-group="inputSex">女</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-bottom-line col-sm-12"></div>
-                    <div class="top col-sm-12">
-                        <div class="insure-notice-box radio-group">
-                            <input id="input2" name="inputSex" type="radio" value="1" class="radio-circle">
-                            <div class="insure-check radio-item NoCheck"></div>
-                            <div class="insure-check-content">
-                                <label for="input2" class="radio-label" data-val="1" data-group="inputSex">男</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="form-group row">
                     <label for="" class="col-sm-12 col-form-label">您的生日是?</label>
                     <div class="col-sm-3 insure-select-align">
@@ -137,6 +111,11 @@
                             <option value="1971">1971</option>
                             <option value="1970">1970</option>
                             <option value="1969">1969</option>
+                            <option value="1968">1968</option>
+                            <option value="1967">1967</option>
+                            <option value="1966">1966</option>
+                            <option value="1965">1965</option>
+                            <option value="1964">1964</option>
                         </select>年
                     </div>
                     <div class="col-sm-3 insure-select-align">
@@ -159,6 +138,55 @@
                         <select id="inputDay" name="inputDay" class="form-control data-input insure-select insure-input-block-edit" required></select>日
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label">您的工作屬於哪個類別?</label>
+                    <div class="border-bottom-line col-sm-12"></div>
+                    <div class="top col-sm-12">
+                        <div class="insure-notice-box radio-group">
+                            <input id="input3" name="inputIndustry" type="radio" value="2" class="radio-circle" checked>
+                            <div class="insure-check radio-item NoCheck"></div>
+                            <div class="insure-check-content">
+                                <label for="input3" class="radio-label" data-val="2" data-group="inputIndustry">外勤業務相關</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom-line col-sm-12"></div>
+                    <div class="top col-sm-12">
+                        <div class="insure-notice-box radio-group">
+                            <input id="input4" name="inputIndustry" type="radio" value="1" class="radio-circle">
+                            <div class="insure-check radio-item NoCheck"></div>
+                            <div class="insure-check-content">
+                                <label for="input4" class="radio-label" data-val="1" data-group="inputIndustry">內勤行政文書相關</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom-line col-sm-12"></div>
+                    <div class="top col-sm-12">
+                        <div class="insure-notice-box radio-group">
+                            <input id="input5" name="inputIndustry" type="radio" value="3" class="radio-circle">
+                            <div class="insure-check radio-item NoCheck"></div>
+                            <div class="insure-check-content">
+                                <label for="input5" class="radio-label" data-val="3" data-group="inputIndustry">養殖、石化及放牧相關</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-bottom-line col-sm-12"></div>
+                    <div class="top col-sm-12">
+                        <div class="insure-notice-box radio-group">
+                            <input id="input6" name="inputIndustry" type="radio" value="4" class="radio-circle">
+                            <div class="insure-check radio-item NoCheck"></div>
+                            <div class="insure-check-content">
+                                <label for="input6" class="radio-label" data-val="4" data-group="inputIndustry">司機、採石及水電修理相關</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-12 col-form-label">您希望擁有幾天的保障?</label>
+                <div class="col-sm-12">
+                    <input class="form-control data-input" id="InsuranceDay" name="InsuranceDay" pattern="[0-9]*" placeholder="請輸入保障天數，國內最高30天" type="tel" value="">
+                </div>
             </div>
             <div class="form-group row">
                 <label for="" class="col-sm-12 col-form-label">您希望擁有多少保障?</label>
@@ -169,16 +197,24 @@
                 </div>
             </div>
             <div class="border-bottom-line"></div>
+            <div class="col-sm-12">
+                <div class="insure-tips insure-tips-mt-20">
+                    ※本商品一律附加實支實付型傷害醫療保險限額2萬<br>
+                    ※網路投保個人傷害醫療實支實付型保單（含主、附約），累計本公司及同業以投保1單為限<br>
+                    ※本商品附加實支實付型傷害醫療保險投保金額會列入網路投保傷害保險累積限額計算<br>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
             <div class="bg-money">
                 <div class="col-sm-12">
                     <div class="font-label">您所需支付的保費為</div>
                     <div id="PayNum" class="font-money"> NT$ 0</div>
-                    <div class="money-icon"><img src="../../images/2019app/coins.png" alt=""></div>
+                    <div class="money-icon"><img src="../../img/coins.png" alt=""></div>
                 </div>
             </div>
             <div class="border-bottom-line"></div>
             <div class="text-description">
-                <img src="../../images/2019app/loudspeaker.png" alt="">
+                <img src="../../img/loudspeaker.png" alt="">
                 首次登入》肯德基6折優惠券
             </div>
         </div>
@@ -186,20 +222,23 @@
     <div class="footer">
         <div class="footer-content">
             <nav class="navbar navbar-dark row">
-                <div class="col-sm-12 footer-title footer-right">立即投保</div>
+                <div class="col-sm-12 footer-title footer-right" @click="OnGoInsure()">立即投保</div>
             </nav>
         </div>
     </div>
-    <script src="../../scripts/2019app/bootstrap.bundle.min.js"></script>
-    <script src="../../scripts/2019app/popper.min.js"></script>
-    <script src="../../scripts/2019app/bootstrap.min.js"></script>
-    <script src="../../scripts/2019NewInsure/2019NewInsureJS.js"></script>
-    <script src="../../scripts/2019app/estimation.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/2019NewInsureJS.js"></script>
+    <script src="../../js/estimation.js"></script>
 
     <script>
+        function OnGoInsure() {
+        window.location.href = ''
+    }
         function faceamtList() {
             var Pdata = {
-                "PLAN_Code_1": "LAA01",
+                "PLAN_Code_1": "20540",
                 "Verified": "Y"
             };
             $.ajax({
@@ -229,26 +268,28 @@
         }
         //試算
         function Compute() {
-            var sex = $("input[name='inputSex']:checked").val();
             var BYear = $('#inputyear').val();
             var BMonth = $('#inputMonth').val();
             var BDay = $('#inputDay').val();
+            var InsuranceDay = $("#InsuranceDay").val();
             var faceamt = $("#insurePay").val();
+            var occupation = $("input[name='inputIndustry']:checked").val();
 
-            if (sex == '' || BYear == '' || BMonth == '' || BDay == '' || faceamt == '')
+            if (BYear == '' || BMonth == '' || BDay == '' || faceamt == '' || occupation == '' || InsuranceDay == '' || !checkDay())
                 return;
 
             var Edata = {
                 "InsurerSourceID": "InsuranceWeb",
                 "CoreData": {
-                    "client_rate_sex": sex,
                     "client_birth": BYear + "-" + BMonth + "-" + BDay,
+                    "client_occupation_class": occupation,
+                    "TrvDays": InsuranceDay,
                     "face_amt": faceamt
                 }
             };
 
             $.ajax({
-                url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//MyWay/SimpleEstimate',
+                url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//IWell/SimpleEstimate',
                 type: 'POST',
                 data: Edata,
                 success: function (rep) {
@@ -265,12 +306,28 @@
                 }
             });
         }
+
+        function checkDay() {
+            if ($("#InsuranceDay").val() > 0 && $("#InsuranceDay").val() <= 30) {
+                return true;
+            }
+            else {
+                alert("請輸入符合條件之天數");
+                $("#InsuranceDay").val("");
+                return false;
+            }
+        }
+
         $(document).ready(function () {
             faceamtList();
-            Compute();
+            $("#InsuranceDay").on("change", function () {
+                if (checkDay()) {
+                    Compute();
+                }
+            });
 
             //保單年度未
-            $('#insurePay, #inputyear, #inputMonth, #inputDay, input[name="inputSex"]').on('change', function () {
+            $('#insurePay, input[name="inputIndustry"],#inputyear, #inputMonth, #inputDay').on('change', function () {
                 Compute();
             });
             

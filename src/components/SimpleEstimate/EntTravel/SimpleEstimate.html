@@ -11,15 +11,15 @@
             window.scrollTo(0, 1);
         }
     </script>
-    <link rel="stylesheet" href="../../content/2019app/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../../content/2019app/reset.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" />
 
     <!-- Owl Stylesheets -->
-    <link rel="stylesheet" href="../../content/2019app/docs.theme.min.css">
-    <link rel="stylesheet" href="../../content/2019app/all.css">
-    <link rel="stylesheet" href="../../content/2019app/customes.css" type="text/css" />
-    <link rel="stylesheet" type="../../content/2019app/css" href="../../content/2019app/fontawesome.min.css">
-    <script src="../../scripts/2019app/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../css/docs.theme.min.css">
+    <link rel="stylesheet" href="../../css/all.css">
+    <link rel="stylesheet" href="../../css/customes.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/fontawesome.min.css">
+    <script src="../../js/jquery.min.js"></script>
     <style>
         input[type="tel"].data-input {
             color: #fa6400;
@@ -39,21 +39,21 @@
             }
 
         .NoCheck {
-            background: url(../../images/2019app/oval.png);
-            background-size: 37px auto;
+            background: url(../../img/oval.png);
+            background-size: 35px auto;
             background-position: center;
             background-repeat: no-repeat
         }
 
         .Check {
-            background: url(../../images/2019app/oval-ed.png);
-            background-size: 37px auto;
+            background: url(../../img/oval-ed.png);
+            background-size: 35px auto;
             background-position: center;
             background-repeat: no-repeat
         }
 
         select {
-            background-image: url(../../images/2019app/down-arrow.png);
+            background-image: url(../../img/down-arrow.png)
             -webkit-appearance: none;
             outline: none !important;
             box-shadow: 0 0 0 0 #fff;
@@ -67,13 +67,10 @@
 
 <body>
     <div class="container">
-        <div class="banner-img">
-            <img src="../../images/2019app/banner_upcash.jpg" alt="">
-        </div>
         <div class="bg-radius">
             <div class="top">
                 <div class="top-title">
-                    <img src="../../images/2019app/calculator.png" alt="">
+                    <img src="../../img/calculator.png" alt="">
                     保費試算
                 </div>
             </div>
@@ -176,7 +173,7 @@
             </div>
             <div class="col-sm-12 sub-box-2 TravelAim">
                 <div class="insure-tips-text" onclick="window.open('https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&amp;n=C1B19EF0ACDD3C91&amp;sms=867F5398A49F758A','_blank')">
-                    <img src="../../images/2019app/insure-link.png" alt="">申根地區國查詢
+                    <img src="../../img/insure-link.png" alt="">申根地區國查詢
                 </div>
             </div>
             <div class="form-group row">
@@ -253,12 +250,12 @@
                 <div class="col-sm-12">
                     <div class="font-label">您所需支付的保費為</div>
                     <div id="PayNum" class="font-money"> NT$ 0</div>
-                    <div class="money-icon"><img src="../../images/2019app/coins.png" alt=""></div>
+                    <div class="money-icon"><img src="../../img/coins.png" alt=""></div>
                 </div>
             </div>
             <div class="border-bottom-line"></div>
             <div class="text-description">
-                <img src="../../images/2019app/loudspeaker.png" alt="">
+                <img src="../../img/loudspeaker.png" alt="">
                 首次登入》肯德基6折優惠券
             </div>
         </div>
@@ -266,15 +263,15 @@
     <div class="footer">
         <div class="footer-content">
             <nav class="navbar navbar-dark row">
-                <div class="col-sm-12 footer-title footer-right">立即投保</div>
+                <div class="col-sm-12 footer-title footer-right" @click="OnGoInsure()">立即投保</div>
             </nav>
         </div>
     </div>
-    <script src="../../scripts/2019app/bootstrap.bundle.min.js"></script>
-    <script src="../../scripts/2019app/popper.min.js"></script>
-    <script src="../../scripts/2019app/bootstrap.min.js"></script>
-    <script src="../../scripts/2019NewInsure/2019NewInsureJS.js"></script>
-    <script src="../../scripts/2019app/estimation.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/2019NewInsureJS.js"></script>
+    <script src="../../js/estimation.js"></script>
 
     <script>
         function faceamtList() {
@@ -282,6 +279,9 @@
                 "PLAN_Code_1": "62020",
                 "Verified": "Y"
             };
+        function OnGoInsure() {
+            window.location.href = ''
+        }
             $.ajax({
                 url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//Query/Premiums',
                 type: 'POST',
