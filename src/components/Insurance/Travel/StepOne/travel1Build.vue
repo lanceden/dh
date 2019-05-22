@@ -3,8 +3,7 @@
     <loading v-show="GetLoading" />
     <TravelOne></TravelOne>
     <!-- 基本資料 End -->
-    <TravelOneInsureData 
-    v-for="n in TravelDataLength" :key="n" :index="n - 1"></TravelOneInsureData>
+    <TravelOneInsureData v-for="n in TravelDataLength" :key="n" :index="n - 1"></TravelOneInsureData>
     <TravelOneFooter></TravelOneFooter>
   </div>
 </template>
@@ -30,11 +29,10 @@ export default {
       GetterTypes.GetTravelIsInit,
       GetterTypes.GetTravelPostData
     ]),
-    TravelDataLength: {
-      get() {
-        if (!this.GetTravelPostData.PolicyData || this.GetTravelPostData.PolicyData.InsuredInfo === null) return 0
-        return this.GetTravelPostData.PolicyData.InsuredInfo.length
-      }
+    TravelDataLength() {
+      if (!this.GetTravelPostData.PolicyData || this.GetTravelPostData.PolicyData.InsuredInfo === null) return 0
+      console.log(this.GetTravelPostData.PolicyData.InsuredInfo[0].show)
+      return this.GetTravelPostData.PolicyData.InsuredInfo.length
     }
   },
   components: {

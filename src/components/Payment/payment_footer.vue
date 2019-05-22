@@ -48,13 +48,6 @@ export default {
         toggleModalShow('請選擇繳費管道。')
         return
       }
-      // 判斷是否為信用卡繳費, 若是則要驗證卡號
-      if (this.$store.state.PAYTYPE === 'C') {
-        if (!CheckCardno(postData.NCCCModels.CardNo)) {
-          toggleModalShow('信用卡號不正確，請重新輸入。')
-          return
-        }
-      }
 
       // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
       let planName = this.$store.state.PLANNAME.toLowerCase()
@@ -84,7 +77,13 @@ export default {
         router: this.$router
       }
       console.log('postData', postData)
-
+      // 判斷是否為信用卡繳費, 若是則要驗證卡號
+      if (this.$store.state.PAYTYPE === 'C') {
+        if (!CheckCardno(postData.NCCCModels.CardNo)) {
+          toggleModalShow('信用卡號不正確，請重新輸入。')
+          return
+        }
+      }
       switch (planName) {
         case 'upcash':
           console.log('this.FuncUpCashSubmitOrder')

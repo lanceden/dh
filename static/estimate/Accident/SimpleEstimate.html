@@ -12,7 +12,7 @@
         }
     </script>
 
-    
+
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
@@ -172,8 +172,8 @@
         <div class="footer">
             <div class="footer-content">
                 <nav class="navbar navbar-dark row">
-                    <div class="col-sm-6 footer-title footer-left">回前一頁</div>
-                    <div class="col-sm-6 footer-title footer-right">立即投保</div>
+                    <div class="col-sm-6 footer-title footer-left" onclick="OnGoBack()">回前一頁</div>
+                    <div class="col-sm-6 footer-title footer-right" onclick="OnGoInsure()">立即投保</div>
                 </nav>
             </div>
         </div>
@@ -183,14 +183,22 @@
 </html>
 
 <script>
+    function OnGoBack() {
+        window.location.href = 'https://onlinetest.skl.com.tw/insurancewebapi/static/Estimate/accident/SimpleEstimate.html?leave=true'
+    }
+    function OnGoInsure() {
+        // 判斷當前url中是否有token
+        let token = getQueryStringParameterByKey('token')
+        if (token === null) {
+            return
+        }
+        window.location.href = 'https://onlinetest.skl.com.tw/InsuranceWebApi/#/accident-1?token=' + token
+    }
     function faceamtList() {
         var Pdata = {
             "PLAN_Code_1": "20511",
             "Verified": "Y"
         };
-        function OnGoInsure() {
-            window.location.href = ''
-        }
         $.ajax({
             url: 'https://onlinetest.skl.com.tw/InsuranceWebApi/Query/Premiums',
             type: 'POST',

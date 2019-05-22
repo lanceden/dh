@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     finish() {
-      this.$router.push(`paymentcomplete?leave=true`)
+      this.$router.push(`/paymentcomplete?leave=true`)
     },
     OnFbClick() {
       console.log('OnFbClick')
@@ -101,7 +101,7 @@ export default {
     },
     OnLineClick() {
       // <a href="http://line.naver.jp/R/msg/text/?文章標題%0D%0A文章網址"><img src="圖片網址"/></a>
-      window.location = `line://msg/text/新光人壽網路投保！%0D%0A新年快樂，我把剛剛抽中的「中祥 幸運帶著走」紅包送給你囉！%0D%0A趕緊點擊連結註冊會員領取紅包，並進入活動網站也回送一個紅包給我吧。%0D%0Ahttps://event1901.chfoods.com.tw?p=`
+      window.location = `line://msg/text/新光人壽網路投保！%0D%0A投保完成。%0D%0Ahttps://online.skl.com.tw?p=`
     }
   }
 }

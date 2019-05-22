@@ -89,7 +89,7 @@ const CheckOTP = `${Domain}/OTP/Check`
 /**
  * 全繳網
  */
-const EbillForm = `https://test-online.skl.com.tw/app/PaymentInfo`
+const EbillForm = `https://onlinetest.skl.com.tw/app/PaymentInfo`
 /**
  * UpCash初始化
  */

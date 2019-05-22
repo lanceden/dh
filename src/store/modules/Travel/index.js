@@ -165,7 +165,8 @@ const mutations = {
    */
   [functionTypes.FuncTravelSubmitOrder](state, { result, router }) {
     if (result.ResultCode !== '0000') return
-    rootState.PAYMCOMPLETE = result.Data.Result
+    rootState.PAYMENTCOMPLETE = result.Data.Result
+    rootState.PAYMENTCOMPLETE.InsName = result.Data.Code
     if (rootState.PAYTYPE.toUpperCase() === 'B') {
       router.push(`/ebillform`)
     } else {
