@@ -11,9 +11,10 @@ import axios from 'axios'
 import { GetErrorMsg } from '../src/utils/getErrorMsg'
 import { toggleModalShow } from './utils/toggleModal'
 import vueAwesomeCountdown from 'vue-awesome-countdown'
-
+import VueScrollTo from 'vue-scrollto'
 Vue.config.productionTip = false
 Vue.use(extension)
+Vue.use(VueScrollTo)
 Vue.use(vueAwesomeCountdown, 'vac') // Component name, `countdown` and `vac` by default
 
 Object.keys(filters)

@@ -51,9 +51,12 @@ export default {
       case 'travel':
         agreementArr = this.GetTravelPostData.AgreementTitle.split('『')
         break
+      case 'enttravel':
+        agreementArr = this.GetEntTravelPostData.AgreementTitle.split('『')
+        break
     }
     agreementArr.forEach(item => {
-      if (this.instypename === 'travel') {
+      if (this.instypename === 'travel' || this.instypename === 'enttravel') {
         if (item !== '') {
           this.GetProvision.push(item.split('』')[0])
         }
@@ -81,7 +84,8 @@ export default {
       'GetMyWayPostData',
       'GetAccidentPostData',
       'GetHealthPostData',
-      'GetTravelPostData'
+      'GetTravelPostData',
+      'GetEntTravelPostData'
     ])
   }
 }

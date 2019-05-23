@@ -31,7 +31,6 @@ export default {
     }
   },
   created() {
-    console.log(this.$store.state.AGREEMENTTOGGLE)
     let count = this.GetProvision.length - 1
     this.GetProvision.forEach((provisionName, index) => {
       this.provisionTitle += `『${provisionName}』`
@@ -48,7 +47,6 @@ export default {
     toggleAll() {
       this.$store.state.AGREEMENTTOGGLE = !this.$store.state.AGREEMENTTOGGLE
       this.contentButtonTitle = this.$store.state.AGREEMENTTOGGLE ? '全部收起' : '全部展開'
-      console.log(this.$store.state.AGREEMENTTOGGLE)
     }
   }
 }

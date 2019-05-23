@@ -6,7 +6,7 @@
           <div class="top-title">
             <div class="insure-notice-box">
               <div class="insure-check"><img src="../../../../../static/img/mail.png" alt=""></div>
-              <div class="insure-check-title">身故受益人資料</div>
+              <div class="insure-check-title">子女身故受益人資料</div>
             </div>
           </div>
         </div>
@@ -16,9 +16,9 @@
         </div>
 
         <form class="form-bottom">
-          <div class="form-group posr row" @click="OnBenf()">
-            <label for="" class="col-sm-12 col-form-label">點此匯入最近一張保單的受益人</label>
-            <div class="checkbox checkbox-oneline" :class="{ checked: isOnBenf }"></div>
+          <div class="form-group posr row" @click="OnProposerInfo()">
+            <label for="" class="col-sm-12 col-form-label">同要保人資料</label>
+            <div class="checkbox checkbox-oneline" :class="{ checked: isProposerInfo }"></div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
@@ -105,7 +105,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
+import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes'
 import moment from 'moment'
 
 const CITYNAME = '基隆市'
@@ -116,7 +116,7 @@ export default {
   data() {
     return {
       dbo: 0,
-      isOnBenf: false,
+      isProposerInfo: false,
       isSetAccountData: false,
       cbOldAddr: true,
       cbNewAddr: false
@@ -252,13 +252,26 @@ export default {
       'FuncGetDistrictData',
       'FuncGetBeneficiary'
     ]),
-    // 取回上一張保單受益人
-    OnBenf() {
-      this.isOnBenf = !this.isOnBenf
-      if (this.isOnBenf) {
-        this.FuncGetBeneficiary({
-          planCode: this.GetEntTravelPostData.InsurancePlanCode,
-          stateData: this.GetEntTravelPostData
+    // 同要保人資料
+    OnProposerInfo() {
+      this.isProposerInfo = !this.isProposerInfo
+      if (this.isProposerInfo) {
+        this.BeneficiaryDataRelationship = '3'
+        this.BeneficiaryDataName = this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Name
+        this.IdNo = this.GetEntTravelPostData.PolicyData.ProposerInfo[0].ID
+        this.ContactNumber = this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Phone
+        let dob = moment(this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        console.log(dob)
+        this.DobComputed = dob
+        this.city3 = this.GetEntTravelPostData.PolicyData.ProposerInfo[0].PermAddr.City
+        setTimeout(() => {
+          this.district3 = this.GetEntTravelPostData.PolicyData.ProposerInfo[0].PermAddr.District
+          this.road3 = this.GetEntTravelPostData.PolicyData.ProposerInfo[0].PermAddr.Street
+        }, 200)
+        this.GetNationData.forEach(item => {
+          if (item.Code === this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Nationality) {
+            this.BeneficiaryDataNationality = item.Name
+          }
         })
       }
     },

@@ -48,6 +48,8 @@ export default {
   AGREEMENTTOGGLE: false,
   // 同意書總數
   AGREEMENTCOUNT: 0,
+  // 已勾選同意書總數
+  CHECKAGREEMENTCOUNT: 0,
   // 付款方式
   PAYTYPE: 'B',
   // 是否為花旗銀行

@@ -1,9 +1,14 @@
 <template>
   <div class="footer">
-    <div class="footer-content">
+    <div class="footer-content" >
       <nav class="navbar navbar-dark row">
         <div class="col-sm-4 footer-title footer-left" @click="GoToPrev()">回前一頁</div>
-        <div class="col-sm-8 footer-title " :class="{ 'footer-gary': true, 'footer-right': false }" @click="GoNext()">我已同意並閱讀完成</div>
+        <div class="col-sm-8 footer-title " 
+        :class="{
+          'footer-gary': this.$store.state.AGREEMENTCOUNT !== this.$store.state.CHECKAGREEMENTCOUNT, 
+          'footer-right': this.$store.state.AGREEMENTCOUNT === this.$store.state.CHECKAGREEMENTCOUNT 
+        }" 
+          @click="GoNext()">我已同意並閱讀完成</div>
       </nav>
     </div>
   </div>
@@ -20,8 +25,7 @@ import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTyp
 import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes'
 import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes'
 import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunctionTypes'
-// import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
-// import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+
 export default {
   props: [
     'insname',
@@ -67,7 +71,7 @@ export default {
      * 投保資訊
      */
     GoNext() {
-      if (this.$store.state.AGREEMENTCOUNT > 0) {
+      if (this.$store.state.AGREEMENTCOUNT !== this.$store.state.CHECKAGREEMENTCOUNT) {
         toggleModalShow('請閱讀同意書', '貼心提醒您')
         return
       }
@@ -111,7 +115,6 @@ export default {
           console.log('this.FuncTravelSubmitQuote')
           this.FuncTravelSubmitQuote({ para: this.GetTravelPostData, router: this.$router })
           break
-
       }
     }
   }

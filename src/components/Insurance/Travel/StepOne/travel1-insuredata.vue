@@ -1,7 +1,7 @@
 <template>
   <!-- 被保險人資料 只有子女的話不顯示本人-->
   <div class="bg-radius" 
-  v-if="this.GetTravelPostData.PolicyData.InsuredInfo">
+    v-if="this.GetTravelPostData.PolicyData.InsuredInfo && this.GetTravelPostData.PolicyData.InsuredInfo[index].show">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">

@@ -12,19 +12,19 @@
     <form class="form-bottom">
       <div class="otp-input-group row">
         <div class="col-sm-2 otp-col-padding">
-          <input type="text" class="form-control insure-input otp-form-input" id="codeOne" maxlength="1" v-model="codeOne" @keyup="keyup('codeTwo')">
+          <input type="text" class="form-control insure-input otp-form-input" id="codeOne" maxlength="1" v-model="codeOne" @keyup="keyup('codeTwo', codeOne)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="text" class="form-control insure-input otp-form-input" id="codeTwo" maxlength="1" v-model="codeTwo" @keyup="keyup('codeThree')">
+          <input type="text" class="form-control insure-input otp-form-input" id="codeTwo" maxlength="1" v-model="codeTwo" @keyup="keyup('codeThree', codeTwo)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="text" class="form-control insure-input otp-form-input" id="codeThree" maxlength="1" v-model="codeThree" @keyup="keyup('codeFour')">
+          <input type="text" class="form-control insure-input otp-form-input" id="codeThree" maxlength="1" v-model="codeThree" @keyup="keyup('codeFour', codeThree)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="text" class="form-control insure-input otp-form-input" id="codeFour" maxlength="1" v-model="codeFour" @keyup="keyup('codeFive')">
+          <input type="text" class="form-control insure-input otp-form-input" id="codeFour" maxlength="1" v-model="codeFour" @keyup="keyup('codeFive', codeFive)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="text" class="form-control insure-input otp-form-input" id="codeFive" maxlength="1" v-model="codeFive" @keyup="keyup('codeSix')">
+          <input type="text" class="form-control insure-input otp-form-input" id="codeFive" maxlength="1" v-model="codeFive" @keyup="keyup('codeSix', codeSix)">
         </div>
         <div class="col-sm-2 otp-col-padding">
           <input type="text" class="form-control insure-input otp-form-input" id="codeSix" maxlength="1" v-model="codeSix">
@@ -138,7 +138,7 @@ export default {
       }
       this.FuncCheckOTP(sendData)
     },
-    keyup(inputId) {
+    keyup(inputId, value) {
       document.getElementById(inputId).focus()
     }
   }

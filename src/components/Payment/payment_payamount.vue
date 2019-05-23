@@ -86,28 +86,43 @@
         <!-- 信用卡卡號 -->
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>信用卡卡號</label>
-          <div class='col-sm-12 insure-select-align row'>
-            <input type='tel' pattern='\d{4}' id='codeOne' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='4' v-model='codeOne' @keyup="keyup('codeOne', 'codeTwo')">
-            <input type='tel' pattern='\d{4}' id='codeTwo' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='4' v-model='codeTwo' @keyup="keyup('codeTwo', 'codeThree')">
-            <input type='tel' pattern='\d{4}' id='codeThree' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='4' v-model='codeThree' @keyup="keyup('codeThree', 'codeFour')">
-            <input type='tel' pattern='\d{4}' id='codeFour' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
+          <div class='col-sm-3' style="padding:0">
+            <input type='tel' pattern='\d{4}' id='codeOne' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeOne' @keyup="keyup('codeOne', 'codeTwo')">
+          </div>
+          <div class='col-sm-3' style="padding:0">
+            <input type='tel' pattern='\d{4}' id='codeTwo' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeTwo' @keyup="keyup('codeTwo', 'codeThree')">
+          </div>
+          <div class='col-sm-3' style="padding:0">
+            <input type='tel' pattern='\d{4}' id='codeThree' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeThree' @keyup="keyup('codeThree', 'codeFour')">
+          </div>
+          <div class='col-sm-3' style="padding:0">
+            <input type='tel' pattern='\d{4}' id='codeFour' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
           </div>
         </div>
         <!-- 有效期限起:UpCash才會顯示 -->
         <div class='form-group row' v-show="this.planName === 'upcash'">
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限起</label>
-          <div class='col-sm-12 insure-select-align row'>
-            <input type='tel' id='cc_from_month' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' v-model="sMonth" placeholder='月份'> /
-            <input type='tel' id='cc_from_year' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' v-model="sYear" placeholder='年份'>
+          <div class='col-sm-5 insure-select-align row'>
+            <input type='tel' id='cc_from_month' class='cc-num form-control insure-input insure-input-edit' maxlength='2' v-model="sMonth" placeholder='月份'>
           </div>
+          <div for="" class="col-sm-1 col-form-label insure-label">月</div>
+          <div class='col-sm-5 insure-select-align row'>
+            <input type='tel' id='cc_from_year' class='cc-num form-control insure-input insure-input-edit' maxlength='2' v-model="sYear" placeholder='年份'>
+          </div>
+          <div for="" class="col-sm-1 col-form-label insure-label">年</div>
         </div>
+
         <!-- 有效期限迄 -->
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限迄</label>
-          <div class='col-sm-12 insure-select-align row'>
-            <input type='tel' id='cc_exp_month' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' placeholder='月份'> /
-            <input type='tel' id='cc_exp_year' class='cc-num form-control insure-input insure-input-edit col-sm-3' maxlength='2' placeholder='年份'>
+          <div class='col-sm-5 insure-select-align row'>
+            <input type='tel' id='cc_exp_month' class='cc-num form-control insure-input insure-input-edit' maxlength='2' placeholder='月份'>
           </div>
+          <div for="" class="col-sm-1 col-form-label insure-label">月</div>
+          <div class="col-sm-5 insure-select-align row">
+            <input type='tel' id='cc_exp_year' class='cc-num form-control insure-input insure-input-edit' maxlength='2' placeholder='年份'>
+          </div>
+          <div for="" class="col-sm-1 col-form-label insure-label">年</div>
         </div>
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>卡片背後三碼</label>
@@ -166,8 +181,7 @@
           </div>
         </div>
       </div>
-      <div v-show="this.GetAccountData !== null && this.GetAccountData.hasOwnProperty('AccountNo')" 
-      @click="OnAccount(true)">
+      <div v-show="this.GetAccountData !== null && this.GetAccountData.hasOwnProperty('AccountNo')" @click="OnAccount(true)">
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box">
