@@ -5,7 +5,6 @@
         ((parseInt(this.provisionindex) + 1) !== this.$store.state.AGREEMENTCOUNT 
         ? (parseInt(this.provisionindex) + 1) : 'Footer'),
       duration: 1500,
-      offset: -60,
       easing: 'linear',
       force: true,
       onDone: onDone
@@ -19,10 +18,7 @@
         </div>
       </div>
       <div class="insure-text">
-        <div class="decimal" 
-        v-show="isToggle || this.$store.state.AGREEMENTTOGGLE" 
-        :class="{ height100: isToggle || this.$store.state.AGREEMENTTOGGLE }" 
-        v-html="provisionContent"></div>
+        <div class="decimal" v-show="isToggle" v-html="provisionContent"></div>
       </div>
     </div>
     <div v-if="(parseInt(this.provisionindex) + 1) === this.$store.state.AGREEMENTCOUNT " id="divAgreementFooter"></div>
@@ -59,7 +55,7 @@ export default {
     provisionContent() {
       let result = ''
       this.GetProvisionData.forEach(item => {
-        if(item.provisionName === this.provisionname) {
+        if (item.provisionName === this.provisionname) {
           result = item.Result.Content
         }
       })
@@ -70,6 +66,11 @@ export default {
     },
     isToggleAll() {
       return this.$store.state.AGREEMENTTOGGLE
+    }
+  },
+  watch: {
+    isToggleAll(newValue) {
+      this.isToggle = newValue
     }
   },
   methods: {
@@ -83,6 +84,7 @@ export default {
       }
     },
     OnToggle(event) {
+      // 當前的主要同意書
       this.isToggle = !this.isToggle
       if (!this.ensure.toggle) {
         this.ensure.toggle = true

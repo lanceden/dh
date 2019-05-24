@@ -148,7 +148,7 @@ export default {
     state.BENEFICIARY = result.ResultCode !== '0000' ? [] : result.Data
     stateData.benf_num = state.BENEFICIARY.length
     // 非旅平
-    if (planCode !== '65020' && planCode !== '66020') {
+    if (planCode !== '62020' && planCode !== '66020') {
       if (stateData.benf_num > 0) {
         state.BENEFICIARY.forEach((item, index) => {
           if (index === 0) {

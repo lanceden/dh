@@ -24,7 +24,7 @@
       </div>
 
       <div class="border-bottom-line"></div>
-      <div class="form-group row"  v-show="parseInt(this.GetTravelPostData.PolicyData.MailType) === 1">
+      <div class="form-group row" v-show="parseInt(this.GetTravelPostData.PolicyData.MailType) === 1">
         <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
         <div class="col-sm-12">
           <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
@@ -64,10 +64,10 @@
             <div class="form-control insure-input-block">{{item.SupplementPolicy[0].FaceAmt}} 萬元</div>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" v-show="parseInt(GetTravelPostData.PolicyData.TravelType ) === 2">
           <label for="" class="col-sm-12 col-form-label insure-label">海外突發疾病醫療保險金限額</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{item.SupplementPolicy[1].FaceAmt}} {{item.SupplementPolicy[1].FaceAmt > 0 ? '萬元' : ''}}</div>
+            <div class="form-control insure-input-block">{{item.SupplementPolicy[1].FaceAmt}} 萬元</div>
           </div>
         </div>
       </div>
@@ -210,7 +210,11 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">地址</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.EmergencyContactAddr.Address}}</div>
+          <div class="form-control insure-input-block">
+            {{this.GetTravelPostData.PolicyData.EmergencyContactAddr.City}}
+            {{this.GetTravelPostData.PolicyData.EmergencyContactAddr.District}}
+            {{this.GetTravelPostData.PolicyData.EmergencyContactAddr.Street}}
+          </div>
         </div>
       </div>
     </div>

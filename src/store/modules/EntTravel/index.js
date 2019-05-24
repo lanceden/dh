@@ -29,7 +29,7 @@ const actions = {
    * @param {commit} param0 提交狀態
    */
   [functionTypes.FuncEntTravelInit]({ commit }) {
-    rootState.Http.axios.post(`${Url.TravelInit}`, {
+    rootState.Http.axios.post(`${Url.EntTravelInit}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: {
         ProcessId: ''
@@ -59,7 +59,7 @@ const actions = {
       toggleModalShow('您輸入的代碼驗證失敗，請洽詢您公司的負責窗口。', '貼心提醒您')
       return
     }
-    rootState.Http.axios.post(`${Url.TravelInsuredData}`, {
+    rootState.Http.axios.post(`${Url.EntTravelInsuredData}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: para
     }).then(response => {
@@ -72,7 +72,7 @@ const actions = {
    * @param {object} para 請求參數
    */
   [functionTypes.FuncEntTravelEstimate]({ commit }, { para, router }) {
-    rootState.Http.axios.post(`${Url.TravelEstimate}`, {
+    rootState.Http.axios.post(`${Url.EntTravelEstimate}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: para
     }).then(response => {
@@ -85,7 +85,7 @@ const actions = {
    * @param {object} para 請求參數
    */
   [functionTypes.FuncEntTravelSubmitQuote]({ commit }, { para, router }) {
-    rootState.Http.axios.post(`${Url.TravelSubmitQuote}`, {
+    rootState.Http.axios.post(`${Url.EntTravelSubmitQuote}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: para
     }).then(response => {
@@ -99,7 +99,7 @@ const actions = {
    */
   [functionTypes.FuncEntTravelSubmitOrder]({ commit }, { nccModels, para, router }) {
     console.log(para)
-    rootState.Http.axios.post(`${Url.TravelSubmitOrder}`, {
+    rootState.Http.axios.post(`${Url.EntTravelSubmitOrder}`, {
       InsurerSourceID: APICODE,
       NCCCModels: nccModels,
       TravelRq_Order: para
@@ -182,7 +182,7 @@ const mutations = {
    */
   [functionTypes.FuncEntTravelSubmitQuote](state, { result, router }) {
     if (result.ResultCode !== '0000') return
-    state.TRAVELPOSTDATA = result.Data.Result
+    state.ENTTRAVELPOSTDATA = result.Data.Result
     router.push(`/enttravel-insureddata`)
   },
   /**

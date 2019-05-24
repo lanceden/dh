@@ -25,6 +25,7 @@ import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTyp
 import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes'
 import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes'
 import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunctionTypes'
+import EntTravelFunctionTypes from '../../store/modules/EntTravel/Types/EntTravelFunctionTypes'
 
 export default {
   props: [
@@ -41,7 +42,8 @@ export default {
       'GetMyWayPostData',
       'GetAccidentPostData',
       'GetHealthPostData',
-      'GetTravelPostData'
+      'GetTravelPostData',
+      'GetEntTravelPostData'
     ])
   },
   methods: {
@@ -54,7 +56,8 @@ export default {
       MyWayFunctionTypes.FuncMyWaySubmitQuote,
       AccidentFunctionTypes.FuncAccidentSubmitQuote,
       HealthFunctionTypes.FuncHealthSubmitQuote,
-      TravelFunctionTypes.FuncTravelSubmitQuote
+      TravelFunctionTypes.FuncTravelSubmitQuote,
+      EntTravelFunctionTypes.FuncEntTravelSubmitQuote
     ]),
     /**
      * 回上一頁
@@ -114,6 +117,10 @@ export default {
         case 'travel':
           console.log('this.FuncTravelSubmitQuote')
           this.FuncTravelSubmitQuote({ para: this.GetTravelPostData, router: this.$router })
+          break
+        case 'enttravel':
+          console.log('this.FuncEntTravelSubmitQuote')
+          this.FuncEntTravelSubmitQuote({ para: this.GetEntTravelPostData, router: this.$router })
           break
       }
     }

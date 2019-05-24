@@ -87,27 +87,27 @@
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>信用卡卡號</label>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeOne' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeOne' @keyup="keyup('codeOne', 'codeTwo')">
+            <input type='tel' pattern='\d{4}' id='codeOne' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeOne' @keyup="keyup('codeOne', 'codeTwo')">
           </div>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeTwo' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeTwo' @keyup="keyup('codeTwo', 'codeThree')">
+            <input type='tel' pattern='\d{4}' id='codeTwo' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeTwo' @keyup="keyup('codeTwo', 'codeThree')">
           </div>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeThree' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeThree' @keyup="keyup('codeThree', 'codeFour')">
+            <input type='tel' pattern='\d{4}' id='codeThree' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeThree' @keyup="keyup('codeThree', 'codeFour')">
           </div>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeFour' class='cc-num form-control insure-input insure-input-edit' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
+            <input type='tel' pattern='\d{4}' id='codeFour' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
           </div>
         </div>
         <!-- 有效期限起:UpCash才會顯示 -->
         <div class='form-group row' v-show="this.planName === 'upcash'">
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限起</label>
           <div class='col-sm-5 insure-select-align row'>
-            <input type='tel' id='cc_from_month' class='cc-num form-control insure-input insure-input-edit' maxlength='2' v-model="sMonth" placeholder='月份'>
+            <input type='tel' id='cc_from_month' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' v-model="sMonth" placeholder='月份'>
           </div>
           <div for="" class="col-sm-1 col-form-label insure-label">月</div>
           <div class='col-sm-5 insure-select-align row'>
-            <input type='tel' id='cc_from_year' class='cc-num form-control insure-input insure-input-edit' maxlength='2' v-model="sYear" placeholder='年份'>
+            <input type='tel' id='cc_from_year' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' v-model="sYear" placeholder='年份'>
           </div>
           <div for="" class="col-sm-1 col-form-label insure-label">年</div>
         </div>
@@ -116,18 +116,18 @@
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限迄</label>
           <div class='col-sm-5 insure-select-align row'>
-            <input type='tel' id='cc_exp_month' class='cc-num form-control insure-input insure-input-edit' maxlength='2' placeholder='月份'>
+            <input type='tel' id='cc_exp_month' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' placeholder='月份'>
           </div>
           <div for="" class="col-sm-1 col-form-label insure-label">月</div>
           <div class="col-sm-5 insure-select-align row">
-            <input type='tel' id='cc_exp_year' class='cc-num form-control insure-input insure-input-edit' maxlength='2' placeholder='年份'>
+            <input type='tel' id='cc_exp_year' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' placeholder='年份'>
           </div>
           <div for="" class="col-sm-1 col-form-label insure-label">年</div>
         </div>
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>卡片背後三碼</label>
           <div class='col-sm-12 insure-select-align'>
-            <input type='tel' id='cvv' pattern='\d{3}' class='cc-cvc form-control insure-input insure-input-edit' maxlength='3' v-model='Cvv'>
+            <input type='tel' id='cvv' pattern='\d{3}' class='cc-cvc form-control insure-input otp-form-input font45px paymentColor' maxlength='3' v-model='Cvv'>
           </div>
         </div>
         <!-- 花旗銀行分期  -->
@@ -232,6 +232,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import { toggleModalShow } from '../../utils/toggleModal'
+import { data } from './mockData'
 export default {
   props: [
     'stateData',
@@ -267,9 +268,10 @@ export default {
     // EZCash 只有全繳網
     if (this.planName === 'ezcash') {
       this.isEbill = true
+      this.init_method = 'B'
       this.OnEnsure('B')
     } else if (this.planName === 'upcash') { // UPCASH 依保戶選擇之首期繳費管道顯示
-      let result = this.init_method.toLowerCase()
+      let result = this.stateData.init_method.toLowerCase()
       switch (result) {
         case 'c': // 選擇信用卡繳費
           this.isCredieCard = true
@@ -419,3 +421,13 @@ export default {
 }
 
 </script>
+
+<style scoped>
+  .font45px{
+    font-size: 45px !important;
+  }
+  .paymentColor{
+    color: #A57248 !important;
+    border: 1px solid !important;
+  }
+</style>

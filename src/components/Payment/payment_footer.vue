@@ -12,17 +12,18 @@
 <script>
 import $ from 'jquery'
 import { mapActions } from 'vuex'
-import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
-import EZCashFunctionTypes from '../../store/modules/EZCash/Types/EZCashFunctionTypes.js'
-import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes.js'
-import IGoingFunctionTypes from '../../store/modules/IGoing/Types/IGoingFunctionTypes.js'
-import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTypes.js'
-import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes.js'
-import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes.js'
-import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes.js'
-import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunctionTypes.js'
-import { CheckCardno } from '../../utils/checkCreditCard.js'
-import { toggleModalShow } from '../../utils/toggleModal.js'
+import UpCashFunctionTypes from '../../store/modules/Upcash/Types/UpCashFunctionTypes'
+import EZCashFunctionTypes from '../../store/modules/EZCash/Types/EZCashFunctionTypes'
+import ICanFunctionTypes from '../../store/modules/ICan/Types/ICanFunctionTypes'
+import IGoingFunctionTypes from '../../store/modules/IGoing/Types/IGoingFunctionTypes'
+import IWellFunctionTypes from '../../store/modules/IWell/Types/IWellFunctionTypes'
+import MyWayFunctionTypes from '../../store/modules/MyWay/Types/MyWayFunctionTypes'
+import AccidentFunctionTypes from '../../store/modules/Accident/Types/AccidentFunctionTypes'
+import HealthFunctionTypes from '../../store/modules/Health/Types/HealthFunctionTypes'
+import TravelFunctionTypes from '../../store/modules/Travel/Types/TravelFunctionTypes'
+import EntTravelFunctionTypes from '../../store/modules/EntTravel/Types/EntTravelFunctionTypes'
+import { CheckCardno } from '../../utils/checkCreditCard'
+import { toggleModalShow } from '../../utils/toggleModal'
 
 export default {
   props: [
@@ -38,7 +39,8 @@ export default {
       MyWayFunctionTypes.FuncMyWaySubmitOrder,
       AccidentFunctionTypes.FuncAccidentSubmitOrder,
       HealthFunctionTypes.FuncHealthSubmitOrder,
-      TravelFunctionTypes.FuncTravelSubmitOrder
+      TravelFunctionTypes.FuncTravelSubmitOrder,
+      EntTravelFunctionTypes.FuncEntTravelSubmitOrder
     ]),
     GoPrev() {
       this.$router.push(`/otpverify`)
@@ -122,8 +124,8 @@ export default {
           this.FuncTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'enttravel':
-          console.log('this.FuncTravelSubmitQuote')
-          this.FuncTravelSubmitQuote({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
+          console.log('this.FuncEntTravelSubmitOrder')
+          this.FuncEntTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
       }
     }

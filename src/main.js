@@ -21,12 +21,12 @@ Object.keys(filters)
 
 Vue.prototype.$http = { axios }
 
-// 設置axios發送請求前之處理
+axios.defaults.retry = 4
+axios.defaults.retryDelay = 1000
+
 axios.interceptors.request.use((config) => {
   store.dispatch('SetShowLoading')
-  if (vm.$store.state.ApiToken === '') {
-    vm.$store.state.ApiToken = window.Lockr.get('ApiToken')
-  }
+  config.headers['Content-Type'] = 'application/json'
   config.headers['Authorization'] = 'Bearer ' + vm.$store.state.ApiToken
   return config
 }, function(error) {
@@ -43,19 +43,40 @@ axios.interceptors.response.use((response) => {
   }
   return response
 }, function(error) {
-  if (error.response === undefined) {
-    console.log(`${error.config.url} , Message: ${error.message}`)
-  } else {
-    if (error.response.status === 401) {
+  store.dispatch('SethideLoading')
+  var config = error.config
+  // If config does not exist or the retry option is not set, reject
+  if (!config || !config.retry) return Promise.reject(error)
+  // Set the variable for keeping track of the retry count
+  config.__retryCount = config.__retryCount || 0
+  // Check if we've maxed out the total number of retries
+  if (config.__retryCount >= config.retry) {
+    // Reject with the error
+    if (!error.response) {
+      toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
+    } else if (error.response.status === 401) {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     } else if (error.response.status === 501) {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     } else {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     }
+    return Promise.reject(error)
   }
-  store.dispatch('SethideLoading')
-  return Promise.reject(error)
+  // Increase the retry count
+  config.__retryCount += 1
+
+  // Create new promise to handle exponential backoff
+  var backoff = new Promise(function(resolve) {
+    setTimeout(function() {
+      resolve()
+    }, config.retryDelay || 1)
+  })
+
+  // Return the promise in which recalls axios to retry the request
+  return backoff.then(function() {
+    return axios(config)
+  })
 })
 window.Lockr = Lockr
 

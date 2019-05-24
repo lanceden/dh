@@ -29,7 +29,7 @@ export default {
     let agreementArr = []
     switch (this.instypename) {
       case 'upcash':
-        agreementArr = this.GetUpCashPostData.AgreementString.split(',')
+        agreementArr = `新光人壽Up Cash利率變動型年金保險【乙型】商品說明(6),新光人壽Up Cash利率變動型年金保險【乙型】保險單條款(8),人壽保險投保人須知_網路投保(6),要保書填寫說明(2),蒐集、處理及利用個人資料告知事項(53),病歷、醫療及健康檢查等個人資料蒐集、處理及利用聲明事項(3),配合FATCA法案蒐集、處理及利用個人資料告知事項(7),保險特性摘要說明(2),保險費暨保險單借款利息自動轉帳付款委託約定條款(7),電子單據服務約定事項(2),信用卡授權書審閱條款(8)`.split(',')
         break
       case 'ezcash':
         agreementArr = this.GetEZCashPostData.AgreementString.split(',')

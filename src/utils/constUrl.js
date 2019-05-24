@@ -235,6 +235,10 @@ const VerifyEmploymentId = `${Domain}/EntTravel/VerifyEmploymentId`
  */
 const EntTravelInit = `${Domain}/EntTravel/Initialize`
 /**
+ * 處理被保人資料
+ */
+const EntTravelInsuredData = `${Domain}/EntTravel/InsuredData`
+/**
  * EntTravel投保流程試算
  */
 const EntTravelEstimate = `${Domain}/EntTravel/Estimate`
@@ -342,6 +346,7 @@ export default {
   TravelSubmitOrder,
   VerifyEmploymentId,
   EntTravelInit,
+  EntTravelInsuredData,
   EntTravelEstimate,
   EntTravelSubmitQuote,
   EntTravelSubmitOrder,

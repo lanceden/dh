@@ -41,11 +41,11 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保人手機號碼</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Phone}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.ProposerInfo[0].Phone}}</div>
         </div>
       </div>
 
-      <div v-for="(item, index) in this.GetEntTravelPostData.PolicyData.InsuredInfo" :key="index">
+      <div v-for="(item, index) in GetEntTravelPostData.PolicyData.InsuredInfo" :key="index">
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保人姓名</label>
           <div class="col-sm-12">
@@ -64,10 +64,10 @@
             <div class="form-control insure-input-block">{{item.SupplementPolicy[0].FaceAmt}} 萬元</div>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" v-show="parseInt(GetEntTravelPostData.PolicyData.TravelType ) === 2">
           <label for="" class="col-sm-12 col-form-label insure-label">海外突發疾病醫療保險金限額</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{item.SupplementPolicy[1].FaceAmt}} {{item.SupplementPolicy[1].FaceAmt > 0 ? '萬元' : ''}}</div>
+            <div class="form-control insure-input-block">{{item.SupplementPolicy[1].FaceAmt}} 萬元</div>
           </div>
         </div>
       </div>
@@ -209,7 +209,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">地址</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.Address}}</div>
+          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.City}}{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District}}{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.Street}}</div>
         </div>
       </div>
     </div>
