@@ -8,7 +8,6 @@ import store from './store'
 import Lockr from 'lockr'
 import filters from './filters'
 import axios from 'axios'
-import { GetErrorMsg } from '../src/utils/getErrorMsg'
 import { toggleModalShow } from './utils/toggleModal'
 import vueAwesomeCountdown from 'vue-awesome-countdown'
 import VueScrollTo from 'vue-scrollto'
@@ -38,14 +37,14 @@ axios.interceptors.response.use((response) => {
   store.dispatch('SethideLoading')
   if (response.data.ResultCode !== '0000') {
     if (response.request.responseURL.match('IsCityBank') === null && response.request.responseURL.match('VerifyEmploymentId') === null) {
-      toggleModalShow(GetErrorMsg(response.data.ErrorMessage), '貼心提醒您')
+      toggleModalShow(response.data.Data.Message, '貼心提醒您')
     }
     return response
   }
   return response
 }, function(error) {
   if (error.response === undefined) {
-    console.log(`${error.config.url} , errorMessage: ${error.message}`)
+    console.log(`${error.config.url} , Message: ${error.message}`)
   } else {
     if (error.response.status === 401) {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')

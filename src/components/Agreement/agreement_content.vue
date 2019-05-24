@@ -20,8 +20,9 @@
       </div>
       <div class="insure-text">
         <div class="decimal" 
-        v-show="isToggle" 
-        :class="{ height100: isToggle }" v-html="GetProvisionData[this.provisionindex] !== undefined ? GetProvisionData[this.provisionindex].Result.Content : ''"></div>
+        v-show="isToggle || this.$store.state.AGREEMENTTOGGLE" 
+        :class="{ height100: isToggle || this.$store.state.AGREEMENTTOGGLE }" 
+        v-html="provisionContent"></div>
       </div>
     </div>
     <div v-if="(parseInt(this.provisionindex) + 1) === this.$store.state.AGREEMENTCOUNT " id="divAgreementFooter"></div>
@@ -41,8 +42,10 @@ export default {
       read: '../../../static/img/oval.png'
     }
   },
-  created() {
-    this.FuncGetProvision(this.GetProvision[this.provisionindex])
+  mounted() {
+    setTimeout(() => {
+      this.FuncGetProvision(this.provisionname)
+    }, 1000)
   },
   props: [
     'provisionindex',
@@ -53,6 +56,15 @@ export default {
       'GetProvision',
       'GetProvisionData'
     ]),
+    provisionContent() {
+      let result = ''
+      this.GetProvisionData.forEach(item => {
+        if(item.provisionName === this.provisionname) {
+          result = item.Result.Content
+        }
+      })
+      return result
+    },
     contentId() {
       return `divAgreement${this.provisionindex}`
     },

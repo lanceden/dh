@@ -31,11 +31,11 @@ export default {
     },
     GotoNext() {
       // 驗證是否有選擇請確認保障對象
-      if (this.$store.state.Travel.TRAVELPOSTDATA.TargetType === undefined || this.$store.state.Travel.TRAVELPOSTDATA.TargetType === '') {
+      if (this.GetTravelPostData.TargetType === undefined || this.GetTravelPostData.TargetType === '') {
         toggleModalShow('請確認保障對象', '貼心提醒您')
         return
       }
-      if (parseInt(this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.ChildrenNo) === 0 && this.$store.state.Travel.TRAVELPOSTDATA.TargetType !== 0) {
+      if (parseInt(this.GetTravelPostData.PolicyData.ChildrenNo) === 0 && this.GetTravelPostData.TargetType !== 0) {
         toggleModalShow('請確認子女數量', '貼心提醒您')
         return
       }
@@ -43,8 +43,8 @@ export default {
       let errorIndexArr = []
       let errorAuthRep = []
       let errorMsg = ''
-
-      this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.forEach((item, index) => {
+      console.log(this.GetTravelPostData.PolicyData.InsuredInfo)
+      this.GetTravelPostData.PolicyData.InsuredInfo.forEach((item, index) => {
         if (item.HasAuthRep === null || item.HasAuthRep === undefined) {
           errorIndexArr.push(index)
         } else if (item.HasAuthRep) {

@@ -144,7 +144,7 @@ export default {
               Name: this.GetTravelPostData.PolicyData.ProposerInfo[0].Name,
               Dob: this.GetTravelPostData.PolicyData.ProposerInfo[0].Dob
             },
-            HasAuthRep: false,
+            HasAuthRep: null,
             show: false
           })
           for (let i = 1; i <= result; i++) {

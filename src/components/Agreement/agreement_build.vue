@@ -2,8 +2,13 @@
   <div>
     <loading v-show="GetLoading" />
     <AgreementCheck></AgreementCheck>
-    <AgreementContent v-for="n in provisionCount" :key="n" :provisionindex="n - 1" :provisionname="GetProvision[n-1]" stagger="100"></AgreementContent>
-    <AgreementFooter :insname="instypename" :provisionCount="provisionCount"></AgreementFooter>
+    <AgreementContent 
+    v-for="n in this.$store.state.AGREEMENTCOUNT" 
+    :key="n" 
+    :provisionindex="n - 1" 
+    :provisionname="GetProvision[n-1]" 
+    stagger="100"></AgreementContent>
+    <AgreementFooter :insname="instypename" :provisionCount="this.$store.state.AGREEMENTCOUNT"></AgreementFooter>
   </div>
 </template>
 
@@ -16,8 +21,7 @@ import { getQueryStringParameterByKey } from '../../utils/getQueryStringParamete
 export default {
   data() {
     return {
-      instypename: '',
-      provisionCount: 0
+      instypename: ''
     }
   },
   created() {
@@ -64,7 +68,6 @@ export default {
         this.GetProvision.push(item.split('(')[0])
       }
     })
-    this.provisionCount = this.GetProvision.length
     this.$store.state.AGREEMENTCOUNT = this.GetProvision.length
   },
   components: {

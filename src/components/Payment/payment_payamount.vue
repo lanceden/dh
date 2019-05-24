@@ -283,7 +283,11 @@ export default {
       }
     } else { // 其他8個險種
       // 判斷是否顯示超商繳費
-      this.isSuperStore = this.GetAccountData.JoinSource === '2' && this.stateData.IsSuperStore
+      if (this.planName === 'travel' || this.planName === 'enttravel') {
+        this.isSuperStore = this.stateData.ConvenientStorePayment
+      } else {
+        this.isSuperStore = this.GetAccountData.JoinSource === '2' && this.stateData.IsSuperStore
+      }
       this.isEbill = true
       this.isCredieCard = true
       this.FuncEachAccount()

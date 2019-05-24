@@ -70,11 +70,6 @@ export default {
   props: [
     'index'
   ],
-  mounted() {
-    if (this.GetTravelPostData.PolicyData.TravelCountry !== null) {
-      this.OnEnsure(this.GetTravelPostData.PolicyData.InsuredInfo[this.index].HasAuthRep === true ? 'yes' : 'no')
-    }
-  },
   data() {
     return {
       dbo: 0,
