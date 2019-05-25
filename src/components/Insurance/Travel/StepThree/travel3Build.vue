@@ -2,28 +2,41 @@
   <div class="">
     <loading v-show="GetLoading" />
     <!-- 本人 -->
-    <TravelThree v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelThree>
+    <TravelThreePremiumsOwn 
+    v-for="n in GetTravelPostData.PolicyData.InsuredInfo.length" 
+    :key="n" 
+    :index="n - 1" 
+    :stateData="GetTravelPostData"></TravelThreePremiumsOwn>
+
     <!-- 子女 -->
-    <TravelChild v-for="n in this.$store.state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.length" :key="n + 'c'" :index="n - 1"></TravelChild>
+    <TravelThreePremiumsChild 
+    v-for="n in GetTravelPostData.PolicyData.InsuredInfo.length" 
+    :key="n + 'c'" 
+    :index="n - 1"
+    :stateData="GetTravelPostData"></TravelThreePremiumsChild>
+
+    <!-- 下一步 -->
     <TravelThreeFooter></TravelThreeFooter>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import TravelThree from './travel3'
-import TravelChild from './travel3child'
+import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes'
+import TravelThreePremiumsOwn from '../../Common/travelThreePremiumsOwn'
+import TravelThreePremiumsChild from '../../Common/travelThreePremiumsChild'
 import TravelThreeFooter from './travel3Footer'
 
 export default {
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      TravelGetterTypes.GetTravelPostData
     ])
   },
   components: {
-    TravelThree,
-    TravelChild,
+    TravelThreePremiumsOwn,
+    TravelThreePremiumsChild,
     TravelThreeFooter
   }
 }

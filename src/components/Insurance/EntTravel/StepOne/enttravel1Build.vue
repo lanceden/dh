@@ -4,11 +4,13 @@
     <TravelOne></TravelOne>
     <!-- 基本資料 End -->
     <template>
-      <div v-if="this.GetEntTravelPostData.length !== 0">
+      <div v-if="GetEntTravelPostData.length !== 0">
         <template>
-          <div v-if="this.GetEntTravelPostData.PolicyData.InsuredInfo !== null">
-            <TravelOneInsureData
-              v-for="n in this.GetEntTravelPostData.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelOneInsureData>
+          <div v-if="GetEntTravelPostData.PolicyData.InsuredInfo !== null">
+            <TravelOneInsuredData 
+            v-for="n in GetEntTravelPostData.PolicyData.InsuredInfo.length" :key="n" 
+            :stateData="GetEntTravelPostData"
+            :index="n-1"></TravelOneInsuredData>
           </div>
         </template>
       </div>
@@ -22,15 +24,21 @@ import { mapGetters, mapActions } from 'vuex'
 import EntTravelFunctionTypes from '../../../../store/modules/EntTravel/Types/EntTravelFunctionTypes.js'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 import TravelOne from './enttravel1'
-import TravelOneInsureData from './enttravel1-insuredata'
+import TravelOneInsuredData from '../../Common/travelOneInsuredData.vue'
 import TravelOneFooter from './enttravel1Footer'
+
 export default {
   created() {
     if (!this.GetEntTravelIsInit) {
-      // 初始化旅平險資料
+      // 初始化企業旅平險資料
       this.FuncEntTravelInit()
       this.$store.state.PLANNAME = 'ENTTRAVEL'
     }
+  },
+  components: {
+    TravelOne,
+    TravelOneInsuredData,
+    TravelOneFooter
   },
   computed: {
     ...mapGetters([
@@ -39,14 +47,8 @@ export default {
       EntTravelGetterTypes.GetEntTravelPostData
     ])
   },
-  components: {
-    TravelOne,
-    TravelOneInsureData,
-    TravelOneFooter
-  },
   methods: {
     ...mapActions([
-      'SetTitle',
       EntTravelFunctionTypes.FuncEntTravelInit
     ])
   }

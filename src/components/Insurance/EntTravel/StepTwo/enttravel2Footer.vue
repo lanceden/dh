@@ -24,10 +24,21 @@ export default {
       this.$router.push(`/enttravel-1?token=${this.$store.state.ApiToken}`)
     },
     GotoNext() {
-      // 請選擇您的旅遊地點
-      if (this.GetEntTravelPostData.PolicyData.TravelCountry === undefined || this.GetEntTravelPostData.PolicyData.TravelCountry === '' || this.GetEntTravelPostData.PolicyData.TravelCountry === null) {
-        toggleModalShow('請選擇您的旅遊地點')
-        return
+      // 請選擇您的旅遊地點-國外要判斷是否有選擇前往國家
+      if (parseInt(this.GetEntTravelPostData.PolicyData.TravelType) === 2) {
+        let result = parseInt(this.GetEntTravelPostData.PolicyData.TravelCountry)
+        if (result === 0) {
+          toggleModalShow('請選擇您的旅遊地點', '貼心提醒您')
+          return
+        }
+        // 前往國家為其他地區-要判斷是否有填寫旅遊地點
+        if (result === 6) {
+          let etcContury = this.GetEntTravelPostData.PolicyData.EtcCountry
+          if (etcContury === '') {
+            toggleModalShow('請選擇您的旅遊地點', '貼心提醒您')
+            return
+          }
+        }
       }
       // 前往被保人填寫資料頁
       this.$router.push('/enttravel-3')

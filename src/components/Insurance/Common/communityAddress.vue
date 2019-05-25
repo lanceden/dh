@@ -89,11 +89,15 @@ export default {
     this.tempdistrict1 = this.stateData.zip1 + '-' + this.stateData.district1
     this.temproad2 = this.stateData.road1
     this.FuncGetCityData()
-    this.FuncGetDistrictData({
-      cityName: this.stateData.city1,
-      target: 'community'
-    })
     this.OnCommunityAddress(this.stateData.IsSaveCommu ? 'new' : 'old')
+  },
+  watch: {
+    city1(newValue) {
+      this.FuncGetDistrictData({
+        cityName: newValue,
+        target: 'community'
+      })
+    }
   },
   computed: {
     ...mapGetters([
@@ -107,11 +111,6 @@ export default {
       },
       set(value) {
         this.stateData.city1 = value
-        // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
-        this.FuncGetDistrictData({
-          cityName: this.stateData.city1,
-          target: 'community'
-        })
       }
     },
     // 輸入新的戶籍地址-區域
@@ -170,10 +169,6 @@ export default {
           this.ensure.new = '../../../static/img/oval-ed.png'
           this.cbNewAddr2 = true
           this.stateData.IsSaveCommu = true
-          this.FuncGetDistrictData({
-            cityName: this.stateData.city1,
-            target: 'community'
-          })
           break
       }
     }

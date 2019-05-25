@@ -58,7 +58,6 @@ export default {
     },
     GoToNext() {
       // 只有子女不會有本人的受益人需跳過此步驟
-      console.log('this.GetTravelPostData.TargetType', this.GetTravelPostData.TargetType)
       let result = parseInt(this.GetTravelPostData.TargetType)
       // 本人
       if (result === 0) {

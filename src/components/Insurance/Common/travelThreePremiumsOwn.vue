@@ -1,20 +1,20 @@
 <template>
-  <div v-if="parseInt(this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation) === 1">
+  <!-- 投保對象為本人或本人與子女才顯示 -->
+  <div v-if="parseInt(stateData.TargetType) === 0 || parseInt(stateData.TargetType) === 2">
     <!-- 旅行平安保險保額 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
             <div class="insure-check-title">本人</div>
           </div>
         </div>
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
-        <div class="form-group row" v-show="parseInt(this.GetEntTravelPostData.PolicyData.InsuredInfo[index].Relation) === 1">
+        <div class="form-group row" v-show="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1">
           <!-- Enjoy Life旅行平安保險保額 -->
-
           <label class="col-sm-12 col-form-label insure-label">Enjoy Life旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="PrimaryPolicyFaceAmtOne">
@@ -25,15 +25,14 @@
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
-              <option v-for="item in this.$store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              <option v-for="item in $store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
           <!-- 海外突發疾病 -->
-          <label class="col-sm-12 col-form-label insure-label" v-show="ShowOverSea">海外突發疾病</label>
+          <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable"
-            v-model="SupplementPolicyFaceAmtoOverSea">
-              <option v-for="item in this.$store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+            <select class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">
+              <option v-for="item in $store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
         </div>
@@ -51,11 +50,11 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 
 export default {
   props: [
-    'index'
+    'index',
+    'stateData'
   ],
   data() {
     return {
@@ -65,24 +64,22 @@ export default {
   mounted() {
     this.FuncGetPremiums({
       Verified: this.GetAccountData.JoinSource !== '3' ? 'Y' : 'N',
-      PLAN_Code_1: this.GetEntTravelPostData.InsurancePlanCode
+      PLAN_Code_1: this.stateData.InsurancePlanCode
     })
     this.FuncGetInsTravelSupplCoverageSli({
-      IsVerified: this.GetEntTravelPostData.PolicyData.ProposerInfo[0].IsVerified,
-      PlanCode: this.GetEntTravelPostData.InsurancePlanCode,
-      Schengen: parseInt(this.GetEntTravelPostData.PolicyData.TravelType) === 2 && parseInt(this.GetEntTravelPostData.PolicyData.TravelCountry) === 7
+      IsVerified: this.stateData.PolicyData.ProposerInfo[0].IsVerified,
+      PlanCode: this.stateData.InsurancePlanCode,
+      Schengen: this.stateData.PolicyData.TravelType === '2' && this.stateData.PolicyData.TravelCountry === '7'
     })
   },
   computed: {
     ...mapGetters([
       'GetPremiums',
-      'TRAVELSUPPL',
-      'GetAccountData',
-      EntTravelGetterTypes.GetEntTravelPostData
+      'GetAccountData'
     ]),
     ShowOverSea: {
       get() {
-        return parseInt(this.GetEntTravelPostData.PolicyData.TravelType) === 2
+        return parseInt(this.stateData.PolicyData.TravelType) === 2
       }
     },
     // 保額下拉框
@@ -95,13 +92,16 @@ export default {
     // 被保險人(本人)：旅行平安保險
     PrimaryPolicyFaceAmtOne: {
       get() {
-        if (this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt === null) {
-          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = 800
+        if (!this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy) {
+          return 100
         }
-        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt
+        if (this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt === null) {
+          this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = 800
+        }
+        return this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt
       },
       set(value) {
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = value
+        this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt = value
         // 變更值後傷害醫療及海外突發疾病下拉框需一起改變值
         let maxIndex = value.toString().substring(0, 1)
         this.$store.state.TRAVELSUPPL = []
@@ -118,40 +118,50 @@ export default {
             })
           }
         }
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[this.index].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
+        this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[this.index].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
         if (this.ShowOverSea) {
-          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
-          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
+          this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
+          this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = parseInt(value.toString().substring(0, 1) + '0')
         }
       }
     },
     // 被保險人(本人)：傷害醫療
     SupplementPolicyFaceAmt: {
       get() {
-        if (this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt === null) {
-          this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = 80
+        if (!this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy) {
+          return 0
         }
-        return this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt
+        if (this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt === null) {
+          this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = 80
+        }
+        return this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt
       },
       set(value) {
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = value
-        if (this.GetEntTravelPostData.PolicyData.TravelType === 1) this.SupplementPolicyFaceAmtoOverSea = value
+        this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt = value
+        // 國外旅遊才有海外突發疾病
+        if (parseInt(this.stateData.PolicyData.TravelType) === 2) {
+          this.SupplementPolicyFaceAmtoOverSea = value
+        }
       }
     },
     // 被保險人(本人)：海外突發疾病
     SupplementPolicyFaceAmtoOverSea: {
       get() {
+        if (!this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy) {
+          return 0
+        }
         // TravelType 1:國內 2:國外
-        return this.GetEntTravelPostData.PolicyData.TravelType === 1 ? 0 : this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt || 80
+        return parseInt(this.stateData.PolicyData.TravelType) === 1 ? 0 : this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt || 80
       },
       set(value) {
         // 若為0要關閉
-        if (value === '0') {
+        let result = parseInt(value)
+        if (result === 0) {
           this.SupplementPolicyFaceAmtoOverSeaDisable = true
         } else {
           this.SupplementPolicyFaceAmtoOverSeaDisable = false
         }
-        this.GetEntTravelPostData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = value
+        this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = result
       }
     }
   },

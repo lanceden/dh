@@ -3,7 +3,18 @@
     <loading v-show="GetLoading" />
     <TravelOne></TravelOne>
     <!-- 基本資料 End -->
-    <TravelOneInsureData v-for="n in TravelDataLength" :key="n" :index="n - 1"></TravelOneInsureData>
+    <template>
+      <div v-if="GetTravelPostData.length !== 0">
+        <template>
+          <div v-if="GetTravelPostData.PolicyData.InsuredInfo !== null">
+            <TravelOneInsuredData 
+            v-for="n in GetTravelPostData.PolicyData.InsuredInfo.length" :key="n" 
+            :stateData="GetTravelPostData"
+            :index="n-1"></TravelOneInsuredData>
+          </div>
+        </template>
+      </div>
+    </template>
     <TravelOneFooter></TravelOneFooter>
   </div>
 </template>
@@ -13,32 +24,28 @@ import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/Travel/Types/TravelFunctionTypes.js'
 import GetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
 import TravelOne from './travel1'
-import TravelOneInsureData from './travel1-insuredata'
+import TravelOneInsuredData from '../../Common/travelOneInsuredData.vue'
 import TravelOneFooter from './travel1Footer'
+
 export default {
   created() {
-    if (!this.GetTravelIsInit) {
       // 初始化旅平險資料
+    if (!this.GetTravelIsInit) {
       this.FuncTravelInit()
       this.$store.state.PLANNAME = 'TRAVEL'
     }
+  },
+  components: {
+    TravelOne,
+    TravelOneInsuredData,
+    TravelOneFooter
   },
   computed: {
     ...mapGetters([
       'GetLoading',
       GetterTypes.GetTravelIsInit,
       GetterTypes.GetTravelPostData
-    ]),
-    TravelDataLength() {
-      if (!this.GetTravelPostData.PolicyData || this.GetTravelPostData.PolicyData.InsuredInfo === null) return 0
-      console.log(this.GetTravelPostData.PolicyData.InsuredInfo[0].show)
-      return this.GetTravelPostData.PolicyData.InsuredInfo.length
-    }
-  },
-  components: {
-    TravelOne,
-    TravelOneInsureData,
-    TravelOneFooter
+    ])
   },
   methods: {
     ...mapActions([

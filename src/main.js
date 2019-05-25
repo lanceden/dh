@@ -59,7 +59,7 @@ axios.interceptors.response.use((response) => {
     } else if (error.response.status === 501) {
       toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
     } else {
-      toggleModalShow('親愛的保戶您好，操作已逾時請重新登入。')
+      toggleModalShow(error.response.data.Data.Message)
     }
     return Promise.reject(error)
   }

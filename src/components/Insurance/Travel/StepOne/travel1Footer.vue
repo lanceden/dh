@@ -43,7 +43,6 @@ export default {
       let errorIndexArr = []
       let errorAuthRep = []
       let errorMsg = ''
-      console.log(this.GetTravelPostData.PolicyData.InsuredInfo)
       this.GetTravelPostData.PolicyData.InsuredInfo.forEach((item, index) => {
         if (item.HasAuthRep === null || item.HasAuthRep === undefined) {
           errorIndexArr.push(index)

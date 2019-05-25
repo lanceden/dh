@@ -232,7 +232,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import { toggleModalShow } from '../../utils/toggleModal'
-import { data } from './mockData'
 export default {
   props: [
     'stateData',

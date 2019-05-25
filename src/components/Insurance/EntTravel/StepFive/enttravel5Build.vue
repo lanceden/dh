@@ -1,13 +1,17 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <TravelFive v-for="n in this.GetEntTravelPostData.PolicyData.InsuredInfo.length" :key="n" :index="n - 1"></TravelFive>
+    <TravelFive 
+    v-for="n in GetEntTravelPostData.PolicyData.InsuredInfo.length" 
+    :key="n" 
+    :index="n - 1" 
+    :stateData="GetEntTravelPostData"></TravelFive>
     <TravelFiveFooter></TravelFiveFooter>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import TravelFive from './enttravel5'
+import TravelFive from '../../Common/travelFive.vue'
 import TravelFiveFooter from './enttravel5Footer'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes'
 

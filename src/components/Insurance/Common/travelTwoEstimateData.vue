@@ -3,14 +3,13 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
           <div class="insure-check-title">投保資料</div>
         </div>
       </div>
     </div>
-
     <div class="border-bottom-line"></div>
-
+    <!-- 您的旅遊地點 -->
     <div class="form-group row">
       <label for="" class="col-sm-12 col-form-label insure-label">您的旅遊地點</label>
       <div class="border-bottom-line col-sm-12"></div>
@@ -28,7 +27,7 @@
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
-      <div class="col-sm-12 insure-select-align" v-show="parseInt(this.GetTravelPostData.PolicyData.TravelType) === 2">
+      <div class="col-sm-12 insure-select-align" v-show="parseInt(this.stateData.PolicyData.TravelType) === 2">
         <select id="" class="form-control data-input insure-select  insure-select-withradio" v-model="TravelCountry">
           <option value="0" selected="selected">請選擇准備前往國家</option>
           <option value="2">加拿大</option>
@@ -51,11 +50,11 @@
     </div>
     <div class="col-sm-12">
       <div class="insure-tips-text ">
-        <img src="../../../../../static/img/insure-link.png" alt="">
+        <img src="../../../../static/img/insure-link.png" alt="">
         <a href="https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&n=C1B19EF0ACDD3C91&sms=867F5398A49F758A" target="_blank">申根地區國查詢</a>
       </div>
     </div>
-
+    <!-- 保險生效日 -->
     <form class="form-bottom">
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保險生效日</label>
@@ -87,6 +86,7 @@
           </select>
         </div>
       </div>
+      <!-- 保險期間天數 -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保險期間天數</label>
         <div class="col-sm-9">
@@ -95,106 +95,90 @@
         <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">天</label>
       </div>
     </form>
-    <div class="footer">
-      <div class="footer-content">
-        <nav class="navbar navbar-dark row">
-          <div class="col-sm-4 footer-title footer-left">回前一頁</div>
-          <div class="col-sm-8 footer-title footer-right">確認送出</div>
-        </nav>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
 import moment from 'moment'
 
 export default {
+  props: [
+    'stateData'
+  ],
   data() {
     return {
       ensure: {
-        in: '../../../../../static/img/oval.png',
-        out: '../../../../../static/img/oval.png'
+        in: '../../../../static/img/oval.png',
+        out: '../../../../static/img/oval.png'
       }
     }
   },
   mounted() {
-    this.OnEnsure(this.GetTravelPostData.PolicyData.TravelType === 1)
+    this.OnEnsure(this.stateData.PolicyData.TravelType === 1)
   },
   computed: {
-    ...mapGetters([
-      TravelGetterTypes.GetTravelPostData
-    ]),
     year: {
       get() {
-        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[0]
+        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[0]
         return result
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsStartDate = `${value}-${this.month}-${this.day} ${this.time}`
+        this.stateData.PolicyData.InsStartDate = `${value}-${this.month}-${this.day} ${this.time}`
       }
     },
     month: {
       get() {
-        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[1]
+        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[1]
         return result
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsStartDate = `${this.year}-${value}-${this.day} ${this.time}`
+        this.stateData.PolicyData.InsStartDate = `${this.year}-${value}-${this.day} ${this.time}`
       }
     },
     day: {
       get() {
-        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[2].split(' ')[0]
+        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[2].split(' ')[0]
         return result
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsStartDate = `${this.year}-${this.month}-${value} ${this.time}`
+        this.stateData.PolicyData.InsStartDate = `${this.year}-${this.month}-${value} ${this.time}`
       }
     },
     time: {
       get() {
-        let result = moment(this.GetTravelPostData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split(' ')[1]
+        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split(' ')[1]
         return result
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.InsStartDate = `${this.year}-${this.month}-${this.day} ${value}`
+        this.stateData.PolicyData.InsStartDate = `${this.year}-${this.month}-${this.day} ${value}`
       }
     },
     TravelDay: {
       get() {
-        return this.GetTravelPostData.PolicyData.TravelDay
+        return this.stateData.PolicyData.TravelDay
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.TravelDay = value
+        this.stateData.PolicyData.TravelDay = value
       }
     },
     TravelCountry: {
       get() {
-        return this.GetTravelPostData.PolicyData.TravelCountry || 0
+        return this.stateData.PolicyData.TravelCountry || 0
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.TravelCountry = value
-        this.FuncGetInsTravelChildSupplCoverageSli(
-          (parseInt(this.GetTravelPostData.PolicyData.TravelType) === 2 && parseInt(value) === 7) ? '1' : '0'
-        )
+        this.stateData.PolicyData.TravelCountry = value
       }
     },
     EtcCountry: {
       get() {
-        return this.GetTravelPostData.PolicyData.EtcCountry
+        return this.stateData.PolicyData.EtcCountry
       },
       set(value) {
-        this.GetTravelPostData.PolicyData.EtcCountry = value
+        this.stateData.PolicyData.EtcCountry = value
       }
     }
   },
   methods: {
-    ...mapActions([
-      'FuncGetInsTravelChildSupplCoverageSli' // 子女附約'
-    ]),
     /**
      * 設置您的旅遊地點
      * @param {string} target 國內:in 國外:out
@@ -202,16 +186,16 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'in': // 國內
-          this.ensure.in = '../../../../../static/img/oval-ed.png'
-          this.ensure.out = '../../../../../static/img/oval.png'
-          this.GetTravelPostData.PolicyData.TravelType = 1
+          this.ensure.in = '../../../../static/img/oval-ed.png'
+          this.ensure.out = '../../../../static/img/oval.png'
+          this.stateData.PolicyData.TravelType = 1
           this.TravelCountry = 1
-          this.GetTravelPostData.PolicyData.EtcCountry = ''
+          this.stateData.PolicyData.EtcCountry = ''
           break
         case 'out': // 國外
-          this.ensure.in = '../../../../../static/img/oval.png'
-          this.ensure.out = '../../../../../static/img/oval-ed.png'
-          this.GetTravelPostData.PolicyData.TravelType = 2
+          this.ensure.in = '../../../../static/img/oval.png'
+          this.ensure.out = '../../../../static/img/oval-ed.png'
+          this.stateData.PolicyData.TravelType = 2
           this.TravelCountry = 0
           break
       }
