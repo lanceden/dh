@@ -13,28 +13,28 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.InsTypeDisplay}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.InsTypeDisplay}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保單形式</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{parseInt(this.GetEntTravelPostData.PolicyData.MailType) === 2 ? '電子保單' : '紙本保單'}}</div>
+          <div class="form-control insure-input-block">{{parseInt(GetEntTravelPostData.PolicyData.MailType) === 2 ? '電子保單' : '紙本保單'}}</div>
         </div>
       </div>
 
       <div class="border-bottom-line"></div>
-      <div class="form-group row"  v-show="parseInt(this.GetEntTravelPostData.PolicyData.MailType) === 1">
+      <div class="form-group row" v-show="parseInt(GetEntTravelPostData.PolicyData.MailType) === 1">
         <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.ProposerInfo[0].Email}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.ProposerInfo[0].Email}}</div>
         </div>
       </div>
 
@@ -86,30 +86,25 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">險種名稱-主約</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.InsuranceName}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">投保始期</label>
-        <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.InsStartDisplay}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">滿期日</label>
-        <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.InsEndDisplay}} 止，共{{this.GetEntTravelPostData.PolicyData.TravelDay}}天</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.InsuranceName}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">旅遊地點</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.TravelPlaceDisplay}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.TravelPlaceDisplay}}</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">投保始期</label>
+        <div class="col-sm-12">
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.InsStartDisplay}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.InsEndDisplay}} 止，共{{GetEntTravelPostData.PolicyData.TravelDay}}天</div>
         </div>
       </div>
     </div>
 
-    <div class="bg-radius" v-for="(item, index) in this.GetEntTravelPostData.PolicyData.InsuredInfo" :key="index">
+    <div class="bg-radius" v-for="(item, index) in GetEntTravelPostData.PolicyData.InsuredInfo" :key="index">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -118,7 +113,6 @@
           </div>
         </div>
       </div>
-
       <div class="border-bottom-line"></div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
@@ -197,19 +191,23 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.EmergencyContactName}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.EmergencyContactName}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">電話</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.EmergencyContactTel}}</div>
+          <div class="form-control insure-input-block">{{GetEntTravelPostData.PolicyData.EmergencyContactTel}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">地址</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.City}}{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.District}}{{this.GetEntTravelPostData.PolicyData.EmergencyContactAddr.Street}}</div>
+          <div class="form-control insure-input-block">
+            {{GetEntTravelPostData.PolicyData.EmergencyContactAddr.City}}
+            {{GetEntTravelPostData.PolicyData.EmergencyContactAddr.District}}
+            {{GetEntTravelPostData.PolicyData.EmergencyContactAddr.Street}}
+          </div>
         </div>
       </div>
     </div>

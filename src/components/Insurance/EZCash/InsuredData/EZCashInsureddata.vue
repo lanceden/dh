@@ -372,17 +372,12 @@ import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterType
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
-import { data } from './mockData'
 
 export default {
   data() {
     return {
-      modxChinese: '',
-      GetEZCashPostData: []
+      modxChinese: ''
     }
-  },
-  created() {
-    this.GetEZCashPostData = data
   },
   components: {
     BenfOneInsuredData,
@@ -391,7 +386,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // GetterTypes.GetEZCashPostData
+      GetterTypes.GetEZCashPostData
     ]),
     // 首期繳費管道
     init_method: {

@@ -355,17 +355,8 @@ import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
-import { data } from './mockData'
 
 export default {
-  data() {
-    return {
-      GetUpCashPostData: []
-    }
-  },
-  created() {
-    this.GetUpCashPostData = data.Data.Result
-  },
   components: {
     BenfOneInsuredData,
     BenfTwoInsuredData,
@@ -373,7 +364,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // GetterTypes.GetUpCashPostData
+      GetterTypes.GetUpCashPostData
     ]),
     // 首期繳費管道
     init_method: {

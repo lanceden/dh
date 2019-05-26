@@ -333,19 +333,10 @@ import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterT
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
-import { data } from './mockData'
 
 export default {
   mounted() {
     this.test(this.GetIWellPostData.face_amt)
-  },
-  data() {
-    return {
-      GetIWellPostData: []
-    }
-  },
-  created() {
-    this.GetIWellPostData = data.Data.Result
   },
   components: {
     BenfOneInsuredData,
@@ -354,7 +345,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // IWellGetterTypes.GetIWellPostData
+      IWellGetterTypes.GetIWellPostData
     ])
   },
   methods: {

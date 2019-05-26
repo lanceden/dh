@@ -13,39 +13,39 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.InsTypeDisplay}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.InsTypeDisplay}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保單形式</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{parseInt(this.GetTravelPostData.PolicyData.MailType) === 2 ? '電子保單' : '紙本保單'}}</div>
+          <div class="form-control insure-input-block">{{parseInt(GetTravelPostData.PolicyData.MailType) === 2 ? '電子保單' : '紙本保單'}}</div>
         </div>
       </div>
 
       <div class="border-bottom-line"></div>
-      <div class="form-group row" v-show="parseInt(this.GetTravelPostData.PolicyData.MailType) === 1">
+      <div class="form-group row" v-show="parseInt(GetTravelPostData.PolicyData.MailType) === 1">
         <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.ProposerInfo[0].Email}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.ProposerInfo[0].Email}}</div>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保人手機號碼</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.ProposerInfo[0].Phone}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.ProposerInfo[0].Phone}}</div>
         </div>
       </div>
 
-      <div v-for="(item, index) in this.GetTravelPostData.PolicyData.InsuredInfo" :key="index">
+      <div v-for="(item, index) in GetTravelPostData.PolicyData.InsuredInfo" :key="index">
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保人姓名</label>
           <div class="col-sm-12">
@@ -86,30 +86,25 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">險種名稱-主約</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.InsuranceName}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">投保始期</label>
-        <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.InsStartDisplay}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">滿期日</label>
-        <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.InsEndDisplay}} 止，共{{this.GetTravelPostData.PolicyData.TravelDay}}天</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.InsuranceName}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">旅遊地點</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.TravelPlaceDisplay}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.TravelPlaceDisplay}}</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">投保始期</label>
+        <div class="col-sm-12">
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.InsStartDisplay}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.InsEndDisplay}} 止，共{{GetTravelPostData.PolicyData.TravelDay}}天</div>
         </div>
       </div>
     </div>
 
-    <div class="bg-radius" v-for="(item, index) in this.GetTravelPostData.PolicyData.InsuredInfo" :key="index">
+    <div class="bg-radius" v-for="(item, index) in GetTravelPostData.PolicyData.InsuredInfo" :key="index">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -198,22 +193,22 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.EmergencyContactName}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.EmergencyContactName}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">電話</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.PolicyData.EmergencyContactTel}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.PolicyData.EmergencyContactTel}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">地址</label>
         <div class="col-sm-12">
           <div class="form-control insure-input-block">
-            {{this.GetTravelPostData.PolicyData.EmergencyContactAddr.City}}
-            {{this.GetTravelPostData.PolicyData.EmergencyContactAddr.District}}
-            {{this.GetTravelPostData.PolicyData.EmergencyContactAddr.Street}}
+            {{GetTravelPostData.PolicyData.EmergencyContactAddr.City}}
+            {{GetTravelPostData.PolicyData.EmergencyContactAddr.District}}
+            {{GetTravelPostData.PolicyData.EmergencyContactAddr.Street}}
           </div>
         </div>
       </div>
@@ -231,10 +226,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+
 export default {
   computed: {
     ...mapGetters([
-      'GetTravelPostData'
+      TravelGetterTypes.GetTravelPostData
     ])
   },
   methods: {

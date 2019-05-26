@@ -387,21 +387,12 @@ import MyWayGetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterT
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
-import { data } from './mockData'
 
 export default {
   computed: {
     ...mapGetters([
-      // MyWayGetterTypes.GetMyWayPostData
+      MyWayGetterTypes.GetMyWayPostData
     ])
-  },
-  data() {
-    return {
-      GetMyWayPostData: []
-    }
-  },
-  created() {
-    this.GetMyWayPostData = data.Data.Result
   },
   components: {
     BenfOneInsuredData,

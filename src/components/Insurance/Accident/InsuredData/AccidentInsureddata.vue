@@ -298,20 +298,11 @@ import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetter
 import BenfOneInsuredData from '../../Common/benfOneInsuredData.vue'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
-import { data } from './mockData'
 
 export default {
-  data() {
-    return {
-      GetAccidentPostData: []
-    }
-  },
-  created() {
-    this.GetAccidentPostData = data.Data.Result
-  },
   computed: {
     ...mapGetters([
-      // GetterTypes.GetAccidentPostData
+      GetterTypes.GetAccidentPostData
     ])
   },
   components: {

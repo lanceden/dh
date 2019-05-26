@@ -298,20 +298,11 @@ import IGoingGetterTypes from '../../../../store/modules/IGoing/Types/IGoingGett
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
-import { data } from './mockData'
 
 export default {
-  data() {
-    return {
-      GetIGoingPostData: []
-    }
-  },
-  created() {
-    this.GetIGoingPostData = data.Data.Result
-  },
   computed: {
     ...mapGetters([
-      // IGoingGetterTypes.GetIGoingPostData
+      IGoingGetterTypes.GetIGoingPostData
     ])
   },
   components: {

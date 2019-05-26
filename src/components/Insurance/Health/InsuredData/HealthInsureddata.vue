@@ -384,6 +384,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import HealthGetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
+
 export default {
   computed: {
     ...mapGetters([

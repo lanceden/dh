@@ -328,19 +328,10 @@ import ICanGetterTypes from '../../../../store/modules/ICan/Types/ICanGetterType
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
-import { data } from './mockData'
 
 export default {
   mounted() {
     this.test(this.GetICanPostData.face_amt)
-  },
-  data() {
-    return {
-      GetICanPostData: []
-    }
-  },
-  created() {
-    this.GetICanPostData = data.Data.Result
   },
   components: {
     BenfOneInsuredData,
@@ -349,7 +340,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // ICanGetterTypes.GetICanPostData
+      ICanGetterTypes.GetICanPostData
     ])
   },
   methods: {
