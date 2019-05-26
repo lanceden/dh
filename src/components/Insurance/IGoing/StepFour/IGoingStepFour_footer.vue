@@ -18,7 +18,7 @@ export default {
       this.$router.push('/benf?instypename=IGoing')
     },
     /**
-     * 前往填寫聯絡資料
+     * 前往閱讀同意書
      */
     GoNext() {
       this.$router.push(`/agreement?instypename=igoing`)

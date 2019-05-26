@@ -3,7 +3,7 @@
     <form id="form1" action="#" method="post">
       <input type="hidden" id="notice_no" name="notice_no" />
       <input type="hidden" id="amount" name="amount" />
-      <input type="submit" id="doPayment" />
+      <input type="submit" id="doPayment" hidden="hidden" />
     </form>
   </div>
 </template>

@@ -14,7 +14,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">關係</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input insure-input-edit">{{Relation === '本人' ? '本人' :  `子女(${index})`}}</div>
+          <div class="form-control insure-input insure-input-edit">{{Relation === '本人' ? '本人' :  `子女(${parseInt(index)+1})`}}</div>
         </div>
       </div>
       <div class="form-group row">

@@ -106,6 +106,9 @@ export default {
     // 給付方式: 0一次給付 1分期給付
     anny_frequence_computed: {
       get() {
+        if(this.stateData.anny_frequence === '' || this.stateData.anny_frequence === null) {
+          this.stateData.anny_frequence = 0
+        }
         return this.stateData.anny_frequence | 0
       },
       set(value) {
@@ -148,7 +151,7 @@ export default {
         case 'more': // 分期
           this.ensure.anny_frequenceOne = '../../../../static/img/oval.png'
           this.ensure.anny_frequenceMore = '../../../../static/img/oval-ed.png'
-          this.anny_frequence_computed = 1
+          this.anny_frequence_computed = ''
           break
       }
     }

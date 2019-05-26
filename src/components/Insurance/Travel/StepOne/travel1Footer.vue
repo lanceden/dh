@@ -18,6 +18,7 @@ import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGett
 export default {
   computed: {
     ...mapGetters([
+      TravelGetterTypes.GetTravelIsInit,
       TravelGetterTypes.GetTravelPostData
     ])
   },
@@ -40,9 +41,7 @@ export default {
         return
       }
 
-      let errorIndexArr = []
-      let errorAuthRep = []
-      let errorMsg = ''
+      let [errorIndexArr, errorAuthRep, errorMsg] = [[], [], '']
       this.GetTravelPostData.PolicyData.InsuredInfo.forEach((item, index) => {
         if (item.HasAuthRep === null || item.HasAuthRep === undefined) {
           errorIndexArr.push(index)
@@ -75,12 +74,16 @@ export default {
         return
       }
       // 設置旅平險已初始化
-      this.FuncTravelIsInit(true)
-      // 前往被保人填寫資料頁
-      this.FuncTravelInsuredData({
-        para: this.GetTravelPostData,
-        router: this.$router
-      })
+      if (!this.GetTravelIsInit) {
+        this.FuncTravelIsInit(true)
+        // 前往被保人填寫資料頁
+        this.FuncTravelInsuredData({
+          para: this.GetTravelPostData,
+          router: this.$router
+        })
+      } else {
+        this.$router.push('/travel-2')
+      }
     }
   }
 }

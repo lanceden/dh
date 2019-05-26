@@ -22,13 +22,13 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{poIssueDate}}</div>
+            <div class="insure-input-block">自{{poIssueDate}}</div>
           </div>
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control insure-input insure-input-edit col-sm-9" v-model="face_amtComputed" placeholder="請輸入" />
+            <input type="number" class="form-control insure-input insure-input-edit col-sm-12" v-model="face_amtComputed" placeholder="請輸入" />
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
         </div>
@@ -400,6 +400,11 @@ export default {
           toggleModalShow('請輸入銀行帳戶')
           return
         }
+      }
+      let faceAmount = parseInt(this.face_amtComputed)
+      if(faceAmount < 3000) {
+        toggleModalShow('第一期保險費限輸入 3,000 ~ 750,000 元，請調整。')
+        return
       }
       this.$router.push(`/EZCash-2-1`)
     },

@@ -186,7 +186,13 @@ export default {
       'FuncGetDistrictData'
     ]),
     GoToPrev() {
-      this.$router.push(`/enttravel-4`)
+      // 驗證成功, 確認送出
+      let planName = this.$store.state.PLANNAME.toLowerCase()
+      if(planName === 'travel') {
+        this.$router.push(`/travel-4`)
+      } else {
+        this.$router.push(`/enttravel-4`)
+      }
     },
     GoToNext() {
       this.errorMsg = ''

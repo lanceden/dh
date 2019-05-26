@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <div>
+    <loading v-show="GetLoading" />
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -26,7 +27,7 @@
     </div>
 
     <!-- 客戶住所(通訊地址) -->
-    <div class="bg-radius" v-show="parseInt(this.GetEntTravelPostData.PolicyData.MailType) === 1">
+    <div class="bg-radius" v-show="parseInt(GetEntTravelPostData.PolicyData.MailType) === 1">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -53,7 +54,7 @@
       <!-- 輸入新的通訊地址 -->
       <form class="form-bottom">
         <!-- 輸入新的通訊地址 -->
-        <div v-show="this.cbNewAddr1">
+        <div v-show="cbNewAddr1">
           <!-- 選擇城市 -->
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
@@ -87,7 +88,7 @@
     </div>
 
     <!-- 保單寄送資料 -->
-    <div class="bg-radius" v-show="parseInt(this.GetEntTravelPostData.PolicyData.MailType) === 2">
+    <div class="bg-radius" v-show="parseInt(GetEntTravelPostData.PolicyData.MailType) === 2">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -137,7 +138,6 @@ import $ from 'jquery'
 import { mapGetters, mapActions } from 'vuex'
 import EntTravelGetterTypes from '../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 
-const CITYNAME = '基隆市'
 export default {
   data() {
     return {
@@ -153,6 +153,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'GetLoading',
       'GetCityData',
       'GetDistrictData',
       EntTravelGetterTypes.GetEntTravelPostData
@@ -164,6 +165,9 @@ export default {
       },
       set(value) {
         this.GetEntTravelPostData.PolicyData.MailingAddr.City = value
+        this.FuncGetDistrictData({
+          cityName: value
+        })
       }
     },
     // 紙本保單-輸入新的客戶住所(通訊地址)-區域
@@ -187,9 +191,6 @@ export default {
   },
   created() {
     this.FuncGetCityData()
-    this.FuncGetDistrictData({
-      cityName: CITYNAME
-    })
     let result = this.GetEntTravelPostData.PolicyData.MailType
     // 第一次進來無資料所以不執行
     if (result !== null) {
@@ -228,7 +229,6 @@ export default {
           this.OnCommunityAddr('old')
           break
       }
-      console.log('GetEntTravelPostData.PolicyData.ProposerInfo[0].Address', this.GetEntTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address)
     },
     /**
      * 通訊地址

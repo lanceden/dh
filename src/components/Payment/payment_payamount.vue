@@ -13,8 +13,8 @@
       <div class="bg-money">
         <div class="col-sm-12">
           <div class="font-label">本次投保的保險費為：</div>
-          <div class="font-money" v-if="(this.$store.state.PLANNAME.toLowerCase() === 'travel' || this.$store.state.PLANNAME.toLowerCase() === 'enttravel')">NT$ {{this.stateData.PolicyData.TotalPremium}} 元</div>
-          <div class="font-money" v-else> NT$ {{this.stateData.mode_prem|decimalComma}} 元</div>
+          <div class="font-money" v-if="($store.state.PLANNAME.toLowerCase() === 'travel' || $store.state.PLANNAME.toLowerCase() === 'enttravel')">NT$ {{stateData.PolicyData.TotalPremium}} 元</div>
+          <div class="font-money" v-else> NT$ {{stateData.mode_prem|decimalComma}} 元</div>
           <div class="money-icon"><img src="../../../static/img/coins.png" alt=""></div>
         </div>
       </div>
@@ -69,7 +69,7 @@
       </form>
     </div>
     <!-- 選擇使用信用卡才顯示 -->
-    <div class='bg-radius' v-show="this.init_method === 'C'">
+    <div class='bg-radius' v-show="init_method === 'C'">
       <div class='top'>
         <div class='top-title'>
           <div class='insure-notice-box'>
@@ -100,7 +100,7 @@
           </div>
         </div>
         <!-- 有效期限起:UpCash才會顯示 -->
-        <div class='form-group row' v-show="this.planName === 'upcash'">
+        <div class='form-group row' v-show="planName === 'upcash'">
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限起</label>
           <div class='col-sm-5 insure-select-align row'>
             <input type='tel' id='cc_from_month' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' v-model="sMonth" placeholder='月份'>
@@ -170,7 +170,7 @@
       </form>
     </div>
 
-    <div class="bg-radius" v-show="this.init_method === 'B'">
+    <div class="bg-radius" v-show="init_method === 'B'">
       <!-- 非約定-全繳網 -->
       <div @click="OnAccount(false)">
         <div class="border-bottom-line col-sm-12"></div>
@@ -181,7 +181,7 @@
           </div>
         </div>
       </div>
-      <div v-show="this.GetAccountData !== null && this.GetAccountData.hasOwnProperty('AccountNo')" @click="OnAccount(true)">
+      <div v-show="GetAccountData !== null && GetAccountData.hasOwnProperty('AccountNo')" @click="OnAccount(true)">
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box">
@@ -191,18 +191,18 @@
         </div>
       </div>
       <!-- 約定-EACH -->
-      <div v-show="this.$store.state.PAYMENTPREFER">
+      <div v-show="$store.state.PAYMENTPREFER">
         <div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
             <div class="col-sm-12">
-              <div class="form-control insure-input-block">{{this.GetAccountData.CustName}}</div>
+              <div class="form-control insure-input-block">{{GetAccountData.CustName}}</div>
             </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
             <div class="col-sm-12">
-              <div class="form-control insure-input-block">{{this.GetAccountData.CustIDN}}</div>
+              <div class="form-control insure-input-block">{{GetAccountData.CustIDN}}</div>
             </div>
           </div>
           <div class="form-group row">

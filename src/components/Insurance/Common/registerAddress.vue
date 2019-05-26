@@ -100,6 +100,7 @@ export default {
   },
   watch: {
     city2(newValue) {
+      this.district2 = '0-0'
       this.FuncGetDistrictData({
         cityName: newValue
       })
@@ -117,6 +118,7 @@ export default {
       },
       set(value) {
         this.stateData.city2 = value
+        this.district2 = '0-0'
       }
     },
     // 輸入新的戶籍地址-區域
@@ -175,6 +177,8 @@ export default {
           this.ensure.new = '../../../static/img/oval-ed.png'
           this.cbNewAddr2 = true
           this.stateData.IsSaveRegistered = true
+          this.district2 = '0-0'
+          this.road2 = ''
           break
       }
     }

@@ -1,26 +1,29 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepThreeContact></StepThreeContact>
+    <ContactComponent :stateData="GetAccidentPostData"></ContactComponent>
     <StepThreeFooter></StepThreeFooter>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import StepThreeContact from './AccidentStepThree_contact'
+import ContactComponent from '../../Common/contact'
 import StepThreeFooter from './AccidentStepThree_footer'
+import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
+
 export default {
   created() {
     this.$store.state.PROGRESSBAR = '../../static/img/progress-bar-06-3.png'
   },
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      GetterTypes.GetAccidentPostData
     ])
   },
   components: {
-    StepThreeContact,
+    ContactComponent,
     StepThreeFooter
   }
 }

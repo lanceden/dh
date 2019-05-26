@@ -78,53 +78,56 @@ export default {
         CoreData: this.stateData,
         router: this.$router
       }
-      console.log('postData', postData)
       // 判斷是否為信用卡繳費, 若是則要驗證卡號
       if (this.$store.state.PAYTYPE === 'C') {
         if (!CheckCardno(postData.NCCCModels.CardNo)) {
           toggleModalShow('信用卡號不正確，請重新輸入。')
           return
         }
+        // Upcash要判斷是否有填寫起訖日
+        if (planName === 'upcash') {
+          if ($('#cc_from_year').val() === '' || $('#cc_from_month').val() === '') {
+            toggleModalShow('信用卡有效期限起日不正確，請重新輸入。')
+            return
+          }
+        }
+        // 其他險種要判斷訖日
+        if ($('#cc_exp_year').val() === '' || $('#cc_exp_month').val() === '') {
+          if ($('#cc_from_year').val() === '' || $('#cc_from_month').val() === '') {
+            toggleModalShow('信用卡有效期限訖日不正確，請重新輸入。')
+            return
+          }
+        }
       }
       switch (planName) {
         case 'upcash':
-          console.log('this.FuncUpCashSubmitOrder')
           this.FuncUpCashSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'ezcash':
-          console.log('this.FuncEZCashSubmitOrder')
           this.FuncEZCashSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'ican':
-          console.log('this.FuncICanSubmitOrder')
           this.FuncICanSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'iwell':
-          console.log('this.FuncIWellSubmitOrder')
           this.FuncIWellSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'igoing':
-          console.log('this.FuncIGoingSubmitOrder')
           this.FuncIGoingSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'myway':
-          console.log('this.FuncMyWaySubmitOrder')
           this.FuncMyWaySubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'accident':
-          console.log('this.FuncAccidentSubmitOrder')
           this.FuncAccidentSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'health':
-          console.log('this.FuncHealthSubmitOrder')
           this.FuncHealthSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'travel':
-          console.log('this.FuncTravelSubmitOrder')
           this.FuncTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
         case 'enttravel':
-          console.log('this.FuncEntTravelSubmitOrder')
           this.FuncEntTravelSubmitOrder({ nccModels: postData.NCCCModels, para: postData.CoreData, router: postData.router })
           break
       }

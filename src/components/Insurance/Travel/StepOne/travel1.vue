@@ -18,21 +18,21 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保險人</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.length === 0 ? '' : this.GetTravelPostData.PolicyData.ProposerInfo[0].Name}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.length === 0 ? '' : GetTravelPostData.PolicyData.ProposerInfo[0].Name}}</div>
         </div>
       </div>
       <!-- 要保險人身分證字號 -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保險人身分證字號</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.length === 0 ? '' : this.GetTravelPostData.PolicyData.ProposerInfo[0].ID}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.length === 0 ? '' : GetTravelPostData.PolicyData.ProposerInfo[0].ID}}</div>
         </div>
       </div>
       <!-- 要保險人性別 -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">要保險人性別</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.GetTravelPostData.length === 0 ? '' : this.GetTravelPostData.PolicyData.ProposerInfo[0].Gender === '1' ? '男' : '女'}}</div>
+          <div class="form-control insure-input-block">{{GetTravelPostData.length === 0 ? '' : GetTravelPostData.PolicyData.ProposerInfo[0].Gender === '1' ? '男' : '女'}}</div>
         </div>
       </div>
     </form>

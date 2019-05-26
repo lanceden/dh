@@ -14,19 +14,15 @@
     </div>
     <form class="form-bottom">
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件</label>
+        <label for="" class="col-sm-12 col-form-label insure-label insure-label">要保人電子郵件</label>
         <div class="col-sm-12">
-          <div class="insure-notice-text">
-            {{this.stateData.email}}
-          </div>
+          <div class="insure-input-block">{{stateData.email}}</div>
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">要保人手機</label>
+        <label for="" class="col-sm-12 col-form-label insure-label insure-label">要保人手機</label>
         <div class="col-sm-12">
-          <div class="insure-notice-text">
-            {{this.stateData.phone}}
-          </div>
+          <div class="insure-input-block">{{stateData.phone}}</div>
         </div>
       </div>
     </form>

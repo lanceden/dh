@@ -100,7 +100,7 @@
       <div class="form-group row" v-show="GetUpCashPostData.anny_frequence > 0">
         <label for="" class="col-sm-12 col-form-label insure-label">保證期間</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{GetUpCashPostData.qpoop_19_year}}</div>
+          <div class="insure-input-block">{{GetUpCashPostData.qpoop_19_year}} 年</div>
         </div>
       </div>
       <div class="form-group row">
@@ -184,166 +184,13 @@
         </div>
       </form>
     </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(一)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(一)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.benf_name}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位{{GetUpCashPostData.relation_ben_death_seq}}，{{GetUpCashPostData.relation_ben_death_seq_percent}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetUpCashPostData.benf_phone}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.BenfAdd_City}}{{GetUpCashPostData.BenfAdd_County}}{{GetUpCashPostData.BenfAddRemain}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius" v-show="parseInt(GetUpCashPostData.benf_num) > 1">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(二)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.benf_name2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位{{GetUpCashPostData.relation_ben_death_seq2}}，{{GetUpCashPostData.relation_ben_death_seq_percent2}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death2) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death2) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death2) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death2) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetUpCashPostData.benf_phone2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.BenfAdd_City2}}{{GetUpCashPostData.BenfAdd_County2}}{{GetUpCashPostData.BenfAddRemain2}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="bg-radius" v-show="parseInt(GetUpCashPostData.benf_num) > 2">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(三)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(三)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.benf_name3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位{{GetUpCashPostData.relation_ben_death_seq3}}，{{GetUpCashPostData.relation_ben_death_seq_percent3}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death3) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death3) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death3) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetUpCashPostData.relation_ben_death3) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">國籍</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.BenfNationality3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.benf_dob3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.benf_id3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetUpCashPostData.benf_phone3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetUpCashPostData.BenfAddress3}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
-
+    <!-- 受益人一 -->
+    <BenfOneInsuredData :stateData="GetUpCashPostData"></BenfOneInsuredData>
+    <!-- 受益人二 -->
+    <BenfTwoInsuredData :stateData="GetUpCashPostData"></BenfTwoInsuredData>
+    <!-- 受益人三 -->
+    <BenfThreeInsuredData :stateData="GetUpCashPostData"></BenfThreeInsuredData>
+    <!-- 被保人投保資料告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -372,6 +219,7 @@
         </div>
       </form>
     </div>
+    <!-- FATCA及CRS個人客戶自我聲明書 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -421,6 +269,7 @@
         </div>
       </form>
     </div>
+    <!-- 要保人匯款帳戶 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -452,6 +301,7 @@
         </div>
       </form>
     </div>
+    <!-- 被保人其他告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -501,11 +351,29 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import BenfOneInsuredData from '../../Common/benfOneInsuredData'
+import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import { data } from './mockData'
+
 export default {
+  data() {
+    return {
+      GetUpCashPostData: []
+    }
+  },
+  created() {
+    this.GetUpCashPostData = data.Data.Result
+  },
+  components: {
+    BenfOneInsuredData,
+    BenfTwoInsuredData,
+    BenfThreeInsuredData
+  },
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData
+      // GetterTypes.GetUpCashPostData
     ]),
     // 首期繳費管道
     init_method: {

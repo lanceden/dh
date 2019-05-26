@@ -6,7 +6,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
-import ElecFormComponent from '../../Common/elecform'
+import ElecFormComponent from '../../Common/elecform.vue'
 
 export default {
   components: {

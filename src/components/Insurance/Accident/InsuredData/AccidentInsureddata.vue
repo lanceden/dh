@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">投保資訊</div>
           </div>
         </div>
@@ -100,7 +100,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
             <div class="insure-check-title">保單資訊</div>
           </div>
         </div>
@@ -158,142 +158,14 @@
         </div>
       </form>
     </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(一)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(一)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.benf_name}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{GetAccidentPostData.relation_ben_death_seq_percent}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">國籍</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.BenfNationality}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.benf_dob}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.benf_id}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.benf_phone}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.BenfAdd_City}}{{GetAccidentPostData.BenfAdd_County}}{{GetAccidentPostData.BenfAddRemain}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius" v-show="parseInt(GetAccidentPostData.benf_num) > 1">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(二)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
+    
+    <!-- 受益人一 -->
+    <BenfOneInsuredData :stateData="GetAccidentPostData"></BenfOneInsuredData>
+    <!-- 受益人二 -->
+    <BenfTwoInsuredData :stateData="GetAccidentPostData"></BenfTwoInsuredData>
+    <!-- 受益人三 -->
+    <BenfThreeInsuredData :stateData="GetAccidentPostData"></BenfThreeInsuredData>
 
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.benf_name2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位1，{{GetAccidentPostData.relation_ben_death_seq_percent2}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetAccidentPostData.relation_ben_death2) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.benf_phone2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetAccidentPostData.BenfAdd_City2}}{{GetAccidentPostData.BenfAdd_County2}}{{GetAccidentPostData.BenfAddRemain2}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius" v-show="parseInt(GetAccidentPostData.benf_num) > 2">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(三)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(三)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位3，100%</div>
-          </div>
-        </div>
-      </form>
-    </div>
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -423,12 +295,29 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
+import BenfOneInsuredData from '../../Common/benfOneInsuredData.vue'
+import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import { data } from './mockData'
 
 export default {
+  data() {
+    return {
+      GetAccidentPostData: []
+    }
+  },
+  created() {
+    this.GetAccidentPostData = data.Data.Result
+  },
   computed: {
     ...mapGetters([
-      GetterTypes.GetAccidentPostData
+      // GetterTypes.GetAccidentPostData
     ])
+  },
+  components: {
+    BenfOneInsuredData,
+    BenfTwoInsuredData,
+    BenfThreeInsuredData
   }
 }
 

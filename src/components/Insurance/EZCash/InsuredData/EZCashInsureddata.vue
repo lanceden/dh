@@ -62,27 +62,47 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">是否躉繳(一次繳清)</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{GetEZCashPostData.IsOneTimePayment ? '是' : '否'}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
-        <div class="col-sm-12">
-          <div class="insure-input-block">{{init_method}}</div>
+          <div class="insure-input-block">NT$ {{GetEZCashPostData.mode_prem|decimalComma}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">分期繳付每期{{GetEZCashPostData.qpoop_25_prem}}，{{qpoop_25_modx}}繳</div>
+          <!-- 不定期 -->
+          <div class="insure-input-block" v-show="GetEZCashPostData.modx_99_ind === 'Y'">
+            不定期繳
+          </div>
+          <div class="insure-input-block" v-show="GetEZCashPostData.modx_99_ind === 'N'">
+            分期繳付每期{{GetEZCashPostData.qpoop_25_prem}}，{{qpoop_25_modx}}繳
+          </div>
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">續期收費管道</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
         <div class="col-sm-12">
           <div class="insure-input-block">{{method}}</div>
+        </div>
+      </div>
+      <div v-show="GetEZCashPostData.modx_99_ind === 'N'">
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">續期轉帳帳號-金融中文名稱</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{GetEZCashPostData.AccountData[0].bank_name_1}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">續期轉帳帳號</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block">{{GetEZCashPostData.AccountData[0].account}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="" class="col-sm-12 col-form-label insure-label">主要給付項目</label>
+        <div class="col-sm-12">
+          <div class="insure-input-block">年金</div>
         </div>
       </div>
       <div class="form-group row">
@@ -92,7 +112,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">年金給付方式</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
         <div class="col-sm-12">
           <div class="insure-input-block">{{GetEZCashPostData.anny_frequence === '0' ? '一次給付' : '分期給付'}}</div>
         </div>
@@ -100,25 +120,24 @@
       <div class="form-group row" v-show="GetEZCashPostData.anny_frequence > 0">
         <label for="" class="col-sm-12 col-form-label insure-label">保證期間</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{GetEZCashPostData.qpoop_19_year}}</div>
+          <div class="insure-input-block">{{GetEZCashPostData.qpoop_19_year}} 年</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保價金通知方式</label>
         <!-- 電子郵件 -->
         <div class="col-sm-12" v-show="GetEZCashPostData.value_ind === '4'">
+          <div class="insure-input-block">電子郵件：</div>
           <div class="insure-input-block">{{GetEZCashPostData.email}}</div>
         </div>
         <!-- 寄送到客戶住所(通訊地址) -->
         <div class="col-sm-12" v-show="GetEZCashPostData.value_ind === '1'">
+          <div class="insure-input-block">寄送到客戶住所(通訊地址)：</div>
           <div class="insure-input-block">{{GetEZCashPostData.city1}}{{GetEZCashPostData.district1}}{{GetEZCashPostData.road1}}</div>
-        </div>
-        <!-- 輸入新的電子郵件 -->
-        <div class="col-sm-12" v-show="GetEZCashPostData.value_ind === '3'">
-          <div class="insure-input-block">{{GetEZCashPostData.email}}</div>
         </div>
         <!-- 輸入新的寄送地址 -->
         <div class="col-sm-12" v-show="GetEZCashPostData.value_ind === '2'">
+          <div class="insure-input-block">新的寄送地址：</div>
           <div class="insure-input-block">寄送地址：<br>{{GetEZCashPostData.city3}}{{GetEZCashPostData.district3}}{{GetEZCashPostData.road3}}</div>
         </div>
       </div>
@@ -184,165 +203,13 @@
         </div>
       </form>
     </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(一)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(一)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.benf_name}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位{{GetEZCashPostData.relation_ben_death_seq}}，{{GetEZCashPostData.relation_ben_death_seq_percent}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetEZCashPostData.benf_phone}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.BenfAdd_City}}{{GetEZCashPostData.BenfAdd_County}}{{GetEZCashPostData.BenfAddRemain}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius" v-show="parseInt(GetEZCashPostData.benf_num) > 1">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(二)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
 
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.benf_name2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位{{GetEZCashPostData.relation_ben_death_seq2}}，{{GetEZCashPostData.relation_ben_death_seq_percent2}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death2) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death2) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death2) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death2) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetEZCashPostData.benf_phone2}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.BenfAdd_City2}}{{GetEZCashPostData.BenfAdd_County2}}{{GetEZCashPostData.BenfAddRemain2}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="bg-radius" v-show="parseInt(GetEZCashPostData.benf_num) > 2">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
-            <div class="insure-check-title">身故受益人(三)資料</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(三)</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.benf_name3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">順位{{GetEZCashPostData.relation_ben_death_seq3}}，{{GetEZCashPostData.relation_ben_death_seq_percent3}}%</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death3) === 2">配偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death3) === 3">父母子女</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death3) === 6">祖孫</div>
-            <div class="insure-input-block" v-show="parseInt(GetEZCashPostData.relation_ben_death3) === 8">法定繼承人</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">國籍</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.BenfNationality3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.benf_dob3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.benf_id3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetEZCashPostData.benf_phone3}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetEZCashPostData.BenfAddress3}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
+    <!-- 受益人一 -->
+    <BenfOneInsuredData :stateData="GetEZCashPostData"></BenfOneInsuredData>
+    <!-- 受益人二 -->
+    <BenfTwoInsuredData :stateData="GetEZCashPostData"></BenfTwoInsuredData>
+    <!-- 受益人三 -->
+    <BenfThreeInsuredData :stateData="GetEZCashPostData"></BenfThreeInsuredData>
 
     <div class="bg-radius">
       <div class="top">
@@ -502,15 +369,29 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
+import BenfOneInsuredData from '../../Common/benfOneInsuredData'
+import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import { data } from './mockData'
+
 export default {
   data() {
     return {
-      modxChinese: ''
+      modxChinese: '',
+      GetEZCashPostData: []
     }
+  },
+  created() {
+    this.GetEZCashPostData = data
+  },
+  components: {
+    BenfOneInsuredData,
+    BenfTwoInsuredData,
+    BenfThreeInsuredData
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetEZCashPostData
+      // GetterTypes.GetEZCashPostData
     ]),
     // 首期繳費管道
     init_method: {
@@ -547,8 +428,6 @@ export default {
       switch (type) {
         case 'P':
           return '全國新光人壽行政中心繳費'
-        case 'C':
-          return '信用卡'
         case 'B':
           return '銀行或郵局帳戶轉帳'
       }

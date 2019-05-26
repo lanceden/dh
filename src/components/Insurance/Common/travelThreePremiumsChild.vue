@@ -6,7 +6,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check"><img src="../../../../static/img/edit.png" alt=""></div>
-            <div class="insure-check-title">子女({{index}})</div>
+            <div class="insure-check-title">子女({{parseInt(index)+1}})</div>
           </div>
         </div>
       </div>
@@ -29,7 +29,8 @@
           <!-- 海外突發疾病 -->
           <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">
+            <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" 
+            v-model="SupplementPolicyFaceAmtoOverSea">
               <option v-for="item in $store.state.CHILDSUPPLCOVERAGESLI" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
@@ -71,16 +72,15 @@ export default {
         return parseInt(this.stateData.PolicyData.TravelType) === 2
       }
     },
-    // 子女(本人)：旅行平安保險
+    // 子女旅行平安保險
     PrimaryPolicyFaceAmtChild: {
       get() {
         if (!this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy) {
           return 100
         }
-        if (this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.MaxCoverage === null) {
-          this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.MaxCoverage = 200
+        if (this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.FaceAmt === null) {
+          this.PrimaryPolicyFaceAmtChild = this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.MaxCoverage
         }
-        console.log(this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.MaxCoverage)
         return this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy.MaxCoverage
       },
       set(value) {
@@ -109,14 +109,14 @@ export default {
         }
       }
     },
-    // 被保險人(本人)：傷害醫療
+    // 被保險人(子女)：傷害醫療
     SupplementPolicyFaceAmt: {
       get() {
         if (!this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy) {
           return 0
         }
-        if (this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].MaxCoverage === null) {
-          this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].MaxCoverage = 20
+        if (this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].FaceAmt === null) {
+          this.SupplementPolicyFaceAmt = this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].MaxCoverage
         }
         return this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[0].MaxCoverage
       },
@@ -129,7 +129,7 @@ export default {
         }
       }
     },
-    // 被保險人(本人)：海外突發疾病
+    // 被保險人(子女)：海外突發疾病
     SupplementPolicyFaceAmtoOverSea: {
       get() {
         if (!this.stateData.PolicyData.InsuredInfo[this.index].PrimaryPolicy) {
@@ -139,14 +139,14 @@ export default {
         return parseInt(this.stateData.PolicyData.TravelType) === 1 ? 0 : this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt || 20
       },
       set(value) {
+        this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = value
         // 若為0要關閉
         let result = parseInt(value)
-        if (result === '0') {
+        if (result === 0) {
           this.SupplementPolicyFaceAmtoOverSeaDisable = true
         } else {
           this.SupplementPolicyFaceAmtoOverSeaDisable = false
         }
-        this.stateData.PolicyData.InsuredInfo[this.index].SupplementPolicy[1].FaceAmt = result
       }
     }
   },

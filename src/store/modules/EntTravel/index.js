@@ -59,6 +59,7 @@ const actions = {
       toggleModalShow('您輸入的代碼驗證失敗，請洽詢您公司的負責窗口。', '貼心提醒您')
       return
     }
+    await dispatch('FuncEntTravelIsInit', true)
     rootState.Http.axios.post(`${Url.EntTravelInsuredData}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: para

@@ -5,7 +5,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes'
-import ContactComponent from '../../Common/contact'
+import ContactComponent from '../../Common/contact.vue'
 
 export default {
   components: {

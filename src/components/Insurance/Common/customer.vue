@@ -19,15 +19,15 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
-        <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{this.stateData.Birthday_Full}}</div>
-        </div>
-      </div>
-      <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label">被保險人身分證字號</label>
         <div class="col-sm-12">
           <div class="form-control insure-input-block">{{this.stateData.client_id}}</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for class="col-sm-12 col-form-label insure-label">被保險人出生生日</label>
+        <div class="col-sm-12">
+          <div class="form-control insure-input-block">{{this.stateData.Birthday_Full}}</div>
         </div>
       </div>
       <div class="form-group row">

@@ -1,9 +1,9 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetUpCashPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
-    <StepOneFatca></StepOneFatca>
+    <FatcaComponent :stateData="GetUpCashPostData"></FatcaComponent>
     <StepOneFooter></StepOneFooter>
   </div>
 </template>
@@ -12,9 +12,9 @@
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
-import StepOneCustomer from './UpCashStepOne_customer'
+import CustomerComponent from '../../Common/customer'
+import FatcaComponent from '../../Common/fatca'
 import StepOneAbout from './UpCashStepOne_about'
-import StepOneFatca from './UpCashStepOne_fatca'
 import StepOneFooter from './UpCashStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
@@ -29,13 +29,14 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetUpCashIsInit
+      GetterTypes.GetUpCashIsInit,
+      GetterTypes.GetUpCashPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
-    StepOneFatca,
+    FatcaComponent,
     StepOneFooter
   },
   methods: {

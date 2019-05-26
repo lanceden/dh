@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for class="col-sm-12 col-form-label insure-label">被保險人出生年月日</label>
+        <label for class="col-sm-12 col-form-label insure-label">被保險人出生日期</label>
         <div class="col-sm-12">
           <div class="form-control insure-input-block">{{stateData.Birthday_Full}}</div>
         </div>
@@ -46,7 +46,7 @@
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label">城市</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input-block" ref="birth_city" placeholder="請填寫城市" v-model="birth_city" />
+          <input type="text" class="form-control insure-input insure-input-edit" ref="birth_city" placeholder="請填寫城市" v-model="birth_city" />
         </div>
       </div>
     </form>
