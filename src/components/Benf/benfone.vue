@@ -84,7 +84,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+            <option v-for="(item, index) in benfOneCityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
@@ -93,7 +93,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_County">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
+            <option v-for="(item, index) in benfOneDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
@@ -126,6 +126,8 @@ export default {
   ],
   data() {
     return {
+      benfOneCityData: [],
+      benfOneDistrictData: [],
       isSetAccountData: false
     }
   },
@@ -134,6 +136,14 @@ export default {
     this.FuncGetDistrictData({
       cityName: CITYNAME
     })
+  },
+  watch: {
+    GetCityData(newValue) {
+      this.benfOneCityData = newValue
+    },
+    GetDistrictData(newValue) {
+      this.benfOneDistrictData = newValue
+    }
   },
   methods: {
     ...mapActions([
@@ -256,6 +266,11 @@ export default {
       },
       set(value) {
         this.stateData.BenfNationality = value
+        this.GetNationData.forEach(item => {
+          if(item.Name === value) {
+            this.stateData.BenfNationalityCode = item.Code
+          }
+        })
       }
     },
     /**
@@ -296,6 +311,14 @@ export default {
       },
       set(value) {
         this.stateData.BenfAddRemain = value
+      }
+    },
+    BenfAddress: {
+      get() {
+        return this.stateData.BenfAddress
+      },
+      set() {
+        this.stateData.BenfAddress = `${this.BenfAdd_County.split('-')[0]}${this.BenfAdd_County.split('-')[1]}${this.BenfAddRemain}`
       }
     }
   }

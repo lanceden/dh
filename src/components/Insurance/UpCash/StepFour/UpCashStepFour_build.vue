@@ -2,7 +2,8 @@
   <div>
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
-    <StepFourPhone></StepFourPhone>
+    <!-- 電訪時間 -->
+    <VisitTime :stateData="GetUpCashPostData"></VisitTime>
     <StepFourSendType></StepFourSendType>
     <StepFourFooter></StepFourFooter>
   </div>
@@ -10,19 +11,21 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import UpCashGetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 import StepFourOtherNotify from './UpCashStepFour_othernotify'
-import StepFourPhone from './UpCashStepFour_phone'
+import VisitTime from '../../Common/visittime.vue'
 import StepFourSendType from './UpCashStepFour_sendtype'
 import StepFourFooter from './UpCashStepFour_footer'
 export default {
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      UpCashGetterTypes.GetUpCashPostData
     ])
   },
   components: {
     StepFourOtherNotify,
-    StepFourPhone,
+    VisitTime,
     StepFourSendType,
     StepFourFooter
   }

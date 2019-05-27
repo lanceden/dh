@@ -13,7 +13,9 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
         <div class="col-sm-12 insure-select-align">
-          <select id="" class="form-control data-input insure-select insure-input-edit" v-model="BenfBankCode3">
+          <select id="" class="form-control data-input insure-select insure-input-edit" 
+          :disabled="stateData.relation_ben_death3 === '8'"
+          v-model="BenfBankCode3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetBankData" :key="index" :value="item.bank_code + '-' + item.bank_name">{{item.bank_code}} {{item.bank_name}}</option>
           </select>
@@ -27,7 +29,9 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構分行代號</label>
         <div class="col-sm-12">
-          <select class="form-control data-input insure-select insure-input-block-edit" ref="BenfBankBranch3" v-model="BenfBankBranch3">
+          <select class="form-control data-input insure-select insure-input-block-edit" ref="BenfBankBranch3" 
+          :disabled="stateData.relation_ben_death3 === '8'"
+          v-model="BenfBankBranch3">
             <option selected="selected" value="0">請選擇</option>
             <option v-for="(item, index) in GetBankBranches" :key="index" :value="item.code + '-' + item.name">{{item.code}} {{item.name}}</option>
           </select>
@@ -42,7 +46,9 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
         <div class="col-sm-12">
-          <input type="number" min="0" class="form-control insure-input insure-input-edit" v-model="BenfBankAccount3">
+          <input type="number" min="0" class="form-control insure-input insure-input-edit" 
+          :disabled="stateData.relation_ben_death3 === '8'"
+          v-model="BenfBankAccount3">
         </div>
       </div>
       <div class="col-sm-12">
@@ -74,6 +80,20 @@ export default {
   created() {
     this.FuncGetBank()
   },
+  watch: {
+    BenfTwoRelation(newValue) {
+      if(parseInt(newValue) === 8) {
+        this.BenfBankcode = 0
+        this.branchCode = 0
+        this.branchName = ''
+        this.account = ''
+        this.stateData.BenfBankCode3 = ''
+        this.stateData.BenfBankName3 = ''
+        this.stateData.BenfBankBranchName3 = ''
+        this.stateData.BenfBankAccount3 = ''
+      }
+    }
+  },
   computed: {
     ...mapGetters([
       'GetBankData',
@@ -103,7 +123,7 @@ export default {
         // 金融機構中文名稱
         this.stateData.BenfBankBranchName3 = data[1]
         this.branchCode = value
-        this.branchName = this.stateData.BenfBankBranchName1
+        this.branchName = this.stateData.BenfBankBranchName3
       }
     },
     // 銀行帳號
@@ -115,6 +135,9 @@ export default {
         this.stateData.BenfBankAccount3 = value
         this.account = value
       }
+    },
+    BenfThreeRelation() {
+      return this.stateData.relation_ben_death3
     }
   },
   methods: {

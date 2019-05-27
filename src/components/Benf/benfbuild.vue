@@ -3,7 +3,7 @@
     <loading v-show="GetLoading" />
     <BenfSetup :stateData="stateData"></BenfSetup>
     <template>
-      <div v-for="(item, index) in this.stateData.benf_num" :key="index">
+      <div v-for="(item, index) in BenfNum" :key="index">
         <BenfOne
         v-if="index === 0"
         :stateData="stateData" :index="index"></BenfOne>
@@ -113,7 +113,13 @@ export default {
       'GetMyWayPostData',
       'GetAccidentPostData',
       'GetHealthPostData'
-    ])
+    ]),
+    BenfNum() {
+      if(!this.stateData.benf_num) {
+        this.stateData.benf_num = 1
+      }
+      return parseInt(this.stateData.benf_num)
+    }
   },
   methods: {
     ...mapActions([

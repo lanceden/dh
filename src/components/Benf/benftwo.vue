@@ -256,6 +256,11 @@ export default {
       },
       set(value) {
         this.stateData.BenfNationality2 = value
+        this.GetNationData.forEach(item => {
+          if(item.Name === value) {
+            this.stateData.BenfNationalityCode2 = item.Code
+          }
+        })
       }
     },
     /**
@@ -278,12 +283,12 @@ export default {
     BenfAdd_County2: {
       get() {
         return (this.stateData.BenfAdd_County2 === undefined ||
-          this.stateData.BenfAdd_County2 === null || this.stateData.BenfAdd_County2 === '') ? 0 : this.stateData.BenfAddZip + '-' + this.stateData.BenfAdd_County2
+          this.stateData.BenfAdd_County2 === null || this.stateData.BenfAdd_County2 === '') ? 0 : this.stateData.BenfAddZip2 + '-' + this.stateData.BenfAdd_County2
       },
       set(value) {
         // item.Zip-item.Area
         let data = value.split('-')
-        this.stateData.BenfAddZip = data[0]
+        this.stateData.BenfAddZip2 = data[0]
         this.stateData.BenfAdd_County2 = data[1]
       }
     },
@@ -296,6 +301,14 @@ export default {
       },
       set(value) {
         this.stateData.BenfAddRemain2 = value
+      }
+    },
+    BenfAddress: {
+      get() {
+        return this.stateData.BenfAddress2
+      },
+      set() {
+        this.stateData.BenfAddress2 = `${this.BenfAdd_County2.split('-')[0]}${this.BenfAdd_County2.split('-')[1]}${this.BenfAddRemain2}`
       }
     }
   }

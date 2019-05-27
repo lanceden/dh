@@ -42,13 +42,10 @@ export default {
   computed: {
     benf_num: {
       get() {
-        if (this.stateData.benf_num === '' || this.stateData.benf_num === undefined || this.stateData.benf_num === null) {
-          this.stateData.benf_num = 1
-        }
-        return this.stateData.benf_num
+        return this.stateData.benf_num || '1'
       },
       set(value) {
-        this.stateData.benf_num = parseInt(value)
+        this.stateData.benf_num = value
       }
     }
   },

@@ -135,7 +135,7 @@
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
           <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control insure-input insure-input-edit col-sm-9" v-model="qpoop_25_prem">
+            <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem">
           </div>
           <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
         </div>

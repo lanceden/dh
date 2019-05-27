@@ -45,7 +45,7 @@
           <div class="col-sm-12">
             <template>
               <div v-show="cbNewAddr">
-                <select class=" col-md-9 form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
+                <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
                   <option selected="selected" value="0">請選擇</option>
                   <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
                 </select>
@@ -147,7 +147,7 @@ export default {
     // 輸入新的寄送地址-區域
     district3: {
       get() {
-        if (this.stateData.district3 === 0) return 0
+        if (this.stateData.district3 === 0) return '0'
         return (`${this.stateData.zip3}-${this.stateData.district3}`) || 0
       },
       set(value) {

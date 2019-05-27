@@ -73,13 +73,13 @@
           <div class="insure-input-block">{{init_method}}</div>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="GetUpCashPostData.modx_99_ind === 'N'">
         <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">分期繳付每期{{GetUpCashPostData.qpoop_25_prem}}，{{qpoop_25_modx}}繳</div>
+          <div class="insure-input-block">分期繳付每期 {{GetUpCashPostData.qpoop_25_prem}} 元，{{qpoop_25_modx}}繳</div>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="GetUpCashPostData.modx_99_ind === 'N'">
         <label for="" class="col-sm-12 col-form-label insure-label">續期收費管道</label>
         <div class="col-sm-12">
           <div class="insure-input-block">{{method}}</div>
@@ -190,6 +190,7 @@
     <BenfTwoInsuredData :stateData="GetUpCashPostData"></BenfTwoInsuredData>
     <!-- 受益人三 -->
     <BenfThreeInsuredData :stateData="GetUpCashPostData"></BenfThreeInsuredData>
+    
     <!-- 被保人投保資料告知事項 -->
     <div class="bg-radius">
       <div class="top">
@@ -351,9 +352,9 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import BenfOneInsuredData from '../../Common/benfOneInsuredData.vue'
+import BenfTwoInsuredData from '../../Common/benfTwoInsuredData.vue'
+import BenfThreeInsuredData from '../../Common/benfThreeInsuredData.vue'
 import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
 
 export default {
@@ -382,6 +383,7 @@ export default {
     qpoop_25_modx: {
       get() {
         let modx = this.GetUpCashPostData.qpoop_25_modx
+        console.log(modx)
         switch (modx) {
           case '12':
             return '年'

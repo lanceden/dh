@@ -92,6 +92,9 @@ export default {
   mounted() {
     this.accountDataOne()
   },
+  created() {
+    console.log(this.stateData.benf_num)
+  },
   computed: {
     showBenfAccountData() {
       return this.stateData.plan_code === 'UC099' || this.stateData.plan_code === 'UCA99' || this.stateData.plan_code === 'EZA99' || this.stateData.plan_code === 'LAA01'

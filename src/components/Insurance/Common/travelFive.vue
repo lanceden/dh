@@ -50,7 +50,7 @@
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" :disabled="Relation === '本人'" />
+              <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" />
             </div>
           </div>
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
