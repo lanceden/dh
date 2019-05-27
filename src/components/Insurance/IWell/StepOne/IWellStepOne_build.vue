@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetIWellPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
   </div>
@@ -10,8 +10,8 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/IWell/Types/IWellFunctionTypes'
-import GetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes'
-import StepOneCustomer from './IWellStepOne_customer'
+import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes'
+import CustomerComponent from '../../Common/customer'
 import StepOneAbout from './IWellStepOne_about'
 import StepOneFooter from './IWellStepOne_footer'
 
@@ -25,11 +25,12 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetIWellIsInit
+      IWellGetterTypes.GetIWellIsInit,
+      IWellGetterTypes.GetIWellPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
     StepOneFooter
   },

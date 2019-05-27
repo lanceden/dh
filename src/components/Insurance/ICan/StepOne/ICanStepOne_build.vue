@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetICanPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
   </div>
@@ -10,8 +10,8 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/ICan/Types/ICanFunctionTypes'
-import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes'
-import StepOneCustomer from './ICanStepOne_customer'
+import ICanGetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes'
+import CustomerComponent from '../../Common/customer'
 import StepOneAbout from './ICanStepOne_about'
 import StepOneFooter from './ICanStepOne_footer'
 
@@ -21,16 +21,16 @@ export default {
       this.FuncICanInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'ICAN'
     }
-    console.log('this.$store.state.PLANNAME', this.$store.state.PLANNAME)
   },
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetICanIsInit
+      ICanGetterTypes.GetICanIsInit,
+      ICanGetterTypes.GetICanPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
     StepOneFooter
   },

@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
-    <StepFourPhone></StepFourPhone>
+    <VisitTime :stateData="GetHealthPostData"></VisitTime>
     <StepFourSendType></StepFourSendType>
     <StepFourFooter></StepFourFooter>
   </div>
@@ -10,19 +10,21 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import HealthGetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
 import StepFourOtherNotify from './HealthStepFour_othernotify'
-import StepFourPhone from './HealthStepFour_phone'
+import VisitTime from '../../Common/visittime'
 import StepFourSendType from './HealthStepFour_sendtype'
 import StepFourFooter from './HealthStepFour_footer'
 export default {
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      HealthGetterTypes.GetHealthPostData
     ])
   },
   components: {
     StepFourOtherNotify,
-    StepFourPhone,
+    VisitTime,
     StepFourSendType,
     StepFourFooter
   }

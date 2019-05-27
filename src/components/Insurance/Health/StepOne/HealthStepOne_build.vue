@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetHealthPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
   </div>
@@ -11,7 +11,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/Health/Types/HealthFunctionTypes'
 import GetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
-import StepOneCustomer from './HealthStepOne_customer'
+import CustomerComponent from '../../Common/customer'
 import StepOneAbout from './HealthStepOne_about'
 import StepOneFooter from './HealthStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
@@ -27,11 +27,12 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetHealthIsInit
+      GetterTypes.GetHealthIsInit,
+      GetterTypes.GetHealthPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
     StepOneFooter
   },

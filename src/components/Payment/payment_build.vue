@@ -7,9 +7,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import PaymentAmount from './payment_payamount'
 import PaymentFooter from './payment_footer'
-import { mapGetters } from 'vuex'
+import { data } from './mockData'
+
 export default {
   data() {
     return {
@@ -34,6 +36,8 @@ export default {
   },
   created() {
     // 當前險種名稱-進入每個險種時會初始化`PLANNAME`值
+    this.$store.state.PLANNAME = 'travel'
+    this.$store.state.ApiToken = 'eGGIHfm3YaHaSCweG4FVPQKP6WGwnVSZWzLOSQBawnx6I6FSLBCbKCDGkPfwU869PIFkPiZNU9I2ni+6ceuI8TcKGkXt101mW/IFc3wKIziNQz+zFGpvqCPTRBlxa9JIcAZ7WNR8K6ioco+Xuyyal0lhE/7rVj9MovYRnx+r+mKTMt/gKYwcOVdfFYd0R1ulE4VGELW9G+SftOW0drwNPS5cBuyJw8R8QVvMK2xPVIxzXzMi0WKQMTBHMUGwwudhPeDXUZQ0PqsKquXXFNPdgibHtNJcCo+XFTbWbCIlpu8='
     this.planName = this.$store.state.PLANNAME.toLowerCase()
     switch (this.planName) {
       case 'upcash':
@@ -61,7 +65,8 @@ export default {
         this.stateData = this.GetHealthPostData
         break
       case 'travel':
-        this.stateData = this.GetTravelPostData
+        this.stateData = data.Data.Result // this.GetTravelPostData
+        console.log(this.stateData)
         break
       case 'enttravel':
         this.stateData = this.GetEntTravelPostData

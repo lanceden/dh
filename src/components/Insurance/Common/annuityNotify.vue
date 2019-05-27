@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/insurance.png"></div>
             <div class="insure-check-title">保價金通知方式(請擇其一填選)</div>
           </div>
         </div>
@@ -53,7 +53,7 @@
                   <option selected="selected" value="0">請選擇</option>
                   <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
                 </select>
-                <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr" />
+                <input type="text" class="form-control insure-input insure-input-edit" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr" />
               </div>
             </template>
           </div>
@@ -65,7 +65,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/insurance.png"></div>
             <div class="insure-check-title">主要給付項目</div>
           </div>
         </div>

@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
-    <StepFourPhone></StepFourPhone>
+    <VisitTime :stateData="GetMyWayPostData"></VisitTime>
     <StepFourSendType></StepFourSendType>
     <StepFourFooter></StepFourFooter>
   </div>
@@ -10,19 +10,22 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import MyWayGetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
 import StepFourOtherNotify from './MyWayStepFour_othernotify'
-import StepFourPhone from './MyWayStepFour_phone'
+import VisitTime from '../../Common/visittime'
 import StepFourSendType from './MyWayStepFour_sendtype'
 import StepFourFooter from './MyWayStepFour_footer'
+
 export default {
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      MyWayGetterTypes.GetMyWayPostData
     ])
   },
   components: {
     StepFourOtherNotify,
-    StepFourPhone,
+    VisitTime,
     StepFourSendType,
     StepFourFooter
   }

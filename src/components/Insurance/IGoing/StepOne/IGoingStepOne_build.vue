@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetIGoingPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
   </div>
@@ -9,9 +9,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes.js'
 import FunctionTypes from '../../../../store/modules/IGoing/Types/IGoingFunctionTypes'
-import GetterTypes from '../../../../store/modules/IGoing/Types/IGoingGetterTypes'
-import StepOneCustomer from './IGoingStepOne_customer'
+import CustomerComponent from '../../Common/customer'
 import StepOneAbout from './IGoingStepOne_about'
 import StepOneFooter from './IGoingStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
@@ -27,11 +27,12 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetIGoingIsInit
+      GetterTypes.GetIGoingIsInit,
+      GetterTypes.GetIGoingPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
     StepOneFooter
   },

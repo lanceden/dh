@@ -5,7 +5,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/insurance.png" alt>
+              <img src="../../../../../static/img/insurance.png">
             </div>
             <div class="insure-check-title">請填寫投保資料</div>
           </div>
@@ -59,7 +59,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/insurance.png" alt>
+              <img src="../../../../../static/img/insurance.png">
             </div>
             <div class="insure-check-title">請填寫投保額度</div>
           </div>

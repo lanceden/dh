@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetAccidentPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
   </div>
@@ -9,9 +9,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import AccidentGetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
 import FunctionTypes from '../../../../store/modules/Accident/Types/AccidentFunctionTypes'
-import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes'
-import StepOneCustomer from './AccidentStepOne_customer'
+import CustomerComponent from '../../Common/customer'
 import StepOneAbout from './AccidentStepOne_about'
 import StepOneFooter from './AccidentStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
@@ -27,11 +27,12 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetAccidentIsInit
+      AccidentGetterTypes.GetAccidentIsInit,
+      AccidentGetterTypes.GetAccidentPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
     StepOneFooter
   },

@@ -2,7 +2,7 @@
   <div>
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
-    <StepFourPhone></StepFourPhone>
+    <VisitTime :stateData="GetICanPostData"></VisitTime>
     <StepFourSendType></StepFourSendType>
     <StepFourFooter></StepFourFooter>
   </div>
@@ -10,19 +10,22 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import ICanGetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import StepFourOtherNotify from './ICanStepFour_othernotify'
-import StepFourPhone from './ICanStepFour_phone'
+import VisitTime from '../../Common/visittime'
 import StepFourSendType from './ICanStepFour_sendtype'
 import StepFourFooter from './ICanStepFour_footer'
+
 export default {
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      ICanGetterTypes.GetICanPostData
     ])
   },
   components: {
     StepFourOtherNotify,
-    StepFourPhone,
+    VisitTime,
     StepFourSendType,
     StepFourFooter
   }

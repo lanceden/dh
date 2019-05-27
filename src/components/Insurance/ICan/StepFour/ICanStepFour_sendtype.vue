@@ -2,7 +2,6 @@
   <ElecFormComponent :stateData="GetICanPostData"></ElecFormComponent>
 </template>
 
-
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'

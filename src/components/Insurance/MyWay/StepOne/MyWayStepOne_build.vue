@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetMyWayPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
     <StepOneFooter></StepOneFooter>
   </div>
@@ -9,9 +9,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import FunctionTypes from '../../../../store/modules/MyWay/Types/MyWayFunctionTypes'
-import GetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
-import StepOneCustomer from './MyWayStepOne_customer'
+import MyWayFunctionTypes from '../../../../store/modules/MyWay/Types/MyWayFunctionTypes'
+import MyWayGetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
+import CustomerComponent from '../../Common/customer'
 import StepOneAbout from './MyWayStepOne_about'
 import StepOneFooter from './MyWayStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
@@ -27,17 +27,18 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetMyWayIsInit
+      MyWayGetterTypes.GetMyWayIsInit,
+      MyWayGetterTypes.GetMyWayPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
     StepOneFooter
   },
   methods: {
     ...mapActions([
-      FunctionTypes.FuncMyWayInit
+      MyWayFunctionTypes.FuncMyWayInit
     ])
   }
 }
