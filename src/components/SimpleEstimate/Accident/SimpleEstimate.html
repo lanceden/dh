@@ -48,6 +48,7 @@
       </div>
 
       <form class="form-bottom">
+
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">您的性別是？</label>
           <div class="col-sm-12 insure-select-align">
@@ -144,7 +145,6 @@
           </div>
         </div>
 
-
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">您希望擁有多少傷害保障？</label>
           <div class="col-sm-12 insure-select-align">
@@ -164,8 +164,7 @@
         <div class="border-bottom-line col-sm-12"></div>
         <div class="col-sm-12">
           <div class="insure-tips-text text-red-i">
-            <img src="../../megaphone.png" class="tel" alt="">買就送RIMOWA及GOPRO出租8折優惠
-
+            <img src="../../img/megaphone.png" class="tel" alt="" />買就送RIMOWA及GOPRO出租8折優惠
           </div>
         </div>
       </form>
@@ -185,6 +184,8 @@
 </html>
 
 <script>
+var serverHost = 'https://onlinetest.skl.com.tw'
+
 function OnGoBack() {
   window.location.href = 'https://onlinetest.skl.com.tw/insurancewebapi/static/Estimate/accident/SimpleEstimate.html?leave=true'
 }
@@ -229,7 +230,7 @@ function faceamtList() {
     }
   });
 }
-//試算
+// 試算
 function Compute() {
   var sex = $("#inputSex").val();
   var BYear = $('#inputyear').val();
