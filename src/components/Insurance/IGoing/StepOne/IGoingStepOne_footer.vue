@@ -29,6 +29,7 @@ export default {
     ]),
     GoPrev() {
       this.$router.push(`/igoing-1?leave=true&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
     },
     GotoNext() {
       if (!this.ValidateData()) return

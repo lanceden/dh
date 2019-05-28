@@ -86,6 +86,7 @@ export default {
   methods: {
     finish() {
       this.$router.push(`/paymentcomplete?leave=true`)
+      window.location.reload()
     },
     OnFbClick() {
       console.log('OnFbClick')

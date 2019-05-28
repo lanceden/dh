@@ -30,6 +30,7 @@ export default {
     ]),
     GoPrev() {
       this.$router.push(`/health-1?leave=true&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
     },
     /**
      * 下一步

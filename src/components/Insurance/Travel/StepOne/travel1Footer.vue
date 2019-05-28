@@ -29,6 +29,7 @@ export default {
     ]),
     GoPrev() {
       this.$router.push(`/travel-1?leave=true&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
     },
     GotoNext() {
       // 驗證是否有選擇請確認保障對象

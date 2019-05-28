@@ -29,6 +29,7 @@ export default {
     ]),
     GoPrev() {
       this.$router.push(`/enttravel-1?leave=true&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
     },
     GotoNext() {
       if(!this.GetEntTravelPostData.PolicyData.InsuredInfo) {

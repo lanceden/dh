@@ -89,10 +89,10 @@
       <!-- 保險期間天數 -->
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保險期間天數</label>
-        <div class="col-sm-9">
-          <input type="number" min="1" class="form-control insure-input insure-input-edit col-sm-10" id="" placeholder="請填寫" v-model="TravelDay">
+        <div class="col-sm-11">
+          <input type="number" min="1" class="form-control insure-input insure-input-edit col-sm-12" id="" placeholder="請填寫" v-model="TravelDay">
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">天</label>
+        <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">天</label>
       </div>
     </form>
   </div>

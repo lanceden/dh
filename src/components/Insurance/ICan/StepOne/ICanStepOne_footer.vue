@@ -29,6 +29,7 @@ export default {
     ]),
     GoToPrev() {
       this.$router.push(`/ICanelecform?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
     },
     GotoNext() {
       if (!this.ValidateData()) return

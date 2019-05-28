@@ -29,6 +29,7 @@ export default {
     ]),
     GoToPrev() {
       this.$router.push(`/IWellelecform?id=${this.$store.state.UNFINISHID}&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
     },
     /**
      * 下一步

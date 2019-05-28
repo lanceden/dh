@@ -95,7 +95,8 @@ import OtpVerify from '../components/OTPVerify/otpverify_build'
 import Payment from '../components/Payment/payment_build.vue'
 import PaymentComplete from '../components/Payment/payment_complete.vue'
 import Ebillform from '../components/Payment/payment_ebillform.vue'
-
+// 語音客服
+import ChatService from '../components/ChatService/chatService.vue'
 import MyError from '../components/error'
 
 Vue.use(Router)
@@ -424,6 +425,10 @@ const router = new Router({
     {
       path: '/ebillform',
       component: Ebillform
+    },
+    {
+      path: '/ChatService',
+      component: ChatService
     },
     {
       path: '/UpcashSimpleEstimate',

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer-content">
       <nav class="navbar navbar-dark row">
-        <div class="col-sm-4 footer-title footer-left">回前一頁</div>
+        <div class="col-sm-4 footer-title footer-left" @click="GoPrev()">回前一頁</div>
         <div class="col-sm-8 footer-title footer-right" @click="GotoNext()">填寫投保資料</div>
       </nav>
     </div>
@@ -28,6 +28,10 @@ export default {
     ...mapActions([
       FunctionTypes.FuncMyWayIsInit
     ]),
+    GoPrev() {
+      this.$router.push(`/myway-1?leave=true&token=${this.$store.state.ApiToken}`)
+      window.location.reload()
+    },
     /**
      * 下一步
      */
