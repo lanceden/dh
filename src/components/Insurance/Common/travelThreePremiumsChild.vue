@@ -5,8 +5,8 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/edit.png" alt=""></div>
-            <div class="insure-check-title">子女({{parseInt(index)+1}})</div>
+            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check-title">子女({{this.stateData.PolicyData.InsuredInfo[this.index].PersonalData.Name}})</div>
           </div>
         </div>
       </div>

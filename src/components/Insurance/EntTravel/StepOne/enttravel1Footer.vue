@@ -32,7 +32,7 @@ export default {
       window.location.reload()
     },
     GotoNext() {
-      if(!this.GetEntTravelPostData.PolicyData.InsuredInfo) {
+      if (!this.GetEntTravelPostData.PolicyData.InsuredInfo) {
         toggleModalShow('請確認保障對象', '貼心提醒您')
         return
       }
@@ -45,7 +45,10 @@ export default {
         toggleModalShow('請確認子女數量', '貼心提醒您')
         return
       }
-      let [errorIndexArr, errorAuthRep, errorMsg] = [[], [], '']
+      let [errorIndexArr, errorAuthRep, errorMsg] = [
+        [],
+        [], ''
+      ]
       this.GetEntTravelPostData.PolicyData.InsuredInfo.forEach((item, index) => {
         if (item.HasAuthRep === null || item.HasAuthRep === undefined) {
           errorIndexArr.push(index)
@@ -78,16 +81,12 @@ export default {
         return
       }
       // 設置旅平險已初始化
-      if (!this.GetEntTravelIsInit) {
-        // 前往被保人填寫資料頁
-        this.FuncEntTravelInsuredData({
-          para: this.GetEntTravelPostData,
-          router: this.$router,
-          entCode: this.$store.state.ENTERPRISECODE
-        })
-      } else {
-        this.$router.push('/enttravel-2')
-      }
+      // 前往被保人填寫資料頁
+      this.FuncEntTravelInsuredData({
+        para: this.GetEntTravelPostData,
+        router: this.$router,
+        entCode: this.$store.state.ENTERPRISECODE
+      })
     }
   }
 }

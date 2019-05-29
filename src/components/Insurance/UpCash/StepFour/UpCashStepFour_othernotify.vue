@@ -11,18 +11,18 @@
     <div class="border-bottom-line"></div>
     <form class="form-bottom">
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
-        <div class="col-sm-9">
+        <label class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
+        <div class="col-sm-10">
           <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入年收入" v-model="insured_income" />
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
+        <label class="col-sm-2 col-form-label insure-label insure-label-day">萬元</label>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
-        <div class="col-sm-9">
+        <label class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
+        <div class="col-sm-10">
           <input type="number" class="form-control insure-input insure-input-edit" id="" placeholder="請輸入家庭收入" v-model="insured_fam_income" />
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
+        <label class="col-sm-2 col-form-label insure-label insure-label-day">萬元</label>
       </div>
       <div class="col-sm-12">
         <div class="insure-tips-text first-blue">

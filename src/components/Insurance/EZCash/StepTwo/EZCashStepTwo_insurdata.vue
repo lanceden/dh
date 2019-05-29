@@ -27,10 +27,10 @@
         </div>
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
-          <div class="col-sm-9">
+          <div class="col-sm-11">
             <input type="number" class="form-control insure-input insure-input-edit col-sm-12" v-model="face_amtComputed" placeholder="請輸入" />
           </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+          <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
         <div class="col-sm-12">
           <div class="insure-tips-text text-red-i">
@@ -92,10 +92,10 @@
         <!--Start 分期繳付 -->
         <div class="form-group row" v-show="(GetEZCashPostData.modx_99_ind === 'N')">
           <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control insure-input insure-input-edit col-sm-9" v-model="qpoop_25_prem">
+          <div class="col-sm-11">
+            <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem">
           </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+          <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
         <div class="col-sm-12" v-show="(GetEZCashPostData.modx_99_ind === 'N')">
           <div class="insure-tips-text first-blue text-red-i">

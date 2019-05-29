@@ -26,28 +26,28 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話區號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_area">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_area">
           </div>
         </div>
         <!-- 電話號碼 -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話號碼</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_main">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_main">
           </div>
         </div>
         <!-- 電話分號 -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話分號</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="phone_ext">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_ext">
           </div>
         </div>
         <!-- 電子郵件(E-mail) -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">電子郵件(E-mail)：</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input" v-model="email">
+            <input type="text" class="orm-control insure-input insure-input-edit" v-model="email">
           </div>
         </div>
       </form>

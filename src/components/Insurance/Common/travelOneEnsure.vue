@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import TravelGetterTypes from '../../../store/modules/Travel/Types/TravelGetterTypes.js'
 export default {
   props: [
     'stateData'
@@ -82,6 +84,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      TravelGetterTypes.GetTravelIsInit
+    ]),
     // 子女數量
     childrenNo: {
       get() {
@@ -89,50 +94,131 @@ export default {
         return this.stateData.PolicyData.ChildrenNo
       },
       set(value) {
+        // 如果已經進入下一步, 回來時要判斷是否有改變保障對象, 要重新發送請求到APi
+        if (this.GetTravelIsInit) {
+          this.GetTravelIsInit = false
+        }
         let result = parseInt(value)
         this.stateData.PolicyData.ChildrenNo = result
         // 子女
         if (this.ensure.target === 'child') {
-          this.stateData.PolicyData.InsuredInfo = []
-          for (let i = 1; i <= result; i++) {
-            this.stateData.PolicyData.InsuredInfo.push({
-              Index: i,
-              Relation: 3,
-              PersonalData: {
-                ID: '',
-                Name: '',
-                Dob: ''
-              },
-              HasAuthRep: null
-            })
+          // 沒有設定過資料
+          if (!this.stateData.PolicyData.InsuredInfo) {
+            this.stateData.PolicyData.InsuredInfo = []
+            for (let i = 1; i <= result; i++) {
+              this.stateData.PolicyData.InsuredInfo.push({
+                Index: i,
+                Relation: 3,
+                PersonalData: {
+                  ID: '',
+                  Name: '',
+                  Dob: ''
+                },
+                HasAuthRep: null
+              })
+            }
+          } else { // 有設定過資料
+            // 新增一個子女
+            if (result === this.stateData.PolicyData.InsuredInfo.length) {
+              this.stateData.PolicyData.InsuredInfo.forEach(item => {
+                // 子女不會有本人資料, 刪除
+                if (parseInt(item.Relation) === 1) {
+                  this.stateData.PolicyData.InsuredInfo = []
+                }
+              })
+              this.stateData.PolicyData.InsuredInfo.push({
+                Index: 1,
+                Relation: 3,
+                PersonalData: {
+                  ID: '',
+                  Name: '',
+                  Dob: ''
+                },
+                HasAuthRep: null
+              })
+            } else if (result > this.stateData.PolicyData.InsuredInfo.length) { // 新選的數量大於舊的,要append到陣列
+              for (let i = this.stateData.PolicyData.InsuredInfo.length + 1; i <= result; i++) {
+                this.stateData.PolicyData.InsuredInfo.push({
+                  Index: i,
+                  Relation: 3,
+                  PersonalData: {
+                    ID: '',
+                    Name: '',
+                    Dob: ''
+                  },
+                  HasAuthRep: null
+                })
+              }
+            } else { // result < oldCount
+              // 要刪除幾個
+              let oldCount = this.stateData.PolicyData.InsuredInfo.length
+              for (let index = (oldCount - result); index > 0; index--) {
+                delete this.stateData.PolicyData.InsuredInfo.splice(index, 1)
+              }
+            }
           }
         }
         // 本人與子女
         if (this.ensure.target === 'both') {
-          this.stateData.PolicyData.InsuredInfo = []
-          // 先將本人資料帶入
-          this.stateData.PolicyData.InsuredInfo.push({
-            Index: 0,
-            Relation: 1,
-            PersonalData: {
-              ID: this.stateData.PolicyData.ProposerInfo[0].ID,
-              Name: this.stateData.PolicyData.ProposerInfo[0].Name,
-              Dob: this.stateData.PolicyData.ProposerInfo[0].Dob
-            },
-            HasAuthRep: null
-          })
-          // 在帶入子女資料
-          for (let i = 1; i <= result; i++) {
+          // 沒有設定過資料
+          if (!this.stateData.PolicyData.InsuredInfo) {
+            this.stateData.PolicyData.InsuredInfo = []
+            // 先將本人資料帶入
             this.stateData.PolicyData.InsuredInfo.push({
-              Index: i,
-              Relation: 3,
+              Index: 0,
+              Relation: 1,
               PersonalData: {
-                ID: '',
-                Name: '',
-                Dob: ''
+                ID: this.stateData.PolicyData.ProposerInfo[0].ID,
+                Name: this.stateData.PolicyData.ProposerInfo[0].Name,
+                Dob: this.stateData.PolicyData.ProposerInfo[0].Dob
               },
               HasAuthRep: null
             })
+            for (let i = 1; i <= result; i++) {
+              this.stateData.PolicyData.InsuredInfo.push({
+                Index: i,
+                Relation: 3,
+                PersonalData: {
+                  ID: '',
+                  Name: '',
+                  Dob: ''
+                },
+                HasAuthRep: null
+              })
+            }
+          } else { // 有設定過資料
+            // 先將本人資料帶入
+            this.stateData.PolicyData.InsuredInfo[0] = {
+              Index: 0,
+              Relation: 1,
+              PersonalData: {
+                ID: this.stateData.PolicyData.ProposerInfo[0].ID,
+                Name: this.stateData.PolicyData.ProposerInfo[0].Name,
+                Dob: this.stateData.PolicyData.ProposerInfo[0].Dob
+              },
+              HasAuthRep: null
+            }
+            // 新增一個子女
+            if ((result + 1) > this.stateData.PolicyData.InsuredInfo.length) { // 新選的數量大於舊的,要append到陣列
+              for (let i = this.stateData.PolicyData.InsuredInfo.length; i <= (result + 1); i++) {
+                this.stateData.PolicyData.InsuredInfo.push({
+                  Index: i,
+                  Relation: 3,
+                  PersonalData: {
+                    ID: '',
+                    Name: '',
+                    Dob: ''
+                  },
+                  HasAuthRep: null
+                })
+              }
+            } else { // result < oldCount
+              // 要刪除幾個
+              let oldCount = this.stateData.PolicyData.InsuredInfo.length
+              for (let index = (oldCount - result); index > 0; index--) {
+                delete this.stateData.PolicyData.InsuredInfo.splice(index, 1)
+              }
+            }
           }
         }
       }
@@ -147,6 +233,10 @@ export default {
       this.ensure.target = target
       if (this.childrenNo === 0 || target !== 'own') {
         this.childrenNo = 1
+      }
+      // 如果已經進入下一步, 回來時要判斷是否有改變保障對象, 要重新發送請求到APi
+      if (this.GetTravelIsInit) {
+        this.GetTravelIsInit = false
       }
       switch (target) {
         case 'own': // 1本人

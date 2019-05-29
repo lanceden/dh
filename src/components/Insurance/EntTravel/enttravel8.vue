@@ -43,14 +43,14 @@
           <div class="insure-check-content">{{GetEntTravelPostData.PolicyData.ProposerInfo[0].MailingAddr.Address}}</div>
         </div>
       </div>
-			<div class="border-bottom-line col-sm-12"></div>
-			<div class="top col-sm-12">
-				<div class="insure-notice-box" @click="OnCommunityAddr('new')">
-              <div class="insure-check"><img :src="ensure.paperNew" alt=""></div>
-					<div class="insure-check-content">輸入新的寄送地址</div>
-				</div>
-			</div>
-			<div class="border-bottom-line col-sm-12"></div>
+      <div class="border-bottom-line col-sm-12"></div>
+      <div class="top col-sm-12">
+        <div class="insure-notice-box" @click="OnCommunityAddr('new')">
+          <div class="insure-check"><img :src="ensure.paperNew" alt=""></div>
+          <div class="insure-check-content">輸入新的寄送地址</div>
+        </div>
+      </div>
+      <div class="border-bottom-line col-sm-12"></div>
       <!-- 輸入新的通訊地址 -->
       <form class="form-bottom">
         <!-- 輸入新的通訊地址 -->
@@ -195,6 +195,8 @@ export default {
     // 第一次進來無資料所以不執行
     if (result !== null) {
       this.OnEnsure(result === '2' ? 'elec' : 'paper')
+    } else {
+      this.OnEnsure('elec')
     }
     if (this.GetEntTravelPostData.PolicyData.MailingAddr === null) {
       this.GetEntTravelPostData.PolicyData.MailingAddr = {
