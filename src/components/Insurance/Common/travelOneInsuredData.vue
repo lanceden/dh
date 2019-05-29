@@ -14,31 +14,34 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">關係</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input insure-input-edit">{{Relation === '本人' ? '本人' :  `子女(${parseInt(index)+1})`}}</div>
+          <div class="form-control insure-input-block">{{Relation === '本人' ? '本人' :  `子女(${parseInt(index)})`}}</div>
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
-          <div v-if="this.stateData.PolicyData.InsuredInfo[index].Relation === 1" class="form-control insure-input insure-input-edit">{{Name}}</div>
+          <div v-if="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1" class="form-control insure-input insure-input-block">{{Name}}</div>
           <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-else v-model="Name">
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">出生生日</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="date" class="form-control insure-input insure-input-edit" v-model="DobComputed" :disabled="this.Relation === '本人'" />
+          <input type="date" class="form-control insure-input"
+          :class="{ 'insure-input-edit': Relation !== '本人', 'insure-input-block': Relation === '本人' }"
+          v-model="DobComputed" :disabled="Relation === '本人'" />
         </div>
       </div>
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
-          <div v-if="this.stateData.PolicyData.InsuredInfo[index].Relation === 1" class="form-control insure-input insure-input-edit">{{ProposerInfoId}}</div>
-          <input type="text" class="form-control insure-input insure-input-edit" maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
+          <div v-if="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1" class="form-control insure-input insure-input-block">{{ProposerInfoId}}</div>
+          <input type="text" class="form-control insure-input insure-input-edit"
+          maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">監護宣告</label>
+        <label for="" class="col-sm-12 col-form-label insure-label">目前是否受有監護宣告</label>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('yes')">
@@ -46,8 +49,8 @@
             <div class="insure-check-content">是</div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12" v-show="this.stateData.PolicyData.InsuredInfo[index].HasAuthRep"></div>
-        <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="this.stateData.PolicyData.InsuredInfo[index].HasAuthRep">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
+        <div class="border-bottom-line col-sm-12" v-show="stateData.PolicyData.InsuredInfo[index].HasAuthRep"></div>
+        <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="stateData.PolicyData.InsuredInfo[index].HasAuthRep">親愛的客戶謝謝您的申購保險，因相關法規規定您的申請文件需另檢附相關證明文件。很抱歉您無法於本網站進行投保動作。煩請另洽新光人壽服務人員詢問相關保險商品購買事宜，造成您的不便我們深感抱歉，再次感謝您的惠顧。</label>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('no')">

@@ -2,7 +2,7 @@
   <!-- 投保對象為本人或本人與子女才顯示 -->
   <div v-if="parseInt(stateData.TargetType) === 0 || parseInt(stateData.TargetType) === 2">
     <!-- 旅行平安保險保額 -->
-    <div class="bg-radius">
+    <div class="bg-radius" v-show="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
@@ -13,7 +13,7 @@
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
-        <div class="form-group row" v-show="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1">
+        <div class="form-group row">
           <!-- Enjoy Life旅行平安保險保額 -->
           <label class="col-sm-12 col-form-label insure-label">Enjoy Life旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
@@ -21,6 +21,7 @@
               <option v-for="(item, index) in GetPremiumsProp" :key="index" :value="item">{{item}} 萬</option>
             </select>
           </div>
+          <div class="border-bottom-line"></div>
           <!-- 傷害醫療 -->
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
@@ -28,6 +29,7 @@
               <option v-for="item in $store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
+          <div class="border-bottom-line"></div>
           <!-- 海外突發疾病 -->
           <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">

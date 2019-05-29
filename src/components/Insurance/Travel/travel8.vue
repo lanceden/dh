@@ -195,6 +195,8 @@ export default {
     // 第一次進來無資料所以不執行
     if (result !== null) {
       this.OnEnsure(result === '2' ? 'elec' : 'paper')
+    } else {
+      this.OnEnsure('elec')
     }
     if (this.GetTravelPostData.PolicyData.MailingAddr === null) {
       this.GetTravelPostData.PolicyData.MailingAddr = {

@@ -14,8 +14,8 @@
         <div class="border-bottom-line"></div>
         <div class="bg-money">
           <div class="col-sm-12">
-            <div class="font-label">您所支付的保險費為：</div>
-            <div class="font-money">{{GetTravelPostData.PolicyData.TotalPremiumDisplay}}</div>
+            <div class="font-label">您所支付的保險費為： </div>
+            <div class="font-money">  {{GetTravelPostData.PolicyData.TotalPremiumDisplay}}</div>
             <div class="money-icon"><img src="../../../../../static/img/coins.png" alt=""></div>
           </div>
         </div>

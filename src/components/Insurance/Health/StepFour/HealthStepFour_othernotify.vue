@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/phone.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
           <div class="insure-check-title">被保人其他告知事項</div>
         </div>
       </div>
@@ -24,33 +24,33 @@
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">身高</label>
-        <div class="col-sm-9">
+        <label class="col-sm-12 col-form-label insure-label">身高</label>
+        <div class="col-sm-10">
           <input type="text" class="form-control insure-input insure-input-edit col-sm-12" id="" placeholder="請輸入" v-model="insured_height">
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公分</label>
+        <label class="col-sm-2 col-form-label insure-label insure-label-day">公分</label>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">體重</label>
-        <div class="col-sm-9">
+        <label class="col-sm-12 col-form-label insure-label">體重</label>
+        <div class="col-sm-10">
           <input type="text" class="form-control insure-input insure-input-edit col-sm-12" id="" placeholder="請輸入" v-model="insured_weight">
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公斤</label>
+        <label class="col-sm-2 col-form-label insure-label insure-label-day">公斤</label>
       </div>
 
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">個人年收入</label>
-        <div class="col-sm-9">
+        <label class="col-sm-12 col-form-label insure-label">個人年收入</label>
+        <div class="col-sm-10">
           <input type="text" class="form-control insure-input insure-input-edit col-sm-12" id="" placeholder="請輸入" v-model="insured_income">
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
+        <label class="col-sm-2 col-form-label insure-label insure-label-day">萬元</label>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">家庭年收入</label>
-        <div class="col-sm-9">
+        <label class="col-sm-12 col-form-label insure-label">家庭年收入</label>
+        <div class="col-sm-10">
           <input type="text" class="form-control insure-input insure-input-edit col-sm-12" id="" placeholder="請輸入" v-model="insured_fam_income">
         </div>
-        <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
+        <label class="col-sm-2 col-form-label insure-label insure-label-day">萬元</label>
       </div>
       <div class="col-sm-12">
         <div class="insure-tips-text first-blue">

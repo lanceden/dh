@@ -27,9 +27,9 @@
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
-      <div class="col-sm-12 insure-select-align" v-show="parseInt(this.stateData.PolicyData.TravelType) === 2">
+      <div class="col-sm-12 insure-select-align brown-select-withradio" v-show="parseInt(this.stateData.PolicyData.TravelType) === 2">
         <select id="" class="form-control data-input insure-select  insure-select-withradio" v-model="TravelCountry">
-          <option value="0" selected="selected">請選擇准備前往國家</option>
+          <option value="0" selected="selected">請選擇準備前往國家</option>
           <option value="2">加拿大</option>
           <option value="7">歐洲 (申根地區)</option>
           <option value="3">歐洲 (非申根地區)</option>
@@ -59,20 +59,9 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">保險生效日</label>
         <div class="border-bottom-line col-sm-12"></div>
-        <div class="col-sm-4 insure-select-align insure-select-withline">
-          <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="year">
-            <option v-for="n in 2" :key="n" :value="new Date().getFullYear() - 1 + n">{{new Date().getFullYear() - 1 + n}}</option>
-          </select>
-        </div>
-        <div class="col-sm-4 insure-select-align insure-select-withline">
-          <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="month">
-            <option v-for="n in 12" :key="n" :value="n < 10 ? '0' + n : n">{{n}}</option>
-          </select>
-        </div>
-        <div class="col-sm-4 insure-select-align insure-select-withline">
-          <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="day">
-            <option v-for="n in 31" :key="n" :value="n < 10 ? '0' + n : n">{{n}}</option>
-          </select>
+        <div class="col-sm-12 insure-select-align insure-select-withline">
+          <input type="date" class="form-control insure-input insure-input-edit"
+          v-model="InsStartDateComputed" />
         </div>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="col-sm-12 insure-select-align insure-select-withline">
@@ -107,6 +96,8 @@ export default {
   ],
   data() {
     return {
+      insStartDate: '',
+      insTime: '',
       ensure: {
         in: '../../../../static/img/oval.png',
         out: '../../../../static/img/oval.png'
@@ -117,42 +108,29 @@ export default {
     this.OnEnsure(this.stateData.PolicyData.TravelType === 1)
   },
   computed: {
-    year: {
+    // 保險生效日
+    InsStartDateComputed: {
       get() {
-        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[0]
-        return result
+        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
+        this.insStartDate = result
+        return this.insStartDate
       },
       set(value) {
-        this.stateData.PolicyData.InsStartDate = `${value}-${this.month}-${this.day} ${this.time}`
+        this.stateData.PolicyData.InsStartDate = `${value}`
+        this.insStartDate = value
       }
     },
-    month: {
-      get() {
-        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[1]
-        return result
-      },
-      set(value) {
-        this.stateData.PolicyData.InsStartDate = `${this.year}-${value}-${this.day} ${this.time}`
-      }
-    },
-    day: {
-      get() {
-        let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split('-')[2].split(' ')[0]
-        return result
-      },
-      set(value) {
-        this.stateData.PolicyData.InsStartDate = `${this.year}-${this.month}-${value} ${this.time}`
-      }
-    },
+    // 保險生效日時間
     time: {
       get() {
         let result = moment(this.stateData.PolicyData.InsStartDate, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm').split(' ')[1]
         return result
       },
       set(value) {
-        this.stateData.PolicyData.InsStartDate = `${this.year}-${this.month}-${this.day} ${value}`
+        this.stateData.PolicyData.InsStartDate = `${this.InsStartDateComputed} ${value}`
       }
     },
+    // 保險期間天數
     TravelDay: {
       get() {
         return this.stateData.PolicyData.TravelDay
@@ -161,6 +139,7 @@ export default {
         this.stateData.PolicyData.TravelDay = value
       }
     },
+    // 國外旅遊地點
     TravelCountry: {
       get() {
         return this.stateData.PolicyData.TravelCountry || 0
@@ -169,6 +148,7 @@ export default {
         this.stateData.PolicyData.TravelCountry = value
       }
     },
+    // 其他地區
     EtcCountry: {
       get() {
         return this.stateData.PolicyData.EtcCountry

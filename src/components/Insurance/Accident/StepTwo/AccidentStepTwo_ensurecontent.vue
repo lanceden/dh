@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
           <div class="insure-check-title">保障內容</div>
         </div>
       </div>
