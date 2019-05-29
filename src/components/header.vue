@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header-class">
     <div class="product-name">{{name}}</div>
     <div class="progress-bar">
       <img :src="this.$store.state.PROGRESSBAR">
