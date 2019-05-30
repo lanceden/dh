@@ -76,7 +76,7 @@ export default {
    */
   FuncGetDistrictData(state, { result, target }) {
     // 戶籍地址
-    if(target !== 'community') {
+    if (target !== 'community') {
       state.DISTRICTDATA = result.Data.Result
     } else {
       state.DISTRICTDATACOMMUNITY = result.Data.Result
@@ -158,7 +158,7 @@ export default {
             stateData.BenfNationalityCode = item.NalCode
             stateData.BenfNationality = item.NalName
             stateData.benf_id = item.IdNo
-            if(item.DobYear !== null) stateData.benf_dob = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
+            if (item.DobYear !== null) stateData.benf_dob = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
             stateData.BenfBankCode1 = item.Bank_Code1
             stateData.BenfAddZip = item.AddrZipCode
             stateData.BenfAdd_City = item.AddrCity
@@ -174,7 +174,7 @@ export default {
             stateData.BenfNationalityCode2 = item.NalCode
             stateData.BenfNationality2 = item.NalName
             stateData.benf_id2 = item.IdNo
-            if(item.DobYear !== null) stateData.benf_dob2 = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
+            if (item.DobYear !== null) stateData.benf_dob2 = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
             stateData.BenfBankCode2 = item.Bank_Code1
             stateData.BenfAddZip2 = item.AddrZipCode
             stateData.BenfAdd_City2 = item.AddrCity
@@ -190,7 +190,7 @@ export default {
             stateData.BenfNationalityCode3 = item.NalCode
             stateData.BenfNationality3 = item.NalName
             stateData.benf_id3 = item.IdNo
-            if(item.DobYear !== null) stateData.benf_dob3 = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
+            if (item.DobYear !== null) stateData.benf_dob3 = `${item.DobYear}-${item.DobMonth}-${item.DobDay}`
             stateData.BenfBankCode13 = item.Bank_Code1
             stateData.BenfAddZip3 = item.AddrZipCode
             stateData.BenfAdd_City3 = item.AddrCity
@@ -267,5 +267,72 @@ export default {
    */
   FuncIsCityBank(state, { result }) {
     state.ISCITYBANKCARD = result.ResultCode === '0000'
+  },
+  /**
+   * 匯入子女資料
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {string} para 請求參數
+   */
+  FuncImportChildren(state, { result, planCode }) {
+    let childData = result.Data.Result
+    let importLength = childData.length
+    // 判斷當前險種為旅平或企旅
+    if (planCode === '66020') {
+      state.Travel.TRAVELPOSTDATA.PolicyData.ChildrenNo = importLength
+      state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo = []
+      // 本人加子女，要保留本人資料
+      if (parseInt(state.Travel.TRAVELPOSTDATA.TargetType) === 2) {
+        state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.push({
+          Index: 0,
+          Relation: 1,
+          PersonalData: {
+            ID: state.Travel.TRAVELPOSTDATA.PolicyData.ProposerInfo[0].ID,
+            Name: state.Travel.TRAVELPOSTDATA.PolicyData.ProposerInfo[0].Name,
+            Dob: state.Travel.TRAVELPOSTDATA.PolicyData.ProposerInfo[0].Dob
+          },
+          HasAuthRep: null
+        })
+      }
+      for (let i = 1; i <= importLength; i++) {
+        state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.push({
+          Index: 1,
+          Relation: 3,
+          PersonalData: {
+            ID: childData[i - 1].ID,
+            Name: childData[i - 1].Name,
+            Dob: childData[i - 1].Dob
+          },
+          HasAuthRep: null
+        })
+      }
+    } else {
+      state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.ChildrenNo = importLength
+      state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.InsuredInfo = []
+      // 本人加子女，要保留本人資料
+      if (parseInt(state.EntTravel.ENTTRAVELPOSTDATA.TargetType) === 2) {
+        state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.InsuredInfo.push({
+          Index: 0,
+          Relation: 1,
+          PersonalData: {
+            ID: state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.ProposerInfo[0].ID,
+            Name: state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.ProposerInfo[0].Name,
+            Dob: state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.ProposerInfo[0].Dob
+          },
+          HasAuthRep: null
+        })
+      }
+      for (let i = 1; i <= importLength; i++) {
+        state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.InsuredInfo.push({
+          Index: 1,
+          Relation: 3,
+          PersonalData: {
+            ID: childData[i - 1].ID,
+            Name: childData[i - 1].Name,
+            Dob: childData[i - 1].Dob
+          },
+          HasAuthRep: null
+        })
+      }
+    }
   }
 }

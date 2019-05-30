@@ -118,14 +118,14 @@ export default {
               })
             }
           } else { // 有設定過資料
+            this.stateData.PolicyData.InsuredInfo.forEach(item => {
+              // 子女不會有本人資料, 刪除
+              if (parseInt(item.Relation) === 1) {
+                this.stateData.PolicyData.InsuredInfo = []
+              }
+            })
             // 新增一個子女
             if (result === this.stateData.PolicyData.InsuredInfo.length) {
-              this.stateData.PolicyData.InsuredInfo.forEach(item => {
-                // 子女不會有本人資料, 刪除
-                if (parseInt(item.Relation) === 1) {
-                  this.stateData.PolicyData.InsuredInfo = []
-                }
-              })
               this.stateData.PolicyData.InsuredInfo.push({
                 Index: 1,
                 Relation: 3,
@@ -174,7 +174,7 @@ export default {
               },
               HasAuthRep: null
             })
-            for (let i = 1; i <= result; i++) {
+            for (let i = 1; i <= 1; i++) {
               this.stateData.PolicyData.InsuredInfo.push({
                 Index: i,
                 Relation: 3,
@@ -187,37 +187,35 @@ export default {
               })
             }
           } else { // 有設定過資料
-            // 先將本人資料帶入
-            this.stateData.PolicyData.InsuredInfo[0] = {
-              Index: 0,
-              Relation: 1,
-              PersonalData: {
-                ID: this.stateData.PolicyData.ProposerInfo[0].ID,
-                Name: this.stateData.PolicyData.ProposerInfo[0].Name,
-                Dob: this.stateData.PolicyData.ProposerInfo[0].Dob
-              },
-              HasAuthRep: null
+            if (this.stateData.PolicyData.InsuredInfo[0].Relation !== 1) {
+              // 先將本人資料帶入
+              this.stateData.PolicyData.InsuredInfo.splice(0, 0, {
+                Index: 0,
+                Relation: 1,
+                PersonalData: {
+                  ID: this.stateData.PolicyData.ProposerInfo[0].ID | '',
+                  Name: this.stateData.PolicyData.ProposerInfo[0].Name | '',
+                  Dob: this.stateData.PolicyData.ProposerInfo[0].Dob | ''
+                },
+                HasAuthRep: null
+              })
             }
-            // 新增一個子女
-            if ((result + 1) > this.stateData.PolicyData.InsuredInfo.length) { // 新選的數量大於舊的,要append到陣列
-              for (let i = this.stateData.PolicyData.InsuredInfo.length; i <= (result + 1); i++) {
-                this.stateData.PolicyData.InsuredInfo.push({
-                  Index: i,
-                  Relation: 3,
-                  PersonalData: {
-                    ID: '',
-                    Name: '',
-                    Dob: ''
-                  },
-                  HasAuthRep: null
-                })
-              }
-            } else { // result < oldCount
-              // 要刪除幾個
-              let oldCount = this.stateData.PolicyData.InsuredInfo.length
-              for (let index = (oldCount - result); index > 0; index--) {
-                delete this.stateData.PolicyData.InsuredInfo.splice(index, 1)
-              }
+            let oldLength = this.stateData.PolicyData.InsuredInfo.length
+            for (let i = 1; i <= result; i++) {
+              this.stateData.PolicyData.InsuredInfo.push({
+                Index: i,
+                Relation: 3,
+                PersonalData: {
+                  ID: this.stateData.PolicyData.InsuredInfo[i].ID | '',
+                  Name: this.stateData.PolicyData.InsuredInfo[i].Name | '',
+                  Dob: this.stateData.PolicyData.InsuredInfo[i].Dob | ''
+                },
+                HasAuthRep: null
+              })
+            }
+            // 多的要刪除
+            for (let index = 1; index < oldLength; index++) {
+              delete this.stateData.PolicyData.InsuredInfo.splice(index, 1)
             }
           }
         }

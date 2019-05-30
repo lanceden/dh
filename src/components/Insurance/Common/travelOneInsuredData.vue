@@ -11,37 +11,38 @@
     </div>
     <div class="border-bottom-line col-sm-12"></div>
     <form class="form-bottom">
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">關係</label>
+      <div class="form-group posr row" :class="{ 'form-group-checked': isImportChild }" @click="OnImportChild()">
+        <label class="col-sm-12 col-form-label">點此匯入要保人子女資料</label>
+        <div class="checkbox-oneline" :class="{ 'form-group-checked': isImportChild }"></div>
+      </div>
+      <div class="form-group posr row">
+        <label class="col-sm-12 col-form-label insure-label">關係</label>
         <div class="col-sm-12">
           <div class="form-control insure-input-block">{{Relation === '本人' ? '本人' :  `子女(${parseInt(index)})`}}</div>
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">姓名</label>
+        <label class="col-sm-12 col-form-label insure-label">姓名</label>
         <div class="col-sm-12">
           <div v-if="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1" class="form-control insure-input insure-input-block">{{Name}}</div>
           <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-else v-model="Name">
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">出生生日</label>
+        <label class="col-sm-12 col-form-label insure-label">出生生日</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="date" class="form-control insure-input"
-          :class="{ 'insure-input-edit': Relation !== '本人', 'insure-input-block': Relation === '本人' }"
-          v-model="DobComputed" :disabled="Relation === '本人'" />
+          <input type="date" class="form-control insure-input" :class="{ 'insure-input-edit': Relation !== '本人', 'insure-input-block': Relation === '本人' }" v-model="DobComputed" :disabled="Relation === '本人'" />
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
+        <label class="col-sm-12 col-form-label insure-label">身分證字號</label>
         <div class="col-sm-12">
           <div v-if="parseInt(stateData.PolicyData.InsuredInfo[index].Relation) === 1" class="form-control insure-input insure-input-block">{{ProposerInfoId}}</div>
-          <input type="text" class="form-control insure-input insure-input-edit"
-          maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
+          <input type="text" class="form-control insure-input insure-input-edit" maxlength="10" placeholder="請填寫" v-else v-model="ProposerInfoId">
         </div>
       </div>
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label">目前是否受有監護宣告</label>
+        <label class="col-sm-12 col-form-label insure-label">目前是否受有監護宣告</label>
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box" @click="OnEnsure('yes')">
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import moment from 'moment'
 
 export default {
@@ -74,6 +76,7 @@ export default {
   data() {
     return {
       dbo: 0,
+      isImportChild: false,
       ensure: {
         isHasAuthRepYes: '../../../../static/img/oval.png',
         isHasAuthRepNo: '../../../../static/img/oval.png'
@@ -151,6 +154,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'FuncImportChildren'
+    ]),
     /**
      * 設置本人監護宣告
      * @param {string} target 本人:own
@@ -171,6 +177,15 @@ export default {
           this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
           this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
           break
+      }
+    },
+    // 匯入要保人子女資料
+    OnImportChild() {
+      this.isImportChild = !this.isImportChild
+      if (this.isImportChild) {
+        this.FuncImportChildren({
+          planCode: '66020'
+        })
       }
     }
   }

@@ -11,6 +11,10 @@ const Job = `${Domain}/Query/Job`
  */
 const IsCityBank = `${Domain}/Query/IsCityBank`
 /**
+ * 匯入子女資料
+ */
+const ImportChildren = `${Domain}/Travel/ImportChildren`
+/**
  * 職業名稱
  */
 const Occupation = `${Domain}/Query/Occupation`
@@ -287,6 +291,7 @@ export default {
   Domain,
   Job,
   IsCityBank,
+  ImportChildren,
   Occupation,
   Nationality,
   Provision,

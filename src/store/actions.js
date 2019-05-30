@@ -64,6 +64,10 @@ export default {
       commit('FuncGetBankBranches', { result: response.data })
     })
   },
+  /**
+   * 取回國籍
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
   FuncGetNationality({ commit }, nationalityCode) {
     rootState.Http.axios.post(`${Url.Nationality}?code=${nationalityCode}`).then(response => {
       commit('FuncGetNationality', { result: response.data })
@@ -79,11 +83,19 @@ export default {
       commit('FuncGetOccupation', { result: response.data, para })
     })
   },
+  /**
+   * 取回縣市
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
   async FuncGetCityData({ commit }) {
     await rootState.Http.axios.post(`${Url.City}`).then(response => {
       commit('FuncGetCityData', { result: response.data })
     })
   },
+  /**
+   * 取回區域
+   * @param {當前Vuex狀態} commit VuexStoreState
+   */
   async FuncGetDistrictData({ commit }, { cityName, target }) {
     await rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
       commit('FuncGetDistrictData', { result: response.data, target })
@@ -186,13 +198,23 @@ export default {
     }), 1000)
   },
   /**
-   * 驗證是否為花錢銀行卡
+   * 驗證是否為花旗銀行卡
    * @param {當前Vuex狀態} commit VuexStoreState.commit
    * @param {string} para 請求參數
    */
   FuncIsCityBank({ commit }, cardNo) {
     rootState.Http.axios.post(`${Url.IsCityBank}?cardNo=${cardNo}`).then(response => {
       commit('FuncIsCityBank', { result: response.data })
+    })
+  },
+  /**
+   * 匯入子女資料
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {string} para 請求參數
+   */
+  FuncImportChildren({ commit }, { planCode }) {
+    rootState.Http.axios.post(`${Url.ImportChildren}`).then(response => {
+      commit('FuncImportChildren', { result: response.data, planCode })
     })
   }
 }
