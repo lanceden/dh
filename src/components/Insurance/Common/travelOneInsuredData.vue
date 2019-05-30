@@ -11,14 +11,17 @@
     </div>
     <div class="border-bottom-line col-sm-12"></div>
     <form class="form-bottom">
-      <div class="form-group posr row" :class="{ 'form-group-checked': isImportChild }" @click="OnImportChild()">
+      <div class="form-group posr row" :class="{ 'form-group-checked': isImportChild }" 
+      v-show="parseInt(stateData.TargetType) !== 0 && parseInt(index) === 0" @click="OnImportChild()">
         <label class="col-sm-12 col-form-label">點此匯入要保人子女資料</label>
-        <div class="checkbox-oneline" :class="{ 'form-group-checked': isImportChild }"></div>
+        <div class="checkbox-oneline" :class="{ 'checked': isImportChild }"></div>
       </div>
       <div class="form-group posr row">
         <label class="col-sm-12 col-form-label insure-label">關係</label>
         <div class="col-sm-12">
-          <div class="form-control insure-input-block">{{Relation === '本人' ? '本人' :  `子女(${parseInt(index)})`}}</div>
+          <div class="form-control insure-input-block">
+            {{Relation === '本人' ? '本人' :  `子女(${parseInt(stateData.TargetType) === 1 ? parseInt(index + 1) : parseInt(index)})`}}
+          </div>
         </div>
       </div>
       <div class="form-group row">

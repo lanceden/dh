@@ -74,7 +74,7 @@
             <div class="col-sm-12 insure-select-align">
               <select class="form-control data-input insure-select insure-input-edit" v-model="city3">
                 <option selected="selected" value="0">請選擇</option>
-                <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+                <option v-for="(item, index) in cityArr[index]" :key="index" :value="item.City">{{item.City}}</option>
               </select>
             </div>
           </div>
@@ -83,7 +83,7 @@
             <div class="col-sm-12 insure-select-align">
               <select class="form-control data-input insure-select insure-input-edit" v-model="district3">
                 <option selected="selected" value="0">請選擇</option>
-                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
+                <option v-for="(item, index) in districtArr[index]" :key="index" :value="item.Area">{{item.Area}}</option>
               </select>
             </div>
           </div>
@@ -118,20 +118,26 @@ export default {
       isProposerInfo: false,
       isSetAccountData: false,
       cbOldAddr: true,
-      cbNewAddr: false
+      cbNewAddr: false,
+      cityArr: [],
+      districtArr: []
     }
   },
   created() {
-    this.FuncGetCityData()
-  },
-  mounted() {
     this.FuncGetNationality('')
+    this.$store.dispatch('FuncGetCityDataPromise').then(res => {
+      for (let i = 0; i <= this.index; i++) {
+        this.cityArr.push(res.data.Data.Result)
+      }
+    })
   },
   watch: {
     city3(newValue) {
       // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
-      this.FuncGetDistrictData({
-        cityName: newValue
+      this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
+        for (let i = 0; i <= this.index; i++) {
+          this.districtArr.push(res.data.Data.Result)
+        }
       })
     }
   },
@@ -247,8 +253,8 @@ export default {
   methods: {
     ...mapActions([
       'FuncGetNationality',
-      'FuncGetCityData',
-      'FuncGetDistrictData',
+      'FuncGetCityDataPromise',
+      'FuncGetDistrictDataPromise',
       'FuncGetBeneficiary'
     ]),
     // 同要保人資料
@@ -261,7 +267,7 @@ export default {
         this.ContactNumber = this.stateData.PolicyData.ProposerInfo[0].Phone
         let dob = moment(this.stateData.PolicyData.ProposerInfo[0].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD')
         this.DobComputed = dob
-        this.city3 = this.stateData.PolicyData.ProposerInfo[0].PermAddr.City
+        this.cityArr = this.stateData.PolicyData.ProposerInfo[0].PermAddr.City
         setTimeout(() => {
           this.district3 = this.stateData.PolicyData.ProposerInfo[0].PermAddr.District
           this.road3 = this.stateData.PolicyData.ProposerInfo[0].PermAddr.Street

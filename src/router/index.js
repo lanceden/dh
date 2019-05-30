@@ -108,6 +108,9 @@ import Ebillform from '../components/Payment/payment_ebillform.vue'
 // 語音客服
 import ChatService from '../components/ChatService/chatService.vue'
 import MyError from '../components/error'
+// 付款頁注意事項
+import PaymentNotice from '../components/Insurance/Common/paymentNotice.vue'
+import PaymentBanks from '../components/Insurance/Common/paymentBanks.vue'
 
 Vue.use(Router)
 
@@ -479,6 +482,14 @@ const router = new Router({
     {
       path: '/ChatService',
       component: ChatService
+    },
+    {
+      path: '/PaymentNotice',
+      component: PaymentNotice
+    },
+    {
+      path: '/PaymentBanks',
+      component: PaymentBanks
     },
     {
       path: '/UpcashSimpleEstimate',

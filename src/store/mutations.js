@@ -295,7 +295,7 @@ export default {
       }
       for (let i = 1; i <= importLength; i++) {
         state.Travel.TRAVELPOSTDATA.PolicyData.InsuredInfo.push({
-          Index: 1,
+          Index: i,
           Relation: 3,
           PersonalData: {
             ID: childData[i - 1].ID,
@@ -323,7 +323,7 @@ export default {
       }
       for (let i = 1; i <= importLength; i++) {
         state.EntTravel.ENTTRAVELPOSTDATA.PolicyData.InsuredInfo.push({
-          Index: 1,
+          Index: i,
           Relation: 3,
           PersonalData: {
             ID: childData[i - 1].ID,

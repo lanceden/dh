@@ -71,10 +71,10 @@
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
-            <div class="col-sm-9">
+            <div class="col-sm-11">
               <input type="number" class="form-control insure-input insure-input-edit col-sm-12" v-model="face_amtComputed" placeholder="請輸入" />
             </div>
-            <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+            <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
           </div>
           <div class="col-sm-12">
             <div class="insure-tips-text text-red-i" v-show="GetUpCashPostData.IsOneTimePayment">最低保費限10,000元</div>
@@ -134,10 +134,10 @@
         <!--Start 分期繳付 -->
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
           <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
-          <div class="col-sm-9">
+          <div class="col-sm-11">
             <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem">
           </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">元</label>
+          <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
         <div class="col-sm-12" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
           <div class="insure-tips-text first-blue text-red-i">

@@ -84,7 +84,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City2">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+            <option v-for="(item, index) in benfTwoCityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
@@ -93,7 +93,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_County2">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
+            <option v-for="(item, index) in benfTwoDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
@@ -118,7 +118,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-const CITYNAME = '基隆市'
 export default {
   props: [
     'stateData',
@@ -126,14 +125,23 @@ export default {
   ],
   data() {
     return {
+      benfTwoCityData: [],
+      benfTwoDistrictData: [],
       isSetAccountData: false
     }
   },
   created() {
-    this.FuncGetCityData()
-    this.FuncGetDistrictData({
-      cityName: CITYNAME
+    this.$store.dispatch('FuncGetCityDataPromise').then(res => {
+      this.benfTwoCityData = res.data.Data.Result
     })
+  },
+  watch: {
+    BenfAdd_City2(newValue) {
+      // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+      this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
+        this.benfTwoDistrictData = res.data.Data.Result
+      })
+    }
   },
   methods: {
     ...mapActions([

@@ -12,22 +12,28 @@
     <form class="form-bottom">
       <div class="otp-input-group row">
         <div class="col-sm-2 otp-col-padding">
-          <input type="number" class="form-control insure-input otp-form-input" id="codeOne" maxlength="1" v-model="codeOne" @keyup="keyup('codeTwo', codeOne)">
+          <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+           class="form-control insure-input otp-form-input" id="codeOne" pattern="\d*" maxlength="1" v-model="codeOne" @keyup="keyup('codeTwo', codeOne)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="number" class="form-control insure-input otp-form-input" id="codeTwo" maxlength="1" v-model="codeTwo" @keyup="keyup('codeThree', codeTwo)">
+          <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+           class="form-control insure-input otp-form-input" id="codeTwo" pattern="\d*" maxlength="1" v-model="codeTwo" @keyup="keyup('codeThree', codeTwo)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="number" class="form-control insure-input otp-form-input" id="codeThree" maxlength="1" v-model="codeThree" @keyup="keyup('codeFour', codeThree)">
+          <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+           class="form-control insure-input otp-form-input" id="codeThree" pattern="\d*" maxlength="1" v-model="codeThree" @keyup="keyup('codeFour', codeThree)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="number" class="form-control insure-input otp-form-input" id="codeFour" maxlength="1" v-model="codeFour" @keyup="keyup('codeFive', codeFive)">
+          <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+           class="form-control insure-input otp-form-input" id="codeFour" pattern="\d*" maxlength="1" v-model="codeFour" @keyup="keyup('codeFive', codeFive)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="number" class="form-control insure-input otp-form-input" id="codeFive" maxlength="1" v-model="codeFive" @keyup="keyup('codeSix', codeSix)">
+          <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+           class="form-control insure-input otp-form-input" id="codeFive" pattern="\d*" maxlength="1" v-model="codeFive" @keyup="keyup('codeSix', codeSix)">
         </div>
         <div class="col-sm-2 otp-col-padding">
-          <input type="number" class="form-control insure-input otp-form-input" id="codeSix" maxlength="1" v-model="codeSix">
+          <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+           class="form-control insure-input otp-form-input" id="codeSix" pattern="\d*" maxlength="1" v-model="codeSix">
         </div>
       </div>
       <div class="row">

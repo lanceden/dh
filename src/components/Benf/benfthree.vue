@@ -84,7 +84,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_City3">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+            <option v-for="(item, index) in benfThreeCityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
@@ -93,7 +93,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="BenfAdd_County3">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
+            <option v-for="(item, index) in benfThreeDistrictData" :key="index" :value="item.Zip + '-' + item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
@@ -118,7 +118,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-const CITYNAME = '基隆市'
 export default {
   props: [
     'stateData',
@@ -126,14 +125,23 @@ export default {
   ],
   data() {
     return {
+      benfThreeCityData: [],
+      benfThreeDistrictData: [],
       isSetAccountData: false
     }
   },
   created() {
-    this.FuncGetCityData()
-    this.FuncGetDistrictData({
-      cityName: CITYNAME
+    this.$store.dispatch('FuncGetCityDataPromise').then(res => {
+      this.benfThreeCityData = res.data.Data.Result
     })
+  },
+  watch: {
+    BenfAdd_City3(newValue) {
+      // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+      this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
+        this.benfThreeDistrictData = res.data.Data.Result
+      })
+    }
   },
   methods: {
     ...mapActions([
@@ -274,9 +282,6 @@ export default {
         return this.stateData.BenfAdd_City3 || 0
       },
       set(value) {
-        this.FuncGetDistrictData({
-          cityName: value
-        })
         this.stateData.BenfAdd_City3 = value
       }
     },

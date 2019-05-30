@@ -94,12 +94,12 @@ export default {
         return this.stateData.PolicyData.ChildrenNo
       },
       set(value) {
+        let result = parseInt(value)
+        this.stateData.PolicyData.ChildrenNo = result
         // 如果已經進入下一步, 回來時要判斷是否有改變保障對象, 要重新發送請求到APi
         if (this.GetTravelIsInit) {
           this.GetTravelIsInit = false
         }
-        let result = parseInt(value)
-        this.stateData.PolicyData.ChildrenNo = result
         // 子女
         if (this.ensure.target === 'child') {
           // 沒有設定過資料
@@ -160,63 +160,33 @@ export default {
         }
         // 本人與子女
         if (this.ensure.target === 'both') {
+          // 暫存現在的資料
+          let tempData = this.stateData.PolicyData.InsuredInfo
           // 沒有設定過資料
-          if (!this.stateData.PolicyData.InsuredInfo) {
-            this.stateData.PolicyData.InsuredInfo = []
-            // 先將本人資料帶入
-            this.stateData.PolicyData.InsuredInfo.push({
-              Index: 0,
-              Relation: 1,
+          this.stateData.PolicyData.InsuredInfo = []
+          // 先將本人資料帶入
+          this.stateData.PolicyData.InsuredInfo.splice(0, 0, {
+            Index: 0,
+            Relation: 1,
+            PersonalData: {
+              ID: this.stateData.PolicyData.ProposerInfo[0].ID,
+              Name: this.stateData.PolicyData.ProposerInfo[0].Name,
+              Dob: this.stateData.PolicyData.ProposerInfo[0].Dob
+            },
+            HasAuthRep: null
+          })
+          for (let i = 1; i <= result; i++) {
+            console.log(i)
+            this.stateData.PolicyData.InsuredInfo.splice(i, 0, {
+              Index: i,
+              Relation: 3,
               PersonalData: {
-                ID: this.stateData.PolicyData.ProposerInfo[0].ID,
-                Name: this.stateData.PolicyData.ProposerInfo[0].Name,
-                Dob: this.stateData.PolicyData.ProposerInfo[0].Dob
+                ID: tempData === null ? '' : tempData[i] === undefined ? '' : tempData[i].PersonalData.ID,
+                Name: tempData === null ? '' : tempData[i] === undefined ? '' : tempData[i].PersonalData.Name,
+                Dob: tempData === null ? '' : tempData[i] === undefined ? '' : tempData[i].PersonalData.Dob
               },
               HasAuthRep: null
             })
-            for (let i = 1; i <= 1; i++) {
-              this.stateData.PolicyData.InsuredInfo.push({
-                Index: i,
-                Relation: 3,
-                PersonalData: {
-                  ID: '',
-                  Name: '',
-                  Dob: ''
-                },
-                HasAuthRep: null
-              })
-            }
-          } else { // 有設定過資料
-            if (this.stateData.PolicyData.InsuredInfo[0].Relation !== 1) {
-              // 先將本人資料帶入
-              this.stateData.PolicyData.InsuredInfo.splice(0, 0, {
-                Index: 0,
-                Relation: 1,
-                PersonalData: {
-                  ID: this.stateData.PolicyData.ProposerInfo[0].ID | '',
-                  Name: this.stateData.PolicyData.ProposerInfo[0].Name | '',
-                  Dob: this.stateData.PolicyData.ProposerInfo[0].Dob | ''
-                },
-                HasAuthRep: null
-              })
-            }
-            let oldLength = this.stateData.PolicyData.InsuredInfo.length
-            for (let i = 1; i <= result; i++) {
-              this.stateData.PolicyData.InsuredInfo.push({
-                Index: i,
-                Relation: 3,
-                PersonalData: {
-                  ID: this.stateData.PolicyData.InsuredInfo[i].ID | '',
-                  Name: this.stateData.PolicyData.InsuredInfo[i].Name | '',
-                  Dob: this.stateData.PolicyData.InsuredInfo[i].Dob | ''
-                },
-                HasAuthRep: null
-              })
-            }
-            // 多的要刪除
-            for (let index = 1; index < oldLength; index++) {
-              delete this.stateData.PolicyData.InsuredInfo.splice(index, 1)
-            }
           }
         }
       }

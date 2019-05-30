@@ -158,7 +158,7 @@
         </div>
       </form>
     </div>
-    
+
     <!-- 受益人一 -->
     <BenfOneInsuredData :stateData="GetAccidentPostData"></BenfOneInsuredData>
     <!-- 受益人二 -->
@@ -275,8 +275,10 @@
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
           <div class="col-sm-12">
             <div class="insure-input-block">
-              <span v-show="parseInt(GetAccidentPostData.visit_time1) === 1">早上9點~12點,</span>
-              <span v-show="parseInt(GetAccidentPostData.visit_time2) === 1">下午1點～6點,</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time1) === 1">早上9點~12點</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time1) === 1 && parseInt(GetAccidentPostData.visit_time2) === 1">,</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time2) === 1">下午1點～6點</span>
+              <span v-show="parseInt(GetAccidentPostData.visit_time2) === 1 && parseInt(GetAccidentPostData.visit_time3) === 1">,</span>
               <span v-show="parseInt(GetAccidentPostData.visit_time3) === 1">晚上6點~9點</span>
             </div>
           </div>

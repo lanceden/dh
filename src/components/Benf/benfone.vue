@@ -118,7 +118,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
-const CITYNAME = '基隆市'
 export default {
   props: [
     'stateData',
@@ -132,17 +131,16 @@ export default {
     }
   },
   created() {
-    this.FuncGetCityData()
-    this.FuncGetDistrictData({
-      cityName: CITYNAME
+    this.$store.dispatch('FuncGetCityDataPromise').then(res => {
+      this.benfOneCityData = res.data.Data.Result
     })
   },
   watch: {
-    GetCityData(newValue) {
-      this.benfOneCityData = newValue
-    },
-    GetDistrictData(newValue) {
-      this.benfOneDistrictData = newValue
+    BenfAdd_City(newValue) {
+      // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+      this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
+        this.benfOneDistrictData = res.data.Data.Result
+      })
     }
   },
   methods: {
@@ -267,7 +265,7 @@ export default {
       set(value) {
         this.stateData.BenfNationality = value
         this.GetNationData.forEach(item => {
-          if(item.Name === value) {
+          if (item.Name === value) {
             this.stateData.BenfNationalityCode = item.Code
           }
         })

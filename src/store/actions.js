@@ -93,12 +93,37 @@ export default {
     })
   },
   /**
+   * 取回縣市返回Promise
+   */
+  FuncGetCityDataPromise() {
+    return new Promise((resolve, reject) => {
+      rootState.Http.axios.post(`${Url.City}`).then(response => {
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
+    })
+  },
+  /**
    * 取回區域
    * @param {當前Vuex狀態} commit VuexStoreState
    */
   async FuncGetDistrictData({ commit }, { cityName, target }) {
     await rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
       commit('FuncGetDistrictData', { result: response.data, target })
+    })
+  },
+  /**
+   * 取回區域返回Promise
+   */
+  FuncGetDistrictDataPromise(context, cityName) {
+    console.log('cityName', cityName)
+    return new Promise((resolve, reject) => {
+      rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
     })
   },
   /**

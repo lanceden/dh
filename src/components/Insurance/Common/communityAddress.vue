@@ -32,7 +32,7 @@
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr2" v-model="city1">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+            <option v-for="(item, index) in cityData" :key="index" :value="item.City">{{item.City}}</option>
           </select>
         </div>
       </div>
@@ -42,7 +42,7 @@
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-block-edit" :disabled="!cbNewAddr2" v-model="district1">
             <option selected="selected" value="0">請選擇</option>
-            <option v-for="(item, index) in GetDistrictDataCommunity" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
+            <option v-for="(item, index) in districtData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
           </select>
         </div>
       </div>
@@ -60,7 +60,6 @@
 
 <script>
 import $ from 'jquery'
-import { mapGetters, mapActions } from 'vuex'
 import { InitColumnData } from '../../../utils/initColumnData'
 
 export default {
@@ -69,6 +68,8 @@ export default {
   ],
   data() {
     return {
+      cityData: [],
+      districtData: [],
       ensure: {
         old: `../../../static/img/oval.png`,
         new: '../../../static/img/oval.png'
@@ -86,22 +87,20 @@ export default {
     this.tempcity1 = this.stateData.city1
     this.tempdistrict1 = this.stateData.zip1 + '-' + this.stateData.district1
     this.temproad2 = this.stateData.road1
-    this.FuncGetCityData()
+    this.$store.dispatch('FuncGetCityDataPromise').then(res => {
+      this.cityData = res.data.Data.Result
+    })
     this.OnCommunityAddress(this.stateData.IsSaveCommu ? 'new' : 'old')
   },
   watch: {
     city1(newValue) {
-      this.FuncGetDistrictData({
-        cityName: newValue,
-        target: 'community'
+      // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+      this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
+        this.districtData = res.data.Data.Result
       })
     }
   },
   computed: {
-    ...mapGetters([
-      'GetCityData',
-      'GetDistrictDataCommunity'
-    ]),
     // 輸入新的戶籍地址-縣市
     city1: {
       get() {
@@ -136,10 +135,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      'FuncGetCityData',
-      'FuncGetDistrictData'
-    ]),
     /**
      * 戶籍地址
      */
