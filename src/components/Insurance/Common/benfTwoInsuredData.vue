@@ -1,15 +1,5 @@
 <template>
-  <div class="bg-radius" v-show="parseInt(stateData.benf_num) > 1">
-    <div class="top">
-      <div class="top-title">
-        <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/checkmark.png" alt=""></div>
-          <div class="insure-check-title">身故受益人(二)資料</div>
-        </div>
-      </div>
-    </div>
-    <div class="border-bottom-line"></div>
-
+  <div v-show="parseInt(stateData.benf_num) > 1">
     <form class="form-bottom">
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">身故受益人(二)</label>

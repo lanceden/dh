@@ -11,8 +11,7 @@
     </div>
     <div class="border-bottom-line col-sm-12"></div>
     <form class="form-bottom">
-      <div class="form-group posr row" :class="{ 'form-group-checked': isImportChild }" 
-      v-show="parseInt(stateData.TargetType) !== 0 && parseInt(index) === 0" @click="OnImportChild()">
+      <div class="form-group posr row" :class="{ 'form-group-checked': isImportChild }" v-show="parseInt(stateData.TargetType) !== 0 && parseInt(index) === 0" @click="OnImportChild()">
         <label class="col-sm-12 col-form-label">點此匯入要保人子女資料</label>
         <div class="checkbox-oneline" :class="{ 'checked': isImportChild }"></div>
       </div>
@@ -185,9 +184,10 @@ export default {
     // 匯入要保人子女資料
     OnImportChild() {
       this.isImportChild = !this.isImportChild
+      let planName = this.$store.state.PLANNAME.toLowerCase()
       if (this.isImportChild) {
         this.FuncImportChildren({
-          planCode: '66020'
+          planCode: planName === 'travel' ? '66020' : '62020'
         })
       }
     }

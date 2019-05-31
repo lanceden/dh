@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/docs.png" alt=""></div>
           <div class="insure-check-title text-left">FATCA及CRS個人客戶自我聲明書 - 基本資料</div>
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div class="form-group row">
         <label for class="col-sm-12 col-form-label insure-label">城市</label>
         <div class="col-sm-12">
-          <input type="text" class="form-control insure-input insure-input-edit" ref="birth_city" placeholder="請填寫城市" v-model="birth_city" />
+          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="birth_city" />
         </div>
       </div>
     </form>

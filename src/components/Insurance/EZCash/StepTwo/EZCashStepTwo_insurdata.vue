@@ -5,7 +5,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/insurance.png" alt>
+              <img src="../../../../../static/img/edit.png" alt>
             </div>
             <div class="insure-check-title">請填寫投保資料</div>
           </div>
@@ -28,7 +28,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
           <div class="col-sm-11">
-            <input type="number" class="form-control insure-input insure-input-edit col-sm-12" v-model="face_amtComputed" placeholder="請輸入" />
+            <input type="number" class="form-control insure-input insure-input-edit col-sm-12" v-model="face_amtComputed" 
+            placeholder="請填寫" />
           </div>
           <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
@@ -47,11 +48,12 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/cointitle.png" alt=""></div>
             <div class="insure-check-title">約定續期繳費方式</div>
           </div>
         </div>
       </div>
+      <div class="border-bottom-line col-sm-12"></div>
       <form class="form-bottom">
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
@@ -93,7 +95,9 @@
         <div class="form-group row" v-show="(GetEZCashPostData.modx_99_ind === 'N')">
           <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
           <div class="col-sm-11">
-            <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem">
+            <input type="text" class="form-control insure-input insure-input-edit col-sm-12"  
+            placeholder="請填寫"
+            v-model="qpoop_25_prem">
           </div>
           <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
@@ -128,7 +132,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/cointitle.png" alt=""></div>
             <div class="insure-check-title">續期收費管道</div>
           </div>
         </div>

@@ -5,7 +5,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/list.png" alt=""></div>
             <div class="insure-check-title">保單寄送方式</div>
           </div>
         </div>

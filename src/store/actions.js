@@ -169,9 +169,13 @@ export default {
    * @param {當前Vuex狀態} commit VuexStoreState
    * @param {object} para 請求參數
    */
-  async FuncGetInsTravelChildCoverageSli({ commit }, para) {
-    await rootState.Http.axios.post(`${Url.InsTravelChildCoverageSli}`, para).then(response => {
-      commit('FuncGetInsTravelChildCoverageSli', { result: response.data })
+  FuncGetInsTravelChildCoverageSli() {
+    return new Promise((resolve, reject) => {
+      rootState.Http.axios.post(`${Url.InsTravelChildCoverageSli}`).then(response => {
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
     })
   },
   /**
@@ -179,9 +183,13 @@ export default {
    * @param {當前Vuex狀態} commit VuexStoreState
    * @param {object} para 請求參數
    */
-  async FuncGetInsTravelChildSupplCoverageSli({ commit }, schengen) {
-    await rootState.Http.axios.post(`${Url.InsTravelChildSupplCoverageSli}?schengen=${schengen}`).then(response => {
-      commit('FuncGetInsTravelChildSupplCoverageSli', { result: response.data })
+  FuncGetInsTravelChildSupplCoverageSli(context, schengen) {
+    return new Promise((resolve, reject) => {
+      rootState.Http.axios.post(`${Url.InsTravelChildSupplCoverageSli}?schengen=${schengen}`).then(response => {
+        resolve(response)
+      }, error => {
+        reject(error)
+      })
     })
   },
   /**

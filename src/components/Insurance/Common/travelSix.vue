@@ -6,7 +6,7 @@
           <div class="top-title">
             <div class="insure-notice-box">
               <div class="insure-check"><img src="../../../../static/img/mail.png" alt=""></div>
-              <div class="insure-check-title">子女({{stateData.PolicyData.InsuredInfo[index].PersonalData.Name}})身故受益人資料</div>
+              <div class="insure-check-title">子女身故受益人資料</div>
             </div>
           </div>
         </div>
@@ -14,11 +14,17 @@
         <div class="insure-text">
           依「保險業辦理電子商務應注意事項」第七點所規範，身故受益人以直系血親、配偶或法定繼承人為限。
         </div>
-
+        <!-- ({{stateData.PolicyData.InsuredInfo[index].PersonalData.Name}}) -->
         <form class="form-bottom">
           <div class="form-group posr row" @click="OnProposerInfo()">
             <label for="" class="col-sm-12 col-form-label">同要保人資料</label>
             <div class="checkbox checkbox-oneline" :class="{ checked: isProposerInfo }"></div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-12 col-form-label insure-label">被保人姓名(子女{{index + 1}})</label>
+            <div class="col-sm-12">
+              <div class="form-control insure-input-block">{{stateData.PolicyData.InsuredInfo[index].PersonalData.Name}}</div>
+            </div>
           </div>
           <div class="form-group row">
             <label for="" class="col-sm-12 col-form-label insure-label">受益人關係</label>
@@ -58,15 +64,10 @@
               <input type="text" maxlength="10" class="form-control insure-input insure-input-edit" placeholder="請填寫身分證字號" v-model="IdNo">
             </div>
           </div>
-          <div class="form-group posr row" v-show="BeneficiaryDataRelationship !== '8'" @click="SetAccountData()">
-            <div class="checkbox checkbox-oneline" :class="{ checked: isSetAccountData }"></div>
-            <label for="" class="col-sm-10 col-form-label insure-label">同客戶手機號碼:{{GetAccountData.CustMobile}}</label>
-            <label for="" class="col-sm-10 col-form-label">同客戶住所地址:{{GetAccountData.CommunicationAddress.City}}{{GetAccountData.CommunicationAddress.District}}{{GetAccountData.CommunicationAddress.Road}}</label>
-          </div>
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫聯絡電話" v-model="ContactNumber">
+              <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="ContactNumber">
             </div>
           </div>
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
@@ -90,7 +91,7 @@
           <div class="form-group row" v-show="BeneficiaryDataRelationship !== '8'">
             <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
             <div class="col-sm-12 insure-select-align">
-              <input type="text" class="form-control insure-input-block" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" />
+              <input type="text" class="form-control data-input insure-input-edit" placeholder="請填寫" v-model="road3" />
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
@@ -267,7 +268,7 @@ export default {
         this.ContactNumber = this.stateData.PolicyData.ProposerInfo[0].Phone
         let dob = moment(this.stateData.PolicyData.ProposerInfo[0].Dob, 'YYYY-MM-DD').format('YYYY-MM-DD')
         this.DobComputed = dob
-        this.cityArr = this.stateData.PolicyData.ProposerInfo[0].PermAddr.City
+        this.city3 = this.stateData.PolicyData.ProposerInfo[0].PermAddr.City
         setTimeout(() => {
           this.district3 = this.stateData.PolicyData.ProposerInfo[0].PermAddr.District
           this.road3 = this.stateData.PolicyData.ProposerInfo[0].PermAddr.Street

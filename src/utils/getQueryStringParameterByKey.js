@@ -1,3 +1,8 @@
+/**
+ * 取回當前網址中的參數
+ * @param {string} key URL傳送Key值
+ * @param {string} url URL傳送Value值
+ */
 function getQueryStringParameterByKey(key, url) {
   if (!url) {
     url = window.location.href

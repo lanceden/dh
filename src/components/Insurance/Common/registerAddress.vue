@@ -4,8 +4,8 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
-            <div class="insure-check-title">戶籍地址</div>
+            <div class="insure-check"><img src="../../../../static/img/home.png" alt=""></div>
+            <div class="insure-check-title">請確認戶籍地址</div>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
           <div class="col-sm-12">
-            <input type="text" class="orm-control insure-input insure-input-edit" id="txtNewAddress2" placeholder="為保障您的權益，此欄位不可為空白" v-model="road2" />
+            <input type="text" class="orm-control insure-input insure-input-edit" id="txtNewAddress2" placeholder="請填寫" v-model="road2" />
           </div>
         </div>
         <div class="border-bottom-line col-sm-12"></div>

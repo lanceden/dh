@@ -116,14 +116,6 @@ export default {
     state.TRAVELSUPPL = result.Data.Result
   },
   /**
-   * 旅平子女主約保額
-   * @param {當前Vuex狀態} state VuexStoreState
-   * @param {請求結果} param1 請求回傳結果
-   */
-  FuncGetInsTravelChildCoverageSli(state, { result }) {
-    state.CHILDCOVERAGESLI = result.Data.Result
-  },
-  /**
    * 旅平子女附約保額
    * @param {當前Vuex狀態} state VuexStoreState
    * @param {請求結果} param1 請求回傳結果
@@ -276,6 +268,12 @@ export default {
   FuncImportChildren(state, { result, planCode }) {
     let childData = result.Data.Result
     let importLength = childData.length
+    if (importLength === 0) {
+      window.jQuery('#modalTitle').html('貼心提醒您')
+      window.jQuery('#errorModal').modal('show')
+      window.jQuery('#modal-message').html('無子女可匯入。')
+      return
+    }
     // 判斷當前險種為旅平或企旅
     if (planCode === '66020') {
       state.Travel.TRAVELPOSTDATA.PolicyData.ChildrenNo = importLength

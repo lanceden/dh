@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/phone.png" alt=""></div>
           <div class="insure-check-title">電訪時間</div>
           <span class="insure-text text-red-i">(時段可多選)</span>
         </div>

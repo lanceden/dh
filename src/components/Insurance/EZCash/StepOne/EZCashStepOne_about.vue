@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/briefcase.png" alt=""></div>
           <div class="insure-check-title">被保人投保資料告知事項</div>
         </div>
       </div>
@@ -39,7 +39,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
-import OccupationComponent from '../../Common/occupation'
+import OccupationComponent from '../../Common/occupation.vue'
 
 export default {
   components: {

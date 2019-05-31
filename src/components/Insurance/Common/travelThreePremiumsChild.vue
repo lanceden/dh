@@ -16,22 +16,21 @@
           <label class="col-sm-12 col-form-label insure-label">旅行平安保險保額</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="PrimaryPolicyFaceAmtChild">
-              <option v-for="(item, index) in $store.state.CHILDCOVERAGESLI" :key="index" :value="item.Value">{{item.Text}}</option>
+              <option v-for="(item, index) in childCoverageSli" :key="index" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
           <!-- 傷害醫療 -->
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
-              <option v-for="item in $store.state.CHILDSUPPLCOVERAGESLI" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+              <option v-for="item in childSupplCoverageSli" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
           <!-- 海外突發疾病 -->
           <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
-            <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" 
-            v-model="SupplementPolicyFaceAmtoOverSea">
-              <option v-for="item in $store.state.CHILDSUPPLCOVERAGESLI" :key="item.Value" :value="item.Value">{{item.Text}}</option>
+            <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">
+              <option v-for="item in childSupplCoverageSli" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
         </div>
@@ -55,16 +54,24 @@ export default {
     'index',
     'stateData'
   ],
-  mounted() {
-    this.FuncGetInsTravelChildCoverageSli()
-    this.FuncGetInsTravelChildSupplCoverageSli(
-      (parseInt(this.stateData.PolicyData.TravelType) === 2 && parseInt(this.stateData.PolicyData.TravelCountry) === 7) ? '1' : '0'
-    )
-  },
   data() {
     return {
+      childCoverageSli: [],
+      childSupplCoverageSli: [],
       SupplementPolicyFaceAmtoOverSeaDisable: false
     }
+  },
+  mounted() {
+    // 取回子女主約
+    this.$store.dispatch('FuncGetInsTravelChildCoverageSli').then(res => {
+      this.childCoverageSli = res.data.Data.Result
+    })
+    // 取回子女附約
+    this.$store.dispatch('FuncGetInsTravelChildSupplCoverageSli',
+      (parseInt(this.stateData.PolicyData.TravelType) === 2 && parseInt(this.stateData.PolicyData.TravelCountry) === 7) ? '1' : '0'
+    ).then(res => {
+      this.childSupplCoverageSli = res.data.Data.Result
+    })
   },
   computed: {
     ShowOverSea: {

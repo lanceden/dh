@@ -34,7 +34,7 @@
             <div class="col-sm-12 insure-select-align">
               <select class="form-control data-input insure-select insure-input-edit" v-model="EmergencyContactAddrCity">
                 <option selected="selected" value="0">請選擇</option>
-                <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
+                <option v-for="(item, index) in cityData" :key="index" :value="item.City">{{item.City}}</option>
               </select>
             </div>
           </div>
@@ -45,7 +45,7 @@
             <div class="col-sm-12 insure-select-align">
               <select class="form-control data-input insure-select insure-input-edit" v-model="EmergencyContactAddrDistrict">
                 <option selected="selected" value="0">請選擇</option>
-                <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Area">{{item.Area}}</option>
+                <option v-for="(item, index) in districtData" :key="index" :value="item.Area">{{item.Area}}</option>
               </select>
             </div>
           </div>
@@ -85,6 +85,8 @@ export default {
   ],
   data() {
     return {
+      cityData: [],
+      districtData: [],
       isSetAccountData: false,
       cbOldAddr: true,
       cbNewAddr: false,
@@ -96,7 +98,9 @@ export default {
     }
   },
   mounted() {
-    this.FuncGetCityData()
+    this.$store.dispatch('FuncGetCityDataPromise').then(res => {
+      this.cityData = res.data.Data.Result
+    })
     if (this.stateData.PolicyData.EmergencyContactAddr === null) {
       this.stateData.PolicyData.EmergencyContactAddr = {
         City: '',
@@ -112,16 +116,15 @@ export default {
   },
   watch: {
     EmergencyContactAddrCity(newValue) {
-      this.FuncGetDistrictData({
-        cityName: newValue
+      // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
+      this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
+        this.districtData = res.data.Data.Result
       })
     }
   },
   computed: {
     ...mapGetters([
       'GetLoading',
-      'GetCityData',
-      'GetDistrictData',
       'GetAccountData'
     ]),
     // 緊急聯絡人姓名

@@ -4,8 +4,8 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
-            <div class="insure-check-title">請填寫聯絡資料</div>
+            <div class="insure-check"><img src="../../../../static/img/phone-book.png" alt=""></div>
+            <div class="insure-check-title">聯絡資料</div>
           </div>
         </div>
       </div>
@@ -26,21 +26,21 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話區號</label>
           <div class="col-sm-12">
-            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_area">
+            <input type="number" class="orm-control insure-input insure-input-edit" v-model="phone_area">
           </div>
         </div>
         <!-- 電話號碼 -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話號碼</label>
           <div class="col-sm-12">
-            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_main">
+            <input type="number" class="orm-control insure-input insure-input-edit" v-model="phone_main">
           </div>
         </div>
         <!-- 電話分號 -->
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">電話分號</label>
           <div class="col-sm-12">
-            <input type="text" class="orm-control insure-input insure-input-edit" v-model="phone_ext">
+            <input type="number" class="orm-control insure-input insure-input-edit" v-model="phone_ext">
           </div>
         </div>
         <!-- 電子郵件(E-mail) -->
@@ -61,8 +61,8 @@
 </template>
 
 <script>
-import RegisterAddressComponent from './registerAddress'
-import CommunityAddressComponent from './communityAddress'
+import RegisterAddressComponent from './registerAddress.vue'
+import CommunityAddressComponent from './communityAddress.vue'
 export default {
   props: [
     'stateData'

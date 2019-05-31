@@ -42,7 +42,10 @@ export default {
         return
       }
 
-      let [errorIndexArr, errorAuthRep, errorMsg] = [[], [], '']
+      let [errorIndexArr, errorAuthRep, errorMsg] = [
+        [],
+        [], ''
+      ]
       this.GetTravelPostData.PolicyData.InsuredInfo.forEach((item, index) => {
         if (item.HasAuthRep === null || item.HasAuthRep === undefined) {
           errorIndexArr.push(index)
@@ -74,17 +77,11 @@ export default {
         toggleModalShow(errorMsg, '貼心提醒您')
         return
       }
-      // 設置旅平險已初始化
-      if (!this.GetTravelIsInit) {
-        this.FuncTravelIsInit(true)
-        // 前往被保人填寫資料頁
-        this.FuncTravelInsuredData({
-          para: this.GetTravelPostData,
-          router: this.$router
-        })
-      } else {
-        this.$router.push('/travel-2')
-      }
+      // 前往被保人填寫資料頁
+      this.FuncTravelInsuredData({
+        para: this.GetTravelPostData,
+        router: this.$router
+      })
     }
   }
 }

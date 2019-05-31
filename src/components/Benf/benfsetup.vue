@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../static/img/human-outline-with-heart.png" alt=""></div>
           <div class="insure-check-title">請選擇受益人個數</div>
         </div>
       </div>
@@ -22,6 +22,14 @@
             <option value="2">2個</option>
             <option value="3">3個</option>
           </select>
+        </div>
+      </div>
+    </form>
+    <div class="border-bottom-line"></div>
+    <form class="form-bottom">
+      <div class="col-sm-12">
+        <div class="insure-tips-text">
+          請確認最後一張保單受益人人數
         </div>
       </div>
     </form>

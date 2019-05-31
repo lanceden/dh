@@ -4,22 +4,22 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png"></div>
+            <div class="insure-check"><img src="../../../../static/img/mail.png"></div>
             <div class="insure-check-title">保價金通知方式(請擇其一填選)</div>
           </div>
         </div>
       </div>
+      <!-- 電子信箱 -->
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group posr row" :class="{ 'form-group-checked': cbOldMail }" @click="OnCheck('cbOldMail')">
-          <label for="" class="col-sm-12 col-form-label insure-label">電子信箱</label>
+          <label for="" class="col-sm-10 col-form-label insure-label">電子信箱</label>
           <div class="col-sm-12">
-            <div class="insure-input-block"></div>
-            <div class="form-control insure-input insure-input-edit">{{email}}</div>
+            <div class="form-control insure-input-block">{{email}}</div>
           </div>
           <div class="checkbox" :class="{ checked: cbOldMail }"></div>
         </div>
-
+        <!-- 寄送至客戶住所(通訊地址) -->
         <div class="form-group posr row" :class="{ 'form-group-checked': cbOldAddr }" @click="OnCheck('cbOldAddr')">
           <label for="" class="col-sm-12 col-form-label insure-label">寄送至客戶住所(通訊地址)</label>
           <div class="col-sm-12">
@@ -32,32 +32,49 @@
           <div :class="{ checked: cbOldAddr }" class="checkbox"></div>
         </div>
 
+        <!-- 輸入新的電子信箱 -->
         <div class="form-group posr row" :class="{ 'form-group-checked': cbNewMail }" @click="OnCheck('cbNewMail')">
           <label for="" class="col-sm-12 col-form-label insure-label">輸入新的電子信箱</label>
           <div class="col-sm-12">
-            <input type="text" class="form-control insure-input-block" placeholder="請填寫" v-model="newMail" :disabled="!cbNewMail" v-show="cbNewMail">
+            <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="newMail" :disabled="!cbNewMail" v-show="cbNewMail">
           </div>
-          <div :class="{ checked: cbNewMail }" class="checkbox"></div>
+          <div :class="{ checked: cbNewMail, checkedTop: cbNewMail, checkedOriMail: !cbNewMail }" class="checkbox"></div>
         </div>
 
+        <!-- 輸入新的寄送地址 -->
         <div class="form-group posr row" :class="{ 'form-group-checked': cbNewAddr }" @click="OnCheck('cbNewAddr')">
           <label for="" class="col-sm-12 col-form-label insure-label">輸入新的寄送地址</label>
-          <div class="col-sm-12">
-            <template>
-              <div v-show="cbNewAddr">
+          <div class="col-sm-12" v-show="cbNewAddr">
+            <!-- 選擇城市 -->
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
+              <div class="col-sm-12 insure-select-align">
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
                   <option selected="selected" value="0">請選擇</option>
                   <option v-for="(item, index) in GetCityData" :key="index" :value="item.City">{{item.City}}</option>
                 </select>
+              </div>
+            </div>
+            <!-- 選擇鄉鎮地區 -->
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
+              <div class="col-sm-12 insure-select-align">
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="district3">
                   <option selected="selected" value="0">請選擇</option>
                   <option v-for="(item, index) in GetDistrictData" :key="index" :value="item.Zip + '-' +item.Area">{{item.Area}}</option>
                 </select>
-                <input type="text" class="form-control insure-input insure-input-edit" placeholder="為保障您的權益，此欄位不可為空白" v-model="road3" :disabled="!cbNewAddr" />
               </div>
-            </template>
+            </div>
+
+            <!-- 詳細地址 -->
+            <div class="form-group row">
+              <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
+              <div class="col-sm-12">
+                <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="road3" :disabled="!cbNewAddr" />
+              </div>
+            </div>
           </div>
-          <div :class="{ checked: cbNewAddr }" class="checkbox"></div>
+          <div :class="{ checked: cbNewAddr, checkedTop: cbNewAddr, checkedOri: !cbNewAddr }" class="checkbox"></div>
         </div>
       </form>
     </div>
@@ -65,7 +82,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png"></div>
+            <div class="insure-check"><img src="../../../../static/img/calculator2.png"></div>
             <div class="insure-check-title">主要給付項目</div>
           </div>
         </div>
@@ -220,3 +237,18 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.checkedTop {
+  top: 6%;
+}
+
+.checkedOriMail {
+  top: 20%;
+}
+
+.checkedOri {
+  top: 33%;
+}
+
+</style>

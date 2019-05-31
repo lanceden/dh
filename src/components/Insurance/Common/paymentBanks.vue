@@ -52,8 +52,7 @@
               <tr>
                 <td class='text-center table-bank'>(700)<br>中華郵政公司</td>
                 <td class='text-center table-bank'>(803)<br>聯邦銀行</td>
-                <td class='text-center table-bank'>(805)<br>遠東銀行>
-                </td>
+                <td class='text-center table-bank'>(805)<br>遠東銀行</td>
               </tr>
               <tr>
                 <td class='text-center table-bank'>(806)<br>元大銀行</td>

@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/cointitle.png" alt=""></div>
           <div class="insure-check-title">年金約定</div>
         </div>
       </div>
@@ -24,7 +24,7 @@
           歲之保單週年日
         </div>
         <div class="insure-tips-text">
-          ※年金累積期間不得低於六年
+          ※年金累積期間不得低於6年
         </div>
       </div>
       <form class="form-bottom">

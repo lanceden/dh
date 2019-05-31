@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../static/img/bank.png" alt=""></div>
           <div class="insure-check-title">身故受益人(三)匯款帳戶</div>
         </div>
       </div>

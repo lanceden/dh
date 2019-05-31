@@ -3,10 +3,14 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
-          <div class="insure-check-title">通訊地址</div>
+          <div class="insure-check"><img src="../../../../static/img/placeholder.png" alt=""></div>
+          <div class="insure-check-title">{{useType === 'send' ? '保單寄送資料' : '通訊地址'}}</div>
         </div>
       </div>
+    </div>
+    <div class="border-bottom-line" v-show="useType === 'send'"></div>
+    <div class="insure-text" v-show="useType === 'send'">
+      保險單形式：<span class="text-red-i">紙本保單</span>
     </div>
     <div class="border-bottom-line col-sm-12"></div>
     <div class="top col-sm-12">
@@ -50,7 +54,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
         <div class="col-sm-12">
-          <input type="text" class="orm-control insure-input insure-input-edit" id="txtNewAddress2" placeholder="為保障您的權益，此欄位不可為空白" v-model="road1" />
+          <input type="text" class="orm-control insure-input insure-input-edit" id="txtNewAddress2" placeholder="請填寫" v-model="road1" />
         </div>
       </div>
     </div>
@@ -64,7 +68,8 @@ import { InitColumnData } from '../../../utils/initColumnData'
 
 export default {
   props: [
-    'stateData'
+    'stateData',
+    'useType'
   ],
   data() {
     return {
@@ -97,6 +102,7 @@ export default {
       // 重新選取縣市, 要更新區域下拉框並清空區域原先的值
       this.$store.dispatch('FuncGetDistrictDataPromise', newValue).then(res => {
         this.districtData = res.data.Data.Result
+        this.district1 = '0-0'
       })
     }
   },
@@ -161,6 +167,8 @@ export default {
           this.ensure.old = '../../../static/img/oval.png'
           this.ensure.new = '../../../static/img/oval-ed.png'
           this.cbNewAddr2 = true
+          this.city1 = 0
+          this.district1 = '0-0'
           this.stateData.IsSaveCommu = true
           break
       }

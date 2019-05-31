@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../static/img/notepad.png" alt=""></div>
+            <div class="insure-check"><img src="../../../static/img/cointitle.png" alt=""></div>
             <div class="insure-check-title">請選擇繳費方式</div>
           </div>
         </div>
@@ -181,7 +181,9 @@
           </div>
         </div>
       </div>
-      <div v-show="GetAccountData !== null" @click="OnAccount(true)">
+      <div 
+      v-show="GetAccountData.AccountNo !== undefined && GetAccountData.AccountNo !== '' && GetAccountData.AccountNo !== null" 
+      @click="OnAccount(true)">
         <div class="border-bottom-line col-sm-12"></div>
         <div class="top col-sm-12">
           <div class="insure-notice-box">

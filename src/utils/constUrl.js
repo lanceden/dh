@@ -275,7 +275,6 @@ const TravelSubmitQuote = `${Domain}/Travel/SubmitQuote`
  * UpCash成立訂單
  */
 const TravelSubmitOrder = `${Domain}/Travel/SubmitOrder`
-
 /**
  * UpCash 簡易試算
  */

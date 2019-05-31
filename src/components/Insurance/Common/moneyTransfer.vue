@@ -4,11 +4,12 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/bank.png" alt=""></div>
           <div class="insure-check-title">要保人匯款帳戶</div>
         </div>
       </div>
     </div>
+    <div class="border-bottom-line col-sm-12"></div>
     <form class="form-bottom">
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
