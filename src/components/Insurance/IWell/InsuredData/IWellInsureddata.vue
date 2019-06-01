@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">投保資訊</div>
           </div>
         </div>
@@ -14,9 +14,10 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetIWellPostData.VerifyTypeList['2']}}</div>
-            <div class="form-control insure-input-block">{{GetIWellPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block">{{GetIWellPostData.VerifyTypeList['4']}}</div>
+            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
+            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
+            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['3']">{{GetIWellPostData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
           </div>
         </div>
         <div class="form-group row">
@@ -50,8 +51,8 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
-            <div class="insure-check-title">投保資訊</div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
+            <div class="insure-check-title">投保內容</div>
           </div>
         </div>
       </div>
@@ -83,7 +84,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">保障內容</div>
           </div>
         </div>
@@ -181,20 +182,20 @@
             <div class="insure-input-block">{{GetIWellPostData.address2}}</div>
           </div>
         </div>
+        <!-- 受益人一 -->
+        <BenfOneInsuredData :stateData="GetIWellPostData"></BenfOneInsuredData>
+        <!-- 受益人二 -->
+        <BenfTwoInsuredData :stateData="GetIWellPostData"></BenfTwoInsuredData>
+        <!-- 受益人三 -->
+        <BenfThreeInsuredData :stateData="GetIWellPostData"></BenfThreeInsuredData>
       </form>
     </div>
-    <!-- 受益人一 -->
-    <BenfOneInsuredData :stateData="GetIWellPostData"></BenfOneInsuredData>
-    <!-- 受益人二 -->
-    <BenfTwoInsuredData :stateData="GetIWellPostData"></BenfTwoInsuredData>
-    <!-- 受益人三 -->
-    <BenfThreeInsuredData :stateData="GetIWellPostData"></BenfThreeInsuredData>
 
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/briefcase.png" alt=""></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
         </div>
@@ -207,7 +208,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">您的職業類別</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.client_occupation_class_detail}}</div>
+            <div class="insure-input-block">{{GetIWellPostData.client_occupation_class_name}} {{GetIWellPostData.client_occupation_class_detail}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -272,7 +273,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">被保人其他告知事項</div>
           </div>
         </div>

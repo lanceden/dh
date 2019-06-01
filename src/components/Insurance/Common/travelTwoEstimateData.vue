@@ -51,7 +51,7 @@
     <div class="col-sm-12">
       <div class="insure-tips-text ">
         <img src="../../../../static/img/insure-link.png" alt="">
-        <a href="https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&n=C1B19EF0ACDD3C91&sms=867F5398A49F758A" target="_blank">申根地區國查詢</a>
+        <a class="insure-tips-text first-blue" href="https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&n=C1B19EF0ACDD3C91&sms=867F5398A49F758A" target="_blank">申根地區國查詢</a>
       </div>
     </div>
     <!-- 保險生效日 -->

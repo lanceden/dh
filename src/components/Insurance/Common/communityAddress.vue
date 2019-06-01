@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/placeholder.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/placeholder2.png" alt=""></div>
           <div class="insure-check-title">{{useType === 'send' ? '保單寄送資料' : '通訊地址'}}</div>
         </div>
       </div>

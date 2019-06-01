@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../static/img/human-outline-with-heart.png" alt=""></div>
+          <div class="insure-check"><img src="../../../static/img/human-outline-with-heart2.png" alt=""></div>
           <div class="insure-check-title">身故受益人(三)資料</div>
         </div>
       </div>
@@ -40,7 +40,7 @@
           <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_name3" />
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-block" v-model="relation_ben_death_seq3">
@@ -51,7 +51,7 @@
           </select>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式之比例</label>
         <div class="col-sm-12 insure-select-align">
           <input type="number" class="form-control insure-input-block" v-model="relation_ben_death_seq_percent3">
@@ -239,10 +239,8 @@ export default {
       set(value) {
         if (value === '8') {
           this.stateData.benf_name3 = '法定繼承人'
-          if (parseInt(this.stateData.benf_num) === 1) {
-            this.stateData.relation_ben_death_seq3 = 1
-            this.stateData.relation_ben_death_seq_percent3 = '100'
-          }
+          this.stateData.relation_ben_death_seq3 = 3
+          this.stateData.relation_ben_death_seq_percent3 = '100'
         }
         this.stateData.relation_ben_death3 = value
       }
@@ -268,7 +266,7 @@ export default {
       set(value) {
         this.stateData.BenfNationality3 = value
         this.GetNationData.forEach(item => {
-          if(item.Name === value) {
+          if (item.Name === value) {
             this.stateData.BenfNationalityCode3 = item.Code
           }
         })

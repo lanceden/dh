@@ -5,7 +5,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check"><img src="../../../../static/img/home.png" alt=""></div>
-            <div class="insure-check-title">請確認戶籍地址</div>
+            <div class="insure-check-title">戶籍地址</div>
           </div>
         </div>
       </div>

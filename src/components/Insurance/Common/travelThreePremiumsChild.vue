@@ -5,7 +5,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/edit.png" alt=""></div>
             <div class="insure-check-title">子女({{this.stateData.PolicyData.InsuredInfo[this.index].PersonalData.Name}})</div>
           </div>
         </div>
@@ -19,15 +19,19 @@
               <option v-for="(item, index) in childCoverageSli" :key="index" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
-          <!-- 傷害醫療 -->
+        </div>
+        <!-- 傷害醫療 -->
+        <div class="form-group row">
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
               <option v-for="item in childSupplCoverageSli" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
-          <!-- 海外突發疾病 -->
-          <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
+        </div>
+        <!-- 海外突發疾病 -->
+        <div class="form-group row" v-show="ShowOverSea">
+          <label class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">
               <option v-for="item in childSupplCoverageSli" :key="item.Value" :value="item.Value">{{item.Text}}</option>

@@ -6,7 +6,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/edit.png" alt=""></div>
             <div class="insure-check-title">本人</div>
           </div>
         </div>
@@ -21,16 +21,20 @@
               <option v-for="(item, index) in GetPremiumsProp" :key="index" :value="item">{{item}} 萬</option>
             </select>
           </div>
-          <div class="border-bottom-line"></div>
-          <!-- 傷害醫療 -->
+        </div>
+        <div class="border-bottom-line"></div>
+        <!-- 傷害醫療 -->
+        <div class="form-group row">
           <label class="col-sm-12 col-form-label insure-label">傷害醫療</label>
           <div class="col-sm-12 insure-select-align">
             <select id="" class="form-control data-input insure-select insure-input-block-edit" v-model="SupplementPolicyFaceAmt">
               <option v-for="item in $store.state.TRAVELSUPPL" :key="item.Value" :value="item.Value">{{item.Text}}</option>
             </select>
           </div>
-          <div class="border-bottom-line"></div>
-          <!-- 海外突發疾病 -->
+        </div>
+        <div class="border-bottom-line"></div>
+        <!-- 海外突發疾病 -->
+        <div class="form-group row">
           <label v-show="ShowOverSea" class="col-sm-12 col-form-label insure-label">海外突發疾病</label>
           <div class="col-sm-12 insure-select-align" v-show="ShowOverSea">
             <select class="form-control data-input insure-select insure-input-block-edit" :disabled="SupplementPolicyFaceAmtoOverSeaDisable" v-model="SupplementPolicyFaceAmtoOverSea">

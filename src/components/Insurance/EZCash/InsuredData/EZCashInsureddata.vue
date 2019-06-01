@@ -59,7 +59,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">投保始期（保單生效日）</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{GetEZCashPostData.po_issue_date}}</div>
+          <div class="insure-input-block">{{GetEZCashPostData.po_issue_date_Name}}</div>
         </div>
       </div>
       <div class="form-group row">
@@ -199,13 +199,13 @@
         </div>
         <!-- 受益人一 -->
         <BenfOneInsuredData :stateData="GetEZCashPostData"></BenfOneInsuredData>
+        <!-- 受益人二 -->
+        <BenfTwoInsuredData :stateData="GetEZCashPostData"></BenfTwoInsuredData>
+        <!-- 受益人三 -->
+        <BenfThreeInsuredData :stateData="GetEZCashPostData"></BenfThreeInsuredData>
       </form>
     </div>
 
-    <!-- 受益人二 -->
-    <BenfTwoInsuredData :stateData="GetEZCashPostData"></BenfTwoInsuredData>
-    <!-- 受益人三 -->
-    <BenfThreeInsuredData :stateData="GetEZCashPostData"></BenfThreeInsuredData>
 
     <div class="bg-radius">
       <div class="top">

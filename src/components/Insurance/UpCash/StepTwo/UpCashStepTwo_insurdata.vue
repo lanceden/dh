@@ -5,7 +5,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/insurance.png" alt>
+              <img src="../../../../../static/img/edit.png" alt>
             </div>
             <div class="insure-check-title">請填寫投保資料</div>
           </div>
@@ -89,11 +89,12 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/cointitle.png" alt=""></div>
             <div class="insure-check-title">約定續期繳費方式</div>
           </div>
         </div>
       </div>
+      <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
@@ -135,7 +136,7 @@
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
           <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
           <div class="col-sm-11">
-            <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem">
+            <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem" placeholder="請填寫">
           </div>
           <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
@@ -165,27 +166,36 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/cointitle.png" alt=""></div>
             <div class="insure-check-title">續期收費管道</div>
           </div>
         </div>
       </div>
       <div class="border-bottom-line col-sm-12"></div>
+
       <form class="form-bottom">
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12" @click="OnMethod('C')" v-show="init_method === 'C'">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img :src="ensure.methodcredit" alt=""></div>
-            <div class="insure-check-content">信用卡</div>
+        <div class="form-group row">
+          <label for="" class="col-sm-12 col-form-label insure-label">繳費方式</label>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="top col-sm-12" @click="OnMethod('C')" v-show="init_method === 'C'">
+            <div class="insure-notice-box">
+              <div class="insure-check"><img :src="ensure.methodcredit" alt=""></div>
+              <div class="insure-check-content">信用卡</div>
+            </div>
+          </div>
+          <div class="border-bottom-line col-sm-12"></div>
+          <div class="top col-sm-12" @click="OnMethod('B')">
+            <div class="insure-notice-box">
+              <div class="insure-check"><img :src="ensure.methodtrans" alt=""></div>
+              <div class="insure-check-content">銀行或郵局帳戶轉帳</div>
+            </div>
           </div>
         </div>
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12" @click="OnMethod('B')">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img :src="ensure.methodtrans" alt=""></div>
-            <div class="insure-check-content">銀行或郵局帳戶轉帳</div>
+        <div class="col-sm-12">
+          <div class="insure-tips-text">續期繳費管道同時約定為信用卡,會同首期信用卡卡號做繳費
           </div>
         </div>
+
         <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B') && GetEachAccount !== null" @click="OnAccount('isEdda')">
           <div class="form-group posr row">
             <label for="" class="col-sm-12 col-form-label" :class="{ 'form-group-checked': isEdda }">已約定帳戶</label>
@@ -266,7 +276,8 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12">
+
+        <div class="col-sm-12" v-show="GetUpCashPostData.method === 'B'">
           <div class="insure-tips-text">備註:續期收費管道若為「銀行或郵局帳戶轉帳」：<br />
             ①請記得列印『保險費暨保單借款利息自動轉帳付款委託書』並檢視資料正確性。若委託書須再進行補印，您可至 新光人壽客戶服務中心 > 保單管理 > 保單明細中重新下載列印。<br />
             ②若確認資料無誤後，再於「原留帳戶印鑑」欄，簽蓋銀行開戶印鑑或簽名，並於二日內自付郵資寄回本公司受理，才算申請完成。請寄到：10018台北市中正區忠孝西路一段66號18樓 新光人壽保險股份有限公司 保費部 轉帳管理課收。
@@ -476,7 +487,7 @@ export default {
         }
       }
       let faceAmount = parseInt(this.face_amtComputed)
-      if(faceAmount < 3000) {
+      if (faceAmount < 3000) {
         toggleModalShow('第一期保險費限輸入 3,000 ~ 750,000 元，請調整。')
         return
       }

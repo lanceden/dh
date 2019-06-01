@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-radius">
+  <div class="bg-radius" v-show="stateData.relation_ben_death2 !== '8'">
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">

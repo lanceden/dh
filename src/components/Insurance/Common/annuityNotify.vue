@@ -13,7 +13,7 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group posr row" :class="{ 'form-group-checked': cbOldMail }" @click="OnCheck('cbOldMail')">
-          <label for="" class="col-sm-10 col-form-label insure-label">電子信箱</label>
+          <label class="col-sm-10 col-form-label insure-label">電子信箱</label>
           <div class="col-sm-12">
             <div class="form-control insure-input-block">{{email}}</div>
           </div>
@@ -21,7 +21,7 @@
         </div>
         <!-- 寄送至客戶住所(通訊地址) -->
         <div class="form-group posr row" :class="{ 'form-group-checked': cbOldAddr }" @click="OnCheck('cbOldAddr')">
-          <label for="" class="col-sm-12 col-form-label insure-label">寄送至客戶住所(通訊地址)</label>
+          <label class="col-sm-12 col-form-label insure-label">寄送至客戶住所(通訊地址)</label>
           <div class="col-sm-12">
             <div class="insure-input-block">
               {{GetAccountData.CommunicationAddress.City}}
@@ -34,7 +34,7 @@
 
         <!-- 輸入新的電子信箱 -->
         <div class="form-group posr row" :class="{ 'form-group-checked': cbNewMail }" @click="OnCheck('cbNewMail')">
-          <label for="" class="col-sm-12 col-form-label insure-label">輸入新的電子信箱</label>
+          <label class="col-sm-12 col-form-label insure-label">輸入新的電子信箱</label>
           <div class="col-sm-12">
             <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="newMail" :disabled="!cbNewMail" v-show="cbNewMail">
           </div>
@@ -43,11 +43,11 @@
 
         <!-- 輸入新的寄送地址 -->
         <div class="form-group posr row" :class="{ 'form-group-checked': cbNewAddr }" @click="OnCheck('cbNewAddr')">
-          <label for="" class="col-sm-12 col-form-label insure-label">輸入新的寄送地址</label>
+          <label class="col-sm-12 col-form-label insure-label">輸入新的寄送地址</label>
           <div class="col-sm-12" v-show="cbNewAddr">
             <!-- 選擇城市 -->
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">選擇城市</label>
+              <label class="col-sm-12 col-form-label insure-label">選擇城市</label>
               <div class="col-sm-12 insure-select-align">
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="city3">
                   <option selected="selected" value="0">請選擇</option>
@@ -57,7 +57,7 @@
             </div>
             <!-- 選擇鄉鎮地區 -->
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
+              <label class="col-sm-12 col-form-label insure-label">選擇鄉鎮地區</label>
               <div class="col-sm-12 insure-select-align">
                 <select class="form-control data-input insure-select insure-input-edit" :disabled="!cbNewAddr" v-model="district3">
                   <option selected="selected" value="0">請選擇</option>
@@ -68,7 +68,7 @@
 
             <!-- 詳細地址 -->
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
+              <label class="col-sm-12 col-form-label insure-label">詳細地址</label>
               <div class="col-sm-12">
                 <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="road3" :disabled="!cbNewAddr" />
               </div>

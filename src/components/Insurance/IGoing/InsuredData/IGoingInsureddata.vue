@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">投保資訊</div>
           </div>
         </div>
@@ -14,13 +14,14 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetIGoingPostData.VerifyTypeList['2']}}</div>
-            <div class="form-control insure-input-block">{{GetIGoingPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block">{{GetIGoingPostData.VerifyTypeList['4']}}</div>
+            <div class="form-control insure-input-block" v-show="GetIGoingPostData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
+            <div class="form-control insure-input-block" v-show="GetIGoingPostData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
+            <div class="form-control insure-input-block" v-show="GetIGoingPostData.VerifyTypeList['3']">{{GetIGoingPostData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block" v-show="GetIGoingPostData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險單形式</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">保單形式</label>
           <div class="col-sm-12">
             <div class="insure-input-block">紙本保單</div>
           </div>
@@ -43,7 +44,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">投保內容</div>
           </div>
         </div>
@@ -66,8 +67,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
             <div class="form-control insure-input-block">{{GetIGoingPostData.po_issue_date_Name}} 午夜十二時起</div>
-            <div class="form-control insure-input-block">{{GetIGoingPostData.matured_date_Name}} 午夜十二時止，共 365</div>
-            <div class="form-control insure-input-block">天</div>
+            <div class="form-control insure-input-block">{{GetIGoingPostData.matured_date_Name}} 午夜十二時止，共 365 天</div>
           </div>
         </div>
       </form>
@@ -77,7 +77,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">保障內容</div>
           </div>
         </div>
@@ -100,7 +100,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
             <div class="insure-check-title">保單資訊</div>
           </div>
         </div>
@@ -156,21 +156,21 @@
             <div class="insure-input-block">{{GetIGoingPostData.address2}}</div>
           </div>
         </div>
+
+        <!-- 受益人一 -->
+        <BenfOneInsuredData :stateData="GetIGoingPostData"></BenfOneInsuredData>
+        <!-- 受益人二 -->
+        <BenfTwoInsuredData :stateData="GetIGoingPostData"></BenfTwoInsuredData>
+        <!-- 受益人三 -->
+        <BenfThreeInsuredData :stateData="GetIGoingPostData"></BenfThreeInsuredData>
       </form>
     </div>
-    
-    <!-- 受益人一 -->
-    <BenfOneInsuredData :stateData="GetIGoingPostData"></BenfOneInsuredData>
-    <!-- 受益人二 -->
-    <BenfTwoInsuredData :stateData="GetIGoingPostData"></BenfTwoInsuredData>
-    <!-- 受益人三 -->
-    <BenfThreeInsuredData :stateData="GetIGoingPostData"></BenfThreeInsuredData>
 
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/briefcase.png" alt=""></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
         </div>
@@ -238,7 +238,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">被保人其他告知事項</div>
           </div>
         </div>

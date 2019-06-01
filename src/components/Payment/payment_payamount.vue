@@ -87,47 +87,44 @@
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>信用卡卡號</label>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeOne' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeOne' @keyup="keyup('codeOne', 'codeTwo')">
+            <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"
+            id='codeOne' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeOne' @keyup="keyup('codeOne', 'codeTwo')">
           </div>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeTwo' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeTwo' @keyup="keyup('codeTwo', 'codeThree')">
+            <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='codeTwo' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeTwo' @keyup="keyup('codeTwo', 'codeThree')">
           </div>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeThree' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeThree' @keyup="keyup('codeThree', 'codeFour')">
+            <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='codeThree' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeThree' @keyup="keyup('codeThree', 'codeFour')">
           </div>
           <div class='col-sm-3' style="padding:0">
-            <input type='tel' pattern='\d{4}' id='codeFour' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
+            <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='codeFour' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='4' v-model='codeFour' @keyup="keyup('codeFour', 'cc_from_month')">
           </div>
         </div>
         <!-- 有效期限起:UpCash才會顯示 -->
         <div class='form-group row' v-show="planName === 'upcash'">
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限起</label>
           <div class='col-sm-5 insure-select-align row'>
-            <input type='tel' id='cc_from_month' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' v-model="sMonth" placeholder='月份'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_from_month' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' v-model="sMonth" placeholder='月份'>
           </div>
-          <div for="" class="col-sm-1 col-form-label insure-label">月</div>
           <div class='col-sm-5 insure-select-align row'>
-            <input type='tel' id='cc_from_year' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' v-model="sYear" placeholder='年份'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_from_year' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' v-model="sYear" placeholder='年份'>
           </div>
-          <div for="" class="col-sm-1 col-form-label insure-label">年</div>
         </div>
 
         <!-- 有效期限迄 -->
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限迄</label>
           <div class='col-sm-5 insure-select-align row'>
-            <input type='tel' id='cc_exp_month' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' placeholder='月份'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_exp_month' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' placeholder='請填寫'>
           </div>
-          <div for="" class="col-sm-1 col-form-label insure-label">月</div>
           <div class="col-sm-5 insure-select-align row">
-            <input type='tel' id='cc_exp_year' class='cc-num form-control insure-input otp-form-input font45px paymentColor' maxlength='2' placeholder='年份'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_exp_year' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' placeholder='請填寫'>
           </div>
-          <div for="" class="col-sm-1 col-form-label insure-label">年</div>
         </div>
         <div class='form-group row'>
           <label for='' class='col-sm-12 col-form-label insure-label'>卡片背後三碼</label>
           <div class='col-sm-12 insure-select-align'>
-            <input type='tel' id='cvv' pattern='\d{3}' class='cc-cvc form-control insure-input otp-form-input font45px paymentColor' maxlength='3' v-model='Cvv'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cvv' pattern='\d{3}' class='cc-cvc form-control insure-input font45px paymentColor' placeholder="請填寫" maxlength='3' v-model='Cvv'>
           </div>
         </div>
         <!-- 花旗銀行分期  -->
@@ -427,12 +424,11 @@ export default {
 
 <style scoped>
 .font45px {
-  font-size: 45px !important;
+  font-size: 35px !important;
 }
 
 .paymentColor {
   color: #A57248 !important;
-  border: 1px solid !important;
 }
 
 </style>

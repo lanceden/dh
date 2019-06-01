@@ -5,7 +5,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/insurance.png" alt>
+              <img src="../../../../../static/img/edit.png" alt>
             </div>
             <div class="insure-check-title">請填寫投保資料</div>
           </div>
@@ -22,8 +22,13 @@
         <div class="form-group row">
           <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">自{{insStartDateROC}}</div>
-            <div class="insure-input-block" id="matured_date">至{{insEndDateROC}}</div>
+            <div class="insure-input-block">{{insStartDateROC}}</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for class="col-sm-12 col-form-label insure-label insure-label">滿期日</label>
+          <div class="col-sm-12">
+            <div class="insure-input-block" id="matured_date">{{insEndDateROC}}</div>
           </div>
         </div>
       </form>
@@ -33,7 +38,7 @@
         <div class="top-title">
           <div class="insure-notice-box">
             <div class="insure-check">
-              <img src="../../../../../static/img/insurance.png" alt>
+              <img src="../../../../../static/img/edit.png" alt>
             </div>
             <div class="insure-check-title">請填寫投保額度</div>
           </div>
@@ -65,8 +70,8 @@ export default {
   },
   data() {
     return {
-      insStartDateROC: moment().format(`民國${parseInt(new Date().getFullYear()) - 1911}年MM月DD日`),
-      insEndDateROC: moment().format(`民國${parseInt(new Date().getFullYear()) + 1 - 1911}年MM月DD日`)
+      insStartDateROC: moment().format(`${parseInt(new Date().getFullYear()) - 1911}年MM月DD日`),
+      insEndDateROC: moment().format(`${parseInt(new Date().getFullYear()) + 1 - 1911}年MM月DD日`)
     }
   },
   created() {

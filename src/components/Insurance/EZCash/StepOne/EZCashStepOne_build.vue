@@ -1,9 +1,9 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepOneCustomer></StepOneCustomer>
+    <CustomerComponent :stateData="GetEZCashPostData"></CustomerComponent>
     <StepOneAbout></StepOneAbout>
-    <StepOneFatca></StepOneFatca>
+    <FatcaComponent :stateData="GetEZCashPostData"></FatcaComponent>
     <StepOneFooter></StepOneFooter>
   </div>
 </template>
@@ -11,10 +11,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import FunctionTypes from '../../../../store/modules/EZCash/Types/EZCashFunctionTypes'
-import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
-import StepOneCustomer from './EZCashStepOne_customer'
+import EZCashGetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
+import CustomerComponent from '../../Common/customer'
+import FatcaComponent from '../../Common/fatca'
 import StepOneAbout from './EZCashStepOne_about'
-import StepOneFatca from './EZCashStepOne_fatca'
 import StepOneFooter from './EZCashStepOne_footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
@@ -29,13 +29,14 @@ export default {
   computed: {
     ...mapGetters([
       'GetLoading',
-      GetterTypes.GetEZCashIsInit
+      EZCashGetterTypes.GetEZCashIsInit,
+      EZCashGetterTypes.GetEZCashPostData
     ])
   },
   components: {
-    StepOneCustomer,
+    CustomerComponent,
     StepOneAbout,
-    StepOneFatca,
+    FatcaComponent,
     StepOneFooter
   },
   methods: {

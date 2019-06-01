@@ -6,7 +6,7 @@
         <div class="top">
           <div class="top-title">
             <div class="insure-notice-box">
-              <div class="insure-check"><img src="../../../../static/img/mail.png" alt=""></div>
+              <div class="insure-check"><img src="../../../../static/img/human-outline-with-heart.png" alt=""></div>
               <div class="insure-check-title">緊急聯絡人資料</div>
             </div>
           </div>

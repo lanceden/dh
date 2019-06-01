@@ -4,7 +4,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">投保資訊</div>
           </div>
         </div>
@@ -14,9 +14,10 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
           <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetUpCashPostData.VerifyTypeList['2']}}</div>
-            <div class="form-control insure-input-block">{{GetUpCashPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block">{{GetUpCashPostData.VerifyTypeList['4']}}</div>
+            <div class="form-control insure-input-block" v-show="GetUpCashPostData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
+            <div class="form-control insure-input-block" v-show="GetUpCashPostData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
+            <div class="form-control insure-input-block" v-show="GetUpCashPostData.VerifyTypeList['3']">{{GetUpCashPostData.VerifyTypeList['3']}}</div>
+            <div class="form-control insure-input-block" v-show="GetUpCashPostData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
           </div>
         </div>
         <div class="form-group row">
@@ -44,7 +45,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">投保內容</div>
           </div>
         </div>
@@ -58,7 +59,7 @@
       <div class="form-group row">
         <label for="" class="col-sm-12 col-form-label insure-label">投保始期（保單生效日）</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">{{GetUpCashPostData.po_issue_date}}</div>
+          <div class="insure-input-block text-red-i"><span class="text-red-i">{{GetUpCashPostData.po_issue_date_Name}}</span></div>
         </div>
       </div>
       <div class="form-group row">
@@ -95,12 +96,7 @@
         <label for="" class="col-sm-12 col-form-label insure-label">年金給付方式</label>
         <div class="col-sm-12">
           <div class="insure-input-block">{{GetUpCashPostData.anny_frequence === '0' ? '一次給付' : '分期給付'}}</div>
-        </div>
-      </div>
-      <div class="form-group row" v-show="GetUpCashPostData.anny_frequence > 0">
-        <label for="" class="col-sm-12 col-form-label insure-label">保證期間</label>
-        <div class="col-sm-12">
-          <div class="insure-input-block">{{GetUpCashPostData.qpoop_19_year}} 年</div>
+          <div class="insure-input-block" v-show="GetUpCashPostData.anny_frequence > 0">保證期間: {{GetUpCashPostData.qpoop_19_year}} 年</div>
         </div>
       </div>
       <div class="form-group row">
@@ -127,7 +123,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
             <div class="insure-check-title">保單資訊</div>
           </div>
         </div>
@@ -182,21 +178,21 @@
             <div class="insure-input-block">{{GetUpCashPostData.city2}}{{GetUpCashPostData.district2}}{{GetUpCashPostData.road2}}</div>
           </div>
         </div>
+        <!-- 受益人一 -->
+        <BenfOneInsuredData :stateData="GetUpCashPostData"></BenfOneInsuredData>
+        <!-- 受益人二 -->
+        <BenfTwoInsuredData :stateData="GetUpCashPostData"></BenfTwoInsuredData>
+        <!-- 受益人三 -->
+        <BenfThreeInsuredData :stateData="GetUpCashPostData"></BenfThreeInsuredData>
       </form>
     </div>
-    <!-- 受益人一 -->
-    <BenfOneInsuredData :stateData="GetUpCashPostData"></BenfOneInsuredData>
-    <!-- 受益人二 -->
-    <BenfTwoInsuredData :stateData="GetUpCashPostData"></BenfTwoInsuredData>
-    <!-- 受益人三 -->
-    <BenfThreeInsuredData :stateData="GetUpCashPostData"></BenfThreeInsuredData>
-    
+
     <!-- 被保人投保資料告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/briefcase.png" alt=""></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
         </div>
@@ -225,7 +221,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/chat.png" alt=""></div>
             <div class="insure-check-title" style="text-align:left;">FATCA及CRS個人客戶自我聲明書 - 基本資料</div>
           </div>
         </div>
@@ -275,7 +271,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/bank.png" alt=""></div>
             <div class="insure-check-title">要保人匯款帳戶</div>
           </div>
         </div>
@@ -307,7 +303,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
             <div class="insure-check-title">被保人其他告知事項</div>
           </div>
         </div>
@@ -342,7 +338,7 @@
           </div>
         </div>
         <div class="col-sm-12">
-          <div class="insure-notice-text">
+          <div class="insure-tips-text first-blue">
             依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保。
           </div>
         </div>

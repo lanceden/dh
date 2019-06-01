@@ -31,7 +31,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/email.png" alt=""></div>
             <div class="insure-check-title">保單寄送資料</div>
           </div>
         </div>
@@ -52,7 +52,7 @@
       </div>
       <div class="border-bottom-line col-sm-12"></div>
       <!-- 輸入新的通訊地址 -->
-      <form class="form-bottom">
+      <form class="form-bottom" v-show="cbNewAddr1">
         <!-- 輸入新的通訊地址 -->
         <div v-show="cbNewAddr1">
           <!-- 選擇城市 -->
@@ -92,7 +92,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../static/img/email.png" alt=""></div>
             <div class="insure-check-title">保單寄送資料</div>
           </div>
         </div>

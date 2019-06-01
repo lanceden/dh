@@ -3,14 +3,14 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/briefcase.png" alt=""></div>
           <div class="insure-check-title">被保人投保資料告知事項</div>
         </div>
       </div>
     </div>
     <div class="border-bottom-line"></div>
     <div class="insure-text">
-      主管機關規定，要保人及被保人資料需為同一人，如需修改個人資料，請洽本公司客戶服務中心。
+      主管機關規定，要保人及被保人資料需為同一人。
     </div>
     <form class="form-bottom">
 

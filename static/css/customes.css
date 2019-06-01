@@ -35,7 +35,14 @@ a {
 a:hover, a:focus{
 	color: #b00303;
 }
-
+/*webkit瀏覽器專用*/
+::-webkit-input-placeholder { color: #A57248 !important; }
+/*Firefox 4-18瀏覽器專用*/
+input::-moz-placeholder { color: #A57248 !important; }
+/*Firefox 19+瀏覽器專用*/
+input::-moz-placeholder{color:#A57248 !important;}
+/*IE10瀏覽器專用*/
+:-ms-input-placeholder{color: #A57248 !important;}
 .vam{
 	vertical-align: middle!important;
 }
