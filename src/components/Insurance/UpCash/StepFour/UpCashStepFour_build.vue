@@ -16,6 +16,7 @@ import StepFourOtherNotify from './UpCashStepFour_othernotify'
 import VisitTime from '../../Common/visittime.vue'
 import StepFourSendType from './UpCashStepFour_sendtype'
 import StepFourFooter from './UpCashStepFour_footer'
+
 export default {
   computed: {
     ...mapGetters([

@@ -27,11 +27,11 @@ const actions = {
    * Travel 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  async [functionTypes.FuncTravelInit]({ commit }) {
+  async [functionTypes.FuncTravelInit]({ commit }, id) {
     await rootState.Http.axios.post(`${Url.TravelInit}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: {
-        ProcessId: ''
+        ProcessId: id
       }
     }).then(response => {
       commit(functionTypes.FuncTravelInit, { result: response.data })

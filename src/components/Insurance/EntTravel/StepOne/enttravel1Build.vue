@@ -26,12 +26,14 @@ import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntT
 import TravelOne from './enttravel1'
 import TravelOneInsuredData from '../../Common/travelOneInsuredData.vue'
 import TravelOneFooter from './enttravel1Footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
     if (!this.GetEntTravelIsInit) {
       // 初始化企業旅平險資料
-      this.FuncEntTravelInit()
+      this.FuncEntTravelInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'ENTTRAVEL'
     }
   },

@@ -28,11 +28,11 @@ const actions = {
    * EntTravel 投保流程初始化
    * @param {commit} param0 提交狀態
    */
-  [functionTypes.FuncEntTravelInit]({ commit }) {
+  [functionTypes.FuncEntTravelInit]({ commit }, id) {
     rootState.Http.axios.post(`${Url.EntTravelInit}`, {
       InsurerSourceID: APICODE,
       TravelRq_Order: {
-        ProcessId: ''
+        ProcessId: id
       }
     }).then(response => {
       commit(functionTypes.FuncEntTravelInit, { result: response.data })

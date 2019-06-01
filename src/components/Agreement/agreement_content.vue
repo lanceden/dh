@@ -40,7 +40,9 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      this.FuncGetProvision(this.provisionname)
+      if (this.provisionname !== null || this.provisionname !== '' || this.provisionname !== undefined) {
+        this.FuncGetProvision(this.provisionname)
+      }
     }, 1000)
   },
   props: [

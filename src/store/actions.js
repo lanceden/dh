@@ -76,7 +76,7 @@ export default {
   /**
    * 取回職業類別名稱
    * @param {commit} param0 提交狀態
-   * @param {string} bankCode 銀行代碼
+   * @param {string} para 銀行代碼
    */
   async FuncGetOccupation({ commit }, para) {
     await rootState.Http.axios.post(`${Url.Occupation}`, para).then(response => {
@@ -117,7 +117,6 @@ export default {
    * 取回區域返回Promise
    */
   FuncGetDistrictDataPromise(context, cityName) {
-    console.log('cityName', cityName)
     return new Promise((resolve, reject) => {
       rootState.Http.axios.post(`${Url.District}?cityName=${cityName}`).then(response => {
         resolve(response)
@@ -223,7 +222,7 @@ export default {
   /**
    * 取回同意書
    * @param {當前Vuex狀態} commit VuexStoreState.commit
-   * @param {string} para 請求參數
+   * @param {string} provisionName 同意書名稱
    */
   FuncGetProvision({ commit }, provisionName) {
     setTimeout(rootState.Http.axios.post(`${Url.Provision}?provisionName=${provisionName}`).then(response => {
@@ -233,7 +232,7 @@ export default {
   /**
    * 驗證是否為花旗銀行卡
    * @param {當前Vuex狀態} commit VuexStoreState.commit
-   * @param {string} para 請求參數
+   * @param {string} cardNo 信用卡前六碼
    */
   FuncIsCityBank({ commit }, cardNo) {
     rootState.Http.axios.post(`${Url.IsCityBank}?cardNo=${cardNo}`).then(response => {
@@ -243,7 +242,7 @@ export default {
   /**
    * 匯入子女資料
    * @param {當前Vuex狀態} commit VuexStoreState.commit
-   * @param {string} para 請求參數
+   * @param {string} planCode 險種代碼
    */
   FuncImportChildren({ commit }, { planCode }) {
     rootState.Http.axios.post(`${Url.ImportChildren}`).then(response => {

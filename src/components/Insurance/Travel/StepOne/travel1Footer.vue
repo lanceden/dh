@@ -77,6 +77,7 @@ export default {
         toggleModalShow(errorMsg, '貼心提醒您')
         return
       }
+      this.FuncTravelIsInit(true)
       // 前往被保人填寫資料頁
       this.FuncTravelInsuredData({
         para: this.GetTravelPostData,

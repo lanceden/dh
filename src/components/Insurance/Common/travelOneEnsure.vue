@@ -71,22 +71,25 @@ export default {
     // 初始化旅平險資料
     if (this.stateData.length === 0) return
     let target = parseInt(this.stateData.TargetType)
-    switch (target) {
-      case 0:
-        this.OnEnsure('own')
-        break
-      case 1:
-        this.OnEnsure('child')
-        break
-      case 2:
-        this.OnEnsure('both')
-        break
+    this.init(target)
+  },
+  watch: {
+    targetType(newValue) {
+      if (this.processId !== null && this.processId !== '') {
+        this.init(newValue)
+      }
     }
   },
   computed: {
     ...mapGetters([
       TravelGetterTypes.GetTravelIsInit
     ]),
+    processId() {
+      return this.stateData.ProcessId
+    },
+    targetType() {
+      return this.stateData.TargetType
+    },
     // 子女數量
     childrenNo: {
       get() {
@@ -193,13 +196,26 @@ export default {
     }
   },
   methods: {
+    init(target) {
+      switch (target) {
+        case 0:
+          this.OnEnsure('own')
+          break
+        case 1:
+          this.OnEnsure('child')
+          break
+        case 2:
+          this.OnEnsure('both')
+          break
+      }
+    },
     /**
      * 設置請確認保障對象
      * @param {string} target 本人:own 子女:child 本人與子女:both
      */
     OnEnsure(target) {
       this.ensure.target = target
-      if (this.childrenNo === 0 || target !== 'own') {
+      if (this.childrenNo === 0 && target !== 'own') {
         this.childrenNo = 1
       }
       // 如果已經進入下一步, 回來時要判斷是否有改變保障對象, 要重新發送請求到APi

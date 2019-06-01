@@ -26,12 +26,14 @@ import GetterTypes from '../../../../store/modules/Travel/Types/TravelGetterType
 import TravelOne from './travel1'
 import TravelOneInsuredData from '../../Common/travelOneInsuredData.vue'
 import TravelOneFooter from './travel1Footer'
+import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 
 export default {
   created() {
+    this.$store.state.UNFINISHID = getQueryStringParameterByKey('id')
       // 初始化旅平險資料
     if (!this.GetTravelIsInit) {
-      this.FuncTravelInit()
+      this.FuncTravelInit(this.$store.state.UNFINISHID)
       this.$store.state.PLANNAME = 'TRAVEL'
     }
   },

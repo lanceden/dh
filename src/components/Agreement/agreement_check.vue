@@ -5,7 +5,9 @@
         <div class="insure-notice-box">
           <div class="insure-check"><img src="../../../static/img/chat.png" alt=""></div>
           <div class="insure-check-title">請閱讀同意書</div>
-          <span class="insure-check-title red-right-title" @click="toggleAll()">{{contentButtonTitle}}<img class="arrow" src="../../../static/img/arrowdown.png"></span>
+          <span class="insure-check-title red-right-title" @click="toggleAll()">{{contentButtonTitle}}
+            <img class="arrow" :src="arrow">
+          </span>
         </div>
       </div>
     </div>
@@ -26,6 +28,7 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      arrow: '../../../static/img/arrow_blue_down.png',
       provisionTitle: '',
       contentButtonTitle: '全部展開'
     }
@@ -46,7 +49,13 @@ export default {
   methods: {
     toggleAll() {
       this.$store.state.AGREEMENTTOGGLE = !this.$store.state.AGREEMENTTOGGLE
-      this.contentButtonTitle = this.$store.state.AGREEMENTTOGGLE ? '全部收起' : '全部展開'
+      if(this.$store.state.AGREEMENTTOGGLE) {
+        this.arrow = '../../../static/img/arrow_blue_up.png'
+        this.contentButtonTitle = '全部收起'
+      } else {
+        this.arrow = '../../../static/img/arrow_blue_down.png'
+        this.contentButtonTitle = '全部展開'
+      }
     }
   }
 }

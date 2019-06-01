@@ -80,7 +80,12 @@ export default {
         toggleModalShow(errorMsg, '貼心提醒您')
         return
       }
+      if (this.$store.state.ENTERPRISECODE === '') {
+        toggleModalShow('請填寫企業客戶專區代碼', '貼心提醒您')
+        return
+      }
       // 設置旅平險已初始化
+      this.FuncEntTravelIsInit(true)
       // 前往被保人填寫資料頁
       this.FuncEntTravelInsuredData({
         para: this.GetEntTravelPostData,

@@ -1,16 +1,17 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepThreeContact></StepThreeContact>
-    <StepThreeAccount></StepThreeAccount>
+    <ContactComponent :stateData="GetEZCashPostData"></ContactComponent>
+    <MoneyTransfer :stateData="GetEZCashPostData"></MoneyTransfer>
     <StepThreeFooter></StepThreeFooter>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import StepThreeAccount from './EZCashStepThree_account'
-import StepThreeContact from './EZCashStepThree_contact'
+import EZCashGetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes'
+import MoneyTransfer from '../../Common/moneyTransfer.vue'
+import ContactComponent from '../../Common/contact.vue'
 import StepThreeFooter from './EZCashStepThree_footer'
 export default {
   created() {
@@ -18,12 +19,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'GetLoading'
+      'GetLoading',
+      EZCashGetterTypes.GetEZCashPostData
     ])
   },
   components: {
-    StepThreeAccount,
-    StepThreeContact,
+    MoneyTransfer,
+    ContactComponent,
     StepThreeFooter
   }
 }
