@@ -9,7 +9,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
-import TravelTwoEstimateData from '../../Common/travelTwoEstimateData.vue'
+import TravelTwoEstimateData from '../../Common/travel/travelTwoEstimateData.vue'
 import TravelTwoFooter from './travel2Footer'
 
 export default {

@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/cointitle.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../static/img/cointitle.png"></div>
           <div class="insure-check-title">年金約定</div>
         </div>
       </div>
@@ -11,11 +11,11 @@
     <div class="border-bottom-line"></div>
     <form class="form-bottom">
       <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">給付開始日：保險年齡</label>
+        <label class="col-sm-12 col-form-label insure-label insure-label">給付開始日：保險年齡</label>
         <div class="col-sm-12 insure-select-align">
           <select class="form-control data-input insure-select insure-input-edit" v-model="fst_anny_pay_age">
-            <option selected="selected" :value="fst_anny_pay_age">{{fst_anny_pay_age}}</option>
-            <option v-for="n in 86 - fst_anny_pay_age" :key="n" :value="fst_anny_pay_age + n">{{fst_anny_pay_age + n}}</option>
+            <option selected="selected" :value="annyAge">{{annyAge}}</option>
+            <option v-for="n in 86 - annyAge" :key="n" :value="annyAge + n">{{annyAge + n}}</option>
           </select>
         </div>
       </div>
@@ -29,25 +29,25 @@
       </div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">給付方式</label>
+          <label class="col-sm-12 col-form-label insure-label">給付方式</label>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="top col-sm-12" @click="OnEnsure('one')">
             <div class="insure-notice-box">
-              <div class="insure-check"><img :src="ensure.anny_frequenceOne" alt=""></div>
+              <div class="insure-check"><img :src="ensure.anny_frequenceOne"></div>
               <div class="insure-check-content">一次給付</div>
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="top col-sm-12" @click="OnEnsure('more')">
             <div class="insure-notice-box">
-              <div class="insure-check"><img :src="ensure.anny_frequenceMore" alt=""></div>
+              <div class="insure-check"><img :src="ensure.anny_frequenceMore"></div>
               <div class="insure-check-content">分期給付</div>
             </div>
           </div>
         </div>
       </form>
       <div class="form-group row" v-show="parseInt(stateData.anny_frequence) !== 0 & stateData.anny_frequence !== ''">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">分期給付方式</label>
+        <label class="col-sm-12 col-form-label insure-label insure-label">分期給付方式</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="anny_frequence_computed">
             <option selected="selected" value="0">未選擇</option>
@@ -59,7 +59,7 @@
         </div>
       </div>
       <div class="form-group row" v-show="parseInt(stateData.anny_frequence) !== 0 & stateData.anny_frequence !== ''">
-        <label for="" class="col-sm-12 col-form-label insure-label insure-label">保證期間</label>
+        <label class="col-sm-12 col-form-label insure-label insure-label">保證期間</label>
         <div class="col-sm-12 insure-select-align">
           <select id="" class="form-control data-input insure-select insure-input-edit" v-model="qpoop_19_year">
             <option selected="selected" value="0">未選擇</option>
@@ -93,7 +93,8 @@ export default {
       ensure: {
         anny_frequenceOne: '../../../../static/img/oval.png',
         anny_frequenceMore: '../../../../static/img/oval.png'
-      }
+      },
+      annyAge: 0
     }
   },
   created() {
@@ -106,7 +107,7 @@ export default {
     // 給付方式: 0一次給付 1分期給付
     anny_frequence_computed: {
       get() {
-        if(this.stateData.anny_frequence === '' || this.stateData.anny_frequence === null) {
+        if (this.stateData.anny_frequence === '' || this.stateData.anny_frequence === null) {
           this.stateData.anny_frequence = 0
         }
         return this.stateData.anny_frequence | 0
@@ -119,13 +120,12 @@ export default {
     // 給付開始日：保險年齡
     fst_anny_pay_age: {
       get() {
-        this.stateData.fst_anny_pay_age = parseInt(this.stateData.Age) + 6
-        return parseInt(this.stateData.Age) + 6
+        this.annyAge = parseInt(this.stateData.Age) + 6
+        return this.stateData.fst_anny_pay_age > 0 ? this.stateData.fst_anny_pay_age : this.annyAge
       },
       set(value) {
         this.stateData.mode_prem = 0
         this.stateData.fst_anny_pay_age = value
-        console.log(this.stateData.fst_anny_pay_age)
       }
     },
     // 保證期間

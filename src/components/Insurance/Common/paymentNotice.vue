@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">

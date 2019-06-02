@@ -52,7 +52,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import TravelGetterTypes from '../../../store/modules/Travel/Types/TravelGetterTypes.js'
+import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
+
 export default {
   props: [
     'stateData'

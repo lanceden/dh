@@ -1,7 +1,7 @@
 <template>
   <div>
     <loading v-show="GetLoading" />
-    <StepTwoAnnuity></StepTwoAnnuity>
+    <AnnuityDeal :stateData="GetUpCashPostData"></AnnuityDeal>
     <AnnuityNotify :stateData="GetUpCashPostData"></AnnuityNotify>
     <div class="footer">
       <div class="footer-content">
@@ -17,16 +17,16 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import StepTwoAnnuity from './UpCashStepTwo_annuity'
-import AnnuityNotify from '../../Common/annuityNotify.vue'
-import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes'
-import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
 import { valEstimateData } from '../../../../utils/validateEstimateData'
 import { toggleModalShow } from '../../../../utils/toggleModal'
+import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes'
+import FunctionTypes from '../../../../store/modules/Upcash/Types/UpCashFunctionTypes.js'
+import AnnuityDeal from '../../Common/annuityDeal'
+import AnnuityNotify from '../../Common/annuityNotify.vue'
 
 export default {
   components: {
-    StepTwoAnnuity,
+    AnnuityDeal,
     AnnuityNotify
   },
   computed: {

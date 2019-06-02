@@ -24,7 +24,7 @@ import { mapGetters, mapActions } from 'vuex'
 import EntTravelFunctionTypes from '../../../../store/modules/EntTravel/Types/EntTravelFunctionTypes.js'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
 import TravelOne from './enttravel1'
-import TravelOneInsuredData from '../../Common/travelOneInsuredData.vue'
+import TravelOneInsuredData from '../../Common/travel/travelOneInsuredData.vue'
 import TravelOneFooter from './enttravel1Footer'
 import { getQueryStringParameterByKey } from '../../../../utils/getQueryStringParameterByKey'
 

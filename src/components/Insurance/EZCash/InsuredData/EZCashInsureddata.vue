@@ -177,10 +177,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData.vue'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData.vue'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData.vue'
+import EZCashGetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes.js'
+import BenfOneInsuredData from '../../Common/insuredData/benfOneInsuredData.vue'
+import BenfTwoInsuredData from '../../Common/insuredData/benfTwoInsuredData.vue'
+import BenfThreeInsuredData from '../../Common/insuredData/benfThreeInsuredData.vue'
 import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
 import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
 import InsuredDataMoneyTransfer from '../../Common/insuredData/insuredDataMoneyTransfer'
@@ -205,7 +205,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetEZCashPostData
+      EZCashGetterTypes.GetEZCashPostData
     ]),
     // 首期繳費管道
     init_method: {

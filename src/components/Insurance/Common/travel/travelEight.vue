@@ -5,7 +5,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/list.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/list.png" alt=""></div>
             <div class="insure-check-title">保單寄送方式</div>
           </div>
         </div>
@@ -31,7 +31,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/email.png"></div>
+            <div class="insure-check"><img src="../../../../../static/img/email.png"></div>
             <div class="insure-check-title">保單寄送資料</div>
           </div>
         </div>
@@ -91,7 +91,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../static/img/email.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/email.png" alt=""></div>
             <div class="insure-check-title">保單寄送資料</div>
           </div>
         </div>

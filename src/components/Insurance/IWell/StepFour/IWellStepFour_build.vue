@@ -3,7 +3,7 @@
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
     <VisitTime :stateData="GetIWellPostData"></VisitTime>
-    <StepFourSendType></StepFourSendType>
+    <ElecFormComponent :stateData="GetIWellPostData"></ElecFormComponent>
     <StepFourFooter></StepFourFooter>
   </div>
 </template>
@@ -13,7 +13,7 @@ import { mapGetters } from 'vuex'
 import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
 import StepFourOtherNotify from './IWellStepFour_othernotify'
 import VisitTime from '../../Common/visittime'
-import StepFourSendType from './IWellStepFour_sendtype'
+import ElecFormComponent from '../../Common/elecform'
 import StepFourFooter from './IWellStepFour_footer'
 
 export default {
@@ -26,7 +26,7 @@ export default {
   components: {
     StepFourOtherNotify,
     VisitTime,
-    StepFourSendType,
+    ElecFormComponent,
     StepFourFooter
   }
 }

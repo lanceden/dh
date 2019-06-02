@@ -123,7 +123,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">請問您是否已投保其他商業實支實付型傷害醫療保險?</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">否</div>
+            <div class="insure-input-block">{{GetICanPostData.QusAns[1].Answar ? '是' : '否'}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -196,9 +196,9 @@
 import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import ICanGetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import BenfOneInsuredData from '../../Common/insuredData/benfOneInsuredData'
+import BenfTwoInsuredData from '../../Common/insuredData/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/insuredData/benfThreeInsuredData'
 import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
 import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
 import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'

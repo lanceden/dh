@@ -54,7 +54,7 @@
       <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">給付方式之比例</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="number" class="form-control insure-input-block" v-model="relation_ben_death_seq_percent3">
+          <input type="number" class="form-control insure-input-block" placeholder="請填寫" v-model="relation_ben_death_seq_percent3">
         </div>
       </div>
       <div class="form-group row" v-show="relation_ben_death3 !== '8'">
@@ -76,7 +76,7 @@
       <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control insure-input insure-input-edit" v-model="benf_phone3" />
+          <input type="text" class="form-control insure-input insure-input-edit" placeholder="請填寫" v-model="benf_phone3" />
         </div>
       </div>
       <div class="form-group row" v-show="relation_ben_death3 !== '8'">
@@ -100,7 +100,7 @@
       <div class="form-group row" v-show="relation_ben_death3 !== '8'">
         <label for="" class="col-sm-12 col-form-label insure-label">詳細地址</label>
         <div class="col-sm-12 insure-select-align">
-          <input type="text" class="form-control data-input insure-input-edit" v-model="BenfAddRemain3" />
+          <input type="text" class="form-control data-input insure-input-edit" placeholder="請填寫" v-model="BenfAddRemain3" />
         </div>
       </div>
     </form>

@@ -99,7 +99,7 @@
         <BenfThreeInsuredData :stateData="GetIWellPostData"></BenfThreeInsuredData>
       </form>
     </div>
-
+    <!-- 被保人投保資料告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -129,7 +129,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">請問您是否已投保其他商業實支實付型傷害醫療保險?</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.QusAns[0].Answar ? '是' : '否'}}</div>
+            <div class="insure-input-block">{{GetIWellPostData.QusAns[1].Answar ? '是' : '否'}}</div>
           </div>
         </div>
         <div class="form-group row">
@@ -146,8 +146,7 @@
           <div class="border-bottom-line col-sm-12"></div>
           <div class="insure-text insure-text-explan">
             <ul class="insure-text-explancontent">
-              <li class="decimal first">(高血壓症(指收縮壓140mmHg或舒張壓90mmHg以上)、狹心症、心肌梗塞、先天性心臟病、主動脈血管瘤。
-              </li>
+              <li class="decimal first">(高血壓症(指收縮壓140mmHg或舒張壓90mmHg以上)、狹心症、心肌梗塞、先天性心臟病、主動脈血管瘤。</li>
               <li class="decimal">腦中風(腦中風、腦梗塞)、腦瘤、癲癇、智能障礙(外表無法明顯判斷者)、精神病、巴金森氏症。</li>
               <li class="decimal">癌症(惡性腫瘤)、肝硬化、尿毒、血友病。</li>
               <li class="decimal">糖尿病。</li>
@@ -172,12 +171,12 @@
               <li class="decimal">啞。</li>
               <li class="decimal">咀嚼、吞嚥或言語機能障害。</li>
               <li class="decimal">四肢(含手指、足趾)缺損或畸形。</li>
-
             </ul>
           </div>
         </div>
       </form>
     </div>
+    <!-- 被保人其他告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -204,9 +203,9 @@
 import $ from 'jquery'
 import { mapGetters } from 'vuex'
 import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterTypes.js'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import BenfOneInsuredData from '../../Common/insuredData/benfOneInsuredData'
+import BenfTwoInsuredData from '../../Common/insuredData/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/insuredData/benfThreeInsuredData'
 import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
 import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
 import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'

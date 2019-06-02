@@ -159,10 +159,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData.vue'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData.vue'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData.vue'
-import GetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import UpCashGetterTypes from '../../../../store/modules/Upcash/Types/UpCashGetterTypes.js'
+import BenfOneInsuredData from '../../Common/insuredData/benfOneInsuredData.vue'
+import BenfTwoInsuredData from '../../Common/insuredData/benfTwoInsuredData.vue'
+import BenfThreeInsuredData from '../../Common/insuredData/benfThreeInsuredData.vue'
 import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'
 import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
 import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
@@ -184,7 +184,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      GetterTypes.GetUpCashPostData
+      UpCashGetterTypes.GetUpCashPostData
     ]),
     // 首期繳費管道
     init_method: {

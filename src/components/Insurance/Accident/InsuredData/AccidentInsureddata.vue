@@ -171,10 +171,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import GetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData.vue'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import AccidentGetterTypes from '../../../../store/modules/Accident/Types/AccidentGetterTypes.js'
+import BenfOneInsuredData from '../../Common/insuredData/benfOneInsuredData.vue'
+import BenfTwoInsuredData from '../../Common/insuredData/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/insuredData/benfThreeInsuredData'
 import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
 import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
 import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'
@@ -183,7 +183,7 @@ import InsuredDataInfo from '../../Common/insuredData/insuredDataInfo'
 export default {
   computed: {
     ...mapGetters([
-      GetterTypes.GetAccidentPostData
+      AccidentGetterTypes.GetAccidentPostData
     ])
   },
   components: {

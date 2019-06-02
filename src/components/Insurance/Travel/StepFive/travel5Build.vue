@@ -11,7 +11,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import TravelFive from '../../Common/travelFive.vue'
+import TravelFive from '../../Common/travel/travelFive.vue'
 import TravelFiveFooter from './travel5Footer'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes'
 

@@ -23,8 +23,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
-import TravelThreePremiumsOwn from '../../Common/travelThreePremiumsOwn.vue'
-import TravelThreePremiumsChild from '../../Common/travelThreePremiumsChild.vue'
+import TravelThreePremiumsOwn from '../../Common/travel/travelThreePremiumsOwn.vue'
+import TravelThreePremiumsChild from '../../Common/travel/travelThreePremiumsChild.vue'
 import TravelThreeFooter from './enttravel3Footer'
 
 export default {

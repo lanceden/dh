@@ -4,7 +4,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/briefcase.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/briefcase.png" alt=""></div>
           <div class="insure-check-title">被保險人資料</div>
         </div>
       </div>
@@ -80,16 +80,16 @@ export default {
       dbo: 0,
       isImportChild: false,
       ensure: {
-        isHasAuthRepYes: '../../../../static/img/oval.png',
-        isHasAuthRepNo: '../../../../static/img/oval.png'
+        isHasAuthRepYes: '../../../../../static/img/oval.png',
+        isHasAuthRepNo: '../../../../../static/img/oval.png'
       }
     }
   },
   watch: {
     HasAuthRep(newValue, oldValue) {
       if (newValue === null) {
-        this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
-        this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
+        this.ensure.isHasAuthRepYes = '../../../../../static/img/oval.png'
+        this.ensure.isHasAuthRepNo = '../../../../../static/img/oval.png'
       }
     }
   },
@@ -166,18 +166,18 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'yes':
-          this.ensure.isHasAuthRepYes = '../../../../static/img/oval-ed.png'
-          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepYes = '../../../../../static/img/oval-ed.png'
+          this.ensure.isHasAuthRepNo = '../../../../../static/img/oval.png'
           this.stateData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
           break
         case 'no':
-          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
-          this.ensure.isHasAuthRepNo = '../../../../static/img/oval-ed.png'
+          this.ensure.isHasAuthRepYes = '../../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepNo = '../../../../../static/img/oval-ed.png'
           this.stateData.PolicyData.InsuredInfo[this.index].HasAuthRep = target === 'yes'
           break
         default:
-          this.ensure.isHasAuthRepYes = '../../../../static/img/oval.png'
-          this.ensure.isHasAuthRepNo = '../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepYes = '../../../../../static/img/oval.png'
+          this.ensure.isHasAuthRepNo = '../../../../../static/img/oval.png'
           break
       }
     },

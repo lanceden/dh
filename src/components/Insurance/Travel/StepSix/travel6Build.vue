@@ -13,7 +13,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes.js'
-import TravelSix from '../../Common/travelSix.vue'
+import TravelSix from '../../Common/travel/travelSix.vue'
 import TravelSixFooter from './travel6Footer'
 
 export default {

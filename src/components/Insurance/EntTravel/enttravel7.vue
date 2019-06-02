@@ -5,7 +5,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EntTravelGetterTypes from '../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
-import TravelSeven from '../Common/travelSeven.vue'
+import TravelSeven from '../Common/travel/travelSeven.vue'
 
 export default {
   components: {

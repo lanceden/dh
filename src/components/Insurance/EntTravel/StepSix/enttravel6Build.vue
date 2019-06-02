@@ -13,7 +13,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes'
-import TravelSix from '../../Common/travelSix.vue'
+import TravelSix from '../../Common/travel/travelSix.vue'
 import TravelSixFooter from './enttravel6Footer'
 
 export default {

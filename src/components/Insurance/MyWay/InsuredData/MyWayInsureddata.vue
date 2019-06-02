@@ -212,9 +212,9 @@
 <script>
 import { mapGetters } from 'vuex'
 import MyWayGetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterTypes.js'
-import BenfOneInsuredData from '../../Common/benfOneInsuredData'
-import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
-import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import BenfOneInsuredData from '../../Common/insuredData/benfOneInsuredData'
+import BenfTwoInsuredData from '../../Common/insuredData/benfTwoInsuredData'
+import BenfThreeInsuredData from '../../Common/insuredData/benfThreeInsuredData'
 import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
 import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
 import InsuredDataMoneyTransfer from '../../Common/insuredData/insuredDataMoneyTransfer'

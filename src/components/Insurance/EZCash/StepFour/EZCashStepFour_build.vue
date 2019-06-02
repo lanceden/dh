@@ -4,7 +4,7 @@
     <StepFourOtherNotify></StepFourOtherNotify>
     <!-- 電訪時間 -->
     <VisitTime :stateData="GetEZCashPostData"></VisitTime>
-    <StepFourSendType></StepFourSendType>
+    <CommunityAddressComponent :stateData="GetEZCashPostData" :useType="send"></CommunityAddressComponent>
     <StepFourFooter></StepFourFooter>
   </div>
 </template>
@@ -14,10 +14,15 @@ import { mapGetters } from 'vuex'
 import EZCashGetterTypes from '../../../../store/modules/EZCash/Types/EZCashGetterTypes'
 import StepFourOtherNotify from './EZCashStepFour_othernotify'
 import VisitTime from '../../Common/visittime.vue'
-import StepFourSendType from './EZCashStepFour_sendtype'
+import CommunityAddressComponent from '../../Common/communityAddress.vue'
 import StepFourFooter from './EZCashStepFour_footer'
 
 export default {
+  data() {
+    return {
+      send: 'send'
+    }
+  },
   computed: {
     ...mapGetters([
       'GetLoading',
@@ -27,7 +32,7 @@ export default {
   components: {
     StepFourOtherNotify,
     VisitTime,
-    StepFourSendType,
+    CommunityAddressComponent,
     StepFourFooter
   }
 }

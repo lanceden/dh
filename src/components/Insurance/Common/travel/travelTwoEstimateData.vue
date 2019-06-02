@@ -3,7 +3,7 @@
     <div class="top">
       <div class="top-title">
         <div class="insure-notice-box">
-          <div class="insure-check"><img src="../../../../static/img/edit.png" alt=""></div>
+          <div class="insure-check"><img src="../../../../../static/img/edit.png" alt=""></div>
           <div class="insure-check-title">投保資料</div>
         </div>
       </div>
@@ -50,7 +50,7 @@
     </div>
     <div class="col-sm-12">
       <div class="insure-tips-text ">
-        <img src="../../../../static/img/insure-link.png" alt="">
+        <img src="../../../../../static/img/insure-link.png" alt="">
         <a class="insure-tips-text first-blue" href="https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&n=C1B19EF0ACDD3C91&sms=867F5398A49F758A" target="_blank">申根地區國查詢</a>
       </div>
     </div>
@@ -99,8 +99,8 @@ export default {
       insStartDate: '',
       insTime: '',
       ensure: {
-        in: '../../../../static/img/oval.png',
-        out: '../../../../static/img/oval.png'
+        in: '../../../../../static/img/oval.png',
+        out: '../../../../../static/img/oval.png'
       }
     }
   },
@@ -166,15 +166,15 @@ export default {
     OnEnsure(target) {
       switch (target) {
         case 'in': // 國內
-          this.ensure.in = '../../../../static/img/oval-ed.png'
-          this.ensure.out = '../../../../static/img/oval.png'
+          this.ensure.in = '../../../../../static/img/oval-ed.png'
+          this.ensure.out = '../../../../../static/img/oval.png'
           this.stateData.PolicyData.TravelType = 1
           this.TravelCountry = 1
           this.stateData.PolicyData.EtcCountry = ''
           break
         case 'out': // 國外
-          this.ensure.in = '../../../../static/img/oval.png'
-          this.ensure.out = '../../../../static/img/oval-ed.png'
+          this.ensure.in = '../../../../../static/img/oval.png'
+          this.ensure.out = '../../../../../static/img/oval-ed.png'
           this.stateData.PolicyData.TravelType = 2
           this.TravelCountry = 0
           break

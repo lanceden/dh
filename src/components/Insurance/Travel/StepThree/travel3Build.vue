@@ -23,8 +23,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import TravelGetterTypes from '../../../../store/modules/Travel/Types/TravelGetterTypes'
-import TravelThreePremiumsOwn from '../../Common/travelThreePremiumsOwn'
-import TravelThreePremiumsChild from '../../Common/travelThreePremiumsChild'
+import TravelThreePremiumsOwn from '../../Common/travel/travelThreePremiumsOwn'
+import TravelThreePremiumsChild from '../../Common/travel/travelThreePremiumsChild'
 import TravelThreeFooter from './travel3Footer'
 
 export default {

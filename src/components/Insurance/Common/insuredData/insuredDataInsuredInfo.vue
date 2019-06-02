@@ -22,7 +22,8 @@
       <div class="form-group row">
         <label class="col-sm-12 col-form-label insure-label">保單形式</label>
         <div class="col-sm-12">
-          <div class="insure-input-block">紙本保單</div>
+          <div class="insure-input-block" v-if="isElecForm">電子保單</div>
+          <div class="insure-input-block" v-else>紙本保單</div>
         </div>
       </div>
       <div class="form-group row">
@@ -32,7 +33,7 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-12 col-form-label insure-label" v-if="stateData.plan_code === 'UC099' || stateData.plan_code === 'UCA99' || stateData.plan_code === 'EZA99' ">第一期應繳保險費</label>
+        <label class="col-sm-12 col-form-label insure-label" v-if="isAnnuity">第一期應繳保險費</label>
         <label class="col-sm-12 col-form-label insure-label" v-else>總保險費</label>
         <div class="col-sm-12">
           <div class="insure-input-block">NT$ {{stateData.mode_prem|decimalComma}} </div>
@@ -46,7 +47,24 @@
 export default {
   props: [
     'stateData'
-  ]
+  ],
+  computed: {
+    // 是否為電子保單
+    isElecForm() {
+      let planCode = this.stateData.plan_code
+      switch (planCode) {
+        case '20530':
+        case '20540':
+          return true
+        default:
+          return false
+      }
+    },
+    // 是否為年金險
+    isAnnuity() {
+      return this.stateData.plan_code === 'UC099' || this.stateData.plan_code === 'UCA99' || this.stateData.plan_code === 'EZA99'
+    }
+  }
 }
 
 </script>

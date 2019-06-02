@@ -14,20 +14,20 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
+          <label class="col-sm-12 col-form-label insure-label insure-label">主險種名稱</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{GetUpCashPostData.ins_type_name}}</div>
           </div>
         </div>
         <div class="form-group row">
-          <label for class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
+          <label class="col-sm-12 col-form-label insure-label insure-label">投保始期</label>
           <div class="col-sm-12">
             <div class="insure-input-block">自{{poIssueDate}}</div>
           </div>
         </div>
         <form class="form-bottom">
           <div class="form-group row">
-            <label for="" class="col-sm-12 col-form-label insure-label">是否躉繳（一次繳清）</label>
+            <label class="col-sm-12 col-form-label insure-label">是否躉繳（一次繳清）</label>
             <div class="border-bottom-line col-sm-12"></div>
             <div class="top col-sm-12" @click="OnOneTimePayment(true)">
               <div class="insure-notice-box">
@@ -47,18 +47,18 @@
 
         <form class="form-bottom">
           <div class="form-group row">
-            <label for="" class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
+            <label class="col-sm-12 col-form-label insure-label">首期繳費管道</label>
             <div class="border-bottom-line col-sm-12"></div>
             <div class="top col-sm-12" @click="OnInitMethod('B')">
               <div class="insure-notice-box">
-                <div class="insure-check"><img :src="ensure.initmethodebill" alt=""></div>
+                <div class="insure-check"><img :src="ensure.initmethodebill"></div>
                 <div class="insure-check-content">活期性帳戶(電子化授權/全國繳費網)</div>
               </div>
             </div>
             <div class="border-bottom-line col-sm-12"></div>
             <div class="top col-sm-12" @click="OnInitMethod('C')">
               <div class="insure-notice-box">
-                <div class="insure-check"><img :src="ensure.initmethodcreditcard" alt=""></div>
+                <div class="insure-check"><img :src="ensure.initmethodcreditcard"></div>
                 <div class="insure-check-content">信用卡</div>
               </div>
             </div>
@@ -70,11 +70,11 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="" class="col-sm-12 col-form-label insure-label">第一期保險費</label>
+            <label class="col-sm-12 col-form-label insure-label">第一期保險費</label>
             <div class="col-sm-11">
               <input type="number" class="form-control insure-input insure-input-edit col-sm-12" v-model="face_amtComputed" placeholder="請輸入" />
             </div>
-            <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
+            <label class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
           </div>
           <div class="col-sm-12">
             <div class="insure-tips-text text-red-i" v-show="GetUpCashPostData.IsOneTimePayment">最低保費限10,000元</div>
@@ -89,7 +89,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/cointitle.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/cointitle.png"></div>
             <div class="insure-check-title">約定續期繳費方式</div>
           </div>
         </div>
@@ -97,24 +97,24 @@
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
+          <label class="col-sm-12 col-form-label insure-label">約定續期繳法別</label>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="top col-sm-12" @click="Onmodx_99_ind(1)">
             <div class="insure-notice-box">
-              <div class="insure-check"><img :src="ensure.modx_99_indtrue" alt=""></div>
+              <div class="insure-check"><img :src="ensure.modx_99_indtrue"></div>
               <div class="insure-check-content">不定期繳</div>
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="top col-sm-12" @click="Onmodx_99_ind(2)">
             <div class="insure-notice-box">
-              <div class="insure-check"><img :src="ensure.modx_99_indfalse" alt=""></div>
+              <div class="insure-check"><img :src="ensure.modx_99_indfalse"></div>
               <div class="insure-check-content">分期繳付</div>
             </div>
           </div>
         </div>
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'Y' && !GetUpCashPostData.IsOneTimePayment)">
-          <label for="" class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
+          <label class="col-sm-12 col-form-label insure-label">續期繳費管道</label>
           <div class="col-sm-12">
             <div class="form-control insure-input-block">全國新光人壽行政中心繳費</div>
           </div>
@@ -134,11 +134,11 @@
 
         <!--Start 分期繳付 -->
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
-          <label for class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
+          <label class="col-sm-12 col-form-label insure-label insure-label">續期保險費每期</label>
           <div class="col-sm-11">
             <input type="text" class="form-control insure-input insure-input-edit col-sm-12" v-model="qpoop_25_prem" placeholder="請填寫">
           </div>
-          <label for="" class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
+          <label class="col-sm-1 col-form-label insure-label insure-label-day">元</label>
         </div>
         <div class="col-sm-12" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
           <div class="insure-tips-text first-blue text-red-i">
@@ -146,7 +146,7 @@
           </div>
         </div>
         <div class="form-group row" v-show="(GetUpCashPostData.modx_99_ind === 'N' && !GetUpCashPostData.IsOneTimePayment)">
-          <label for class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
+          <label class="col-sm-12 col-form-label insure-label insure-label">繳別</label>
           <div class="col-sm-12 insure-select-align">
             <select id class="form-control data-input insure-select insure-input-edit" v-model="qpoop_25_modx">
               <option selected="selected" value="0">未選擇</option>
@@ -157,7 +157,7 @@
             </select>
           </div>
           <div class="border-bottom-line col-sm-12" v-show="qpoop_25_modx === '1'"></div>
-          <label for="" class="col-sm-12 col-form-label insure-label text-with-select" v-show="qpoop_25_modx === '1'">選擇月繳續期保險費, 首次請繳付第一期與第二期保險費, 合計{{this.faceAmount * 2|decimalComma}}元</label>
+          <label class="col-sm-12 col-form-label insure-label text-with-select" v-show="qpoop_25_modx === '1'">選擇月繳續期保險費, 首次請繳付第一期與第二期保險費, 合計{{this.faceAmount * 2|decimalComma}}元</label>
         </div>
       </form>
     </div>
@@ -166,7 +166,7 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/cointitle.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/cointitle.png"></div>
             <div class="insure-check-title">續期收費管道</div>
           </div>
         </div>
@@ -175,18 +175,18 @@
 
       <form class="form-bottom">
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">繳費方式</label>
+          <label class="col-sm-12 col-form-label insure-label">繳費方式</label>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="top col-sm-12" @click="OnMethod('C')" v-show="init_method === 'C'">
             <div class="insure-notice-box">
-              <div class="insure-check"><img :src="ensure.methodcredit" alt=""></div>
+              <div class="insure-check"><img :src="ensure.methodcredit"></div>
               <div class="insure-check-content">信用卡</div>
             </div>
           </div>
           <div class="border-bottom-line col-sm-12"></div>
           <div class="top col-sm-12" @click="OnMethod('B')">
             <div class="insure-notice-box">
-              <div class="insure-check"><img :src="ensure.methodtrans" alt=""></div>
+              <div class="insure-check"><img :src="ensure.methodtrans"></div>
               <div class="insure-check-content">銀行或郵局帳戶轉帳</div>
             </div>
           </div>
@@ -198,36 +198,36 @@
 
         <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B') && GetEachAccount !== null" @click="OnAccount('isEdda')">
           <div class="form-group posr row">
-            <label for="" class="col-sm-12 col-form-label" :class="{ 'form-group-checked': isEdda }">已約定帳戶</label>
+            <label class="col-sm-12 col-form-label" :class="{ 'form-group-checked': isEdda }">已約定帳戶</label>
             <div class="checkbox checkbox-oneline" :class="{ checked: isEdda }"></div>
           </div>
           <div v-show="isEdda">
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
+              <label class="col-sm-12 col-form-label insure-label">委託人姓名</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input-block">{{GetUpCashPostData.client_names}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
+              <label class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input-block">{{GetUpCashPostData.client_id}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
+              <label class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.BankCode}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
+              <label class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.BankName}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
+              <label class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input-block">{{GetEachAccount === null ? '' : GetEachAccount.AccountNo}}</div>
               </div>
@@ -237,24 +237,24 @@
 
         <div v-show="GetUpCashPostData.modx_99_ind === 'N' && (GetUpCashPostData.method === 'B')" @click="OnAccount('isNotEdda')">
           <div class="form-group posr row">
-            <label for="" class="col-sm-12 col-form-label" :class="{ 'form-group-checked': !isEdda }">非約定帳戶</label>
+            <label class="col-sm-12 col-form-label" :class="{ 'form-group-checked': !isEdda }">非約定帳戶</label>
             <div class="checkbox checkbox-oneline" :class="{ checked: isNotEdda }"></div>
           </div>
           <div v-show="isNotEdda">
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">委託人姓名</label>
+              <label class="col-sm-12 col-form-label insure-label">委託人姓名</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input insure-input-edit">{{GetUpCashPostData.client_names}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
+              <label class="col-sm-12 col-form-label insure-label">委託人身分證字號</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input insure-input-edit">{{GetUpCashPostData.client_id}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
+              <label class="col-sm-12 col-form-label insure-label">金融機構代碼</label>
               <div class="col-sm-12">
                 <select id="" class="form-control data-input insure-select insure-input-edit" v-model="bank_code_1">
                   <option selected="selected" value="0">請選擇</option>
@@ -263,13 +263,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
+              <label class="col-sm-12 col-form-label insure-label">金融機構中文名稱</label>
               <div class="col-sm-12">
                 <div class="form-control insure-input insure-input-edit">{{branchName.split('-')[1]}}</div>
               </div>
             </div>
             <div class="form-group row">
-              <label for="" class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
+              <label class="col-sm-12 col-form-label insure-label">銀行帳戶</label>
               <div class="col-sm-12">
                 <input type="number" min="0" class="form-control insure-input insure-input-edit" placeholder="請輸入銀行帳號" v-model="account">
               </div>

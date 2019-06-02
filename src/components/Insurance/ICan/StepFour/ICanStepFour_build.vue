@@ -3,7 +3,7 @@
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
     <VisitTime :stateData="GetICanPostData"></VisitTime>
-    <StepFourSendType></StepFourSendType>
+    <ElecFormComponent :stateData="GetICanPostData"></ElecFormComponent>
     <StepFourFooter></StepFourFooter>
   </div>
 </template>
@@ -13,7 +13,7 @@ import { mapGetters } from 'vuex'
 import ICanGetterTypes from '../../../../store/modules/ICan/Types/ICanGetterTypes.js'
 import StepFourOtherNotify from './ICanStepFour_othernotify'
 import VisitTime from '../../Common/visittime'
-import StepFourSendType from './ICanStepFour_sendtype'
+import ElecFormComponent from '../../Common/elecform.vue'
 import StepFourFooter from './ICanStepFour_footer'
 
 export default {
@@ -26,7 +26,7 @@ export default {
   components: {
     StepFourOtherNotify,
     VisitTime,
-    StepFourSendType,
+    ElecFormComponent,
     StepFourFooter
   }
 }

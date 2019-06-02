@@ -3,7 +3,7 @@
     <loading v-show="GetLoading" />
     <StepFourOtherNotify></StepFourOtherNotify>
     <VisitTime :stateData="GetHealthPostData"></VisitTime>
-    <StepFourSendType></StepFourSendType>
+    <CommunityAddressComponent :stateData="GetHealthPostData" :useType="send"></CommunityAddressComponent>
     <StepFourFooter></StepFourFooter>
   </div>
 </template>
@@ -13,9 +13,14 @@ import { mapGetters } from 'vuex'
 import HealthGetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
 import StepFourOtherNotify from './HealthStepFour_othernotify'
 import VisitTime from '../../Common/visittime'
-import StepFourSendType from './HealthStepFour_sendtype'
+import CommunityAddressComponent from '../../Common/communityAddress'
 import StepFourFooter from './HealthStepFour_footer'
 export default {
+  data() {
+    return {
+      send: 'send'
+    }
+  },
   computed: {
     ...mapGetters([
       'GetLoading',
@@ -25,7 +30,7 @@ export default {
   components: {
     StepFourOtherNotify,
     VisitTime,
-    StepFourSendType,
+    CommunityAddressComponent,
     StepFourFooter
   }
 }

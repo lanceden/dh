@@ -56,7 +56,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EntTravelGetterTypes from '../../../../store/modules/EntTravel/Types/EntTravelGetterTypes.js'
-import TravelOneEnsure from '../../Common/travelOneEnsure.vue'
+import TravelOneEnsure from '../../Common/travel/travelOneEnsure.vue'
 
 export default {
   components: {
