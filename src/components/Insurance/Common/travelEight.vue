@@ -190,6 +190,9 @@ export default {
     // 紙本保單-輸入新的客戶住所(通訊地址)-縣市
     MailingAddrCity: {
       get() {
+        if (this.stateData.PolicyData.MailingAddr === null || this.stateData.PolicyData.MailingAddr === '') {
+          return '0'
+        }
         return this.stateData.PolicyData.MailingAddr.City || 0
       },
       set(value) {
@@ -199,6 +202,9 @@ export default {
     // 紙本保單-輸入新的客戶住所(通訊地址)-區域
     MailingAddrDistrict: {
       get() {
+        if (this.stateData.PolicyData.MailingAddr === null || this.stateData.PolicyData.MailingAddr === '') {
+          return '0'
+        }
         return this.stateData.PolicyData.MailingAddr.District || '0'
       },
       set(value) {
@@ -208,6 +214,9 @@ export default {
     // 紙本保單-輸入新的客戶住所(通訊地址)-路
     MailingAddrStreet: {
       get() {
+        if (this.stateData.PolicyData.MailingAddr === null || this.stateData.PolicyData.MailingAddr === '') {
+          return ''
+        }
         return this.stateData.PolicyData.MailingAddr.Street || ''
       },
       set(value) {

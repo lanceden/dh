@@ -104,10 +104,10 @@
         <div class='form-group row' v-show="planName === 'upcash'">
           <label for='' class='col-sm-12 col-form-label insure-label'>有效期限起</label>
           <div class='col-sm-5 insure-select-align row'>
-            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_from_month' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' v-model="sMonth" placeholder='月份'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_from_month' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' v-model="sMonth" placeholder='請填寫'>
           </div>
           <div class='col-sm-5 insure-select-align row'>
-            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_from_year' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' v-model="sYear" placeholder='年份'>
+            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" id='cc_from_year' class='cc-num form-control insure-input font45px paymentColor' maxlength='2' v-model="sYear"  placeholder='請填寫'>
           </div>
         </div>
 

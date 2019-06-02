@@ -1,49 +1,12 @@
 <template>
   <div>
+    <InsuredDataInsuredInfo :stateData="GetHealthPostData"></InsuredDataInsuredInfo>
+    <!-- 投保內容 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
-            <div class="insure-check-title">投保資訊</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetHealthPostData.VerifyTypeList['2']}}</div>
-            <div class="form-control insure-input-block">{{GetHealthPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block">{{GetHealthPostData.VerifyTypeList['4']}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險單形式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">紙本保單</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.city1}}{{GetHealthPostData.district1}}{{GetHealthPostData.road1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">總保險費</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">NT$ {{GetHealthPostData.mode_prem|decimalComma}} </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png"></div>
             <div class="insure-check-title">投保內容</div>
           </div>
         </div>
@@ -65,9 +28,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.po_issue_date_Name}} 午夜十二時起</div>
-            <div class="insure-input-block">至{{GetHealthPostData.matured_date_Name}} 午夜十二時止，共 365</div>
-            <div class="insure-input-block">天</div>
+            <div class="insure-input-block">{{GetHealthPostData.po_issue_date_Name}}午夜十二時起</div>
+            <div class="insure-input-block">至{{GetHealthPostData.matured_date_Name}}午夜十二時止，共365天</div>
           </div>
         </div>
       </form>
@@ -77,8 +39,8 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
-            <div class="insure-check-title">保障內容</div>
+            <div class="insure-check"><img src="../../../../../static/img/insurance.png"></div>
+            <div class="insure-check-title">保單資訊</div>
           </div>
         </div>
       </div>
@@ -95,69 +57,21 @@
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/checkmark.png"></div>
             <div class="insure-check-title">保單資訊</div>
           </div>
         </div>
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.client_names}}(要被保人須為同一人)</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.Birthday_Full}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.Age}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.client_id}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.client_rate_sex === '1' ? '男' : '女'}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetHealthPostData.phone_area}}{{GetHealthPostData.phone_main}}{{GetHealthPostData.phone_ext}}</div>
-            <div class="insure-input-block">手機：{{GetHealthPostData.phone_mobile}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.address1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.address2}}</div>
-          </div>
-        </div>
+        <InsuredDataInfo :stateData="GetHealthPostData"></InsuredDataInfo>
       </form>
     </div>
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/checkmark.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/briefcase.png"></div>
             <div class="insure-check-title">被保人投保資料告知事項</div>
           </div>
         </div>
@@ -240,7 +154,6 @@
               <li class="decimal">糖尿病、類風濕性關節炎、肢端肥大症、腦下垂體機能亢進或低 下、甲狀腺或副甲狀腺功能亢進或低下。</li>
               <li class="decimal">紅斑性狼瘡、膠原症。</li>
               <li class="decimal">愛滋病或愛滋病帶原。</li>
-
             </ul>
           </div>
         </div>
@@ -256,7 +169,6 @@
             <div class="insure-input-block">否</div>
           </div>
         </div>
-
 
         <div class="form-group row">
           <label for="" class="col-sm-12 col-form-label insure-label insure-label">投保健康險者請繼續填寫本項</label>
@@ -274,44 +186,14 @@
         </div>
       </form>
     </div>
-
+    <!-- 要保人匯款帳戶 -->
+    <InsuredDataMoneyTransfer :stateData="GetHealthPostData"></InsuredDataMoneyTransfer>
+    <!-- 被保人其他告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
           <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
-            <div class="insure-check-title">要保人匯款帳戶</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.Applicant_BankCode}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.Applicant_BranchName}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetHealthPostData.Applicant_Account}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/insurance.png" alt=""></div>
+            <div class="insure-check"><img src="../../../../../static/img/notepad.png"></div>
             <div class="insure-check-title">被保人其他告知事項</div>
           </div>
         </div>
@@ -321,62 +203,8 @@
         依主管機關規定，要保人及被保人資料需為同一人。
       </div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 1">未婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 2">已婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 3">離婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 4">喪偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 5">分居</div>
-            <div class="insure-input-block" v-show="parseInt(GetHealthPostData.owner_marriage) === 6">其他</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">身高</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetHealthPostData.insured_height}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公分</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">體重</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetHealthPostData.insured_weight}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公斤</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetHealthPostData.insured_income}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetHealthPostData.insured_fam_income}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">
-              <span v-show="parseInt(GetHealthPostData.visit_time1) === 1">早上9點~12點</span>
-              <span v-show="parseInt(GetHealthPostData.visit_time1) === 1 && parseInt(GetHealthPostData.visit_time2) === 1">,</span>
-              <span v-show="parseInt(GetHealthPostData.visit_time2) === 1">下午1點～6點</span>
-              <span v-show="parseInt(GetHealthPostData.visit_time2) === 1 && parseInt(GetHealthPostData.visit_time3) === 1">,</span>
-              <span v-show="parseInt(GetHealthPostData.visit_time3) === 1">晚上6點~9點</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-tips-text first-blue">
-            依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保。
-          </div>
-        </div>
+        <InsuredDataOtherNotify :stateData="GetHealthPostData"></InsuredDataOtherNotify>
+        <InsuredDataPhone :stateData="GetHealthPostData"></InsuredDataPhone>
       </form>
     </div>
   </div>
@@ -386,12 +214,24 @@
 <script>
 import { mapGetters } from 'vuex'
 import HealthGetterTypes from '../../../../store/modules/Health/Types/HealthGetterTypes.js'
+import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
+import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
+import InsuredDataMoneyTransfer from '../../Common/insuredData/insuredDataMoneyTransfer'
+import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'
+import InsuredDataInfo from '../../Common/insuredData/insuredDataInfo'
 
 export default {
   computed: {
     ...mapGetters([
       HealthGetterTypes.GetHealthPostData
     ])
+  },
+  components: {
+    InsuredDataOtherNotify,
+    InsuredDataPhone,
+    InsuredDataInsuredInfo,
+    InsuredDataInfo,
+    InsuredDataMoneyTransfer
   }
 }
 

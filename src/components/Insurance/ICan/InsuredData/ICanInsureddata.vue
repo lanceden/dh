@@ -1,52 +1,7 @@
 <template>
   <div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
-            <div class="insure-check-title">投保資訊</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block" v-show="GetICanPostData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
-            <div class="form-control insure-input-block" v-show="GetICanPostData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
-            <div class="form-control insure-input-block" v-show="GetICanPostData.VerifyTypeList['3']">{{GetICanPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block" v-show="GetICanPostData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保單形式</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">電子保單</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetICanPostData.email}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">要保人手機號碼</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetICanPostData.phone_mobile}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">總保險費</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">NT$ {{GetICanPostData.mode_prem|decimalComma}} 元</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
+    <InsuredDataInsuredInfo :stateData="GetICanPostData"></InsuredDataInsuredInfo>
+    <!-- 投保內容 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -74,7 +29,7 @@
           <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{GetICanPostData.po_issue_date_Name}}午夜十二時起</div>
-            <div class="insure-input-block">至{{GetICanPostData.matured_date_Name}}午夜十二時止，共 {{GetICanPostData.TrvDays}} 天</div>
+            <div class="insure-input-block">至{{GetICanPostData.matured_date_Name}}午夜十二時止，共 {{GetICanPostData.TrvDays}}天</div>
           </div>
         </div>
       </form>
@@ -128,54 +83,7 @@
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.client_names}} (要被保人須為同一人)</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.Birthday_Full}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.Age}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.client_id}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.client_rate_sex === '1' ? '男' : '女'}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetICanPostData.phone_area}}{{GetICanPostData.phone_main}}{{GetICanPostData.phone_ext}}<br>手機：{{GetICanPostData.phone_mobile}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.address1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.address2}}</div>
-          </div>
-        </div>
+        <InsuredDataInfo :stateData="GetICanPostData"></InsuredDataInfo>
         <!-- 受益人一 -->
         <BenfOneInsuredData :stateData="GetICanPostData"></BenfOneInsuredData>
         <!-- 受益人二 -->
@@ -232,8 +140,7 @@
           <div class="border-bottom-line col-sm-12"></div>
           <div class="insure-text insure-text-explan">
             <ul class="insure-text-explancontent">
-              <li class="decimal first">(高血壓症(指收縮壓140mmHg或舒張壓90mmHg以上)、狹心症、心肌梗塞、先天性心臟病、主動脈血管瘤。
-              </li>
+              <li class="decimal first">(高血壓症(指收縮壓140mmHg或舒張壓90mmHg以上)、狹心症、心肌梗塞、先天性心臟病、主動脈血管瘤。</li>
               <li class="decimal">腦中風(腦中風、腦梗塞)、腦瘤、癲癇、智能障礙(外表無法明顯判斷者)、精神病、巴金森氏症。</li>
               <li class="decimal">癌症(惡性腫瘤)、肝硬化、尿毒、血友病。</li>
               <li class="decimal">糖尿病。</li>
@@ -258,7 +165,6 @@
               <li class="decimal">啞。</li>
               <li class="decimal">咀嚼、吞嚥或言語機能障害。</li>
               <li class="decimal">四肢(含手指、足趾)缺損或畸形。</li>
-
             </ul>
           </div>
         </div>
@@ -278,46 +184,8 @@
         依主管機關規定，要保人及被保人資料需為同一人。
       </div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetICanPostData.owner_marriage) === 1">未婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetICanPostData.owner_marriage) === 2">已婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetICanPostData.owner_marriage) === 3">離婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetICanPostData.owner_marriage) === 4">喪偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetICanPostData.owner_marriage) === 5">分居</div>
-            <div class="insure-input-block" v-show="parseInt(GetICanPostData.owner_marriage) === 6">其他</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.insured_income}}萬元</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetICanPostData.insured_fam_income}}萬元</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">
-              <span v-show="parseInt(GetICanPostData.visit_time1) === 1">早上9點~12點</span>
-              <span v-show="parseInt(GetICanPostData.visit_time1) === 1 && parseInt(GetICanPostData.visit_time2) === 1">,</span>
-              <span v-show="parseInt(GetICanPostData.visit_time2) === 1">下午1點～6點</span>
-              <span v-show="parseInt(GetICanPostData.visit_time2) === 1 && parseInt(GetICanPostData.visit_time3) === 1">,</span>
-              <span v-show="parseInt(GetICanPostData.visit_time3) === 1">晚上6點~9點</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保。
-          </div>
-        </div>
+        <InsuredDataOtherNotify :stateData="GetICanPostData"></InsuredDataOtherNotify>
+        <InsuredDataPhone :stateData="GetICanPostData"></InsuredDataPhone>
       </form>
     </div>
   </div>
@@ -331,6 +199,10 @@ import ICanGetterTypes from '../../../../store/modules/ICan/Types/ICanGetterType
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
+import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
+import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'
+import InsuredDataInfo from '../../Common/insuredData/insuredDataInfo'
 
 export default {
   mounted() {
@@ -339,7 +211,11 @@ export default {
   components: {
     BenfOneInsuredData,
     BenfTwoInsuredData,
-    BenfThreeInsuredData
+    BenfThreeInsuredData,
+    InsuredDataInsuredInfo,
+    InsuredDataInfo,
+    InsuredDataOtherNotify,
+    InsuredDataPhone
   },
   computed: {
     ...mapGetters([

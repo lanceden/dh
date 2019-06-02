@@ -1,46 +1,7 @@
 <template>
   <div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
-            <div class="insure-check-title">投保資訊</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block" v-show="GetMyWayPostData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
-            <div class="form-control insure-input-block" v-show="GetMyWayPostData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
-            <div class="form-control insure-input-block" v-show="GetMyWayPostData.VerifyTypeList['3']">{{GetMyWayPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block" v-show="GetMyWayPostData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險單形式</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">紙本保單</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保險單寄送地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.city1}}{{GetMyWayPostData.district1}}{{GetMyWayPostData.road1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">總保險費</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">NT$ {{GetMyWayPostData.mode_prem|decimalComma}} </div>
-          </div>
-        </div>
-      </form>
-    </div>
-
+    <InsuredDataInsuredInfo :stateData="GetMyWayPostData"></InsuredDataInsuredInfo>
+    <!-- 投保內容 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -59,7 +20,7 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保額</label>
+          <label for="" class="col-sm-12 col-form-label insure-label">主約保額</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{GetMyWayPostData.face_amt}} 萬元</div>
           </div>
@@ -117,55 +78,7 @@
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.client_names}}(要被保人須為同一人)</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.Birthday_Full}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.Age}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.client_id}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.client_rate_sex === '1' ? '男' : '女'}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetMyWayPostData.phone_area}}{{GetMyWayPostData.phone_main}}{{GetMyWayPostData.phone_ext}}</div>
-            <div class="insure-input-block">手機：{{GetMyWayPostData.phone_mobile}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.address1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.address2}}</div>
-          </div>
-        </div>
+        <InsuredDataInfo :stateData="GetMyWayPostData"></InsuredDataInfo>
         <!-- 受益人一 -->
         <BenfOneInsuredData :stateData="GetMyWayPostData"></BenfOneInsuredData>
         <!-- 受益人二 -->
@@ -243,8 +156,7 @@
           <div class="border-bottom-line col-sm-12"></div>
           <div class="insure-text insure-text-explan">
             <ul class="insure-text-explancontent">
-              <li class="decimal first">高血壓症（指收縮壓140mmHg或舒張壓90mmHg以上）（如 有請於「詳細填告欄」填明實際之血壓）、狹心症、心肌梗塞、 心肌肥厚、心內膜炎、風濕性心臟病、先天性心臟病、主動脈血 管瘤、心律不整（指竇性心跳過速、心房撲動、心房纖維性顫動 、期外收縮、陣發性心跳過速、心室纖維性顫動、心臟傳導阻斷 ）。
-              </li>
+              <li class="decimal first">高血壓症（指收縮壓140mmHg或舒張壓90mmHg以上）（如 有請於「詳細填告欄」填明實際之血壓）、狹心症、心肌梗塞、 心肌肥厚、心內膜炎、風濕性心臟病、先天性心臟病、主動脈血 管瘤、心律不整（指竇性心跳過速、心房撲動、心房纖維性顫動 、期外收縮、陣發性心跳過速、心室纖維性顫動、心臟傳導阻斷 ）。</li>
               <li class="decimal">腦中風（腦出血、腦梗塞、腦栓塞）、腦瘤、腦動脈血管瘤、腦 動脈硬化症、癲癇、肌肉萎縮症、重症肌無力、巴金森氏症、精 神病。</li>
               <li class="decimal">肺氣腫、支氣管擴張症、塵肺症、肺結核。</li>
               <li class="decimal">肝炎、肝內結石、肝硬化、肝功能異常（GOT、GPT值檢測值 有異常情形者）。</li>
@@ -255,7 +167,6 @@
               <li class="decimal">糖尿病、類風濕性關節炎、肢端肥大症、腦下垂體機能亢進或低 下、甲狀腺或副甲狀腺功能亢進或低下。</li>
               <li class="decimal">紅斑性狼瘡、膠原症。</li>
               <li class="decimal">愛滋病或愛滋病帶原。</li>
-
             </ul>
           </div>
         </div>
@@ -273,39 +184,9 @@
         </div>
       </form>
     </div>
-
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/bank.png" alt=""></div>
-            <div class="insure-check-title">要保人匯款帳戶</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構代碼</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.Applicant_BankCode}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">金融機構中文名稱</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.Applicant_BranchName}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">銀行帳號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetMyWayPostData.Applicant_Account}}</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
+    <!-- 要保人匯款帳戶 -->
+    <InsuredDataMoneyTransfer :stateData="GetMyWayPostData"></InsuredDataMoneyTransfer>
+    <!-- 被保人其他告知事項 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -320,62 +201,8 @@
         依主管機關規定，要保人及被保人資料需為同一人。
       </div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetMyWayPostData.owner_marriage) === 1">未婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetMyWayPostData.owner_marriage) === 2">已婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetMyWayPostData.owner_marriage) === 3">離婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetMyWayPostData.owner_marriage) === 4">喪偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetMyWayPostData.owner_marriage) === 5">分居</div>
-            <div class="insure-input-block" v-show="parseInt(GetMyWayPostData.owner_marriage) === 6">其他</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">身高</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetMyWayPostData.insured_height}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公分</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">體重</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetMyWayPostData.insured_weight}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">公斤</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetMyWayPostData.insured_income}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
-          <div class="col-sm-9">
-            <div class="insure-input-block">{{GetMyWayPostData.insured_fam_income}}</div>
-          </div>
-          <label for="" class="col-sm-3 col-form-label insure-label insure-label-day">萬元</label>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">
-              <span v-show="parseInt(GetMyWayPostData.visit_time1) === 1">早上9點~12點</span>
-              <span v-show="parseInt(GetMyWayPostData.visit_time1) === 1 && parseInt(GetMyWayPostData.visit_time2) === 1">,</span>
-              <span v-show="parseInt(GetMyWayPostData.visit_time2) === 1">下午1點～6點</span>
-              <span v-show="parseInt(GetMyWayPostData.visit_time2) === 1 && parseInt(GetMyWayPostData.visit_time3) === 1">,</span>
-              <span v-show="parseInt(GetMyWayPostData.visit_time3) === 1">晚上6點~9點</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-tips-text first-blue">
-            依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保。
-          </div>
-        </div>
+        <InsuredDataOtherNotify :stateData="GetMyWayPostData"></InsuredDataOtherNotify>
+        <InsuredDataPhone :stateData="GetMyWayPostData"></InsuredDataPhone>
       </form>
     </div>
   </div>
@@ -388,6 +215,11 @@ import MyWayGetterTypes from '../../../../store/modules/MyWay/Types/MyWayGetterT
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
+import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
+import InsuredDataMoneyTransfer from '../../Common/insuredData/insuredDataMoneyTransfer'
+import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'
+import InsuredDataInfo from '../../Common/insuredData/insuredDataInfo'
 
 export default {
   computed: {
@@ -398,7 +230,12 @@ export default {
   components: {
     BenfOneInsuredData,
     BenfTwoInsuredData,
-    BenfThreeInsuredData
+    BenfThreeInsuredData,
+    InsuredDataOtherNotify,
+    InsuredDataPhone,
+    InsuredDataInsuredInfo,
+    InsuredDataInfo,
+    InsuredDataMoneyTransfer
   }
 }
 

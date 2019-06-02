@@ -1,52 +1,7 @@
 <template>
   <div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../../../../static/img/notepad.png" alt=""></div>
-            <div class="insure-check-title">投保資訊</div>
-          </div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">驗證身份方式</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
-            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
-            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['3']">{{GetIWellPostData.VerifyTypeList['3']}}</div>
-            <div class="form-control insure-input-block" v-show="GetIWellPostData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">保單形式</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">電子保單</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">要保人電子郵件</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetIWellPostData.email}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">要保人手機號碼</label>
-          <div class="col-sm-12">
-            <div class="form-control insure-input-block">{{GetIWellPostData.phone_mobile}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">總保費</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">NT$ {{GetIWellPostData.mode_prem|decimalComma}} 元</div>
-          </div>
-        </div>
-      </form>
-    </div>
-
+    <InsuredDataInsuredInfo :stateData="GetIWellPostData"></InsuredDataInsuredInfo>
+    <!-- 投保內容 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -74,12 +29,12 @@
           <label for="" class="col-sm-12 col-form-label insure-label">投保始期(保單生效日)</label>
           <div class="col-sm-12">
             <div class="insure-input-block">{{GetIWellPostData.po_issue_date_Name}}午夜十二時起</div>
-            <div class="insure-input-block">至{{GetIWellPostData.matured_date_Name}}午夜十二時止，共 {{GetIWellPostData.TrvDays}} 天</div>
+            <div class="insure-input-block">至{{GetIWellPostData.matured_date_Name}}午夜十二時止，共 {{GetIWellPostData.TrvDays}}天</div>
           </div>
         </div>
       </form>
     </div>
-
+    <!-- 保障內容 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -123,6 +78,7 @@
         </div>
       </form>
     </div>
+    <!-- 保單資訊 -->
     <div class="bg-radius">
       <div class="top">
         <div class="top-title">
@@ -134,54 +90,7 @@
       </div>
       <div class="border-bottom-line"></div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">被保險人</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.client_names}} (要被保人須為同一人)</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">出生日期</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.Birthday_Full}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">投保年齡</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.Age}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">身分證字號</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.client_id}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">性別</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.client_rate_sex === '1' ? '男' : '女'}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">聯絡電話</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">電話：{{GetIWellPostData.phone_area}}{{GetIWellPostData.phone_main}}{{GetIWellPostData.phone_ext}}<br>手機：{{GetIWellPostData.phone_mobile}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">通訊地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.address1}}</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">戶籍地址</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.address2}}</div>
-          </div>
-        </div>
+        <InsuredDataInfo :stateData="GetIWellPostData"></InsuredDataInfo>
         <!-- 受益人一 -->
         <BenfOneInsuredData :stateData="GetIWellPostData"></BenfOneInsuredData>
         <!-- 受益人二 -->
@@ -283,46 +192,8 @@
         依主管機關規定，要保人及被保人資料需為同一人。
       </div>
       <form class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">婚姻狀況</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block" v-show="parseInt(GetIWellPostData.owner_marriage) === 1">未婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetIWellPostData.owner_marriage) === 2">已婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetIWellPostData.owner_marriage) === 3">離婚</div>
-            <div class="insure-input-block" v-show="parseInt(GetIWellPostData.owner_marriage) === 4">喪偶</div>
-            <div class="insure-input-block" v-show="parseInt(GetIWellPostData.owner_marriage) === 5">分居</div>
-            <div class="insure-input-block" v-show="parseInt(GetIWellPostData.owner_marriage) === 6">其他</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">年收入</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.insured_income}}萬元</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">家庭收入</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">{{GetIWellPostData.insured_fam_income}}萬元</div>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label insure-label">電訪時間</label>
-          <div class="col-sm-12">
-            <div class="insure-input-block">
-              <span v-show="parseInt(GetIWellPostData.visit_time1) === 1">早上9點~12點</span>
-              <span v-show="parseInt(GetIWellPostData.visit_time1) === 1 && parseInt(GetIWellPostData.visit_time2) === 1">,</span>
-              <span v-show="parseInt(GetIWellPostData.visit_time2) === 1">下午1點～6點</span>
-              <span v-show="parseInt(GetIWellPostData.visit_time2) === 1 && parseInt(GetIWellPostData.visit_time3) === 1">,</span>
-              <span v-show="parseInt(GetIWellPostData.visit_time3) === 1">晚上6點~9點</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-12">
-          <div class="insure-notice-text">
-            依主管機關「保險業辦理電子商務應注意事項」本公司將抽樣電訪確認投保。
-          </div>
-        </div>
+        <InsuredDataOtherNotify :stateData="GetIWellPostData"></InsuredDataOtherNotify>
+        <InsuredDataPhone :stateData="GetIWellPostData"></InsuredDataPhone>
       </form>
     </div>
   </div>
@@ -336,6 +207,10 @@ import IWellGetterTypes from '../../../../store/modules/IWell/Types/IWellGetterT
 import BenfOneInsuredData from '../../Common/benfOneInsuredData'
 import BenfTwoInsuredData from '../../Common/benfTwoInsuredData'
 import BenfThreeInsuredData from '../../Common/benfThreeInsuredData'
+import InsuredDataOtherNotify from '../../Common/insuredData/insuredDataOtherNotify.vue'
+import InsuredDataPhone from '../../Common/insuredData/insuredDataPhone.vue'
+import InsuredDataInsuredInfo from '../../Common/insuredData/insuredDataInsuredInfo.vue'
+import InsuredDataInfo from '../../Common/insuredData/insuredDataInfo'
 
 export default {
   mounted() {
@@ -344,7 +219,11 @@ export default {
   components: {
     BenfOneInsuredData,
     BenfTwoInsuredData,
-    BenfThreeInsuredData
+    BenfThreeInsuredData,
+    InsuredDataInsuredInfo,
+    InsuredDataInfo,
+    InsuredDataOtherNotify,
+    InsuredDataPhone
   },
   computed: {
     ...mapGetters([
