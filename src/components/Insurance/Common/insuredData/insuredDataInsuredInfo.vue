@@ -15,7 +15,7 @@
         <div class="col-sm-12">
           <div class="form-control insure-input-block" v-show="stateData.VerifyTypeList['1']">使用「富邦證券」金融憑證驗證</div>
           <div class="form-control insure-input-block" v-show="stateData.VerifyTypeList['2']">簡訊OTP動態密碼驗證</div>
-          <div class="form-control insure-input-block" v-show="stateData.VerifyTypeList['3']">{{stateData.VerifyTypeList['3']}}</div>
+          <div class="form-control insure-input-block" v-show="stateData.VerifyTypeList['3']">簡訊OTP動態密碼驗證</div>
           <div class="form-control insure-input-block" v-show="stateData.VerifyTypeList['4']">簡訊OTP動態密碼驗證</div>
         </div>
       </div>
