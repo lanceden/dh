@@ -104,7 +104,6 @@ export default {
     OnLineClick() {
       // <a href="http://line.naver.jp/R/msg/text/?文章標題%0D%0A文章網址"><img src="圖片網址"/></a>
       window.location = `line://msg/text/新光人壽網路投保！%0D%0A投保完成。%0D%0Ahttps://online.skl.com.tw?p=`
-      window.location.reload()
     }
   }
 }
