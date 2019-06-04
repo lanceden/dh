@@ -262,8 +262,8 @@ export default {
   },
   /**
    * 匯入子女資料
-   * @param {當前Vuex狀態} commit VuexStoreState.commit
-   * @param {string} para 請求參數
+   * @param {當前Vuex狀態} state VuexStoreState.commit
+   * @param {string} para 請求回傳結果
    */
   FuncImportChildren(state, { result, planCode }) {
     let childData = result.Data.Result
@@ -335,9 +335,14 @@ export default {
   },
   /**
    * 抓取優惠列表
+   * @param {當前Vuex狀態} state VuexStoreState.commit
+   * @param {string} result 請求回傳結果
    */
   FuncPromotionList(state, { result }) {
-    console.log(result)
     state.PROMOTIONLIST = result.Data.Result
+  },
+  FuncPromotionDetail(state, { result, router }) {
+    state.PROMOTIONDETAIL = result.Data.Result
+    router.push('/Promotion-Detail')
   }
 }

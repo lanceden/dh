@@ -290,6 +290,10 @@ const TravelSimpleEstimate = `${Domain}/Travel/SimpleEstimate`
  * 優惠活動列表
  */
 const PromotionList = `${Domain}/Home/PromotionList`
+/**
+ * 優惠活動詳細
+ */
+const PromotionDetail = `${Domain}/Home/PromotionDetail`
 
 export default {
   Domain,
@@ -362,5 +366,6 @@ export default {
   UpCashSimpleEstimate,
   UpCashSimpleEstimateDetails,
   TravelSimpleEstimate,
-  PromotionList
+  PromotionList,
+  PromotionDetail
 }

@@ -251,10 +251,23 @@ export default {
   },
   /**
    * 抓取優惠活動列表
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
    */
   FuncPromotionList({ commit }) {
     rootState.Http.axios.post(`${Url.PromotionList}`).then(response => {
       commit('FuncPromotionList', { result: response.data })
+    })
+  },
+  /**
+   * 抓取優惠活動詳細
+   * @param {當前Vuex狀態} commit VuexStoreState.commit
+   * @param {string} id 優惠活動代號
+   */
+  FuncPromotionDetail({ commit }, { para, router }) {
+    rootState.Http.axios.post(`${Url.PromotionDetail}`, {
+      ID: para
+    }).then(response => {
+      commit('FuncPromotionDetail', { result: response.data, router })
     })
   }
 }

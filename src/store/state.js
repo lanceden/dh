@@ -68,5 +68,6 @@ export default {
     false,
     false
   ],
-  PROMOTIONLIST: []
+  PROMOTIONLIST: [],
+  PROMOTIONDETAIL: []
 }

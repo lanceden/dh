@@ -18,6 +18,8 @@ import { getQueryStringParameterByKey } from '../src/utils/getQueryStringParamet
 export default {
   components: { Header },
   created() {
+    console.log('object')
+    this.SetHttp({ http: this.$http })
     let urlType = this.$router.history.current.path.split('/')[1].split('-')[0].toLowerCase()
     if (urlType !== 'promotion') {
       // 判斷當前url中是否有token
@@ -30,7 +32,6 @@ export default {
         })
         this.SetApiToken({ token: token.replace('+', '') })
       }
-      this.SetHttp({ http: this.$http })
       this.FuncGetAccountData()
     }
   },

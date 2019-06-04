@@ -11,12 +11,12 @@ export default {
   data() {
     return {
       name: '',
-      subName: '',
       showHeader: true
     }
   },
   created() {
     this.name = this.$router.history.current.path.split('/')[1].split('-')[0].toLowerCase()
+    console.log(this.name)
     switch (this.name) {
       case 'upcash':
         this.name = 'Up Cash年金保險'
@@ -50,17 +50,12 @@ export default {
       case 'enttravel':
         this.name = '企業客戶專區'
         break
+      case 'promotion':
+      case 'detail':
+      case 'list':
+        this.showHeader = false
+        break
     }
-
-    // this.subName = this.$router.history.current.path.split('/')[1].split('-')[1].toLowerCase()
-    // switch (this.subName) {
-    //   case 'detail':
-    //     this.showHeader = false
-    //     break
-    //   case 'list':
-    //     this.showHeader = false
-    //     break
-    // }
   }
 }
 
