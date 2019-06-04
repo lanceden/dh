@@ -332,5 +332,12 @@ export default {
         })
       }
     }
+  },
+  /**
+   * 抓取優惠列表
+   */
+  FuncPromotionList(state, { result }) {
+    console.log(result)
+    state.PROMOTIONLIST = result.Data.Result
   }
 }

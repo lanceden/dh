@@ -286,6 +286,11 @@ const UpCashSimpleEstimateDetails = `${Domain}/UpCash/SimpleEstimateDetails`
 
 const TravelSimpleEstimate = `${Domain}/Travel/SimpleEstimate`
 
+/**
+ * 優惠活動列表
+ */
+const PromotionList = `${Domain}/Home/PromotionList`
+
 export default {
   Domain,
   Job,
@@ -356,5 +361,6 @@ export default {
   EntTravelSubmitOrder,
   UpCashSimpleEstimate,
   UpCashSimpleEstimateDetails,
-  TravelSimpleEstimate
+  TravelSimpleEstimate,
+  PromotionList
 }

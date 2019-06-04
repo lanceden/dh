@@ -67,5 +67,6 @@ export default {
     false,
     false,
     false
-  ]
+  ],
+  PROMOTIONLIST: []
 }

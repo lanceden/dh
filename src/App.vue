@@ -18,18 +18,21 @@ import { getQueryStringParameterByKey } from '../src/utils/getQueryStringParamet
 export default {
   components: { Header },
   created() {
-    // 判斷當前url中是否有token
-    let result = getQueryStringParameterByKey('token')
-    if (result !== null) {
-      const tokenArr = result.split(' ')
-      let token = ''
-      tokenArr.forEach(item => {
-        token += `+${item}`
-      })
-      this.SetApiToken({ token: token.replace('+', '') })
+    let urlType = this.$router.history.current.path.split('/')[1].split('-')[0].toLowerCase()
+    if (urlType !== 'promotion') {
+      // 判斷當前url中是否有token
+      let result = getQueryStringParameterByKey('token')
+      if (result !== null) {
+        const tokenArr = result.split(' ')
+        let token = ''
+        tokenArr.forEach(item => {
+          token += `+${item}`
+        })
+        this.SetApiToken({ token: token.replace('+', '') })
+      }
+      this.SetHttp({ http: this.$http })
+      this.FuncGetAccountData()
     }
-    this.SetHttp({ http: this.$http })
-    this.FuncGetAccountData()
   },
   methods: {
     ...mapActions([

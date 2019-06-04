@@ -1,18 +1,16 @@
 <template>
-  <div v-show="showHeader">
+  <div class="header-class">
     <div class="product-name">{{name}}</div>
     <div class="progress-bar">
       <img :src="this.$store.state.PROGRESSBAR">
     </div>
-  </div>
+  </div> 
 </template>
 <script>
 export default {
   data() {
     return {
-      name: '',
-      subName: '',
-      showHeader: true
+      name: ''
     }
   },
   created() {
@@ -51,16 +49,6 @@ export default {
         this.name = '企業客戶專區'
         break
     }
-
-    // this.subName = this.$router.history.current.path.split('/')[1].split('-')[1].toLowerCase()
-    // switch (this.subName) {
-    //   case 'detail':
-    //     this.showHeader = false
-    //     break
-    //   case 'list':
-    //     this.showHeader = false
-    //     break
-    // }
   }
 }
 

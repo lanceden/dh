@@ -1,0 +1,64 @@
+[ga-collapse="title"] {
+    color: #4d4c4d;
+    font-size: 15px;
+    margin-bottom: 2%;
+    display: inline-block;
+    cursor: default;
+}
+
+a[ga-collapse="title"],
+[ga-collapse="title"] p {
+    color: #4d4c4d;
+}
+
+.ga-title-collapse-content {
+    display: block;
+}
+
+[ga-collapse="title"]:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+    background: #b62822;
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 768px){
+	[ga-collapse="title"] {
+        display: block;
+        padding: 13px;
+        margin-bottom: 0px;
+        border-top: 1px solid #ccc;
+        /*border-bottom: 1px solid #ccc;*/
+        color: #4d4c4d;
+        background-color: white;
+    }
+
+    [ga-collapse="title"].active {
+        border-bottom: none; 
+    }
+
+    [ga-collapse="title"]:after {
+        content: '';
+        background: url(../GardenUtilsImg/arrowdown.png);
+        width: 16px;
+        height: 8px;
+        display: inline-block;
+        float: right;
+        margin-top: 0.4em;
+    }
+
+    [ga-collapse="title"].active:after {
+        background: url(../GardenUtilsImg/arrowup.png);
+    }
+
+    .ga-title-collapse-content {
+        display: none;
+    }
+
+    .ga-title-collapse-content.active {
+        display: block;
+    }
+}

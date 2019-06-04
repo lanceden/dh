@@ -1,0 +1,7182 @@
+/* Global */
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+p{
+    font-weight: 500;
+}
+a{
+    font-weight: 500;
+}
+span{
+    font-weight: 500;
+}
+.main-page {
+    margin-left: 0;
+    width: 100%;
+}
+
+.sideMenu_ida {
+    margin-right: 5%;
+}
+
+.skinsurance-contentArea {
+    display: inline-block;
+    /*width: calc(95% - 200px);*/
+    width: 100%;
+}
+
+.skinsurance-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skinsurance-content.smallcontent {
+    max-width: 1200px;
+}
+
+/* Global end */
+
+/* 納版001 */
+
+.skinsurance-001-container-header {
+    background: #016064;
+    height: 180px;
+    /*border: 1px solid #f00;*/
+    height: 200px;/*kate*/
+}
+
+.skinsurance-001-container-header:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.skinsurance-001-container-header.purple {
+    background: #301b92;
+}
+
+.skinsurance-001-container-header .title,
+.skinsurance-001-container-header .textArea {
+    display: inline-block;
+    vertical-align: top;
+    /*border: 1px solid #f0f;*/
+}
+
+.skinsurance-001-container-header .textArea {
+    color: #fff;
+    padding: 30px 50px 0 50px;
+    float: left;
+    width: 45%;
+    height: 200px;/*kate*/
+    padding: 10px 10px 0 30px;/*kate*/
+}
+
+.skinsurance-001-container-header .textArea ul li p:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 15px;
+    position: absolute;
+    left: -15px;
+    top: 6px;
+}
+
+.skinsurance-001-container-header .textArea ul li {
+    /*margin-bottom: 20px;*/
+    /*border: 1px solid #0ff;*/
+    height: 54px;
+    font-size: 0;
+}
+.skinsurance-001-container-header .textArea ul li:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+}
+.skinsurance-001-container-header .textArea ul li:last-child {
+    margin-bottom: 0;
+}
+
+.skinsurance-001-container-header .textArea ul li p {
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2em;
+}
+
+
+.skinsurance-001-container-header .textArea ul li p:last-child {
+    margin-bottom: 0;
+}
+
+.skinsurance-001-container-header .title {
+/*    background: url(../image/medical.jpg);*/
+    height: 180px;
+    width: 55%;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    float: left;
+    height: 200px;/*kate*/
+    padding: 0 20px;/*kate*/
+}
+
+.skinsurance-001-container-header.purple .title {
+/*    background: url(../image/purplegeader.jpg);*/
+    background-size: cover;
+/*
+    height: 180px;
+    width: 55%;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+*/
+}
+
+.skinsurance-001-container-header .sub-title {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    /*border: 1px solid #ff0;*/
+}
+
+.skinsurance-001-container-header .sub-title span {
+    display: inline-block;
+    color: #fff;
+    background: #016064;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+.skinsurance-001-container-header.purple .sub-title span {
+    background: #7c4dff;
+}
+
+.skinsurance-001-container-header .sub-title span:last-child {
+    margin-right: 0;
+}
+
+.skinsurance-001-container-header .title h3 {
+    color: #fff;
+    margin-top: 100px;
+    /*border: 1px solid #ff0;*/
+    line-height: 1.5em;
+}
+
+@media (max-width:1366px) {
+    
+    .skinsurance-001-container-header .title {
+        height: 100%;
+    }
+    
+    .skinsurance-001-container-header .title h3 {
+        margin-top: 90px;
+    }
+    
+    .skinsurance-001-container-header .title div {
+        top: 20px;
+        left: 20px;
+    }
+    
+/*
+    .skinsurance-001-container-he.skinsurance-connection .contactMethod > div > div:nth-child(3)ader .textArea {
+        padding-left: 30px;
+        padding-top: 20px;
+    }
+*/
+    
+    .skinsurance-001-container-header .textArea ul li {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width:992px) {
+    .skinsurance-001-container-header .textArea ul li {
+        height: auto;
+    }
+    
+    .skinsurance-001-container-header .textArea ul li p {
+        font-size: 15px;
+    }
+    
+    .skinsurance-001-container-header {
+        /*height: 120px;*/
+        height: 180px;/*kate*/
+    }
+    
+    .skinsurance-001-container-header .title div {
+        top: 10px;
+        left: 20px;
+    }
+    
+    .skinsurance-001-container-header .textArea {
+        padding: 10px;
+    }
+    .skinsurance-001-container-header .text {
+        padding-top: 10px;
+    }
+    
+    .skinsurance-001-container-header .title {
+        height: 100%;
+    }
+    
+    .skinsurance-001-container-header .title h3 {
+        margin-top: 60px;
+        font-size: 18px;
+    }
+    
+    .skinsurance-001-container-header .title:before {
+        padding: 5px;
+        top: 15px;
+        left: 15px;
+    }
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-001-container-header .title,
+    .skinsurance-001-container-header .textArea {
+        float: none;
+    }
+    
+    .skinsurance-001-container-header {
+        height: auto;
+    }
+    
+    .skinsurance-001-container-header .title h3 {
+        margin-top: 50px;
+        text-align: left;
+        /*margin-left: 10px;*/
+    }
+    
+    .skinsurance-001-container-header.purple .title,
+    .skinsurance-001-container-header .title {
+        height: 110px;
+    }
+    
+    .skinsurance-001-container-header.purple .title .sub-title span,
+    .skinsurance-001-container-header .title .sub-title span {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+    
+    .skinsurance-001-container-header .textArea {
+        padding: 5% 35px;
+        width: 100%;
+        height: 165px;
+    }
+    
+    .skinsurance-001-container-header .title,
+    .skinsurance-001-container-header.purple .title {
+        width: 100%;
+    }
+    
+    .skinsurance-001-container-header .text ul li {
+        margin-bottom: 10px;
+    }
+}
+
+/* 納版001 end */
+
+/* 納版002 */
+
+.skinsurance-002-special-sty {
+    /*margin: 30px 0;*/ /*kate*/
+}
+
+.skinsurance-002-special-sty .special-sty-title{
+    display: inline-block;
+    background-color: #c7c7c6;
+    margin: 30px 0; /*kate*/
+}
+
+.skinsurance-002-special-sty .special-sty-title .special-sty-title-pp{
+    padding: 7px 20px;
+    font-size: 16px;
+    background-color: #4d4d4d;
+    color: #fff;
+    vertical-align: top;
+    margin-left: 40px;
+    margin-bottom: 0;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-002-special-sty .special-sty-title {
+        display: block;
+    }
+    
+    .skinsurance-002-special-sty .special-sty-title .special-sty-title-pp {
+        margin-left: 0;
+        background: #e0dfde;
+        padding: 20px 10%;
+        color: #4d4d4d;
+        font-size: 20px;
+    }
+    
+    .skinsurance-002-special-sty .special-sty-title .special-sty-title-pp:after {
+        content: '';
+        background: url(../image/arrowdownfff.png);
+        width: 16px;
+        height: 8px;
+        float: right;
+        display: block;
+        margin-top: 0.4em;
+    }
+    
+    .skinsurance-002-special-sty.active .special-sty-title .special-sty-title-pp:after {
+       content: '';
+        background: url(../image/arrowupfff.png);
+        width: 16px;
+        height: 8px;
+        float: right;
+        display: block;
+        margin-top: 0.4em; 
+    }
+    
+    .skinsurance-002-special-sty {
+        margin: 0 0 5px 0;
+    }
+    
+    .skinsurance-download .skinsurance-002-special-sty {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-002-special-sty.active.group ~ .skinsurance-007-spend {
+        margin: 0 0 30px 0;
+    }
+    
+    .skinsurance-002-special-sty.small-block .special-sty-title {
+        display: inline-block;
+        background-color: #c7c7c6;
+    }
+    
+    .skinsurance-002-special-sty.small-block .special-sty-title .special-sty-title-pp {
+        padding: 7px 20px;
+        font-size: 16px;
+        background-color: #4d4d4d;
+        color: #fff;
+        vertical-align: top;
+        margin-left: 40px;
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-002-special-sty.small-block .special-sty-title .special-sty-title-pp:after {
+        display: none;
+    }
+}
+
+/* 納版002 end */
+
+/* 納版003 */
+
+.skinsurance-003-insuranceList .left,
+.skinsurance-003-insuranceList .right {
+    display: inline-block;
+    width: 48%;
+    background: #fff;
+    margin: 0 1%;
+    /*float: left;*/
+}
+
+.skinsurance-003-insuranceList .row-main > span {
+    vertical-align: top;
+}
+
+.skinsurance-003-insuranceList .row-inline .left a,
+.skinsurance-003-insuranceList .row-inline .right a {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.skinsurance-003-insuranceList .row-inline .all {
+    width: 98%;
+    margin: 1% 1%;
+    overflow: auto;
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.skinsurance-003-insuranceList .row-inline .all .row-main  {
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+}
+
+.skinsurance-003-insuranceList .row-inline .all .row-main h3 {
+    margin: 0 0 10px 0;
+}
+
+.skinsurance-003-insuranceList .row-inline .all .row-main:first-child {
+    width: 20%;
+    text-align: center;
+}
+
+.skinsurance-003-insuranceList .left .row-include,
+.skinsurance-003-insuranceList .right .row-include {
+    display: inline-block;
+}
+
+.skinsurance-003-insuranceList .row-inline {
+    margin-bottom: 15px;
+/*    background: #fff;*/
+    overflow: auto;
+    font-size: 0;
+}
+
+.skinsurance-003-insuranceList .row-inline .row-main {
+    display: inline-block;
+    width: 75%;
+    /*float: left;*/
+    vertical-align: top;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.skinsurance-003-insuranceList .row-inline .row-main .row-container > li > span {
+    vertical-align: top;
+}
+
+.skinsurance-003-insuranceList .row-inline .row-main .row-core {
+    display: inline-block;
+    max-width: calc(100% - 75px);
+}
+
+.skinsurance-003-insuranceList.floatnone .row-inline .row-main {
+    float: none;
+}
+
+
+.skinsurance-003-insuranceList .row-inline .left .row-main:first-child,
+.skinsurance-003-insuranceList .row-inline .right .row-main:first-child {
+    width: 25%;
+    padding-left: 0;
+}
+
+.skinsurance-003-insuranceList.floatnone .row-inline .left .row-main:first-child,
+.skinsurance-003-insuranceList.floatnone .row-inline .right .row-main:first-child {
+    /*margin-right: -5px;*/
+    width: 25%;
+}
+
+
+.skinsurance-003-insuranceList.floatnone .row-inline .right .row-main {
+    /*vertical-align: middle;*/
+    vertical-align: top;
+    word-wrap: break-word; 
+}
+
+.skinsurance-003-insuranceList.floatnone .row-inline .left .row-main {
+    vertical-align: top;
+    word-wrap: break-word; 
+}
+
+/*
+.skinsurance-003-insuranceList.floatnone .row-inline .row-main .bottom {
+    margin-bottom: 20px;
+}
+*/
+
+
+.skinsurance-003-insuranceList .row-inline h4,
+.skinsurance-012-insuranceImageList .row-inline .left .include h4,
+.skinsurance-012-insuranceImageList .row-inline .right .include h4 {
+    margin: 0 0 20px 0;
+    color: #000;
+    font-weight: 700;
+}
+
+.skinsurance-003-insuranceList .row-inline p {
+    margin: 0;
+    color: #666666;
+    font-size: 15px;
+}
+/*
+
+.skinsurance-003-insuranceList .row-inline p.notyet {
+    margin-top: 40px;
+}
+*/
+
+.skinsurance-003-insuranceList .row-inline .left,
+.skinsurance-003-insuranceList .row-inline .right {
+    padding: 20px;
+    vertical-align: top;
+    font-size: 0;
+    margin: 10px 1%; 
+}
+
+.skinsurance-003-insuranceList .row-inline .left h5,
+.skinsurance-003-insuranceList .row-inline .right h5 {
+    font-size: 20px;
+    line-height: 1.5em
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-003-insuranceList .row-inline h4 {
+        font-size: 16px;
+    }
+    
+    .skinsurance-003-insuranceList {
+        display: block;
+    }
+    
+    .skinsurance-002-special-sty.active + .skinsurance-003-insuranceList {
+        display: block;
+    }
+    
+    .skinsurance-003-insuranceList .row-inline .left,
+    .skinsurance-003-insuranceList .row-inline .right {
+        width: 100%;
+        /*margin: 0;*/
+        margin: 15px 0;
+    }
+
+    .skinsurance-003-insuranceList .row-inline .left {
+        margin: 15px 0;
+    }
+    
+    .skinsurance-003-insuranceList .row-inline .left h5,
+    .skinsurance-003-insuranceList .row-inline .right h5 {
+        font-size: 18px;
+    }
+}
+
+/* 納版003 end */    
+
+/* 納版004 */
+.skinsurance-004-term{
+    padding: 20px 0;
+}
+.skinsurance-004-term img {
+/*    vertical-align: bottom;*/
+    width: 25%;
+    margin-left: 40px;
+}
+
+.skinsurance-004-term .include {
+    vertical-align: top;
+    width: 66%;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.skinsurance-004-term .include-block {
+    margin-bottom: 35px;
+}
+
+.skinsurance-004-term .include-core {
+    display: inline-block;
+    width: calc(100% - 150px);
+}
+
+.skinsurance-004-term .include-core a {
+    display: block;
+    color: #337ab7;
+    text-align: right;
+}
+
+.skinsurance-004-term .include-core p {
+    margin-bottom: 0;
+}
+
+.skinsurance-004-term .include-block span {
+    vertical-align: top;
+    color: #2c3552;
+    text-align: right;
+    display: inline-block;
+    width: 6em;
+    margin-right: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*
+.skinsurance-004-term > div > div > div > ul > li:last-child {
+    text-align: right;
+}
+*/
+
+.skinsurance-004-term > div > div > div > ul > li ul {
+    text-indent: 1em;
+    text-indent: 1em;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-004-term .include-block span {
+        font-size: 15px;
+    }
+    
+    .skinsurance-004-term .include-core {
+        width: 100%;
+    }
+    
+    .skinsurance-004-term .include-core a {
+        display: none;
+    }
+    
+    .skinsurance-004-term .include-block span {
+        width: auto;
+        display: block;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    
+    .skinsurance-004-term .include,
+    .skinsurance-004-term > div > div > div {
+        width: 100%;
+    }
+    
+    .skinsurance-004-term {
+        display: none;
+    }
+    
+    .skinsurance-002-special-sty.active + .skinsurance-004-term {
+        display: block;
+        padding: 0 3%;
+    }
+    
+    .skinsurance-004-term img {
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .skinsurance-004-term > div {
+        width: 100%;
+    }
+}
+
+/* 納版004 end */
+
+/* 納版005 */
+
+.skinsurance-005-contentTitle {
+    font-size: 20px;
+    border-bottom: 1px solid #a2a6a9;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.skinsurance-005-contentTitle .fb-line-Area {
+    position: absolute;
+    right: 2.5%;
+    bottom: 0;
+}
+
+.skinsurance-005-contentTitle .fb-line-Area img {
+    width: 40px;
+}
+
+.skinsurance-005-contentTitle span {
+    width: 20px;
+    height: 20px;
+    background: #b62822;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.skinsurance-005-contentTitle.green span {
+    background: #00d1c0;
+}
+
+.skinsurance-005-contentTitle.purple span {
+    background: #9775cc;
+}
+
+.skinsurance-005-contentTitle.brown span {
+    font-size: 18px;
+    height: 1em;
+    width: 1em;
+    background: #d47914;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* 納版005 end */
+
+/* 納版006 */
+
+.skinsurance-006-graph-explanation {
+    overflow: auto;
+}
+
+.skinsurance-006-graph-explanation h4 span {
+    padding: 15px;
+    border: 1px solid #666;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.skinsurance-006-graph-explanation img {
+    width: 48%;
+    margin: 0 1%;
+    display: inline-block;
+    float: left;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-006-graph-explanation {
+        display: none;
+    }
+    
+    .skinsurance-006-graph-explanation img {
+        width: 100%;
+        float: none;
+        margin: 5px 0;
+    }
+}
+
+/* 納版006 end */
+
+/* 納版007 */
+
+.skinsurance-007-spend {
+    margin: 60px 0;
+}
+
+.skinsurance-007-spend img {
+    margin-left: 40px;
+    vertical-align: top;
+    margin-right: 5%;
+    
+}
+
+.skinsurance-007-spend .include {
+    display: inline-block;
+    width: 54%;
+}
+
+.skinsurance-007-spend .tabcontent > li {
+    width: 100%;
+    float: none;
+    text-align: left;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #bfbfbf;
+    padding-bottom: 10px;
+/*    cursor: pointer;*/
+    padding: 20px 4%; 
+    font-size: 16px;
+}
+
+.skinsurance-007-spend .tabcontent.short > li {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.skinsurance-007-spend .tabcontent.mid > li {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.skinsurance-007-spend .tabcontent > li:last-child {
+    border: none;
+}
+
+.skinsurance-007-spend .tabcontent .tabcontent-content li {
+    font-size: 14px;
+/*    margin-bottom: 5px;*/
+}
+
+.skinsurance-007-spend .tabcontent .tabcontent-content.red-circle > ul > li > span {
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: #e2231a;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.skinsurance-007-spend .tabcontent > li > span {
+    background: url(../image/plus.png);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.skinsurance-007-spend .tabcontent > li.active > span {
+    background: url(../image/less.png);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.skinsurance-007-spend .tabcontent > li ul.moneyList li {
+    padding-left: 1em;
+}
+
+.skinsurance-007-spend h5 {
+    font-size: 20px;
+    color: #4d4d4d;
+    margin: 0 0 30px 0;
+    font-weight: bold;
+}
+
+.skinsurance-007-spend .tabcontent .tabcontent-content li > span {
+    vertical-align: top;
+    font-size: 15px;
+}
+
+.skinsurance-007-spend .tabcontent .tabcontent-content li p {
+    display: inline-block;
+    max-width: calc(100% - 20px);
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+.skinsurance-007-spend .tabcontent > li > a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.skinsurance-007-spend .tabcontent li .tabcontent-content {
+    display: none;
+    padding: 0 35px;
+}
+
+.skinsurance-007-spend .tabcontent li .tabcontent-content > p {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.skinsurance-007-spend .tabcontent li.active .tabcontent-content {
+    display: block;
+    margin-top: 5px;
+    padding-right: 0;
+}
+
+.skinsurance-007-spend .tabcontent li.active .tabcontent-content.arrow-right-link > ul > li {
+    padding: 20px;
+    border-bottom: 1px solid #aeaebd;
+}
+
+.skinsurance-007-spend .tabcontent li.active .tabcontent-content.arrow-right-link > ul > li:last-child {
+    border-bottom: 0;
+}
+
+.skinsurance-007-spend .tabcontent li.active .tabcontent-content.arrow-right-link > ul > li > a {
+    color: #44444b;
+    text-decoration: none;
+    font-size: 15px;
+    width: calc(100% - 25px);
+/*    display: inline-block;*/
+}
+
+.skinsurance-007-spend .tabcontent li.active .tabcontent-content.arrow-right-link > ul > li > span {
+    background-image: url(../image/arrowrightgrey.png);
+    width: 9px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-007-spend .tabcontent li.active .tabcontent-content.arrow-right-link > ul > li {
+        padding: 20px 0;
+    }
+    
+    .skinsurance-007-spend .tabcontent.short > li {
+        width: 90%;
+    }
+    
+    .skinsurance-007-spend.mobile-block .tabcontent > li {
+        padding: 10px 0;
+    }
+    
+    .skinsurance-007-spend.mobile-block .tabcontent > li > span {
+        margin-left: 40px;
+    }
+    
+    .skinsurance-007-spend {
+        margin: 0;
+    }
+    
+    .skinsurance-007-spend.mobile-block {
+        display: block;
+    }
+    
+    .skinsurance-007-spend .tabcontent > li {
+        padding-right: 0;
+    }
+    
+    .skinsurance-007-spend .tabcontent > li ul.moneyList li {
+        padding-left: 0;
+    }
+    
+    .skinsurance-007-spend .tabcontent li a {
+        font-size: 13px;
+    }
+    
+    .skinsurance-007-spend.mobile-block .tabcontent li a {
+        font-size: 16px;
+    }
+    
+    .skinsurance-007-spend {
+        display: none;
+    }
+    
+    .skinsurance-public .skinsurance-007-spend {
+        display: block;
+    }
+    
+    .skinsurance-002-special-sty.active ~ .skinsurance-007-spend {
+        display: block;
+        padding: 0;
+    }
+    
+    .skinsurance-002-special-sty.active ~ .skinsurance-007-spend:last-child {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-002-special-sty.active {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-007-spend img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100px;
+    }
+    
+    .skinsurance-007-spend .include {
+        width: 100%;
+    }
+    
+    .skinsurance-007-spend img.none {
+        display: none;
+    }
+}
+
+/* 納版007 end */
+
+/* 納版008 */
+
+
+
+.skinsurance-008-text-banner {
+    background: #0071b7;
+    overflow: auto;
+}
+
+.skinsurance-008-text-banner.travel {
+    background-color: #1d90a5;
+}
+
+.skinsurance-008-text-banner .bannerText,
+.skinsurance-008-text-banner .bannerArea {
+    display: inline-block;
+    float: left;
+}
+
+.skinsurance-008-text-banner .bannerArea {
+    float: right;
+}
+
+.skinsurance-008-text-banner.funnycall {
+    background-color: #6b8aa4;
+}
+
+.skinsurance-008-text-banner .bannerText {
+    width: 35%;
+    color: #fff;
+    padding: 3% 0 0 3%;
+    word-break: break-word;
+}
+
+.skinsurance-008-text-banner .bannerText a {
+    background-color: #dd434c;
+    color: #fff;
+    width: 160px;
+    display: block;
+    line-height: 45px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.skinsurance-008-text-banner .bannerText p {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+}
+
+.skinsurance-008-text-banner .bannerText h3 {
+    margin: 0 0 7% 0;
+    font-size: 30px;
+}
+
+.skinsurance-008-text-banner.funnycall .bannerText h3 {
+    letter-spacing: 0.2em;
+}
+
+.skinsurance-008-text-banner.funnycall .bannerText p {
+    margin-bottom: 0;
+}
+
+.skinsurance-008-text-banner .bannerArea {
+/*    background: url(../image/groupinsurance.jpg);*/
+    height: 222px;
+    width: 65%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (max-width:1024px) {
+    .skinsurance-008-text-banner .bannerText h3 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-008-text-banner .bannerText h3 {
+        margin-bottom: 5px;
+    }
+    
+    
+    .skinsurance-008-text-banner .bannerText {
+        float: none;
+        background-color: #0071b7;
+        width: 100%;
+        float: none;
+        padding: 5%;
+    }
+    
+    .skinsurance-008-text-banner.travel .bannerText {
+        background-color: #1d90a5;
+    }
+    
+    .skinsurance-008-text-banner.funnycall .bannerText {
+        background-color: #6b8aa4;
+    }
+    
+    .skinsurance-008-text-banner .bannerArea {
+        width: 100%;
+        float: none;
+        background-size: cover;
+        height: 140px;
+        vertical-align: top;
+    }
+    
+    .skinsurance-008-text-banner .bannerText p {
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
+    
+    .skinsurance-008-text-banner {
+        background-color: #fff;
+    }
+}
+
+/* 納版008 end */
+
+/* 納版009 */
+
+.skinsurance-009-anchor {
+    overflow: auto;
+    margin: 25px 0;
+}
+
+.skinsurance-009-anchor ul {
+    text-align: center;
+    padding: 25px 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.skinsurance-009-anchor ul li {
+    display: inline-block;
+    width: 12.5%;
+    text-align: center;
+    font-size: 0;
+    margin-right: 3.5%;
+}
+
+
+.skinsurance-009-anchor ul li:last-child {
+    margin-right: 0;
+}
+
+.skinsurance-009-anchor.seven ul li {
+    width: 10%;
+    margin-right: 5%;
+    /*float: left;*/
+    display: table-cell;
+    width: 1%;
+    border-right: 5px solid #fff;
+    border-left: 5px solid #fff;
+}
+
+
+.skinsurance-009-anchor.seven ul li:last-child {
+    margin-right: 0;
+}
+
+
+.skinsurance-009-anchor ul li a {
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 0;
+    background: #aeaeae;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+}
+
+@media (max-width:1024px) {
+    .skinsurance-009-anchor ul li a {
+        font-size: 15px;
+        letter-spacing: inherit;
+    }
+    /*.skinsurance-009-anchor.seven ul li{
+        width: 48%;
+        display: inline-block;
+        margin: 1%;
+    }*/
+}
+
+
+@media (min-width:1024px) {
+    .skinsurance-009-anchor.seven ul li:last-child {
+        margin-right: 0;
+    }
+    .skinsurance-009-anchor.seven ul li {
+        margin-right: 5%;
+        display: table-cell;
+        width: 1%;
+        border-right: 5px solid #fff;
+        border-left: 5px solid #fff;
+    }
+}
+@media (max-width:1023px) {
+    .skinsurance-009-anchor {
+        /*display: none;       */
+    }
+    .skinsurance-009-anchor ul{
+        font-size: 0;
+        text-align: left;
+    }
+    .skinsurance-009-anchor.seven ul li{
+        width: 48%;
+        display: inline-block;
+        margin: 1%;
+    }
+}
+/* 納版009 end */
+
+/* 納版010 */
+
+.skinsurance-010-multiple-menu {
+    display: inline-block;
+    width: 75%;
+}
+
+.skinsurance-010-multiple-menu > ul > li > a {
+    background-color: #e1e1e1;
+    color: #3b303e;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 50px 10px 2.5%;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.skinsurance-010-multiple-menu .tabcontent > li {
+    width: 95%;
+    margin: 0 auto;
+    padding-left: 0;
+}
+
+.skinsurance-010-multiple-menu > ul > li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.skinsurance-010-multiple-menu > ul > li:after {
+    content: '';
+    background-image: url(../image/plus.png);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    
+}
+
+.skinsurance-010-multiple-menu > ul > li.active:after {
+    content: '';
+    background-image: url(../image/less-white.png);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.skinsurance-010-multiple-menu > ul > li.active > a {
+    background-color: #d8262e;
+    color: #fff;
+}
+
+.skinsurance-010-multiple-menu > ul > li .tabcontent {
+    display: none;
+}
+
+.skinsurance-010-multiple-menu > ul > li.active .tabcontent {
+    display: block;
+    padding: 20px 0;
+}
+
+.skinsurance-010-multiple-menu .tabcontent > li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width:1366px) {
+    .skinsurance-010-multiple-menu {
+        width: 72%;
+    }
+}
+
+@media (max-width:1024px) {
+    .skinsurance-010-multiple-menu {
+        width: 70%;
+    }
+}
+
+@media (max-width:768px) {
+    .skinsurance-010-multiple-menu .tabcontent > li {
+        width: 90%;
+    }
+    
+    .skinsurance-010-multiple-menu {
+        width: 100%;
+    }
+    
+    .skinsurance-010-multiple-menu > ul > li {
+        margin-bottom: 1px;
+    }
+    
+    .skinsurance-010-multiple-menu > ul > li.active:after,
+    .skinsurance-010-multiple-menu > ul > li:after {
+        top: 20px;
+    }
+    
+    .skinsurance-010-multiple-menu > ul > li > a {
+        padding: 20px 50px 20px 10%;
+    }
+}
+
+/* 納版010 end */
+
+/* 納版011 */
+
+.skinsurance-011-explanation {
+    margin: 20px 0 20px 40px;
+}
+
+.skinsurance-011-explanation > span {
+    color: #d8262e;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.skinsurance-011-explanation p,
+.skinsurance-011-explanation a {
+/*    margin-left: 40px;*/
+    display: inline-block;
+/*    border: 1px solid #666;*/
+    color: #333;
+/*    padding: 7px 20px;*/
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.skinsurance-011-explanation .main-container {
+    padding: 7px 20px;
+    border: 1px solid #666;
+    display: inline-block;
+}
+.skinsurance-011-explanation .second-011{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+.skinsurance-011-explanation.sheet {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+/*
+.skinsurance-011-explanation.sheet p {
+    margin-left: 95px;
+}
+*/
+
+
+
+.skinsurance-011-explanation a {
+    color: #0071B7;
+    text-decoration: none;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-011-explanation.sheet p {
+        margin-left: 0;
+    }
+    .skinsurance-011-explanation p {
+        /*margin-left: 10px;*/
+    }
+    
+    .skinsurance-011-explanation > span {
+        display: inline-block;
+        margin: 20px 0;
+    }
+}
+
+/* 納版011 end */
+
+/* 納版012 */
+
+.skinsurance-012-insuranceImageList .row-inline {
+    margin-bottom: 15px;
+    font-size: 0;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .left,
+.skinsurance-012-insuranceImageList .row-inline .right {
+    width:48%;
+    margin: 0 1%;
+    display: inline-block;
+    padding: 25px;
+    background-color: #fff;
+    vertical-align: top;
+}
+
+
+.skinsurance-012-insuranceImageList .row-inline .left {
+    /*margin-right: -4px;*/
+}
+
+.skinsurance-012-insuranceImageList .row-inline .figure {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .figure p {
+    margin: 20px 0 0 0;
+    font-size: 16px;
+}
+
+
+
+
+
+.skinsurance-012-insuranceImageList .row-inline .left .include,
+.skinsurance-012-insuranceImageList .row-inline .right .include {
+    display: inline-block;
+    vertical-align: top;
+    width: 65%;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .left .include h4 .highlight{
+    font-weight: 900;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .right .include h4 .highlight{
+    font-weight: 900;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .left .include .detail,
+.skinsurance-012-insuranceImageList .row-inline .right .include .detail {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .left .include p,
+.skinsurance-012-insuranceImageList .row-inline .right .include p {
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+/*
+.skinsurance-012-insuranceImageList .row-inline .left .include > ul > li,
+.skinsurance-012-insuranceImageList .row-inline .right .include > ul> li {
+    margin-bottom: 25px;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .left .include > ul > li.money,
+.skinsurance-012-insuranceImageList .row-inline .right .include > ul> li.money {
+    margin-bottom: 0;
+}
+
+.skinsurance-012-insuranceImageList .row-inline .left .include > ul > li:last-child,
+.skinsurance-012-insuranceImageList .row-inline .right .include > ul> li:last-child {
+    margin-bottom: 0;
+}
+*/
+
+.skinsurance-moremath > a {
+    display: block;
+    width: 150px;
+    line-height: 45px;
+    color: #fff;
+    background-color: #dd434c;
+    text-align: center;
+    margin: 30px auto;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+}
+
+
+
+@media (max-width:768px) {
+    .skinsurance-012-insuranceImageList .row-inline .left,
+    .skinsurance-012-insuranceImageList .row-inline .right {
+        margin: 10px 0;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .skinsurance-012-insuranceImageList .row-inline .left .include p,
+    .skinsurance-012-insuranceImageList .row-inline .right .include p {
+        font-size: 14px;
+    }
+}
+
+/* 納版012 end */
+
+/* 納版013 */
+
+.skinsurance-013-cooperationList {
+    /*padding: 0 40px;*/
+    margin-bottom: 20px;
+}
+
+.skinsurance-013-cooperationList .full {
+    width: 100%;
+    border: 1px solid #d5d5d8;
+    padding: 5px 15px;
+}
+ 
+.skinsurance-013-cooperationList .full h4 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.skinsurance-013-cooperationList .full h4 img {
+    vertical-align: top;
+    margin-left: 8px;
+    width: 22px;
+    height: 15px;
+}
+
+.skinsurance-013-cooperationList .full .left,
+.skinsurance-013-cooperationList .full .right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.skinsurance-013-cooperationList .full .left {
+    padding: 10px 0;
+    width: 70%;
+}
+
+.skinsurance-013-cooperationList .full .right {
+    border-left: 1px solid #d5d5d8;
+    padding-left: 2%;
+}
+
+.skinsurance-013-cooperationList .full .right p {
+    margin-bottom: 5px;
+}
+
+.skinsurance-013-cooperationList .row-inline {
+    margin-bottom: 7px;
+}
+
+.skinsurance-013-cooperationList .row-inline:nth-child(3) {
+    margin-bottom: 0;
+}
+
+.skinsurance-013-cooperationList .row-inline h4 {
+    font-size: 15px;
+}
+
+.skinsurance-013-cooperationList .row-inline h4 img {
+    margin-left: 8px;
+    vertical-align: top;
+    width: 22px;
+    height: 15px;
+}
+
+.skinsurance-013-cooperationList .row-inline .left,
+.skinsurance-013-cooperationList .row-inline .right {
+    border: 1px solid #d5d5d8;
+    display: inline-block;
+    width: 48%;
+    padding: 15px 10px;
+    vertical-align: top;
+}
+
+.skinsurance-013-cooperationList .row-inline .left {
+    margin-right: -4px;
+}
+
+.skinsurance-013-cooperationList .row-inline .right {
+    margin-left: 4%;
+}
+
+.skinsurance-013-cooperationList .row-inline .left .company,
+.skinsurance-013-cooperationList .row-inline .left .standard,
+.skinsurance-013-cooperationList .row-inline .right .company,
+.skinsurance-013-cooperationList .row-inline .right .standard {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.skinsurance-013-cooperationList .row-inline .company {
+    width: 70%;
+    margin-right: -4px;
+    border-right: 1px solid #d5d5d8;
+}
+
+.skinsurance-013-cooperationList .row-inline .standard {
+    width: 30%;
+    padding-left: 3%;
+}
+
+.skinsurance-013-cooperationList .row-inline .standard p {
+    margin: 0;
+    line-height: 1em;
+}
+
+.skinsurance-013-cooperationList .row-inline .company h4 {
+    margin: 0 0 5px 0;
+    font-weight: bold;
+}
+
+.skinsurance-013-cooperationList .knowMore {
+    text-align: center;
+    background-color: #949494;
+    
+}
+
+.skinsurance-013-cooperationList .knowMore a {
+    color: #fff;
+    line-height: 30px;
+    position: relative;
+}
+
+.skinsurance-013-cooperationList .knowMore a:after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: -30px;
+    width: 0;
+    height: 0;
+    border-color: #fff transparent transparent transparent;
+    border-width: 10px 8px;
+    border-style: solid;
+}
+
+@media (max-width:1366px) {
+    .skinsurance-013-cooperationList .full .left {
+        width: 58%;
+    }
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-013-cooperationList .full {
+        padding: 5px 10px;
+    }
+    
+    .skinsurance-013-cooperationList .full h4 {
+        line-height: 1.5em;
+    }
+    
+    .skinsurance-013-cooperationList .row-inline .company {
+        width: 65%;
+    }
+    
+    .skinsurance-013-cooperationList .full .left {
+        width: 50%;
+        margin-right: -4px;
+    }
+    
+    .skinsurance-013-cooperationList .full .right {
+        width: 50%;
+    }
+    
+    .skinsurance-013-cooperationList .full .right p {
+        font-size: 12px;
+    }
+    
+    .skinsurance-013-cooperationList .row-inline .standard {
+        width: 35%;
+    }
+    .skinsurance-013-cooperationList .row-inline .standard p {
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+    
+    .skinsurance-013-cooperationList {
+        padding: 0 10px;
+    }
+    
+    .skinsurance-013-cooperationList .row-inline .left,
+    .skinsurance-013-cooperationList .row-inline .right {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .skinsurance-013-cooperationList .row-inline .left {
+        margin-bottom: 7px;
+    }
+}
+/* 納版013 end */
+
+/* 納版014 */
+
+.skinsurance-014-claims {
+    padding-left: 60px;
+}
+
+.skinsurance-014-claims .include {
+    display: inline-block;
+    width: 60%;
+    margin-right: 10%;
+}
+
+.skinsurance-014-claims .include-block h4 {
+    font-weight: bold;
+}
+
+.skinsurance-014-claims .include-block p {
+    color: #000;
+    font-size: 15px;
+}
+
+.skinsurance-014-claims .include-block > ul > li a {
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.skinsurance-014-claims .include .include-block > ul > li p {
+    margin-bottom: 0;
+}
+
+.skinsurance-014-claims .include-block > ul > li {
+    font-size: 16px;
+    margin-left: 35px;
+}
+
+.skinsurance-014-claims img {
+    vertical-align: top;
+    width: 20%;
+}
+
+.skinsurance-014-claims .include .include-block {
+    margin-bottom: 30px;
+}
+
+.skinsurance-014-claims .include .include-block:last-child {
+    margin-bottom: 80px;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-014-claims .include-block > ul > li {
+        margin-left: 25px;
+    }
+    
+    .skinsurance-014-claims .include-block p {
+        font-size: 13px;
+    }
+    
+    .skinsurance-014-claims .include .include-block:last-child {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-014-claims .include {
+        width: 90%;
+        margin-right: 0;
+    }
+    .skinsurance-014-claims img {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        max-width: 200px;
+    }
+    
+    .skinsurance-014-claims .include-block h4 {
+        font-size: 16px;
+    }
+    
+    .skinsurance-014-claims {
+        padding-left: 30px;
+    }
+}
+
+/* 納版014 end */
+
+
+/* -------------------------------------------------------------------- */
+
+/* 新光人壽納版 Wade */
+
+
+.tab-content {
+    max-width: 865px;
+    margin: 0 auto;
+}
+
+
+/* skinsurance-policyservice */ 
+
+.skinsurance-policyservice-content {
+    /*min-width: 865px;*/
+    margin: 3% 3%;
+    overflow-x: auto;
+}
+
+.skinsurance-policyservice.col-four .skinsurance-policyservice-table {
+    width: 100%;
+}
+
+.skinsurance-policyservice-table {
+    min-width: 740px;
+    border-collapse: collapse;
+}
+.skinsurance-policyservice-table th {
+    background-color: #F7F8F9;
+}
+.skinsurance-policyservice-table th,
+.skinsurance-policyservice-table td {
+    text-align: center;
+    padding: 5px 0;
+    border: 1px solid #8D9297;
+}
+
+.skinsurance-policyservice.col-four table thead tr th {
+    width: 25%;
+}
+
+.skinsurance-policyservice.col-four table tbody tr td:nth-child(n+2) {
+    background-color: #fff;
+}
+
+.skinsurance-policyservice.col-four table thead tr th,
+.skinsurance-policyservice.col-four table tbody tr td {
+    padding: 20px 0;
+}
+
+.skinsurance-policyservice-p {
+    margin: 30px 3%;
+}
+.skinsurance-policyservice-p p {
+    margin-bottom: 5px;    
+} 
+
+/* skinsurance-016-login */ 
+
+.skinsurance-016-login {
+    max-width: 865px;
+    margin: 50px auto 60px;
+}
+
+.skinsurance-016-login > p {
+    font-size: 16px;
+}
+.skinsurance-016-login > p > a {
+    color: #AD172B;
+    text-decoration: none;
+}
+.skinsurance-016-login .login-area {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.skinsurance-016-login .login-area .login-link.more {
+    background-color: #ADADAD;
+}
+
+.skinsurance-016-login .login-area .login-link {
+    display: inline-block;
+    vertical-align: middle;
+    width: 260px;
+    text-decoration: none;
+    padding: 15px 0;
+    margin: 5px 10px;
+    background-color: #D9232E;
+    -webkit-border-radius: 2px;
+            border-radius: 2px;
+    color: #FFF;
+    font-size: 20px;
+}
+.skinsurance-016-login .register {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.skinsurance-016-login .register a {
+    text-decoration: none;
+    font-size: 17px;
+}
+
+@media (max-width:768px) {
+    .skinsurance-016-login > p {
+        text-align: center;
+    }
+    
+    .skinsurance-016-login .login-area .login-link {
+        display: block;
+        margin: 20px auto;
+    }
+    
+    .skinsurance-016-login .register {
+        display: block;
+        text-align: left;
+        margin: 0 auto;
+        width: 260px;
+    }
+}
+
+/* 納版017 */
+
+.skinsurance-017-stepList {
+    padding: 3.5% 5%;
+}
+
+.skinsurance-017-stepList .titleText > h3 {
+    font-size: 25px;
+    margin: 0 0 15px 0;
+}
+
+.skinsurance-017-stepList .titleText > p {
+    font-size: 16px;
+}
+
+.skinsurance-017-stepList .titleText {
+    margin-bottom: 80px;
+}
+
+.skinsurance-017-stepList .titleText.mgbtm-zero {
+    margin-bottom: 0;
+}
+
+
+.skinsurance-017-stepList .step-main {
+    display: inline-block;
+    width: calc(91% - 100px);
+    vertical-align: middle;
+}
+
+.skinsurance-017-stepList .step-main > li {
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
+.skinsurance-017-stepList .step-main > li p {
+    margin: 0 0 5px 0;
+}
+
+.skinsurance-017-stepList .editor_section{
+    padding-left: 0!important;
+}
+
+.skinsurance-017-stepList .step-main > li p a {
+    text-decoration: none;
+}
+
+.skinsurance-017-stepList .step-main > li:first-child {
+    font-size: 18px;
+}
+
+.skinsurance-017-stepList .list-content {
+    max-width: 350px;
+    margin: 0 auto 100px auto;
+    margin: 0 auto 0px auto;/*kate*/
+}
+
+.skinsurance-017-stepList .list-content .list-content-sub {
+    margin-bottom: 50px;
+}
+
+.skinsurance-017-stepList .list-content .list-content-sub .imgArea {
+    margin-right: 9%;
+    display: inline-block;
+    width: 95px;
+}
+
+.skinsurance-017-stepList .remarkArea p {
+    margin: 0;
+    word-break: break-all;
+}
+
+.skinsurance-017-stepList .remarkArea .remark .download {
+    margin-top: 40px;
+}
+
+.skinsurance-017-stepList .step-main > li.mgtop {
+    margin-top: 40px;
+}
+
+.skinsurance-017-stepList .list-content.longer {
+    max-width: 550px;
+}
+
+@media (max-width:768px) {
+    .skinsurance-017-stepList .titleText > h3 {
+        font-size: 20px;
+    }
+    
+    .skinsurance-017-stepList .remarkArea .remark .download {
+        margin-top: 20px;
+    }
+    
+    .skinsurance-017-stepList .titleText {
+        margin-bottom: 45px;
+    }
+    
+    .skinsurance-017-stepList .list-content .list-content-sub .imgArea {
+        margin-right: 5%;
+    }
+    
+    .skinsurance-017-stepList .step-main > li p {
+        font-size: 16px;
+    }
+    
+    .skinsurance-017-stepList .titleText > p {
+        font-size: 15px;
+    }
+}
+
+/* 納版017 end */
+
+/* 納版018 */
+
+.skinsurance-018-imgTable {
+    padding: 0 40px;
+    font-size: 0;
+}
+
+.skinsurance-018-imgTable .mainImg {
+    /*margin-right: 10%;*/
+    width: 25%;
+    margin-right: 5%;
+    max-width: 200px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.skinsurance-018-imgTable .mainTable {
+    display: inline-block;
+    width: calc(90% - 165px);
+    width: 70%;
+}
+
+.skinsurance-018-imgTable .mainTable.table_two table tbody tr td:nth-child(n+2) {
+    text-align: center;
+}
+
+.skinsurance-018-imgTable .mainTable table {
+    width: 100%!important; /*防止忠毅編輯器編完表格後衝出去*/
+}
+
+.skinsurance-018-imgTable .mainTable table thead tr th {
+    color: #4d4d4d;
+    width: 25%;
+}
+
+.skinsurance-018-imgTable .mainTable.three table thead tr th {
+    width: 33%;
+}
+
+.skinsurance-018-imgTable .mainTable table thead tr th:nth-child(2) {
+    text-align: center;
+}
+
+.skinsurance-018-imgTable .mainTable table tbody tr td:nth-child(2) span {
+    display: inline-block;
+    width: 40%;
+    text-align: right;
+}
+
+.skinsurance-018-imgTable .mainTable table tbody tr td {
+    padding: 25px 0 10px 0;
+}
+
+.skinsurance-018-imgTable .mainTable.table_two table tbody tr td {
+    padding-top: 40px;
+}
+
+.skinsurance-018-imgTable .mainTable table tbody tr td:first-child,
+.skinsurance-018-imgTable .mainTable table thead tr th:first-child{
+    /*padding-left: 25px;*/
+/*    padding-right: 25px;*/
+}
+
+.skinsurance-018-imgTable .mainTable table tbody tr {
+    border-bottom: 1px solid #949494;
+}
+
+.skinsurance-018-imgTable .mainTable table tbody tr td p {
+    margin-bottom: 0;
+}
+
+.skinsurance-018-imgTable .mainTable table thead tr th,
+.skinsurance-018-imgTable .mainTable table tbody tr td {
+    text-align: center;
+    text-align: left;
+}
+
+.skinsurance-018-imgTable .mainTable table thead tr th:first-child,
+.skinsurance-018-imgTable .mainTable table tbody tr td:first-child,
+.skinsurance-018-imgTable .mainTable table tbody tr td:nth-child(2) {
+    /*text-align: left;*/
+
+}
+
+.skinsurance-018-imgTable .notice  {
+    text-align: right;
+}
+
+.skinsurance-018-imgTable .notice {
+    margin-top: 25px;
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-018-imgTable {
+        padding: 0 20px;
+    }
+    
+    .skinsurance-018-imgTable .mainImg {
+        display: none;
+    }
+    
+    .skinsurance-018-imgTable .mainTable {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    
+    .skinsurance-018-imgTable .mainTable table {
+        width: 120%;
+        margin-top: 50px;
+        overflow-x: scroll;
+    }
+}
+
+@media (max-width:480px) {
+    .skinsurance-018-imgTable .mainTable table {
+        width: 250%;
+    }
+  
+}
+
+/* 納版018 end */
+
+/* 納版019 */
+
+.skinsurance-019-taiwan {
+    padding: 20px 40px;
+    overflow: auto;
+}
+
+
+
+.skinsurance-019-taiwan .explanation {
+    display: inline-block;
+    padding: 7px 20px;
+    border: 1px solid #666;
+    margin-bottom: 20px;
+}
+
+.skinsurance-019-taiwan .explanation p {
+    margin-bottom: 0;
+}
+
+.skinsurance-019-taiwan .left,
+.skinsurance-019-taiwan .right {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+.skinsurance-019-taiwan .left .taiwan-text {
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+.skinsurance-019-taiwan .left .taiwan-text p {
+    margin: 0;
+}
+
+.skinsurance-019-taiwan .right {
+    text-align: center;
+}
+
+@media (max-width:768px) {
+    .skinsurance-019-taiwan .left,
+    .skinsurance-019-taiwan .right {
+        width: 100%;
+        display: block;
+    }
+    
+    .skinsurance-019-taiwan .left {
+        margin-bottom: 50px;
+    }
+}
+
+/* 納版019 end */
+
+/* 資訊公開 */
+
+.skinsurance-public {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.skinsurance-public .company-decree > li > p {
+    margin-bottom: 0;
+}
+
+
+
+/* 資訊公開 end */
+
+/* 20160927 聯絡我們 */
+
+.skinsurance-menu-contact {
+    max-width: 940px;
+    margin: 0 auto;
+}
+.skinsurance-menu-contact .skinsurance-contact-top {
+    margin: 20px 5% 50px 0;
+}
+.skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-img {
+    display: inline-block;
+    vertical-align: baseline;
+    width: 25%;
+    margin-right: 8%; 
+}
+.skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 75%;
+    max-width: 500px;
+    /* float: right; */
+}
+.skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq .skinsurance-contact-a {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-top: 40px;
+}
+.skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq .skinsurance-contact-a a {
+    display: inline-block;
+    background-color: #ccc;
+    border-radius: 2px;
+    color: #fff; 
+    width: 210px;
+    padding: 10px 0;
+    text-align: center;
+}
+.skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq  .skinsurance-contact-a a:nth-child(1) {
+    background-color: #E2231A;
+    margin-right: 10px; 
+}
+.skinsurance-contact {
+    display: inline-block;
+    vertical-align: top;
+    width: 33.3333%;
+    max-width: 260px;
+    margin: 5px;
+}
+.skinsurance-contact-telphone .skinsurance-telphone-text {
+    margin: 0 10%;
+}
+.skinsurance-contenter .skinsurance-contact .skinsurance-customer-a {
+    padding-right: 17%;
+}
+.skinsurance-contact-telphone {
+    background-color: #eee;
+    padding: 10px 3%;
+    margin: 20px 0; 
+}
+.skinsurance-contact-telphone .skinsurance-telphone-img {
+    padding: 10px;
+}
+.skinsurance-contact-telphone .skinsurance-telphone-p {
+    font-size: 20px;
+}
+.skinsurance-contact-telphone .skinsurance-telphone-sapn {
+    font-size: 24px
+}
+
+@media (max-width: 1023px) {
+    .skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-img {
+        margin-right: 0;
+    }
+    .skinsurance-contenter .skinsurance-contact {
+        width: 240px;
+    }
+    .skinsurance-contact-telphone .skinsurance-telphone-text {
+        margin: 0 5%;
+    }    
+}
+
+@media (max-width: 768px) {
+    .skinsurance-menu-contact .skinsurance-contact-top {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-img {
+        display: block;
+        width: 100%;
+        max-width: 220px;
+        margin: auto;
+    }
+    .skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq {
+        display: block;
+        width: 100%;
+        max-width: 230px;
+        padding: 0 10px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    .skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq .skinsurance-contact-a {
+        margin-top: 0;
+        text-align: center;
+    }
+    .skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq  .skinsurance-contact-a a:nth-child(1) {
+        margin-right: 0;
+    }
+    .skinsurance-menu-contact .skinsurance-contact-top .skinsurance-contact-faq .skinsurance-contact-a a {
+        margin: 2px 0;
+    }
+    .skinsurance-contenter .skinsurance-contact {
+        display: block;
+        width: 100%;
+        max-width: 220px;
+        margin: 15px auto;
+        clear: both;
+    }
+    .skinsurance-contenter .skinsurance-contact .skinsurance-customer-a {
+        padding-right: 0;
+    }
+}
+
+
+/* 20160927 保單試算 */
+
+
+.skinsurance .skinsurance-row .skinsurance-sheets {
+    display: inline-block;
+    width: 100%;
+    min-height: 220px;
+    float: left;
+}
+.skinsurance .skinsurance-row .skinsurance-sheets:after {
+    display: inline-block;
+    content: '';
+    clear: both;
+}
+.skinsurance .skinsurance-row:first-child {
+    border-right: 1px dotted #aaa;
+}
+.skinsurance .skinsurance-row {
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+
+[class^="skinsurance-sheets-la"] {
+    display: block;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+[class^="skinsurance-sheets-se"] {
+    width: 280px;
+    height: 30px;
+}
+[class^="skinsurance-sheets-in"] {
+    width: 50px;
+    height: 30px;
+    /*border: 0;*/
+}
+.skinsurance-input-area [class^="skinsurance-sheets-la"] {
+    display: inline-block;
+    max-width: 280px;
+    margin: 0 auto;
+}
+.skinsurance .skinsurance-input-area {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    float: left;
+}
+.skinsurance .skinsurance-input-area:after {
+    display: inline-block;
+    content: '';
+    clear: both;
+} 
+.skinsurance .skinsurance-input-area .skinsurance-input-row {
+    max-width: 305px;
+    margin: auto;
+}
+.skinsurance .skinsurance-input-area .skinsurance-input-row .skinsurance-sheets-lable .skinsurance-sheets-input-long {
+    width: 195px;
+    text-align: right;
+}
+.skinsurance .skinsurance-input-row a {
+    max-width: 170px;
+    margin: 25px auto;
+    display: block;
+    text-align: center;
+    background-color: #0B5970;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 2px;
+}
+.clearfix {
+    clear: both;
+}
+.skinsurance-input-row > label .skinsurance-sheets-input{
+    width: 60px;
+}
+@media (max-width: 768px) { 
+    .skinsurance .skinsurance-row {
+        width: 100%;
+        display: block;
+        float:none;   
+    }
+    
+    .skinsurance .skinsurance-row .row-top {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    .skinsurance .skinsurance-row .skinsurance-sheets {
+        min-height: inherit;
+    }
+}
+
+/* 我的繳費紀錄 */
+
+.skinsurance-mypaymant .main {
+    margin: 0 auto;
+}
+
+.skinsurance-mypaymant > h4 {
+    margin: 0 0 30px 0;
+}
+
+/* 我的繳費紀錄 end */
+
+
+
+/* skinsurance-list */
+
+.skinsurance-list {
+    margin-left: 10%;
+}
+
+.skinsurance-list .main-list {
+    display: inline-block;
+}
+
+.skinsurance-list > ul > li > span {
+    vertical-align: top;
+}
+
+/* 保單理賠 */
+
+.skinsurance-tabs {
+    margin-bottom: 60px;
+    overflow: auto;
+    padding: 0 5%;
+}
+
+.skinsurance-tabs > li {
+    width: 48%;
+    margin-right: 4%;
+    float: left;
+    text-align: center;
+}
+
+.skinsurance-tabs > li:last-child {
+    margin-right: 0;
+}
+
+.skinsurance-tabs > li a {
+    font-size: 17px;
+    text-decoration: none;
+    display: block;
+    background-color: #f1f1f1;
+    line-height: 50px;
+    color: #4d4d4d;
+}
+
+/* 保單理賠 end */
+
+/* 保單借款 */
+
+.skinsurance-provision .bank-list > li > p,
+.skinsurance-provision .account .txtindent,
+.skinsurance-provision .last > li {
+    margin-left: 2em;
+}
+
+.skinsurance-provision .bank-list > li > p:first-child {
+    text-indent: 0;
+}
+
+.skinsurance-provision p,
+.skinsurance-provision a {
+    font-size: 15px;
+}
+
+    
+@media (max-width:768px) {
+    .skinsurance-provision .bank-list > li > p,
+    .skinsurance-provision .account .txtindent,
+    .skinsurance-provision .last > li {
+        margin-left: 0;
+    }
+}
+
+/* 保單借款 end */
+
+/* 單張醫療險 */
+
+/*.skinsurance-grey {
+    background: #fafafa;
+    position: relative;
+    overflow: auto;
+    padding-top: 1px;
+}*/
+
+.skinsurance-grey.scroll {
+    overflow: visible;
+    padding-bottom: 20px;
+}
+
+.skinsurance-dpgrey .notice {
+    text-align: right;
+    padding-bottom: 50px;
+}
+
+.skinsurance-dpgrey .notice a {
+    color: #0071b7;
+    text-decoration: none;
+}
+
+.skinsurance-dpgrey .notice a:before {
+    content: '+';
+    display: inline-block;
+    vertical-align: middle;
+    color: #0071b7;
+}
+
+.skinsurance-download {
+    position: relative;
+/*    background: #ededed;*/
+    margin-bottom: 50px;
+    margin-bottom: 0;/*kate*/
+    overflow: auto;
+}
+
+.skinsurance-download.decree {
+    margin-top: 50px;
+}
+
+.skinsurance-subject > p {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.skinsurance-download .dowloadList {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.skinsurance-download .dowloadList.longer {
+    width: 80%;
+}
+
+.skinsurance-download .dowloadList > ul > li > p {
+    display: inline-block;
+    margin: 0;
+}
+
+.skinsurance-download ul.dowloadList li {
+    border-bottom: 1px solid #b0b0bf;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.skinsurance-download ul li:last-child {
+    margin-bottom: 0;
+    border: none;
+}
+
+.skinsurance-download ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.skinsurance-download ul li span.download,
+.skinsurance-007-spend .tabcontent li.active .tabcontent-content.arrow-right-link > ul > li > a.download {
+/*    background: url(../image/pdf.png);*/
+    width: 21px;
+    height: 23px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.skinsurance-encyclopedia {
+/*    background: #ededed;*/
+    text-align: center;
+    overflow: auto;
+    padding: 10px 20px;
+    margin-bottom: 75px;
+}
+
+.skinsurance-encyclopedia a {
+    color: #fff;
+    
+}
+
+.skinsurance-encyclopedia:before {
+    content: '';
+    background: url(../image/qustionsman.png);
+    width: 255px;
+    height: 233px;
+    display: inline-block;
+    float: left;
+}
+
+.skinsurance-encyclopedia:after {
+    content: '';
+    background: url(../image/scaryman.png);
+    width: 255px;
+    height: 233px;
+    display: inline-block;
+    float: right;
+}
+
+.skinsurance-encyclopedia .include {
+    display: inline-block;
+    margin-top: 60px;
+}
+
+.skinsurance-encyclopedia  h4 {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.skinsurance-encyclopedia a {
+    background: url(../image/shadowbtn.png);
+    width: 230px;
+    height: 49px;
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 0;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+}
+
+.skinsurance-connection {
+    margin-bottom: 115px;
+}
+
+.skinsurance-connection .bubble p {
+    font-size: 16px;
+}
+
+.skinsurance-connection .contactMethod h5 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.skinsurance-connection .include {
+    width: 56%;
+    min-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.skinsurance-connection div.bubble {
+    border: 1px solid #7f7f7f;
+    padding: 20px 0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.skinsurance-connection .contactMethod {
+    background: #ededed;
+    text-align: left;
+    padding: 20px;
+}
+
+.skinsurance-connection .bubble p {
+    margin: 0;
+}
+
+.skinsurance-connection > div span.red {
+    color: #ff0000;
+}
+
+.skinsurance-connection input {
+    border: none;
+    padding: 10px 5px;
+}
+
+.skinsurance-connection input#woman {
+    margin-left: 30px;
+}
+
+.skinsurance-connection .contactMethod .inline-row-sub {
+    display: inline-block;
+}
+
+.skinsurance-connection .contactMethod .phonestop {
+    font-size: 16px;
+}
+.skinsurance-connection .contactMethod > div > div:nth-child(2) {
+    margin: 0 20px;
+}
+
+.skinsurance-connection .contactMethod .name {
+    width: 120px;
+}
+
+.skinsurance-connection .contactMethod .inline-row-sub:last-child {
+    width: 260px;
+    float: right;
+}
+
+.skinsurance-connection .contactMethod input.tel {
+    width: 100%;
+}
+
+.skinsurance-connection .contactMethod > div:last-child input {
+    width: 100%;
+}
+
+.skinsurance-connection .contactMethod .inline-row {
+    margin-bottom: 30px;
+}
+
+.skinsurance-connection .phonestop:before {
+    content: '';
+    background: url(../image/phonestop.png);
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.skinsurance-connection .contactMethod .inline-row .send {
+    float: right;
+    margin: 10px 0 0 0;
+}
+
+.skinsurance-connection .contactMethod > div:last-child {
+    margin-bottom: 0;
+}
+
+.skinsurance-connection .send a {
+    color: #fff;
+    background: #df6c0a;
+    padding: 10px 40px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.skinsurance-precautions {
+    position: relative;
+    border-top: 1px solid #b0b0bf;
+    padding: 40px 0;
+}
+
+.skinsurance-precautions ul li {
+    line-height: 1.5em;
+}
+
+.skinsurance-precautions h5 {
+    color: #e2231a;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5em;
+}
+
+.skinsurance-precautions h4 {
+    position: relative;
+    width: 150px;
+    background: #fff;
+    top: -47px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    
+}
+
+.skinsurance-precautions > div {
+    width: 74%;
+    margin: 0 auto;
+}
+
+.skinsurance-connection input.email {
+    width: 100%;
+}
+
+@media (max-width:1366px) {
+    .skinsurance-connection .contactMethod > div > div:nth-child(2) {
+        margin: 0 10px;
+    }
+    
+    .skinsurance-connection .send a {
+        padding: 10px 40px;
+    }
+}
+
+@media (max-width:1365px) {
+    .skinsurance-encyclopedia .include {
+        margin-top: 0;
+    }
+    
+    .skinsurance-encyclopedia:before,
+    .skinsurance-encyclopedia:after {
+        width: 150px;
+        height: 137px;
+        background-size: cover;
+    }
+}
+
+@media (max-width:1023px) {
+    .skinsurance-encyclopedia:before,
+    .skinsurance-encyclopedia:after {
+        width: 150px;
+        background-size: cover;
+        height: 140px;
+    }
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-encyclopedia a {
+        font-size: 16px;
+        width: 160px;
+        height: auto;
+    }
+    
+    .skinsurance-encyclopedia h4 {
+        font-size: 15px;
+    } 
+    
+    .skinsurance-download ul li {
+        font-size: 16px;
+    }
+    
+    .skinsurance-connection .contactMethod .phonestop {
+        font-size: 15px;
+        position: relative;
+        padding-left: 40px;
+        display: inline-block;
+    }
+    
+    .skinsurance-connection .phonestop:before {
+        position: absolute;
+        top: 0;
+        left: -5px;
+    }
+    
+    .skinsurance-connection .send a {
+        width: 235px;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .skinsurance-connection .contactMethod > div:last-child {
+        margin-top: 30px;
+    }
+    
+    .skinsurance-connection .include {
+        min-width: inherit;
+    }
+    
+    .skinsurance-connection .include {
+        width: 100%;
+    }
+    .skinsurance-encyclopedia {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-download ul li {
+        padding-bottom: 10px;
+    }
+    
+    .skinsurance-download {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-connection .contactMethod .inline-row {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .skinsurance-connection .bubble p {
+        text-align: left;
+        width: 95%;
+        margin: 0 auto;
+        font-size: 14px;
+    }
+    
+    .skinsurance-download .dowloadList {
+        width: 80%;
+    }
+    
+    .skinsurance-encyclopedia:before,
+    .skinsurance-encyclopedia:after {
+        display: none;
+    }
+    
+    .skinsurance-dpgrey .notice {
+        display: none;
+    }
+    
+    .skinsurance-encyclopedia {
+        padding: 20px;
+    }
+    
+     .skinsurance-connection .contactMethod > div > div:nth-child(2) {
+        margin: 20px 5px;
+    }
+    
+    .skinsurance-connection .contactMethod .inline-row .send {
+        float: none;
+        text-align: center;
+    }
+    
+    .skinsurance-connection .contactMethod .inline-row-sub {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    .skinsurance-connection .contactMethod h5 {
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .skinsurance-connection .bubble {
+        width: 90%;
+        margin: 0 auto 50px auto;
+    }
+    
+    .skinsurance-connection {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-precautions {
+        border: none;
+        padding: 0 10px;
+    }
+    
+    .skinsurance-precautions > div {
+        width: 100%;
+        display: none;
+    }
+    
+    .skinsurance-precautions h4.active + div {
+        display: block;
+    }
+    
+    .skinsurance-precautions h4 {
+        position: static;
+        width: 100%;
+        text-align: left;
+        margin: 30px 0;
+        font-size: 16px;
+    }
+    
+    .skinsurance-precautions h4:before {
+        content: '';
+        background: #e2231a;
+        display: inline-block;
+        margin-right: 5px;
+        width: 13px;
+        height: 13px;
+    }
+    
+    .skinsurance-precautions h4:after {
+        content: '';
+        background: url(../image/arrowdown.png);
+        width: 16px;
+        height: 8px;
+        float: right;
+        margin-top: 0.4em;
+    }
+    
+    .skinsurance-precautions h4.active:after {
+        content: '';
+        background: url(../image/arrowup.png);
+        width: 16px;
+        height: 8px;
+        float: right;
+        margin-top: 0.4em;
+    }
+    
+    .skinsurance-download .dowloadList {
+        /*display: none;*/
+    }
+    
+    .skinsurance-download.decree .dowloadList {
+        display: block;
+    }
+    
+    .skinsurance-download .dowloadList.longer {
+        width: 90%;
+    }
+    
+    .skinsurance-002-special-sty.active + .skinsurance-download .dowloadList {
+        display: block;
+        padding: 20px 0;
+    }
+    
+    .skinsurance-download .skinsurance-002-special-sty.active + .dowloadList {
+        display: block;
+        margin-top: 30px;
+    }
+    
+    .skinsurance-connection .contactMethod .name,
+    .skinsurance-connection .contactMethod .inline-row-sub:last-child {
+        width: 100%;
+    }
+    .skinsurance-connection > div {
+        min-width: inherit;
+        width: 100%;
+    }
+    
+    .skinsurance-connection .contactMethod .phonestop {
+        text-align: left;
+    }
+    
+    .skinsurance-precautions h5 {
+        font-size: 14px;
+        line-height: 2em;
+        margin-top: 0;
+    }
+    
+    .skinsurance-precautions ul li {
+        font-size: 13.5px;
+    }
+    
+    .skinsurance-precautions ul li p {
+        line-height: 2em;
+        margin-bottom: 0;
+    }
+}
+
+/* 單張醫療險 end */
+
+/* 保單服務-繳費服務 */
+
+@media (max-width:768px) {
+    
+    .skinsurance-dpgrey.mode-two {
+        margin-top: 20px;
+        padding-top: 30px;
+    }
+    
+    .skinsurance-dpgrey.mode-two .skinsurance-003-insuranceList {
+        display: block;
+    }
+    
+}
+
+/* 投資型保險 */
+
+@media (max-width:768px) {
+    
+    .skinsurance-subject .singleText {
+        display: none;
+    }
+    
+    .skinsurance-002-special-sty.active .singleText {
+        display: block;
+    }
+}
+
+/* 投資型保險 end */
+
+/* 團意險 */
+
+
+
+/* 團意險 end */
+
+/* tabs 版型 */
+
+.skinsurance-001-ga-edit-dgroup {
+    overflow: auto;
+    margin: 0;
+}
+
+.skinsurance-001-ga-edit-dgroup > li > a {
+    text-decoration: none;
+    display: block;
+    color: #808080;
+    background: #f0f0f0;
+    
+}
+
+.skinsurance-001-ga-edit-dgroup > li {
+    position: relative;
+}
+
+.skinsurance-001-ga-edit-dgroup > li.active:before {
+    content: '';
+    height: 5px;
+    width: 100%;
+    background: #bb2422;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.skinsurance-001-ga-edit-dgroup > li.active > a {
+    background: #fff;
+    color: #bb2422;
+}
+
+.skinsurance-001-ga-edit-dgroup > li:first-child.active {
+    border-left: 1px solid #d5d6d5;
+}
+
+.skinsurance-001-ga-edit-dgroup > li:last-child.active {
+    border-right: 1px solid #d5d6d5;
+}
+
+.skinsurance-001-ga-edit-dgroup > li {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    text-align: center;
+}
+
+.skinsurance-001-ga-edit-dgroup.aliquots_six > li {
+    width: 16.6666666666666666666666%;
+}
+
+.skinsurance-001-ga-edit-dgroup.aliquots_five > li {
+    width: 20%;
+}
+
+.skinsurance-001-ga-edit-dgroup.aliquots_four > li {
+    width: 25%;
+}
+
+.skinsurance-001-ga-edit-dgroup.aliquots_three > li {
+    width: 33.3333333333333333333333333%;
+}
+
+.skinsurance-001-ga-edit-dgroup > li {
+    min-height: 50px;
+    line-height: 50px;
+}
+
+.skinsurance-001-ga-edit-dgroup > li.heavy {
+    line-height: 20px;
+}
+
+.skinsurance-002-ga-edit-ligroup {
+    overflow: auto;
+}
+
+.skinsurance-002-ga-edit-ligroup > li {
+    width: 49%;
+    margin-right: 2%;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    background: #f1f1f1;
+    padding: 10px 0;
+}
+
+.skinsurance-002-ga-edit-ligroup > li.active {
+    background: #c6221c;
+}
+
+.skinsurance-002-ga-edit-ligroup > li.active > a {
+    color: #fff;
+}
+
+.skinsurance-002-ga-edit-ligroup > li > a {
+    color: #4d4d4d;
+    text-decoration: none;
+}
+
+.skinsurance-002-ga-edit-ligroup > li:last-child {
+    margin-right: 0;
+    
+}
+
+.skinsurance-002-ga-edit-ligroup > li.active {
+    background: #c6221c;
+    color: #fff;
+}
+
+
+/* tabs 版型 end */
+
+
+
+
+
+/* title 共同樣式 */
+
+.skinsurance-005-title {
+    font-weight: bold;
+    color: #464f58;
+    margin-bottom: 20px;
+}
+
+/* title 共同樣式 end */
+
+/* table 共同樣式 */
+
+.skinsurance-006-table {
+    padding-top: 25px;
+}
+
+.skinsurance-006-table table {
+    width: 100%;
+}
+
+.skinsurance-006-table table thead {
+    background: #888d99;
+    color: #fff;
+}
+
+.skinsurance-006-table table thead tr td {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.skinsurance-006-table table tbody tr td {
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.skinsurance-006-table table tbody tr td:first-child {
+    text-align: left;
+    color: #0d576d;
+}
+
+.skinsurance-006-table table tbody tr:nth-child(even) {
+    background: #f7f8f9;
+}
+
+/* table 共同樣式 end */
+
+/* inside 共同樣式 */
+
+.skinsurance-007-inside {
+    border: 1px solid #d5d6d5;
+    border-top: none;
+    text-align: left;
+    padding: 30px 5% 0 5%;
+    overflow: auto;
+}
+
+/* inside 共同樣式 end */
+
+/* mobileArea 大版時隱藏 */
+
+.skinsurance-007-mobileArea {
+    display: none;
+}
+
+/* mobileArea 大版時隱藏 end */
+
+/* QA樣式 */
+
+.skinsurance-008-QA {
+    width: 85%;
+    margin: 0 auto 50px auto;
+    
+}
+
+.skinsurance-008-QA li {
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+
+.skinsurance-008-QA li h3 {
+    font-size: 16px;
+    border-bottom: 1px solid #e8e9e9;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 20px;
+    line-height: 1.5em;
+}
+
+.skinsurance-008-QA li:first-child h3:before {
+    content: '';
+    background: url(../image/one-01.png);
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    bottom: -1px;
+    left: -30px;
+    /*left: 0;*/
+}
+
+.skinsurance-008-QA li ul {
+    padding: 0 20px;
+}
+
+.skinsurance-008-QA li ul li {
+    display: inline-block;
+    width: 120px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.skinsurance-008-QA li p {
+    margin: 10px 0 0 20px;
+    color: #e1424c;
+    
+}
+
+.skinsurance-008-QA li ul li label  {
+    background: none;    
+    color: #5c5d5f;
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+.skinsurance-008-QA li ul li label:before {
+    /*background: url(../image/unckeck-01.png);*/
+    background: url(../image/uncheckred.png);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    content: '';
+    vertical-align: middle;
+}
+
+.skinsurance-008-QA li ul li input[type="radio"]:checked ~ label:before {
+    /*background: url(../image/checked-01.png);*/
+    background: url(../image/checkred.png);
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.skinsurance-008-QA li:nth-child(2) h3:before {
+    content: '';
+    background: url(../image/two-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+}
+
+.skinsurance-008-QA li {
+    margin-bottom: 10px;
+}
+
+.skinsurance-008-QA li:nth-child(3) h3:before {
+    content: '';
+    background: url(../image/three-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(4) h3:before {
+    content: '';
+    background: url(../image/four-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(5) h3:before {
+    content: '';
+    background: url(../image/five-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(6) h3:before {
+    content: '';
+    background: url(../image/six-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(7) h3:before {
+    content: '';
+    background: url(../image/seven-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(8) h3:before {
+    content: '';
+    background: url(../image/eight-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(9) h3:before {
+    content: '';
+    background: url(../image/nine-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(10) h3:before {
+    content: '';
+    background: url(../image/ten-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(11) h3:before {
+    content: '';
+    background: url(../image/eleven-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(12) h3:before {
+    content: '';
+    background: url(../image/twelve-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(13) h3:before {
+    content: '';
+    background: url(../image/thirteen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(14) h3:before {
+    content: '';
+    background: url(../image/fourteen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li select {
+    margin-left: 20px;
+    width: 200px;
+    padding: 5px;
+    margin: 5px 0 10px 20px;
+}
+
+.skinsurance-008-QA li:nth-child(15) h3:before {
+    content: '';
+    background: url(../image/fifteen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(16) h3:before {
+    content: '';
+    background: url(../image/sixteen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    bottom: -1px;
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(17) h3:before {
+    content: '';
+    background: url(../image/seventeen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;  
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(18) h3:before {
+    content: '';
+    background: url(../image/eighteen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;  
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(19) h3:before {
+    content: '';
+    background: url(../image/nineteen-01.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background-size: contain;  
+    left: -30px;
+    
+}
+
+.skinsurance-008-QA li:nth-child(6) ul li:first-child {
+    width: 240px;
+}
+
+.skinsurance-008-QA li ul li label {
+    line-height: 1em;
+}
+
+.skinsurance-008-QA li ul li input {
+    display: none;
+}
+
+.skinsurance-mathArea {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.skinsurance-mathArea .startMath {
+    display: block;
+    background: #0e5b73;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin: 10px auto;
+    line-height: 1.5em;
+    
+}
+
+.skinsurance-mathArea .mathBlock input,
+.skinsurance-mathArea .resultBlock .resultInner .resultArea input {
+    line-height: 1em;
+}
+
+.skinsurance-mathArea .cash {
+    overflow: auto;
+}
+
+.skinsurance-mathArea .notice {
+    color: #e1424c;
+}
+
+.skinsurance-mathArea .mathBlock .blockTop,
+.skinsurance-mathArea .mathBlock .blockCenter,
+.skinsurance-mathArea .mathBlock .blockBottom {
+    padding: 0 0 0 20px;
+    overflow: auto;
+}
+
+.skinsurance-mathArea .mathBlock .blockTop .topTitle {
+    color: #0e5b73;
+}
+
+.skinsurance-mathArea .mathBlock .blockTop .topTitle:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/cash-01.png);
+    width: 34px;
+    height: 20px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.skinsurance-mathArea .mathBlock input {
+    display: inline-block;
+    width: 60px;
+    color: #e1424c;
+    text-align: right;
+    padding: 0 5px;
+}
+@media only screen and (min-width: 1023px) and (max-width:1024px) {
+    .skinsurance-mathArea .mathBlock input {
+        width: 47px;
+    }
+}
+
+.skinsurance-mathArea .mathBlock p {
+    display: inline-block;
+    width: 115px;
+}
+
+.skinsurance-mathArea .mathBlock {
+    margin-bottom: 20px;
+}
+
+.skinsurance-mathArea .left,
+.skinsurance-mathArea .right {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    min-width: 220px;
+}
+
+.skinsurance-mathArea .left p,
+.skinsurance-mathArea .right p,
+.skinsurance-mathArea .left span,
+.skinsurance-mathArea .right span {
+    color: #4d5155;
+}
+
+.skinsurance-mathArea .mathBlock .blockCenter .centerTitle:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/moneybag-01.png);
+    width: 30px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.skinsurance-mathArea .mathBlock .blockBottom .bottomTitle:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/pig-01.png);
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.skinsurance-mathArea .mathBlock h3 {
+    margin: 30px 0;
+}
+
+.skinsurance-mathArea .mathBlock .blockTop,
+.skinsurance-mathArea .mathBlock .blockBottom,
+.skinsurance-mathArea .mathBlock .blockCenter {
+    border-bottom: 1px solid #d0d2d2;
+    padding-bottom: 10px;
+}
+
+.skinsurance-mathArea .resultBlock .result {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.skinsurance-mathArea .resultBlock .resultInner {
+    width: 350px;
+    margin: 0 auto;
+    
+}
+
+.skinsurance-mathArea .resultBlock .resultInner .resultArea p {
+    display: inline-block;
+    width: 100px;
+    margin-right: 20px;
+    text-align: right;
+    margin-bottom: 0;
+}
+
+.skinsurance-mathArea .resultBlock .resultInner .resultArea input {
+    width: 100px;
+    display: inline-block;
+}
+
+.skinsurance-mathArea .resultBlock .resultInner .resultArea img {
+    display: block;
+    margin: 10px 0 10px 160px;
+    
+}
+
+.skinsurance-mathArea .resultBlock .enoughTitle,
+.skinsurance-mathArea .resultBlock .enoughContent {
+    display: inline-block;
+}
+
+.skinsurance-mathArea .resultBlock .enoughContent {
+    width: 200px;
+    text-align: right;
+    border-bottom: 1px solid #424243;
+}
+
+.skinsurance-mathArea .resultBlock .enoughContent .notEnough {
+    color: #db5358;
+}
+
+.skinsurance-mathArea .resultBlock .result hr {
+    border-top: 5px solid #db5358;
+    margin: 10px auto 0 auto;
+    width: 50px;
+}
+
+.skinsurance-mathArea .resultBlock .recommend .recommendTitle {
+    color: #e1424c;
+    font-size: 20px;
+}
+
+.skinsurance-mathArea .resultBlock .recommend {
+    border-top: 1px solid #dee0df;
+    padding: 20px;
+}
+
+.skinsurance-mathArea .resultBlock .recommend .recommendInner {
+    position: relative;
+}
+
+.skinsurance-mathArea .resultBlock .recommend .recommendInner:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/hand-01.png);
+    width: 30px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    left: -30px;
+}
+
+.skinsurance-mathArea .resultBlock .recommend ul li {
+    width: 100%;
+    float: none;
+    margin-bottom: 20px;
+}
+
+/* QA樣式 end */
+
+/* 美麗人生內頁 樣式 */
+
+.skinsurance-009-other li {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    position: relative;
+    float: left;
+    width: 24%;
+}
+
+.skinsurance-009-other div div {
+    position: relative;
+    border: 1px solid #c9c9cd;
+    padding: 20px 30px 60px 30px;
+}
+
+.skinsurance-009-other li img {
+    max-width: 100%;
+}
+
+.skinsurance-009-other div div a {
+    color: #0c5a72;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 1px solid #0c5a72;
+    border-radius: 10px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+.skinsurance-009-other div div h3 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.skinsurance-009-other div div small {
+    color: #95969d;
+}
+
+.skinsurance-009-other div div h4 {
+    color: #0e5b73;
+    margin-bottom: 40px;
+}
+
+.skinsurance-009-other div div:after {
+    content: '';
+    border-color: transparent #e2e1e1 #e2e1e1 transparent;
+    border-style: solid;
+    border-width: 45px 20px 45px 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.skinsurance-authorArea {
+    width: 100%;
+}
+
+.skinsurance-contentAreaInside {
+    border: 1px solid #e9e9e8;
+    border-top: none;
+    width: 95%;
+    margin: 0 auto
+}
+
+.skinsurance-authorInformation {
+    padding: 20px 45px;
+    overflow: auto;
+}
+
+.skinsurance-authorInformation > .contentainer {
+    padding: 50px;
+}
+
+.skinsurance-authorInformation .authorText p {
+    display: none;
+}
+
+.skinsurance-authorInformation .authorText h4 {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.skinsurance-authorInformation .author {
+    margin-right: 50px;
+    float: left;
+}
+
+.skinsurance-authorInformation .authorText span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.skinsurance-authorInformation .text {
+    text-align: left;
+}
+
+.skinsurance-authorInformation .lectures.inline {
+    margin-right: 30px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.skinsurance-authorInformation .lectures {
+    margin-bottom: 30px;
+}
+
+.skinsurance-authorInformation .lectures .left {
+    margin-right: 20px;
+    float: left;
+    display: inline-block;
+}
+
+.skinsurance-authorInformation .lectures .right {
+    max-width: calc(100% - 76px);
+    display: inline-block;
+}
+
+.skinsurance-authorInformation .lectures .right p {
+    margin-bottom: 0;
+}
+
+.skinsurance-authorInformation .book {
+    padding-left: 70px;
+    margin-bottom: 80px;
+}
+
+.skinsurance-authorInformation .book:before {
+    background: url(../image/book.jpg);
+    width: 67px;
+    height: 87px;
+    content: '';
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.skinsurance-authorInformation .book div {
+    display: inline-block;
+}
+
+.skinsurance-authorInformation p.brown {
+    color: #d2956e;
+}
+
+.skinsurance-010-sign {
+    text-align: center;
+}
+
+.skinsurance-010-sign a {
+    display: inline-block;
+    background: #5d5d5d;
+    width: 200px;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ 
+.skinsurance-010-sign a:first-child {
+    background: #e9545a;
+}
+
+/* 美麗人生內頁 end */
+
+/* 醫檢院所 */
+
+.skinsurance-hospitalInside {
+    border: 1px solid #d5d6d5;
+    border-top: none;
+    text-align: left;
+    padding: 30px 0;
+    overflow: auto;
+}
+
+.skinsurance-011-insideHeader {
+    background: #f7f8f9;
+    overflow: auto;
+    padding: 10px;
+    height: 100px;
+    position: relative;
+}
+
+.skinsurance-011-insideHeader:before {
+    content: '';
+    background: url(../image/insideheader.png);
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.skinsurance-011-insideHeader div {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.skinsurance-011-insideHeader:after {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.skinsurance-011-insideHeader div select {
+    width: 130px;
+    padding: 5px;
+    margin-right: 10px;
+    height: 33px;
+}
+
+.skinsurance-011-insideHeader div a {
+    color: #fff;
+    background: #0b5970;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/*.skinsurance-011-insideHeader div:last-child {
+    float: right;
+    margin-top: 20px;
+    margin-right: 30px;
+}*/
+
+.skinsurance-hospitalItem {
+    /*background: #e1e1e1;*/
+    padding: 10px 20px;
+}
+
+.skinsurance-hospitalItem .item {
+    color: #949494;
+    border-right: 1px solid #949494;
+    padding-right: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 75px;
+}
+
+.skinsurance-hospitalItem div {
+    display: inline-block;
+}
+
+.skinsurance-hospitalItem > div:last-child {
+    margin-left: 25%;
+}
+
+.skinsurance-hospitalContent {
+    padding: 20px 10px 20px 40px;
+    padding: 20px 10px 20px 10px;/*kate*/
+}
+
+.skinsurance-hospitalContainer div:first-child {
+    margin-right: 25%
+}
+
+.skinsurance-hospitalContainer > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.skinsurance-hospitalContainer div:first-child h4 {
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.skinsurance-hospitalContent div h4 span {
+    margin: 0 10px;    
+}
+
+.skinsurance-hospitalContent .yellow {
+    color: #ffd54b;
+}
+
+.skinsurance-hospitalContainer div:nth-child(2) {
+    margin-right: 0;
+    display: inline-block;
+}
+
+.skinsurance-hospitalContainer div img {
+    vertical-align: top;
+}
+
+.skinsurance-hospitalContainer {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e7e9;
+}
+
+.skinsurance-hospitalContent div h4 {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.skinsurance-hospitalContent div p {
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.skinsurance-hospitalContent .post {
+    float: right;
+}
+
+/* 醫檢院所 end */
+
+/* 聯絡我們 */
+
+.skinsurance-012-contentBanner {
+    width: 100%;
+    overflow: auto;
+    background: #cc231c;
+}
+
+.skinsurance-012-contentBanner .bannerText {
+    display: inline-block;
+    padding: 2% 2% 0 2%;
+    float: left;
+    width: 50%;
+    background: #cc231c;
+}
+
+.skinsurance-012-contentBanner .bannerImage {
+    width: 50%;
+    display: inline-block;
+    min-height: 190px;
+}
+
+.skinsurance-012-contentBanner .bannerText .phoneTitle,
+.skinsurance-012-contentBanner .bannerText .time,
+.skinsurance-012-contentBanner .bannerText .domestic {
+    color: #fff;
+}
+
+.skinsurance-012-contentBanner .bannerText .phoneTitle {
+    margin: 0 0 10px 0;
+}
+
+.skinsurance-012-contentBanner .bannerText .time {
+    margin-bottom: 5%;
+}
+
+.skinsurance-012-contentBanner .bannerText .domestic {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+
+.skinsurance-pathArea {
+    padding: 0;
+}
+
+.skinsurance-main_content {
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skinsurance-pathArea li {
+    display: inline-block;
+}
+
+.skinsurance-pathArea li a {
+    position: relative;
+    margin-right: 10px;
+    color: #65656b;
+}
+
+.skinsurance-pathArea li:last-child a:before {
+    content: '/';
+    left: -10px;
+    position: absolute;
+    display: inline-block;
+}
+
+.skinsurance-subBanner {
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skinsurance-title_kay {
+    position: static;
+    margin-bottom: 0;
+}
+
+.skinsurance-title_kay h3 {
+    color: #44515A;
+    margin: 20px 0;
+    padding: 0;
+    font-size: 35px;
+}
+
+.skinsurance-service .serviceArea {
+    width: 50%;
+    float: left;
+    display: inline-block;
+    overflow: auto;
+    padding: 50px 5%;
+}
+
+.skinsurance-saleArea .saleItem li > a {
+    display: block;
+    overflow: auto;
+    line-height: 38px;
+    padding: 10px 20px;
+    background: #e0dfde;
+    color: #4d4c4d;
+}
+
+.skinsurance-service .serviceArea .serviceItem {
+    font-size: 16px;
+    border-bottom: 1px solid #d1d1d5;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    color: #46464b;
+}
+
+.skinsurance-service .serviceArea .serviceItem:before {
+    content: '';
+    background: url(../image/emergency-01.png);
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+    width: 28px;
+    height: 30px;
+}
+
+.skinsurance-service .serviceArea .serviceItem.phoneBank:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/pig-01.png);
+    width: 28px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.skinsurance-service .lost,
+.skinsurance-saleArea .saleItem {
+    padding: 0;
+}
+
+.skinsurance-service .serviceArea .lost li div {
+    width: 70px;
+    float: right;
+}
+
+.skinsurance-service {
+    width: 100%;
+    overflow: auto;
+    background: #fdfdfd;
+}
+
+.skinsurance-saleArea .saleItem li > a:after {
+    content: '';
+    display: inline-block;
+    background: url(../image/plus-01.png);
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    float: right;
+}
+
+.skinsurance-saleArea .saleItem li.active > a:after {
+    content: '';
+    display: inline-block;
+    background: url(../image/less-02.png);
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    float: right;
+}
+
+
+.skinsurance-saleArea .saleItem li > a {
+    text-decoration: none;
+}
+
+.skinsurance-saleArea .saleItem li.active > a {
+    color: #fff;
+    background: #cc231c;
+}
+
+.skinsurance-saleArea .saleItem .area {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.skinsurance-saleArea .saleItem li.active a.message {
+    float: right;
+    color: #fff;
+    background: #0d576d;
+    border-radius: 3px;
+    padding: 10px 60px;
+}
+
+.skinsurance-saleArea .saleItem li.active .messageArea {
+    overflow: auto;
+    padding: 20px;
+}
+
+.skinsurance-saleArea .saleItem li.active .messageArea span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.skinsurance-saleArea .saleItem li.active .window {
+    padding: 20px;
+}
+
+.skinsurance-saleArea .saleItem li.active .window > div {
+    display: inline-block;
+}
+
+.skinsurance-saleArea .saleItem li.active .window > div span {
+    color: #8e8e92;
+    font-size: 12px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.skinsurance-saleArea .saleItem li.active .window > div:last-child {
+    float: right;
+}
+
+.skinsurance-saleArea .saleItem li.active .appeal {
+    padding: 20px;
+}
+
+.skinsurance-saleArea .saleItem li.active .appeal > div p {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.skinsurance-saleArea .saleItem li.active .appeal > div span {
+    color: #8e8e92;
+    font-size: 12px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.skinsurance-saleArea .saleItem > li {
+    margin-bottom: 10px;
+}
+
+.skinsurance-saleArea .saleItem li.active .messageArea:first-child {
+    border-bottom: 1px solid #d1d1d5;
+}
+
+.skinsurance-credit {
+    border-bottom: 1px solid #d4d5d7;
+    padding: 35px;
+}
+
+.skinsurance-credit .creditTitle {
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.skinsurance-credit .creditTitle span {
+    font-size: 13px;
+    color: #8e8e92;
+}
+
+.skinsurance-serviceWindow {
+    padding: 30px;
+}
+
+.skinsurance-serviceWindow .north,
+.skinsurance-serviceWindow .center {
+    border-bottom: 1px solid #d1d2d5;
+}
+
+.skinsurance-serviceWindow h5 {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.skinsurance-serviceWindow h5 span {
+    font-size: 13px;
+    color: #8e8e92;
+    margin-left: 20px;
+}
+
+.skinsurance-serviceWindow h5 ~ span {
+    vertical-align: top;
+    margin-right: 10%;
+    display: inline-block;
+}
+
+.skinsurance-serviceWindow ul.bank > li {
+    display: inline-block;
+}
+
+.skinsurance-serviceWindow ul {
+    display: inline-block;
+    padding: 0;
+}
+
+.skinsurance-serviceWindow ul.bank > li:first-child {
+    margin-right: 20px;
+}
+
+.skinsurance-serviceWindow .discriptions {
+    width: 700px;
+    display: inline-block;
+}
+
+.skinsurance-serviceWindow .banks {
+    vertical-align: top;
+}
+
+.skinsurance-serviceWindow ul li.spacing2 span span {
+    letter-spacing: 2em;
+}
+
+.skinsurance-serviceWindow .center > span,
+.skinsurance-serviceWindow .south > span {
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 10%;
+}
+
+.skinsurance-serviceWindow .center,
+.skinsurance-serviceWindow .south {
+    padding-top: 30px;
+}
+
+.skinsurance-saleArea .saleItem li .area {
+    display: none;
+}
+
+.skinsurance-saleArea .saleItem li.active .area {
+    display: block;
+}
+
+.skinsurance-service .lost,
+.skinsurance-saleArea .lost {
+    list-style: none;
+    padding: 0;
+}
+
+.skinsurance-contentBanner .bannerText .tel {
+    margin-left: 25px;
+}
+
+.skinsurance-contentBanner .bannerText .tel:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/phone-01.png);
+    width: 16px;
+    height: 14px;
+}
+
+.skinsurance-contentBanner .bannerText .cel:before {
+    content: '';
+    display: inline-block;
+    background: url(../image/cel-01.png);
+    width: 10px;
+    height: 18px;
+}
+
+/* 聯絡我們 end */
+
+/* 新光刊物 */
+
+.skinsurance-013-publications li {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #44444b;
+}
+
+.skinsurance-013-publications li a {
+    text-decoration: none;
+    color: #44444b;
+    font-size: 16px;
+}
+
+/* 新光刊物 end */
+
+/* 匯利率 */
+
+.skinsurance-rateList {
+    display: inline-block;
+    width: 25%;
+    font-size: 12px;
+    float: right;
+}
+
+.skinsurance-canvas {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+    padding-top: 50px;
+}
+
+.skinsurance-rateArea {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.skinsurance-rates .rate {
+    text-align: center;
+    padding: 10px 0;
+    background: #f6f5f8;
+    display: inline-block;
+    color: #696b7a;
+    font-size: 17px;
+    width: 49%;
+}
+
+.skinsurance-rates .fix {
+    margin-right: 2%;
+}
+
+.skinsurance-rates {
+    width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-size: 0;
+}
+
+.skinsurance-rates a {
+    text-decoration: none;
+}
+
+.skinsurance-rates .rate.active {
+    color: #fff;
+    background: #c9261f;
+}
+
+.skinsurance-graph {
+    width: 95%;
+    margin: 0 auto 50px auto;
+    font-size: 0;
+}
+
+.skinsurance-014-tab li {
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+}
+
+.skinsurance-014-tab {
+    margin-bottom: 0;
+    font-size: 0;
+}
+
+.skinsurance-014-tab li .section {
+    color: #919799;
+    padding-top: 10px;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.skinsurance-014-tab li.reserve .section {
+    background: linear-gradient(left,#f6f5f8,#fff);
+    background: -webkit-linear-gradient(left,#f6f5f8,#fff);
+    background: -moz-linear-gradient(left,#f6f5f8,#fff);
+    background: -o-linear-gradient(left,#f6f5f8,#fff);
+    border-left: 1px solid #afb3b4;
+    border-bottom: 1px solid #afb3b4;
+}
+
+.skinsurance-014-tab li.fixed .section {
+    background: linear-gradient(right,#f6f5f8,#fff);
+    background: -webkit-linear-gradient(right,#f6f5f8,#fff);
+    background: -moz-linear-gradient(right,#f6f5f8,#fff);
+    background: -o-linear-gradient(right,#f6f5f8,#fff);
+    border-bottom: 1px solid #afb3b4;
+    border-right: 1px solid #afb3b4;
+}
+
+.skinsurance-014-tab li .section div {
+    visibility: hidden;
+}
+
+.skinsurance-014-tab li.active .section div {
+    visibility: visible;
+}
+
+.skinsurance-014-tab li.active.fixed .section,
+.skinsurance-014-tab li.active.reserve .section {
+    background: none;
+    border: none;
+}
+
+.skinsurance-015-rate_sub li.active {
+    opacity: 1;
+}
+
+.skinsurance-015-rate_sub li {
+    font-size: 15px;
+    padding: 20px 45px 20px 15%;
+    color: #323c43;
+    border: 1px solid #6e7474;
+    margin-bottom: 10px;
+    position: relative;
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.skinsurance-015-rate_sub li:before {
+    background: #ccd0d2;
+    content: '';
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    left: 5%;
+}
+
+.skinsurance-015-rate_sub li input {
+    display: none;
+}
+
+.skinsurance-015-rate_sub li:after {
+    background: url(../image/plus-03.png);
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.skinsurance-015-rate_sub li.active:first-child:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #e1424c;
+}
+
+.skinsurance-015-rate_sub li.active:after {
+    background: url(../image/Subtraction.png);
+    content: '';
+    width: 22px;
+    height: 4px;
+    position: absolute;
+    right: 20px;
+    top: 27px;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(2):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #50cdea;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(3):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #ed7829;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(4):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #e6398e;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(5):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #1414ed;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(6):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #efea3a;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(7):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #c2d731;
+}
+
+.skinsurance-015-rate_sub li.active:nth-child(8):before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #0e5b73;
+}
+
+.skinsurance-016-deposit thead tr {
+    border-bottom: 1px solid #464f58;
+}
+
+.skinsurance-016-deposit tr {
+    width: 50%;
+    float: left;
+}
+
+.skinsurance-016-deposit thead tr th:first-child,
+.skinsurance-016-deposit thead tr th:nth-child(4),
+.skinsurance-016-deposit tbody tr td:first-child {
+    width: 60%;
+    text-align: left;
+}
+
+.skinsurance-016-deposit tbody tr.grey {
+    background: #f7f8f9;
+}
+
+.skinsurance-016-deposit thead tr th {
+    text-align: center;
+    color: #99a0a3;
+    padding-bottom: 10px;
+}
+
+.skinsurance-016-deposit tbody tr td {
+    text-align: center;
+}
+
+.skinsurance-016-deposit th,
+.skinsurance-016-deposit td {
+    display: inline-block;
+    margin-right: -4px;
+}
+
+.skinsurance-016-deposit thead tr th:nth-child(2),
+.skinsurance-016-deposit thead tr th:nth-child(3),
+.skinsurance-016-deposit thead tr th:nth-child(5),
+.skinsurance-016-deposit thead tr th:nth-child(6),
+.skinsurance-016-deposit tbody tr td:nth-child(2),
+.skinsurance-016-deposit tbody tr td:nth-child(3) {
+    width: 20%;
+}
+
+.skinsurance-016-deposit {
+    width: 100%;
+}
+
+.skinsurance-016-deposit tbody tr td {
+    color: #323c43;
+    padding: 20px 0 20px 10px;
+}
+
+.skinsurance-notice {
+    border-top: 1px solid #8e9298;
+    border-bottom: 1px solid #d5d5d7;
+    padding: 50px 10px;
+    margin-bottom: 50px;
+}
+
+.skinsurance-notice .noticeTitle span,
+.skinsurance-notice .moneyNotice li:last-child{
+    color: #cc231c;
+}
+
+.skinsurance-notice .moneyNotice li {
+    margin-left: 20px;
+}
+
+.skinsurance-notice .moneyNotice li:first-child {
+    margin-left: 0;
+}
+
+/* 匯利率 end */
+
+/* 新光刊物2 */
+
+.skinsurance-publicationInside {
+    padding: 4.5% 9%;
+}
+
+.skinsurance-frontCover {
+    text-align: center;
+    display: inline-block;
+    margin-right: 6%;
+    width: 25%;
+}
+
+.skinsurance-frontCover img {
+    box-shadow: 10px 10px #c7c7c7;
+}
+
+.skinsurance-frontCover a {
+    display: block;
+    background: #df6c0a;
+    color: #fff;
+    margin-top: 60px;
+    padding: 10px 0;
+    border-radius: 3px;
+    max-width: 245px;
+}
+
+.skinsurance-017-booksTitle {
+    display: inline-block;
+    vertical-align: top;
+    width: 65%;
+}
+
+.skinsurance-017-booksTitle a {
+    text-decoration: none;
+    display: block;
+}
+
+.skinsurance-017-booksTitle h5 {
+    color: #44444b;
+    position: relative;
+    padding-right: 25px;
+}
+
+.skinsurance-017-booksTitle h5:after {
+    content: '';
+    position: absolute;
+    display: block;
+    background: url(../image/arrowright.png);
+    width: 7px;
+    height: 19px;
+    top: 0;
+    right: 10px;
+}
+
+.skinsurance-017-booksTitle p {
+    color: #e2231a;
+}
+
+.skinsurance-017-booksTitle ul li {
+    padding-bottom: 20px;
+    padding-left: 3%;
+    border-bottom: 1px solid #aeaebd;
+    margin-bottom: 20px;
+}
+
+.skinsurance-018-page {
+    text-align: center;
+}
+
+.skinsurance-018-page a:first-child:before {
+    content: '';
+    background: url(../image/arrowleft.png);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 7px;
+    height: 19px;
+}
+
+.skinsurance-018-page {
+    margin-top: 10%;
+}
+
+.skinsurance-018-page a {
+    text-decoration: none;
+    color: #464f58;
+    font-size: 16px;
+}
+
+.skinsurance-018-page a:nth-child(2) {
+    margin: 0 15%;
+}
+
+.skinsurance-018-page a:last-child:after {
+    content: '';
+    background: url(../image/arrowright.png);
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    width: 7px;
+    height: 19px;
+}
+
+/* 新光刊物2 end */
+
+/* 房貸試算 */
+
+.skinsurance-houseLoanInside {
+    padding: 10% 0 0 0;
+    margin-bottom: 100px;
+}
+
+.skinsurance-questionArea {
+    width: 700px;
+    margin: 0 auto;
+}
+
+.skinsurance-questionArea div div:first-child {
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 150px;
+}
+
+.skinsurance-questionArea div div:first-child span {
+    color: #e2231a;
+}
+
+.skinsurance-questionArea div div:last-child span {
+    color: #4d4d4d;
+    font-size: 16px;
+}
+
+.skinsurance-questionArea div div:last-child {
+    display: inline-block;
+}
+
+.skinsurance-questionArea .q1 div {
+    display: inline-block;
+}
+
+.skinsurance-questionArea .q1 input,
+.skinsurance-questionArea .q2 input {
+    width: 380px;
+    padding: 5px 0;
+    border-color: #424142;
+}
+
+.skinsurance-questionArea .q3 input {
+    width: 230px;
+    padding: 5px 0;
+    border-color: #424142;
+}
+
+.skinsurance-questionArea > div {
+    margin-bottom: 5%;
+}
+
+.skinsurance-questionArea div.q4 div:first-child {
+    display: block;
+    margin-right: 0;
+}
+
+.skinsurance-questionArea div span.red {
+    color: #e2231a
+}
+
+.skinsurance-questionArea div.q4 > div:last-child {
+    width: 100%;
+    padding: 40px 32px;
+}
+
+.skinsurance-questionArea div.q4 input {
+    width: 90px;
+    margin: 0 15px;
+    padding: 5px 0;
+}
+
+.skinsurance-questionArea div.q4 > div:nth-child(2) > div span:last-child {
+    float: right;
+}
+
+.skinsurance-questionArea div.q4 > div:last-child > div {
+    margin-bottom: 40px;
+}
+
+.skinsurance-questionArea div.q4 > div:last-child > div:last-child {
+    display: block;
+}
+
+.skinsurance-questionArea div.q4 .link {
+    text-align: center;
+}
+
+.skinsurance-questionArea div.q4 .link .math {
+    display: inline-block;
+    width: 230px;
+    background: #e2231a;
+    color: #fff;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.skinsurance-questionArea div.q4 .link .clear {
+    display: inline-block;
+    width: 230px;
+    text-decoration: none;
+    background: #adadad;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.skinsurance-mathResult {
+    width: 100%;
+    position: relative;
+    background: #f5f5f8;
+    max-width: 1082px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.skinsurance-mathResult img {
+    margin-bottom: 60px;
+}
+
+.skinsurance-mathResult > div {
+    text-align: center;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.skinsurance-mathResult > div > span {
+    float: left;
+    font-size: 16px;
+}
+
+.skinsurance-mathResult  h4 {
+    margin-bottom: 70px;
+    margin-left: 16%;
+}
+
+.skinsurance-mathResult > div {
+    margin-left: 16%;
+}
+
+.skinsurance-mathResult > div span:last-child {
+    margin-left: 40px;
+}
+
+.skinsurance-mathResult > div > span:last-child span {
+    margin: 0;
+}
+
+.skinsurance-mathResult input {
+    width: 90px;
+    padding: 5px 0;
+    margin: 0 15px;
+}
+
+.skinsurance-mathResult > div span:last-child input {
+    width: 120px;
+}
+
+.skinsurance-mathResult .dollar {
+    display: inline-block;
+}
+
+.skinsurance-mathResult h3 {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    margin: 0;
+    right: 0;
+    color: #e2231a;
+    text-align: center;
+}
+
+/* 房貸試算 end */
+
+/* 房貸網路送件 */
+
+.skinsurance-networkInside .applicant .row span.stop label {
+    width: 70px;
+    text-align: center;
+}
+
+.skinsurance-networkInside .address {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.skinsurance-networkInside .adressArea {
+    width: 65%;
+    padding: 5px;
+}
+
+.skinsurance-networkInside .applicant {
+    /*width: 750px;*/
+    width: 100%;
+    margin: 0 auto;
+}
+
+.skinsurance-networkInside .applicant input {
+    padding: 5px;
+}
+
+.skinsurance-networkInside .applicant .row-input span {
+    margin-right: 10px;
+    display: inline-block;
+    text-align: right;
+    font-size: 18px;
+    vertical-align: top;
+}
+
+.skinsurance-networkInside .row-input {
+    margin-bottom: 25px;
+}
+
+.skinsurance-networkInside .telArea > div > div,
+.skinsurance-networkInside .company,
+.skinsurance-networkInside .tel {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.skinsurance-networkInside .name,
+.skinsurance-networkInside .age,
+.skinsurance-networkInside .home input,
+.skinsurance-networkInside .cellPhone,
+.skinsurance-networkInside .email,
+.skinsurance-networkInside .job {
+    width: 65%;
+    max-width: 370px;
+}
+
+.skinsurance-networkInside .company input {
+    width: 320px;
+    max-width: 320px;
+}
+
+.skinsurance-networkInside .tel input {
+    width: 160px;
+    max-width: 160px;
+}
+
+.skinsurance-networkInside .row-input > span,
+.skinsurance-networkInside .row-input .phone,
+.skinsurance-networkInside .home span {
+    min-width: 110px;
+}
+
+.skinsurance-networkInside .row-input .houseYear,
+.skinsurance-networkInside .row-input .plain {
+    display: inline-block;
+}
+
+.skinsurance-networkInside .row-input .houseYear input {
+    width: 280px;
+    max-width: 280px;
+}
+
+.skinsurance-networkInside .row-input .plain input,
+.skinsurance-networkInside .row-input .cars input {
+    width: 325px;
+    max-width: 325px;
+}
+
+.skinsurance-networkInside .row-input .cars,
+.skinsurance-networkInside .row-input .house,
+.skinsurance-networkInside .row-input .money {
+    display: inline-block;
+}
+
+.skinsurance-networkInside .row-input .house div span input {
+    width: 210px;
+    max-width: 210px;
+}
+
+.skinsurance-networkInside .row-input.multiple > span {
+    vertical-align: top;
+/*    margin-top: 5px;*/
+}
+
+.skinsurance-networkInside .row-input .money > div {
+    margin-bottom: 20px;
+}
+
+.skinsurance-networkInside .row-input .money > div span {
+/*    min-width: 60px;*/
+    text-align: left;
+}
+
+
+.skinsurance-networkInside .row-input .money > div input {
+    width: 200px;
+    max-width: 200px;
+}
+
+.skinsurance-networkInside .row-input .money > div:first-child input {
+    width: 235px;
+    max-width: 235px;
+}
+
+.skinsurance-networkInside .guarantee {
+    border-bottom: 1px solid #cdcdd0;
+}
+
+.skinsurance-networkInside .row-input.last {
+    margin-bottom: 0;
+}
+
+.skinsurance-networkInside .verification div div {
+    display: inline-block;
+}
+
+.skinsurance-networkInside .verification {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 60px 0 100px 0;
+}
+
+.skinsurance-networkInside .verification input {
+    width: 130px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.skinsurance-networkInside .verification span {
+    margin-right: 20px;
+}
+
+.skinsurance-networkInside .verification .showCode {
+    color: #0000ff; 
+    margin-right: 20px;
+}
+
+.skinsurance-networkInside .verification .restart {
+    color: #fff;
+    padding: 10px 15px;
+    background: #939393;
+    border-radius: 3px;
+}
+.skinsurance-networkInside .verification > div {
+    text-align: center;
+    margin-top: 50px;
+}
+.skinsurance-networkInside .verification div a {
+    text-decoration: none;
+}
+
+.skinsurance-networkInside .verification > div:last-child {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.skinsurance-networkInside .verification > div:last-child .confirm {
+    color: #fff;
+    background: #df6c0a;
+    margin-right: 20px;
+}
+
+.skinsurance-networkInside .verification > div:last-child .clear {
+    color: #fff;
+    background: #939393;
+}
+.skinsurance-networkInside .verification > div .confirm {
+    color: #fff;
+    background: #df6c0a;
+    margin-right: 20px;
+}
+
+.skinsurance-networkInside .verification > div .clear {
+    color: #fff;
+    background: #939393;
+}
+
+.skinsurance-networkInside .verification > div:last-child a {
+    padding: 10px 0;
+    width: 230px;
+    border-radius: 3px;
+    display: inline-block;
+}
+.skinsurance-networkInside .verification > div a {
+    padding: 10px 0;
+    width: 230px;
+    border-radius: 3px;
+    display: inline-block;
+}
+#skinsurance-customize-008 .skinsurance-networkInside .verification {
+    padding: 0px 0 100px 0;
+}
+.skinsurance-networkInside .head p {
+    font-size: 17px;
+    font-size: 15px;
+}
+
+.skinsurance-networkInside .head p span {
+    font-size: 14px;
+}
+
+.skinsurance-networkInside .row-input input[type="radio"] {
+    display: none;
+}
+
+.skinsurance-networkInside .row-input label:before {
+    content: '';
+    background: url(../image/checkgrey.png);
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.skinsurance-networkInside .row-input input:checked + label:before {
+    content: '';
+    background: url(../image/checkgrey2.png);
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.skinsurance-networkInside .row-input label[for="robot"]:before,
+.skinsurance-networkInside .row-input label[for="2D"]:before {
+    content: '';
+    background: url(../image/checkboxgrey.png);
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.skinsurance-networkInside .row-input input:checked + label[for="robot"]:before,
+.skinsurance-networkInside .row-input input:checked + label[for="2D"]:before {
+    content: '';
+    background: url(../image/checkboxgrey2.png);
+    width: 23px;
+    height: 23px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.skinsurance-networkInside .row-input.sex label {
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.skinsurance-networkInside .telArea > div > div,
+.skinsurance-networkInside .row-input .plain {
+    max-width: calc(100% - 100px);
+}
+
+.skinsurance-networkInside .row-input .plain .notice {
+    margin-right: 0;
+}
+
+.skinsurance-networkInside .row-input {
+    margin-bottom: 10px;
+}
+
+.skinsurance-networkInside .home input {
+    width: 320px;
+}
+
+.skinsurance-networkInside .row-input .home {
+    margin-left: 51px;
+}
+
+.skinsurance-networkInside .telArea > div > div {
+    margin-bottom: 0;
+}
+@media only screen and (max-width: 1200px) and (min-width: 992px){
+    .skinsurance-networkInside .company input {
+        width: 250px;
+        max-width: 250px;
+    }
+
+    .skinsurance-networkInside .tel input {
+        width: 100px;
+        max-width: 100px;
+    }
+    .skinsurance-networkInside .name,
+    .skinsurance-networkInside .age,
+    .skinsurance-networkInside .home input,
+    .skinsurance-networkInside .cellPhone,
+    .skinsurance-networkInside .email,
+    .skinsurance-networkInside .job {
+        width: 300px;
+        max-width: 300px;
+    }
+    .skinsurance-networkInside .home input {
+        width: 250px;
+    }
+    .skinsurance-networkInside .row-input .houseYear input {
+        width: 180px;
+        max-width: 180px;
+    }
+    .skinsurance-networkInside .row-input .plain input, .skinsurance-networkInside .row-input .cars input {
+        width: 200px;
+        max-width: 200px;
+    }
+    .skinsurance-networkInside .row-input .money > div input {
+        width: 115px;
+        max-width: 115px;
+    }
+    .skinsurance-networkInside .row-input .money > div:first-child input {
+        width: 150px;
+        max-width: 150px;
+    }
+    .skinsurance-networkInside .row-input .house div span input {
+        width: 125px;
+        max-width: 125px;
+    }
+    .skinsurance-networkInside .adressArea {
+        width: 58%;
+        padding: 5px;
+    }
+}
+/* 房貸網路送件 end */
+
+/* 不動產租賃 */
+
+.skinsurance-searchPlease {
+    background: #ececec;
+    padding: 0px 30px;
+    margin: 30px 0 50px 0;
+}
+
+.skinsurance-searchPlease > div:first-child {
+    border-bottom: 1px solid #ffffff;
+}
+
+.skinsurance-searchPlease > div {
+    padding-top: 20px;
+    
+}
+
+.skinsurance-searchPlease ul li,
+.skinsurance-searchPlease ul {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.skinsurance-searchPlease ul li input {
+    display: none;
+}
+
+.skinsurance-searchPlease ul li label:before {
+    content: '';
+    background: url(../image/uncheckred.png);
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.skinsurance-searchPlease ul li input:checked + label:before {
+    content: '';
+    background: url(../image/checkred.png);
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.skinsurance-019-immovablesTable thead tr th,
+.skinsurance-019-immovablesTable tbody tr td:first-child,
+.skinsurance-019-immovablesTable tbody tr td:nth-child(2),
+.skinsurance-019-immovablesTable tbody tr td:nth-child(3) {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.skinsurance-019-immovablesTable thead tr {
+    background: #c7c7c7;
+}
+
+.skinsurance-019-immovablesTable thead tr th:first-child {
+    width: 5%;
+}
+
+.skinsurance-019-immovablesTable tbody tr td div div {
+    display: inline-block;
+}
+
+.skinsurance-019-immovablesTable tbody tr td div span {
+    vertical-align: top;
+}
+
+.skinsurance-019-immovablesTable tbody tr td div div p {
+    text-align: left;
+}
+
+.skinsurance-019-immovablesTable thead tr th:nth-child(2),
+.skinsurance-019-immovablesTable thead tr th:nth-child(3) {
+    width: 15%;
+}
+
+.skinsurance-019-immovablesTable thead tr th:nth-child(5) {
+    width: 20%;
+}
+
+.skinsurance-019-immovablesTable {
+    width: 100%;
+}
+
+.skinsurance-019-immovablesTable tbody tr:nth-child(odd) {
+    background: #f5f5f8;
+}
+
+.skinsurance-019-immovablesTable tbody tr:nth-child(even) {
+    background: #e9eaeb;
+}
+
+.skinsurance-019-immovablesTable tbody tr td:nth-child(4) {
+    padding: 10px 0;
+}
+
+.skinsurance-019-immovablesTable tr {
+    border-bottom: 1px solid #fff;
+}
+
+.skinsurance-019-immovablesTable tbody tr td {
+    border-right: 1px solid #fff;
+}
+
+.skinsurance-019-immovablesTable tbody tr td:nth-child(7),
+.skinsurance-019-immovablesTable tbody tr td:nth-child(4),
+.skinsurance-019-immovablesTable tbody tr td:nth-child(5),
+.skinsurance-019-immovablesTable tbody tr td:nth-child(6) {
+    padding-left: 10px;
+}
+
+/* 不動產租賃 end */
+
+/* 基金表格 */
+
+.skinsurance-fundTableArea .fundTable {
+    width: 100%;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr th,
+.skinsurance-fundTableArea .fundTable tbody tr td {
+    color: #fff;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr {
+    background: #888d99;
+}
+
+.skinsurance-fundTableArea .fundTable tr {
+    width: 100%;
+    display: block;
+}
+
+.skinsurance-fundTableArea .fundTable tr.title {
+    overflow: auto;
+    margin: 0;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr.center {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr th {
+    padding: 10px;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr.title th {
+    display: inline-block;
+    float: left;
+    text-align: center;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr.title th:first-child,
+.skinsurance-fundTableArea .fundTable tbody tr td:first-child {
+    width: 25%;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr.title th:nth-child(2),
+.skinsurance-fundTableArea .fundTable tbody tr td:nth-child(2){
+    width: 75%;
+}
+
+.skinsurance-fundTableArea .fundTable thead tr.center th {
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.skinsurance-fundTableArea .fundTable tbody tr td {
+    color: #333;
+    text-align: center;
+    padding: 10px;
+}
+
+.skinsurance-fundTableArea .fundTable tbody tr td {
+    display: inline-block;
+    float: left;
+}
+
+.skinsurance-fundTableArea .fundTable tbody tr:nth-child(odd) {
+    background: #f5f5f8;
+}
+
+.skinsurance-fundTableArea .fundTable tbody tr:nth-child(even) {
+    background: #e9eaeb;
+}
+
+.skinsurance-fundTableArea .fundTable tbody tr {
+    overflow: auto;
+}
+
+.skinsurance-fundTableArea .fundTable tbody tr td:nth-child(2) {
+    text-align: left;
+}
+
+.skinsurance-fundTableArea .fundTable.last tbody tr td {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+
+.skinsurance-fundTableArea .fund-notice ol li span {
+    vertical-align: top;
+}
+
+.skinsurance-fundTableArea .fund-notice-warning {
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.skinsurance-fundTableArea .fund-notice-warning h3 {
+    margin: 0;
+    font-weight: bold;
+    text-indent: 1em;
+}
+
+.skinsurance-fundTableArea .fund-notice ol li div {
+    display: inline-block;
+}
+
+.skinsurance-fundTableArea .signature {
+    position: relative;
+    margin-top: 20px;
+}
+
+.skinsurance-fundTableArea .signature p span {
+    float: right;
+}
+
+.skinsurance-fundTableArea .signature p {
+    font-size: 1.5em;
+}
+
+.skinsurance-fundTableArea .fundTable tr td p {
+    margin: 0;
+}
+
+/* 基金表格 end*/
+
+
+
+/* 旅平險 */
+
+.skinsurance-container-header-travel {
+    background: #1d90a5;
+    overflow: auto;
+}
+
+.skinsurance-container-header-travel .travelTitle {
+    color: #fff;
+    display: inline-block;
+    width: 40%;
+    float: left;
+    height: 225px;
+    padding: 3% 0 0 5%;
+}
+
+.skinsurance-container-header-travel .travelTitle a {
+    background: #dd434c;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    display: block;
+    width: 150px;
+    text-align: center;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.skinsurance-container-header-travel .travelImg {
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+    float: left;
+    height: 225px;
+}
+
+.skinsurance-container-header-travel .travelImg img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 旅平險 end */
+
+/* 信用卡pop */
+
+.pop-up {
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+.pop-up a {
+    text-decoration: none;
+}
+
+.pop-up > div {
+    width: 92%;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.pop-up > div div.pop-up-col-2:first-child {
+    border-right: 1px dashed #999;
+}
+
+.pop-up h3 {
+    text-align: center;
+    background-color: #e2231a;
+    color: #fff;
+    font-size: 30px;
+    line-height: 80px;
+    margin: 0 0 30px 0;
+}
+
+.pop-up h3 a {
+    float: right;
+    margin-right: 2%;
+    margin-top: 25px;
+}
+
+.pop-up .pop-up-col-2 {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+.pop-up > div > div h4 {
+    color: #666;
+    margin: 0 0 10px 0;
+    font-size: 25px;
+}
+
+.pop-up > div > div p {
+    color: #4d4d4d;
+}
+
+.pop-up > div > div {
+    padding: 15px 0;
+}
+
+.pop-up .pop-up-col-2 a {
+    width: 65%;
+    display: block;
+    margin: 0 auto;
+    background-color: #df6c0a;
+    color: #fff;
+    line-height: 90px;
+    border-radius: 5px;
+    position: relative;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+}
+
+.pop-up .pop-up-col-2:first-child a:before {
+    content: '';
+    background: url(../image/creditcardgirl.png);
+    width: 173px;
+    height: 155px;
+    position: absolute;
+    bottom: 100%;
+    left: 15%;
+}
+
+.pop-up .pop-up-col-2 p {
+    margin-bottom: 180px;
+}
+
+.pop-up .pop-up-col-2 a img {
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+.pop-up .pop-up-col-2:nth-child(2) a {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #bebebe;
+}
+
+.pop-up .pop-up-col-2:nth-child(2) a:before {
+    content: '';
+    background-image: url(../image/creditnow.jpg);
+    width: 153px;
+    height: 140px;
+    position: absolute;
+    bottom: 101%;
+}
+
+.pop-up .pop-up-col-2:nth-child(2) a img {
+    margin: 0 30px 0 0;
+}
+
+.pop-up .pop-up-col-1 {
+    padding: 30px 8%;
+    margin-top: 15px;
+    border-top: 1px dashed #999;
+    clear: both;
+}
+
+.pop-up .pop-up-col-1 figure {
+    text-align: center;
+    margin: 0;
+    color: #666;
+    font-size: 25px;
+    display: inline-block;
+    margin-right: 60px;
+}
+
+.pop-up .pop-up-col-1 figure img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.pop-up .contactMethod {
+    background-color: #f2f2f2;
+    padding: 5% 3.5%;
+    position: relative;
+}
+
+.pop-up .contactMethod:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-color: transparent #f2f2f2 transparent transparent;
+    border-style: solid solid solid solid;
+    border-width: 30px 30px 0 0;
+    position: absolute;
+    top: 40px;
+    right: 100%;
+}
+
+.pop-up .contactMethod h5 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.pop-up .contactMethod input {
+    color: #7e7e7e;
+    border: none;
+    padding: 0 10px;
+    line-height: 35px;
+}
+
+.pop-up .contactMethod .name {
+    width: 120px;
+}
+
+.pop-up .contactMethod > div > div {
+    display: inline-block;
+}
+
+.pop-up .contactMethod > div > div:nth-child(3) {
+    width: 270px;
+}
+
+.pop-up .contactMethod > div > div:nth-child(3) input {
+    width: 100%;
+}
+
+.pop-up .contactMethod .email {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pop-up .pop-contactform {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 190px);
+}
+
+.pop-up .pop-contactform > div:last-child > div {
+    display: inline-block;
+}
+
+.pop-up .pop-contactform .phonestop {
+    margin-right: 5px;
+}
+
+.pop-up .pop-contactform .phonestop:before {
+    content: '';
+    background-image: url(../image/phonestop.png);
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.pop-up .pop-contactform > div:last-child {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.pop-up .pop-contactform > div:last-child > div.send {
+    border: 1px solid #bebebe;
+    line-height: 35px;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.pop-up .pop-contactform > div:last-child > div.send a {
+    color: #4d4d4d;
+}
+
+.pop-up .contactMethod > div > div:nth-child(2) {
+    margin: 0 15px;
+}
+
+@media (max-width:1365px) {
+    .pop-up .contactMethod > div > div:first-child {
+        width: 20%;
+    }
+    
+    .pop-up .contactMethod > div > div:first-child input {
+        width: 100%;
+    }
+    
+    .pop-up .contactMethod > div > div:nth-child(3) {
+        width: 40%;
+    }
+    
+    .pop-up .contactMethod > div > div:nth-child(2) {
+        width: 30%;
+        margin: 0;
+        text-align: center;
+    }
+    
+    .pop-up .contactMethod > div > div:nth-child(2) label {
+        font-size: 13px;
+    }
+    
+    .pop-up .contactMethod > div > div:nth-child(3) {
+        width: 45%;
+    }
+    
+    .pop-up .contactMethod .email {
+        width: 97%;
+    }
+    
+    .pop-up .contactMethod h5 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:768px) {
+    .pop-up > div {
+        width: 100%;
+    }
+    
+    .pop-up .pop-up-col-2 a {
+        width: 95%;
+    }
+    
+    .pop-up h3 {
+        line-height: 60px;
+        font-size: 25px;
+    }
+    
+    .pop-up .pop-up-col-2 {
+        width: 100%;
+        display: block;
+    }
+    
+    .pop-up > div div.pop-up-col-2:first-child {
+        border-right: none;
+        border-bottom: 1px dashed #999;
+        padding-bottom: 35px;
+    }
+    
+    .pop-up h3 a {
+        margin-top: 15px;
+    }
+    
+    .pop-up .pop-up-col-2:first-child a:before {
+        left: 20%;
+    }
+    
+    .pop-up .pop-up-col-1 figure,
+    .pop-up .pop-contactform {
+        width: 100%;
+        display: block;
+    }
+    
+    .pop-up .pop-up-col-1 figure {
+        margin-bottom: 10px;
+    }
+    
+    .pop-up .contactMethod {
+        padding: 5% 10%;
+    }
+    
+    .pop-up .pop-up-col-1 {
+        padding: 30px 0;
+    }
+    
+    .pop-up .contactMethod:before {
+        display: none;
+    }
+    
+    .pop-up .contactMethod > div > div:nth-child(3),
+    .pop-up .contactMethod .email {
+        width: 100%;
+        display: block;
+    }
+    
+    .pop-up .contactMethod .email {
+        margin-top: 35px;
+    }
+    
+    .pop-up .pop-contactform > div:last-child > div.send {
+        display: block;
+        margin: 25px auto 0 auto;
+        background: #fff;
+        width: 45%;
+}
+    
+    
+    
+    .pop-up .pop-contactform > div:last-child {
+        margin-top: 0;
+        background: #f2f2f2;
+        padding-bottom: 30px;
+    }
+    
+    .pop-up .pop-contactform .phonestop {
+        margin-right: 0;
+        font-size: 13px;
+    }
+    
+    .pop-up .pop-contactform .phonestop:before {
+        width: 25px;
+        height: 25px;
+        background-size: cover;
+    }
+    
+    .pop-up .contactMethod > div > div:first-child,
+    .pop-up .contactMethod > div > div:nth-child(2) {
+        margin-right: -4px;
+        width: 50%;
+        margin-bottom: 25px;
+    }
+}
+
+/* mobile */
+
+@media (max-width:1366px) {
+    .skinsurance-mathResult  h4,
+    .skinsurance-mathResult > div {
+        margin-left: 10%;
+    }
+}
+
+/*@media (max-width:1365px) {
+    .skinsurance-networkInside .adressArea {
+        width: 400px;
+    }
+}*/
+
+@media (max-width:1024px) {
+    .skinsurance-hospitalContainer div:first-child {
+        margin-right: 5%;
+    }
+}
+
+@media (max-width:1023px) {
+    
+    .skinsurance-contentArea {
+        width: 100%;
+    }
+    
+    .skinsurance-011-insideHeader:after {
+        display: none;
+    }
+    
+    .skinsurance-011-insideHeader div a {
+        line-height: 1.2em;
+    }
+    
+    .skinsurance-011-insideHeader div:nth-child(2) {
+        display: block;
+        text-align: center;
+    }
+    
+    .skinsurance-011-insideHeader div {
+        margin: 0 0 10px 0;
+    }
+    
+    .skinsurance-hospitalItem > div:last-child {
+        display: block;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .skinsurance-hospitalItem {
+        padding: 10px;
+    }
+    
+    .skinsurance-011-insideHeader div:last-child {
+        float: none;
+        display: block;
+        text-align: center;
+    }
+    
+    .skinsurance-011-insideHeader {
+        height: inherit;
+        overflow: visible;
+    }
+}
+
+@media (max-width:768px) {
+    
+    .skinsurance-networkInside .adressArea {
+        width: 100%;
+    }
+    
+    .skinsurance-saleArea .saleItem li.active a.message {
+        padding: 10px 30px;
+    }
+    
+    .skinsurance-saleArea .saleItem li.active .window > div:last-child {
+        float: none;
+    }
+    
+    .skinsurance-saleArea .saleItem li.active .appeal > div span {
+        display: block;
+        margin: 0;
+    }
+    
+    .skinsurance-saleArea .saleItem li.active .appeal {
+        padding: 20px 0;
+    }
+    
+    .skinsurance-018-page a:nth-child(2) {
+        margin: 0 5%;
+    }
+    
+    .skinsurance-017-booksTitle {
+        width: 100%;
+    }
+    
+    .skinsurance-014-tab li {
+        line-height: 1.5em;
+    }
+    
+    .skinsurance-credit,
+    .skinsurance-serviceWindow {
+        padding: 5%;
+    }
+    
+    .skinsurance-012-contentBanner .bannerImage {
+        display: none;
+    }
+    
+    .skinsurance-serviceWindow .discriptions {
+        width: inherit;
+    }
+    
+    .skinsurance-serviceWindow ul,
+    .skinsurance-012-contentBanner .bannerText,
+    .skinsurance-service .serviceArea {
+        width: 100%;
+        float: none;
+    }
+    
+    .skinsurance-saleArea .saleItem li a {
+        padding: 10px;
+    }
+    
+    .skinsurance-saleArea .saleItem .area {
+        width: 95%;
+    }
+    
+    .skinsurance-012-contentBanner .bannerText .phoneTitle {
+        font-size: 20px;
+    }
+    
+    .skinsurance-012-contentBanner .bannerText .tel {
+        margin-left: 10px;
+    }
+    
+    .skinsurance-serviceWindow ul.bank > li,
+    .skinsurance-credit .creditTitle {
+        width: 100%;
+    }
+    
+    .skinsurance-serviceWindow ul.bank > li:first-child {
+        margin-right: 0;
+    }
+    
+    .skinsurance-serviceWindow > div > span {
+        margin-bottom: 30px;
+    }
+    
+    .skinsurance-credit > span {
+        display: block;
+    }
+    
+    .skinsurance-credit > span span {
+        margin-left: 25px;
+    }
+    
+    .skinsurance-credit .creditTitle {
+        margin-bottom: 30px;
+    }
+    
+    .skinsurance-serviceWindow h5 span {
+        display: block;
+        margin: 10px 0 0 0;
+    }
+    
+    .skinsurance-serviceWindow .bank > li > ul {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    .skinsurance-main_content {
+        padding: 15px 0;
+    }
+    
+    .skinsurance-009-other li {
+        width: 100%;
+        float: none;
+    }
+    
+    .skinsurance-009-other li > div {
+        max-width: 340px;
+        margin: 0 auto;
+    }
+    
+    .skinsurance-authorInformation .author p {
+        display: none;
+    }    
+    
+    .skinsurance-authorInformation .authorText p {
+        display: block;
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-authorInformation .book {
+        padding-left: 0;
+        text-align: center;
+    }
+    
+    .skinsurance-authorInformation .book p {
+        text-align: left;
+    }
+    
+    .skinsurance-authorInformation .author {
+        float: none;
+        display: inline-block;
+        width: 40%;
+        margin-right: 3%;
+    }
+    
+    .skinsurance-authorInformation {
+        padding: 10px;
+    }
+    
+    .skinsurance-authorInformation .authorText h4,
+    .skinsurance-authorInformation .authorText span {
+        font-size: 15px;
+    }
+    
+    .skinsurance-authorInformation .authorText {
+        float: right;
+        display: inline-block;
+        width: 55%;
+    }
+    
+    .skinsurance-authorInformation > .contentainer {
+        padding: 0;
+    }
+    
+    .skinsurance-010-sign a {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    .skinsurance-mathResult  h4,
+    .skinsurance-mathResult > div {
+        margin-left: calc(50% - 110px);
+    } 
+    
+    .skinsurance-questionArea {
+        margin-left: calc(50% - 140px);
+    }
+    
+    .skinsurance-mathResult input {
+        width: 47px;
+    }
+    
+    .skinsurance-mathResult {
+        padding-bottom: 30px;
+    }
+    
+    .skinsurance-mathResult .dollar {
+        display: block;
+    }
+    
+    .skinsurance-mathResult > div span:last-child {
+        margin-left: 0;
+        text-align: left;
+        float: none;
+        display: block;
+        margin-top: 10px;
+    }
+    
+    .skinsurance-mathResult > div {
+        text-align: left;
+    }
+    
+    .skinsurance-mathResult > div > span {
+        float: none;
+    }
+    
+    .skinsurance-mathResult > div span:last-child span {
+        display: inline;
+    }
+    
+    .skinsurance-mathResult > div > span {
+        margin-bottom: 10px;
+    }
+    
+    .skinsurance-questionArea div.q4 .link .math,
+    .skinsurance-questionArea div.q4 .link .clear {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    .skinsurance-mathResult > div span:last-child input {
+        width: 203px;
+        margin-left: 0;
+    }
+    
+    .skinsurance-mathResult .dollar input {
+        margin-left: 0;
+    }
+    
+    .skinsurance-houseLoanInside {
+        padding: 0 5%;
+    }
+    
+    .skinsurance-houseLoanInside .q1 input,
+    .skinsurance-houseLoanInside .q2 input,
+    .skinsurance-houseLoanInside .q3 input {
+        width: 180px;
+    }
+    
+    .skinsurance-questionArea div.q3 div:last-child span {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    .skinsurance-questionArea div.q4 > div:nth-child(2) > div span:last-child {
+        display: block;
+        float: none;
+        margin-top: 15px;
+    }
+    
+    .skinsurance-questionArea div.q4 > div:nth-child(2) > div span:last-child input {
+        width: 125px;
+    }
+    
+    .skinsurance-questionArea div.q4 input {
+        width: 45px;
+    }
+    
+    .skinsurance-questionArea div.q1 div:last-child,
+    .skinsurance-questionArea div.q2 div:last-child,
+    .skinsurance-questionArea div.q3 div:last-child {
+        display: block;
+        margin-left: 32px;
+        margin-top: 10px;
+    }
+    
+    .skinsurance-mathResult > div {
+        margin-left: 25%;
+    }
+    
+    .skinsurance-frontCover,
+    .skinsurance-017-.booksTitle {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .skinsurance-frontCover a {
+        margin: 25px auto;
+    }
+    
+    .skinsurance-004-contentTitle {
+        border: none;
+    }
+    
+    .skinsurance-rates .fix {
+        margin-right: 0;
+    }
+    
+    .skinsurance-rates .rate,
+    .skinsurance-rates-014-tab li.reserve .section {
+        line-height: 1.5em;
+    }
+    
+    .skinsurance-canvas {
+        width: 80%;
+        margin: 0 auto;
+        float: none;
+        display: block;
+    }
+    
+    .skinsurance-rateList {
+        width: 100%;
+        float: none;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .skinsurance-016-deposit tr {
+        width: 100%;
+        float: none;
+    }
+    
+    .skinsurance-016-deposit .titleRight {
+        display: none;
+    }
+    
+    .skinsurance-016-deposit tbody tr.grey {
+        background: #fff;
+    }
+    
+    .skinsurance-016-deposit tbody tr:nth-child(even) {
+        background: #f7f8f9;
+    }
+    
+    .skinsurance-013-publications li {
+        width: 100%;
+        text-align: left;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .skinsurance-013-publications li a {
+        font-size: 12px;
+    }
+    
+    .skinsurance-007-inside.skinsurance-007-mobileArea {
+        padding: 0 5%;
+    }
+    
+    .skinsurance-mathArea .mathBlock .blockTop,
+    .skinsurance-mathArea .mathBlock .blockCenter,
+    .skinsurance-mathArea .mathBlock .blockBottom {
+        padding: 0;
+    }
+    
+    .skinsurance-mathArea .resultBlock .recommend {
+        margin-top: 20px;
+    }
+    
+    .skinsurance-mathArea .resultBlock .resultInner {
+        max-width: 100%;
+    }
+    
+    .skinsurance-mathArea {
+        width: 100%;
+    }
+    
+    .skinsurance-007-inside.skinsurance-007-mobileArea {
+        padding: 0 10px;
+    }
+    
+    .skinsurance-008-QA {
+        /*padding: 0 10%;*/
+    }
+    
+    .skinsurance-008-QA li ul li,
+    .skinsurance-008-QA li:nth-child(6) ul li:first-child {
+        width: 50%;
+        min-width: 160px;
+    }
+    
+    .skinsurance-001-ga-edit-dgroup.aliquots_three > li,
+    .skinsurance-001-ga-edit-dgroup.aliquots_four > li,
+    .skinsurance-001-ga-edit-dgroup.aliquots_six > li {
+        width: 100%;
+    }
+    
+    .skinsurance-hospitalContent .post {
+        float: none;
+    }
+    
+    .skinsurance-hospitalContainer > div {
+        display: block;
+    }
+    
+    .skinsurance-hospitalInside,
+    .skinsurance-rateArea,
+    .skinsurance-006-table {
+        display: none;
+    }
+
+    .skinsurance-001-ga-edit-dgroup > li,
+    .skinsurance-001-ga-edit-dgroup.aliquots_five > li {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    
+    .skinsurance-001-ga-edit-dgroup > li:after {
+        content: '';
+        background: url(../image/down.png);
+        width: 16px;
+        height: 8px;
+        position: absolute;
+        top: 25px;
+        right: 15px;
+    }
+    
+    .skinsurance-001-ga-edit-dgroup > li.active:after {
+       content: '';
+        background: url(../image/up.png);
+        width: 16px;
+        height: 8px;
+        position: absolute;
+        top: 25px;
+        right: 15px; 
+    }
+    
+    .skinsurance-001-ga-edit-dgroup > li.active .skinsurance-007-inside.skinsurance-007-mobileArea,
+    .skinsurance-001-ga-edit-dgroup > li.active .skinsurance-hospitalInside.skinsurance-007-mobileArea,
+    .skinsurance-001-ga-edit-dgroup > li.active .skinsurance-006-table,
+    .skinsurance-001-ga-edit-dgroup > li.active .skinsurance-rateArea {
+        display: block;
+    }
+    
+    .skinsurance-006-table table thead {
+        display: none;
+    }
+    
+    .skinsurance-006-table table tbody tr td:first-child {
+        width: 100%;
+    }
+    
+    .skinsurance-007-mobileArea .skinsurance-006-table table {
+        white-space: nowrap;
+        overflow-x: scroll;
+    }
+    
+    .skinsurance-006-table table tbody tr td:first-child {
+        padding-right: 85%;
+    }
+    
+    .skinsurance-001-ga-edit-dgroup > li.active:before {
+        display: none;
+    }
+    
+    .skinsurance-007-inside {
+        border: none;
+    }
+    
+    .skinsurance-001-ga-edit-dgroup > li.active > a {
+        color: #808080;
+        background: #f0f0f0;
+    }
+    
+    .skinsurance-001-ga-edit-dgroup > li > a {
+        padding: 10px 20px;
+    }
+    
+    .skinsurance-networkInside .head p,
+    .skinsurance-networkInside .head div {
+        text-align: left;
+    }
+    
+    .skinsurance-networkInside input {
+        line-height: 1.5em;
+    }
+    
+    .skinsurance-networkInside .applicant {
+        text-align: left;
+        margin: inherit;
+    }
+    
+    .skinsurance-networkInside .applicant .row span {
+        text-align: left;
+        min-width: inherit;
+    }
+    
+    .skinsurance-networkInside .applicant {
+        width: inherit;
+    }
+    
+    .skinsurance-networkInside .applicant .row {
+        margin: 0 0 10px 0;
+        
+    }
+    
+    .skinsurance-networkInside .applicant .telArea > div > div {
+        display: block;
+    }
+    
+    .skinsurance-networkInside .applicant .row.telArea input[type="text"] {
+        display: inline-block;
+        width: 240px;
+    }
+    
+    .skinsurance-networkInside .applicant .row .tel,
+    .skinsurance-networkInside .applicant .row .company {
+        display: block;
+    }
+    
+    .skinsurance-networkInside .applicant .row .tel {
+        margin-left: 40px;
+    }
+    
+    .skinsurance-networkInside .applicant .row.telArea .tel input[type="text"] {
+        width: 135px;
+    }
+    
+    .skinsurance-networkInside .applicant .row input[type="text"],
+    .skinsurance-networkInside .adressArea {
+        display: block;
+        width: 100%;
+    }
+    
+    .skinsurance-networkInside .head p {
+        font-size: 16px;
+    }
+    
+    .skinsurance-networkInside .guarantee .applicant .row > div {
+        display: block;
+    }
+    
+    .skinsurance-networkInside .guarantee .applicant .row > div input {
+        max-width: 90%;
+        display: inline-block;
+    }
+    
+    .skinsurance-networkInside .applicant .row .house div span span {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    .skinsurance-networkInside .applicant .row .house div input {
+        max-width: 65%;
+    }
+    
+    .skinsurance-networkInside .guarantee .applicant .row .money input {
+        display: inline-block;
+        max-width: 160px;
+    }
+    
+    .skinsurance-networkInside .row .money > div span {
+        min-width: 60px;
+    }
+    
+    .skinsurance-networkInside .verification div div {
+        display: block;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .skinsurance-networkInside .verification > div:last-child a {
+        display: block;
+        width: 180px;
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+    
+    .skinsurance-networkInside .verification > div:last-child .confirm {
+        margin: 0 auto 10px auto;
+    }
+    
+    .skinsurance-networkInside .guarantee .applicant .row > div input[type="radio"] {
+        display: none;
+    }
+    
+    .skinsurance-007-inside .searchPlease ul {
+        display: block;
+        margin: 0;
+    }
+    
+    .skinsurance-007-inside .searchPlease > div {
+        padding: 10px 0;
+    }
+    
+    .skinsurance-007-inside .searchPlease div {
+        overflow: auto;
+    }
+    
+    .skinsurance-007-inside .searchPlease div:first-child li {
+        width: 33%;
+        margin-left: 0;
+        float: left;
+    } 
+    
+    .skinsurance-007-inside .searchPlease div:last-child li {
+        width: 45%;
+        margin-left: 0;
+    }
+    
+    .skinsurance-007-inside .searchPlease ul li label:before {
+        margin-right: 3px;
+    }
+    
+    .skinsurance-007-inside .immovablesTable {
+        overflow-x: scroll;
+        width: 300%;
+    }
+    
+    .skinsurance-hospitalContent {
+        padding: 20px 10px;
+    }
+    
+    .skinsurance-immovablesTableArea {
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    
+    .skinsurance-019-immovablesTable {
+        width: 300%;
+        overflow-x: scroll;
+    }
+    
+    .skinsurance-container-header-travel .travelTitle,
+    .skinsurance-container-header-travel .travelImg {
+        width: 100%;
+        float: none;
+    }
+    
+    .skinsurance-networkInside .applicant .row span.stop {
+        margin-top: 10px;
+    }
+    
+    .skinsurance-networkInside .tel {
+        display: block;
+        margin-left: 10px;
+    }
+    
+    .skinsurance-networkInside .row-input .home {
+        margin-left: 0;
+    }
+    
+    .skinsurance-networkInside .row-input .home span,
+    .skinsurance-networkInside .row-input .phone,
+    .skinsurance-networkInside .applicant .row-input span {
+        min-width: 50px;
+        text-align: left;
+    }
+
+    .skinsurance-networkInside .applicant .row-input.nameArea span,
+    .skinsurance-networkInside .applicant .row-input.ageArea span,
+    .skinsurance-networkInside .row-input .phone {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+    
+    .skinsurance-networkInside .applicant .row-input span {
+        margin-right: 0;
+    }
+    
+    .skinsurance-networkInside .name,
+    .skinsurance-networkInside .age,
+    .skinsurance-networkInside .cellPhone,
+    .skinsurance-networkInside .email,
+    .skinsurance-networkInside .job {
+        width: 100%;
+    }
+    
+    .skinsurance-networkInside .row-input.sex {
+        margin-bottom: 0;
+    }
+    
+    .skinsurance-networkInside .applicant .telArea > div > div {
+        max-width: 100%;
+    }
+    
+    .skinsurance-networkInside .company input {
+        width: 248px;
+    }
+    
+    .skinsurance-networkInside .home input {
+        max-width: 248px;
+    }
+    
+    
+    .skinsurance-networkInside .applicant .row-input .houseYear span,
+    .skinsurance-networkInside .applicant .row-input .plain span{
+        min-width: 0;
+    }
+    
+    .skinsurance-networkInside .applicant .row-input .houseYear input {
+        width: 200px;
+    }
+    
+    .skinsurance-networkInside .row-input.plains > span {
+        display: block;
+    }
+    
+    .skinsurance-networkInside .row-input .plain {
+        max-width: 100%;
+    }
+    
+    .skinsurance-networkInside .row-input .plain input,
+    .skinsurance-networkInside .row-input .cars input {
+        width: 250px;
+    }
+    
+    .skinsurance-networkInside .row-input .plain .notice,
+    .skinsurance-networkInside .row-input .cars,
+    .skinsurance-networkInside .row-input .houseYear {
+        display: block;
+    }
+    
+    .skinsurance-networkInside .applicant .row-input .stop label {
+        width: 100px;
+    }
+    
+    .skinsurance-networkInside .row-input .house label {
+        width: 65px;
+    }
+    
+    .skinsurance-networkInside .row-input .house div span input {
+        width: 155px;
+    }
+    
+    .skinsurance-networkInside .row-input .money > div:first-child input {
+        width: 175px;
+    }
+    
+    .skinsurance-networkInside .row-input.multiple > span {
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .skinsurance-networkInside .row-input .borrow span span {
+        margin-top: 10px;
+    }
+    
+    .skinsurance-networkInside .row-input .money > div input.loanmoney,
+    .skinsurance-networkInside .row-input .money > div input.everymonth {
+        width: 155px;
+    }
+    
+    .skinsurance-networkInside .verification span {
+        margin-right: 0;
+        margin-bottom: 10px;
+        display: block;
+        font-size: 15px;
+    }
+    
+    .skinsurance-networkInside .applicant .row-input .cars span {
+        min-width: 0;
+    }
+    
+    .skinsurance-networkInside .applicant .row-input .stop {
+        margin-top: 10px;
+    }
+    
+    .skinsurance-networkInside .applicant .row-input .stop label {
+        font-weight: 500;
+    }
+
+}
+
+/* skinsurance-col-6 */
+
+.skinsurance-col-6 {
+    width: 100%;
+    overflow: auto;
+    padding: 0;
+}
+
+.skinsurance-col-6 .subs {
+    width: 50%;
+    float: left;
+    display: inline-block;
+    position: relative;
+}
+
+.skinsurance-col-6 .subs img {
+    margin: 0 auto;
+    display: block;
+}
+
+/*  gray  */
+
+.loan-gray{
+    background-color: #f0f0f0;
+}
+.loan-gray-element-margin1{
+    padding: 20px 0%;
+}
+.loan-gray .loan-gray-element-margin1{
+    padding: 20px 5%;
+    padding: 20px 40px;
+}
+@media only screen and (min-width: 320px) and (max-width:480px) {
+    .loan-gray .loan-gray-element-margin1{
+        padding: 20px 5%;
+    }
+}
+/* QA */
+.ga-qa-item-container li.ga-qa-item {
+    list-style: none;
+    border-bottom: 1px solid #bfbfbf;
+    margin: 22px 0;
+    padding-bottom: 10px;
+    position: relative;
+}
+.ga-qa-item-container li.ga-qa-item:last-child{
+    border: 0;
+}
+
+.ga-qa-item-container li.ga-qa-item a.ga-qa-title {
+    color: #333333;
+    text-decoration: none;
+    display: block;
+    font-size: 17px;
+    position: relative;
+    padding-left: 46px;
+    padding-left: 36px;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.ga-qa-item-container li.ga-qa-item a.ga-qa-title.active {
+    padding-bottom: 10px;
+}
+
+.ga-qa-item-container > li.ga-qa-item > a.ga-qa-title:before {
+    content: '';
+    background: url(../img/plus.png);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: absolute;
+    left: 10px;
+    left: 0;
+}
+
+.ga-qa-item-container > li.ga-qa-item > a.ga-qa-title.active:before {
+    background: url(../img/less.png);
+}
+
+.ga-qa-item-container li.ga-qa-item a ~ .ga-qa-content {
+    display: none;
+    padding: 0 35px;
+    font-size: 15px;
+}
+
+.ga-qa-item-container li.ga-qa-item a.active ~ .ga-qa-content {
+    display: block;
+}
+#skinsurance-customize-002 .containerTitle p span{
+    color: #D8262E;
+}
+
+/***************忠毅編輯器的項目符號，全改數字*****************/
+.sena>li {
+    list-style-type: decimal;
+    margin-bottom: 25px;
+}
+
+/*****************給george套***********************/
+.skinsurance-003-insuranceList{
+    font-size: 0;
+    /*margin: 0 30px;*/
+}
+.skinsurance-003-insuranceList .oneblock .left{
+    display: inline-block;
+    width: 48%;
+    background: #fff;
+    margin: 10px 1%;
+    padding: 20px;
+    vertical-align: top;
+    font-size: 0;
+    /* float: left; */
+}
+.skinsurance-003-insuranceList .oneblock .left .row-main-pic{
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+}
+.skinsurance-003-insuranceList .oneblock .left .row-main-pic img {
+    max-width: 100%;
+    vertical-align: middle; 
+}
+.skinsurance-003-insuranceList .oneblock .left .row-main{
+    display: inline-block;
+    width: 75%;
+    /* float: left; */
+    vertical-align: top;
+    font-size: 14px;
+}
+.skinsurance-003-insuranceList .oneblock .left .row-main h4{
+    margin: 0 0 20px 0;
+    color: #000;
+    word-wrap: break-word;
+}
+.skinsurance-003-insuranceList .oneblock .left .row-main p{
+    margin: 0;
+    color: #666666;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+@media (max-width:768px) {
+    .skinsurance-003-insuranceList{
+        /*margin: 0 5%;*/
+    }
+    .skinsurance-003-insuranceList .oneblock .left{
+        width: 100%;
+        margin: 10px 0%;
+    }
+}
+/*****************給george套***********************/
+
+
+/*******skin-047 start*******/
+    #skin-047 .geraldo:before {
+        bottom: 0;
+        left: 0;
+        background-image: url(../img/skin-fina-001.jpg);
+        width: 195px;
+        height: 183px;
+        background-repeat: no-repeat;
+    }
+    @media (max-width:1023px) {
+        #skin-047 .geraldo:before {
+            display: none;
+        }
+    }
+
+/*******skin-047 end*********/
+
+
+
+
+/**************kate-adjust***************/
+.deep-gray{
+    background-color: #EDEDED;
+}
+.light-gray{
+    background-color: #FAFAFA;
+}
+
+/*.skinsurance-dpgrey {
+    background: #ededed;
+}
+.skinsurance-grey {
+    background: #fafafa;
+}*/
+
+[id="9f1d3e4714_content_sample"] .deep-gray .notice{
+    margin: 0 40px;
+    text-align: right;
+}
+[id="9f1d3e4714_content_sample"] .deep-gray .skinsurance-003-insuranceList{
+    margin: 0 40px;
+}
+[id="9f1d3e4714_content_sample"] .light-gray .skinsurance-003-insuranceList{
+    margin: 0 40px;
+}
+[id="9f1d3e4714_content_sample"] .editor_section .sena_none {
+    margin: 15px 0; 
+}
+.skinsurance-028-serviceplace-block.forrd-028 .serviceplace-txt-top p{
+    color: #000;
+    font-weight: 500;
+}
+.skinsurance-028-serviceplace-block.forrd-028 .serviceplace-txt-middle p{
+    color: #000;
+    font-weight: 500;
+}
+.skinsurance-028-serviceplace-block.forrd-028 .serviceplace-txt-btn{
+    background-color: #686868;
+    color: #fff;
+    border-radius: 2px
+    box-shadow: 6px 6px 5px #bbb;
+}
+
+.skinsurance-017-stepList span{
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 7px;
+}
+.skinsurance-017-stepList .step-main > li {
+    /*font-size: 18px;*/
+    font-weight: bold;
+    font-size: 16px;
+}
+[id="5121162314_subarea_sample"] .loan-gray-element-margin1 {
+     padding: 0px 0%; 
+}
+[id="829ce99014_subarea_sample"] .loan-gray-element-margin1 {
+     padding: 0px 0%; 
+}
+/*[id="829ce99014_subarea_sample"] .editor_section li {
+    padding-left: 20px;
+}*/
+
+
+.skin-margin-control{
+    margin: 20px 40px;
+}
+@media (max-width:768px) {
+    .skin-margin-control{
+        margin: 30px 5%;
+    }
+}
+@media only screen and (max-width: 768px) and (min-width: 320px){
+    /*.skinsurance-030-servicee-block.skin-margin-control .pic-block{
+        width: 100%;
+    }*/
+    .skinsurance-011-explanation {
+        margin: 20px 5% 20px 5%;
+    }
+    [id="9f1d3e4714_content_sample"] .deep-gray .notice{
+        margin: 0 5%;
+        display: block;
+    }
+    [id="9f1d3e4714_content_sample"] .deep-gray .skinsurance-003-insuranceList{
+        margin: 0 5%;
+    }
+    [id="9f1d3e4714_content_sample"] .light-gray .skinsurance-003-insuranceList{
+        margin: 0 5%;
+    }
+}
+
+
+
+/**************kate-adjust***************/
+
+#newsDetail .skinsurance-023-newscontent-block .news-content-block{
+    margin: 20px 5%;
+}
+.skinsurance-003-2-insuranceList .row-inline p {
+    margin: 0;
+    color: #000;
+    font-size: 15px;
+}
+.loan-gray .skinsurance-011-explanation{
+    margin: 0px 0 0px 40px;
+    padding: 20px 0;
+}

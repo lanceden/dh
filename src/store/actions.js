@@ -248,5 +248,13 @@ export default {
     rootState.Http.axios.post(`${Url.ImportChildren}`).then(response => {
       commit('FuncImportChildren', { result: response.data, planCode })
     })
+  },
+  /**
+   * 抓取優惠活動列表
+   */
+  FuncPromotionList({ commit }) {
+    rootState.Http.axios.post(`${Url.PromotionList}`).then(response => {
+      commit('FuncPromotionList', { result: response.data })
+    })
   }
 }

@@ -1,0 +1,911 @@
+/***************skbank-loan-010 start*************************/
+	.skbank-loan-010 {
+	    width: 80%;
+	    margin: 20px auto;
+	}
+	.skbank-loan-010 img {
+	    vertical-align: top;
+	    max-width: 100%;
+	}
+	.skbank-loan-010 .talk {
+	    display: inline-block;
+	    border: 1px solid #eee;
+	    padding: 20px;
+	    background: #fff;
+	    border-radius: 10px;
+	    position: relative;
+	    vertical-align: top;
+	    margin: 30px 0 0 30px;
+	    vertical-align: middle;
+	    width: calc(100% - 180px);
+	}
+	.skbank-loan-010 .talk:before {
+	    content: '';
+	    border-color: transparent #eee #eee transparent;
+	    border-style: solid;
+	    border-width: 17px;
+	    width: 0;
+	    height: 0;
+	    position: absolute;
+	    top: 10px;
+	    left: -34px;
+	}
+	.skbank-loan-010 .talk p {
+	    margin: 0;
+	    line-height: 1.5em;
+	    font-weight: 100;
+	}
+	.skbank-loan-010 .highlight {
+	    color: #b31d23;
+	}
+	.skbank-loan-010 .talk:after {
+	    content: '';
+	    border-color: transparent #fff #fff transparent;
+	    border-style: solid;
+	    border-width: 17px;
+	    width: 0;
+	    height: 0;
+	    position: absolute;
+	    top: 9px;
+	    left: -31px;
+	}
+	@media (max-width: 768px){
+		.skbank-loan-010 {
+		    width: 100%;
+		}
+		.skbank-loan-010 .talk:before, .skbank-loan-010 .talk:after {
+		    display: none;
+		}
+		.skbank-loan-010 .talk {
+		    width: 100%;
+		    border: none;
+		    margin: 0;
+		}
+		.skbank-loan-010 img {
+		    right: 0;
+		    left: 0;
+		    margin: auto;
+		}
+	}
+
+/***************skbank-loan-010 end***************************/
+
+
+
+
+
+
+/*****************skin-010-sty start*************************/
+
+
+    .skin-010-sty{
+        text-align: center;
+        margin: 25px 0;
+        font-size: 0;
+    }
+    .skin-010-sty a{
+        display: inline-block;
+        width: 150px;
+        margin: 5px 10px;
+        font-size: 14px;
+    }
+    .skin-010-sty .btnn-jed{
+        background: #dd434c;
+        color: #fff;
+        box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+        border-radius: 0;
+    }
+
+    .skin-010-sty .btnn-tory {
+        background: #fff;
+        color: #333;
+        border: solid 1px #bebebe;
+        border-radius: 0;
+    }
+    @media (max-width: 1023px){
+		[class^='btnn-'] {
+		    margin-left: 10px;
+		    padding: 6px;
+		    float: none;
+		}
+	}
+
+/*****************skin-010-sty end***************************/
+
+
+
+
+
+
+/**********************sk-holdings-015 start****************************/
+
+	.skholdings-015-main-page-sub-title{
+		border-bottom: 2px solid #ddd;
+		font-size: 0;
+		margin: 0 0 30px 0;
+		/*border: 1px solid #aa0;*/
+		position: relative;
+		line-height: initial;
+		padding: 8px 0;
+		padding-top: 20px;
+		margin: 0 0 10px 0;
+	}
+
+
+	.skholdings-015-main-page-sub-title .imsquare{
+		width: 18px;
+		height: 18px;
+		display: inline-block;
+		background-color: #D8262E;
+		background-color: #b62822;
+		position: absolute;
+	}
+
+	.skholdings-015-main-page-sub-title p{
+		font-weight: 800;
+		letter-spacing: 3px;
+		display: inline-block;
+		padding-left: 24px; 
+		font-size: 18px;
+		vertical-align: top;
+		line-height: 20px;
+	}
+
+	.skholdings-015-main-page-sub-title .arrow-icon{
+		/*border: 1px solid #0f0;*/
+		float: right;
+		padding: 5px 0;
+		display: none;
+	}
+
+	@media only screen and (min-width: 320px) and (max-width:768px) {
+		.skholdings-015-main-page-sub-title{
+			border-bottom: 2px solid #ddd;
+			font-size: 0;
+			padding: 20px 5% 8px 5%;
+			margin: 0 0 10px 0;
+		}	
+		.skholdings-015-main-page-sub-title .arrow-icon{
+			/*border: 1px solid #0f0;*/
+			float: right;
+			padding: 5px 0;
+			display: none;
+		}	
+	}
+	@media only screen and (min-width: 320px) and (max-width:480px) {
+		.skholdings-015-main-page-sub-title{
+			/*border-bottom: 0;*/
+			font-size: 0;
+			padding: 20px 5% 8px 5%;
+			margin: 0 0 10px 0;
+			/*border-top: 2px solid #ccc;*/
+		}	
+	}
+
+/**********************sk-holdings-015 end****************************/
+
+
+
+
+
+
+
+/***************sk_bank-loan-main-029 start*******************/
+
+	.sk_bank-loan-main-029-content-panel {
+	    overflow: hidden;
+	}
+	.sk_bank-loan-main-029-content-panel:after, .sk_bank-loan-main-029-content-panel:before {
+	    content: " ";
+	    display: table;
+	}
+	.sk_bank-loan-main-029-alison, .sk_bank-loan-main-029-alison h2 {
+	    margin: 15px 0;
+	}
+	.sk_bank-loan-main-029-alison {
+	    position: relative;
+	    height: 200px;
+	}
+	.sk_bank-loan-main-029-alison .sk_bank-loan-main-029-bannerImage {
+	    width: 50%;
+	    display: inline-block;
+	    height: 100%;
+	}
+	.sk_bank-loan-main-029-alison .sk_bank-loan-main-029-bannerImage img {
+	    width: 100%;
+	    height: 100%;
+	    max-width: 100%;
+	}
+	.sk_bank-loan-main-029-content-sub-banner-car {
+	    display: inline-block;
+	    width: 50%;
+	    height: 100%;
+	    float: right;
+	    padding: 2% 25px;
+	    text-align: center;
+	    text-shadow: 1px 2px 2px rgba(55, 55, 55, .2);
+	    position: relative;
+	}
+	.sk_bank-loan-main-029-content-sub-banner-car h2, .sk_bank-loan-main-029-content-sub-banner-car h4 {
+	    color: #0D0C0C;
+	}
+
+	.sk_bank-loan-main-029-content-sub-banner-car h2 {
+	    font-size: 22px;
+	    line-height: 40px;
+	    position: absolute;
+	    left: 0;
+	    right: 0;
+	    margin: auto;
+	    top: 0;
+	    bottom: 0;
+	    font-weight: 800;
+	}
+	.sk_bank-loan-main-029-content-sub-banner-car h2:before {
+	    content: '';
+	    display: inline-block;
+	    width: 0;
+	    height: 100%;
+	    vertical-align: middle;
+	}
+	
+	.sk_bank-loan-main-029-alison .banner-color1 {
+	    background-color: #D6D0A9;
+	}
+
+	.sk_bank-loan-main-029-alison .banner-color2 {
+	    background-color: #D3B7A8;
+	}
+
+	.sk_bank-loan-main-029-alison .banner-color3 {
+	    background-color: #BABDBE;
+	}
+
+	@media (max-width: 1023px){
+		.sk_bank-loan-main-029-alison {
+		    height: auto;
+		}
+		.sk_bank-loan-main-029-content-sub-banner-car {
+		    width: 100%;
+		    height: auto;
+		}
+		.sk_bank-loan-main-029-alison .sk_bank-loan-main-029-bannerImage {
+		    display: block;
+		    width: 100%;
+		}
+		.sk_bank-loan-main-029-content-sub-banner-car h2 {
+		    position: relative;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		    top: 0;
+		    bottom: 0;
+		}
+		.sk_bank-loan-main-029-content-sub-banner-car h2:before {
+		    content: '';
+		    display: inline-block;
+		    width: 0;
+		    height: auto;
+		    vertical-align: middle;
+		}
+		
+	}
+
+/***************sk_bank-loan-main-029 end*********************/
+
+
+
+
+
+
+/*****************sk-loan-special-sty-042 start*****************/
+	.venture-container {
+	    padding: 10px;
+	}
+	.venture-ask {
+	    padding-right: 130px;
+	}
+	.venture-ask .avatar-img {
+	    margin-right: 30px;
+	    display: inline-block;
+	    vertical-align: middle;
+	    /* width: 20%; */
+	}
+	.venture-ask .avatar-img img {
+	    max-width: 100%;
+	    vertical-align: middle;
+	}
+	.venture-ask .avatar-img .name {
+	    text-align: center;
+	    color: #3D3D40;
+	    font-size: 20px;
+	    padding: 5px;
+	}
+	
+	.venture-ask .avatar-img .name h5{
+		margin-top: 0;
+	    margin-bottom: 0;
+	    font-size: 14px;
+	}
+	.venture-ask .ask-content {
+	    display: inline-block;
+	    vertical-align: middle;
+	    background-color: #EEE;
+	    padding: 20px;
+	    border-radius: 10px;
+	    width: calc(100% - 140px);
+	}
+	.venture-ask .ask-content:before {
+	    border-color: transparent transparent #EEE;
+	    border-style: solid;
+	    border-width: 20px;
+	    content: '';
+	    height: 0;
+	    transform: rotate(45deg);
+	    position: absolute;
+	    margin-left: -40px;
+	    width: 0;
+	    margin-top: -20px;
+	}
+	.venture-ask .ask-content p {
+	    font-size: 18px;
+	    letter-spacing: 1px;
+	    color: #3D3D40;
+	    margin: 0;
+	    line-height: 1.5em;
+	    font-weight: 100;
+	}
+	@media only screen and (max-width: 480px) and (min-width: 320px){
+		.venture-ask {
+		    padding-right: 0px;
+		}
+		.venture-ask .avatar-img {
+		    margin-right: 10%;
+		    display: inline-block;
+		    vertical-align: middle;
+		    width: 20%;
+		}
+	}
+
+/*****************sk-loan-special-sty-042 end*******************/
+
+
+
+
+
+/*****************sk-loan-special-sty-044 start*****************/
+
+	.sk-loan-special-sty{
+		/*border: 3px solid #f00;*/
+		padding: 30px 0 20px 0;
+	}
+
+	.sk-loan-special-sty .sk-loan-special-sty-title{
+		/*width: 50px;
+		height: 38px;*/
+		/*border: 3px solid #0ff;*/
+		display: inline-block;
+		/*vertical-align: top;*/
+		background-color: #c7c7c6;
+	}
+	.sk-loan-special-sty .sk-loan-special-sty-title .sk-loan-special-sty-title-pp{
+		/*border: 3px solid #0f0;*/
+		/*display: inline-block;*/
+		padding: 7px 20px;
+		font-size: 16px;
+		background-color: #4d4d4d;
+		color: #fff;
+		vertical-align: top;
+		margin-left: 40px; 
+	}
+	.sk-loan-special-sty .sk-loan-special-sty-desc{
+		/*border: 3px solid #0ff;*/
+		display: inline-block;
+		vertical-align: top;
+		font-size: 20px;
+		margin: 0 3%;
+	}
+	.sk-loan-special-sty .sk-loan-special-sty-desc p{
+		padding: 7px 0;
+	}
+
+/*****************sk-loan-special-sty-044 end*******************/
+
+
+
+
+
+/*****************loan-gray-listul-045 start********************/
+	.loan-gray-listul {
+	    font-size: 0;
+	    display: flex;
+	    flex-flow: row wrap;
+	    list-style: none;
+	}
+	.loan-gray-listul li {
+	    width: 48%;
+	    margin: 2% 1%;
+	    float: none; 
+	    display: inline-block;
+	    background-color: #fff;
+	    padding: 5px 0;
+	    list-style: none;
+	}
+
+	.loan-gray-listul li .txt-left {
+	    text-align: left;
+	}
+
+	.loan-gray-listul .img img {
+	    max-height: 85px;
+	    padding: 10px;
+	    max-width: 100%;
+    	vertical-align: middle;
+	}
+
+	@media only screen and (max-width: 768px) and (min-width: 320px){
+		.loan-gray-listul li {
+		    width: 98%;
+		    margin: 2% 1%;
+		}
+		
+	}
+
+		/***boostrap**/
+		.col-xs-4 {
+		    width: 33.33333333%;
+		}
+		.col-xs-8 {
+		    width: 66.66666667%;
+		}
+		.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+		    float: left;
+		}
+		.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+		    position: relative;
+		    min-height: 1px;
+		    padding-right: 15px;
+		    padding-left: 15px;
+		}
+		.row {
+		    margin-right: -15px;
+		    margin-left: -15px;
+		}
+		.row:before {
+		    display: table;
+		    content: " ";
+		}
+		.row:after {
+		    clear: both;
+		}
+		/***boostrap**/
+		
+/*****************loan-gray-listul-045 end**********************/
+
+
+
+
+
+/***************loan-two-li-five-053 start*********************/
+	.venture-container {
+	    padding: 10px;
+	}
+	.venture-container .venture-info {
+	    display: block;
+	}
+	.venture-container .venture-info .venture-reply {
+	    padding-left: 130px;
+	}
+	.hint-layer {
+	    width: 100%;
+	    height: 0;
+	}
+	.hint-layer:before {
+	    border-color: transparent #FFF transparent transparent;
+	    border-width: 18px;
+	    margin-top: 104px;
+	    z-index: 3;
+	}
+	.hint-layer:after {
+	    border-color: transparent #EEE transparent transparent;
+	    border-width: 20px;
+	    margin-top: 100px;
+	}
+	.hint-layer:after, .hint-layer:before {
+	    border-style: solid;
+	    content: '';
+	    height: 0;
+	    transform: rotate(45deg);
+	    position: absolute;
+	    margin-left: calc(100% - 630px);
+	    width: 0;
+	}
+	.venture-container .venture-info .venture-reply .reply-content {
+	    width: calc(100% - 140px);
+	    display: inline-block;
+	    border-radius: 10px;
+	    border: 1px solid #EEE;
+	    padding: 30px 0;
+	    min-height: 160px;
+	    background-color: #fff;
+	}
+	.venture-container .venture-info .venture-reply .reply-content p {
+	    padding: 0px;
+	    color: #545555;
+	    font-size: 16px;
+	    margin: 0;
+	    line-height: 1.5em;
+	    font-weight: 100;
+	}
+	.sk_bank-loan-main-053-highlight .highlight {
+	    font-size: 20px;
+	    font-weight: 700;
+	    color: #D81115;
+	}
+	.venture-container .venture-info .venture-reply .avatar-img {
+	    margin-left: 10px;
+	    display: inline-block;
+	    vertical-align: top;
+	}
+	.venture-container .venture-info .venture-reply .avatar-img img {
+	    max-width: 100%;
+	    vertical-align: middle;
+	}
+	.venture-container .venture-info .venture-reply .avatar-img .name {
+	    text-align: center;
+	    color: #3D3D40;
+	    font-size: 20px;
+	    padding: 5px;
+	}
+	.venture-container .venture-info .venture-reply .avatar-img .name h5{
+		margin-top: 0;
+	    margin-bottom: 0;
+	    font-size: 14px;
+	}
+	@media only screen and (max-width: 480px) and (min-width: 320px){
+		.venture-container .venture-info .venture-reply {
+		    padding-left: 0px;
+		    font-size: 0;
+	   		margin: 20px 0;
+		}
+		.venture-container .venture-info .venture-reply .reply-content {
+		    width: 70%;
+		    /* border: 1px solid #f00; */
+		    display: inline-block;
+		    font-size: 16px;
+		}
+		.venture-container .venture-info .venture-reply .avatar-img {
+		    /* border: 1px solid #f00; */
+		    display: inline-block;
+		    width: 20%;
+		    margin-left: 10%;
+		}
+		.venture-container .venture-info .venture-reply .avatar-img img {
+		    width: 100%;
+		}
+	}
+
+/***************loan-two-li-five-053 end***********************/
+
+
+
+
+
+/***************loan-two-li-five-054 start*********************/
+        .loan-two-li-five{
+            /*display: inline-block;*/
+            /*width: 90%;*/
+            /*border: 1px solid #f00;*/
+            /*padding: 5px 0; */
+            /*background-color: #fff;*/
+            font-size: 0;
+            margin: 20px 0;
+
+        }
+        .loan-two-li-five-sub{
+            background-color: #fff;
+        }
+
+        .loan-two-li-five h2{
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: 700;
+        }
+        .loan-two-li-five h3{
+            font-size: 15px;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .loan-two-li-five h3 .gray{
+            color: #888;
+        }
+
+        .loan-two-li-five-left{
+            width: 25%;
+            /*border: 1px solid #f00;*/
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+
+        }
+        .loan-two-li-five-right{
+            width: 75%;
+            /*border: 1px solid #f00;*/
+            display: inline-block;
+            vertical-align: top;
+            font-size: 16px;
+        }
+
+	    @media only screen and (min-width: 320px) and (max-width:1023px) {
+	        .loan-two-li-five{
+	            display: inline-block;
+	            width: 100%;
+	            /*border: 1px solid #f00;*/
+	            padding: 5px 0; 
+	            background-color: #fff;
+	            font-size: 0;
+	        }
+	        
+	    }
+
+/***************loan-two-li-five-054 end***********************/
+
+
+
+
+/********************oiu-001 start*****************************/
+	.OiuObjects {
+	    font-size: 26px;
+	    padding: 0 10%;
+	}
+	.OiuObjects div {
+	    margin: 20px;
+	    font-size: 26px;
+	}
+	.OiuObjects .center {
+	    text-align: center;
+	}
+	.OiuObjects .highlight {
+	    color: #d8262e;
+	}
+	.OiuObjects .row {
+	    margin-left: -15px;
+	    margin-right: -15px;
+	}
+	.OiuObjects .row:before {
+	    display: table;
+	    content: " ";
+	}
+	.row:after{
+	    display: table;
+	    content: " ";
+	    clear: both;
+	}
+	.OiuObjects li {
+	    position: relative;
+	    background: #FFFFFF;
+	    text-align: center;
+	    background: white;
+	    border: 1px solid #dddddd;
+	    height: 165px;
+	    display: block;
+	    padding: 13px 10px;
+	    font-size: 26px;
+	    letter-spacing: .3;
+	    line-height: 2;
+	    vertical-align: middle;
+	    margin: 0 auto;
+	}
+	.OiuObjects li div p {
+	    line-height: 2;
+	    letter-spacing: 0px;
+	    font-size: 19px;
+	    margin-top: 10px;
+	    word-break: break-word;
+	}
+	.OiuObjects .row li .oiu-chin{
+		margin: 0;
+	}
+	.OiuObjects .row li .oiu-engl{
+	    margin: 0;
+	}
+	@media (max-width: 1023px) and (min-width: 768px){
+		.OiuObjects li div p {
+		    font-size: 13px;
+		}
+	}
+	@media only screen and (max-width: 768px) and (min-width: 320px){
+		.OiuObjects #index_oiu_business_info .center {
+		    margin-left: 0;
+		    margin-right: 0;
+		}
+	}
+	@media (min-width: 1023px){
+		.OiuObjects .row li .oiu-chin{
+		    font-size: 26px;
+		    line-height: 1.5em;
+		}
+		.OiuObjects .row li .oiu-engl{
+		    font-size: 18px;
+		    line-height: 1.5em;
+		}
+	}
+	
+	@media (min-width: 768px){
+		.col-sm-4 {
+		    width: 33.33333%;
+		    float: left;
+		}
+		
+	}
+	@media (max-width: 768px){
+		.col-xs-12 {
+		    width: 100%;
+		}
+		.OiuObjects li {
+		    margin-bottom: 15px;
+		}
+	}
+	@media (max-width: 481px){
+		.OiuObjects li div {
+		    width: 100%;
+		    height: auto;
+		    font-size: 16px;
+		    line-height: 1.5;
+		    margin: 0 auto;
+		}
+		.OiuObjects .row li .oiu-chin{
+		    font-size: 17px;
+		    line-height: 1.5em;
+		}
+		.OiuObjects .row li .oiu-engl{
+		    font-size: 19px;
+		    line-height: 1.5em;
+		}
+	}
+
+/*********************oiu-001 end******************************/
+
+
+/*********************csr-018 start**********************/
+    .skinsurance-csr-018{
+        /*border: 1px solid #f00;*/
+        margin: 20px 0;
+    }
+    .skinsurance-csr-018 .csr-018-block{
+        /*border: 1px solid #0f0;*/
+        border-top: 1px solid #ccc;
+        font-size: 0;
+    }
+    .skinsurance-csr-018 .csr-018-block li{
+        font-size: 0px;
+        display: inline-block;
+        width: 33.33333%;
+        vertical-align: top;
+        /*border: 1px solid #0f0;*/
+        padding: 8px 0;
+        border-bottom: 1px solid #ccc; 
+    }
+    .skinsurance-csr-018 .csr-018-block li .csr018-pic{
+        display: inline-block;
+        vertical-align: top;
+        font-size: 16px;
+        width: 25px;
+        height: 25px;
+        /*border: 1px solid #0ff;*/
+        position: absolute;
+    }
+    .skinsurance-csr-018 .csr-018-block li .csr018-pic img{
+        width: 25px;
+        height: 25px;
+        border: 0;
+    }
+    .skinsurance-csr-018 .csr-018-block li .csr018-txt{
+        display: inline-block;
+        vertical-align: top;
+        font-size: 16px;
+        margin-left: 28px;
+    }
+    .skinsurance-csr-018 .csr-018-block li .csr018-txt a{
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+        margin: 0;
+        text-decoration: none;
+    }
+    @media only screen and (min-width: 480px) and (max-width:768px) {
+        .skinsurance-csr-018{
+            /*border: 1px solid #f00;*/
+            margin: 20px 5%;
+        }
+        .skinsurance-csr-018 .csr-018-block li{
+            width: 50%;
+        }
+    }
+    @media only screen and (min-width: 320px) and (max-width:480px) {
+        .skinsurance-csr-018{
+            /*border: 1px solid #f00;*/
+            margin: 20px 5%;
+        }
+        .skinsurance-csr-018 .csr-018-block li{
+            width: 100%;
+        }
+    }
+/*********************csr-018 end************************/
+
+
+
+
+
+/*********************skin-047 start************************/
+#skin-047 .geraldo{
+	font-size: 0; 
+}
+#skin-047 .geraldo .geraldo-pic{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 16px;
+	width: 195px;
+    height: 183px;
+    position: absolute;
+}
+#skin-047 .geraldo .geraldo-pic img{
+	width: 195px;
+    height: 183px;
+    padding-right: 10px;
+}
+#skin-047 .geraldo .geraldoUL{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 16px;
+}
+#skin-047 .geraldo:before{
+	display: none;
+}
+@media (max-width: 768px){
+	#skin-047 .geraldo .geraldo-pic{
+		display: none;
+	}
+}
+
+/*********************skin-047 end**************************/
+
+
+
+/*********************tab inside style-start************************/
+.ga-tab-content-container .sk_bank-loan-main-029-alison{
+    margin: 0; 
+}
+.ga-tab-content-container .loan-gray .sk-loan-special-sty {
+    margin: 0 0; 
+    padding: 20px 0;
+}
+.ga-tab-content-container .loan-gray .loan-two-li-five {
+    margin: 0px 0;
+}
+/*********************tab inside style-end**************************/
+
+
+/*********選擇對齊紅方塊或深灰色標籤的樣式*********/
+.deep-gray-tag-margin{
+	margin-left: 40px; 
+}
+.red-square-tag-margin{
+	margin-left: 25px; 
+}
+.loan-gray .loan-gray-element-margin1 .deep-gray-tag-margin{
+	margin-left: 0px; /*在灰底下仍舊對齊深灰色標籤*/
+}
+@media (max-width: 768px){
+	.deep-gray-tag-margin{
+		margin-left: 5%;
+		margin-right: 5%; 
+	}
+	.red-square-tag-margin{
+		margin-left: 25px;
+		margin-left: 5%;
+		margin-right: 5%; 
+	}
+}
+/*********選擇對齊紅方塊或深灰色標籤的樣式*********/

@@ -112,6 +112,9 @@ import MyError from '../components/error'
 import PaymentNotice from '../components/Insurance/Common/paymentNotice.vue'
 import PaymentBanks from '../components/Insurance/Common/paymentBanks.vue'
 
+import PromotionDetail from '../components/Promotion/PromotionDetail.vue'
+import PromotionList from '../components/Promotion/PromotionList.vue'
+
 Vue.use(Router)
 
 const router = new Router({
@@ -498,6 +501,14 @@ const router = new Router({
     {
       path: '/UpCashSimpleEstimateResult',
       component: UpcashSimpleEstimateResult
+    },
+    {
+      path: '/Promotion-Detail',
+      component: PromotionDetail
+    },
+    {
+      path: '/Promotion-List',
+      component: PromotionList
     },
     // {
     //   path: '/TravelSimpleEstimate',

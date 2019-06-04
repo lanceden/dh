@@ -1,0 +1,124 @@
+.owl-carousel .owl-dots, .owl-carousel .owl-nav {
+    position: absolute;
+    bottom: 0px;
+    color: grey;
+}
+
+.owl-carousel .owl-nav {
+    right: 0px;
+}
+
+.owl-carousel .owl-dots {
+    width: 100%;
+}
+
+.owl-carousel .owl-dot, .owl-carousel .owl-prev, .owl-carousel .owl-next {
+    cursor: hand;
+    display: inline-block;
+    height: 15px;
+    margin: 20px 5px;
+}
+
+.owl-carousel .owl-dot[type="dot"] {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #EEE;
+    background: #EEE;
+}
+
+.owl-carousel .owl-dot[type="dot"].active {
+    background: #CB231D;
+}
+
+.owl-carousel .owl-dot[type="text"] {
+    background: #EEE;
+    color: #7B7A7E;
+    border: 1px solid #7B7A7E;
+    padding: 5px;
+    text-align: center;
+    min-height: 30px;
+    text-overflow: ellipsis;
+}
+
+.owl-carousel .owl-dot[type="text"].active {
+    background: #CB231D;
+    color: #EEE;
+}
+
+.ga-slider-container {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /*padding: 0 15px;*/
+    position: relative;
+}
+
+.ga-slider-container[isFull="false"] .owl-carousel {
+    max-width: 95%;
+    margin: 0 auto;
+}
+
+.ga-slider-prev, .ga-slider-next {
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+}
+
+.ga-slider-prev {
+    left: 0px;
+}
+
+.ga-slider-next {
+    right: 0px;
+}
+
+.ga-slider-prev:before, .ga-slider-next:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 60px;
+}
+
+.ga-slider-prev:before {
+    content: url('../image/arrow-to-left.png');
+}
+
+.ga-slider-next:before {
+    content: url('../image/arrow-to-right.png');//"\f105";
+}
+
+.ga-slider-items-3 {
+    display: block;
+}
+
+.ga-slider-items-3 .item {
+    max-width: 346px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+@media only screen and (max-width: 1024px) {
+    .ga-slider-container[isFull="false"] .owl-carousel {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .owl-carousel .owl-dot[type="text"] {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        font-size: 0px;
+        min-height: initial;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .ga-slider-container[isFull="false"] .owl-carousel {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}

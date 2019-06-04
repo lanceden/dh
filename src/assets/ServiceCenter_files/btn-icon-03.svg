@@ -1,0 +1,139 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="keywords" content="" />
+   <meta name="description" content="" />
+   <meta name="author" content="">
+   <meta name="copyright" CONTENT="">
+   <meta name="URL" content="">
+
+   <title>新光人壽 | 系統異常轉址error-page</title>
+   <link rel="shortcut icon" href="img/favicon.ico">
+
+   <style type="text/css">
+   * {
+     margin: 0;
+     padding: 0;
+   }
+   html,body,.wrapper {
+     width: 100%;
+     height: 100%;
+     font-family: 微軟正黑體;
+   }
+   .container {
+     max-width: 1170px;
+     margin: 0 auto;
+     padding: 0 15px;
+   }
+   .header {
+      background: #D8262E;
+      color: #fff;
+      overflow: hidden;
+   }
+   .header .logo {
+     margin: 10px 0 6px;
+     max-width: 225px;
+     display: inline-block;
+     float: left;
+   }
+   .header .logo a {
+     display: block;
+       outline: none;
+   }
+   .header .logo img {
+     width: 100%;
+      outline: none;
+      border: none;
+   }
+   .page-wrap {
+      min-height: 100%;
+      margin-bottom: -108px;
+      background: #fbfbfb;
+    }
+   .page-wrap:after {
+      content: "";
+      display: block;
+    }
+    .content {
+      overflow: hidden;
+      margin-top: 200px;
+    }
+   .content h1 {
+     color: #606060;
+     font-weight: 100;
+     font-size: 43px;
+     text-align: center;
+     margin: 0 0 15px 0;
+   }
+   .content h3 {
+     color: #e34a78;
+     font-size: 16px;
+     text-align: center;
+     padding: 2px 0;
+   }
+   .footer {
+     background: #D8262E;
+     color: #fff;
+     padding: 30px 0;
+     text-align: center;
+   }
+   .footer p {
+      font-size: 14px;
+      color: #fff;
+      padding: 5px 0 0;
+    }
+	
+	
+	@media only screen and (max-width:480px) {
+		.content {
+			margin-top : 100px;
+		}
+	}
+	
+	@media only screen and (max-width: 375px) {
+		.content {
+			margin-top : 0px;
+		}
+	}
+   </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="page-wrap">
+    <div class="header">
+      <div class="container">
+        <div class="logo">
+          
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="container">
+        <h1>很抱歉，這個頁面可能遺失或是不存在!</h1>
+        <h3>親愛的客戶您好，</h3>
+        <h3>這個頁面可能遺失或是不存在!造成您的不便，敬請見諒!</h3>
+		<h3>建議您返回新光人壽官網首頁查找您想要的資訊。</h3>
+		<h3>返回<a href="https://www.skl.com.tw">新光人壽首頁</a></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <p>新光人壽 Copyright 2016 c All rights reserved.</p>
+      <p>客服中心單一代表號：0800-031-115</p>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

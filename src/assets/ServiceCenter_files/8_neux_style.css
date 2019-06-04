@@ -1,0 +1,598 @@
+/*仿野口的.brian_title跟.brian_title h4*/
+.neux_ypList > li .neux_icon_a + .empty_class {
+    /*.brian_title*/
+    border-bottom: solid 1px #a2a6a9;
+
+    /*.brian_title h4*/
+    display: inline-block;
+    font-size: 18px;
+    padding-left: 22px;
+    font-weight: 100;
+    color: #040000;
+}
+
+/*仿野口的.brian_title .img跟.brian_title .img img*/
+
+.neux_ypList > li .neux_icon_a:before {
+  display: inline-block;
+  width: 30px;
+  height: 28px;
+  background-size: 100%;
+  position: absolute;
+	left: 0px;
+	top: 0px;
+  content: '';
+  background-image: url(../img/msg-01.jpg);
+}
+
+/*仿野口的.sena(第一層)*/
+.neux_ypList > li > .neux_ypList_cjk {
+    /*.sena*/
+    padding-left: 20px;
+    margin: 25px;
+    margin-left: 45px;
+}
+
+/*仿野口的.sena > li(第一層的li)*/
+.neux_ypList > li > .neux_ypList_cjk > li {
+    /*.sena > li*/
+    list-style-type: cjk-ideographic;
+    margin-bottom: 25px;
+}
+
+/*仿野口的.sena li(li)*/
+.neux_ypList > li > .neux_ypList_cjk li {
+    /*.sena li*/
+    color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5em;
+
+}
+
+
+/*仿野口的.riva(第二層)*/
+.neux_ypList > li > .neux_ypList_cjk > ol{
+    /*.riva*/
+    padding-left: 20px;
+    margin-top: 15px;
+}
+
+/*仿野口的.riva > li(第二層)*/
+.neux_ypList > li > .neux_ypList_cjk > ol > li{
+    /*.riva > li*/
+    list-style-type: decimal;
+}
+
+
+.sideMenu_tanya {
+	
+	  width: 200px;
+  display: inline-block;
+  float: left;
+}
+
+/**  0816 忠毅: 讓編輯器樣式看起來一樣  **/
+/** 0817 尚文：因為直接加div的話，前台很多css會被影響，故加上內頁前面一定會有的ID來做區分 **/
+
+/*.editor_section {
+	padding-left: 33px!important;
+}*//***************************************************************************************kate關11/23****/
+
+.highlightContent  .editor_section {
+	padding-left: 4px !important;
+	padding-top: 0px !important;
+}
+
+.highlightContent  .editor_section div {
+	color: #8b91a0 !important;
+}
+
+
+/*#contentflame .editor_section div{
+  font-size: 15px;
+	line-height: 1.5em; 
+  min-height: 0 !important;
+}*//***************************************************************************************kate關11/23****/
+
+/*.brian_title h4 {
+    background-image: url("../img/square.png");
+}*//***************************************************************************************kate關11/23****/
+
+/*.editor_section .editor_pure_text{
+    margin-left: 7px;
+    margin-top: 15px;
+    color: rgb(57, 58, 58);
+    font-size: 15px;
+    line-height: 1.5em;
+}*//***************************************************************************************kate關11/23****/
+
+/**  --start 0826 這裡是list的紅點點圖,前台後台路徑不同,不要動 XD  **/
+
+
+/**  list顯示交換   **/
+/*.sena > li{
+    list-style-type: decimal !important;	
+}*//***************************************************************************************kate關11/23****/
+/*.riva >li {
+	list-style-image: url(../img/msg-01_2.jpg);
+	
+	*  0830 忠毅 讓list樣是統一  *
+	color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5em;
+}*//***************************************************************************************kate關11/23****/
+
+/*.disc >li{
+	list-style-type: circle !important;	
+	list-style-image: none;
+}*//***************************************************************************************kate關11/23****/
+
+.disc {
+    /*list-style: circle;
+    list-style-type: disc;*/
+
+    /* list-style-image: url(../img/msg-01_2.jpg); */
+
+}
+
+/**  list顯示交換   **/
+
+/**  這是國字編號  **/
+/**  這是國字編號  **/
+/*  .sena > li:nth-child(0) {
+    list-style-type: none !important;
+   
+	list-style-image: url(../img/CH-01.png)!important;
+}
+.sena > li:nth-child(1) {
+    list-style-type: none !important;
+   
+	list-style-image: url(../img/CH-02.png)!important;
+}
+.sena > li:nth-child(2) {
+    list-style-type: none !important;
+   
+	list-style-image: url(../img/CH-03.png)!important;
+}
+.sena > li:nth-child(3) {
+    list-style-type: none !important;
+   
+	list-style-image: url(../img/CH-04.png)!important;
+}
+ */
+
+/**  --end 0826 這裡是list的紅點點圖,前台後台路徑不同,不要動 XD  **/
+
+/**  --start  table 區  **/
+/*.editor_section .table>tbody>tr>td, .editor_section .table>tbody>tr>th, .editor_section .table>tfoot>tr>td, .editor_section .table>tfoot>tr>th, .editor_section .table>thead>tr>td, .editor_section .table>thead>tr>th {
+    border: 1px solid #ddd;
+}*//*******************************************************************************kate關11/23****/
+/**
+.editor_section .table{
+	max-width:800px !important;
+}
+
+.content_full .editor_section .table{
+	max-width:100% !important;
+}
+**/
+
+/*@media only screen and (max-width: 900px) and (min-width: 320px){
+    .editor_section .table{
+
+      width:95% !important;
+    }
+
+
+}*//*******************************************************************************kate關11/23****/
+
+
+
+
+/**  --end table 區  **/
+
+/**  -- start A link 區  **/
+.editor_section a {
+  text-decoration:underline;
+}
+
+/**  -- end A link 區  **/
+
+
+/**  --start 依倪希望字體都統一  **/
+/*.jumbotron p{
+	margin-bottom: 0px;
+    font-size: 17px;
+
+}*//*******************************************************************************kate關11/23****/
+/**  --end 依倪希望字體都統一  **/
+
+/**  --start table 不要有scroll 條   **/
+/*.table-responsive{
+	overflow-x: hidden;
+}*//*******************************************************************************kate關11/23****/
+
+/*.table-responsive td{	
+	padding: 8px !important;
+}*//*******************************************************************************kate關11/23****/
+/**  --end table 不要有scroll 條   **/
+
+/**  --start 0914 忠毅 : for cms3.0 &前台; **/
+
+
+
+
+/**  --end 0914 忠毅 : for cms3.0 &前台; **/
+
+
+/**  --start 0818 忠毅 : for editor&前台; **/
+
+/*.editor_section > div  {
+
+    color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5em;
+}*//*******************************************************************************kate關11/23****/
+
+
+/*.dulcie {
+    font-family: Microsoft JhengHei;
+    margin-bottom: 40px;
+	
+}*//*******************************************************************************kate關11/23****/
+/** --start  讓list 對齊   **/
+/*.editor_section .dulcie{
+	margin-left: -13px;	
+}
+
+.editor_section .brian_title{
+	margin-left: -13px;
+}*//*******************************************************************************kate關11/23****/
+/**  --end  讓list 對齊   **/
+
+/*.brian_title h4 {
+    font-family: Microsoft JhengHei;
+    font-family: sans-serif,'微軟正黑體';
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: -10px -10px;
+    padding-left: 25px;
+    background-size: 28px 28px;
+    padding-bottom: 8px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+.control_me_li {
+  margin-bottom: 10px !important; 
+
+}
+
+.sena li {
+  margin-bottom: 10px !important; 
+
+}
+
+.sena_none li {
+  margin-left: 7px;
+  margin-top: 15px;
+  color: #393a3a;
+  font-size: 15px;
+  line-height: 1.5em;
+}*//*******************************************************************************kate關11/23****/
+
+.sena_none ol{
+
+  /* padding-left: 63px; */
+}
+
+/*.editor_section div:not(.brian_title) :not(.control_me) :not(.control_me_img) :not(.img) {
+  margin-left: 45px;
+}*/
+
+/*.brian_title .img img{
+
+    width: 20px;
+    height: 20px;
+    margin-bottom: 6px;
+}
+
+.editor_section li{
+  padding-left: 10px;
+}
+
+.editor_section td li{
+  padding-left: 0px;
+}*//*******************************************************************************kate關11/23****/
+
+
+/*.editor_section div:not(.JCLRgrips):not(.JCLRgrip):not(.JColResizer):not(.resize-container):not(.brian_title) {
+    margin-left: 7px;
+    margin-top: 15px;
+    color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5em;
+}
+
+.editor_section td div {
+    margin-left: 0px !important;
+    margin-top: 0px  !important;
+    color: #393a3a !important;
+    font-size: 15px  !important;
+    line-height: 1.5em  !important;
+	min-width:40px !important;
+}*//*******************************************************************************kate關11/23****/
+
+
+
+/**  --start 按照依倪要求,對其li   **/
+.editor_section .sena {
+   /**   padding-left: 5px;
+    margin: 25px;
+    
+	margin-left: 45px;
+    margin-left: 30px;**/
+	
+	/**  0830 忠毅  為了讓list樣式統一  **/
+	/*margin-top: 15px;
+    padding-left: 5px;
+    margin: 10px;*//*******************************************************************************kate關11/23****/
+    /**  margin-left: 45px;**/
+    /*margin-left: 30px;*//*******************************************************************************kate關11/23****/
+}
+
+.editor_section .riva {
+   /** padding-left: 30px;
+    margin-top: 15px;  **/
+    /*list-style-image: url(../img/msg-01.jpg);*/
+	
+	/**  0830 忠毅  為了讓list樣式統一  **/
+/*	margin-top: 15px;
+    padding-left: 5px;
+    margin: 10px;*//*******************************************************************************kate關11/23****/
+    /**  margin-left: 45px;**/
+    /*margin-left: 30px;*//*******************************************************************************kate關11/23****/
+
+}
+
+/*.editor_section td .riva {
+   
+    margin-left: 13px;
+
+}
+
+.editor_section td .sena {
+   
+    margin-left: 13px;
+
+}*//*******************************************************************************kate關11/23****/
+
+
+
+
+
+/**  --end 按照依倪要求,對其li   **/
+/*jumbotron*/
+
+
+/**  --end 0818 忠毅 : for editor&前台; **/
+
+/** --start  針對子首頁 調整  **/
+
+/*#subcontent .editor_section {
+
+  padding-left: 0px!important;
+
+}
+
+#subcontent .editor_section div:not(.JCLRgrips):not(.JCLRgrip):not(.JColResizer):not(.resize-container):not(.brian_title) {
+    margin-left: 0;
+    margin-top: 0;
+    color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 2px;
+}*//*******************************************************************************kate關11/23****/
+
+
+/** --end  針對子首頁 調整  **/
+
+
+
+
+/********************kate-adjust只有人壽全站調整*********************************/
+/*.editor_section {
+    padding-left: 0px!important; 
+}
+@media only screen and (max-width: 1023px) and (min-width: 320px){
+  .editor_section {
+      padding: 0 5%!important;
+  }
+}
+
+.editor_section .dulcie {
+     margin-left: 0px; 
+}
+.editor_section .brian_title {
+    margin-left: 0px;
+}
+.editor_section li {
+    padding-left: 20px;
+}*/
+/*.brian_title h4{
+  position: relative;
+}
+.brian_title h4:before{
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-color: #b62822;
+    position: absolute;
+}*/
+/********************kate-adjust只有人壽全站調整*********************************/
+
+
+.jumbotron p{
+    font-size: 15px;
+}
+.editor_section{
+  /*word-break: break-all;*/
+  word-wrap: break-word;
+}
+
+.editor_section .dulcie {
+    margin-left: 0px;
+    padding-top: 20px;
+    margin: 0 0 10px 0; 
+}
+.editor_section .brian_title {
+    margin-left: 0px; 
+    padding-bottom: 8px;
+    padding-top: 20px;
+    margin-bottom: 10px; 
+}
+.editor_section .brian_title h4 {
+    font-family: Microsoft JhengHei;
+    font-family: sans-serif,'微軟正黑體';
+    background-image: url(../img/square.png);
+    background-repeat: no-repeat;
+    background-position: -10px -10px;
+    padding-left: 23px;
+    background-size: 28px 28px;
+    padding-bottom: 0px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    display: inline-block;
+    font-size: 18px;
+    color: #040000;
+}
+.editor_section>.sena {
+    padding-left: 0px;
+    margin: 15px 0px 15px 45px;
+}
+.editor_section>.sena_none {
+    padding-left: 0px;
+    margin: 15px 0px 15px 25px;
+}
+.editor_section>.editor_pure_text {
+    margin: 10px 0px 10px 25px;
+    color: #393a3a; 
+    font-size: 15px; 
+    line-height: 1.5em; 
+    /*overflow-x: scroll;裡面塞table的關係*/
+}
+
+
+.editor_section>.riva{
+    padding-left: 0px;
+    margin: 15px 0px 15px 45px;
+}
+.editor_section>ol.riva>li{
+    list-style-image: url(../img/msg-01_2.jpg);
+}
+.editor_section>ol.riva.disc{
+    padding-left: 0px;
+    margin: 15px 0px 15px 45px;
+}
+.editor_section>ol.riva.disc>li{
+    list-style-type: circle !important;
+    list-style-image: none;
+}
+
+
+.editor_section li {
+    padding-left: 0px;
+}
+.editor_section .sena li {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    list-style-type: decimal;
+}
+.editor_section .sena_none li {
+    margin-left: 0px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5em;
+    /*overflow-x: scroll;裡面塞table的關係*/
+}
+.editor_section .sena ol.riva {
+    padding-left: 0px;
+    margin: 10px 10px 10px 18px;
+}
+.editor_section .sena ol.riva >li {
+    list-style-image: url(../img/msg-01_2.jpg);
+    color: #393a3a;
+    font-size: 15px;
+    line-height: 1.5em;
+}
+.editor_section .sena ol.riva ol.riva.disc{
+    margin: 10px 10px 10px 22px;
+}
+.editor_section .sena ol.riva ol.riva.disc >li {
+    list-style-type: circle !important;
+    list-style-image: none;
+}
+.control_me_li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.editor_section .table>tbody>tr>td, .editor_section .table>tbody>tr>th, .editor_section .table>tfoot>tr>td, .editor_section .table>tfoot>tr>th, .editor_section .table>thead>tr>td, .editor_section .table>thead>tr>th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.5em;
+    vertical-align: top;
+    font-size: 15px;
+}
+.editor_section td div {
+    padding-left: 10px; 
+    font-size: 15px;
+}
+
+
+
+
+@media only screen and (max-width: 900px) and (min-width: 320px){
+    .editor_section .table{
+      width:95% !important;
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px){
+  .editor_section .dulcie {
+      margin: 0 5% 40px 5%;
+  }
+  .editor_section .brian_title {
+      padding: 20px 5% 8px 5%;
+  }
+  .editor_section .sena {
+      margin: 15px 5% 15px 11%;
+  }
+  .editor_section .sena_none {
+      padding-left: 0px;
+      margin: 15px 5% 15px 8%;
+  }
+  .editor_section .editor_pure_text {
+      margin: 15px 5% 15px 8%;
+  }
+}
+@media only screen and (max-width: 480px) and (min-width: 320px){
+  .editor_section .dulcie {
+      margin: 0 5% 40px 5%;
+  }
+  .editor_section .sena {
+      margin: 15px 5% 15px 10%;
+  }
+  .editor_section .sena_none {
+      padding-left: 0px;
+      margin: 15px 5% 15px 5%;
+  }
+  .editor_section .editor_pure_text {
+      margin: 10px 5% 10px 5%;
+  }
+}
+
+
+/*.ga-tab-content .loan-gray .loan-gray-element-margin1 {
+    padding: 20px 0%;
+}*/

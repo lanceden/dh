@@ -17,5 +17,6 @@ export default {
   GetAccountData: state => state.ACCOUNTDATA,
   GetPremiums: state => state.PREMIUMS,
   GetJobSubCodeData: state => state.JOBSUBOCCUPATIONDATA,
-  GetEachAccount: state => state.EACHACCOUNT
+  GetEachAccount: state => state.EACHACCOUNT,
+  GetPromotionList: state => state.PROMOTIONLIST
 }

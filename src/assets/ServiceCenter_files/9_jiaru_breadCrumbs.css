@@ -1,0 +1,139 @@
+.title_kay {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 15px;
+    top: 0;
+    padding: 0 5px;
+}
+.pathArea, .title_kay {
+    padding: 0;
+}
+.mobile_menu {
+	display: none;
+}
+.main_content {
+    padding: 0 15px;
+}
+.eva_content{
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.pathArea li:last-child a:hover {
+    color: #65656b !important;
+}
+
+@media screen and (max-width: 768px) {
+    .main_content {
+        padding: 0px;
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 769px){
+    .main_content {
+        max-width: 992px;
+    }
+}
+@media screen and (max-width: 992px) {
+
+    /* 麵包屑&子選單 */
+    .breadCrumbs {
+        background-color: whitesmoke;
+        padding: 15px;
+    }
+	
+    ul.pathArea {
+        background-color: whitesmoke;
+    }
+	
+	ul.pathArea.active {
+        padding-bottom: 15px;
+	}
+
+    ul.pathArea:after {
+        content: '';
+        background: url(../image/arrowdown.png);
+        width: 16px;
+        height: 8px;
+        display: inline-block;
+        float: right;
+        margin-top: 0.4em;
+    }
+
+    ul.pathArea.active:after {
+        content: '';
+        background: url(../image/arrowup.png);
+        width: 16px;
+        height: 8px;
+        display: inline-block;
+        float: right;
+        margin-top: 0.4em;
+    }
+
+    .no_mobile_menu ul.pathArea:after {
+        display: none;
+    }
+
+	.mobile_menu {
+	    display: none;
+	    margin: 0 10px;
+	    z-index: 0;
+	}
+
+    .mobile_menu.active {
+        display: block;
+    }
+}
+
+.mobile_menu select.col-xs-12 {
+    /*background-color: #e2231a;
+    border: none;
+	color: white;*/
+}
+
+.mobile_menu select {
+    border: #080000 solid 1px;
+    padding: 10px 10px;
+    height: 40px;
+    border-radius: 0px;
+    float: none;
+}
+
+menu select.col-xs-12 {
+    background-color: transparent;
+    border: 1px solid #000;
+    color: black;
+}
+
+/* 160927 18:30 Aaron liu*/
+.mobile_menu select {
+    border: #080000 solid 1px;
+    padding: 10px 10px;
+    height: 40px;
+    border-radius: 0px;
+    float: none;
+    background-color: #fff;
+    color: #6f6f71;
+}
+
+/* 160927 18:30 Aaron liu*/
+menu select.col-xs-12 {
+    border: #080000 solid 1px;
+    margin-bottom: 8px;
+    color: #150000;
+    background-color: transparent;
+}
+.pathArea li a {
+    position: relative;
+    margin-right: 5px;
+    color: #65656b;
+    padding-left: 10px;
+}
+.pathArea li:first-child a{
+    padding-left: 0px;
+}
+.pathArea li a:before {
+    display: inline-block;
+    content: '/';
+    position: absolute;
+    left: 0px;
+}
