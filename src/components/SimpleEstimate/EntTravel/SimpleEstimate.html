@@ -2,734 +2,667 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=no" />
-  <meta name="format-detection" content="telephone=no">
-  <title>新光人壽</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=640, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no">
+    <title>新光人壽</title>
 
-  <script type="text/javascript">
-  window.onload = function() {
-    window.scrollTo(0, 1);
-  }
+    <script type="text/javascript">
+        window.onload = function () {
+            window.scrollTo(0, 1);
+        }
 
-  </script>
-  <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/reset.css" type="text/css" />
+    </script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" />
 
-  <!-- Owl Stylesheets -->
-  <link rel="stylesheet" href="../../css/docs.theme.min.css">
-  <link rel="stylesheet" href="../../css/all.css">
-  <link rel="stylesheet" href="../../css/customes.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/fontawesome.min.css">
-  <script src="../../js/jquery.min.js"></script>
-  <style>
-  input[type="tel"].data-input {
-    color: #fa6400;
-  }
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="../../css/docs.theme.min.css">
+    <link rel="stylesheet" href="../../css/all.css">
+    <link rel="stylesheet" href="../../css/customes.css" type="text/css" />
+    <link rel="stylesheet" type="../../css/css" href="../../css/fontawesome.min.css">
+    <script src="../../js/jquery.min.js"></script>
+    <style>
+        input[type="tel"].data-input {
+            color: #fa6400;
+        }
 
-  input[type=radio] {
-    display: none;
-  }
+        input[type=radio] {
+            display: none;
+        }
 
-  .radio-group {
-    height: 45px;
-  }
+        .radio-group {
+            height: 45px;
+        }
 
-  .radio-group .insure-check-content {
-    margin: auto;
-    margin-left: 20px;
-  }
+            .radio-group .insure-check-content {
+                margin: auto;
+                margin-left: 20px;
+            }
 
-  .NoCheck {
-    background: url(../../img/oval.png);
-    background-size: 35px auto;
-    background-position: center;
-    background-repeat: no-repeat
-  }
+        .NoCheck {
+            background: url(../../img/oval.png);
+            background-size: 35px auto;
+            background-position: center;
+            background-repeat: no-repeat
+        }
 
-  .Check {
-    background: url(../../img/oval-ed.png);
-    background-size: 35px auto;
-    background-position: center;
-    background-repeat: no-repeat
-  }
+        .Check {
+            background: url(../../img/oval-ed.png);
+            background-size: 35px auto;
+            background-position: center;
+            background-repeat: no-repeat
+        }
 
-  select {
-    background-image: url(../../img/down-arrow.png) -webkit-appearance: none;
-    outline: none !important;
-    box-shadow: 0 0 0 0 #fff;
-  }
+        select {
+            background-image: url(../../img/down-arrow.png);
+            -webkit-appearance: none;
+            outline: none !important;
+            box-shadow: 0 0 0 0 #fff;
+        }
 
-  .insured-sub,
-  .child-box,
-  .TravelAim {
-    display: none;
-  }
-
-  </style>
+        .insured-sub,
+        .child-box,
+        .TravelAim {
+            display: none;
+        }
+    </style>
 </head>
 
 
 <body>
-  <div class="container">
-    <div>
-      <img src="../../img/toptravel.jpg">
+    <div class="container">
+        <div>
+          <img src="../../img/toptravel.jpg">
+        </div>
+        <div class="bg-radius">
+            <div class="top">
+                <div class="top-title">
+                    <img src="../../img/mail.png" alt="">
+                    保費試算
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="top-tips">
+                若您為新光人壽之保戶，請先登入以利享有更多保額優惠喔！
+            </div>
+            <div class="form-bottom">
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label insure-label">您這趟旅程期望能夠保障的對象？</label>
+                    <div class="col-sm-12 insure-select-align">
+                        <select id="InsuredRadio" name="InsuredRadio" class="form-control data-input insure-select insure-input-block-edit">
+                            <option selected="selected" value="1">本人</option>
+                            <option value="2">7歲以下子女</option>
+                            <option value="3">本人與7歲以下子女</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="" class="col-sm-12 col-form-label insure-label">子女共幾位</label>
+                    <div class="col-sm-12 insure-select-align">
+                        <select id="ChildCount1" name="ChildCount" class="form-control data-input insure-select insure-input-block-edit">
+                            <option value="1" selected="selected">1位</option>
+                            <option value="2">2位</option>
+                            <option value="3">3位</option>
+                            <option value="4">4位</option>
+                            <option value="5">5位</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-12 col-form-label insure-label">旅程地點</label>
+                <div class="col-sm-12 insure-select-align">
+                    <select id="selTravelType" class="inputTravel form-control data-input insure-select insure-input-block-edit inputTravel">
+                        <option selected="selected" value="1">國內(含台、澎、金、馬)</option>
+                        <option value="2">國外</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group row TravelAim">
+                <label for="" class="col-sm-12 col-form-label insure-label">國家</label>
+                <div class="col-sm-12 insure-select-align">
+                    <select class="form-control data-input insure-select insure-input-block-edit" id="aim" name="aim">
+                        <option selected="selected" value="1">美國</option>
+                        <option value="2">加拿大</option>
+                        <option value="7">歐洲(申根地區)</option>
+                        <option value="3">歐洲(非申根地區)</option>
+                        <option value="4">紐澳</option>
+                        <option value="5">日本</option>
+                        <option value="8">韓國</option>
+                        <option value="9">中港澳</option>
+                        <option value="A">東南亞</option>
+                        <option value="6">其他地區</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 sub-box-2 TravelAim">
+                <div class="insure-tips-text" onclick="window.open('https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&amp;n=C1B19EF0ACDD3C91&amp;sms=867F5398A49F758A','_blank')">
+                    <img src="../../img/insure-link.png" alt="">申根地區國查詢
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-12 col-form-label insure-label" id="title1">旅遊天數</label>
+                <div class="col-sm-9">
+                    <input type="number" id="TravelDay" name="TravelDay" class="form-control  data-input" min="1" max="180" maxlength="3" pattern="[0-9]*" placeholder="請輸入旅遊天數">
+                </div>
+                <label for="day" class="col-sm-3 col-form-label insure-label insure-label-day">天</label>
+            </div>
+            <div class="col-sm-12">
+                <div class="insure-tips-text">備註:最高受理天數，國內旅遊：90天，國外旅遊：180天。</div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-12 col-form-label" id="title2">請問您希望這趟旅程有多少保障?</label>
+                <div class="border-bottom-line col-sm-12 inperson-box"></div>
+                <label for="" class="col-sm-4 col-form-label inperson-box">本人</label>
+                <div class="col-sm-8 insure-select-align inperson-box">
+                    <select class="form-control data-input insure-select insure-input-block-edit " id="TravelInsurance" name="TravelInsurance">
+                        <option value="">請選擇</option>
+                    </select>
+                </div>
+                <div class="border-bottom-line col-sm-12 child-box"></div>
+                <label for="" class="col-sm-4 col-form-label child-box child">1名子女各</label>
+                <div class="col-sm-8 child-box">
+                    <select class="form-control data-input insure-select insure-input-block-edit" id="TravelInsuranceC" name="TravelInsuranceC">
+                        <option value="200">200萬</option>
+                        <option value="100">100萬</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-12 col-form-label" id="title3">請問您希望額外加保多少傷害醫療保障?</label>
+                <div class="border-bottom-line col-sm-12 inperson-box"></div>
+                <label for="" class="col-sm-4 col-form-label inperson-box">本人</label>
+                <div class="col-sm-8 inperson-box">
+                    <select class="form-control data-input insure-select insure-input-block-edit" id="TravelExtra" name="TravelExtra">
+                        <option value="0">不投保</option>
+                    </select>
+                </div>
+                <div class="border-bottom-line col-sm-12 child-box"></div>
+                <label for="" class="col-sm-4 col-form-label child-box child">1名子女各</label>
+                <div class="col-sm-8 child-box">
+                    <select class="form-control data-input insure-select insure-input-block-edit" id="TravelExtraC" name="TravelExtraC">
+                        <option value="0">不投保</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row TravelAim">
+                <label for="" class="col-sm-12 col-form-label" id="title4">請問您希望額外加保多少海外突發疾病保障?</label>
+                <div class="border-bottom-line col-sm-12 inperson-box"></div>
+                <label for="" class="col-sm-4 insure-label-blue inperson-box">本人</label>
+                <div class="col-sm-8 inperson-box">
+                    <select class="form-control data-input insure-select insure-input-block-edit" id="TravelOverseaExtra" name="TravelOverseaExtra">
+                        <option value="0">不投保</option>
+                    </select>
+                </div>
+                <div class="border-bottom-line col-sm-12 child-box"></div>
+                <label for="" class="col-sm-4 col-form-label child-box child">1名子女各</label>
+                <div class="col-sm-8 child-box">
+                    <select class="form-control data-input insure-select insure-input-block-edit" id="TravelOverseaExtraC" name="TravelOverseaExtraC">
+                        <option value="0">不投保</option>
+                    </select>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="col-sm-12">
+                <div class="insure-tips insure-tips-mt-20">
+                    ※旅遊地點為歐洲申根地區者，附加傷害醫療保險及海外突發疾病健康保險保額上限為主契約保險金額20%，但最高以150萬為限。
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="bg-money gray">
+                <div class="col-sm-12">
+                    <div class="font-label">您所需支付的保費為</div>
+                    <div id="PayNum" class="font-money"> NT$ 0</div>
+                    <div class="money-icon"><img src="../../img/coins.png" alt=""></div>
+                </div>
+            </div>
+            <div class="border-bottom-line"></div>
+            <div class="text-description">
+                <img src="../../img/loudspeaker.png" alt="">
+                首次登入》肯德基6折優惠券
+            </div>
+        </div>
     </div>
-    <div class="bg-radius">
-      <div class="top">
-        <div class="top-title">
-          <div class="insure-notice-box">
-            <div class="insure-check"><img src="../../img/mail.png" alt=""></div>
-            <div class="insure-check-title">
-              保費試算
-            </div>
-          </div>
+    <div class="footer">
+        <div class="footer-content">
+            <nav class="navbar navbar-dark row">
+                <div class="col-sm-6 footer-title footer-left" onclick="OnGoBack()">回前一頁</div>
+                <div class="col-sm-6 footer-title footer-right" onclick="OnGoInsure()">立即投保</div>
+            </nav>
         </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <div class="top-tips">
-        若您為新光人壽之保戶，請先登入以利享有更多保額優惠喔！
-      </div>
-      <div class="form-bottom">
-        <div class="form-group row">
-          <label for="" class="col-sm-12 col-form-label insure-label">您這趟旅程期望能夠保障的對象？</label>
-          <div class="top col-sm-12">
-            <div class="insure-notice-box radio-group">
-              <input class="radio-circle" data-val="1" id="insured1" name="InsuredRadio" type="radio" value="1" checked>
-              <div class="insure-check radio-item NoCheck"></div>
-              <div class="insure-check-content">
-                <label for="insured1" class="radio-label" data-val="1" data-group="InsuredRadio">本人</label>
-              </div>
-            </div>
-          </div>
-          <div class="border-bottom-line col-sm-12"></div>
-          <div class="top col-sm-12">
-            <div class="insure-notice-box radio-group">
-              <input class="radio-circle" data-val="2" id="insured2" name="InsuredRadio" type="radio" value="2">
-              <div class="insure-check radio-item NoCheck"></div>
-              <div class="insure-check-content">
-                <label for="insured2" class="radio-label" data-val="2" data-group="InsuredRadio">七歲以下子女</label>
-              </div>
-            </div>
-          </div>
-          <div class="border-bottom-line col-sm-12 insured-sub insured2"></div>
-          <div class="col-sm-12 insure-select-align brown-select-withradio insured-sub insured2">
-            <select class="form-control data-input insure-select insure-select-withradio ChildCount" id="ChildCount1" name="ChildCount">
-              <option value="1" selected="selected">1位</option>
-              <option value="2">2位</option>
-              <option value="3">3位</option>
-              <option value="4">4位</option>
-              <option value="5">5位</option>
-            </select>
-          </div>
-          <div class="border-bottom-line col-sm-12"></div>
-          <div class="top col-sm-12">
-            <div class="insure-notice-box radio-group">
-              <input class="radio-circle" data-val="3" id="insured3" name="InsuredRadio" type="radio" value="3">
-              <div class="insure-check radio-item NoCheck"></div>
-              <div class="insure-check-content">
-                <label for="insured3" class="radio-label" data-val="3" data-group="InsuredRadio">本人與七歲以下子女</label>
-              </div>
-            </div>
-          </div>
-          <div class="border-bottom-line col-sm-12"></div>
-          <div class="col-sm-12 insure-select-align brown-select-withradio insured-sub insured3">
-            <select class="form-control data-input insure-select insure-select-withradio ChildCount" id="ChildCount2" name="ChildCount">
-              <option value="1" selected="selected">1位</option>
-              <option value="2">2位</option>
-              <option value="3">3位</option>
-              <option value="4">4位</option>
-              <option value="5">5位</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label" name="title5">旅程地點</label>
-        <div class="top col-sm-12">
-          <div class="insure-notice-box radio-group">
-            <input class="inputTravel radio-circle" data-val="1" id="inputTravel1" name="inputTravel" type="radio" value="1" checked>
-            <div class="insure-check radio-item NoCheck"></div>
-            <div class="insure-check-content">
-              <label for="inputTravel1" class="radio-label" data-val="1" data-group="inputTravel">國內(含台、澎、金、馬)</label>
-            </div>
-          </div>
-        </div>
-        <div class="border-bottom-line col-sm-12"></div>
-        <div class="top col-sm-12">
-          <div class="insure-notice-box radio-group">
-            <input class="inputTravel radio-circle" data-val="2" id="inputTravel2" name="inputTravel" type="radio" value="2">
-            <div class="insure-check radio-item NoCheck"></div>
-            <div class="insure-check-content">
-              <label for="inputTravel2" class="radio-label" data-val="2" data-group="inputTravel">國外</label>
-            </div>
-          </div>
-        </div>
-        <div class="border-bottom-line col-sm-12 TravelAim"></div>
-        <div class="col-sm-12 insure-select-align TravelAim">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="aim" name="aim">
-            <option selected="selected" value="1">美國</option>
-            <option value="2">加拿大</option>
-            <option value="7">歐洲(申根地區)</option>
-            <option value="3">歐洲(非申根地區)</option>
-            <option value="4">紐澳</option>
-            <option value="5">日本</option>
-            <option value="8">韓國</option>
-            <option value="9">中港澳</option>
-            <option value="A">東南亞</option>
-            <option value="6">其他地區</option>
-          </select>
-        </div>
-      </div>
-      <div class="col-sm-12 sub-box-2 TravelAim">
-        <div class="insure-tips-text" onclick="window.open('https://www.mofa.gov.tw/News_FAQ.aspx?c=AD6908DFDDB62656&amp;n=C1B19EF0ACDD3C91&amp;sms=867F5398A49F758A','_blank')">
-          <img src="../../img/insure-link.png" alt="">申根地區國查詢
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label" id="title1">旅遊天數</label>
-        <div class="col-sm-9">
-          <input type="number" id="TravelDay" name="TravelDay" class="form-control  data-input" min="1" max="180" maxlength="3" pattern="[0-9]*" placeholder="請輸入旅遊天數">
-        </div>
-        <label for="day" class="col-sm-3 col-form-label insure-label insure-label-day">天</label>
-      </div>
-      <div class="col-sm-12">
-        <div class="insure-tips-text">備註:最高受理天數，國內旅遊：90天，國外旅遊：180天。</div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label insure-label" id="title2">請問您希望這趟旅程有多少保障？</label>
-        <label for="" class="col-sm-4 insure-label-blue inperson-box">本人</label>
-        <div class="col-sm-8 insure-select-align inperson-box">
-          <select class="form-control data-input insure-select insure-input-block-edit inperson-box" id="TravelInsurance" name="TravelInsurance">
-            <option value="">請選擇</option>
-          </select>
-        </div>
-        <div class="border-bottom-line col-sm-12 child-box"></div>
-        <label for="" class="col-sm-4 col-form-label child-box child">1名子女各</label>
-        <div class="col-sm-8 child-box">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="TravelInsuranceC" name="TravelInsuranceC">
-            <option value="200">200萬</option>
-            <option value="100">100萬</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label for="" class="col-sm-12 col-form-label" id="title3">您希望額外加保多少傷害醫療保障?</label>
-        <label for="" class="col-sm-4 insure-label-blue inperson-box">本人</label>
-        <div class="col-sm-8 inperson-box">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="TravelExtra" name="TravelExtra">
-            <option value="0">不投保</option>
-          </select>
-        </div>
-        <div class="border-bottom-line col-sm-12 child-box"></div>
-        <label for="" class="col-sm-4 col-form-label child-box child">1名子女各</label>
-        <div class="col-sm-8 child-box">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="TravelExtraC" name="TravelExtraC">
-            <option value="0">不投保</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group row TravelAim">
-        <label for="" class="col-sm-12 col-form-label insure-label" id="title4">您希望額外加保多少海外突發疾病保障？</label>
-        <label for="" class="col-sm-4 insure-label-blue inperson-box">本人</label>
-        <div class="col-sm-8 inperson-box">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="TravelOverseaExtra" name="TravelOverseaExtra">
-            <option value="0">不投保</option>
-          </select>
-        </div>
-        <div class="border-bottom-line col-sm-12 child-box"></div>
-        <label for="" class="col-sm-4 col-form-label child-box child">1名子女各</label>
-        <div class="col-sm-8 child-box">
-          <select class="form-control data-input insure-select insure-input-block-edit" id="TravelOverseaExtraC" name="TravelOverseaExtraC">
-            <option value="0">不投保</option>
-          </select>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <div class="col-sm-12">
-        <div class="insure-text blue insure-tips-mt-20">
-          ※旅遊地點為歐洲申根地區者，附加傷害醫療保險及海外突發疾病健康保險保額上限為主契約保險金額20%，但最高以150萬為限。
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <div class="bg-money gray">
-        <div class="col-sm-12">
-          <div class="font-label">您所需支付的保費為</div>
-          <div id="PayNum" class="font-money"> NT$ 0</div>
-          <div class="money-icon"><img src="../../img/coins.png" alt=""></div>
-        </div>
-      </div>
-      <div class="border-bottom-line"></div>
-      <div class="text-description">
-        <img src="../../img/loudspeaker.png" alt="">
-        首次登入》肯德基6折優惠券
-      </div>
     </div>
-  </div>
-  <div class="footer">
-    <div class="footer-content">
-      <nav class="navbar navbar-dark row">
-        <div class="col-sm-6 footer-title footer-left" onclick="OnGoBack()">回前一頁</div>
-        <div class="col-sm-6 footer-title footer-right" onclick="OnGoInsure()">立即投保</div>
-      </nav>
-    </div>
-  </div>
-  <script src="../../js/bootstrap.bundle.min.js"></script>
-  <script src="../../js/bootstrap.min.js"></script>
-  <script src="../../js/2019NewInsureJS.js"></script>
-  <script src="../../js/estimation.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/2019NewInsureJS.js"></script>
+    <script src="../../js/estimation.js"></script>
 
-  <script>
-  function OnGoBack() {
-    window.location.href = 'https://onlinetest.skl.com.tw/insurancewebapi/static/Estimate/enttravel/SimpleEstimate.html?leave=true'
-  }
-
-  function OnGoInsure() {
-    // 判斷當前url中是否有token
-    let token = getQueryStringParameterByKey('token')
-    if (token === null) {
-      OnGoBack()
-      return
-    }
-    window.location.href = 'https://onlinetest.skl.com.tw/InsuranceWebApi/#/enttravel-1?token=' + token
-  }
-
-  function faceamtList() {
-    var Pdata = {
-      "PLAN_Code_1": "62020",
-      "Verified": "Y"
-    };
-
-    $.ajax({
-      url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//Query/Premiums',
-      type: 'POST',
-      data: Pdata,
-      success: function(rep) {
-        if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined && rep.Data.Result.length > 0) {
-          var premList = rep.Data.Result[0].Prem_List.split(',');
-          var option = "";
-          for (var i = 0; i < premList.length; i++) {
-            option += "<option value='" + premList[i] + "'>" + premList[i] + "萬</option>";
-          }
-          $("#TravelInsurance").empty();
-          $("#TravelInsurance").html(option).trigger("change");
-          $("#TravelInsuranceC").trigger("change");
-          Compute();
+    <script>
+        function OnGoBack() {
+            window.location.href = 'https://onlinetest.skl.com.tw/insurancewebapi/static/Estimate/travel/SimpleEstimate.html?leave=true'
         }
-        else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
-          alert(rep.Data.Message);
-          return;
-        }
-        else {
-          alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
-        }
-      }
-    });
-  }
-  //試算
-  function Compute() {
-    var insuredRadio = $("input[name=InsuredRadio]:checked").val();
-    var inputType = $("input[name='inputTravel']:checked").val();
-    var inputday = $("#TravelDay").val();
-    var TravelInsurance = $("#TravelInsurance").val();
-    var TravelExtra = $("#TravelExtra").val();
-    var TravelOverseaExtra = inputType == '1' ? '' : $("#TravelOverseaExtra").val();
 
-    var TravelInsuranceC = $("#TravelInsuranceC").val();
-    var TravelExtraC = $("#TravelExtraC").val();
-    var TravelOverseaExtraC = inputType == '1' ? '' : $("#TravelOverseaExtraC").val();
-
-    switch (insuredRadio) {
-      case "2":
-        var $count = $("#ChildCount1");
-        var paInt = parseInt($count.val());
-        if (isNaN(paInt) || paInt > 5) {
-          $("#PayNum").html("NT$ 0");
-          return false;
-        }
-        break;
-      case "3":
-        var $count = $("#ChildCount2");
-        var paInt = parseInt($count.val());
-        if (isNaN(paInt) || paInt > 5) {
-          $("#PayNum").html("NT$ 0");
-          return false;
-        }
-        break;
-      default:
-        break;
-    }
-
-
-    if (inputday == "") {
-      $("#PayNum").html("NT$ 0");
-      return false;
-    }
-    //20171003 QC:1202 修正
-    else if (!IsWholeNumber(inputday)) {
-      $("#PayNum").html("NT$ 0");
-      //旅遊區域
-      var area = inputType === '1' ? '國內' : '國外';
-      //最高天數
-      var highestday = inputType === '1' ? '90' : '180';
-      alert('請輸入旅遊天數，' + area + '最高' + highestday + '天');
-      return false;
-    }
-    else if (inputday > 90 && inputType == '1') {
-      alert('請輸入符合條件之天數');
-      $("#PayNum").html("NT$ 0");
-      return false;
-    }
-    else if (inputday > 180 && inputType == '2') {
-      alert('請輸入符合條件之天數');
-      $("#PayNum").html("NT$ 0");
-      return false;
-    }
-
-    if (insuredRadio == "2" || insuredRadio == "3") {
-
-      if ((TravelOverseaExtraC == "" && inputType == '2') || TravelInsuranceC == "" || TravelExtraC == "") {
-        $("#PayNum").html("NT$ 0");
-        return false;
-      }
-    }
-    if (insuredRadio == "1" || insuredRadio == "3") {
-
-      if ((TravelOverseaExtra == "" && inputType == '2') || TravelInsurance == "" || TravelExtra == "") {
-        $("#PayNum").html("NT$ 0");
-        return false;
-      }
-    }
-
-    var Edata = {
-      "InsurerSourceID": "InsuranceWeb",
-      "TravelRq_Order": {
-        "PolicyData": {
-          TravelType: inputType,
-          TravelDay: inputday,
-          InsuredInfo: [],
-          ChildrenNo: 0,
-          SelfInsured: false
-        }
-      }
-    }
-
-    var insuredRadio = $("[name=InsuredRadio]:checked").val();
-
-    // 本人
-    if (insuredRadio == "1" || insuredRadio == "3") {
-      var insured = {
-        Relation: "1",
-        PrimaryPolicy: {
-          PlanCode: "62020",
-          FaceAmt: TravelInsurance
-        },
-        SupplementPolicy: [
-        {
-          PlanCode: "62021",
-          FaceAmt: TravelExtra
-        },
-        {
-          PlanCode: "62024",
-          FaceAmt: inputType == "1" ? "" : TravelOverseaExtra
-        }]
-      };
-      Edata.TravelRq_Order.PolicyData.InsuredInfo.push(insured);
-      Edata.TravelRq_Order.PolicyData.SelfInsured = true;
-      Edata.TravelRq_Order.PolicyData.ChildrenNo = 0;
-
-
-    }
-
-    //子女
-    if (insuredRadio == "2" || insuredRadio == "3") {
-      var childCount = parseInt($("select[name='ChildCount']").not(':disabled').val());
-      var insured = {
-        Relation: "3",
-        PrimaryPolicy: {
-          PlanCode: "62020",
-          FaceAmt: TravelInsuranceC
-        },
-        SupplementPolicy: [
-        {
-          PlanCode: "62021",
-          FaceAmt: TravelExtraC
-        },
-        {
-          PlanCode: "62024",
-          FaceAmt: inputType == "1" ? "" : TravelOverseaExtraC
-        }]
-      };
-      for (var i = 1; i <= childCount; i++) {
-        Edata.TravelRq_Order.PolicyData.InsuredInfo.push(insured);
-      }
-      Edata.TravelRq_Order.PolicyData.ChildrenNo = childCount;
-    }
-
-    $.ajax({
-      url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//Travel/SimpleEstimate',
-      type: 'POST',
-      data: Edata,
-      success: function(rep) {
-        if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined) {
-          $("#PayNum").html("NT$" + rep.Data.Result.mode_prem.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-        }
-        else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
-          alert(rep.Data.Message);
-          return;
-        }
-        else {
-          alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
-        }
-      }
-    });
-  }
-
-  $(document).ready(function() {
-    faceamtList();
-
-    $("[name=InsuredRadio]").on('change', function() {
-      var insuredRadio = $("input[name=InsuredRadio]:checked");
-      $(".insured-sub").hide();
-      $(".insured" + insuredRadio.data("val")).show();
-      switch (insuredRadio.val()) {
-        case "2":
-          $("#title1").html("您子女的旅程有幾天？");
-          $("#title2").html("您希望您的每位子女這趟旅程有多少保障？");
-          $("#title3").html("您希望您的每位子女額外加保多少傷害醫療保障？");
-          $("#title4").html("您希望您的每位子女額外加保多少海外突發疾病保障？");
-          $("[name='title5']").html("請問您子女的旅程地點？");
-          $(".child-box").show();
-          $(".inperson-box").hide();
-          $(".child-box.child").html($("#ChildCount1").val() == "" ? "子女各" : ($("#ChildCount1").val() + "名子女各"));
-          $("#ChildCount1").prop('disabled', false);
-          $("#ChildCount2").prop('disabled', true);
-          break;
-        case "3":
-          $("#title1").html("旅遊天數");
-          $("#title2").html("您希望這趟旅程有多少保障？");
-          $("#title3").html("您希望額外加保多少傷害醫療保障？");
-          $("#title4").html("您希望額外加保多少海外突發疾病保障？");
-          $("[name='title5']").html("請問您的旅程地點？");
-          $(".child-box").show();
-          $(".inperson-box").show();
-          $(".child-box.child").html($("#ChildCount2").val() == "" ? "子女各" : ($("#ChildCount2").val() + "名子女各"));
-          $("#ChildCount1").prop('disabled', true);
-          $("#ChildCount2").prop('disabled', false);
-          break;
-        default:
-          $("#title1").html("旅遊天數");
-          $("#title2").html("您希望這趟旅程有多少保障？");
-          $("#title3").html("您希望額外加保多少傷害醫療保障？");
-          $("#title4").html("您希望額外加保多少海外突發疾病保障？");
-          $("[name='title5']").html("請問您的旅程地點？");
-          $(".child-box").hide();
-          $(".inperson-box").show();
-          $("#ChildCount1").prop('disabled', true);
-          $("#ChildCount2").prop('disabled', true);
-          break;
-      }
-      Compute();
-    });
-
-    $(".ChildCount").on('change', function() {
-      var insuredRadio = $("input[name=InsuredRadio]:checked").val();
-      switch (insuredRadio) {
-        case "2":
-          var $count = $("#ChildCount1");
-          var paInt = parseInt($count.val());
-          if (isNaN(paInt) || paInt > 5 || paInt < 1) {
-            $(".child-box.child").html("子女各");
-            $count.val("");
-            alert("請選擇正確子女數，最多5人");
-            break;
-          }
-          $(".child-box.child").html($("#ChildCount1").val() + "名子女各");
-          break;
-        case "3":
-          var $count = $("#ChildCount2");
-          var paInt = parseInt($count.val());
-          if (isNaN(paInt) || paInt > 5 || paInt < 1) {
-            $(".child-box.child").html("子女各");
-            $count.val("");
-            alert("請選擇正確子女數，最多5人");
-            break;
-          }
-          $(".child-box.child").html($("#ChildCount2").val() + "名子女各");
-          break;
-        default:
-          $(".child-box.child").html("");
-      }
-      Compute();
-    });
-
-    //國內：１　國外：２
-    $("[name=inputTravel]").on('change', function() {
-      $(".TravelAim").toggle($("[name=inputTravel]:checked").val() == "2");
-      if ($("[name=inputTravel]:checked").val() == "1") {
-        $('#TravelOverseaExtra').val(0);
-        $('#TravelOverseaExtraC').val(0);
-      }
-      $("#TravelInsurance").trigger('change');
-      $("#TravelInsuranceC").trigger('change');
-    })
-
-    $('#aim').on('change', function() {
-      $("#TravelInsurance").trigger('change');
-      $("#TravelInsuranceC").trigger('change');
-    });
-
-    var SchengenCoverage = [150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
-
-    $("#TravelInsurance").on("change", function() {
-      var $this = $(this);
-      if ($this.val() == '') {
-        return;
-      }
-      //預設傷害醫療數值
-      var defaultmedical_Expenses = 0;
-      //被選擇的索引列
-      var getIndex = $this.prop('selectedIndex');
-      //下拉選單總長度
-      var totalIndex = $this.find('option').length;
-      //旅遊國家:歐洲(申根地區)
-      var percentage = ($("[name=inputTravel]:checked").val() == '2' && $('#aim').val() == '7' ? 20 : 10) / 100;
-      //下拉選單HTML碼
-      var selectHTML = '';
-      //是否有超過150萬
-      var isOverTopAmount = false;
-      //組HTML碼
-      if (percentage == 0.1) {
-        for (var i = getIndex; i < totalIndex; i++) {
-          var optionVal = $($this.find('option')[i]).val();
-          var Prize = parseInt(optionVal) * percentage;
-          if (Prize > 150) {
-            if (!isOverTopAmount) {
-              selectHTML += '<option value="150">150萬</option>';
-              isOverTopAmount = true;
+        function OnGoInsure() {
+            // 判斷當前url中是否有token
+            let token = getQueryStringParameterByKey('token')
+            if (token === null) {
+                OnGoBack()
+                return
             }
-            continue;
-          }
-          selectHTML += '<option value="' + Prize + '">' + Prize + '萬</option>';
+            window.location.href = 'https://onlinetest.skl.com.tw/InsuranceWebApi/#/travel-1?token=' + token
         }
-      } else if (percentage == 0.2) {
-        // 申根
-        var covVal = parseInt($this.val());
-        var max = isNaN(covVal) ? 0 : covVal * percentage;
-        var alist = SchengenCoverage.filter(function(v) {
-          var aInt = parseInt(v);
-          if (isNaN(aInt)) {
-            return false;
-          }
-          return aInt <= max;
-        });
-        for (var i = 0; i < alist.length; i++) {
-          selectHTML += '<option value="' + alist[i] + '">' + alist[i] + '萬</option>';
+
+        function faceamtList() {
+            var Pdata = {
+                "PLAN_Code_1": "62020",
+                "Verified": "Y"
+            };
+            $.ajax({
+                url: 'https://onlinetest.skl.com.tw/InsuranceWebApi/Query/Premiums',
+                type: 'POST',
+                data: Pdata,
+                success: function (rep) {
+                    if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined && rep.Data.Result.length > 0) {
+                        var premList = rep.Data.Result[0].Prem_List.split(',');
+                        var option = "";
+                        for (var i = 0; i < premList.length; i++) {
+                            option += "<option value='" + premList[i] + "'>" + premList[i] + "萬</option>";
+                        }
+                        $("#TravelInsurance").empty();
+                        $("#TravelInsurance").html(option).trigger("change");
+                        $("#TravelInsuranceC").trigger("change");
+                        Compute();
+                    }
+                    else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
+                        alert(rep.Data.Message);
+                        return;
+                    }
+                    else {
+                        alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
+                    }
+                }
+            });
         }
-      }
+        //試算
+        function Compute() {
+            var insuredRadio = $("#InsuredRadio").val();
+            var inputType = $('#selTravelType').val()// $("input[name='inputTravel']:checked").val();
 
-      selectHTML += '<option value="0">不投保</option>';
+            var inputday = $("#TravelDay").val();
+            var TravelInsurance = $("#TravelInsurance").val();
+            var TravelExtra = $("#TravelExtra").val();
+            var TravelOverseaExtra = inputType == '1' ? '' : $("#TravelOverseaExtra").val();
 
-      //傷害醫療保障
-      $("#TravelExtra").empty();
-      $("#TravelExtra").html(selectHTML);
-      //海外突發疾病
-      $("#TravelOverseaExtra").empty();
-      $("#TravelOverseaExtra").html(selectHTML);
-      $("#TravelOverseaExtra").prop('disabled', false);
-      Compute();
-    });
+            var TravelInsuranceC = $("#TravelInsuranceC").val();
+            var TravelExtraC = $("#TravelExtraC").val();
+            var TravelOverseaExtraC = inputType == '1' ? '' : $("#TravelOverseaExtraC").val();
 
-    $("#TravelInsuranceC").on("change", function() {
-      var $this = $(this);
-      if ($this.val() == '') {
-        return;
-      }
-      //預設傷害醫療數值
-      var defaultmedical_Expenses = 0;
-      //被選擇的索引列
-      var getIndex = $this.prop('selectedIndex');
-      //下拉選單總長度
-      var totalIndex = $this.find('option').length;
-      //旅遊國家:歐洲(申根地區)
-      var percentage = ($("[name=inputTravel]:checked").val() == '2' && $('#aim').val() == '7' ? 20 : 10) / 100;
-      //下拉選單HTML碼
-      var selectHTML = '';
-      //是否有超過150萬
-      var isOverTopAmount = false;
-      //組HTML碼
-      if (percentage == 0.1) {
-        for (var i = getIndex; i < totalIndex; i++) {
-          var optionVal = $($this.find('option')[i]).val();
-          var Prize = parseInt(optionVal) * percentage;
-          if (Prize > 150) {
-            if (!isOverTopAmount) {
-              selectHTML += '<option value="150">150萬</option>';
-              isOverTopAmount = true;
+            switch (insuredRadio) {
+                case "2":
+                case "3":
+                    var $count = $("#ChildCount1");
+                    var paInt = parseInt($count.val());
+                    if (isNaN(paInt) || paInt > 5) {
+                        $("#PayNum").html("NT$ 0");
+                        return false;
+                    }
+                    break;
+                default:
+                    break;
             }
-            continue;
-          }
-          selectHTML += '<option value="' + Prize + '">' + Prize + '萬</option>';
+
+
+            if (inputday == "") {
+                $("#PayNum").html("NT$ 0");
+                return false;
+            }
+            //20171003 QC:1202 修正
+            else if (!IsWholeNumber(inputday)) {
+                $("#PayNum").html("NT$ 0");
+                //旅遊區域
+                var area = inputType === '1' ? '國內' : '國外';
+                //最高天數
+                var highestday = inputType === '1' ? '90' : '180';
+                alert('請輸入旅遊天數，' + area + '最高' + highestday + '天');
+                return false;
+            }
+            else if (inputday > 90 && inputType == '1') {
+                alert('請輸入符合條件之天數');
+                $("#PayNum").html("NT$ 0");
+                return false;
+            }
+            else if (inputday > 180 && inputType == '2') {
+                alert('請輸入符合條件之天數');
+                $("#PayNum").html("NT$ 0");
+                return false;
+            }
+
+            if (insuredRadio == "2" || insuredRadio == "3") {
+
+                if ((TravelOverseaExtraC == "" && inputType == '2') || TravelInsuranceC == "" || TravelExtraC == "") {
+                    $("#PayNum").html("NT$ 0");
+                    return false;
+                }
+            }
+            if (insuredRadio == "1" || insuredRadio == "3") {
+
+                if ((TravelOverseaExtra == "" && inputType == '2') || TravelInsurance == "" || TravelExtra == "") {
+                    $("#PayNum").html("NT$ 0");
+                    return false;
+                }
+            }
+
+            var Edata = {
+                "InsurerSourceID": "InsuranceWeb",
+                "TravelRq_Order": {
+                    "PolicyData": {
+                        TravelType: inputType,
+                        TravelDay: inputday,
+                        InsuredInfo: [],
+                        ChildrenNo: 0,
+                        SelfInsured: false
+                    }
+                }
+            }
+
+            var insuredRadio = $("#InsuredRadio").val();
+
+            // 本人
+            if (insuredRadio == "1" || insuredRadio == "3") {
+                var insured = {
+                    Relation: "1",
+                    PrimaryPolicy: {
+                        PlanCode: "62020",
+                        FaceAmt: TravelInsurance
+                    },
+                    SupplementPolicy: [
+                        {
+                            PlanCode: "62021",
+                            FaceAmt: TravelExtra
+                        },
+                        {
+                            PlanCode: "62024",
+                            FaceAmt: inputType == "1" ? "" : TravelOverseaExtra
+                        }]
+                };
+                Edata.TravelRq_Order.PolicyData.InsuredInfo.push(insured);
+                Edata.TravelRq_Order.PolicyData.SelfInsured = true;
+                Edata.TravelRq_Order.PolicyData.ChildrenNo = 0;
+
+
+            }
+
+            //子女
+            if (insuredRadio == "2" || insuredRadio == "3") {
+                var childCount = parseInt($("select[name='ChildCount']").not(':disabled').val());
+                var insured = {
+                    Relation: "3",
+                    PrimaryPolicy: {
+                        PlanCode: "62020",
+                        FaceAmt: TravelInsuranceC
+                    },
+                    SupplementPolicy: [
+                        {
+                            PlanCode: "62021",
+                            FaceAmt: TravelExtraC
+                        },
+                        {
+                            PlanCode: "62024",
+                            FaceAmt: inputType == "1" ? "" : TravelOverseaExtraC
+                        }]
+                };
+                for (var i = 1; i <= childCount; i++) {
+                    Edata.TravelRq_Order.PolicyData.InsuredInfo.push(insured);
+                }
+                Edata.TravelRq_Order.PolicyData.ChildrenNo = childCount;
+            }
+
+            $.ajax({
+                url: 'https://onlinetest.skl.com.tw/InsuranceWebApi//Travel/SimpleEstimate',
+                type: 'POST',
+                data: Edata,
+                success: function (rep) {
+                    if (rep.Status == "OK" && rep.Data.IsSuccess && rep.Data != undefined && rep.Data.Result != undefined) {
+                        $("#PayNum").html("NT$" + rep.Data.Result.mode_prem.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                    }
+                    else if (rep.Status == "OK" && !rep.Data.IsSuccess) {
+                        alert(rep.Data.Message);
+                        return;
+                    }
+                    else {
+                        alert("親愛的客戶，感謝您對網路投保的支持，由於目前系統更新，請您稍候再試。造成不便我們深感抱歉，再次感謝您的惠顧。");
+                    }
+                }
+            });
         }
-      } else if (percentage == 0.2) {
-        // 申根
-        var covVal = parseInt($this.val());
-        var max = isNaN(covVal) ? 0 : covVal * percentage;
-        var alist = SchengenCoverage.filter(function(v) {
-          var aInt = parseInt(v);
-          if (isNaN(aInt)) {
-            return false;
-          }
-          return aInt <= max;
+
+        $(document).ready(function () {
+            faceamtList();
+            $("#ChildCount1").prop('disabled', true);
+            $("#InsuredRadio").on('change', function () {
+                var insuredRadio = parseInt($("#InsuredRadio").val())
+                $(".insured-sub").hide();
+                switch (insuredRadio) {
+                    case 2:
+                    case 3:
+                        $("#title1").html("請問您子女的旅程有幾天？");
+                        $("#title2").html("請問您希望您的每位子女這趟旅程有多少保障？");
+                        $("#title3").html("請問您希望您的每位子女額外加保多少傷害醫療保障？");
+                        $("#title4").html("請問您希望您的每位子女額外加保多少海外突發疾病保障？");
+                        $("[name='title5']").html("請問您子女的旅程地點？");
+                        $(".child-box").show();
+                        $(".inperson-box").hide();
+                        $(".child-box.child").html($("#ChildCount1").val() == ""
+                            ? "子女各"
+                            : $("#ChildCount1").val() + "名子女各");
+                        $("#ChildCount1").prop('disabled', false);
+                        break;
+                    default:
+                        $("#title1").html("請問您的旅程有幾天？");
+                        $("#title2").html("請問您希望這趟旅程有多少保障？");
+                        $("#title3").html("請問您希望額外加保多少傷害醫療保障？");
+                        $("#title4").html("請問您希望額外加保多少海外突發疾病保障？");
+                        $("[name='title5']").html("請問您的旅程地點？");
+                        $(".child-box").hide();
+                        $(".inperson-box").show();
+                        $("#ChildCount1").prop('disabled', true);
+                        break;
+                }
+                Compute();
+            });
+
+            $(".ChildCount").on('change', function () {
+                var insuredRadio = $("#InsuredRadio").val();
+                switch (insuredRadio) {
+                    case "2":
+                    case "3":
+                        var $count = $("#ChildCount1");
+                        var paInt = parseInt($count.val());
+                        if (isNaN(paInt) || paInt > 5 || paInt < 1) {
+                            $(".child-box.child").html("子女各");
+                            $count.val("");
+                            alert("請選擇正確子女數，最多5人");
+                            break;
+                        }
+                        $(".child-box.child").html($("#ChildCount1").val() + "名子女各");
+                        break;
+                    default:
+                        $(".child-box.child").html("");
+                }
+                Compute();
+            });
+
+            //國內：１　國外：２
+            $("#selTravelType").on('change', function () {
+                $(".TravelAim").toggle($("#selTravelType").val() == "2");
+                if ($("#selTravelType").val() == "1") {
+                    $('#TravelOverseaExtra').val(0);
+                    $('#TravelOverseaExtraC').val(0);
+                }
+                $("#TravelInsurance").trigger('change');
+                $("#TravelInsuranceC").trigger('change');
+            })
+
+            $('#aim').on('change', function () {
+                $("#TravelInsurance").trigger('change');
+                $("#TravelInsuranceC").trigger('change');
+            });
+
+            var SchengenCoverage = [150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+
+            $("#TravelInsurance").on("change", function () {
+                var $this = $(this);
+                if ($this.val() == '') {
+                    return;
+                }
+                //預設傷害醫療數值
+                var defaultmedical_Expenses = 0;
+                //被選擇的索引列
+                var getIndex = $this.prop('selectedIndex');
+                //下拉選單總長度
+                var totalIndex = $this.find('option').length;
+                //旅遊國家:歐洲(申根地區)
+                var percentage = ($("#selTravelType").val() == '2' && $('#aim').val() == '7' ? 20 : 10) / 100;
+                //下拉選單HTML碼
+                var selectHTML = '';
+                //是否有超過150萬
+                var isOverTopAmount = false;
+                //組HTML碼
+                if (percentage == 0.1) {
+                    for (var i = getIndex; i < totalIndex; i++) {
+                        var optionVal = $($this.find('option')[i]).val();
+                        var Prize = parseInt(optionVal) * percentage;
+                        if (Prize > 150) {
+                            if (!isOverTopAmount) {
+                                selectHTML += '<option value="150">150萬</option>';
+                                isOverTopAmount = true;
+                            }
+                            continue;
+                        }
+                        selectHTML += '<option value="' + Prize + '">' + Prize + '萬</option>';
+                    }
+                } else if (percentage == 0.2) {
+                    // 申根
+                    var covVal = parseInt($this.val());
+                    var max = isNaN(covVal) ? 0 : covVal * percentage;
+                    var alist = SchengenCoverage.filter(function (v) {
+                        var aInt = parseInt(v);
+                        if (isNaN(aInt)) {
+                            return false;
+                        }
+                        return aInt <= max;
+                    });
+                    for (var i = 0; i < alist.length; i++) {
+                        selectHTML += '<option value="' + alist[i] + '">' + alist[i] + '萬</option>';
+                    }
+                }
+
+                selectHTML += '<option value="0">不投保</option>';
+
+                //傷害醫療保障
+                $("#TravelExtra").empty();
+                $("#TravelExtra").html(selectHTML);
+                //海外突發疾病
+                $("#TravelOverseaExtra").empty();
+                $("#TravelOverseaExtra").html(selectHTML);
+                $("#TravelOverseaExtra").prop('disabled', false);
+                Compute();
+            });
+
+            $("#TravelInsuranceC").on("change", function () {
+                var $this = $(this);
+                if ($this.val() == '') {
+                    return;
+                }
+                //預設傷害醫療數值
+                var defaultmedical_Expenses = 0;
+                //被選擇的索引列
+                var getIndex = $this.prop('selectedIndex');
+                //下拉選單總長度
+                var totalIndex = $this.find('option').length;
+                //旅遊國家:歐洲(申根地區)
+                var percentage = ($("#selTravelType").val() == '2' && $('#aim').val() == '7' ? 20 : 10) / 100;
+                //下拉選單HTML碼
+                var selectHTML = '';
+                //是否有超過150萬
+                var isOverTopAmount = false;
+                //組HTML碼
+                if (percentage == 0.1) {
+                    for (var i = getIndex; i < totalIndex; i++) {
+                        var optionVal = $($this.find('option')[i]).val();
+                        var Prize = parseInt(optionVal) * percentage;
+                        if (Prize > 150) {
+                            if (!isOverTopAmount) {
+                                selectHTML += '<option value="150">150萬</option>';
+                                isOverTopAmount = true;
+                            }
+                            continue;
+                        }
+                        selectHTML += '<option value="' + Prize + '">' + Prize + '萬</option>';
+                    }
+                } else if (percentage == 0.2) {
+                    // 申根
+                    var covVal = parseInt($this.val());
+                    var max = isNaN(covVal) ? 0 : covVal * percentage;
+                    var alist = SchengenCoverage.filter(function (v) {
+                        var aInt = parseInt(v);
+                        if (isNaN(aInt)) {
+                            return false;
+                        }
+                        return aInt <= max;
+                    });
+                    for (var i = 0; i < alist.length; i++) {
+                        selectHTML += '<option value="' + alist[i] + '">' + alist[i] + '萬</option>';
+                    }
+                }
+
+                selectHTML += '<option value="0">不投保</option>';
+
+                //傷害醫療保障
+                $("#TravelExtraC").empty();
+                $("#TravelExtraC").html(selectHTML);
+                //海外突發疾病
+                $("#TravelOverseaExtraC").empty();
+                $("#TravelOverseaExtraC").html(selectHTML);
+                $("#TravelOverseaExtraC").prop('disabled', false);
+                Compute();
+            });
+
+
+            //傷害醫療保障
+            $("#TravelExtra").on("change", function () {
+                var $this = $(this);
+                $("#TravelOverseaExtra").prop('disabled', false);
+                if ($this.val() == '0') {
+                    $("#TravelOverseaExtra").val('0');
+                    $("#TravelOverseaExtra").prop('disabled', true);
+                }
+                Compute();
+            });
+
+            //傷害醫療保障
+            $("#TravelExtraC").on("change", function () {
+                var $this = $(this);
+                $("#TravelOverseaExtraC").prop('disabled', false);
+                if ($this.val() == '0') {
+                    $("#TravelOverseaExtraC").val('0');
+                    $("#TravelOverseaExtraC").prop('disabled', true);
+                }
+                Compute();
+            });
+
+            //保單年度未
+            $('#TravelDay, #TravelOverseaExtra, #TravelOverseaExtraC').on('change', function () {
+                Compute();
+            });
+
         });
-        for (var i = 0; i < alist.length; i++) {
-          selectHTML += '<option value="' + alist[i] + '">' + alist[i] + '萬</option>';
-        }
-      }
 
-      selectHTML += '<option value="0">不投保</option>';
-
-      //傷害醫療保障
-      $("#TravelExtraC").empty();
-      $("#TravelExtraC").html(selectHTML);
-      //海外突發疾病
-      $("#TravelOverseaExtraC").empty();
-      $("#TravelOverseaExtraC").html(selectHTML);
-      $("#TravelOverseaExtraC").prop('disabled', false);
-      Compute();
-    });
-
-
-    //傷害醫療保障
-    $("#TravelExtra").on("change", function() {
-      var $this = $(this);
-      $("#TravelOverseaExtra").prop('disabled', false);
-      if ($this.val() == '0') {
-        $("#TravelOverseaExtra").val('0');
-        $("#TravelOverseaExtra").prop('disabled', true);
-      }
-      Compute();
-    });
-
-    //傷害醫療保障
-    $("#TravelExtraC").on("change", function() {
-      var $this = $(this);
-      $("#TravelOverseaExtraC").prop('disabled', false);
-      if ($this.val() == '0') {
-        $("#TravelOverseaExtraC").val('0');
-        $("#TravelOverseaExtraC").prop('disabled', true);
-      }
-      Compute();
-    });
-
-    //保單年度未
-    $('#TravelDay, #TravelOverseaExtra, #TravelOverseaExtraC').on('change', function() {
-      Compute();
-    });
-
-  });
-
-  </script>
+    </script>
 </body>
 
 </html>
